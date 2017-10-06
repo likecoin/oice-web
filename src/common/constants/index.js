@@ -12,7 +12,7 @@ import {
     IOS_NAME,
     INTERCOM_APP_ID_PROD,
     INTERCOM_APP_ID_TEST,
-} from '../constants/key'
+} from '../constants/key';
 
 export const VERSION = '4.1.0';
 

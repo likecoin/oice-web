@@ -5,7 +5,7 @@ import {
     FIREBASE_PROJ_ID,
     FIREBASE_STORAGE_BUCKET,
     FIREBASE_SENDER_ID,
-} from '../constants/key'
+} from '../constants/key';
 
 /* global firebase: true */
 
