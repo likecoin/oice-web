@@ -1,0 +1,65 @@
+@import "../../styles/variables";
+
+.image-cropper {
+  position: relative;
+
+  .readonly-preview {
+    pointer-events: none;
+  }
+
+  .cropper-view-box {
+    outline: 1px solid $light-gray1;
+    outline-color: $light-gray1;
+  }
+
+  img {
+    width: inherit;
+    height: inherit;
+  }
+
+  .zoom-buttons {
+    width: 100%;
+    position: absolute;
+    bottom: 3px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    > *:not(:first-child) {
+      margin-left: $min-padding;
+    }
+
+    .raised-button.mini {
+      min-height: 24px;
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}
+
+.empty-cropper-holder {
+  position: absolute;
+  top: 0;
+  background-color: $dark-gray7;
+  width: 350px;
+  height: 352px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  svg {
+    color: $light-gray3;
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.image-cropper,
+.empty-cropper-holder {
+  border: $border-style1;
+  border-radius: 3px;
+  overflow: hidden;
+}

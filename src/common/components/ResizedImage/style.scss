@@ -1,0 +1,12 @@
+@import "../../styles/variables";
+
+.resized-image-container {
+  position: relative;
+  background-color: $dark-gray5;
+  overflow: hidden;
+}
+
+.mask-image {
+  position: absolute;
+  mask-size: contain;
+}

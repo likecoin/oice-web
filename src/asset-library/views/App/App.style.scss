@@ -1,0 +1,25 @@
+@import "../../../common/styles/index";
+@import "../../styles/common";
+
+body {
+  overflow-y: auto;
+}
+
+#app {
+  height: 100%;
+}
+
+#asset-library,
+#library-details {
+  > *:not(.nav-bar):not(.footer) {
+    min-height: calc(100% - #{$footer-height});
+
+    @media screen and (max-width: $screen-tablet) {
+      min-height: calc(100% - #{$footer-height * 3});
+    }
+  }
+
+  .tabbar-item.selected::before {
+    background-color: $oice-red;
+  }
+}

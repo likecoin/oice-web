@@ -1,0 +1,48 @@
+@import "../../styles/variables";
+
+$sub-navbar-expand-height: 80px;
+$sub-navbar-narrow-height: 32px;
+
+#sub-navbar {
+  display: flex;
+  width: 100%;
+  height: $sub-navbar-expand-height;
+  background-color: $pure-white;
+  align-items: flex-end;
+  z-index: 1;
+  margin-top: #{$nav-bar-height + 1px};
+  border-bottom: 1px solid $light-grey-3;
+
+  span {
+    transition: font-size 0.15s ease-in-out;
+
+    font-size: 32px;
+    font-weight: 200;
+    line-height: 50px;
+
+    &.secondaryText {
+      padding: 0 padding(1/3);
+    }
+    &.canClick {
+      cursor: pointer;
+      &:hover {
+        color: $light-red1;
+      }
+    }
+  }
+
+  &.narrow {
+    position: fixed;
+
+    height: $sub-navbar-narrow-height;
+
+    span {
+      font-size: 16px;
+      line-height: $sub-navbar-narrow-height;
+    }
+  }
+
+  @media screen and (max-width: $screen-phone) {
+    margin-top: #{$nav-bar-mobile-height + 1px};
+  }
+}

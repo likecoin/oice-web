@@ -1,0 +1,2009 @@
+{
+  "AssetSelectionModal": {
+    "label": {
+      "recentUsed": "故事中最近使用"
+    },
+    "button": {
+      "selectMoreAssets": "選用更多素材"
+    },
+    "placeholder": {
+      "libraryFilter": "篩選素材庫"
+    }
+  },
+  "AssetStore": {
+    "title": "素材士多",
+    "label": {
+      "free": "$t(library:free)",
+      "purchased": "$t(library:purchased)"
+    },
+    "menu": {
+      "featured": "編輯精選",
+      "free": "免費素材",
+      "all": "所有",
+      "latest": "最新素材"
+    }
+  },
+  "AudioList": {
+    "button": {
+      "add": {
+        "bgm": "新增音樂",
+        "se": "新增音效"
+      }
+    }
+  },
+  "BatchBuild": {
+    "button": {
+      "build": "編譯"
+    },
+    "label": {
+      "buildAllOices": "生成所有章回",
+      "buildAllOicesInStory": "生成故事中的所有章回",
+      "unstoppableWarning": "此操作不能中斷，確定要繼續？",
+      "storyIDInvalid": "故事ID不正確",
+      "remainingOices": "尚餘{{count}}回",
+      "completed": "已編譯完成"
+    },
+    "placeholder": {
+      "storyId": "故事ID"
+    }
+  },
+  "ConnectStripeModal": {
+    "label": {
+      "header": "連接Stripe",
+      "mustConnectStripeToSellLibrary": "請提供 Stripe 帳號用作收款"
+    }
+  },
+  "CreateLibraryModal": {
+    "label": {
+      "canOnlyUseInOice": "其他用戶僅限在 oice 編輯器使用這些素材",
+      "shouldConfirmPropertyRight": "上載者請確認擁有素材版權或相應使用權",
+      "shouldConfirmPropertySellingRight": "上載者請確認擁有素材版權或相應出售權",
+      "shareUploadedAssetForFree": "素材會免費共享予其他用戶創作故事",
+      "willBeSoldAtAssetStore": "素材售予其他用戶創作故事",
+      "stripeAccountIsRequired": "需先創建 Stripe 帳號作收款之用",
+      "3070Share": "支付和商店平台成本30%，上載者可得售價70%",
+      "othersCannotAccess": "素材只供上載者創作故事，不會於素材市場出現",
+      "oiceProUserOnly": "僅限 oice 會員",
+      "price": "價錢",
+      "onStore": "上架",
+      "notOnStore": "下架",
+      "addAssetsFirst": "請先在素材庫加入素材",
+      "reconnectStripeToSellLibrary": "請重新連接 Stripe 帳號用作收款"
+    }
+  },
+  "DownloadAppBadges": {
+    "label": {
+      "iosTestFootnote": "測試版"
+    }
+  },
+  "EditAudioAssetModal": {
+    "title": {
+      "edit": {
+        "bgm": "編輯音樂",
+        "se": "編輯音效"
+      },
+      "details": {
+        "bgm": "音樂詳情",
+        "se": "音效詳情"
+      }
+    },
+    "button": {
+      "delete": {
+        "bgm": "刪除音樂",
+        "se": "刪除音效"
+      }
+    }
+  },
+  "LandingSection": {
+    "title": "我自由我導",
+    "button": {
+      "replay": "重播",
+      "register": "註冊成為編導",
+      "becomeAReader": "我想成為讀者"
+    }
+  },
+  "AssetSection": {
+    "title": "海量動漫素材",
+    "label": {
+      "assetStore": "素材庫",
+      "assetStoreDescription": "各種主題素材庫，環球畫風曲風，配合不同劇情與世界觀。"
+    },
+    "button": {
+      "moreAssets": "更多素材"
+    }
+  },
+  "LicenseSection": {
+    "title": "<span>鼓勵分享創意</span> <span>同時保障權益</span>",
+    "label": {
+      "copyright": "版權所有",
+      "oiceCommons": "oice授權",
+      "creativeCommons": "創用CC",
+      "no": "無",
+      "yes": "有",
+      "low": "低",
+      "high": "高",
+      "openness": "開放程度",
+      "open": {
+        "closed": "全封閉",
+        "coordinated": "協調開放",
+        "fully": "全開放"
+      },
+      "tagging": "來源標識",
+      "approval": "審批機制",
+      "profitSharing": "利益分配",
+      "collaborative": "協作效率",
+      "customize": "訂製",
+      "auto": "自動、強制",
+      "manually": "手動、自律",
+      "caseByCase": "逐次審批",
+      "approveFirst": "先信任後驗閱",
+      "oiceCommonsPolicyCaption": {
+        "title": "oice license 協議",
+        "details": "素材默認授權，保留修訂權利。"
+      },
+      "autoCreditsCaption": {
+        "title": "自動標識所有參與創作者",
+        "details": "小至一粒音符，尊重創作人每分付出。"
+      }
+    }
+  },
+  "FeaturedStories": {
+    "title": "<span>劇情分支</span> <span>多元結局</span> <span>視覺小說更互動</span>",
+    "label": {
+      "appName": "oice 視覺小說",
+      "becomeAReader": "立即下載成為讀者"
+    },
+    "button": {
+      "downloadApp": "下載 oice 到手機，輕鬆閱讀"
+    }
+  },
+  "PricingSection": {
+    "title": "<span>支持創作</span> <span>成為會員</span>"
+  },
+  "PricingTable": {
+    "label": {
+      "free": {
+        "title": "oice會員",
+        "subtitle": "免費"
+      },
+      "backer": {
+        "title": "oice <span class='bold'>backer</span>",
+        "subtitle": "每月只需 <span style='font-size: 28px'>USD$9.9</span>"
+      },
+      "features": {
+        "createAndReadOice": "製作及閱讀視覺小說",
+        "uploadPublicAssets": "使用及上載共享素材",
+        "uploadPrivateAssets": "上載私人素材",
+        "readAllOice": "閱讀所有視覺小說",
+        "noLimitation": "無需等待隨時暢閱",
+        "noAds": "全無廣告",
+        "memberExclusiveEvent": "會員專屬活動"
+      }
+    },
+    "button": {
+      "free": {
+        "action": "成為會員",
+        "already": "已成為會員"
+      },
+      "backer": {
+        "action": "升級成為backer",
+        "already": "已成為backer"
+      }
+    }
+  },
+  "Footer": {
+    "label": {
+      "copyright": "© 2017 oice ltd. All rights reserved.",
+      "version": "oice v{{version}}"
+    },
+    "button": {
+      "termsOfService": "授權聲明 - oice license"
+    }
+  },
+  "ImportScriptModal": {
+    "title": "匯入劇本至故事編輯器",
+    "label": {
+      "stage": {
+        "uploading": "正在上載劇本⋯⋯",
+        "preparing": "正在準備開始匯入劇本⋯⋯",
+        "reading": "正在讀入劇本⋯⋯",
+        "parsing": "正在編譯劇本⋯⋯",
+        "validating": "正在檢查劇本⋯⋯",
+        "inserting": "正在匯入劇本⋯⋯",
+        "reloading": "正在載入劇本到編輯器⋯⋯",
+        "finished": "已完成匯入劇本"
+      },
+      "parseError": "匯入劇本錯誤",
+      "errorLineAndContent": "行數: {{line}}，內容: {{content}}"
+    },
+    "button": {
+      "chooseFile": "選擇檔案",
+      "uploadScript": "匯入劇本"
+    }
+  },
+  "LibraryDashboard": {
+    "tabBar": {
+      "myLibraries": "$t(MyLibraryDashboard:title)",
+      "purchasedLibraries": "$t(PurchasedLibraryDashboard:title)",
+      "assetStore": "$t(AssetStore:title)"
+    },
+    "label": {
+      "numberOfAssets": "{{count}}個素材",
+      "price": "US$ {{price}}"
+    }
+  },
+  "LibraryDetails": {
+    "label": {
+      "description": "簡介",
+      "assetCount": "包含{{count}}個素材",
+      "setting": "素材庫設定",
+      "usedByOiceProOnly": "只限oice會員",
+      "ownedLibraryWarning": "這是你所創建的素材庫，你已自動擁有這個素材庫。",
+      "purchaseLibraryName": "購買「{{name}}」素材庫",
+      "purchasingLibrary": "購買素材庫",
+      "confirmToPurchaseLibrary": "確定支付{{currency}} ${{price}}購買「{{name}}」素材庫？"
+    },
+    "placeholder": {
+      "empty": "沒有這分類的素材"
+    },
+    "button": {
+      "add": {
+        "bgm": "新增音樂",
+        "se": "新增音效"
+      },
+      "payForPrice": "支付 {{currency}}",
+      "purchase": "購買"
+    }
+  },
+  "LoginModal": {
+    "header": "登入",
+    "label": {
+      "mustLoginToAccess": "必須先登入才可購買素材庫"
+    }
+  },
+  "MyLibraryDashboard": {
+    "title": "我創建的素材庫",
+    "label": {
+      "public": "$t(library:public)",
+      "private": "$t(library:private)",
+      "forSale": "$t(library:forSale)",
+      "pendingForSale": "$t(library:pendingForSale)"
+    },
+    "button": {
+      "createLibrary": "創建素材庫"
+    }
+  },
+  "NavBar": {
+    "button": {
+      "register": "註冊成為作者",
+      "login": "登入"
+    },
+    "menu": {
+      "editor": "創作故事",
+      "asset": "管理素材",
+      "about": "關於oice",
+      "continueEditLastOice": "繼續編輯"
+    },
+    "dropdownMenu": {
+      "profile": "個人頁面",
+      "accountSetting": "$t(Profile:title)",
+      "logout": "登出"
+    }
+  },
+  "Profile": {
+    "title": "帳戶設定",
+    "personalInformation": {
+      "title": "個人資料",
+      "header": {
+        "basicInformation": "基本資料",
+        "externalLinks": "外部連結"
+      },
+      "label": {
+        "displayName": "用戶暱稱",
+        "description": "個人介紹",
+        "emailAddress": "電郵地址",
+        "username": "用戶名稱"
+      },
+      "button": {
+        "editProfilePicture": "更改頭像",
+        "link": "連結",
+        "unlink": "取消連結",
+        "addLink": "增加其他連結"
+      },
+      "placeholder": {
+        "enterLabel": "輸入標籤",
+        "enterLink": "輸入網址",
+        "enterDisplayName": "請輸入"
+      }
+    },
+    "accountSetting": {
+      "title": "帳號設定",
+      "header": {
+        "accountInformation": "帳號資料",
+        "languageSetting": "語言設定",
+        "receivePaymentSetting": "收款設定"
+      },
+      "label": {
+        "account": "帳號: ",
+        "member": "會員",
+        "backer": "backer",
+        "expireOn": "{{date}} 到期",
+        "upgradeToSupport": "升級為贊助會員每月只需 USD$9.9",
+        "UILanguage": "介面語言",
+        "defaultStoryLanguage": "預設寫作語言",
+        "stripeConnectDescription": "售賣素材庫須連接 Stripe 帳號用作收款",
+        "stripeConnected": "已連接 Stripe"
+      },
+      "button": {
+        "upgrade": "升級為贊助會員",
+        "continueSubscription": "繼續續費",
+        "cancelSubscription": "取消續費",
+        "disconnectStripe": "解除連接"
+      }
+    },
+    "seekingSubscriptionMessage": {
+      "_title": "訂閱訊息",
+      "buttonName": "編輯"
+    }
+  },
+  "PurchasedLibraryDashboard": {
+    "title": "已購買的素材庫",
+    "button": {
+      "goToAssetStore": "前往$t(AssetStore:title)搜尋新素材"
+    }
+  },
+  "SmsModal": {
+    "smsMessage": "點擊下載oice",
+    "label": {
+      "fillInMobileNumber": "以短訊接收下載鏈接",
+      "fillInToReceiveSMS": "填寫電話號碼，我們會發短訊給你。",
+      "receiveAndClickLink": "打開短訊中的下載鏈接",
+      "smsSent": "我們已發短訊給你。",
+      "downloadForBetterExperience": "下載oice到手機，隨時隨地，輕鬆閱讀",
+      "appStoreMayNotContinueOice": "從電腦觸發下載，首次進入可能丟失閱讀進度。",
+      "downloadToContinue": "下載 oice app 繼續觀看"
+    },
+    "button": {
+      "send": "發送",
+      "resend": "再次發送",
+      "useOtherWays": "其他下載方法"
+    },
+    "countries": {
+      "title": "地區",
+      "nameWithCountryCode": "$t(SmsModal:countries:code:{{regionCode}}) ({{dialCode}})",
+      "code": {
+        "AD": "安道爾共和國",
+        "AE": "阿拉伯聯合酋長國",
+        "AF": "阿富汗",
+        "AG": "安提瓜和巴布達",
+        "AI": "安圭拉島",
+        "AL": "阿爾巴尼亞",
+        "AM": "亞美尼亞",
+        "AN": "安道爾",
+        "AO": "安哥拉",
+        "AQ": "南極洲",
+        "AR": "阿根廷",
+        "AS": "美屬薩摩亞",
+        "AT": "奧地利",
+        "AU": "澳洲",
+        "AW": "阿魯巴",
+        "AZ": "阿塞拜疆",
+        "BA": "波斯尼亞和黑塞哥維那",
+        "BB": "巴巴多斯",
+        "BD": "孟加拉國",
+        "BE": "比利時",
+        "BF": "布基納法索",
+        "BG": "保加利亞",
+        "BH": "巴林",
+        "BI": "布隆迪",
+        "BJ": "貝寧",
+        "BL": "聖巴多祿繆島",
+        "BM": "百慕大群島",
+        "BN": "文萊",
+        "BO": "玻利維亞",
+        "BR": "巴西",
+        "BS": "巴哈馬",
+        "BT": "不丹",
+        "BW": "博茨瓦納",
+        "BY": "白俄羅斯",
+        "BZ": "伯利茲",
+        "CA": "加拿大",
+        "CC": "庫克群島",
+        "CD": "剛果民主共和國",
+        "CF": "中非共和國",
+        "CG": "剛果",
+        "CH": "瑞士",
+        "CI": "象牙海岸",
+        "CK": "庫克群島",
+        "CL": "智利",
+        "CM": "喀麥隆",
+        "CN": "中國",
+        "CO": "哥倫比亞",
+        "CR": "哥斯達黎加",
+        "CU": "古巴",
+        "CV": "維德角",
+        "CX": "聖誕島",
+        "CY": "塞浦路斯",
+        "CZ": "捷克",
+        "DE": "德國",
+        "DJ": "吉布提",
+        "DK": "丹麥",
+        "DM": "多米尼克",
+        "DO": "多米尼加共和國",
+        "DZ": "阿爾及利亞",
+        "EC": "厄瓜多爾",
+        "EE": "愛沙尼亞",
+        "EG": "埃及",
+        "ER": "厄立特里亞",
+        "ES": "西班牙",
+        "ET": "埃塞俄比亞",
+        "FI": "芬蘭",
+        "FJ": "斐濟",
+        "FK": "福克蘭群島",
+        "FM": "密克羅尼西亞聯邦",
+        "FO": "法羅群島",
+        "FR": "法國",
+        "GA": "加蓬",
+        "GB": "英國",
+        "GD": "格林納達",
+        "GE": "格魯吉亞",
+        "GF": "法屬圭亞那",
+        "GG": "根息島",
+        "GH": "加納",
+        "GI": "直布羅陀",
+        "GL": "格陵蘭",
+        "GM": "岡比亞",
+        "GN": "幾內亞",
+        "GP": "瓜德羅普",
+        "GQ": "赤道畿內亞",
+        "GR": "希臘",
+        "GS": "南佐治亞與南三文治群島",
+        "GT": "危地馬拉",
+        "GU": "關島",
+        "GW": "畿內亞比紹",
+        "GY": "圭亞那",
+        "HK": "香港",
+        "HN": "洪都拉斯",
+        "HR": "克羅地亞",
+        "HT": "海地",
+        "HU": "匈牙利",
+        "ID": "印度尼西亞",
+        "IE": "愛爾蘭",
+        "IL": "以色列",
+        "IM": "馬恩島",
+        "IN": "印度",
+        "IO": "英屬印度洋領地",
+        "IQ": "伊拉克",
+        "IR": "伊朗",
+        "IS": "冰島",
+        "IT": "意大利",
+        "JE": "澤西",
+        "JM": "牙買加",
+        "JO": "約旦",
+        "JP": "日本",
+        "KE": "肯尼亞",
+        "KG": "吉爾吉斯坦",
+        "KH": "柬埔寨",
+        "KI": "基里巴斯",
+        "KM": "科摩羅",
+        "KN": "聖傑氏尼維斯",
+        "KP": "朝鮮",
+        "KR": "韓國",
+        "KW": "科威特",
+        "KY": "開曼群島",
+        "KZ": "哈薩克斯坦",
+        "LA": "老撾",
+        "LB": "黎巴嫩",
+        "LC": "聖盧西亞",
+        "LI": "列支敦士登",
+        "LK": "斯裏蘭卡",
+        "LR": "利比裏亞",
+        "LS": "萊索托",
+        "LT": "立陶宛",
+        "LU": "盧森堡",
+        "LV": "拉脫維亞",
+        "LY": "利比亞",
+        "MA": "摩洛哥",
+        "MC": "摩納哥",
+        "MD": "摩爾多瓦",
+        "ME": "黑山",
+        "MF": "聖馬丁島",
+        "MG": "馬達加斯加",
+        "MH": "馬紹爾群島",
+        "MK": "馬其頓共和國",
+        "ML": "馬裏",
+        "MM": "緬甸",
+        "MN": "蒙古",
+        "MO": "澳門",
+        "MP": "北馬利安納羣島",
+        "MQ": "馬提尼克",
+        "MR": "毛里塔尼亞",
+        "MS": "蒙特塞拉特島",
+        "MT": "馬耳他",
+        "MU": "毛裏求斯",
+        "MV": "馬爾代夫",
+        "MW": "馬拉維",
+        "MX": "墨西哥",
+        "MY": "馬來西亞",
+        "MZ": "莫桑比克",
+        "NA": "納米比亞",
+        "NC": "新喀里多尼亞",
+        "NE": "尼日爾",
+        "NF": "諾福克島",
+        "NG": "尼日利亞",
+        "NI": "尼加拉瓜",
+        "NL": "荷蘭",
+        "NO": "挪威",
+        "NP": "尼泊爾",
+        "NR": "瑙魯",
+        "NU": "紐埃",
+        "NZ": "新西蘭",
+        "OM": "阿曼",
+        "PA": "巴拿馬",
+        "PE": "秘魯",
+        "PF": "法屬玻利尼西亞",
+        "PG": "巴布亞新幾內亞",
+        "PH": "菲律賓",
+        "PK": "巴基斯坦",
+        "PL": "波蘭",
+        "PM": "聖皮埃爾及密克隆群島",
+        "PN": "皮特凱恩群島",
+        "PR": "波多黎各",
+        "PS": "巴勒斯坦領土",
+        "PT": "葡萄牙",
+        "PW": "帛琉",
+        "PY": "巴拉圭",
+        "QA": "卡塔爾",
+        "RE": "留尼旺",
+        "RO": "羅馬尼亞",
+        "RS": "塞爾維亞",
+        "RU": "俄羅斯",
+        "RW": "盧旺達",
+        "SA": "沙特阿拉伯",
+        "SB": "所羅門群島",
+        "SC": "塞舌爾",
+        "SD": "蘇丹",
+        "SE": "瑞典",
+        "SG": "新加坡",
+        "SH": "聖赫勒拿、亞森欣與垂斯坦昆哈",
+        "SI": "斯洛文尼亞",
+        "SJ": "斯瓦巴和揚馬延",
+        "SK": "斯洛伐克",
+        "SL": "塞拉利昂",
+        "SM": "聖馬力諾",
+        "SN": "塞內加爾",
+        "SO": "索馬裏",
+        "SR": "蘇裏南",
+        "SS": "南蘇丹",
+        "ST": "聖多美和普林西比",
+        "SV": "薩爾瓦多",
+        "SY": "敘利亞",
+        "SZ": "斯威士蘭",
+        "TC": "特克斯與凱科斯群島",
+        "TD": "乍得",
+        "TG": "多哥",
+        "TH": "泰國",
+        "TJ": "塔吉克斯坦",
+        "TK": "特克斯與凱科斯群島",
+        "TL": "托克勞",
+        "TM": "土庫曼斯坦",
+        "TN": "突尼斯",
+        "TO": "湯加",
+        "TR": "土耳其",
+        "TT": "特立尼達和多巴哥",
+        "TV": "吐瓦魯",
+        "TW": "台灣",
+        "TZ": "坦桑尼亞",
+        "UA": "烏克蘭",
+        "UG": "烏幹達",
+        "US": "美國",
+        "UY": "烏拉圭",
+        "UZ": "烏茲別克斯坦",
+        "VA": "梵蒂岡",
+        "VC": "聖文森特",
+        "VE": "委內瑞拉",
+        "VG": "英屬處女羣島",
+        "VI": "美屬處女羣島",
+        "VN": "越南",
+        "VU": "瓦努阿圖",
+        "WF": "瓦利斯及富圖納群島",
+        "WS": "薩摩亞",
+        "YE": "也門",
+        "YT": "馬約特",
+        "YU": "南斯拉夫",
+        "ZA": "南非",
+        "ZM": "尚比亞",
+        "ZR": "紮伊爾",
+        "ZW": "津巴布韋"
+      }
+    }
+  },
+  "StoryDashboard": {
+    "label": {
+      "story": "我的故事",
+      "button": {
+        "createStory": "創建新故事",
+        "edit": "編輯",
+        "preview": "預覽",
+        "published": "已發佈",
+        "unpublished": "未發佈",
+        "addOice": "新增 oice"
+      }
+    }
+  },
+  "StoryDetails": {
+    "label": {
+      "introduction": "簡介",
+      "noIntroduction": "無簡介"
+    }
+  },
+  "TermsOfService": {
+    "title": "授權聲明"
+  },
+  "TestFlightInvitation": {
+    "title": "登記成為iOS測試版用戶",
+    "label": {
+      "description": "請提供電郵地址，你將會收到包含安裝oice的邀請碼",
+      "alreadyJoined": "此電郵已登記",
+      "alreadySent": "已發送邀請郵件，若5分鐘後仍無法收到請重試"
+    },
+    "placeholder": {
+      "email": "電郵地址"
+    },
+    "button": {
+      "submit": "發送",
+      "submitting": "發送中"
+    }
+  },
+  "UserPage": {
+    "label": {
+      "stats": {
+        "oices": "oice",
+        "assets": "素材",
+        "credits": "參與"
+      }
+    },
+    "tabBar": {
+      "user": "用戶",
+      "stories": "故事",
+      "libraries": "素材庫",
+      "credits": "參與"
+    },
+    "placeholder": {
+      "noDescription": "無用戶簡介",
+      "noStory": "{{user}}沒有編導任何故事",
+      "noLibrary": "{{user}}沒有上載任何素材庫",
+      "noCredits": "{{user}}沒有參與其他故事",
+      "noYourStory": "你沒有編導任何故事",
+      "noYourLibrary": "你沒有上載任何素材庫",
+      "noYourCredits": "你沒有參與其他故事"
+    }
+  },
+  "UsersDropdown": {
+    "label": {
+      "userNotFound": "找不到用戶",
+      "noUser": "無用戶"
+    },
+    "placeholder": "添加用戶"
+  },
+  "alertDialog": {
+    "confirm": {
+      "title": "訊息提示",
+      "button": {
+        "cancel": "$t(general:cancel)",
+        "confirm": "$t(general:confirm)"
+      }
+    },
+    "error": {
+      "title": "錯誤",
+      "button": {
+        "cancel": "重新載入",
+        "confirm": "略過"
+      }
+    },
+    "alert": {
+      "title": "通知",
+      "button": {
+        "confirm": "了解"
+      }
+    }
+  },
+  "asset": {
+    "type": {
+      "character": "角色",
+      "fgimage": "立繪",
+      "bgimage": "背景",
+      "image": "週邊",
+      "bgm": "音樂",
+      "se": "音效"
+    }
+  },
+  "assets": {
+    "category": {
+      "character": "角色",
+      "bgimage": "背景",
+      "image": "週邊",
+      "bgm": "音樂",
+      "se": "音效"
+    }
+  },
+  "assetsManagement": {
+    "title": "素材管理",
+    "setting": "素材庫設定",
+    "label": {
+      "confirmDelete": "確定要删除{{name}}?"
+    },
+    "uploadMusicModal": {
+      "placeholder": {
+        "name": "請輸入音樂名稱",
+        "tag": "請選擇標籤",
+        "creditsUrl": "來源網址"
+      },
+      "button": {
+        "addFile": "繼續上傳",
+        "upload": "上傳"
+      },
+      "addMusic": "新增音樂",
+      "addSound": "新增音效"
+    },
+    "libraryModal": {
+      "header": {
+        "add": "創建素材庫",
+        "edit": "素材庫設定"
+      },
+      "label": {
+        "coverPhoto": "封面圖片",
+        "license": "版權選項",
+        "creativeCommons": "$t(license:creativeCommons)",
+        "referToProfile": "$t(license:referToProfile)",
+        "public": "共享素材庫",
+        "uploadCover": "上傳素材庫相片",
+        "modifyPrice": "修訂素材庫價格並在素材市場上發售"
+      },
+      "button": {
+        "create": {
+          "public": "創建$t(library:public)素材庫",
+          "private": "創建$t(library:private)素材庫",
+          "forSale": "創建$t(library:forSale)素材庫"
+        },
+        "save": "$t(general:save)",
+        "delete": "删除素材庫"
+      },
+      "placeholder": {
+        "name": "素材庫名稱(必填)",
+        "description": "素材庫描述"
+      }
+    },
+    "bgModal": {
+      "header": {
+        "add": "新增背景",
+        "edit": "編輯背景",
+        "view": "查看背景"
+      },
+      "button": {
+        "delete": "刪除背景",
+        "save": "$t(general:save)"
+      },
+      "placeholder": {
+        "name": {
+          "en": "請輸入背景名稱(必填)",
+          "tw": "請輸入中文背景名稱",
+          "jp": "請輸入日文背景名稱"
+        },
+        "tag": "請輸入選擇標籤",
+        "creditsUrl": "來源網址"
+      },
+      "label": {
+        "tagNotFound": "找不到標籤",
+        "imageSizeNot1080": "請確保上傳圖片尺寸為1080x1080px"
+      }
+    },
+    "characterModal": {
+      "title": {
+        "add": "新增角色",
+        "edit": "編輯角色",
+        "view": "查看角色"
+      },
+      "button": {
+        "confirm": "確定",
+        "delete": "刪除角色",
+        "addFgImage": "新增立繪"
+      },
+      "label": {
+        "nameTitle": "角色名稱",
+        "nameEn": "English",
+        "nameTw": "中文(正體)",
+        "nameJp": "日本語",
+        "confirmDeleteFgImage": "確定删除立繪「{{name}}」?",
+        "pleaseAddAtLeastOneFgImage": "角色至少需要一張立繪",
+        "fgImageCannotBeEmpty": "立繪名稱不能為空",
+        "pleaseEnterCharacterName": "請輸入角色名稱",
+        "pleaseEnterIntegerConfig": "角色座標必須為整數，請重新修改",
+        "deleteImageSelection": "確認刪除立繪？",
+        "deleteCharacter": "確認刪除角色?",
+        "fullSetting": "全局設定",
+        "coordinate": {
+          "0": "左側坐標",
+          "1": "中間坐標",
+          "2": "右側坐標"
+        },
+        "fgImage": {
+          "height": "立繪高度",
+          "width": "立繪寬度"
+        },
+        "renamable": "可更改名字"
+      },
+      "selectedCharacter": "請選擇角色 (必選)",
+      "selectedCharacterImage": "請選擇立繪",
+      "imageSelectionModalTitle": "請選擇立繪({{name}})",
+      "fliplr": "左右反轉",
+      "placeholder": {
+        "name": "請輸入角色名稱",
+        "fgImage": "請輸入立繪名稱",
+        "creditsUrl": "來源網址"
+      }
+    },
+    "itemModal": {
+      "header": {
+        "add": "新增週邊",
+        "edit": "編輯週邊",
+        "view": "查看週邊"
+      },
+      "button": {
+        "delete": "刪除週邊",
+        "save": "$t(general:save)"
+      },
+      "placeholder": {
+        "name": {
+          "en": "請輸入週邊名稱(必填)",
+          "tw": "請輸入中文週邊名稱",
+          "jp": "請輸入日文週邊名稱"
+        },
+        "creditsUrl": "來源網址"
+      },
+      "label": {
+        "imageSizeNotLessThan1080": "請確保上傳圖片尺寸等於或少於1080x1080px"
+      }
+    }
+  },
+  "attributesPanel": {
+    "noAttributeRow": "沒有可設定參數",
+    "clickToShow": "請先點擊左方的區塊以設定參數",
+    "pleaseChoose": "請選擇",
+    "requiredField": "必填",
+    "requiredAsset": "必選",
+    "label": {
+      "hint": {
+        "ms": "{{label}} ($t(unit:ms))"
+      }
+    },
+    "placeholder": {
+      "dropDown": {
+        "bg": "請選擇背景 ($t(requiredAsset))",
+        "item": "請選擇週邊 ($t(requiredAsset))"
+      }
+    }
+  },
+  "character": {
+    "coordinate": {
+      "left": "左",
+      "middle": "中",
+      "right": "右"
+    }
+  },
+  "checkout": {
+    "label": {
+      "upgrade": "升級$t(membership:paid)"
+    },
+    "button": {
+      "pay": "立即付費"
+    }
+  },
+  "editor": {
+    "title": "編輯器",
+    "basic-macros": "演出",
+    "sound-macros": "配樂",
+    "commmand-macros": "剪接",
+    "wordCount": {
+      "title": "字數統計",
+      "counting": "統計中…",
+      "count": "{{count}} 字元",
+      "count_plural": "{{count}} 字元"
+    },
+    "toolbar": {
+      "button": {
+        "importScript": "匯入",
+        "assetsManagement": "素材",
+        "preview": "預覽",
+        "publish": "發佈",
+        "export": "$t(editor:exportOice.title)"
+      },
+      "placeholder": {
+        "storyName": "選擇故事",
+        "oiceName": "選擇章回"
+      }
+    },
+    "menu": {
+      "personalPage": "個人主頁",
+      "tutorial1": "查看教程（新手教程）",
+      "tutorial2": "查看教程（角色教程）",
+      "tutorial3": "查看教程（新建教程）",
+      "tutorial": "教程",
+      "function": "功能"
+    },
+    "emptyPleaseSelect": "歡迎使用 oice 編輯器，請先創建/選擇你的故事。",
+    "storiesList": {
+      "title": "我的故事",
+      "addButton": "新增故事",
+      "addPlaceholder": "請輸入故事名稱..."
+    },
+    "oicesList": {
+      "title": "選擇章回",
+      "addButton": "新增章回",
+      "addPlaceholder": "請輸入章回名稱...",
+      "episode": "第{{number}}回",
+      "label": {
+        "pickAStoryForCopyOice": "請選擇複製章回到的故事"
+      }
+    },
+    "storyPicker": {
+      "title": "選擇故事",
+      "placeholder": "請選擇故事",
+      "button": {
+        "confirm": "選擇故事"
+      }
+    },
+    "storySetting": {
+      "storyContinue": "連載中",
+      "storyEnded": "已完結",
+      "selectLanguagePlaceholder": "請選擇"
+    },
+    "oiceSetting": {
+      "generalSetting": {
+        "title": "全局設定",
+        "settingOption1": "公開",
+        "settingOption2": "僅可通過網址觀看",
+        "addOicePlaceholder": "請輸入章回標題(必填)",
+        "addOiceDescPlaceholder": "請輸入章回內容描述...",
+        "advSelectBox": "播放完畢後顯示廣告",
+        "advUseDefault": "使用默認廣告",
+        "selectPlease": "$t(general:selectPlease)"
+      },
+      "facebookSetting": {
+        "title": "Facebook設定",
+        "addOgTitlePlaceholder": "請輸入 og 標題",
+        "addOgDescriptionPlaceholder": "請輸入 og 描述...",
+        "suggestedImageSize": "Facebook 封面圖片為 1200 px × 630 px"
+      },
+      "copyright": "版權",
+      "deleteOice": "刪除章回",
+      "deleteOiceConfirm": "確定刪除此章回?",
+      "saveButton": "儲存",
+      "confirmButton": "確定",
+      "cancelButton": "取消",
+      "oiceNormalLinkPlaceholder": "請輸入網址",
+      "oiceiOSLinkPlaceholder": "請輸入App Store網址",
+      "oiceAndroidLinkPlaceholder": "請輸Google Play入網址"
+    },
+    "buildOiceState": {
+      "saving": "正在儲存章回",
+      "saveFailed": "儲存章回失敗",
+      "validating": "正在檢查章回",
+      "validateFailed": "檢查章回失敗，伺服器錯誤",
+      "validateSuccessWithError": "檢查章回成功，發現章回存在錯誤參數",
+      "building": "正在編譯章回",
+      "buildFailed": "編譯章回失敗，伺服器錯誤",
+      "buildSuccess": "編譯章回成功",
+      "buildFailedUnkownError": "編譯章回失敗",
+      "exporting": "正在匯出章回",
+      "exportFailed": "匯出章回失敗，伺服器錯誤",
+      "exportSuccess": "匯出章回成功，請點擊下方按鈕開始下載"
+    },
+    "runOice": {
+      "title": {
+        "preview": "預覽oice",
+        "publish": "發佈oice"
+      },
+      "description": {
+        "preview": "oice編譯完成，請點擊下方按鈕開始播放。",
+        "publish": "oice編譯完成，請點擊下方按鈕開始播放；或拷貝以下超連結到手機瀏覽器，會自動以oice app播放。"
+      },
+      "oicePublicDescription": "在oice 網站及手機應用程式上公開，公諸同好。",
+      "playButton": "播放"
+    },
+    "exportOice": {
+      "title": "匯出",
+      "downloadButton": "下載",
+      "exportButton": "確認匯出"
+    },
+    "oiceError": {
+      "messageLabel": "錯誤信息",
+      "errorBlockId": "錯誤區塊ID",
+      "attributeName": "屬性"
+    },
+    "characterSelectionModal": {
+      "title": "選擇角色",
+      "confirmButton": "確定",
+      "categorySelectionAll": "全部"
+    },
+    "imageSelectionModal": {
+      "title": "選擇背景",
+      "confirmButton": "確定"
+    },
+    "backgroundImageSelectionModal": {
+      "title": "選擇背景",
+      "confirmButton": "確定"
+    },
+    "itemImageSelectionModal": {
+      "title": "選擇週邊"
+    },
+    "audioSelectionModal": {
+      "placeholder": {
+        "music": "請選擇背景音樂（必填）",
+        "sound": "請選擇音效（必填）"
+      },
+      "title": {
+        "chooseMusic": "選擇背景音樂",
+        "chooseSound": "選擇音效"
+      }
+    },
+    "blocksList": {
+      "dummyBlock": {
+        "normal": "拖曳組件到此來插入組件",
+        "hover": "放開組件來插入組件"
+      },
+      "statusRow": {
+        "lastSave": "上次編輯時間：{{time}}",
+        "allChangesSaved": "所有變更已經儲存",
+        "saving": "正在儲存...",
+        "editing": "正在編輯 : ",
+        "otherLanguage": "其他語言"
+      }
+    }
+  },
+  "error": {
+    "ERR_AUDIO_FORMAT_UNSUPPORTED": "不支持此音訊格式",
+    "ERR_AUDIO_TRANSCODE_FAILURE": "音訊編碼出現錯誤",
+    "ERR_IMPORT_SCRIPT_ASSET_NOT_FOUND": "使用了不正確的素材ID: {{assetIds}}",
+    "ERR_IMPORT_SCRIPT_CHARACTER_FORBID_RENAME": "非通用角色不能定義新名字，角色ID: {{characterId}}",
+    "ERR_IMPORT_SCRIPT_CHARACTER_NOT_FOUND": "使用了不正確的角色ID: {{ characterIds }}",
+    "ERR_IMPORT_SCRIPT_FILE_CANNOT_OPEN": "請上傳正確的劇本檔案格式 (.txt)",
+    "ERR_IMPORT_SCRIPT_FILE_NOT_FOUND": "請上傳劇本檔案",
+    "ERR_IMPORT_SCRIPT_LIBRARY_NOT_OWNED": "使用了未擁有的素材庫「{{libraryName}}」",
+    "ERR_IMPORT_SCRIPT_LIBRARY_NOT_PURCHASED": "使用了尚未購買的素材庫「{{libraryName}}」",
+    "ERR_IMPORT_SCRIPT_SHOULD_NOT_WRITE_DECLARATION_IN_SCRIPT": "角色或背景應在<declaration>範圍內定義",
+    "ERR_IMPORT_SCRIPT_SHOULD_NOT_WRITE_SCRIPT_IN_DECLARATION": "對白內容應寫在<script>範圍之內",
+    "ERR_IMPORT_SCRIPT_SYNTAX_ERROR_UNEXPECTED_EOF": "語法錯誤 UNEXPECTED_EOF",
+    "ERR_IMPORT_SCRIPT_SYNTAX_ERROR": "語法錯誤",
+    "ERR_IMPORT_SCRIPT_TOKENIZATION_ERROR": "編碼錯誤「{{message}}」",
+    "ERR_IMPORT_SCRIPT_UNKNOWN_ERROR": "未知錯誤 「{{message}}」",
+    "ERR_IMPORT_SCRIPT_UNRECOGNIZED_SECTION_TAG": "只能使用<declaration>或<script>標籤",
+    "ERR_IMPORT_SCRIPT_USING_UNDECLARED_BACKGROUND": "使用未在<declaration>定義的背景",
+    "ERR_IMPORT_SCRIPT_USING_UNDECLARED_CHARACTER": "使用未在<declaration>定義的角色",
+    "ERR_IMPORT_SCRIPT_WAIT_TIME_IS_NOT_AN_INTEGER": "等待時間並非數字",
+    "ERR_LIBRARY_NOT_FOR_SALE": "你所訪問的素材庫尚未公開",
+    "ERR_NOT_POSSIBLE_PHONE_NUMBER": "請輸入正確的電話號碼",
+    "ERR_NOT_MOBILE_PHONE_NUMBER": "請輸入手機號碼",
+    "ERR_TESTFLIGHT_INVALID_TESTER_EMAIL": "電郵地址不正確",
+    "ERR_TESTFLIGHT_TESTER_EXIST": "此電郵已登記",
+    "ERR_TESTFLIGHT_RESEND_INVITATION_FAILURE": "重新發送邀請失敗",
+    "ERR_TESTFLIGHT_ADD_TESTER_FAILURE": "發送邀請失敗",
+    "ERR_USERNAME_LENGTH_TOO_SHORT": "用戶名稱長度必須至少為 6 個字元",
+    "ERR_USERNAME_CAN_ONLY_START_WITH_LETTER": "用戶名稱須以英文字母開首",
+    "ERR_USERNAME_CONTAINS_INVALID_CHARACTER": "用戶名稱含有無效字符",
+    "ERR_USERNAME_NOT_UNIQUE": "此用戶名稱已有人使用",
+    "ERR_USERNAME_IS_A_NUMBER": "用戶名稱不得全部使用數字"
+  },
+  "general": {
+    "save": "儲存",
+    "confirm": "確定",
+    "cancel": "取消",
+    "selectPlease": "請選擇",
+    "enterPlease": "請輸入"
+  },
+  "interactiveTutorial": {
+    "button": {
+      "finish": "完成教學",
+      "control": {
+        "skip": "跳過教學",
+        "next": "下一步",
+        "previous": "上一步"
+      }
+    },
+    "tutorial1": {
+      "step1": "先點擊這裡選一個故事吧？"
+    }
+  },
+  "library": {
+    "author": "創建者",
+    "authorWithName": "$t(author) {{author}}",
+    "credits": "參與",
+    "public": "共享",
+    "private": "私人",
+    "forSale": "出售",
+    "free": "免費",
+    "pendingForSale": "待發售",
+    "purchased": "已購買",
+    "show": "顯示",
+    "hide": "隱藏"
+  },
+  "license": {
+    "creativeCommons": "創用CC授權",
+    "referToProfile": "跟隨帳戶設定"
+  },
+  "loadingScreen": {
+    "label": {
+      "loading": "載入中"
+    }
+  },
+  "macro": {
+    "stringTypeAttributePlaceholder": "請輸入",
+    "comment": {
+      "_title": "註解",
+      "text": "文字"
+    },
+    "fadeoutse": {
+      "_title": "漸出音效",
+      "buf": "頻度",
+      "time": "時間"
+    },
+    "stopbgm": {
+      "_title": "停止背景音樂",
+      "time": "淡出時間"
+    },
+    "button": {
+      "_title": "顯示按鈕",
+      "storage": "調到檔案",
+      "graphic": "圖片",
+      "target": "目標"
+    },
+    "wv": {
+      "_title": "等待影片完結",
+      "canskip": "可以跳過"
+    },
+    "xchgbgm": {
+      "_title": "交換背景音樂",
+      "storage": "檔案",
+      "time": "時間",
+      "overlap": "覆蓋時間",
+      "loop": "重複播放",
+      "volume": "音量"
+    },
+    "jump": {
+      "_title": "跳轉",
+      "target": "目標"
+    },
+    "bgm": {
+      "_title": "播放背景音樂",
+      "storage": "背景音樂檔案",
+      "loop": "重複播放",
+      "fadetime": "淡入淡出時間",
+      "overlap": "BGM重疊時間",
+      "volume": "聲量 (0-100)"
+    },
+    "wm": {
+      "_title": "等待移動完結",
+      "canskip": "可以跳過"
+    },
+    "resetfont": {
+      "_title": "重設字形"
+    },
+    "fadepausebgm": {
+      "_title": "漸出並停止背景音樂",
+      "time": "時間"
+    },
+    "l": {
+      "_title": "等待點擊(改行)"
+    },
+    "image": {
+      "_title": "顯示圖片",
+      "mopacity": "色調強度",
+      "shadowx": "影子位移（左）",
+      "shadowy": "影子位移（上）",
+      "mcolor": "色調",
+      "visible": "可視",
+      "shadowblur": "模糊影子",
+      "storage": "檔案",
+      "left": "左",
+      "layer": "圖層",
+      "opacity": "透明度",
+      "shadowopacity": "影子透明度",
+      "page": "頁",
+      "top": "上",
+      "shadow": "影子"
+    },
+    "r": {
+      "_title": "改行"
+    },
+    "font": {
+      "_title": "設定字形",
+      "o2_shadowcolor": "影子顏色",
+      "color": "顏色",
+      "size": "大小",
+      "italic": "斜體",
+      "bold": "粗體",
+      "o2_shadow": "影子",
+      "edgecolor": "邊框顏色",
+      "face": "字體",
+      "edge": "邊框"
+    },
+    "stopvideo": {
+      "_title": "停止影片"
+    },
+    "ws": {
+      "_title": "等待音效完結",
+      "buf": "頻度",
+      "canskip": "可以跳過"
+    },
+    "fadeinbgm": {
+      "_title": "切入背景音樂",
+      "storage": "檔案",
+      "time": "時間",
+      "loop": "重複播放"
+    },
+    "glyph": {
+      "_title": "等待操作的設定",
+      "left": "左",
+      "fix": "固定",
+      "page": "等待換頁的檔案",
+      "top": "上",
+      "line": "等待換行的檔案"
+    },
+    "openvideo": {
+      "_title": "打開影片",
+      "storage": "檔案"
+    },
+    "resumebgm": {
+      "_title": "繼續播放背景音樂"
+    },
+    "video": {
+      "_title": "影片設定",
+      "width": "寬",
+      "height": "高",
+      "volume": "音量",
+      "visible": "可視",
+      "left": "左",
+      "top": "上",
+      "loop": "重複播放"
+    },
+    "fadebgm": {
+      "_title": "切換音樂",
+      "time": "時間",
+      "volume": "音量"
+    },
+    "defstyle": {
+      "_title": "設定預設樣式",
+      "linespacing": "行距",
+      "pitch": "字距",
+      "linesize": "行高"
+    },
+    "resumevideo": {
+      "_title": "繼續播放影片"
+    },
+    "s": {
+      "_title": "停止"
+    },
+    "pimage": {
+      "_title": "追加圖片",
+      "storage": "檔案",
+      "dx": "目標座標（左）",
+      "sw": "來源寬度",
+      "layer": "圖層",
+      "sy": "來源座標（上）",
+      "sh": "來源高度",
+      "dy": "目標座標（上）",
+      "page": "頁面",
+      "sx": "來源座標（左）"
+    },
+    "locate": {
+      "_title": "移動座標",
+      "x": "左",
+      "y": "上"
+    },
+    "position": {
+      "_title": "設定文字圖層",
+      "visible": "可視",
+      "marginb": "下邊邊緣",
+      "width": "寬",
+      "marginr": "右邊邊緣",
+      "frame": "背景圖片",
+      "margint": "上邊邊緣",
+      "height": "高",
+      "marginl": "左邊邊緣",
+      "left": "左",
+      "color": "顏色",
+      "layer": "文字圖層",
+      "opacity": "透明度",
+      "vertical": "垂直",
+      "page": "頁",
+      "top": "上"
+    },
+    "freeimage": {
+      "_title": "清除圖片",
+      "layer": "圖層",
+      "page": "頁"
+    },
+    "delay": {
+      "_title": "設定文字顯示速度",
+      "speed": "速度"
+    },
+    "wl": {
+      "_title": "等待背景音樂完結",
+      "canskip": "可以跳過"
+    },
+    "history": {
+      "_title": "記錄設定",
+      "output": "輸出",
+      "enabled": "啓動"
+    },
+    "playvideo": {
+      "_title": "播放影片",
+      "storage": "檔案"
+    },
+    "return": {
+      "_title": "返回上層",
+      "storage": "檔案",
+      "target": "目標"
+    },
+    "fadeinse": {
+      "_title": "切入音效",
+      "buf": "頻度",
+      "storage": "檔案",
+      "time": "時間",
+      "loop": "重複播放"
+    },
+    "label": {
+      "_title": "標籤",
+      "caption": "描述(選填)",
+      "name": "標籤*"
+    },
+    "call": {
+      "_title": "呼叫腳本",
+      "storage": "檔案",
+      "target": "目標"
+    },
+    "wa": {
+      "_title": "等待動畫完結",
+      "layer": "圖層",
+      "seg": "頻度",
+      "page": "頁面"
+    },
+    "pausebgm": {
+      "_title": "暫停背景音樂"
+    },
+    "layopt": {
+      "_title": "設定圖層",
+      "left": "左",
+      "layer": "圖層",
+      "opacity": "透明度",
+      "visible": "可視",
+      "page": "頁面",
+      "top": "上"
+    },
+    "wf": {
+      "_title": "等待音效切換完成",
+      "buf": "頻度",
+      "canskip": "可以跳過"
+    },
+    "trans": {
+      "_title": "切換",
+      "rule": "切換規則",
+      "time": "時間",
+      "method": "方式",
+      "layer": "圖層",
+      "stay": "停留",
+      "vague": "曖昧值",
+      "from": "來自"
+    },
+    "wt": {
+      "_title": "等待切換完結",
+      "canskip": "可以跳過"
+    },
+    "fadeoutbgm": {
+      "_title": "漸出背景音樂",
+      "time": "時間"
+    },
+    "backlay": {
+      "_title": "準備切換",
+      "layer": "圖層"
+    },
+    "er": {
+      "_title": "重設文字圖層"
+    },
+    "stopmove": {
+      "_title": "停止移動"
+    },
+    "stopse": {
+      "_title": "停止音效",
+      "buf": "頻度"
+    },
+    "fadese": {
+      "_title": "漸出並停止音效",
+      "buf": "頻度",
+      "time": "時間",
+      "volume": "音量"
+    },
+    "wait": {
+      "_title": "等待",
+      "time": "時間",
+      "canskip": "可以跳過"
+    },
+    "resetstyle": {
+      "_title": "重設樣式"
+    },
+    "bgmopt": {
+      "_title": "背景音樂設定",
+      "volume": "音量"
+    },
+    "seopt": {
+      "_title": "音效設定",
+      "buf": "頻度",
+      "gvolume": "全域音量",
+      "volume": "音量"
+    },
+    "wb": {
+      "_title": "等待背景音樂切換完成",
+      "canskip": "可以跳過"
+    },
+    "copylay": {
+      "_title": "複製圖層",
+      "srclayer": "來自圖層",
+      "destlayer": "目標圖層",
+      "srcpage": "來自頁",
+      "destpage": "目標頁"
+    },
+    "pausevideo": {
+      "_title": "暫停影片"
+    },
+    "style": {
+      "_title": "設定樣式",
+      "align": "文字靠齊",
+      "linespacing": "行距",
+      "pitch": "字距",
+      "autoreturn": "自動換行",
+      "linesize": "行高"
+    },
+    "wq": {
+      "_title": "等待震動停止",
+      "canskip": "可以跳過"
+    },
+    "playse": {
+      "_title": "播放音效",
+      "storage": "音效檔案",
+      "buf": "頻度"
+    },
+    "deffont": {
+      "_title": "設定預設字形",
+      "o2_shadowcolor": "影子顏色",
+      "color": "顏色",
+      "size": "字體大小",
+      "edgecolor": "邊框顏色",
+      "bold": "粗體",
+      "o2_shadow": "影子",
+      "face": "字體",
+      "edge": "邊框"
+    },
+    "current": {
+      "_title": "指定文字圖層",
+      "layer": "圖層",
+      "page": "頁"
+    },
+    "text": {
+      "_title": "顯示文字",
+      "text": "文字"
+    },
+    "move": {
+      "_title": "移動圖層",
+      "path": "路徑",
+      "time": "時間",
+      "layer": "圖層",
+      "spline": "自動曲線",
+      "delay": "延遲",
+      "page": "頁面",
+      "accel": "加速度"
+    },
+    "stoptrans": {
+      "_title": "停止切換"
+    },
+    "quake": {
+      "_title": "震動",
+      "time": "震動時間",
+      "vmax": "最大垂直幅度",
+      "hmax": "最大水平幅度"
+    },
+    "p": {
+      "_title": "等待點擊(改頁)"
+    },
+    "characterdialog": {
+      "_title": "角色對白",
+      "character": "角色",
+      "dialog": "對白",
+      "dialogPlaceholder": "請輸入對白",
+      "fg": "前景（立繪）",
+      "fgexit": "退場指令",
+      "fliplr": "左右反轉",
+      "name": "自定義名稱",
+      "position": "位置",
+      "skipwait": "略過等待",
+      "waitse": "等待音效完結",
+      "hidedialog": "隱藏對話框"
+    },
+    "fg": {
+      "_title": "顯示人物",
+      "fliplr": "左右反轉",
+      "storage": "檔案",
+      "time": "切換時間",
+      "left": "左",
+      "layer": "圖層",
+      "stay": "停留",
+      "rule": "切換規則",
+      "method": "切換樣式",
+      "from": "來自",
+      "top": "上",
+      "canskip": "可以跳過"
+    },
+    "dia": {
+      "_title": "普通對話框(含頭像)"
+    },
+    "selstart": {
+      "_title": "準備選項",
+      "hidesysbutton": "隱藏按鈕層",
+      "hidemes": "隱藏對話層"
+    },
+    "clbg": {
+      "_title": "清除背景",
+      "rule": "切換規則",
+      "time": "切換時間",
+      "method": "切換樣式",
+      "hidemes": "消除對話框",
+      "clfg": "清除立繪",
+      "from": "來自",
+      "stay": "停留",
+      "canskip": "可以跳過"
+    },
+    "w": {
+      "_title": "改頁等待"
+    },
+    "lr": {
+      "_title": "改行等待"
+    },
+    "clfg": {
+      "_title": "清除前景",
+      "stay": "停留",
+      "time": "切換時間",
+      "method": "切換樣式",
+      "layer": "清除全部",
+      "hidemes": "連同對話框",
+      "rule": "切換規則",
+      "from": "來自",
+      "canskip": "可以跳過",
+      "clface": "清除頭像"
+    },
+    "selbutton": {
+      "_title": "按鈕選項",
+      "storage": "檔案",
+      "over": "指下去的圖像",
+      "target": "目標標籤",
+      "text": "文字",
+      "on": "按下圖像",
+      "normal": "普通圖像"
+    },
+    "selend": {
+      "_title": "等待選擇-選項",
+      "stay": "停留",
+      "time": "時間",
+      "method": "切換樣式",
+      "rule": "切換規則",
+      "from": "來自",
+      "canskip": "可以跳過"
+    },
+    "bg": {
+      "_title": "顯示背景",
+      "mopacity": "調色強度",
+      "convert": "反色效果",
+      "method": "切換樣式",
+      "rule": "切換規則",
+      "grayscale": "黑白效果",
+      "mcolor": "濾鏡",
+      "stay": "停留",
+      "canskip": "可以跳過",
+      "storage": "檔案",
+      "time": "切換時間",
+      "hidemes": "消除對話框",
+      "clfg": "清除立繪",
+      "from": "來自"
+    },
+    "item": {
+      "_title": "顯示週邊",
+      "mopacity": "調色強度",
+      "convert": "反色效果",
+      "method": "切換樣式",
+      "rule": "切換規則",
+      "grayscale": "黑白效果",
+      "mcolor": "濾鏡",
+      "stay": "停留",
+      "canskip": "可以跳過",
+      "storage": "檔案",
+      "time": "切換時間",
+      "hidemes": "消除對話框",
+      "clfg": "清除立繪",
+      "from": "來自",
+      "waitingtime": "等待時間"
+    },
+    "clearitem": {
+      "_title": "清除週邊"
+    },
+    "cm": {
+      "_title": "清除所有文字"
+    },
+    "question": {
+      "_title": "選項問題",
+      "text": "問題"
+    },
+    "goto": {
+      "_title": "連結",
+      "target": "目標",
+      "text": "文字"
+    },
+    "fgExitRight": {
+      "_title": "右邊角色退場"
+    },
+    "fgExitLeft": {
+      "_title": "左邊角色退場"
+    },
+    "fgExitMiddle": {
+      "_title": "中間角色退場"
+    },
+    "addTalk": {
+      "_title": "追加對白",
+      "talk": "對白",
+      "talkPlaceholder": "請輸入對白",
+      "waitse": "等待音效完結"
+    },
+    "aside": {
+      "_title": "旁白",
+      "text": "旁白",
+      "textPlaceholder": "請輸入旁白",
+      "waitse": "等待音效完結",
+      "fullscreen": "全畫面"
+    },
+    "optionstart": {
+      "_title": "開始選項",
+      "question": "問題"
+    },
+    "optionanswer": {
+      "_title": "選項答案",
+      "target": "前往標籤",
+      "text": "選項內容"
+    },
+    "optionend": {
+      "_title": "等待選項"
+    },
+    "optionclear": {
+      "_title": "清除選項"
+    },
+    "autoplay": {
+      "_title": "播放速度",
+      "delayspeed": "延遲",
+      "autoWaitTimeInterval": "停頓"
+    },
+    "flash": {
+      "_title": "閃光效果",
+      "color": "顏色"
+    },
+    "focusline": {
+      "_title": "顯示集中線",
+      "color": "調色",
+      "coloropacity": "調色強度"
+    },
+    "clearfocusline": {
+      "_title": "隱藏集中線"
+    },
+    "clearmessage": {
+      "_title": "消除文字框"
+    },
+    "Cancelautomode": {
+      "_title": "手動播放"
+    },
+    "option": {
+      "_title": "選項",
+      "question": "問題",
+      "questionPlaceholder": "請輸入問題",
+      "answers": "答案"
+    },
+    "composedAnswer": {
+      "goToTag": "前往標籤",
+      "option": "選項內容",
+      "addOption": "增加選擇項"
+    }
+  },
+  "membership": {
+    "user": "oice Free",
+    "paid": "oice 會員",
+    "admin": "管理員"
+  },
+  "oiceSingleView": {
+    "label": {
+      "episode": "第{{episode}}回",
+      "getApp": "免費下載oice，輕鬆看故事",
+      "downloadForBetterExperience": "下載 oice app，隨時隨地，輕鬆閱讀",
+      "noStoryDescription": "無故事簡介"
+    },
+    "credit": {
+      "director": "編導",
+      "fgimage": "角色",
+      "bgimage": "背景",
+      "image": "週邊",
+      "bgm": "音樂",
+      "se": "音效"
+    },
+    "preview": {
+      "screenCapture": "截取封面",
+      "saveCover": "儲存封面"
+    }
+  },
+  "pagination": {
+    "prevPage": "上一頁",
+    "nextPage": "下一頁"
+  },
+  "site": {
+    "title": "oice 視覺小說",
+    "description": "oice 是對視覺小說的全新演繹，以介面清脆俐落的手機app，閱讀多種題材和語言的故事。oice 網站為視覺小說製作器，除了介面易用和發佈簡單，還提供大量共享素材，讓每個創作者輕鬆說故事。"
+  },
+  "tutorial": {
+    "tab": {
+      "faq": "FAQ",
+      "manual": "使用說明",
+      "functions": "功能說明",
+      "visual": "oice教學"
+    }
+  },
+  "unit": {
+    "ms": "毫秒"
+  },
+  "StorySettingModal": {
+    "tabBar": {
+      "storySetting": "故事設定",
+      "oiceSetting": "集數設定",
+      "languageSetting": "其他語言"
+    },
+    "label": {
+      "deleteStoryConfirm": "確定刪除此故事?"
+    }
+  },
+  "StorySettingTab": {
+    "label": {
+      "facebookSetting": "Facebook 設定",
+      "uploadStoryCover": "上傳故事封面"
+    },
+    "placeholder": {
+      "name": "請輸入故事名稱(必填)",
+      "description": "請輸入故事描述"
+    }
+  },
+  "FacebookSettingModal": {
+    "title": "$t(StorySettingTab:label:facebookSetting) — $t(Language:{{language}})",
+    "label": {
+      "uploadFacebookOgCover": "上傳 Facebook OG 封面",
+      "suggestedImageSize": "(1200 px × 630 px)"
+    }
+  },
+  "OiceSettingTab": {
+    "label": {
+      "public": "公開",
+      "notPublic": "不公開"
+    },
+    "placeholder": {
+      "name": "請輸入oice 名稱(必填)"
+    }
+  },
+  "LanguageSettingTab": {
+    "label": {
+      "addLanguage": "新增語言",
+      "otherLanguage": "副語言",
+      "episodeName": "集數名稱"
+    },
+    "placeholder": {
+      "addLanguageGuideTitle": "你可以在左方為故事新增其他語言版本",
+      "addLanguageGuideDescription": "先按$t(LanguageSettingTab:label:addLanguage)，然後選擇你想新增的語言。"
+    }
+  },
+  "Language": {
+    "ab": "аҧсуа бызшәа, аҧсшәа",
+    "aa": "Afaraf",
+    "af": "Afrikaans",
+    "ak": "Akan",
+    "sq": "Shqip",
+    "am": "አማርኛ",
+    "ar": "العربية",
+    "an": "aragonés",
+    "hy": "Հայերեն",
+    "as": "অসমীয়া",
+    "av": "авар мацӀ, магӀарул мацӀ",
+    "ae": "avesta",
+    "ay": "aymar aru",
+    "az": "azərbaycan dili",
+    "bm": "bamanankan",
+    "ba": "башҡорт теле",
+    "eu": "euskara, euskera",
+    "be": "беларуская мова",
+    "bn": "বাংলা",
+    "bh": "भोजपुरी",
+    "bi": "Bislama",
+    "bs": "bosanski jezik",
+    "br": "brezhoneg",
+    "bg": "български език",
+    "my": "ဗမာစာ",
+    "ca": "català, valencià",
+    "ch": "Chamoru",
+    "ce": "нохчийн мотт",
+    "ny": "chiCheŵa, chinyanja",
+    "cv": "чӑваш чӗлхи",
+    "kw": "Kernewek",
+    "co": "corsu, lingua corsa",
+    "cr": "ᓀᐦᐃᔭᐍᐏᐣ",
+    "hr": "hrvatski jezik",
+    "cs": "čeština, český jazyk",
+    "da": "dansk",
+    "dv": "ދިވެހި",
+    "nl": "Nederlands, Vlaams",
+    "dz": "རྫོང་ཁ",
+    "en": "English",
+    "eo": "Esperanto",
+    "et": "eesti, eesti keel",
+    "ee": "Eʋegbe",
+    "fo": "føroyskt",
+    "fj": "vosa Vakaviti",
+    "fi": "suomi, suomen kieli",
+    "fr": "français",
+    "ff": "Fulfulde, Pulaar, Pular",
+    "gl": "Galego",
+    "ka": "ქართული",
+    "de": "Deutsch",
+    "el": "ελληνικά",
+    "gn": "Avañe'ẽ",
+    "gu": "ગુજરાતી",
+    "ht": "Kreyòl ayisyen",
+    "ha": "(Hausa) هَوُسَ",
+    "he": "עברית",
+    "hz": "Otjiherero",
+    "hi": "हिन्दी, हिंदी",
+    "ho": "Hiri Motu",
+    "hu": "magyar",
+    "ia": "Interlingua",
+    "id": "Bahasa Indonesia",
+    "ie": "Originally called Occidental; then Interlingue after WWII",
+    "ga": "Gaeilge",
+    "ig": "Asụsụ Igbo",
+    "ik": "Iñupiaq, Iñupiatun",
+    "io": "Ido",
+    "is": "Íslenska",
+    "it": "Italiano",
+    "iu": "ᐃᓄᒃᑎᑐᑦ",
+    "ja": "日本語",
+    "jv": "ꦧꦱꦗꦮ, Basa Jawa",
+    "kl": "kalaallisut, kalaallit oqaasii",
+    "kn": "ಕನ್ನಡ",
+    "kr": "Kanuri",
+    "ks": "कश्मीरी, كشميري‎",
+    "kk": "қазақ тілі",
+    "km": "ខ្មែរ, ខេមរភាសា, ភាសាខ្មែរ",
+    "ki": "Gĩkũyũ",
+    "rw": "Ikinyarwanda",
+    "ky": "Кыргызча, Кыргыз тили",
+    "kv": "коми кыв",
+    "kg": "Kikongo",
+    "ko": "한국어",
+    "ku": "Kurdî, كوردی‎",
+    "kj": "Kuanyama",
+    "la": "latine, lingua latina",
+    "lb": "Lëtzebuergesch",
+    "lg": "Luganda",
+    "li": "Limburgs",
+    "ln": "Lingála",
+    "lo": "ພາສາລາວ",
+    "lt": "lietuvių kalba",
+    "lu": "Kiluba",
+    "lv": "Latviešu Valoda",
+    "gv": "Gaelg, Gailck",
+    "mk": "македонски јазик",
+    "mg": "fiteny malagasy",
+    "ms": "Bahasa Melayu, بهاس ملايو‎",
+    "ml": "മലയാളം",
+    "mt": "Malti",
+    "mi": "te reo Māori",
+    "mr": "मराठी",
+    "mh": "Kajin M̧ajeļ",
+    "mn": "Монгол хэл",
+    "na": "Dorerin Naoero",
+    "nv": "Diné bizaad",
+    "nd": "isiNdebele",
+    "ne": "नेपाली",
+    "ng": "Owambo",
+    "nb": "Norsk Bokmål",
+    "nn": "Norsk Nynorsk",
+    "no": "Norsk",
+    "ii": "ꆈꌠ꒿ Nuosuhxop",
+    "nr": "isiNdebele",
+    "oc": "occitan, lenga d'òc",
+    "oj": "ᐊᓂᔑᓈᐯᒧᐎᓐ",
+    "cu": "ѩзыкъ словѣньскъ",
+    "om": "Afaan Oromoo",
+    "or": "ଓଡ଼ିଆ",
+    "os": "ирон æвзаг",
+    "pa": "ਪੰਜਾਬੀ",
+    "pi": "पाऴि",
+    "fa": "فارسی",
+    "pl": "Język Polski, Polszczyzna",
+    "ps": "پښتو",
+    "pt": "Português",
+    "qu": "Runa Simi, Kichwa",
+    "rm": "Rumantsch Grischun",
+    "rn": "Ikirundi",
+    "ro": "Română",
+    "ru": "Русский",
+    "sa": "संस्कृतम्",
+    "sc": "sardu",
+    "sd": "सिन्धी, سنڌي، سندھی‎",
+    "se": "Davvisámegiella",
+    "sm": "gagana fa'a Samoa",
+    "sg": "yângâ tî sängö",
+    "sr": "српски језик",
+    "gd": "Gàidhlig",
+    "sn": "chiShona",
+    "si": "සිංහල",
+    "sk": "Slovenčina, Slovenský Jazyk",
+    "sl": "Slovenski Jezik, Slovenščina",
+    "so": "Soomaaliga, af Soomaali",
+    "st": "Sesotho",
+    "es": "Español",
+    "su": "Basa Sunda",
+    "sw": "Kiswahili",
+    "ss": "SiSwati",
+    "sv": "Svenska",
+    "ta": "தமிழ்",
+    "te": "తెలుగు",
+    "tg": "тоҷикӣ, toçikī, تاجیکی‎",
+    "th": "ไทย",
+    "ti": "ትግርኛ",
+    "bo": "བོད་ཡིག",
+    "tk": "Türkmen, Түркмен",
+    "tl": "Wikang Tagalog",
+    "tn": "Setswana",
+    "to": "Faka Tonga",
+    "tr": "Türkçe",
+    "ts": "Xitsonga",
+    "tt": "татар теле, tatar tele",
+    "tw": "Twi",
+    "ty": "Reo Tahiti",
+    "ug": "ئۇيغۇرچە‎, Uyghurche",
+    "uk": "Українська",
+    "ur": "اردو",
+    "uz": "Oʻzbek, Ўзбек, أۇزبېك‎",
+    "ve": "Tshivenḓa",
+    "vi": "Tiếng Việt",
+    "vo": "Volapük",
+    "wa": "Walon",
+    "cy": "Cymraeg",
+    "wo": "Wollof",
+    "fy": "Frysk",
+    "xh": "isiXhosa",
+    "yi": "ייִדיש",
+    "yo": "Yorùbá",
+    "za": "Saɯ cueŋƅ, Saw cuengh",
+    "zh-HK": "粵語",
+    "zh-TW": "正體中文",
+    "zh-CN": "简体中文",
+    "zu": "isiZulu",
+    "others": "其他"
+  },
+  "LinkTooltip": {
+    "button": {
+      "copy": "複製"
+    },
+    "label": {
+      "copySuccess": "成功複製到剪貼簿",
+      "copyFailure": "複製失敗"
+    }
+  }
+}

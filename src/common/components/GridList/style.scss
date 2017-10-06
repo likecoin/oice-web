@@ -1,0 +1,10 @@
+@import "../../styles/variables";
+
+.grid-list {
+  width: 100%;
+  margin: 30px 0;
+
+  .grid-cells-container > * {
+    display: inline-block;
+  }
+}

@@ -1,0 +1,14 @@
+@import "../../styles/variables";
+
+.progress-bar {
+  background: $light-gray3;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 10px;
+
+  >div {
+    background: $dark-green1;
+    border-radius: 5px;
+    height: 100%;
+  }
+}

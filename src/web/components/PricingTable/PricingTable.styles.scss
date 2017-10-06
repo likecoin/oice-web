@@ -1,0 +1,133 @@
+@import "../../styles/variables";
+
+.pricing-table {
+  position: relative;
+
+  padding: 26px;
+
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    margin: -1 * padding(1/2);
+  }
+
+  .price-card {
+    $price-card_border-radius: 10px;
+
+    position: relative;
+    margin: padding(1/2);
+
+    border-radius: $price-card_border-radius;
+    background-color: #FFF;
+
+    box-shadow: 0 2px 10px 0px rgba(0, 0, 0, 0.2);
+
+    @media screen and (min-width: 320px + 2 * padding()) {
+      min-width: 320px;
+    }
+
+    header {
+      padding: padding() padding(2/3) padding(2/3);
+
+      text-align: left;
+
+      border-radius: $price-card_border-radius $price-card_border-radius 0 0;
+      border-bottom: solid 1px $light-grey-3;
+
+      @media screen and (max-width: $screen-phone) {
+        text-align: center;
+      }
+
+      > * {
+        margin: 0;
+      }
+
+      h2 {
+        color: $dark-grey-2;
+
+        font-size: 30px;
+        font-weight: 300;
+        line-height: 30px;
+      }
+
+      h3 {
+        height: 20px;
+        margin-top: padding(2/3);
+
+      	color: $pure-black;
+
+      	font-size: 16px;
+      	font-weight: 500;
+      	line-height: 20px;
+      }
+    }
+
+    ul {
+      padding: padding();
+
+      list-style: none;
+
+      li {
+        color: $light-grey-3;
+        font-size: 22px;
+        font-weight: 300;
+        line-height: 24px;
+
+        // For list style image
+        background-image: url('/static/img/icons/cross.svg');
+        background-repeat: no-repeat;
+        line-height: 24px;
+        padding-left: 32px;
+
+        &:not(:first-child) {
+          margin-top: padding(2/3);
+        }
+
+        &.featured {
+          color: #6b6b6b;
+          background-image: url('/static/img/icons/check.svg'); // For list style image
+        }
+      }
+    }
+
+    footer {
+      display: flex;
+      justify-content: center;
+
+      padding: padding(2/3);
+
+      &:not(:first-child) {
+        padding-top: 0;
+      }
+    }
+
+    &.backer {
+      header {
+        color: $pure-white;
+	      background-image: linear-gradient(287deg, #83fc9a, #0097e8);
+
+        * {
+          color: inherit;
+        }
+      }
+
+      @media screen and (min-width: 480px) {
+        &::before {
+          content: " ";
+          position: absolute;
+          z-index: 2;
+          background-image: url('/static/img/pricing-idol.png');
+          background-repeat: no-repeat;
+          background-size: contain;
+          width: 339px;
+          height: 638px;
+          bottom: -40px;
+          left: calc(100% - 50px);
+        }
+      }
+    }
+  }
+
+}

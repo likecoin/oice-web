@@ -1,0 +1,141 @@
+@import "../../styles/common";
+
+.library-grid-list {
+
+  .library-grid-item {
+    position: relative;
+
+    cursor: pointer;
+    &:hover > div:first-child {
+      box-shadow: 0 0 0 4px $oice-red;
+    }
+    &.unselected > div.library-cover {
+      filter: grayscale(100%);
+    }
+    > div:first-child {
+      position: relative;
+
+      width: 144px;
+      height: 144px;
+      margin-bottom: 5px;
+
+      transition: box-shadow .2s ease-out;
+
+      border-radius: 12px;
+      box-shadow: 0 0 0 1px $light-grey-3;
+      .library-cover {
+        width: 100%;
+        height: 100%;
+
+        border-radius: 12px;
+        background-color: $light-grey-2;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size:cover;
+      }
+      .loading {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: flex;
+
+        width: 100%;
+        height: 100%;
+
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    h3, p {
+      margin: 0;
+    }
+    h3 {
+      color: $dark-grey-2;
+
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.25;
+    }
+    p {
+      color: $dark-grey-1;
+
+      font-size: 12px;
+      line-height: 1.5;
+      &:nth-of-type(2) {
+        font-weight: 500;
+      }
+    }
+    .for-sale {
+      position: absolute;
+      top: -1px;
+      left: 11px;
+
+      display: flex;
+
+      width: 32px;
+      height: 42px;
+      padding-top: 2px;
+
+      color: $pure-white;
+      border-right: 2px solid $dark-blue;
+      border-bottom: 2px solid $dark-blue;
+
+      font-size: 24px;
+      font-weight: 500;
+
+      justify-content: center;
+      align-items: center;
+      &.sale {
+        background-color: $oice-blue;
+      }
+      &.edit {
+        border-top: 1px solid $oice-blue;
+        background-color: $pure-white;
+        svg {
+          width: 20px;
+          height: 20px;
+
+          color: $oice-blue;
+        }
+      }
+    }
+    .library-toggle {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .library-label {
+      position: absolute;
+      top: -20px;
+
+      color: $dark-red3;
+
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    &.dummy {
+      visibility: hidden;
+
+      pointer-events: none;
+    }
+  }
+
+  @at-root {
+    .library-grid-item {
+      width: $library-grid-item-size;
+      min-height: $library-grid-item-size;
+    }
+  }
+}
+
+.library-grid-list-row:not(:first-child) {
+  margin-top: 50px;
+}
+
+.library-grid-list-row-container {
+  display: flex;
+
+  justify-content: space-between;
+}

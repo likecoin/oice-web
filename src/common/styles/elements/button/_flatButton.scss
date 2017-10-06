@@ -1,0 +1,25 @@
+.flat-button {
+  @extend .base-button;
+  border: none;
+  background-color: transparent;
+
+  padding: 6px 0;
+
+  &.icon.label > span.button-label {
+    margin-left: 6px;
+  }
+
+  &:not(.disabled) {
+    &.selected,
+    &:hover {
+      color: $light-red1;
+    }
+
+    &:active {
+      color: $dark-red1;
+      span.button-label, svg {
+        transform: translateY(1px);
+      }
+    }
+  }
+}

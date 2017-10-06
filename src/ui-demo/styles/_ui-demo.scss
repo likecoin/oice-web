@@ -1,0 +1,75 @@
+#ui-demo {
+  width: inherit;
+  height: inherit;
+  overflow-y: auto;
+
+  h1 {
+    font-size: 4em;
+    font-weight: 200;
+
+    margin: {
+      bottom: 1em;
+    }
+  }
+
+  h2 {
+    font-size: 2.5em;
+    margin: {
+      top: 3em;
+      bottom: 1em;
+    }
+  }
+
+  h3 {
+    &:before {
+      content: "<";
+    }
+    &:after {
+      content: "/>";
+    }
+    font-family: 'Monaco' ,monospace;
+    font-size: 2em;
+    margin: {
+      top: 2em;
+      bottom: 0.5em;
+    }
+  }
+
+  > div {
+    padding-top: 50px;
+    width: 100%;
+    height: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+
+    > section {
+      margin-bottom: 50px;
+      padding-bottom: 30px;
+
+      > div {
+        margin-bottom: 20px;
+
+        > span, > div {
+          margin-top: 20px;
+          margin-bottom: 10px
+        }
+
+        > span {
+          margin-right: 40px;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  pre {
+    border: 1px solid $hairline-color;
+    margin: 10pt 0;
+    padding: 10pt;
+
+    > code {
+      font-family: 'Monaco' ,monospace;
+      font-size: .8em;
+    }
+  }
+}

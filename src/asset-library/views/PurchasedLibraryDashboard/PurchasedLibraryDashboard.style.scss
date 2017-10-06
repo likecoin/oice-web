@@ -1,0 +1,41 @@
+@import "../../styles/common";
+
+#purchase-library-dashboard {
+
+  .left-sidebar {
+    padding-top: 0;
+  }
+
+  .go-asset-store {
+    display: flex;
+    flex-direction: column;
+
+    width: $library-grid-item-size;
+    height: $library-grid-item-size;
+    padding: 0 padding();
+
+    cursor: pointer;
+    transition: box-shadow .15s ease;
+    text-align: center;
+
+    color: $oice-red;
+    border-radius: padding(4/3);
+    box-shadow: 0 0 0 1px $oice-red;
+
+    align-items: center;
+    justify-content: center;
+
+    > svg {
+      width: 72px;
+      height: 60px;
+      margin-bottom: 8px;
+    }
+
+    span {
+      color: $oice-red;
+    }
+    &:hover {
+      box-shadow: 0 0 0 4px $oice-red;
+    }
+  }
+}

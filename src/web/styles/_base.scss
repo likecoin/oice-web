@@ -1,0 +1,24 @@
+@import "../../common/styles/index";
+@import "variables";
+
+body {
+  overflow-y: auto;
+}
+
+#app,
+#web,
+#login {
+  height: 100%;
+}
+
+#web {
+  > *:not(.nav-bar):not(.footer) {
+    min-height: calc(100% - #{$footer-height});
+    padding-top: $nav-bar-height;
+
+    @media screen and (max-width: $screen-tablet) {
+      min-height: calc(100% - #{$footer-height * 3});
+      padding-top: $nav-bar-mobile-height;
+    }
+  }
+}

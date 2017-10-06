@@ -1,0 +1,140 @@
+@import "../../styles/variables";
+
+$modal-header-height: padding(7/3);
+$modal-footer-height: padding(3.25);
+$modal-corner-radius: 4px;
+$modal-header-left-right-padding: padding();
+$modal-header-font-size: padding();
+$modal-body-padding: padding(4/3);
+$modal-footer-padding: $modal-header-left-right-padding $modal-body-padding;
+$modal-border-style: 1px solid $hairline-color;
+$modal-footer-items-inter-width: 10px;
+
+.modal-two {
+  position: fixed;
+  z-index: 1001;
+  top: 0px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  overflow-y: auto;
+
+  max-height: 100%;
+
+  background-color: initial !important;
+
+  &.open > .modal-two-container {
+    animation: modal-wrapper-move .2s;
+  }
+
+  &:not(.open) {
+    pointer-events: none;
+
+    opacity: 0;
+  }
+
+  .modal-two-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    background-color: $overlay-color;
+  }
+
+  .modal-two-container {
+    position: relative;
+
+    width: 100%;
+    margin: padding(10/3) auto;
+
+    transition: transform, width .2s ease;
+
+    border-radius: $modal-corner-radius;
+    background-color: $pure-white;
+  }
+
+  .modal-two-header,
+  .modal-two-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .modal-two-header {
+    position: relative;
+
+    padding: padding() padding() padding(2/3);
+
+    border-radius: $modal-corner-radius $modal-corner-radius 0 0;
+    background-color: $pure-white;
+
+    line-height: $modal-header-font-size;
+
+    > span {
+      height: 100%;
+
+      &.modal-title {
+        color: $dark-grey-2;
+
+        font-size: $modal-header-font-size;
+        font-weight: 200;
+      }
+
+      .flat-button {
+        min-height: initial;
+        > svg {
+          width: padding(2/3);
+          height: padding(2/3);
+        }
+      }
+    }
+  }
+
+  .modal-two-body {
+    color: $dark-grey-2;
+
+    &:not(.no-padding) {
+      padding: $modal-body-padding;
+    }
+  }
+
+  .modal-two-footer {
+    height: $modal-footer-height;
+    padding: $modal-footer-padding;
+
+    .modal-footer-left-items > *:not(:first-child) {
+      margin-right: $modal-footer-items-inter-width;
+      .flat-button {
+        color: $dark-grey-2;
+        svg {
+          width: padding(1.5);
+          height: padding(1.5);
+        }
+      }
+    }
+    .modal-footer-right-items {
+      width: 136px;
+
+      font-size: 13px;
+    }
+    .modal-footer-right-items > *:not(:first-child) {
+      margin-left: $modal-footer-items-inter-width;
+    }
+  }
+}
+
+@keyframes modal-wrapper-move {
+    from {
+      margin-top: padding(5.5);
+
+      opacity: 0;
+    }
+    to {
+      margin-top: padding(10/3);
+
+      opacity: 1;
+    }
+}

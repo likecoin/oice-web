@@ -1,0 +1,79 @@
+@import "../styles";
+
+#oices-list-tab {
+  padding: $min-padding;
+
+  .episode-row {
+    @extend .list-row;
+    background-color: transparent;
+    width: 74px;
+    margin-right: 10px;
+    float: left;
+    text-align: center;
+    cursor: default;
+  }
+
+  .oice-row {
+    @extend .list-row;
+    margin: 0;
+    // display: inline-block;
+    display: flex;
+    width: calc(100% - 84px);
+
+    &.dragging {
+      opacity: 0;
+    }
+
+    > * {
+      // height: 100%;
+      // display: inline-block;
+
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+
+    .oice-drag-handle {
+      width: 10px;
+      color: $light-gray3;
+      cursor: move;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .oice-publish-indicator {
+      position: relative;
+      width: 10px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: calc((100% - 10px) / 2);
+        width: 100%;
+        height: 10px;
+        border-radius: 50%;
+        background-color: $dark-red3;
+      }
+    }
+
+    .oice-last-modified-time,
+    .oice-name {
+      color: $dark-gray6;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .oice-last-modified-time {
+      width: 120px;
+    }
+
+    .oice-name {
+      width: calc(70% - 50px);
+    }
+  }
+}

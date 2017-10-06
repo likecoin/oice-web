@@ -1,0 +1,197 @@
+@import "../../styles/variables";
+
+#asset-section {
+  background-color: $pure-white;
+
+  .section-title {
+
+    > h1 {
+      background-image: linear-gradient(275deg, #3cced4 0%, #5cb7e8 50%, #8259d3 100%);
+    }
+  }
+
+  .section-body {
+    margin: 0 auto;
+    max-width: 1244px;
+    padding: 0 40px 40px;
+
+    @media screen and (min-width: $screen-desktop) {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    aside {
+      color: $dark-grey-2;
+
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+      margin-bottom: padding();
+
+      @media screen and (min-width: $screen-desktop) {
+        width: 25%;
+        max-width: 280px;
+        margin-right: 56px;
+        margin-top: 48px;
+      }
+
+      @media screen and (max-width: $screen-tablet) {
+        text-align: center;
+      }
+
+      h2 {
+        margin: 0 0 padding(1/2);;
+
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 18px;
+      }
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .slideshow {
+      position: relative;
+
+      flex-grow: 1;
+
+      .slides {
+        position: relative;
+
+        width: 100%;
+        padding-top: 78.214286%;
+
+        .slide {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+
+          background-repeat: no-repeat;
+          background-size: contain;
+
+          .preview {
+            position: absolute;
+            right: 80%;
+            bottom: -76px;
+
+            width: 87%;
+            height: 87%;
+
+            pointer-events: none;
+
+            background-repeat: inherit;
+            background-position: bottom right;
+            background-size: auto;
+
+            @media screen and (max-width: $screen-desktop - 1px) {
+              display: none;
+            }
+          }
+        }
+      }
+
+      .slide-navigator {
+        display: flex;
+        align-items: center;
+
+        @media screen and (max-width: $screen-tablet) {
+          flex-direction: column;
+        }
+
+        ul {
+          display: flex;
+
+          margin: padding(2/3) auto;
+
+          li {
+            position: relative;
+
+            overflow: hidden;
+
+            width: 48px;
+            height: 4px;
+
+            cursor: pointer;
+            transition: all .1s ease-in-out;
+
+            border-radius: 2px;
+            background-color: $dark-grey-1;
+
+            &:not(:first-child) {
+              margin-left: padding(1/3);
+            }
+
+            &:hover {
+              transform: scaleX(1.1) scaleY(1.3);
+            }
+
+            &:active {
+              transform: scaleX(1.05) scaleY(1.2);
+            }
+
+            .slide-indicator {
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+
+              &.active {
+                animation-name: slide-timer-animation;
+                animation-duration: 5s;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+
+                background-color: $oice-red;
+
+                @keyframes slide-timer-animation {
+                  0%   { transform: translateX(-100%); }
+                  100% { transform: translateX(0); }
+                }
+              }
+            }
+          }
+
+          @media screen and (max-width: $screen-tablet) {
+            li {
+              width: 24px;
+            }
+          }
+
+          @media screen and (max-width: $screen-phone) {
+            margin: padding(1/3) auto;
+
+            li {
+              width: 12px;
+
+              &:not(:first-child) {
+                margin-left: padding(1/6);
+              }
+            }
+          }
+        }
+
+        .more-asset-button {
+          color: $oice-blue;
+
+          font-size: 16px;
+          font-weight: 300;
+          line-height: 16px;
+
+          @media screen and (min-width: $screen-tablet) {
+            position: absolute;
+            right: 0;
+          }
+
+          &:hover {
+            color: $dark-blue;
+          }
+        }
+      }
+    }
+  }
+}

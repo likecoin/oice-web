@@ -1,0 +1,64 @@
+@import "../../../styles/variables";
+
+#stories-list, #oices-list {
+  overflow: hidden;
+}
+
+#stories-list > *,
+#oices-list > *,
+.add-section, {
+  height: 50px;
+  line-height: 50px;
+
+  &:not(:last-child) {
+    margin-bottom: 6px;
+  }
+}
+
+.list-row {
+  border: 1px solid $dark-gray1;
+  border-radius: 4px;
+  background-color: $pure-white;
+
+  padding: 0 10px;
+  height: inherit;
+  line-height: inherit;
+  cursor: pointer;
+  transition: border, background-color .2s ease-out;
+
+  &:not(:first-child):not(.oice-row) {
+    margin-top: 6px;
+  }
+
+  &.clickable {
+    &:hover,
+    &:active {
+      border-color: $dark-gray2;
+    }
+
+    &:active {
+      background-color: $light-gray1;
+    }
+  }
+
+  &.new {
+    position: relative;
+
+    .confirm-button-group {
+      display: inline-block;
+      float: right;
+      height: 100%;
+
+      .flat-button {
+        &:not(:first-child) {
+          margin-left: $min-padding-narrow;
+        }
+
+        svg {
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+  }
+}

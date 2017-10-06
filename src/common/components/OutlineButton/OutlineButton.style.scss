@@ -1,0 +1,80 @@
+@import "../../styles/variables";
+
+@mixin outline-button-style($color) {
+  color: $color !important;
+  border-color: $color !important;
+
+  &:hover,
+  &:active {
+    color: $pure-white !important;
+    background-color: $color !important;
+  }
+}
+
+.outline-button {
+  position: relative;
+
+  height: padding(3/2);
+  padding: 0 padding();
+
+  cursor: pointer;
+  transition: color, border-color, background-color .1s ease-in;
+  text-align: center;
+
+  border-width: 1px;
+  border-style: solid;
+  border-radius: padding(3/2) / 2;
+
+  font-weight: 500;
+
+  @include outline-button-style($dark-grey-2);
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &.fluid {
+    width: 100%;
+  }
+
+  &.red {
+    @include outline-button-style($oice-red);
+  }
+
+  &.green {
+    @include outline-button-style($oice-green);
+  }
+
+  &.blue {
+    @include outline-button-style($oice-blue);
+  }
+
+  &.light-grey {
+    @include outline-button-style($dark-grey-1);
+  }
+
+  &.disabled {
+    opacity: 1 !important;
+
+    @include outline-button-style($light-gray3);
+  }
+
+  span {
+    width: 100%;
+
+    line-height: padding(3/2);
+  }
+
+  div.icon {
+    display: flex;
+
+    height: 100%;
+
+    align-items: center;
+    justify-content: center;
+    > svg {
+      width: padding(5/6);
+      height: padding(5/6);
+    }
+  }
+}

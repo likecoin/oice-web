@@ -1,0 +1,203 @@
+@import "../../../styles/variables";
+
+$oice-status-published-color: $dark-green1;
+$oice-status-unpublished-color: $dark-gray6;
+$edit-button-color: #E94F4F;
+$preview-button-color: #0097E8;
+$flat-button-color: #6A7B83;
+$oice-row-hover-bg-color: rgba(0, 150, 232, 0.2);
+$oice-row-border-style: 1px solid #77878E;
+
+$oice-edit-button-height: padding();
+
+.story-details-wrapper {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  height: inherit;
+  padding-right: padding();
+
+  .story-info {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 100%;
+    padding: 4px 0 16px 0;
+
+    transition: transform 0.5s ease-in-out;
+
+    border-bottom: $oice-row-border-style;
+    .story-name {
+      display: flex;
+      flex-direction: row;
+      h1 {
+        margin: 0;
+
+        word-break: break-all;
+
+        color: $preview-button-color;
+
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 1.4;
+      }
+      button {
+        min-height: initial;
+        margin-left: 8px;
+      }
+    }
+    .story-language {
+      margin-right: padding(2/3);
+
+      color: $light-grey-3;
+    }
+  }
+
+  .story-details {
+    display: flex;
+    flex-direction: row;
+    .oice-rows {
+      width: 100%;
+      margin: 0 2px;
+      .oice-row {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+
+        height: 40px;
+
+        cursor: pointer;
+        transition: outline, background-color .15s ease-out;
+
+        border-bottom: $oice-row-border-style;
+        &.add {
+          justify-content: initial;
+
+          padding-left: 28px;
+
+          transition: color .15s ease-out;
+
+          color: $dark-gray2;
+          svg {
+            width: 36px;
+            height: 36px;
+            padding-right: 16px;
+          }
+          span {
+            font-size: 14px;
+          }
+          &:hover {
+            color: $pure-white;
+          }
+        }
+        &:hover,
+        &.selected {
+          &:not(.add) {
+            border-bottom: none;
+            outline: 2px solid $preview-button-color;
+            background-color: $oice-row-hover-bg-color;
+          }
+        }
+
+        .left-details {
+          display: flex;
+          align-items: center;
+
+          span:first-child {
+            padding: 0 8px;
+          }
+          .oice-status {
+            width: 4px;
+            height: 4px;
+            margin: 6px;
+
+            border-radius: 50%;
+            background-color: $oice-status-published-color;
+            &.disabled {
+              opacity: 1 !important;
+              background-color: $oice-status-unpublished-color;
+            }
+          }
+        }
+        .right-button-group {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          .edit-oice-button {
+            padding-right: padding(2/3);
+
+            border-right: 1px solid $dark-grey-2;
+            .outline-button {
+              height: $oice-edit-button-height;
+
+              color: $pure-white !important;
+
+              font-weight: 300;
+              > span {
+                line-height: $oice-edit-button-height;
+              }
+            }
+          }
+          .play-oice-button {
+            width: 24px;
+            height: 24px;
+            margin-right: padding(1/2);
+            margin-left: padding(2/3);
+            padding-top: 6px;
+            padding-left: 8px;
+
+            transition: background-color .15s ease-out;
+
+            border: 1px solid $oice-green;
+            border-radius: 24px;
+            .play-oice-icon {
+              width: 0;
+              height: 0;
+
+              border-style: solid;
+              border-color: transparent transparent transparent $pure-white;
+              border-top-width: 5px;
+              border-bottom-width: 5px;
+              border-left-width: 8px;
+            }
+            &:hover {
+              background-color: $oice-green;
+            }
+          }
+          .flat-button {
+            min-height: initial;
+            margin: 0 8px;
+          }
+        }
+      }
+    }
+  }
+  .flat-button {
+    color: $flat-button-color;
+    &:hover {
+      color: $pure-white;
+    }
+  }
+}
+
+.close-icon {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+
+  width: 16px;
+  height: 16px;
+
+  cursor: pointer;
+  transition: opacity .2s ease-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

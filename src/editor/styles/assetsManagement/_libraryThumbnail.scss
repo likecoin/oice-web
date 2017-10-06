@@ -1,0 +1,65 @@
+$library-thumbnail-width: 240px;
+$library-thumbnail-height: 300px;
+
+.library-thumbnail {
+  display: inline-block;
+  position: relative;
+  width: $library-thumbnail-width;
+  height: $library-thumbnail-height;
+  border: 1px solid $light-gray3;
+  border-radius: 3px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  &:nth-child(-n+4) {
+    margin-top: 50px;
+  }
+  &:not(:nth-child(4n + 0)) {
+    $library-margin: calc((100% - #{$library-thumbnail-width} * 4) / 3);
+    margin-right: $library-margin;
+  }
+  margin-bottom: 50px;
+
+
+  .triangle-border {
+    z-index: 3;
+  }
+
+  .cover-photo {
+    width: $library-thumbnail-width - 2px;
+    height: $library-thumbnail-width - 2px;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center center;
+    position: relative;
+    border-bottom: 1px solid $light-gray3;
+  }
+
+  .cover-description {
+    height: 60px;
+    display: table;
+    padding: 5px 0 0 11px;
+
+    h4 {
+      font-size: 18px;
+      font-weight: 400;
+    }
+    p {
+      font-size: 12px;
+      color: $dark-gray2;
+    }
+  }
+
+  .add-library-thumbnail {
+    height: 300px;
+    padding: 85px 55px;
+    background-color: $light-gray2;
+  }
+
+  svg {
+    width: 128px;
+    color: $light-gray3;
+    display: block;
+    margin: auto;
+  }
+}

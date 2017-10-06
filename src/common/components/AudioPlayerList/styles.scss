@@ -1,0 +1,28 @@
+@import "../../styles/variables";
+
+.audio-list {
+  .audio-player {
+    &:not(:first-child) {
+      border-top: none;
+
+      &.selected {
+        margin-top: -1px !important;
+      }
+    }
+
+    &.selected {
+      border: 1px solid $dark-green1 !important;
+    }
+  }
+}
+
+.audio-list-loading-block {
+  padding: $min-padding;
+  border: 1px solid $hairline-color;
+
+  span {
+    line-height: 2;
+  }
+
+  background-color: $light-gray1;
+}

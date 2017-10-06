@@ -1,0 +1,47 @@
+@import "../../styles/variables";
+
+#terms-of-service {
+  h1 {
+    font-weight: 200;
+  }
+
+  ol {
+    font-weight: 400;
+    column-gap: #{$min-padding * 2};
+    counter-reset: item;
+    list-style: none;
+
+    @media screen and (min-width: $screen-tablet + 1px) {
+      columns: 2;
+    }
+
+    li {
+      $bullet-size: 20px;
+      counter-increment: item;
+      position: relative;
+      padding-left: #{$bullet-size + $min-padding-narrow};
+      min-height: $bullet-size;
+
+      &::before {
+        display: inline-block;
+        content: counter(item);
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: $bullet-size;
+        width: $bullet-size;
+        font-weight: 500;
+        font-size: #{$bullet-size * 0.75};
+        line-height: $bullet-size;
+        text-align: center;
+        border-radius: 100%;
+        color: $pure-white;
+        background: $dark-red1;
+      }
+
+      &:not(:first-child) {
+        margin-top: $min-padding-narrow;
+      }
+    }
+  }
+}

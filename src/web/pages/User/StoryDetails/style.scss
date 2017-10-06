@@ -1,0 +1,176 @@
+@import "../../../styles/variables";
+
+$oice-preview-thumbnail-size: 152px;
+
+.story-details-wrapper {
+  height: inherit;
+}
+
+.story-details {
+  position: absolute;
+  display: flex;
+  overflow: hidden;
+  transition: transform 0.5s ease-in-out;
+
+  .story-info {
+    width: 296px;
+    display: inline-table;
+    transition: transform 0.5s ease-in-out;
+
+    h1 {
+      margin: 0 0 12px 0;
+      color: $dark-blue1;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.4;
+      word-break: break-all;
+    }
+
+    h2 {
+      margin: 0 0 10px 0;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.6;
+    }
+
+    p {
+      font-size: 14px;
+      line-height: 1.33;
+    }
+  }
+
+  .oice-group {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+
+    .oice {
+      cursor: pointer;
+      max-width: $oice-preview-thumbnail-size;
+      margin: 0 10px;
+      transition: color .2s ease-out;
+
+      &:hover {
+        color: $dark-blue1;
+
+        .preview {
+          border: 3px solid $dark-blue1;
+        }
+      }
+
+      &.selected::after {
+        border-bottom-width: 16px;
+        bottom: -24px;
+      }
+
+      h1 {
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 28px;
+        margin: 0;
+      }
+
+      h2, p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.33;
+      }
+
+      h2 {
+        font-weight: 500;
+        line-height: 1.8;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      p {
+        word-break: break-all;
+      }
+
+      .preview {
+        width: $oice-preview-thumbnail-size;
+        height: $oice-preview-thumbnail-size;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        transition: border .2s ease-out;
+      }
+    }
+  }
+}
+
+.close-icon {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 16px;
+  right: 16px;
+  cursor: pointer;
+  transition: opacity .2s ease-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.left-icon,
+.right-icon {
+  display: block;
+  position: absolute;
+  width: 24px;
+  top: 0;
+  bottom: 0;
+  cursor: pointer;
+
+  svg {
+    margin: auto 0;
+    position: absolute;
+    top: inherit;
+    bottom: inherit;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    width: 120%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity .2s ease-out;
+  }
+
+  &:hover::before {
+    opacity: 100;
+  }
+}
+
+.left-icon {
+  left: 0;
+
+  &::before {
+    background: linear-gradient(
+      to left,
+      rgba(0,0,0,0.0) 0%,
+      rgba(0,0,0,0.5) 100%
+    )
+  }
+
+  svg {
+    margin-left: 16px;
+  }
+}
+
+.right-icon {
+  right: 0;
+
+  &::before {
+    background: linear-gradient(
+      to right,
+      rgba(0,0,0,0.0) 0%,
+      rgba(0,0,0,0.5) 100%
+    )
+  }
+
+  svg {
+    margin-right: 16px;
+  }
+}

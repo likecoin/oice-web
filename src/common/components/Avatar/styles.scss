@@ -1,0 +1,64 @@
+@import "../../styles/variables";
+
+.avatar {
+  display: inline-block;
+
+  margin: 2px;
+
+  .avatar-image,
+  .avatar-letter {
+    vertical-align: middle;
+
+    border-radius: 50%;
+  }
+
+  .avatar-image {
+    overflow: hidden;
+
+    border: solid 1px $light-gray3;
+    background-color: $pure-white;
+
+    object-fit: cover;
+  }
+
+  .avatar-label {
+    margin-left: 5px;
+  }
+
+  .avatar-letter {
+    display: inline-block;
+
+    text-align: center;
+    pointer-events: none;
+
+    color: $dark-gray3;
+    background-color: $light-gray3;
+
+    font-weight: 400;
+  }
+  &.vertical {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    .avatar-label {
+      max-width: padding(4);
+      overflow: hidden;
+
+      margin-top: padding(1/6);
+      margin-left: 0;
+
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      color: #6B6B6B;
+
+      font-weight: bold;
+    }
+  }
+
+  &.clickable {
+    cursor: pointer;
+  }
+}

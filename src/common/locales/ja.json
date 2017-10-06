@@ -1,0 +1,2008 @@
+{
+  "AssetSelectionModal": {
+    "label": {
+      "recentUsed": "最近使った素材"
+    },
+    "button": {
+      "selectMoreAssets": "他の素材を使う"
+    },
+    "placeholder": {
+      "libraryFilter": "素材コレクションを絞り込む"
+    }
+  },
+  "AssetStore": {
+    "title": "素材ストア",
+    "label": {
+      "free": "$t(library:free)",
+      "purchased": "$t(library:purchased)"
+    },
+    "menu": {
+      "featured": "おすすめ",
+      "free": "無料素材",
+      "all": "すべて",
+      "latest": "新しい素材"
+    }
+  },
+  "AudioList": {
+    "button": {
+      "add": {
+        "bgm": "BGMを追加する",
+        "se": "效果音を追加する"
+      }
+    }
+  },
+  "BatchBuild": {
+    "button": {
+      "build": "実行"
+    },
+    "label": {
+      "buildAllOices": "すべてのoiceをビルドします",
+      "buildAllOicesInStory": "ストーリー内のすべてのoiceをビルドします",
+      "unstoppableWarning": "この処理は中止できません。続けますか？",
+      "storyIDInvalid": "ストーリーIDエラー",
+      "remainingOices": "あと{{count}}個のoiceが残っています",
+      "completed": "ビルドが完了しました"
+    },
+    "placeholder": {
+      "storyId": "ストーリーID"
+    }
+  },
+  "ConnectStripeModal": {
+    "label": {
+      "header": "Stripeに接続",
+      "mustConnectStripeToSellLibrary": "支払いを受けるためにStripeアカウントと接続してください"
+    }
+  },
+  "CreateLibraryModal": {
+    "label": {
+      "canOnlyUseInOice": "他のユーザはoiceエディターでのみこれらの素材を使用できます",
+      "shouldConfirmPropertyRight": "所有権または使用権をご確認ください",
+      "shouldConfirmPropertySellingRight": "所有権と販売権をご確認ください",
+      "shareUploadedAssetForFree": "素材は他のユーザに無料で共有されます",
+      "willBeSoldAtAssetStore": "素材は他のユーザに販売されます",
+      "stripeAccountIsRequired": "支払を受けとるにはStripeアカウントへの接続が必要です",
+      "3070Share": "支払いと出店の手数料は30％です。販売者は販売価格の70％を獲得します",
+      "othersCannotAccess": "この素材は自分のみアクセス可能であり、他のユーザからはアクセスできません",
+      "oiceProUserOnly": "oice backerユーザーのみ利用できます",
+      "price": "価格",
+      "onStore": "公開中",
+      "notOnStore": "非公開",
+      "addAssetsFirst": "まず、素材を素材コレクションに追加してください",
+      "reconnectStripeToSellLibrary": "支払を受けとるために、Stripeのアカウントへ再接続してください"
+    }
+  },
+  "DownloadAppBadges": {
+    "label": {
+      "iosTestFootnote": "テスト版"
+    }
+  },
+  "EditAudioAssetModal": {
+    "title": {
+      "edit": {
+        "bgm": "BGMを編集",
+        "se": "効果音を編集"
+      },
+      "details": {
+        "bgm": "BGMの詳細",
+        "se": "効果音の詳細"
+      }
+    },
+    "button": {
+      "delete": {
+        "bgm": "BGMを削除",
+        "se": "効果音を削除"
+      }
+    }
+  },
+  "LandingSection": {
+    "title": "ホーム",
+    "button": {
+      "replay": "リプレイ",
+      "register": "登録する",
+      "becomeAReader": "作品を読むには？"
+    }
+  },
+  "AssetSection": {
+    "title": "制作のための豊富な素材",
+    "label": {
+      "assetStore": "素材ストア",
+      "assetStoreDescription": "たくさんの立ち絵や背景、BGM素材が揃っています。好きな素材を選んで制作を始めましょう。"
+    },
+    "button": {
+      "moreAssets": "素材ストアへ"
+    }
+  },
+  "LicenseSection": {
+    "title": "著作物の権利について",
+    "label": {
+      "copyright": "Copyright",
+      "oiceCommons": "oice license",
+      "creativeCommons": "Creative Commons",
+      "no": "なし",
+      "yes": "あり",
+      "low": "低",
+      "high": "高",
+      "openness": "オープンさ",
+      "open": {
+        "closed": "クローズド",
+        "coordinated": "ややオープン",
+        "fully": "オープン"
+      },
+      "tagging": "権利表記",
+      "approval": "使用許諾",
+      "profitSharing": "利益分配",
+      "collaborative": "共同制作のしやすさ",
+      "customize": "選択可",
+      "auto": "強制／自動",
+      "manually": "任意／手動",
+      "caseByCase": "都度許諾",
+      "approveFirst": "一括で許諾済",
+      "oiceCommonsPolicyCaption": {
+        "title": "oice license",
+        "details": "Right to use granted. Right to withdraw reserved."
+      },
+      "autoCreditsCaption": {
+        "title": "すべての制作者が自動的にタグ付けされます",
+        "details": "どんな素材でも、その制作者を尊重します。"
+      }
+    }
+  },
+  "FeaturedStories": {
+    "title": "<span>さまざまな物語</span>、<span>すべてを無料で。</span>",
+    "label": {
+      "appName": "oice ノベルゲーム",
+      "becomeAReader": "アプリをダウンロードしてノベルゲームを読もう！"
+    },
+    "button": {
+      "downloadApp": "アプリをダンウロードして視聴体験しよう"
+    }
+  },
+  "PricingSection": {
+    "title": "<span>制作を応援する</span> <span>支援者(backer)になる</span>"
+  },
+  "PricingTable": {
+    "label": {
+      "free": {
+        "title": "oiceメンバー",
+        "subtitle": "無料"
+      },
+      "backer": {
+        "title": "oice <span class='bold'>backer</span>",
+        "subtitle": "毎月 <span style='font-size: 28px'>USD$9.9</span>"
+      },
+      "features": {
+        "createAndReadOice": "ノベルゲームを作る、読む",
+        "uploadPublicAssets": "共有素材の使用とアップロード",
+        "uploadPrivateAssets": "プライベート素材の使用とアップロード",
+        "readAllOice": "プレミアムストーリーを読む",
+        "noLimitation": "待ち時間なし",
+        "noAds": "広告なし",
+        "memberExclusiveEvent": "backer専用のイベントなど"
+      }
+    },
+    "button": {
+      "free": {
+        "action": "メンバーになる",
+        "already": "すでにメンバーです"
+      },
+      "backer": {
+        "action": "oice backerになる",
+        "already": "すでにoice backerです"
+      }
+    }
+  },
+  "Footer": {
+    "label": {
+      "copyright": "© 2017 oice ltd. All rights reserved.",
+      "version": "oice v{{version}}"
+    },
+    "button": {
+      "termsOfService": "利用規約"
+    }
+  },
+  "ImportScriptModal": {
+    "title": "oiceへスクリプトをインポート",
+    "label": {
+      "stage": {
+        "uploading": "スクリプトアップロード中",
+        "preparing": "スクリプトのアップロード準備中",
+        "reading": "スクリプトを読み込み中",
+        "parsing": "スクリプトを解析中",
+        "validating": "スクリプトを検証中",
+        "inserting": "スクリプトインポート中",
+        "reloading": "エディタへスクリプトを読み込み中",
+        "finished": "インポート完了"
+      },
+      "parseError": "スクリプトインポートエラー",
+      "errorLineAndContent": "行番号: {{line}}，メッセージ: {{content}}"
+    },
+    "button": {
+      "chooseFile": "ファイルを選択",
+      "uploadScript": "スクリプトをインポート"
+    }
+  },
+  "LibraryDashboard": {
+    "tabBar": {
+      "myLibraries": "$t(MyLibraryDashboard:title)",
+      "purchasedLibraries": "$t(PurchasedLibraryDashboard:title)",
+      "assetStore": "$t(AssetStore:title)"
+    },
+    "label": {
+      "numberOfAssets": "素材{{count}}件",
+      "price": "US$ {{price}}"
+    }
+  },
+  "LibraryDetails": {
+    "label": {
+      "description": "説明",
+      "assetCount": "素材件数{{count}}件",
+      "setting": "素材コレクションの設定",
+      "usedByOiceProOnly": "oice backer のみ",
+      "ownedLibraryWarning": "これはあなたの素材コレクションであるため、すでに所有しています",
+      "purchaseLibraryName": "素材コレクション「{{name}}」を購入します",
+      "purchasingLibrary": "素材コレクションを購入します",
+      "confirmToPurchaseLibrary": "{{currency}}　${{price}}で素材コレクション「{{name}}」を購入しますか？"
+    },
+    "placeholder": {
+      "empty": "この分類の素材はありません"
+    },
+    "button": {
+      "add": {
+        "bgm": "BGMを追加する",
+        "se": "效果音を追加する"
+      },
+      "payForPrice": "{{currency}}を支払う",
+      "purchase": "購入する"
+    }
+  },
+  "LoginModal": {
+    "header": "ログイン",
+    "label": {
+      "mustLoginToAccess": "素材コレクションを購入するには、ログインする必要があります"
+    }
+  },
+  "MyLibraryDashboard": {
+    "title": "自分の素材コレクション",
+    "label": {
+      "public": "$t(library:public)",
+      "private": "$t(library:private)",
+      "forSale": "$t(library:forSale)",
+      "pendingForSale": "$t(library:pendingForSale)"
+    },
+    "button": {
+      "createLibrary": "新規素材コレクション"
+    }
+  },
+  "NavBar": {
+    "button": {
+      "register": "登録",
+      "login": "サインイン"
+    },
+    "menu": {
+      "editor": "マイストーリー",
+      "asset": "素材管理",
+      "about": "oiceについて",
+      "continueEditLastOice": "制作に戻る"
+    },
+    "dropdownMenu": {
+      "profile": "マイページ",
+      "accountSetting": "アカウント設定",
+      "logout": "サインアウト"
+    }
+  },
+  "Profile": {
+    "title": "アカウント設定",
+    "personalInformation": {
+      "title": "Personal Information",
+      "header": {
+        "basicInformation": "Basic Information",
+        "externalLinks": "外部リンクの"
+      },
+      "label": {
+        "displayName": "ユーザー名",
+        "description": "自己紹介",
+        "emailAddress": "アカウント",
+        "username": "ユーザーネーム"
+      },
+      "button": {
+        "editProfilePicture": "プロフィール写真を変更",
+        "link": "Link",
+        "unlink": "Unlink",
+        "addLink": "Add a link"
+      },
+      "placeholder": {
+        "enterLabel": "Label",
+        "enterLink": "リンクの"
+      }
+    },
+    "accountSetting": {
+      "title": "Account Setting",
+      "header": {
+        "accountInformation": "Account Information",
+        "languageSetting": "Language Setting",
+        "receivePaymentSetting": "Payment Receive using Stripe"
+      },
+      "label": {
+        "account": "アカウント: ",
+        "member": "無料メンバー",
+        "backer": "backer",
+        "expireOn": "有効期限は{{date}}までです",
+        "upgradeToSupport": "Be our backer with USD$9.9/month",
+        "UILanguage": "UI Language",
+        "defaultStoryLanguage": "Default Story Language",
+        "stripeConnectDescription": "支払を受けとるにはStripeへ接続してください",
+        "stripeConnected": "Stripeに接続されています"
+      },
+      "button": {
+        "upgrade": "アップグレード",
+        "continueSubscription": "サブスクリプションの継続",
+        "cancelSubscription": "サブスクリプションのキャンセル",
+        "disconnectStripe": "接続の解除"
+      }
+    },
+    "seekingSubscriptionMessage": {
+      "_title": "購読メッセージ",
+      "buttonName": "変更"
+    }
+  },
+  "PurchasedLibraryDashboard": {
+    "title": "購入した素材コレクション",
+    "button": {
+      "goToAssetStore": "$t(AssetStore:title)で新しい素材を探す"
+    }
+  },
+  "SmsModal": {
+    "smsMessage": "oiceをクリックしてダウンロードしてください",
+    "label": {
+      "fillInMobileNumber": "ダウンロードリンクをSMSで送信します",
+      "fillInToReceiveSMS": "携帯番号を入力してください。SMSを送信します",
+      "receiveAndClickLink": "SMS内のダウンロードリンクを開いてください",
+      "smsSent": "SMSを送信しました",
+      "downloadForBetterExperience": "oiceアプリをインストールすれば、いつでもどこでも読むことができます",
+      "appStoreMayNotContinueOice": "oiceアプリをインストールして読み続ける際、進行状況が失われる可能性があります",
+      "downloadToContinue": "oiceアプリをインストールして読み続けます"
+    },
+    "button": {
+      "send": "送信",
+      "resend": "再送",
+      "useOtherWays": "他のダウンロード方法"
+    },
+    "countries": {
+      "title": "地域名",
+      "nameWithCountryCode": "$t(SmsModal:countries:code:{{regionCode}}) ({{dialCode}})",
+      "code": {
+        "AD": "アンドラ",
+        "AE": "アラブ首長国連邦",
+        "AF": "アフガニスタン",
+        "AG": "アンティグア・バーブーダ",
+        "AI": "アンギラ",
+        "AL": "アルバニア",
+        "AM": "アルメニア",
+        "AN": "アンドラ",
+        "AO": "アンゴラ",
+        "AQ": "南極",
+        "AR": "アルゼンチン",
+        "AS": "アメリカ領サモア",
+        "AT": "オーストリア",
+        "AU": "オーストラリア",
+        "AW": "アルバ",
+        "AZ": "アゼルバイジャン",
+        "BA": "ボスニア・ヘルツェゴビナ",
+        "BB": "バルバドス",
+        "BD": "バングラデシュ",
+        "BE": "ベルギー",
+        "BF": "ブルキナファソ",
+        "BG": "ブルガリア",
+        "BH": "バーレーン",
+        "BI": "ブルンジ",
+        "BJ": "ベナン",
+        "BL": "サン・バルテルミー",
+        "BM": "バミューダ",
+        "BN": "ブルネイ・ダルサラーム",
+        "BO": "ボリビア多民族国",
+        "BR": "ブラジル",
+        "BS": "バハマ",
+        "BT": "ブータン",
+        "BW": "ボツワナ",
+        "BY": "ベラルーシ",
+        "BZ": "ベリーズ",
+        "CA": "カナダ",
+        "CC": "ココス諸島",
+        "CD": "コンゴ民主共和国",
+        "CF": "中央アフリカ共和国",
+        "CG": "コンゴ共和国",
+        "CH": "スイス",
+        "CI": "コートジボワール",
+        "CK": "クック諸島",
+        "CL": "チリ",
+        "CM": "カメルーン",
+        "CN": "中華人民共和国",
+        "CO": "コロンビア",
+        "CR": "コスタリカ",
+        "CU": "キューバ",
+        "CV": "カーボベルデ",
+        "CX": "クリスマス島",
+        "CY": "キプロス",
+        "CZ": "チェコ",
+        "DE": "ドイツ",
+        "DJ": "ジブチ",
+        "DK": "デンマーク",
+        "DM": "ドミニカ国",
+        "DO": "ドミニカ共和国",
+        "DZ": "アルジェリア",
+        "EC": "エクアドル",
+        "EE": "エストニア",
+        "EG": "エジプト",
+        "ER": "エリトリア",
+        "ES": "スペイン",
+        "ET": "エチオピア",
+        "FI": "フィンランド",
+        "FJ": "フィジー",
+        "FK": "フォークランド諸島",
+        "FM": "ミクロネシア連邦",
+        "FO": "フェロー諸島",
+        "FR": "フランス",
+        "GA": "ガボン",
+        "GB": "イギリス",
+        "GD": "グレナダ",
+        "GE": "ジョージア",
+        "GF": "フランス領ギアナ",
+        "GG": "ガーンジー",
+        "GH": "ガーナ",
+        "GI": "ジブラルタル",
+        "GL": "グリーンランド",
+        "GM": "ガンビア",
+        "GN": "ギニア",
+        "GP": "グアドループ",
+        "GQ": "赤道ギニア",
+        "GR": "ギリシャ",
+        "GS": "サウスジョージア・サウスサンドウィッチ諸島",
+        "GT": "グアテマラ",
+        "GU": "グアム",
+        "GW": "ギニアビサウ",
+        "GY": "ガイアナ",
+        "HK": "香港",
+        "HN": "ホンジュラス",
+        "HR": "クロアチア",
+        "HT": "ハイチ",
+        "HU": "ハンガリー",
+        "ID": "インドネシア",
+        "IE": "アイルランド",
+        "IL": "イスラエル",
+        "IM": "マン島",
+        "IN": "インド",
+        "IO": "イギリス領インド洋地域",
+        "IQ": "イラク",
+        "IR": "イラン・イスラム共和国",
+        "IS": "アイスランド",
+        "IT": "イタリア",
+        "JE": "ジャージー",
+        "JM": "ジャマイカ",
+        "JO": "ヨルダン",
+        "JP": "日本",
+        "KE": "ケニア",
+        "KG": "キルギス",
+        "KH": "カンボジア",
+        "KI": "キリバス",
+        "KM": "コモロ",
+        "KN": "セントクリストファー・ネイビス",
+        "KP": "朝鮮民主主義人民共和国",
+        "KR": "大韓民国",
+        "KW": "クウェート",
+        "KY": "ケイマン諸島",
+        "KZ": "カザフスタン",
+        "LA": "ラオス人民民主共和国",
+        "LB": "レバノン",
+        "LC": "セントルシア",
+        "LI": "リヒテンシュタイン",
+        "LK": "スリランカ",
+        "LR": "リベリア",
+        "LS": "レソト",
+        "LT": "リトアニア",
+        "LU": "ルクセンブルク",
+        "LV": "ラトビア",
+        "LY": "リビア",
+        "MA": "モロッコ",
+        "MC": "モナコ",
+        "MD": "モルドバ共和国",
+        "ME": "モンテネグロ",
+        "MF": "サン・マルタン",
+        "MG": "マダガスカル",
+        "MH": "マーシャル諸島",
+        "MK": "マケドニア旧ユーゴスラビア共和国",
+        "ML": "マリ",
+        "MM": "ミャンマー",
+        "MN": "モンゴル",
+        "MO": "マカオ",
+        "MP": "北マリアナ諸島",
+        "MQ": "マルティニーク",
+        "MR": "モーリタニア",
+        "MS": "モントセラト",
+        "MT": "マルタ",
+        "MU": "モーリシャス",
+        "MV": "モルディブ",
+        "MW": "マラウイ",
+        "MX": "メキシコ",
+        "MY": "マレーシア",
+        "MZ": "モザンビーク",
+        "NA": "ナミビア",
+        "NC": "ニューカレドニア",
+        "NE": "ニジェール",
+        "NF": "ノーフォーク島",
+        "NG": "ナイジェリア",
+        "NI": "ニカラグア",
+        "NL": "オランダ",
+        "NO": "ノルウェー",
+        "NP": "ネパール",
+        "NR": "ナウル",
+        "NU": "ニウエ",
+        "NZ": "ニュージーランド",
+        "OM": "オマーン",
+        "PA": "パナマ",
+        "PE": "ペルー",
+        "PF": "フランス領ポリネシア",
+        "PG": "パプアニューギニア",
+        "PH": "フィリピン",
+        "PK": "パキスタン",
+        "PL": "ポーランド",
+        "PM": "サンピエール島・ミクロン島",
+        "PN": "ピトケアン",
+        "PR": "プエルトリコ",
+        "PS": "パレスチナ",
+        "PT": "ポルトガル",
+        "PW": "パラオ",
+        "PY": "パラグアイ",
+        "QA": "カタール",
+        "RE": "レユニオン",
+        "RO": "ルーマニア",
+        "RS": "セルビア",
+        "RU": "ロシア連邦",
+        "RW": "ルワンダ",
+        "SA": "サウジアラビア",
+        "SB": "ソロモン諸島",
+        "SC": "セーシェル",
+        "SD": "スーダン",
+        "SE": "スウェーデン",
+        "SG": "シンガポール",
+        "SH": "セントヘレナ・アセンションおよびトリスタンダクーニャ",
+        "SI": "スロベニア",
+        "SJ": "スヴァールバル諸島およびヤンマイエン島",
+        "SK": "スロバキア",
+        "SL": "シエラレオネ",
+        "SM": "サンマリノ",
+        "SN": "セネガル",
+        "SO": "ソマリア",
+        "SR": "スリナム",
+        "SS": "南スーダン",
+        "ST": "サントメ・プリンシペ",
+        "SV": "エルサルバドル",
+        "SY": "シリア・アラブ共和国",
+        "SZ": "スワジランド",
+        "TC": "タークス・カイコス諸島",
+        "TD": "チャド",
+        "TG": "トーゴ",
+        "TH": "タイ",
+        "TJ": "タジキスタン",
+        "TK": "トケラウ",
+        "TL": "東ティモール",
+        "TM": "トルクメニスタン",
+        "TN": "チュニジア",
+        "TO": "トンガ",
+        "TR": "トルコ",
+        "TT": "トリニダード・トバゴ",
+        "TV": "ツバル",
+        "TW": "台湾",
+        "TZ": "タンザニア",
+        "UA": "バチカン市国",
+        "UG": "ウガンダ",
+        "US": "アメリカ合衆国",
+        "UY": "ウルグアイ",
+        "UZ": "ウズベキスタン",
+        "VA": "バチカン市国",
+        "VC": "セントビンセントおよびグレナディーン諸島",
+        "VE": "ベネズエラ・ボリバル共和国",
+        "VG": "イギリス領ヴァージン諸島",
+        "VI": "アメリカ領ヴァージン諸島",
+        "VN": "ベトナム",
+        "VU": "バヌアツ",
+        "WF": "ウォリス・フツナ",
+        "WS": "サモア",
+        "YE": "イエメン",
+        "YT": "マヨット",
+        "YU": "ユーゴスラビア",
+        "ZA": "南アフリカ",
+        "ZM": "ザンビア",
+        "ZR": "コンゴ民主共和国",
+        "ZW": "ジンバブエ"
+      }
+    }
+  },
+  "StoryDashboard": {
+    "label": {
+      "story": "マイストーリー",
+      "button": {
+        "createStory": "新規ストーリー",
+        "edit": "編集",
+        "preview": "プレビュー",
+        "published": "公開済",
+        "unpublished": "未公開",
+        "addOice": "oiceに追加"
+      }
+    }
+  },
+  "StoryDetails": {
+    "label": {
+      "introduction": "あらすじ",
+      "noIntroduction": "あらすじ無し"
+    }
+  },
+  "TermsOfService": {
+    "title": "利用規約"
+  },
+  "TestFlightInvitation": {
+    "title": "oiceアプリのテスターになってください",
+    "label": {
+      "description": "インストールコードを受け取るためのメールアドレスを入力してください",
+      "alreadyJoined": "メールアドレスは既に登録されています",
+      "alreadySent": "メールが送信されました。5分後にメールを受信して​​いない場合は、もう一度お試しください"
+    },
+    "placeholder": {
+      "email": "Eメール"
+    },
+    "button": {
+      "submit": "送信",
+      "submitting": "送信中"
+    }
+  },
+  "UserPage": {
+    "label": {
+      "stats": {
+        "oices": "oice",
+        "assets": "素材",
+        "credits": "クレジット"
+      }
+    },
+    "tabBar": {
+      "user": "ユーザー",
+      "stories": "ストーリー",
+      "libraries": "素材コレクション",
+      "credits": "クレジット"
+    },
+    "placeholder": {
+      "noDescription": "説明なし",
+      "noStory": "{{user}}が編集したストーリーはありません",
+      "noLibrary": "{{user}}がアップロードした素材コレクションはありません",
+      "noCredits": "{{user}}が参加したストーリーはありません",
+      "noYourStory": "あなたのストーリーはありません",
+      "noYourLibrary": "素材コレクションをアップロードしていません",
+      "noYourCredits": "参加したストーリーはありません"
+    }
+  },
+  "UsersDropdown": {
+    "label": {
+      "userNotFound": "ユーザーが見つかりませんでした",
+      "noUser": "ユーザーが登録していません"
+    },
+    "placeholder": "ユーザーを追加"
+  },
+  "alertDialog": {
+    "confirm": {
+      "title": "ヒント",
+      "button": {
+        "cancel": "$t(general:cancel)",
+        "confirm": "$t(general:confirm)"
+      }
+    },
+    "error": {
+      "title": "エラー",
+      "button": {
+        "cancel": "再読み込み",
+        "confirm": "スキップ"
+      }
+    },
+    "alert": {
+      "title": "お知らせ",
+      "button": {
+        "confirm": "OK"
+      }
+    }
+  },
+  "asset": {
+    "type": {
+      "character": "キャラ",
+      "fgimage": "前景画像",
+      "bgimage": "背景画像",
+      "image": "アイテム",
+      "bgm": "BGM",
+      "se": "効果音"
+    }
+  },
+  "assets": {
+    "category": {
+      "character": "キャラ",
+      "bgimage": "背景画像",
+      "image": "アイテム",
+      "bgm": "BGM",
+      "se": "効果音"
+    }
+  },
+  "assetsManagement": {
+    "title": "素材管理",
+    "setting": "素材コレクションの設定",
+    "label": {
+      "confirmDelete": "{{name}}を削除しますか？"
+    },
+    "uploadMusicModal": {
+      "placeholder": {
+        "name": "BGMのタイトルを入力して下さい",
+        "tag": "タグを選択してください",
+        "creditsUrl": "クレジットするURL"
+      },
+      "button": {
+        "addFile": "ファイル追加",
+        "upload": "アップロード"
+      },
+      "addMusic": "BGM追加",
+      "addSound": "効果音追加"
+    },
+    "libraryModal": {
+      "header": {
+        "add": "新規素材コレクション",
+        "edit": "素材コレクションの設定"
+      },
+      "label": {
+        "coverPhoto": "カバー画像",
+        "license": "ライセンス",
+        "creativeCommons": "$t(license:creativeCommons)",
+        "referToProfile": "$t(license:referToProfile)",
+        "public": "共有素材コレクション",
+        "uploadCover": "素材アップロード",
+        "modifyPrice": "素材コレクションの価格を変更して素材ストアで販売"
+      },
+      "button": {
+        "create": {
+          "public": "新規$t(library:public)素材コレクション",
+          "private": "新規$t(library:private)素材コレクション",
+          "forSale": "新規$t(library:forSale)素材コレクション"
+        },
+        "save": "$t(general:save)",
+        "delete": "素材コレクションを削除"
+      },
+      "placeholder": {
+        "name": "素材コレクションのタイトル(必須)",
+        "description": "素材コレクションの説明"
+      }
+    },
+    "bgModal": {
+      "header": {
+        "add": "背景画像を追加",
+        "edit": "背景画像を編集",
+        "view": "背景画像表示"
+      },
+      "button": {
+        "delete": "背景画像を削除",
+        "save": "$t(general:save)"
+      },
+      "placeholder": {
+        "name": {
+          "en": "英語で背景画像タイトルを入力して下さい（必須）",
+          "tw": "中国語で背景画像タイトルを入力して下さい",
+          "jp": "日本語で背景画像タイトルを入力して下さい"
+        },
+        "tag": "タグを選択してください",
+        "creditsUrl": "クレジットURL"
+      },
+      "label": {
+        "tagNotFound": "一致するタグがありません",
+        "imageSizeNot1080": "画像のサイズは1080x1080pxで、確認してください"
+      }
+    },
+    "characterModal": {
+      "title": {
+        "add": "キャラを追加",
+        "edit": "キャラを編集",
+        "view": "キャラのプロフィールを見る"
+      },
+      "button": {
+        "confirm": "確認",
+        "delete": "キャラを削除",
+        "addFgImage": "前景画像を追加"
+      },
+      "label": {
+        "nameTitle": "キャラの名前",
+        "nameEn": "English",
+        "nameTw": "中文(繁体)",
+        "nameJp": "日本語",
+        "confirmDeleteFgImage": "前景画像「{{name}}」を削除しますか。",
+        "pleaseAddAtLeastOneFgImage": "キャラには画像が少なくとも1つ必要です。",
+        "fgImageCannotBeEmpty": "タイトルは必須です。",
+        "pleaseEnterCharacterName": "キャラの名前を入力してください",
+        "pleaseEnterIntegerConfig": "キャラの座標は整数でなければなりません。やり直してください",
+        "deleteImageSelection": "画像を削除しますか。",
+        "deleteCharacter": "キャラを削除しますか。",
+        "fullSetting": "グローバル設定",
+        "coordinate": {
+          "0": "左側の座標",
+          "1": "中間の座標",
+          "2": "右側の座標"
+        },
+        "fgImage": {
+          "height": "画像の縦幅",
+          "width": "画像の橫幅"
+        },
+        "renamable": "リネーム可"
+      },
+      "selectedCharacter": "キャラを選択してください (必須)",
+      "selectedCharacterImage": "画像を選択してください",
+      "imageSelectionModalTitle": "画像({{name}})",
+      "fliplr": "左右反転",
+      "placeholder": {
+        "name": "キャラの名前を入力してください",
+        "fgImage": "前景画像のタイトルを入力してください",
+        "creditsUrl": "クレジットURL"
+      }
+    },
+    "itemModal": {
+      "header": {
+        "add": "アイテムを追加",
+        "edit": "アイテムを編集",
+        "view": "アイテム表示"
+      },
+      "button": {
+        "delete": "アイテムを削除",
+        "save": "$t(general:save)"
+      },
+      "placeholder": {
+        "name": {
+          "en": "アイテムの英語の名前を入力してください(必須)",
+          "tw": "アイテムの中国語の名前を入力してください(必須)",
+          "jp": "アイテムの日本語の名前を入力してください(必須)"
+        },
+        "creditsUrl": "クレジットURL"
+      },
+      "label": {
+        "imageSizeNotLessThan1080": "画像サイズを確認してください。1080x1080px以上のサイズは使用できません。"
+      }
+    }
+  },
+  "attributesPanel": {
+    "noAttributeRow": "属性なし",
+    "clickToShow": "左のブロックをクリックして属性を変更してください",
+    "pleaseChoose": "選択してください",
+    "requiredField": "入力必須欄",
+    "requiredAsset": "入力必須の素材",
+    "label": {
+      "hint": {
+        "ms": "{{label}} ($t(unit:ms))"
+      }
+    },
+    "placeholder": {
+      "dropDown": {
+        "bg": "背景を選択($t(requiredAsset))",
+        "item": "アイテムを選択 ($t(requiredAsset))"
+      }
+    }
+  },
+  "character": {
+    "coordinate": {
+      "left": "左側",
+      "middle": "中間",
+      "right": "右側"
+    }
+  },
+  "checkout": {
+    "label": {
+      "upgrade": "$t(membership:paid)へアップグレード"
+    },
+    "button": {
+      "pay": "支払う"
+    }
+  },
+  "editor": {
+    "title": "エディター",
+    "basic-macros": "演出",
+    "sound-macros": "BGM",
+    "commmand-macros": "コマンド",
+    "wordCount": {
+      "title": "文字数",
+      "counting": "計算中…",
+      "count": "{{count}} 文字",
+      "count_plural": "{{count}} 文字"
+    },
+    "toolbar": {
+      "button": {
+        "importScript": "インポート",
+        "assetsManagement": "素材",
+        "preview": "プレビュー",
+        "publish": "公開",
+        "export": "$t(editor:exportOice.title)"
+      },
+      "placeholder": {
+        "storyName": "ストーリーを選択",
+        "oiceName": "oiceを選択"
+      }
+    },
+    "menu": {
+      "personalPage": "マイページ",
+      "tutorial1": "初心者のチュートリアルへ",
+      "tutorial2": "キャラのチュートリアルへ",
+      "tutorial3": "新規のチュートリアルへ",
+      "tutorial": "チュートリアル",
+      "function": "ツール"
+    },
+    "emptyPleaseSelect": "ようこそoiceエディターへ，新規ストーリーまたはマイ新規ストーリーを選択してください",
+    "storiesList": {
+      "title": "マイストーリー",
+      "addButton": "新規",
+      "addPlaceholder": "ストーリーのタイトルを入力してください"
+    },
+    "oicesList": {
+      "title": "oiceの選択",
+      "addButton": "新規oice",
+      "addPlaceholder": "oiceの名前を入力してください",
+      "episode": "エピソード　{{number}}",
+      "label": {
+        "pickAStoryForCopyOice": "ストーリーを選択してoiceへコピーする"
+      }
+    },
+    "storyPicker": {
+      "title": "ストーリーの選択",
+      "placeholder": "ストーリーを選択してください",
+      "button": {
+        "confirm": "選択"
+      }
+    },
+    "storySetting": {
+      "storyContinue": "連載中",
+      "storyEnded": "連載終了",
+      "selectLanguagePlaceholder": "選択してください"
+    },
+    "oiceSetting": {
+      "generalSetting": {
+        "title": "一般設定",
+        "settingOption1": "公開",
+        "settingOption2": "URLを知っている人のみ閲覧可",
+        "addOicePlaceholder": "oiceのタイトルを入力してください(必須)",
+        "addOiceDescPlaceholder": "oiceのあらすじを入力してください",
+        "advSelectBox": "再生後に広告を表示する",
+        "advUseDefault": "デフォルトの広告を使用",
+        "selectPlease": "$t(general:selectPlease)"
+      },
+      "facebookSetting": {
+        "title": "Facebookの設定",
+        "addOgTitlePlaceholder": "OGのtitleを入力してください",
+        "addOgDescriptionPlaceholder": "OGのdescriptionを入力してください",
+        "suggestedImageSize": "Facebookページカバーのサイズは 1200px × 630px です"
+      },
+      "copyright": "著作権",
+      "deleteOice": "oiceを削除",
+      "deleteOiceConfirm": "このoiceを削除しますか？",
+      "saveButton": "セーブ",
+      "confirmButton": "OK",
+      "cancelButton": "キャンセル",
+      "oiceNormalLinkPlaceholder": "URLを入力してください",
+      "oiceiOSLinkPlaceholder": "App StoreのURLを入力してください",
+      "oiceAndroidLinkPlaceholder": "Google PlayのURLを入力してください"
+    },
+    "buildOiceState": {
+      "saving": "oiceを保存中です",
+      "saveFailed": "oiceの保存に失敗しました",
+      "validating": "oiceを検証中",
+      "validateFailed": "サーバエラー、oiceの検証に失敗しました",
+      "validateSuccessWithError": "oiceパラメータエラー",
+      "building": "oiceのビルド中",
+      "buildFailed": "oiceのビルドに失敗・サーバーエラー",
+      "buildSuccess": "oiceのビルドに成功",
+      "buildFailedUnkownError": "oiceのビルドに失敗しました",
+      "exporting": "oiceへエクスポート中",
+      "exportFailed": "エクスポートに失敗・サーバーエラー",
+      "exportSuccess": "無事にエクスポートされました。ボタンをクリックしてダウンロードしてください"
+    },
+    "runOice": {
+      "title": {
+        "preview": "oiceをプレビュー",
+        "publish": "oiceを公開"
+      },
+      "description": {
+        "preview": "oiceのロードを完了しました。以下のボタンをクリックして再生してください。",
+        "publish": "oiceのロードを完了しました。以下のボタンをクリックして再生してください。"
+      },
+      "oicePublicDescription": "oiceのサイトまたはアプリで開きます",
+      "playButton": "プレイ"
+    },
+    "exportOice": {
+      "title": "エクスポート",
+      "downloadButton": "ダウンロード",
+      "exportButton": "確認"
+    },
+    "oiceError": {
+      "messageLabel": "エラーメッセージ",
+      "errorBlockId": "エラーブロックID",
+      "attributeName": "属性名"
+    },
+    "characterSelectionModal": {
+      "title": "キャラの選択",
+      "confirmButton": "確認",
+      "categorySelectionAll": "すべて選択"
+    },
+    "imageSelectionModal": {
+      "title": "背景画像",
+      "confirmButton": "確認"
+    },
+    "backgroundImageSelectionModal": {
+      "title": "背景画像を選択してください",
+      "confirmButton": "確認"
+    },
+    "itemImageSelectionModal": {
+      "title": "アイテムを選択してください"
+    },
+    "audioSelectionModal": {
+      "placeholder": {
+        "music": "BGMを選択してください（必須）",
+        "sound": "効果音を選択してください（必須）"
+      },
+      "title": {
+        "chooseMusic": "BGMを選択してください",
+        "chooseSound": "効果音を選択してください"
+      }
+    },
+    "blocksList": {
+      "dummyBlock": {
+        "normal": "メニューからコンポーネントをドラッグしてこのブロックに追加します",
+        "hover": "ドロップしてコンポーネントを追加します"
+      },
+      "statusRow": {
+        "lastSave": "最終編集: {{time}}",
+        "allChangesSaved": "All changes saved",
+        "saving": "保存しています...",
+        "editing": "Editing : ",
+        "otherLanguage": "Other Languages"
+      }
+    }
+  },
+  "error": {
+    "ERR_AUDIO_FORMAT_UNSUPPORTED": "音声ファイルフォーマットが対応しません",
+    "ERR_AUDIO_TRANSCODE_FAILURE": "コーデックエラー",
+    "ERR_IMPORT_SCRIPT_ASSET_NOT_FOUND": "素材がありません。 ID: {{assetIds}}",
+    "ERR_IMPORT_SCRIPT_CHARACTER_FORBID_RENAME": "キャラの名前を変更できません。キャラID: {{characterId}}",
+    "ERR_IMPORT_SCRIPT_CHARACTER_NOT_FOUND": "キャラID: {{ characterIds }} 不正使用",
+    "ERR_IMPORT_SCRIPT_FILE_CANNOT_OPEN": "対応フォーマット(.txt)をアップロードしてください",
+    "ERR_IMPORT_SCRIPT_FILE_NOT_FOUND": "スクリプトをアップロードしてください",
+    "ERR_IMPORT_SCRIPT_LIBRARY_NOT_OWNED": "未所有の素材コレクション({{libraryName}})を使用しました",
+    "ERR_IMPORT_SCRIPT_LIBRARY_NOT_PURCHASED": "未購入の素材コレクション({{libraryName}})を使用しました",
+    "ERR_IMPORT_SCRIPT_SHOULD_NOT_WRITE_DECLARATION_IN_SCRIPT": "キャラまたは背景画像は<declaration>内で記述が必要です",
+    "ERR_IMPORT_SCRIPT_SHOULD_NOT_WRITE_SCRIPT_IN_DECLARATION": "セルフは<script>内で記述が必要です",
+    "ERR_IMPORT_SCRIPT_SYNTAX_ERROR_UNEXPECTED_EOF": "シンタックスエラー UNEXPECTED_EOF",
+    "ERR_IMPORT_SCRIPT_SYNTAX_ERROR": "シンタックスエラー",
+    "ERR_IMPORT_SCRIPT_TOKENIZATION_ERROR": "符号化エラー「{{message}}」",
+    "ERR_IMPORT_SCRIPT_UNKNOWN_ERROR": "不明なエラー 「{{message}}」",
+    "ERR_IMPORT_SCRIPT_UNRECOGNIZED_SECTION_TAG": "タグ<declaration>またはタグ<script>しか使用でない",
+    "ERR_IMPORT_SCRIPT_USING_UNDECLARED_BACKGROUND": "背景を使用する前に、<declaration>の記述が必要です",
+    "ERR_IMPORT_SCRIPT_USING_UNDECLARED_CHARACTER": "キャラを使用する前に、<declaration>の記述が必要です",
+    "ERR_IMPORT_SCRIPT_WAIT_TIME_IS_NOT_AN_INTEGER": "「ウェイト時間」に非数字文字を記入した",
+    "ERR_LIBRARY_NOT_FOR_SALE": "未公開素材コレクションをアクセスした",
+    "ERR_NOT_POSSIBLE_PHONE_NUMBER": "正しい電話番号を入力してください",
+    "ERR_NOT_MOBILE_PHONE_NUMBER": "携帯電話番号を入力してください",
+    "ERR_TESTFLIGHT_INVALID_TESTER_EMAIL": "無効なメール",
+    "ERR_TESTFLIGHT_TESTER_EXIST": "このメールは既に登録されています",
+    "ERR_TESTFLIGHT_RESEND_INVITATION_FAILURE": "招待状を再送信できません",
+    "ERR_TESTFLIGHT_ADD_TESTER_FAILURE": "招待状を送信できませんでしたので、もう一度お試しください",
+    "ERR_USERNAME_LENGTH_TOO_SHORT": "少なくとも6文字以上である必要があります",
+    "ERR_USERNAME_CAN_ONLY_START_WITH_LETTER": "Username must start with English letter",
+    "ERR_USERNAME_CONTAINS_INVALID_CHARACTER": "無効な文字が含まれています",
+    "ERR_USERNAME_NOT_UNIQUE": "このユーザーネームは選択できません",
+    "ERR_USERNAME_IS_A_NUMBER": "数字だけにすることはできません"
+  },
+  "general": {
+    "save": "保存",
+    "confirm": "確認",
+    "cancel": "キャンセル",
+    "selectPlease": "選択してください",
+    "enterPlease": "入力してください"
+  },
+  "interactiveTutorial": {
+    "button": {
+      "finish": "チュートリアルを完了",
+      "control": {
+        "skip": "チュートリアルをスキップ",
+        "next": "次へ",
+        "previous": "前へ"
+      }
+    },
+    "tutorial1": {
+      "step1": "ここにクリックしてストーリを洗濯してください"
+    }
+  },
+  "library": {
+    "author": "著者",
+    "authorWithName": "$t(author) {{author}}",
+    "credits": "参加者",
+    "public": "共有",
+    "private": "プライベート",
+    "forSale": "販売",
+    "free": "無料",
+    "pendingForSale": "販売待ち",
+    "purchased": "購入しました",
+    "show": "表示",
+    "hide": "非表示"
+  },
+  "license": {
+    "creativeCommons": "クリエイティブ・コモンズ・ライセンス",
+    "referToProfile": "アカウント設定"
+  },
+  "loadingScreen": {
+    "label": {
+      "loading": "読み込み中"
+    }
+  },
+  "macro": {
+    "stringTypeAttributePlaceholder": "入力してください",
+    "comment": {
+      "_title": "コメント",
+      "text": "テキスト"
+    },
+    "fadeoutse": {
+      "_title": "効果音をフェードアウト",
+      "buf": "バッファ",
+      "time": "フェードアウトの時間"
+    },
+    "stopbgm": {
+      "_title": "BGMの停止",
+      "time": "フェードアウトの時間"
+    },
+    "button": {
+      "_title": "ボタンを表示",
+      "storage": "ファイルの場所",
+      "graphic": "画像",
+      "target": "対象"
+    },
+    "wv": {
+      "_title": "動画の終了待ちです",
+      "canskip": "スキップ可能"
+    },
+    "xchgbgm": {
+      "_title": "BGMを変更",
+      "storage": "ファイル",
+      "time": "時間",
+      "overlap": "クロスフェードの時間",
+      "loop": "ループ",
+      "volume": "音量"
+    },
+    "jump": {
+      "_title": "ジャンプ",
+      "target": "対象"
+    },
+    "bgm": {
+      "_title": "BGM再生",
+      "storage": "BGMファイル",
+      "loop": "再生",
+      "fadetime": "フェードインの時間 (ミリ秒)",
+      "overlap": "BGMをクロスフェード再生する時間",
+      "volume": "音量 (0-100)"
+    },
+    "wm": {
+      "_title": "移動が終わるまでウェイトを入れる",
+      "canskip": "スキップ可"
+    },
+    "resetfont": {
+      "_title": "フォントをリセットする"
+    },
+    "fadepausebgm": {
+      "_title": "BGMをフェードアウト",
+      "time": "時間"
+    },
+    "l": {
+      "_title": "クリック待ちをする(改行)"
+    },
+    "image": {
+      "_title": "映像表示",
+      "mopacity": "色の濃度",
+      "shadowx": "影のオフセット値（左端）",
+      "shadowy": "影のオフセット値（上端）",
+      "mcolor": "色フィルタ",
+      "visible": "表示する",
+      "shadowblur": "ぼかし",
+      "storage": "ファイル",
+      "left": "左側",
+      "layer": "レヤー",
+      "opacity": "透明度",
+      "shadowopacity": "影の透明度",
+      "page": "ページ",
+      "top": "上端",
+      "shadow": "影"
+    },
+    "r": {
+      "_title": "改行"
+    },
+    "font": {
+      "_title": "フォント設定",
+      "o2_shadowcolor": "影の色",
+      "color": "色",
+      "size": "サイズ",
+      "italic": "イタリック",
+      "bold": "ボールド",
+      "o2_shadow": "影",
+      "edgecolor": "ボーダーカラー",
+      "face": "フォント",
+      "edge": "ボーダー"
+    },
+    "stopvideo": {
+      "_title": "停止"
+    },
+    "ws": {
+      "_title": "効果音の終了を待つ",
+      "buf": "バッファ",
+      "canskip": "スキップ可"
+    },
+    "fadeinbgm": {
+      "_title": "BGMをフェードイン",
+      "storage": "ファイル",
+      "time": "時間",
+      "loop": "ループ"
+    },
+    "glyph": {
+      "_title": "待機の設定",
+      "left": "左端",
+      "fix": "固定",
+      "page": "ページに移行する必要なファイル",
+      "top": "上端",
+      "line": "行に移行する必要なファイル"
+    },
+    "openvideo": {
+      "_title": "動画を読み込む",
+      "storage": "ファイル"
+    },
+    "resumebgm": {
+      "_title": "BGMを再開"
+    },
+    "video": {
+      "_title": "動画の設定",
+      "width": "橫幅",
+      "height": "縦幅",
+      "volume": "音量",
+      "visible": "表示表示する",
+      "left": "左端",
+      "top": "上端",
+      "loop": "ループ"
+    },
+    "fadebgm": {
+      "_title": "BGMを変更",
+      "time": "時間",
+      "volume": "音量"
+    },
+    "defstyle": {
+      "_title": "標準のスタイルを設定",
+      "linespacing": "行間隔",
+      "pitch": "字間隔",
+      "linesize": "行間の広さ"
+    },
+    "resumevideo": {
+      "_title": "再生"
+    },
+    "s": {
+      "_title": "ストップ"
+    },
+    "pimage": {
+      "_title": "画像追加",
+      "storage": "ファイル",
+      "dx": "移動先の座標（左端)",
+      "sw": "ソースの横幅",
+      "layer": "レイヤー",
+      "sy": "最初の座標（上端）",
+      "sh": "ソースの縦幅",
+      "dy": "移動先の座標（上端）",
+      "page": "ページ",
+      "sx": "最初の座標（左端）"
+    },
+    "locate": {
+      "_title": "移動先の座標",
+      "x": "左端",
+      "y": "上端"
+    },
+    "position": {
+      "_title": "テキストレイヤーの設定",
+      "visible": "表示する",
+      "marginb": "下マージン",
+      "width": "橫幅",
+      "marginr": "右マージン",
+      "frame": "背景映画",
+      "margint": "上マージン",
+      "height": "縦幅",
+      "marginl": "左マージン",
+      "left": "左端",
+      "color": "色",
+      "layer": "テキストレイヤー",
+      "opacity": "透明度",
+      "vertical": "縦書き",
+      "page": "ページ",
+      "top": "上端"
+    },
+    "freeimage": {
+      "_title": "画像を削除",
+      "layer": "レイヤー",
+      "page": "ページ"
+    },
+    "delay": {
+      "_title": "テキストの表示速度",
+      "speed": "速度"
+    },
+    "wl": {
+      "_title": "BGMが終わるまで待つ",
+      "canskip": "スキップ可"
+    },
+    "history": {
+      "_title": "設定歴",
+      "output": "エクスポート",
+      "enabled": "有効"
+    },
+    "playvideo": {
+      "_title": "ビデオ再生",
+      "storage": "ファイル"
+    },
+    "return": {
+      "_title": "戻る",
+      "storage": "ファイル",
+      "target": "対象"
+    },
+    "fadeinse": {
+      "_title": "効果音をフェードイン",
+      "buf": "バッファ",
+      "storage": "ファイル",
+      "time": "時間",
+      "loop": "ループ"
+    },
+    "label": {
+      "_title": "タグ",
+      "caption": "説明(任意入力)",
+      "name": "タグ名"
+    },
+    "call": {
+      "_title": "スクリプトを呼び出し",
+      "storage": "ファイル",
+      "target": "対象"
+    },
+    "wa": {
+      "_title": "動画が終わるまで待つ",
+      "layer": "レイヤー",
+      "seg": "バッファ",
+      "page": "ページ"
+    },
+    "pausebgm": {
+      "_title": "BGMをストップ"
+    },
+    "layopt": {
+      "_title": "レイヤーの設定",
+      "left": "左端",
+      "layer": "レイヤー",
+      "opacity": "透明度",
+      "visible": "表示する",
+      "page": "ページ",
+      "top": "上端"
+    },
+    "wf": {
+      "_title": "効果音の切り替えまで待つ",
+      "buf": "バッファ",
+      "canskip": "スキップ可"
+    },
+    "trans": {
+      "_title": "切り替え",
+      "rule": "切り替えのルール画像",
+      "time": "切り替え時間",
+      "method": "トランジション方法",
+      "layer": "レイヤー",
+      "stay": "（スクロールトランジション時のみ）スクロール動作",
+      "vague": "あいまいさ",
+      "from": "（スクロールトランジション時のみ）スクロールの加速度"
+    },
+    "wt": {
+      "_title": "切り替えまで待機する",
+      "canskip": "スキップ可"
+    },
+    "fadeoutbgm": {
+      "_title": "BGMをフェードアウト",
+      "time": "時間"
+    },
+    "backlay": {
+      "_title": "切り替えの準備中",
+      "layer": "レイヤー"
+    },
+    "er": {
+      "_title": "テキストレイヤーをリセット"
+    },
+    "stopmove": {
+      "_title": "移動をストップ"
+    },
+    "stopse": {
+      "_title": "効果音をストップ",
+      "buf": "バッファ"
+    },
+    "fadese": {
+      "_title": "効果音をフェード",
+      "buf": "バッファ",
+      "time": "時間",
+      "volume": "音量"
+    },
+    "wait": {
+      "_title": "待機",
+      "time": "時間",
+      "canskip": "スキップ可"
+    },
+    "resetstyle": {
+      "_title": "スタイルリセット"
+    },
+    "bgmopt": {
+      "_title": "BGMの音量を設定",
+      "volume": "音量"
+    },
+    "seopt": {
+      "_title": "効果音の設定",
+      "buf": "バッファ",
+      "gvolume": "グローバル設定",
+      "volume": "音量"
+    },
+    "wb": {
+      "_title": "BGMの切り替えまで待つ",
+      "canskip": "スキップ可"
+    },
+    "copylay": {
+      "_title": "レイヤーのコピー",
+      "srclayer": "ソースレイヤー",
+      "destlayer": "コピー先のレイヤー",
+      "srcpage": "ソースページ",
+      "destpage": "コピー先のページ"
+    },
+    "pausevideo": {
+      "_title": "一時停止"
+    },
+    "style": {
+      "_title": "スタイルの設定",
+      "align": "テキスト揃え",
+      "linespacing": "行間隔",
+      "pitch": "字間隔",
+      "autoreturn": "自動改行するか",
+      "linesize": "行間の広さ"
+    },
+    "wq": {
+      "_title": "画面揺れの終了待ち",
+      "canskip": "スキップ可"
+    },
+    "playse": {
+      "_title": "効果音を再生",
+      "storage": "ファイル",
+      "buf": "バッファ"
+    },
+    "deffont": {
+      "_title": "標準のフォントの設定",
+      "o2_shadowcolor": "影の色",
+      "color": "色",
+      "size": "サイズ",
+      "edgecolor": "ボーダーカラー",
+      "bold": "ボールド",
+      "o2_shadow": "影",
+      "face": "フォント",
+      "edge": "ボーダー"
+    },
+    "current": {
+      "_title": "テキストレイヤーを指定",
+      "layer": "レイヤー",
+      "page": "ページ"
+    },
+    "text": {
+      "_title": "テキスト表示",
+      "text": "テキスト"
+    },
+    "move": {
+      "_title": "レイヤーの移動",
+      "path": "径路",
+      "time": "時間",
+      "layer": "レイヤー",
+      "spline": "曲線",
+      "delay": "遅延",
+      "page": "ページ",
+      "accel": "加速度"
+    },
+    "stoptrans": {
+      "_title": "切換ストップ"
+    },
+    "quake": {
+      "_title": "振動",
+      "time": "振動時間",
+      "vmax": "縦軸の最大振幅",
+      "hmax": "橫軸の最大振幅"
+    },
+    "p": {
+      "_title": "クリック待ち"
+    },
+    "characterdialog": {
+      "_title": "キャラのセリフ",
+      "character": "キャラ",
+      "dialog": "セリフ",
+      "dialogPlaceholder": "セリフを入力してください",
+      "fg": "キャラ画像",
+      "fgexit": "消去",
+      "fliplr": "左右反転",
+      "name": "名前",
+      "position": "位置",
+      "skipwait": "スキップ",
+      "waitse": "効果音の終了待ち",
+      "hidedialog": "会話レイヤー非表示"
+    },
+    "fg": {
+      "_title": "キャラ表示",
+      "fliplr": "左右反転",
+      "storage": "ファイル",
+      "time": "切り換え時間",
+      "left": "左端",
+      "layer": "レイヤー",
+      "stay": "停止",
+      "rule": "切り替えルール",
+      "method": "切り替え方法",
+      "from": "元の位置",
+      "top": "上端",
+      "canskip": "スキップ可"
+    },
+    "dia": {
+      "_title": "会話ボックス(アバターあり)"
+    },
+    "selstart": {
+      "_title": "レディオプション",
+      "hidesysbutton": "ボタンレイヤー非表示",
+      "hidemes": "会話レイヤー非表示"
+    },
+    "clbg": {
+      "_title": "背景画像の削除",
+      "rule": "削除ルール",
+      "time": "時間",
+      "method": "削除方法",
+      "hidemes": "会話レイヤー非表示",
+      "clfg": "前景画像の削除",
+      "from": "元の位置",
+      "stay": "停止",
+      "canskip": "スキップ可"
+    },
+    "w": {
+      "_title": "ページの変更を待ち"
+    },
+    "lr": {
+      "_title": "行の変更を待つ"
+    },
+    "clfg": {
+      "_title": "前景画像の削除",
+      "stay": "停止",
+      "time": "時間",
+      "method": "方法",
+      "layer": "すべてを削除",
+      "hidemes": "会話レイヤー非表示",
+      "rule": "ルール",
+      "from": "ソース",
+      "canskip": "スキップ可",
+      "clface": "アバターを削除"
+    },
+    "selbutton": {
+      "_title": "ボタンのオプション",
+      "storage": "ファイル",
+      "over": "ダウンの画像",
+      "target": "ターゲットタグ",
+      "text": "テキスト",
+      "on": "クリックされた時の画像",
+      "normal": "ノーマルの画像"
+    },
+    "selend": {
+      "_title": "待機のオプション",
+      "stay": "停止",
+      "time": "時間",
+      "method": "方法",
+      "rule": "ルール",
+      "from": "ソース",
+      "canskip": "スキップ可"
+    },
+    "bg": {
+      "_title": "背景画像表示",
+      "mopacity": "色の濃度",
+      "convert": "色反転",
+      "method": "方法",
+      "rule": "ルール",
+      "grayscale": "モノクロ",
+      "mcolor": "色フィルタ",
+      "stay": "停止",
+      "canskip": "スキップ可",
+      "storage": "ファイル",
+      "time": "時間",
+      "hidemes": "会話レイヤー非表示",
+      "clfg": "前景画像を削除",
+      "from": "ソース"
+    },
+    "item": {
+      "_title": "アイテム表示",
+      "mopacity": "色の濃度",
+      "convert": "色反転",
+      "method": "方法",
+      "rule": "ルール",
+      "grayscale": "モノクロ",
+      "mcolor": "色フィルタ",
+      "stay": "停止",
+      "canskip": "スキップ可",
+      "storage": "ファイル",
+      "time": "時間",
+      "hidemes": "会話レイヤー非表示",
+      "clfg": "前景画像を削除",
+      "from": "ソース",
+      "waitingtime": "待ち時間"
+    },
+    "clearitem": {
+      "_title": "アイテムを削除"
+    },
+    "cm": {
+      "_title": "すべて削除"
+    },
+    "question": {
+      "_title": "問題（選択）",
+      "text": "問題"
+    },
+    "goto": {
+      "_title": "リンク",
+      "target": "対象",
+      "text": "テキスト"
+    },
+    "fgExitRight": {
+      "_title": "右のキャラ退場"
+    },
+    "fgExitLeft": {
+      "_title": "左のキャラ退場"
+    },
+    "fgExitMiddle": {
+      "_title": "中間のキャラ退場"
+    },
+    "addTalk": {
+      "_title": "セリフ追加",
+      "talk": "セリフ",
+      "talkPlaceholder": "セリフを入力してください",
+      "waitse": "効果音の終了待ち"
+    },
+    "aside": {
+      "_title": "ナレーション",
+      "text": "ナレーション",
+      "textPlaceholder": "セリフを入力してください",
+      "waitse": "効果音の終了待ち",
+      "fullscreen": "全画面表示"
+    },
+    "optionstart": {
+      "_title": "選択肢のオプション",
+      "question": "問題"
+    },
+    "optionanswer": {
+      "_title": "選択肢",
+      "target": "タグ",
+      "text": "選択肢の內容"
+    },
+    "optionend": {
+      "_title": "オプションを待つ"
+    },
+    "optionclear": {
+      "_title": "クリアオプション"
+    },
+    "autoplay": {
+      "_title": "再生スピード",
+      "delayspeed": "移動までの時間",
+      "autoWaitTimeInterval": "待ち時間"
+    },
+    "flash": {
+      "_title": "フラッシュ効果",
+      "color": "色"
+    },
+    "focusline": {
+      "_title": "フォーカスライン表示",
+      "color": "色",
+      "coloropacity": "色の濃度"
+    },
+    "clearfocusline": {
+      "_title": "フォーカスライン非表示"
+    },
+    "clearmessage": {
+      "_title": "メッセージを削除"
+    },
+    "Cancelautomode": {
+      "_title": "手動再生"
+    },
+    "option": {
+      "_title": "選択肢",
+      "question": "問題文",
+      "questionPlaceholder": "問題文を入力してください",
+      "answers": "答え"
+    },
+    "composedAnswer": {
+      "goToTag": "移動先",
+      "option": "選択肢の内容",
+      "addOption": "選択肢を追加"
+    }
+  },
+  "membership": {
+    "user": "oice 無料メンバー",
+    "paid": "oice Proメンバー",
+    "admin": "管理者"
+  },
+  "oiceSingleView": {
+    "label": {
+      "episode": "エピソード {{episode}}",
+      "getApp": "oiceを無料ダウンロードして物語を読む",
+      "downloadForBetterExperience": "oiceアプリをダウンロードしてより快適に読みましょう！",
+      "noStoryDescription": "あらすじなし"
+    },
+    "credit": {
+      "director": "ディレクター",
+      "fgimage": "キャラ",
+      "bgimage": "背景画像",
+      "image": "アイテム",
+      "bgm": "BGM",
+      "se": "効果音"
+    },
+    "preview": {
+      "screenCapture": "画面をキャプチャ",
+      "saveCover": "カバーを保存"
+    }
+  },
+  "pagination": {
+    "prevPage": "前へ",
+    "nextPage": "次へ"
+  },
+  "site": {
+    "title": "oice ノベルゲーム",
+    "description": "好きな主人公、場所、アイテム、BGMを選んで、選択肢、画面効果を加えて、セリフをつけて、個性的な物語を作れます"
+  },
+  "tutorial": {
+    "tab": {
+      "faq": "よくある質問",
+      "manual": "操作説明",
+      "functions": "機能解説",
+      "visual": "oiceの使い方"
+    }
+  },
+  "unit": {
+    "ms": "ミリ秒"
+  },
+  "StorySettingModal": {
+    "tabBar": {
+      "storySetting": "ストーリーの設定",
+      "oiceSetting": "oiceの設定",
+      "languageSetting": "Language Settings"
+    },
+    "label": {
+      "deleteStoryConfirm": "このストーリーを削除しますか？"
+    }
+  },
+  "StorySettingTab": {
+    "label": {
+      "facebookSetting": "Facebook Setting",
+      "uploadStoryCover": "Upload Story Cover"
+    },
+    "placeholder": {
+      "namer": "タイトルを入力してください(必須)",
+      "description": "ストーリーのあらすじ"
+    }
+  },
+  "FacebookSettingModal": {
+    "title": "Facebookの設定 — $t(Language:{{language}})",
+    "label": {
+      "uploadFacebookOgCover": "Upload Facebook OG Cover",
+      "suggestedImageSize": "(1200 px × 630 px)"
+    }
+  },
+  "OiceSettingTab": {
+    "label": {
+      "public": "公開",
+      "notPublic": "非公開"
+    },
+    "placeholder": {
+      "name": "oiceのタイトルを入力してください(必須)"
+    }
+  },
+  "LanguageSettingTab": {
+    "label": {
+      "addLanguage": "Add Language",
+      "otherLanguage": "Other Language",
+      "episodeName": "Episode Name"
+    },
+    "placeholder": {
+      "addLanguageGuideTitle": "You can localize your story in different language by selecting them on the left side.",
+      "addLanguageGuideDescription": "Click button $t(LanguageSettingTab:label:addLanguage) and select the language you want."
+    }
+  },
+  "Language": {
+    "ab": "аҧсуа бызшәа, аҧсшәа",
+    "aa": "Afaraf",
+    "af": "Afrikaans",
+    "ak": "Akan",
+    "sq": "Shqip",
+    "am": "አማርኛ",
+    "ar": "العربية",
+    "an": "aragonés",
+    "hy": "Հայերեն",
+    "as": "অসমীয়া",
+    "av": "авар мацӀ, магӀарул мацӀ",
+    "ae": "avesta",
+    "ay": "aymar aru",
+    "az": "azərbaycan dili",
+    "bm": "bamanankan",
+    "ba": "башҡорт теле",
+    "eu": "euskara, euskera",
+    "be": "беларуская мова",
+    "bn": "বাংলা",
+    "bh": "भोजपुरी",
+    "bi": "Bislama",
+    "bs": "bosanski jezik",
+    "br": "brezhoneg",
+    "bg": "български език",
+    "my": "ဗမာစာ",
+    "ca": "català, valencià",
+    "ch": "Chamoru",
+    "ce": "нохчийн мотт",
+    "ny": "chiCheŵa, chinyanja",
+    "cv": "чӑваш чӗлхи",
+    "kw": "Kernewek",
+    "co": "corsu, lingua corsa",
+    "cr": "ᓀᐦᐃᔭᐍᐏᐣ",
+    "hr": "hrvatski jezik",
+    "cs": "čeština, český jazyk",
+    "da": "dansk",
+    "dv": "ދިވެހި",
+    "nl": "Nederlands, Vlaams",
+    "dz": "རྫོང་ཁ",
+    "en": "English",
+    "eo": "Esperanto",
+    "et": "eesti, eesti keel",
+    "ee": "Eʋegbe",
+    "fo": "føroyskt",
+    "fj": "vosa Vakaviti",
+    "fi": "suomi, suomen kieli",
+    "fr": "français",
+    "ff": "Fulfulde, Pulaar, Pular",
+    "gl": "Galego",
+    "ka": "ქართული",
+    "de": "Deutsch",
+    "el": "ελληνικά",
+    "gn": "Avañe'ẽ",
+    "gu": "ગુજરાતી",
+    "ht": "Kreyòl ayisyen",
+    "ha": "(Hausa) هَوُسَ",
+    "he": "עברית",
+    "hz": "Otjiherero",
+    "hi": "हिन्दी, हिंदी",
+    "ho": "Hiri Motu",
+    "hu": "magyar",
+    "ia": "Interlingua",
+    "id": "Bahasa Indonesia",
+    "ie": "Originally called Occidental; then Interlingue after WWII",
+    "ga": "Gaeilge",
+    "ig": "Asụsụ Igbo",
+    "ik": "Iñupiaq, Iñupiatun",
+    "io": "Ido",
+    "is": "Íslenska",
+    "it": "Italiano",
+    "iu": "ᐃᓄᒃᑎᑐᑦ",
+    "ja": "日本語",
+    "jv": "ꦧꦱꦗꦮ, Basa Jawa",
+    "kl": "kalaallisut, kalaallit oqaasii",
+    "kn": "ಕನ್ನಡ",
+    "kr": "Kanuri",
+    "ks": "कश्मीरी, كشميري‎",
+    "kk": "қазақ тілі",
+    "km": "ខ្មែរ, ខេមរភាសា, ភាសាខ្មែរ",
+    "ki": "Gĩkũyũ",
+    "rw": "Ikinyarwanda",
+    "ky": "Кыргызча, Кыргыз тили",
+    "kv": "коми кыв",
+    "kg": "Kikongo",
+    "ko": "한국어",
+    "ku": "Kurdî, كوردی‎",
+    "kj": "Kuanyama",
+    "la": "latine, lingua latina",
+    "lb": "Lëtzebuergesch",
+    "lg": "Luganda",
+    "li": "Limburgs",
+    "ln": "Lingála",
+    "lo": "ພາສາລາວ",
+    "lt": "lietuvių kalba",
+    "lu": "Kiluba",
+    "lv": "Latviešu Valoda",
+    "gv": "Gaelg, Gailck",
+    "mk": "македонски јазик",
+    "mg": "fiteny malagasy",
+    "ms": "Bahasa Melayu, بهاس ملايو‎",
+    "ml": "മലയാളം",
+    "mt": "Malti",
+    "mi": "te reo Māori",
+    "mr": "मराठी",
+    "mh": "Kajin M̧ajeļ",
+    "mn": "Монгол хэл",
+    "na": "Dorerin Naoero",
+    "nv": "Diné bizaad",
+    "nd": "isiNdebele",
+    "ne": "नेपाली",
+    "ng": "Owambo",
+    "nb": "Norsk Bokmål",
+    "nn": "Norsk Nynorsk",
+    "no": "Norsk",
+    "ii": "ꆈꌠ꒿ Nuosuhxop",
+    "nr": "isiNdebele",
+    "oc": "occitan, lenga d'òc",
+    "oj": "ᐊᓂᔑᓈᐯᒧᐎᓐ",
+    "cu": "ѩзыкъ словѣньскъ",
+    "om": "Afaan Oromoo",
+    "or": "ଓଡ଼ିଆ",
+    "os": "ирон æвзаг",
+    "pa": "ਪੰਜਾਬੀ",
+    "pi": "पाऴि",
+    "fa": "فارسی",
+    "pl": "Język Polski, Polszczyzna",
+    "ps": "پښتو",
+    "pt": "Português",
+    "qu": "Runa Simi, Kichwa",
+    "rm": "Rumantsch Grischun",
+    "rn": "Ikirundi",
+    "ro": "Română",
+    "ru": "Русский",
+    "sa": "संस्कृतम्",
+    "sc": "sardu",
+    "sd": "सिन्धी, سنڌي، سندھی‎",
+    "se": "Davvisámegiella",
+    "sm": "gagana fa'a Samoa",
+    "sg": "yângâ tî sängö",
+    "sr": "српски језик",
+    "gd": "Gàidhlig",
+    "sn": "chiShona",
+    "si": "සිංහල",
+    "sk": "Slovenčina, Slovenský Jazyk",
+    "sl": "Slovenski Jezik, Slovenščina",
+    "so": "Soomaaliga, af Soomaali",
+    "st": "Sesotho",
+    "es": "Español",
+    "su": "Basa Sunda",
+    "sw": "Kiswahili",
+    "ss": "SiSwati",
+    "sv": "Svenska",
+    "ta": "தமிழ்",
+    "te": "తెలుగు",
+    "tg": "тоҷикӣ, toçikī, تاجیکی‎",
+    "th": "ไทย",
+    "ti": "ትግርኛ",
+    "bo": "བོད་ཡིག",
+    "tk": "Türkmen, Түркмен",
+    "tl": "Wikang Tagalog",
+    "tn": "Setswana",
+    "to": "Faka Tonga",
+    "tr": "Türkçe",
+    "ts": "Xitsonga",
+    "tt": "татар теле, tatar tele",
+    "tw": "Twi",
+    "ty": "Reo Tahiti",
+    "ug": "ئۇيغۇرچە‎, Uyghurche",
+    "uk": "Українська",
+    "ur": "اردو",
+    "uz": "Oʻzbek, Ўзбек, أۇزبېك‎",
+    "ve": "Tshivenḓa",
+    "vi": "Tiếng Việt",
+    "vo": "Volapük",
+    "wa": "Walon",
+    "cy": "Cymraeg",
+    "wo": "Wollof",
+    "fy": "Frysk",
+    "xh": "isiXhosa",
+    "yi": "ייִדיש",
+    "yo": "Yorùbá",
+    "za": "Saɯ cueŋƅ, Saw cuengh",
+    "zh-HK": "粵語",
+    "zh-TW": "正體中文",
+    "zh-CN": "简体中文",
+    "zu": "isiZulu",
+    "others": "その他"
+  },
+  "LinkTooltip": {
+    "button": {
+      "copy": "copy"
+    },
+    "label": {
+      "copySuccess": "Copied to the clipboard successfully",
+      "copyFailure": "Copy was unsuccessful."
+    }
+  }
+}

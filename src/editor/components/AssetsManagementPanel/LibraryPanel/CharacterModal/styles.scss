@@ -1,0 +1,202 @@
+@import "../../index";
+
+#character-modal .fg-image-preview {
+  display: flex;
+  flex-direction: row;
+
+  .character-modal-body-image-selection {
+    display: flex;
+    flex-direction: column;
+    width: 480px;
+    height:360px;
+    margin-left: 0px;
+    margin-right: 12px;
+    border: 1px solid $light-gray3;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    overflow: hidden;
+
+    .character-modal-add-image-selection {
+      background-color: $pure-white;
+      padding-left: 10px;
+    }
+
+    .character-modal-add-row {
+      border-bottom: 1px solid $light-gray3;
+      overflow: -moz-scrollbars-vertical;
+      overflow-y: scroll;
+    }
+
+    .image-selection-row {
+      cursor: pointer;
+      display: flex;
+      flex-direction: row;
+      padding: 15px 10px 10px 10px;
+      border-top: 1px solid $dark-gray7;
+      background-color: $light-gray4;
+      position: relative;
+
+      &.selected {
+        background-color: $pure-white;
+      }
+
+      .fg-image-row-details {
+        margin-left: 8px;
+        width: 100%;
+
+        > .text-field {
+          margin-bottom: 5px;
+          width: inherit;
+        }
+      }
+
+      .fg-row-cross-button > .flat-button {
+        min-height: 0;
+        padding: 0 0 0 10px;
+      }
+    }
+  }
+
+  .character-modal-body-character-preview {
+    margin-left: 12px;
+    margin-right: 0px;
+  }
+
+  .character-modal-body-button-group {
+    margin: 12px 40px;
+  }
+}
+
+#character-modal .expansion-panel {
+  background-color: $light-gray2;
+  font-family: PingFangSC-Regular;
+
+  .expansion-panel-content {
+    padding-top: 0px;
+    display: flex;
+    flex-direction: row;
+
+    .character-modal-panel-name {
+      display: flex;
+      flex-direction: column;
+      width: 370px;
+
+      .character-modal-panel-name-title {
+        flex-grow: 0;
+        height: 17px;
+        font-size: 12px;
+        color: $dark-gray2;
+      }
+
+      .character-modal-panel-name-language {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 0;
+        margin-top: $min-padding;
+
+        .character-modal-panel-language-title {
+          width: 80px;
+          font-size: 12px;
+          color: $dark-gray5;
+          display: flex;
+          align-items: center;
+        }
+
+        .character-modal-panel-language-input {
+          // width: calc(100% - 80px);
+          width: 100%;
+          display: flex;
+          align-items: center;
+          padding-right: 20px;
+        }
+      }
+
+      #character-generic-checkbox {
+        margin-top: 16px;
+      }
+    }
+
+    .character-modal-panel-config {
+      display: flex;
+      flex-direction: column;
+      width: calc(100% - 370px);
+
+      .character-modal-panel-config-height-width {
+        height: 17px;
+        font-size: 12px;
+        color: $dark-gray2;
+        display: flex;
+        flex-direction: row;
+
+        .character-modal-panel-config-block {
+          width: 120px;
+          display: flex;
+          flex-direction: row;
+
+          .character-modal-panel-config-title {
+            width: 60px;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+          }
+
+          .character-modal-panel-config-value {
+            font-weight: 900;
+            font-size: 14px;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+          }
+        }
+      }
+
+      .character-modal-panel-config-coordinate {
+        display: flex;
+        flex-direction: row;
+        margin-top: $min-padding;
+        margin-bottom: 10px;
+
+        .character-modal-panel-config-coordinate-modal {
+          flex-grow: 1;
+          height: 144px;
+          border: 1px solid $light-gray3;
+          border-radius: 2px;
+          background-color: $light-gray4;
+          margin-right: 5px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+
+          &.selected {
+            background-color: $pure-white;
+          }
+
+          .character-modal-panel-config-coordinate-title {
+            text-align: center;
+          }
+
+          .character-modal-panel-config-coordinate-detail {
+            display: flex;
+            flex-direction: row;
+
+            .character-modal-panel-config-coordinate-detail-title {
+              width: calc(100% - 100px);
+              text-align: center;
+              justify-content: center;
+              display: flex;
+              align-items: center;
+            }
+
+            .character-modal-panel-config-coordinate-input {
+              width: 100px;
+              justify-content: center;
+              display: flex;
+              align-items: center;
+              padding-right: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

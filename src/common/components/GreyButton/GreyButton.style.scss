@@ -1,0 +1,31 @@
+@import "../../styles/variables";
+
+.grey-button {
+  box-sizing: border-box;
+  padding: padding();
+
+  cursor: pointer;
+  transition: color .15s ease-in;
+
+  color: $light-grey-3;
+  border: 1px solid $light-grey-3;
+  border-radius: 4px;
+  background-color: $light-grey-2;
+
+  &:hover {
+    color: $dark-grey-1;
+  }
+
+  &:active .icon-wrapper {
+    transform: translateY(2px);
+  }
+
+  .icon-wrapper {
+    @include aspect-ratio(1, 1);
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="179px" height="179px" viewBox="0 0 179 179" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <ellipse id="path-1" cx="41.0981401" cy="41.1091777" rx="41.0981401" ry="41.1091777"></ellipse>
+        <ellipse id="path-3" cx="41.0981401" cy="41.660286" rx="41.0981401" ry="41.1091777"></ellipse>
+        <ellipse id="path-5" cx="41.0981401" cy="41.1091777" rx="41.0981401" ry="41.1091777"></ellipse>
+        <ellipse id="path-7" cx="41.623862" cy="41.1091777" rx="41.0981401" ry="41.1091777"></ellipse>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="logo2">
+            <g id="logo">
+                <g id="标志" transform="translate(0.301170, 0.302326)">
+                    <g id="Oval">
+                        <g id="path-1-Clipped">
+                            <g>
+                                <mask id="mask-2" fill="white">
+                                    <use xlink:href="#path-1"></use>
+                                </mask>
+                                <g id="path-1"></g>
+                                <ellipse id="path-1" stroke="#E94F4F" stroke-width="12" fill="#E94F4F" fill-rule="nonzero" mask="url(#mask-2)" cx="41.0981401" cy="41.1091777" rx="41.0981401" ry="41.1091777"></ellipse>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="Oval" transform="translate(0.000000, 94.000000)">
+                        <g id="path-3-Clipped">
+                            <g>
+                                <mask id="mask-4" fill="white">
+                                    <use xlink:href="#path-3"></use>
+                                </mask>
+                                <g id="path-3"></g>
+                                <ellipse id="path-3" stroke="#16A122" stroke-width="12" fill="#16A122" fill-rule="nonzero" mask="url(#mask-4)" cx="41.0981401" cy="41.660286" rx="41.0981401" ry="41.1091777"></ellipse>
+                            </g>
+                        </g>
+                    </g>
+                    <g id="播放" transform="translate(94.525722, 94.551109)">
+                        <g id="Oval">
+                            <g id="path-5-Clipped">
+                                <g>
+                                    <mask id="mask-6" fill="white">
+                                        <use xlink:href="#path-5"></use>
+                                    </mask>
+                                    <g id="path-5"></g>
+                                    <ellipse id="path-5" stroke="#353434" stroke-width="8" mask="url(#mask-6)" cx="41.0981401" cy="41.1091777" rx="41.0981401" ry="41.1091777"></ellipse>
+                                </g>
+                            </g>
+                        </g>
+                        <path d="M46.3193555,22.942938 C46.6662741,22.3751006 47.2251499,22.3692241 47.5756588,22.942938 L68.9233326,57.8848769 C69.2702511,58.4527143 69.0122838,58.9130374 68.3422806,58.9130374 L25.5527337,58.9130374 C24.884909,58.9130374 24.6211729,58.4585909 24.9716817,57.8848769 L46.3193555,22.942938 Z" id="Triangle-2" fill="#353434" fill-rule="nonzero" transform="translate(46.946922, 40.713945) rotate(90.000000) translate(-46.946922, -40.713945) "></path>
+                    </g>
+                    <g id="Oval" transform="translate(94.000000, 0.000000)">
+                        <g id="path-7-Clipped">
+                            <g>
+                                <mask id="mask-8" fill="white">
+                                    <use xlink:href="#path-7"></use>
+                                </mask>
+                                <g id="path-7"></g>
+                                <ellipse id="path-7" stroke="#0097E8" stroke-width="12" fill="#0097E8" fill-rule="nonzero" mask="url(#mask-8)" cx="41.623862" cy="41.1091777" rx="41.0981401" ry="41.1091777"></ellipse>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

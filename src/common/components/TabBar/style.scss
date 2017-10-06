@@ -1,0 +1,100 @@
+@import "../../styles/variables";
+
+.tabbar {
+  overflow: hidden;
+
+  @media screen and (max-width: $screen-phone) {
+    width: 100%;
+
+    > * {
+      width: inherit;
+    }
+  }
+}
+
+.tabbar-nav {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 48px;
+
+  border-bottom: solid 1px $light-gray3;
+  background-color: $pure-white;
+}
+
+.tabbar-item {
+  position: relative;
+
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 64px;
+
+  cursor: pointer;
+  transition: color .2s ease-out;
+  text-overflow: ellipsis;
+  word-wrap: none;
+
+  color: $dark-gray2;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 48px;
+
+  > svg {
+    width: padding(2/3);
+    height: padding(2/3);
+    margin: 0 padding(1/3);
+  }
+
+  > span {
+    position: relative;
+    &::before {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+
+      width: 16px;
+      height: 2px;
+      margin-left: -8px;
+
+      content: "";
+      transition: background-color .2s ease-out;
+
+      background-color: $light-gray3;
+    }
+  }
+
+  &:hover,
+  &.selected {
+    color: $dark-gray6;
+  }
+
+  &.selected {
+    > span::before {
+      background-color: $oice-red;
+    }
+  }
+
+  @media screen and (min-width: $screen-phone + 1px) {
+    width: 18%;
+  }
+}
+
+.tabbar-content-wrapper {
+  position: relative;
+
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+
+  min-height: 256px;
+}

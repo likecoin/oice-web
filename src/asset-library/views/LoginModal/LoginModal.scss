@@ -1,0 +1,51 @@
+@import "../../styles/common";
+
+.modal-two-body {
+  > span {
+    display: block;
+
+    margin-bottom: padding(2/3);
+
+    color: $dark-grey-2;
+
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  div.login-button > a {
+    display: flex;
+
+    width: 100%;
+    max-width: 300px;
+    height: 54px;
+    margin: 0;
+    padding: 0;
+
+    cursor: pointer;
+    text-decoration: none;
+
+    border: 1px solid $light-grey-3;
+    border-radius: 2px;
+    background-color: $pure-white;
+
+    align-items: center;
+    > img {
+      width: 28px;
+      height: 28px;
+      margin-left: 19px;
+    }
+    p {
+      margin: 0;
+      margin-left: 39px;
+
+      color: $font-color1;
+
+      font-family: 'Roboto', 'Noto Sans TC', sans-serif;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    &.edit {
+      align-self: center;
+    }
+  }
+}

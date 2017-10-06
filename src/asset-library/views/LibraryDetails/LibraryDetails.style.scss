@@ -1,0 +1,262 @@
+@import "../../styles/common";
+
+.library-details {
+  &.library-details-modal {
+    position: fixed;
+    z-index: 300;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    overflow-y: auto;
+
+    max-height: 100%;
+    padding: 0 padding(3/2);
+
+    background-color: $overlay-grey;
+  }
+
+  &:not(.library-details-modal) {
+    position: relative;
+  }
+}
+
+.library-details-loading {
+  margin: 192px 0;
+}
+
+.library-details-container {
+  position: relative;
+
+  > * {
+    border-radius: 4px;
+    background-color: $pure-white;
+  }
+
+  .library-details-modal & {
+    width: 100%;
+    max-width: $max-width - padding(2) * 2;
+    margin: padding(2) auto;
+
+    > *:not(:first-child) {
+      margin-top: padding(1/4);
+    }
+  }
+
+  .close-button {
+    position: absolute;
+    top: 0;
+    right: padding(2/3);
+  }
+}
+
+.tabbar-nav {
+  .library-details-modal & {
+    background-color: transparent;
+  }
+
+  .asset-count-badge {
+    position: absolute;
+    top: 10px;
+    left: 100%;
+
+    height: 12px;
+    margin-left: 4px;
+    padding: 0 4px;
+
+    color: $pure-white;
+    border-radius: 6px;
+    background-color: $oice-red;
+
+    font-size: 10px;
+    line-height: 12px;
+  }
+}
+
+.audio-upload-container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: padding() padding(3/2) 0;
+}
+
+.library-details-assets {
+  .library-details:not(.library-details-modal) & {
+    background-color: $light-grey-1;
+
+    .asset-grid-list {
+      max-width: $max-width;
+      margin: 0 auto;
+    }
+  }
+}
+
+/*
+ * LibraryInfo
+ */
+.library-info {
+  position: relative;
+
+  display: flex;
+
+  padding: padding(3/2) padding() padding();
+
+  > * {
+    &:not(:first-child) {
+      margin-left: padding();
+    }
+  }
+
+  h1, h2, h3, p, hr {
+    margin: 0;
+  }
+
+  .library-column-thumbnail {
+    flex-grow: 0;
+
+    img {
+      overflow: hidden;
+
+      width: $library-grid-item-size;
+      height: $library-grid-item-size;
+
+      border-radius: 8px;
+      background-color: $light-grey-3;
+
+      object-fit: cover;
+    }
+  }
+
+  .library-column-info {
+    flex: 1;
+
+    h1 {
+      color: $oice-red;
+
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 20px;
+    }
+
+    * + h2 {
+      margin-top: padding(1/2);
+    }
+
+    h2 {
+      color: $dark-grey-2;
+
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 14px;
+    }
+
+    * + p {
+      margin-top: padding(1/4);
+    }
+
+    p {
+      color: $dark-grey-2;
+
+      font-size: 12px;
+      line-height: 1.33;
+    }
+
+    * + .library-credits {
+      margin-top: padding();
+    }
+
+    .library-credits {
+      display: inline-flex;
+
+      > * {
+        &:first-child {
+          flex-shrink: 0;
+        }
+        &:not(:first-child) {
+          margin-left: padding();
+        }
+      }
+
+      .credit-section {
+        flex-wrap: wrap;
+
+        h3 {
+          color: $dark-grey-1;
+
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 1.5;
+        }
+
+        .credit-users {
+          margin: -1*padding(1/4) -1*padding(1/2);
+
+          .avatar {
+            margin: padding(1/4) padding(1/2);
+
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  .library-column-stats {
+    span {
+      color: $dark-grey-1;
+
+      font-size: 12px;
+      line-height: 1.5;
+    }
+  }
+
+  .library-column-action {
+    position: relative;
+
+    width: 248px;
+    padding: 0 padding(1);
+
+    border-left: $light-grey-3 1px solid;
+
+    flex-shrink: 0;
+
+    .library-action {
+      display: flex;
+
+      height: 100%;
+      max-height: 216px;
+      padding-right: padding(1);
+      padding-left: inherit;
+
+      align-items: center;
+
+      h2 {
+        position: absolute;
+        top: 0;
+        left: padding(2/3);
+
+        color: $dark-grey-1;
+
+        font-size: 14px;
+        font-weight: 400;
+      }
+
+      > * {
+        width: 100%;
+      }
+    }
+
+    .loading {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      display: flex;
+
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

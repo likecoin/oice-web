@@ -1,0 +1,39 @@
+@import "../../styles/variables";
+
+$triangle-size: 70px;
+
+.triangle-label {
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 1;
+  width: $triangle-size;
+  height: $triangle-size;
+
+  .triangle-background {
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: $triangle-size $triangle-size 0 0;
+    border-color: $dark-gray1 transparent transparent transparent;
+    position: absolute;
+  }
+
+  > svg {
+    width: auto;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 28px;
+    height: 28px;
+    fill: $pure-white;
+  }
+}
+
+.triangle-label.selected {
+  .triangle-background {
+    border-top-color: #FF3A4E;
+  }
+}

@@ -1,0 +1,9 @@
+@import "../index";
+$padding-left: 20px;
+$modal-border-style: 1px solid $hairline-color;
+
+.edit-audio-modal {
+  .text-field {
+    margin-top: 20px;
+  }
+}

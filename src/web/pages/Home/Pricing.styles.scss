@@ -1,0 +1,23 @@
+@import "../../styles/variables";
+
+.pricing-section {
+  overflow: hidden;
+  background-color: $light-grey-1;
+
+  .section-wrapper {
+    padding-top: 128px;
+  }
+
+  .section-title {
+    position: absolute;
+
+    > h1 {
+      background-image: linear-gradient(275deg, #3cced4 0%, #5cb7e8 50%, #8259d3 100%);
+    }
+  }
+
+  .pricing-table {
+    display: flex;
+    justify-content: center;
+  }
+}

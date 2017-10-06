@@ -1,0 +1,43 @@
+.check-box {
+  > div {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+
+    > input[type='checkbox'] {
+      -webkit-appearance:none;
+      width: 14px;
+    	height: 14px;
+    	border-radius: 2px;
+    	background: $pure-white;
+    	border: $border-style1;
+      outline:none;
+      flex-shrink: 0;
+
+      &:checked {
+        background: {
+          image: url('/img/checked-mark.png');
+          color: $dark-green1;
+          repeat: no-repeat;
+          position: center;
+          origin: content-box;
+          size: 10px 10px;
+        }
+      }
+    }
+
+    > span {
+      font-size: $font-size-normal;
+    }
+
+    > label {
+      font-size: 14px;
+	    color: $dark-gray3;
+      margin-left: 8px;
+    }
+  }
+
+  div:first-child {
+    margin-top: 0;
+  }
+}

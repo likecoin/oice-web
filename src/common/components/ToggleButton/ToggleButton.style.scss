@@ -1,0 +1,114 @@
+@import "../../styles/variables";
+
+.toggle-button {
+  display: flex;
+
+  margin: 8px;
+
+  align-items: center;
+
+  .toggle {
+    display: none;
+
+    + .switch {
+      position: relative;
+
+      display: block;
+
+      min-width: 40px;
+      height: 18px;
+      padding: 1px;
+
+      cursor: pointer;
+      transition: all .4s ease;
+
+      border: 1px solid $dark-grey-2;
+      border-radius: 14px;
+      background: $dark-grey-1;
+
+      &:after {
+        position: relative;
+        left: 0;
+
+        display: block;
+
+        box-sizing: border-box;
+        width: 14px;
+        height: 14px;
+
+        content: "";
+        transition: all .2s ease;
+
+        border: 1px solid $pure-white;
+        border-radius: 50%;
+        background: $pure-white;
+      }
+    }
+
+    &:checked + .switch {
+      border-color: $dark-green;
+      background: $oice-green;
+    }
+
+    &:checked + .switch:after {
+      left: 22px;
+
+      border: 1px solid $light-grey-3;
+    }
+  }
+
+  span {
+    transition: color .4s ease;
+
+    color: $dark-grey-1;
+
+    font-weight: 500;
+    line-height: 20px;
+
+    &:first-child {
+      margin-right: 18px;
+
+      &.active {
+        color: $oice-red;
+      }
+    }
+
+    &:last-child {
+      margin-left: 18px;
+
+      &.active {
+        color: $oice-green;
+      }
+    }
+  }
+
+  &.narrow {
+    .toggle {
+      + .switch {
+        min-width: 28px;
+        height: 14px;
+
+        border-radius: 8px;
+        &:after {
+          width: 10px;
+          height: 10px;
+
+          border: none;
+        }
+      }
+      &:checked + .switch:after {
+        left: 14px;
+      }
+    }
+    span {
+      font-size: 12px;
+      font-weight: 300;
+      &:first-child {
+        margin-right: 8px;
+      }
+      &:last-child {
+        margin-left: 8px;
+      }
+    }
+  }
+}

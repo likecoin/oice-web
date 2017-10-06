@@ -1,0 +1,134 @@
+$tutor-horizontal-margin: 2%;
+$tutorial-control-margin: 35px;
+$tutorial-overlay-extension: 2000px;
+$tutorial-overlay-margin: 10px;
+
+.interactive-tutorial {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: visible !important;
+  z-index: 9999;
+
+  .tutorial-overlay {
+    position: absolute;
+    box-shadow: 0 0 0 $tutorial-overlay-extension rgba(0,0,0,.3), 0 0 15px rgba(0,0,0,.3);
+    border-radius: 5px;
+    pointer-events: none;
+    transition: all .2s ease-out;
+
+    .override-button {
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    > div {
+      pointer-events: auto;
+      position: absolute;
+      width: $tutorial-overlay-extension;
+      height: $tutorial-overlay-extension;
+    }
+
+    .mask-top {
+      bottom: calc(100% - #{$tutorial-overlay-margin});
+      right: 0;
+    }
+
+    .mask-bottom {
+      left: 0;
+      top: calc(100% - #{$tutorial-overlay-margin});
+    }
+
+    .mask-left {
+      right: calc(100% - #{$tutorial-overlay-margin});
+      top: 0;
+    }
+
+    .mask-right {
+      bottom: 0;
+      left: calc(100% - #{$tutorial-overlay-margin});
+    }
+  }
+
+  .tutor {
+    position: inherit;
+    bottom: -2%;
+    max-height: 60%;
+    max-width: 60%;
+  }
+
+  .tutor-dialog {
+    border-image-repeat: stretch;
+    border-image-slice: 5 5 31 72 fill; /* HARD-CODE */
+    border-image-source: url("/static/interactive-tutorial/dialog.png");
+    border-style: solid;
+    border-width: 5px 5px 31px 72px; /* HARD-CODE */
+    min-height: 52px; /* HARD-CODE */
+    min-width: 95px; /* HARD-CODE */
+    max-width: 400px;
+    position: fixed;
+    margin: 15px;
+  }
+
+  .tutor-dialog-content {
+    margin-left: -65px; /* HARD-CODE */
+    overflow: auto;
+    padding: 12px;
+
+    > div:first-child {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 32px;
+      word-break: break-word;
+      &.mini {
+        font-size: 20px;
+      }
+      img {
+        max-width: 360px;
+      }
+    }
+
+    > *:not(:first-child) {
+      margin-top: 5px;
+    }
+  }
+
+  .finish-tutorial-button {
+    float: right;
+  }
+
+  .tutorial-control {
+    position: fixed;
+    bottom: $tutorial-control-margin * 2;
+  }
+
+  &:not(.flip) {
+    .tutor {
+      left: $tutor-horizontal-margin;
+    }
+
+    .tutorial-control {
+      right: $tutorial-control-margin;
+    }
+  }
+
+  &.flip {
+    .tutor {
+      right: $tutor-horizontal-margin;
+    }
+
+    .tutorial-control {
+      left: $tutorial-control-margin;
+    }
+
+    .tutor,
+    .tutor-dialog,
+    .tutor-dialog-content {
+      transform: scaleX(-1);
+    }
+  }
+}
