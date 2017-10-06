@@ -1,0 +1,104 @@
+{
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "plugins": [
+    "react"
+  ],
+  "extends": "airbnb",
+  "rules": {
+    "arrow-parens": 1,
+    "camelcase": 0,
+    "class-methods-use-this": 1,
+    "comma-dangle": [
+      1,
+      {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "ignore"
+      }
+    ],
+    "global-require": 0,
+    "import/extensions": 0,
+    "import/first": 1,
+    "import/imports-first": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/no-named-as-default": 0,
+    "import/no-named-as-default-member": 0,
+    "import/no-unresolved": 0,
+    "import/prefer-default-export": 0,
+    "jsx-a11y/anchor-has-content": 1,
+    "jsx-a11y/img-has-alt": 1,
+    "jsx-a11y/no-static-element-interactions": 1,
+    "max-len": 0,
+    "new-cap": 0,
+    "no-console": 0,
+    "no-mixed-operators": [
+      0,
+      {
+        "allowSamePrecedence": true
+      }
+    ],
+    "no-named-as-default": 0,
+    "no-plusplus": 0,
+    "no-return-assign": 0,
+    "no-static-element-interactions": 0,
+    "no-underscore-dangle": 0,
+    "no-unused-vars": 0,
+    "no-useless-return": 1,
+    "one-var": 0,
+    "one-var-declaration-per-line": [
+      2,
+      "initializations"
+    ],
+    "react/forbid-prop-types": 0,
+    "react/jsx-sort-props": [
+      1,
+      {
+        "callbacksLast": true,
+        "shorthandLast": true,
+        "ignoreCase": true,
+        "noSortAlphabetically": true,
+        "reservedFirst": true
+      }
+    ],
+    "react/jsx-wrap-multilines": [
+      1,
+      {
+        "arrow": false
+      }
+    ],
+    "react/no-array-index-key": 1,
+    "react/no-children-prop": 1,
+    "react/no-danger": 0,
+    "react/no-did-update-set-state": 0,
+    "react/no-find-dom-node": 0,
+    "react/no-unknown-property": 0,
+    "react/no-unused-prop-types": 1,
+    "react/prefer-stateless-function": 0,
+    "react/prop-types": 1,
+    "react/require-default-props": 0,
+    "react/sort-comp": [
+      1,
+      {
+        "order": [
+          "static-methods",
+          "lifecycle",
+          "/^get.+$/",
+          "/^set.+$/",
+          "/^load.+$/",
+          "/^fetch.+$/",
+          "/^on.+$/",
+          "/^handle.+$/",
+          "everything-else",
+          "/^render.+$/",
+          "render"
+        ]
+      }
+    ]
+  }
+}
