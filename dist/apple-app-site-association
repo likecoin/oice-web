@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "/* REPLACE APP ID */",
+        "paths": ["*"]
+      }
+    ]
+  }
+}

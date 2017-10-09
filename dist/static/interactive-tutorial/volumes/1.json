@@ -1,0 +1,210 @@
+{
+  "volume": "fe48fc2",
+  "forkOiceId": "1055",
+  "steps": [
+    {
+      "id": "9b00e93",
+      "fgImage": "chriswong-03",
+      "flip": true,
+      "override": false,
+      "selectors": [
+        "#story-gallery #item-%(storyId)s"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "先點擊這裡選一個故事吧。",
+        "en": "Start by clicking here to select a story to edit.",
+        "ja": "まず、ここをクリックしてストーリーを選んでください。"
+      }
+    },
+    {
+      "id": "115c8cf",
+      "fgImage": "chriswong-03",
+      "flip": false,
+      "selectors": [
+        ".gallery-expansion-panel.expanded .oice-rows > .oice-row:nth-last-child(2) .edit-oice-button"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "點擊這個oice開始編輯。",
+        "en": "Then click on this oice to begin editing.",
+        "ja": "このoiceをクリックして、編集を開始します。"
+      }
+    },
+    {
+      "id": "72ca1a4",
+      "fgImage": "chriswong-03",
+      "flip": true,
+      "override": false,
+      "selectors": [
+        "#macro-78"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "<span style='color: #FF0041;'>顯示背景</span>是最常用的組件之一，拖按來選擇<span style='color: #FF0041;'>顯示背景</span>組件。",
+        "en": "<span style='color: #FF0041;'>Show Background</span> is one of the most commonly used components. Drag it into the middle to select which backgroud to use.",
+        "ja": "<span style='color: #FF0041;'>背景画像表示</span>はよく使う機能の一つで、<span style='color: #FF0041;'>背景画像表示</span>のブロックをタイムラインにドラッグして使います。"
+      }
+    },
+    {
+      "id": "72ca1a2",
+      "fgImage": "chriswong-03",
+      "flip": true,
+      "override": false,
+      "selectors": [
+        "#blocks-panel > *:first-child"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "在組件列表上放開來插入組件。",
+        "en": "Release the component here to add it",
+        "ja": "タイムラインの上で離すと挿入することができます。"
+      }
+    },
+    {
+      "id": "0aa42c1",
+      "fgImage": "chriswong-03",
+      "flip": false,
+      "selectors": [
+        ".attribute-form-image .dropdown"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "點擊選擇背景圖片。",
+        "en": "Click here to select a background image",
+        "ja": "ここをクリックして背景画像を選ぶことができます。"
+      }
+    },
+    {
+      "id": "7d618aa",
+      "fgImage": "chriswong-03",
+      "flip": true,
+      "selectors": [
+        ".asset-item:nth-child(2)"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "選擇一張背景圖片。",
+        "en": "Select an image to use as the background",
+        "ja": "この背景画像を選んでください。"
+      }
+    },
+    {
+      "id": "a47c2b5",
+      "fgImage": "chriswong-03",
+      "flip": true,
+      "override": false,
+      "selectors": [
+        "#macro-68"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "你也可以雙擊來插入組件到組件列表的末端，請雙擊<span style='color: #FF0041;'>角色對白</span>組件來插入。",
+        "en": "You can also double click a component to add it below your current selection. Double click on <span style='color: #FF0041;'>Character Dialogue</span> to add it.",
+        "ja": "ちなみに、ブロックをダブルクリックして、タイムラインの最後尾につけることもできます。<span style='color: #FF0041;'>セリフ</span>のブロックをダブルクリックしてみてください。"
+      }
+    },
+    {
+      "id": "0bb9cb4",
+      "fgImage": "chriswong-03",
+      "flip": false,
+      "selectors": [
+        ".attribute-form-character-dialog .dropdown"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "點擊選擇角色。",
+        "en": "Click here to select a character.",
+        "ja": "ここをクリックして、キャラを選びます。"
+      }
+    },
+    {
+      "id": "83d7186",
+      "fgImage": "chriswong-03",
+      "flip": false,
+      "selectors": [
+        ".asset-item.reference:nth-child(2)"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "選擇一個角色。",
+        "en": "Select a character.",
+        "ja": "この背景画像を選んでください。"
+      }
+    },
+    {
+      "id": "673612c",
+      "fgImage": "chriswong-03",
+      "flip": true,
+      "selectors": [
+        ".asset-item:nth-child(2)"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "選擇一個立繪。",
+        "en": "Select a posture",
+        "ja": "ポーズを選んでください。"
+      }
+    },
+    {
+      "id": "c494af6",
+      "fgImage": "chriswong-03",
+      "flip": false,
+      "selectors": [
+        ".attribute-form-character-dialog .attribute-paragraph"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "請隨意輸入一句對白。",
+        "en": "Now enter whatever dialogue you want. Click to continue after.",
+        "ja": "セリフを入力してください。"
+      }
+    },
+    {
+      "id": "5a02137",
+      "fgImage": "chriswong-03",
+      "flip": true,
+      "override": false,
+      "selectors": [
+        "#blocks-panel .block-list > *:nth-last-child(3)",
+        "#blocks-panel .block-list > *:nth-last-child(2)"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "組件之間的順序還可以通過拖動來調換。",
+        "en": "You can also drag components to change their order. Try it out.",
+        "ja": "ブロックの配列はドラッグで置き換えることができます。"
+      }
+    },
+    {
+      "id": "da65998",
+      "fgImage": "chriswong-03",
+      "flip": true,
+      "override": true,
+      "selectors": [
+        ".oice-preview-button"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "點擊<span style='color: #FF0041;'>預覽</span>可以觀看這個 oice。",
+        "en": "Click on the <span style='color: #FF0041;'>Preview</span> button to watch your oice.",
+        "ja": "<span style='color: #FF0041;'>プレビュー</span>をクリックして、確認できます。"
+      }
+    },
+    {
+      "id": "24c55dd",
+      "fgImage": "chriswong-07",
+      "flip": true,
+      "override": true,
+      "selectors": [
+        ".toggle-editor-menu-button"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "新手教程就到這裏啦，我們期待著你的oice作品哦～\n你可點擊右上角菜單下的<span style='color: #FF0041;'>「查看教程(新手教程)」</span>重看此教學。",
+        "en": "This brings the oice tutorial to an end. We look forward to seeing the oice you make! Oh, I almost forgot. You can click on the left of your profile (on the gear) to review this tutorial and watch other tutorials.",
+        "ja": "チュートリアルはここまでです。あなたの作品を見るのが楽しみです！分からなくなったら、プロフィールの左側、<span style='color: #FF0041;'>「初心者のチュートリアルへ」</span>をクリックして、このチュートリアルを復習することができます。"
+      }
+    }
+  ]
+}

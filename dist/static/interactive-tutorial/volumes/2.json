@@ -1,0 +1,263 @@
+{
+  "volume": "c0e6d4e",
+  "steps": [
+    {
+      "id": "f7471d8",
+      "fgImage": "chriswong-03",
+      "flip": false,
+      "override": false,
+      "selectors": [
+        ".assets-management-button"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "點擊<span style='color: #FF0041;'>素材</span>，進入素材庫。",
+        "en": "Click on <span style='color: #FF0041;'>Assets</span> to enter your assest library",
+        "ja": "<span style='color: #FF0041;'>素材</span>をクリックして、素材コレクションへ追加することができます。"
+      }
+    },
+    {
+      "id": "e1626fe",
+      "fgImage": "chriswong-03",
+      "flip": true,
+      "override": false,
+      "selectors": [
+        ".library-grid-item"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "新增一個自己的素材庫。",
+        "en": "Lets make a new assest library",
+        "ja": "新しい素材コレクションを作成してみましょう。"
+      }
+    },
+    {
+      "id": "a3157cb",
+      "fgImage": "chriswong-03",
+      "flip": true,
+      "override": false,
+      "selectors": [
+        ".outline-button.green"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "選擇創建<span style='color: #FF0041;'>共享</span>素材庫。",
+        "en": "Select <span style='color: #FF0041;'>Public</span> to make a publicly avalible assest library",
+        "ja": "<span style='color: #FF0041;'>共有</span>を選んで一般公開の素材コレクションを作ってみてください。"
+      }
+    },
+    {
+      "id": "374b9f2",
+      "fgImage": "chriswong-03",
+      "flip": false,
+      "override": false,
+      "selectors": [],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "輸入素材庫名稱，然後按確定。",
+        "en": "Please enter a name, then click save",
+        "ja": "素材コレクションの名前を入力して、セーブボタンをクリックしてください。"
+      }
+    },
+    {
+      "id": "5c4da1f",
+      "fgImage": "chriswong-07",
+      "flip": true,
+      "override": true,
+      "selectors": [
+        "#asset-library > div.library-details > div > div.library-details-assets > ul"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "恭喜你 ~~ 你已經成功創建了一個素材庫。素材庫共有 <span style='color: #FF0041;'>角色 背景 道具 音樂 音效</span> 五種類型。我會先介紹角色。",
+        "en": "Congraduations! You just made your first asset library! There are 5 types of assets <span style='color: #FF0041;'>Characters - Backgrounds - Items - Music - Sound Effects</span>. Lets start with Characters.",
+        "ja": "おめでとうございます！新しい素材コレクションを作成しました。素材コレクションの中で<span style='color: #FF0041;'>キャラ 背景映画 道具 音楽 効果音</span>五つの種類があります。まず、キャラの機能を紹介します。"
+      }
+    },
+    {
+      "id": "fb4a175",
+      "fgImage": "chriswong-03",
+      "flip": true,
+      "override": false,
+      "selectors": [
+        "#asset-library > div.library-details > div > div.library-details-assets > div > ol > li"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "首先，按此加入一個新角色。",
+        "en": "First, lets make a new character.",
+        "ja": "ここにクリックして、新しいキャラを作成します。"
+      }
+    },
+    {
+      "id": "31559a1",
+      "fgImage": "chriswong-04",
+      "flip": true,
+      "override": true,
+      "selectors": [],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "讓我簡單介紹新增角色界面的功能，以及製作角色立繪的貼士。",
+        "en": "Let me briefly explain how to add a new character and give some tips.",
+        "ja": "新しくキャラを追加する方法を紹介します。"
+      }
+    },
+    {
+      "id": "1441273",
+      "fgImage": "chriswong-03",
+      "flip": true,
+      "override": true,
+      "selectors": [
+        ".character-modal-body-image-selection"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "這是立繪列表，一個角色可以有多張立繪，這樣在oice裡面就能夠讓角色做出不同的動作和表情了。",
+        "en": "This list shows all of the poses of the character. Each character can have many poses, so that in an oice characters can perform many different actions and show a full range of emotions.",
+        "ja": "これはポーズリストです。キャラの複数のポーズを作成できますので、oiceで様々なポーズと感情を表現できます。"
+      }
+    },
+    {
+      "id": "94249f6",
+      "fgImage": "chriswong-03",
+      "flip": true,
+      "override": true,
+      "hasFullOverlay": true,
+      "selectors": [],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "oice的播放界面是<span style='color: #FF0041;'>1080px × 1080px</span>，所以在制作<span style='color: #FF0041;'>立繪</span>的時候，請記得將圖片先調整成適合在 oice 展示的尺寸。下圖這張立繪的大小是 891px × 1304px。<br><div style='text-align: center;'><img alt='translation' src='/static/interactive-tutorial/images/volume2/fg-preview.jpg' /></div>",
+        "en": "The oice window is <span style='color: #FF0041;'>1080px × 1080px</span>, so when uploading new <span style='color: #FF0041;'>Images</span>, make sure that they will fit on the oice screen. The image below is  891px × 1304px. <br><div style='text-align: center;'><img alt='translation' src='/static/interactive-tutorial/images/volume2/fg-preview.jpg' /></div>",
+        "ja": "oiceは<span style='color: #FF0041;'>1080px × 1080px</span>で再生しますので、<span style='color: #FF0041;'>ポーズ</span>の作成の時、画像はこのサイズ以内になるよう調整してください。この画像のサイズは891px × 1304pxです。<br><div style='text-align: center;'><img alt='translation' src='/static/interactive-tutorial/images/volume2/fg-preview.jpg' /></div>"
+      }
+    },
+    {
+      "id": "d4234ce",
+      "fgImage": "chriswong-03",
+      "flip": true,
+      "override": true,
+      "hasFullOverlay": true,
+      "selectors": [],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "上一步的立繪（大小為 891px × 1304px）在 oice 播放的效果如下圖所示。<br><div style='text-align: center;'><img alt='translation' src='/static/interactive-tutorial/images/volume2/fg-play.jpg' /></div>",
+        "en": "Here is how the image (891px × 1304px) from last section appears in oice. <br><div style='text-align: center;'><img alt='translation' src='/static/interactive-tutorial/images/volume2/fg-play.jpg' /></div>",
+        "ja": "先のポーズ（サイズ 891px × 1304px）は、oiceで再生する時、このふうになります。<br><div style='text-align: center;'><img alt='translation' src='/static/interactive-tutorial/images/volume2/fg-play.jpg' /></div>"
+      }
+    },
+    {
+      "id": "8d6ea7a",
+      "fgImage": "chriswong-20",
+      "flip": true,
+      "override": true,
+      "selectors": [],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "同一角色裡面所有立繪的<span style='color: #FF0041;'>尺寸要統一</span>。為了達到良好的播放效果，每張立繪人物主體，例如頭部和身體的<span style='color: #FF0041;'>位置要一致</span>。<br><div style='text-align: center;'><img alt='translation' src='/static/interactive-tutorial/images/volume2/translation.gif' /></div>",
+        "en": "In order to have the best playback, every image of the same character <span style='color: #FF0041;'>should be the same size</span> and the head and chest <span style='color: #FF0041;'>should be in the same position.</span><br><div style='text-align: center;'><img alt='translation' src='/static/interactive-tutorial/images/volume2/translation.gif' /></div>",
+        "ja": "すべてのポーズの画像サイズは<span style='color: #FF0041;'>統一されなければなりません</span>。頭や体の位置も<span style='color: #FF0041;'>統一されている必要があります</span>。<br><div style='text-align: center;'><img alt='translation' src='/static/interactive-tutorial/images/volume2/translation.gif'　/></div>"
+      }
+    },
+    {
+      "id": "c65e580",
+      "fgImage": "chriswong-03",
+      "flip": false,
+      "override": true,
+      "selectors": [
+        ".character-modal-body-character-preview"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "<span style='color: #FF0041;'>角色坐標</span>能幫助你預覽立繪在真實播放時的效果，如大小和位置等。",
+        "en": "<span style='color: #FF0041;'>Character Postion</span> can be selected here and you can preview what the character will look like.",
+        "ja": "<span style='color: #FF0041;'>キャラの座標</span>は、再生時のキャラの実際の位置およびサイズを確認できます。"
+      }
+    },
+    {
+      "id": "8bd0b36",
+      "fgImage": "chriswong-03",
+      "flip": false,
+      "override": true,
+      "hasFullOverlay": true,
+      "selectors": [],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "上傳首張立繪後，oice 會根據立繪尺寸計算坐標，以達到最佳播放效果。你也可以通過<span style='color: #FF0041;'>直接拖曳圖片</span>來調整位置。<br><div style='text-align: center;'><img alt='drag' src='/static/interactive-tutorial/images/volume2/drag.gif' /></div>",
+        "en": "When you first upload an image, oice will chose a location based on the size of the image. You can <span style='color: #FF0041;'>drag the image</span> to change the location if you wish.<br><div style='text-align: center;'><img alt='drag' src='/static/interactive-tutorial/images/volume2/drag.gif' /></div>",
+        "ja": "oiceはアップロードした画像のサイズによって、位置を自動的に調整します。画像を<span style='color: #FF0041;'>ドラッグ</span>して調整することもできます。"
+      }
+    },
+    {
+      "id": "4f8dd4a",
+      "fgImage": "chriswong-03",
+      "flip": false,
+      "override": true,
+      "selectors": [
+        ".character-modal-body-button-group .button-group"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "oice 的基本表現形式是角色對話，所以角色有<span style='color: #FF0041;'>左、中、右</span>三個站位。點擊<span style='color: #FF0041;'>位置切換按鈕</span>可預覽角色在不同位置的效果。",
+        "en": "oice is designed to show dialogue, so there are 3 positions on the screen for characters: <span style='color: #FF0041;'>Left, Center, Right</span>. You can click on the <span style='color: #FF0041;'>Position Toggle</span> to view the character in each of these positions.",
+        "ja": "oice内のキャラは三つの場所に現れます。<span style='color: #FF0041;'>左、中，右</span>のボタンでプレビューできます。"
+      }
+    },
+    {
+      "id": "6eb461e",
+      "fgImage": "chriswong-03",
+      "flip": false,
+      "override": true,
+      "selectors": [
+        ".expansion-panel"
+      ],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "<span style='color: #FF0041;'>全局設定</span>包括角色名稱和左中右坐標，注意這是<span style='color: #FF0041;'>針對角色</span>，而非立繪的設定。",
+        "en": "<span style='color: #FF0041;'>Global Settings</span> include the name of the chratcter, and the characters location on screen. Note that all poses for the same character will have <span style='color: #FF0041;'>the same location</span> for each respective postion.",
+        "ja": "<span style='color: #FF0041;'>グローバル設定</span>はキャラの名前、左、中、右の座標も設定できます。グローバル設定は特定のポーズの画像の設定ではなく、<span style='color: #FF0041;'>このキャラの設定のみ</span>です。"
+      }
+    },
+    {
+      "id": "ad9af24",
+      "fgImage": "chriswong-20",
+      "flip": false,
+      "override": true,
+      "hasFullOverlay": true,
+      "selectors": [],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "在調整角色位置時，你可通過在角色坐標中拖曳立繪到大約的位置，然後再通過調整<span style='color: #FF0041;'>三個位置坐標</span>的數值來精確角色的位置。<br><div style='text-align: center;'><img alt='position' src='/static/interactive-tutorial/images/volume2/position.gif' /></div>",
+        "en": "You can drag the image in the selector to set the approximate position, and then can fine tune it using the adjustors in the settings pannel. <span style='color: #FF0041;'>Make sure you set all three locations postions well.</span><br><div style='text-align: center;'><img alt='position' src='/static/interactive-tutorial/images/volume2/position.gif' /></div>",
+        "ja": "ポーズ画像を置きたい場所にドラッグして、<span style='color: #FF0041;'>三つの座標</span>で微調整すろことができます。"
+      }
+    },
+    {
+      "id": "e3c3415",
+      "fgImage": "chriswong-01",
+      "flip": false,
+      "override": true,
+      "hasFullOverlay": true,
+      "selectors": [],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "oice 重視創作人的參與，你可以在每張立繪下<span style='color: #FF0041;'>添加作者(們)的名字</span>。當素材被引用時，素材作者的名字就會出現在該故事的幕後製作名單中。要注意的是，作者必須是 <span style='color: #FF0041;'>oice 的註冊用戶</span>，其名字才會出現在可選列表中。<br><div style='text-align: center;'><img alt='position' src='/static/interactive-tutorial/images/volume2/credits.jpg' /></div>",
+        "en": "oice cares about creators, so you can enter the <span style='color: #FF0041;'>usernames of all of the people helped with each asset</span>. When you do this, everyone you listed will be added to the credits of this library and every project this library gets used it. Note that the user must <span style='color: #FF0041;'>have an oice account</span> to appear on the list of suggestions. <br><div style='text-align: center;'><img alt='position' src='/static/interactive-tutorial/images/volume2/credits.jpg' /></div>",
+        "ja": "oice oiceはクリエイターのことを考えています。これを行うと、<span style='color: #FF0041;'>リストに載っているすべての人物</span>がこの素材のクレジットに追加され、この素材が使用されているすべてのプロジェクトに追加されます。ユーザーをリストに記載するためにoiceアカウントを持っている必要があります。<br><div style='text-align: center;'><img alt='position' src='/static/interactive-tutorial/images/volume2/credits.jpg' /></div>"
+      }
+    },
+    {
+      "id": "487c70a",
+      "fgImage": "chriswong-07",
+      "flip": true,
+      "override": true,
+      "hasFullOverlay": true,
+      "selectors": [],
+      "cursor": "default",
+      "dialog": {
+        "zh-HK": "角色教程就到這裡了，快試試上載自己的素材吧。\n在編輯器主頁右上角點擊<span style='color: #FF0041;'>「查看教程（角色教程）」</span>可重看此教程。",
+        "en": "That brings us to the end of the Assets Tutorial. Go start uploading your own assets! \n Once again, you can click on the left of your profile (on the gear) to review this tutorial and watch other tutorials.",
+        "ja": "チュートリアルはここまでです。早速、マイ素材コレクションを作成しましょう！いつでも<span style='color: #FF0041;'>「キャラのチュートリアルへ」</span>をクリックして、このチュートリアルを復習することができます。"
+      }
+    }
+  ]
+}
