@@ -1,0 +1,73 @@
+@import "../../../styles/variables";
+
+#editor-toolbar {
+  .app-bar-left-items .button-group .button-label {
+    color: $font-color1;
+
+    font-size: $font-size-normal;
+  }
+
+  .nav-bar-right-items > .menu-container:not(:last-child) {
+    margin-right: padding(1/3);
+  }
+
+  .story-oice-selection {
+    display: inherit;
+    align-items: inherit;
+
+    color: $dark-grey-1;
+
+    font-size: 16px;
+
+    .setting-menu-hr {
+      height: 28px;
+      margin: 0 17px !important;
+    }
+
+    > span {
+      cursor: pointer;
+      &:first-of-type {
+        padding-right: padding(1/6);
+      }
+      &:last-of-type {
+        padding-left: padding(1/6);
+
+        color: $oice-blue;
+      }
+    }
+    > svg {
+      width: padding(2/3);
+      height: padding(2/3);
+      margin-left: padding(1/3);
+    }
+
+    .flat-button {
+      width: padding(2/3);
+      height: padding(2/3);
+      margin-top: 2px;
+      margin-left: padding(1/3);
+
+      color: $dark-grey-1;
+    }
+  }
+
+  .editor-buttons {
+    display: flex;
+    align-items: center;
+
+    margin-right: padding(1/3);
+
+    .setting-menu-hr {
+      height: padding(4/3);
+      margin: 0 padding(1/3) !important;
+    }
+
+    .raised-button {
+      height: padding(3/2);
+    }
+
+    .import-script-button {
+
+    }
+  }
+}

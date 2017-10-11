@@ -1,0 +1,325 @@
+@import "../../styles/variables";
+
+$outline-button-width: 136px;
+$outline-button-height: padding(4/3);
+
+#profile-container {
+  padding-top: initial !important;
+
+  #personal-information-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    margin-bottom: padding();
+    padding-top: padding(1/3);
+
+    #profile-setting-header {
+      display: flex;
+      align-self: flex-start;
+      flex-direction: column;
+      justify-content: center;
+
+      margin-top: padding(1/3);
+      margin-right: padding(2/3);
+      padding: padding() padding(11/4);
+
+      border-radius: padding(1/6);
+      background-color: $pure-white;
+
+      > .profile-picture {
+        margin-bottom: padding(2/3);
+
+        text-align: center;
+
+        img.profile-icon {
+          width: padding(6);
+          height: padding(6);
+
+          border-radius: 50%;
+
+          object-fit: cover;
+        }
+      }
+
+      > .outline-button {
+        font-size: 12px;
+      }
+    }
+
+    .profile-panels {
+      .left-column {
+        width: 308px;
+      }
+
+      .profile-setting-row {
+        position: relative;
+
+        width: 100%;
+        margin-bottom: padding(2/3);
+        h5 {
+          margin-bottom: padding(1/2);
+
+          color: $dark-grey-1;
+
+          font-weight: 300;
+        }
+        .text-field-input {
+          display: flex;
+          align-items: center;
+          > span {
+            margin-right: padding(1/6);
+          }
+        }
+        .clip-loader {
+          position: absolute;
+          top: 30px;
+          right: padding(-3/2);
+        }
+        > .error {
+          color: $oice-red;
+
+          font-size: 12px;
+        }
+      }
+      .external-link-list {
+        .external-link {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+
+          padding-right: padding(2/3);
+
+          border-top: $border-style4;
+          &.add {
+            justify-content: center;
+            .flat-button {
+              transition: color .2s ease-out;
+              > svg {
+                width: 24px;
+                height: 24px;
+              }
+              &:not(:hover) {
+                color: $dark-grey-1;
+              }
+              &:hover {
+                color: $dark-grey-2;
+              }
+            }
+          }
+          &:not(.add) {
+            min-height: 40px;
+          }
+          &.dragging {
+            opacity: 0;
+          }
+
+          > div {
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+          }
+
+          .left-details {
+            .drag-handle {
+              width: 2px;
+              margin-right: 18px;
+
+              cursor: move;
+              > svg {
+                width: padding(1/6);
+                height: padding(1/2);
+
+                color: $dark-grey-1;
+              }
+            }
+            > span {
+              color: $dark-grey-2;
+            }
+            > svg + div {
+              max-width: padding(6);
+              margin-left: padding(1/3);
+            }
+            .text-field {
+              width: padding(6);
+            }
+          }
+
+          .right-details {
+            > span {
+              max-width: padding(14);
+              margin-right: padding(1/3);
+            }
+            .flat-button {
+              min-height: initial;
+              padding: 0 2px;
+
+              color: $dark-grey-1;
+              > svg {
+                width: padding();
+                height: padding();
+              }
+            }
+            .text-field {
+              width: padding(11.75);
+            }
+            .confirm-button {
+              margin-right: padding(2/3);
+              margin-left: padding();
+
+              color: $oice-green;
+
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  #account-setting-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .profile-panel {
+      .account-email > span:first-child {
+        color: $dark-grey-1;
+      }
+      .call-to-action-banner {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+
+        height: 100px;
+        margin: padding(1/3) 0;
+        padding: 0 padding(2/3);
+
+        border-radius: 10px;
+
+        .member-status {
+          margin-top: -2px;
+
+          font-size: 30px;
+          > p {
+            margin: 0;
+
+            font-size: 18px;
+          }
+        }
+
+        &.backer {
+          background: linear-gradient(to right, #0097e8, #83fc9a);
+
+          .member-status {
+            color: $pure-white;
+
+            > span {
+              font-weight: 600;
+            }
+          }
+        }
+        &:not(.backer) {
+          border: $border-style4;
+
+          .member-status {
+            color: $dark-grey-2;
+            > p {
+              font-weight: 600;
+            }
+          }
+        }
+        .outline-button {
+          background-color: $pure-white;
+
+          font-size: 12px;
+        }
+      }
+
+      .user-language-setting {
+        > div {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+
+          > span {
+            width: padding(11/3);
+
+            text-align: end;
+
+            color: $dark-grey-1;
+
+            font-size: 12px;
+          }
+          .language-dropdown {
+            display: flex;
+            flex-grow: 1;
+
+            height: 40px;
+            margin-left: padding(1/2);
+
+            border-top: $border-style4;
+          }
+          &:last-of-type .language-dropdown {
+            border-bottom: $border-style4;
+          }
+        }
+
+      }
+
+      .stripe-connect-wrapper {
+        p {
+          margin: 0;
+
+          color: $dark-grey-1;
+
+          font-size: 14px;
+        }
+        a {
+          margin: padding(2/3) 0 padding(1/3);
+        }
+      }
+    }
+  }
+
+  .outline-button {
+    min-width: $outline-button-width;
+    height: $outline-button-height;
+    > span {
+      line-height: $outline-button-height;
+    }
+  }
+}
+
+.profile-panel {
+  width: padding(29);
+  margin-top: padding(1/3);
+  padding: 0 padding() padding(1/3) padding(2/3);
+
+  border-radius: 4px;
+  background-color: $pure-white;
+
+  .panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: padding() 0;
+
+    > h2 {
+      margin: 0;
+      padding-left: padding(1/3);
+
+      color: $dark-grey-2;
+
+      font-weight: 200;
+    }
+  }
+
+  .panel-content {
+    padding: 0 padding(2/3);
+  }
+
+}

@@ -1,0 +1,44 @@
+.color-picker {
+  display: inline-block;
+
+  .color-picker-swatch {
+    padding: 5px;
+    background: #fff;
+    border-radius: 1px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,.1);
+    display: inline-block;
+    cursor: pointer;
+
+    .swatch-color {
+      width: 20px;
+      height: 20px;
+      border-radius: 2px;
+    }
+  }
+
+  .color-picker-popover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .color-picker-cover {
+      z-index: 10;
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .chrome-picker {
+      z-index: 11;
+    }
+  }
+}

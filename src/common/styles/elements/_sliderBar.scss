@@ -1,0 +1,68 @@
+.slider-bar {
+  >h5 {
+    font-size: $font-size-normal;
+	  color: #9b9b9b;
+    font-weight: 400;
+  }
+  >div {
+
+    >input[type=range] {
+      -webkit-appearance: none;
+
+      &.full-width {
+        width: calc(100% - 81px);
+      }
+
+      &::-webkit-slider-runnable-track {
+        -webkit-appearance: none;
+        width: 240px;
+      	height: 4px;
+      	border-radius: 2px;
+        background: #d8d8d8;
+      }
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width: 14px;
+      	height: 14px;
+      	background-color: #ffffff;
+      	box-shadow: 1px 1px 0 0 #cecece;
+      	border: solid 1px #9b9b9b;
+        border-radius: 50%;
+        margin-top: -4px;
+      }
+      // &:focus {
+      //     outline: none;
+      // }
+      // &:focus::-webkit-slider-runnable-track {
+      //     background: #ccc;
+      // }
+    }
+    >input[type=number] {
+      margin-left: 17px;
+      width: 64px;
+    	height: 36px;
+    	border-radius: 2px;
+    	background-color: #ffffff;
+    	border: solid 1px #d8d8d8;
+
+      text-align: left;
+      padding-left: 5px;
+	    color: #9b9b9b;
+
+      position: relative;
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          background: url('/img/slider-button.png') no-repeat center center;
+          width: 18px;
+          border-left: 1px solid #e6e6e6;
+          // opacity: .5; /* shows Spin Buttons per default (Chrome >= 39) */
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+      }
+    }
+
+  }
+}

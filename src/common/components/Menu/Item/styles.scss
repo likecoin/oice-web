@@ -1,0 +1,52 @@
+@import "../../../styles/variables";
+
+.menu-item {
+  display: flex;
+  align-items: center;
+
+  min-width: 200px;
+  padding: $min-padding-narrow;
+
+  cursor: pointer;
+  transition: background-color 0.5s;
+
+  &:hover {
+    background-color: $light-gray2;
+  }
+
+  .menu-secondary-text {
+    height: 15px;
+    margin-left: 5px;
+    padding: 0 3px;
+
+    color: $pure-white;
+    border-radius: 3px;
+    background-color: $dark-red1;
+
+    font-size: 10px;
+    line-height: 15px;
+  }
+
+  .menu-item-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+
+    color: $dark-grey-2;
+  }
+}
+
+.menu-container {
+  position: relative;
+  .menu-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+    background-color: $dark-red1;
+  }
+}

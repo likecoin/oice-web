@@ -1,0 +1,37 @@
+@import "../../../styles/variables";
+
+#tutorial {
+  margin-top: $min-padding;
+  margin-bottom: $min-padding;
+
+  li.tab-bar-item {
+    width: 25%;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  img {
+    border: $border-style1;
+  }
+
+  table {
+    font-size: $font-size-normal;
+    border: none;
+    width: 100%;
+  }
+
+  th, td {
+    padding: 10px;
+    border-bottom: $border-style1;
+  }
+
+  .tab-content > * > *:first-child {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  @import "faq";
+  @import "visual";
+}

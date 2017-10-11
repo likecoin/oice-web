@@ -1,0 +1,32 @@
+@import "../styles";
+
+#stories-list-tab {
+  padding: $min-padding;
+
+  #stories-list .list-row {
+
+    .story-name,
+    .author,
+    .last-modified-time {
+      display: inline-block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .story-name {
+      width: 55%;
+      color: $dark-gray6;
+    }
+
+    .author {
+      width: 25%;
+      color: $dark-gray2;
+    }
+
+    .last-modified-time {
+      width: 20%;
+      color: $dark-gray1;
+    }
+  }
+}

@@ -1,0 +1,97 @@
+@mixin raised-button-style(
+  $hover-bg-color,
+  $hover-border-color,
+  $active-border-color: $hover-border-color,
+  $default-font-color: $hover-border-color,
+  $defaul-bg-color: $pure-white,
+  $hover-font-color: $defaul-bg-color,
+  $active-font-color: $hover-font-color
+) {
+  &:not(.disabled) {
+    background-color: $defaul-bg-color;
+    color: $default-font-color;
+
+    &.selected,
+    &:active,
+    &:hover {
+      color: $hover-font-color;
+      background-color: $hover-bg-color;
+      border-color: $hover-border-color;
+      box-shadow: 0 1px 0 0 $hover-border-color;
+    }
+
+    &:active {
+      color: $active-font-color;
+      background-color: $hover-border-color;
+      border-color: $active-border-color;
+      box-shadow: 0 -1px 0 0 $active-border-color;
+      transform: translateY(1px);
+    }
+  }
+}
+
+.raised-button {
+  @extend .base-button;
+
+  min-width: 120px;
+  border-radius: 4px;
+  padding: 14px;
+
+	background-color: white;
+	box-shadow: 0 1px 0 0 $light-gray3;
+	border: solid 1px $light-gray3;
+
+  &.mini {
+    padding: 0 10px;
+  }
+
+  &.label > span.button-label {
+    font-size: inherit;
+    font-weight: 500;
+    text-align: center;
+  }
+  &.icon.label > span.button-label {
+    margin-left: 8px;
+  }
+
+  @include raised-button-style(
+    $light-gray2,
+    $light-gray3,
+    $light-gray3,
+    $font-color2,
+    $pure-white,
+    $font-color1
+  );
+  &.reverse {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    width: 320px;
+    height: 36px;
+  }
+  &.primary {
+    @include raised-button-style(
+      $light-green1,
+      $dark-green1,
+      $dark-green2
+    );
+  }
+
+  &.destructive {
+    @include raised-button-style(
+      $light-red1,
+      $dark-red1,
+      $dark-red2
+    );
+  }
+}
+
+div.button-group.selectable .raised-button {
+  @include raised-button-style(
+    $pure-white,
+    $light-gray3,
+    $light-gray3,
+    $font-color2,
+    $light-gray2,
+    $font-color2
+  );
+}

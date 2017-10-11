@@ -1,0 +1,169 @@
+@import "../../../styles/variables";
+
+#attributes-panel {
+  width: 100%;
+  // display: flex;
+  // flex-direction: column;
+  position: relative;
+  background-color: $light-gray1;
+  border-left: $border-style1;
+
+  .save-button {
+    margin: 20px;
+  }
+
+  hr {
+    margin: 0;
+    width: 100%;
+    float: left;
+  }
+}
+
+#attribute-header {
+  height: $blocks-panel-padding;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: space-between;
+  padding: {
+    top: 0;
+    bottom: 0;
+  }
+
+  span.macro-name {
+    font-size: $font-size-normal;
+    line-height: $blocks-panel-padding;
+  }
+}
+
+.attributes-form {
+  margin-top: $blocks-panel-padding;
+  overflow-y: auto;
+  height: calc(100% - #{$blocks-panel-padding});
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+
+  .dropdown:not(:first-child) {
+    margin-top: $min-padding;
+  }
+}
+
+div.attributes-form-empty {
+  color: $dark-gray2;
+  font-size: 14px;
+  margin: 20px;
+}
+
+.attribute-panel-row-group,
+.attribute-panel-row {
+  padding: $attributes-panel-padding;
+  float: left;
+  width: 100%;
+}
+
+.attribute-panel-row-group .attribute-panel-row {
+  padding: 0;
+}
+
+.attribute-panel-row {
+  width: 100%;
+
+  &.half {
+    width: 50%;
+  }
+
+  > h5 {
+    color: $dark-gray2;
+    font-size: $font-size-normal;
+    font-weight: 300;
+    margin-bottom: $min-padding-narrow;
+  }
+}
+
+.attribute-panel-row-group.bg-filter {
+  #bg-filter-color {
+    width: 50px;
+  }
+  #bg-filter-opacity {
+    width: calc(100% - 50px);
+  }
+}
+
+div.option-attribute-panel {
+  .option {
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid $font-color3;
+
+    .option-label {
+      width: 18%;
+      padding-right: 3px;
+      span {
+        color: $font-color2;
+        font-size: 13px;
+      }
+    }
+    .option-content {
+      width: 82%;
+      padding-left: 3px;
+      > div.option-desc {
+        display: flex;
+
+        > span {
+          color: $font-color2;
+          font-size: 13px;
+        }
+        > div.option-cross-button {
+          text-align: right;
+          margin-left: auto;
+
+          .flat-button {
+            min-height: 13px;
+            padding: 0;
+          }
+          svg {
+            color: $font-color2;
+            width: 13px;
+            height: 13px;
+          }
+        }
+      }
+    }
+  }
+}
+
+div.attribute-form-image {
+  .background {
+    .image {
+      width: 100%;
+      padding-bottom: 100%;
+      background-repeat: no-repeat;
+      background-size:cover;
+      background-position: center center;
+      position: relative;
+      border: $border-style1;
+    }
+    .image-meta {
+      text-align: center;
+      font-size: 13px;
+      color: $font-color3;
+    }
+  }
+  .option {
+    border-bottom: none;
+  }
+}
+
+div.attribute-form-character-dialog {
+  .check-box {
+    margin-top: 10px;
+  }
+  .image-meta {
+    text-align: center;
+    font-size: 13px;
+    color: $font-color3;
+  }
+}

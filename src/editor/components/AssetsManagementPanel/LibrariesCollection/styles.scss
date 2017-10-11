@@ -1,0 +1,24 @@
+@import "../index";
+
+#libraries-collection {
+  .container {
+    padding: 16px;
+  }
+
+  .card-content {
+    padding-right: 35px;
+  }
+
+  .library-personal {
+    position: absolute;
+    color: $dark-gray1;
+    top: 10px;
+    right: 10px;
+    height: 18px;
+    width: 18px;
+  }
+
+  .card-header {
+    font-size: 18px;
+  }
+}

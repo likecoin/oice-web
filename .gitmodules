@@ -1,0 +1,3 @@
+[submodule "src/web/pages/Tutorial/doc"]
+	path = src/web/pages/Tutorial/doc
+	url = https://github.com/lakoo/oice-doc

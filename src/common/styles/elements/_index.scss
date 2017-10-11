@@ -1,0 +1,26 @@
+.disabled:active,
+.disabled:hover,
+.disabled {
+  pointer-events: none !important;
+  color: $font-color1 !important;
+  opacity: 0.25 !important;
+  cursor: not-allowed !important;
+}
+
+.readonly {
+  background-color: transparent !important;
+
+  * {
+    background-color: transparent !important;
+  }
+}
+
+@import 'button/index';
+@import 'checkBox';
+@import 'colorPicker';
+@import 'radioButton';
+@import 'searchBar';
+@import 'sliderBar';
+@import 'tabs';
+@import 'tag';
+@import 'textField';

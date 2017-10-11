@@ -1,0 +1,93 @@
+@import "../../styles/common";
+
+$list-height: padding(5/3);
+$sidebar-width: 248px;
+
+#asset-store {
+  width: 100%;
+
+  .library-dashboard-container {
+    flex-direction: column;
+    padding: padding() 66px;
+
+    .content {
+      padding-bottom: 50px;
+    }
+
+    .pagination {
+      align-self: flex-end;
+    }
+  }
+}
+
+#asset-store-container {
+  position: relative;
+
+  padding-right: $sidebar-width;
+}
+
+#asset-store-sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: $sidebar-width;
+  height: 100%;
+  padding: padding(0.5) padding();
+
+  background-color: $pure-white;
+
+  .dummy {
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    right: 0;
+
+    width: $sidebar-width;
+    height: 100%;
+
+    background-color: #fff;
+  }
+}
+
+.asset-store-sidebar-menu {
+  width: 100%;
+  margin-bottom: $list-height;
+
+  list-style: none;
+
+  li {
+    height: $list-height;
+
+    cursor: pointer;
+
+    border-bottom: 1px solid $light-grey-3;
+
+    font-size: 14px;
+    line-height: $list-height;
+  }
+}
+
+.asset-store-sidebar-menu-item {
+  display: block;
+
+  text-decoration: none;
+
+  color: $dark-grey-1;
+
+  &:hover,
+  &.active {
+    color: $oice-red;
+  }
+
+  &:active,
+  &.active:hover {
+    color: $dark-red;
+  }
+
+  .flat-button {
+    min-height: initial;
+
+    color: inherit !important;
+  }
+}

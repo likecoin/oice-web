@@ -1,0 +1,60 @@
+@import "../../styles/variables";
+
+$link-tooltip-height: padding(4/3);
+
+.link-tooltip {
+  .link-icon {
+    width: padding();
+    height: padding();
+
+    cursor: pointer;
+
+    color: $dark-grey-1;
+
+    transition: color .2s ease-in;
+  }
+
+  .tooltip {
+    height: $link-tooltip-height;
+    padding: 0 padding(2/3);
+
+    pointer-events: auto !important;
+
+    color: $dark-grey-1 !important;
+    border: solid 1px $light-grey-3;
+    border-radius: 4px;
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+
+    line-height: $link-tooltip-height;
+
+    .link-action {
+      margin-left: padding();
+
+      cursor: pointer;
+
+      color: $oice-blue;
+    }
+
+    &:hover {
+      visibility: visible !important;
+    }
+
+    &.show {
+      opacity: 1;
+    }
+
+    // Do not show the little arrow in react-tooltip
+    &.place-top:after,
+    &.place-right:after,
+    &.place-bottom:after,
+    &.place-left:after {
+      display: none;
+    }
+  }
+
+  &:hover {
+    .link-icon {
+      color: $oice-blue;
+    }
+  }
+}

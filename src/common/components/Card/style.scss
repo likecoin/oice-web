@@ -1,0 +1,92 @@
+@import "../../styles/variables";
+
+.card-container {
+  border: $border-style1;
+  position: relative;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: $light-gray4;
+  transition: all .2s ease;
+
+  &:hover:not(.add) {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+  }
+
+  &.add {
+    background-color: $dark-gray7;
+
+    svg {
+      fill: $light-gray3;
+      position: absolute;
+      width: 60%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  &.selected {
+    border: $border-style2;
+    .card-content {
+      background-color: $pure-white;
+    }
+  }
+
+  .triangle-border {
+    z-index: 3;
+  }
+  .card-image {
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center center;
+    background-color: $dark-gray7;
+    position: relative;
+    border-bottom: 1px solid $light-gray3;
+  }
+
+  .card-content {
+    padding: 8px 10px 10px 10px;
+    background-color: $light-gray4;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    .card-header {
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+    .card-meta {
+      overflow: inherit;
+      text-overflow: inherit;
+      font-size: 12px;
+      color: $dark-gray2;
+    }
+  }
+
+  &.add-asset {
+    height: 208px;
+    background-color: $light-gray2;
+    .add-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: inherit;
+      svg {
+        width: 85px;
+        color: $light-gray3;
+      }
+    }
+  }
+
+  .card-content,
+  .card-header,
+  .card-meta {
+    position: relative;
+  }
+}

@@ -1,0 +1,94 @@
+@import "../../styles/variables";
+
+.avatar {
+  position: relative;
+
+  display: inline-block;
+
+  margin: 2px;
+
+  .avatar-image,
+  .avatar-letter {
+    vertical-align: middle;
+
+    border-radius: 50%;
+  }
+
+  .avatar-image {
+    overflow: hidden;
+
+    border: solid 1px $light-gray3;
+    background-color: $pure-white;
+
+    object-fit: cover;
+  }
+
+  .avatar-label {
+    margin-left: 5px;
+  }
+
+  .avatar-letter {
+    display: inline-block;
+
+    text-align: center;
+    pointer-events: none;
+
+    color: $dark-gray3;
+    background-color: $light-gray3;
+
+    font-weight: 400;
+  }
+
+  .avatar-overlay {
+    position: absolute;
+    top: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+    cursor: pointer;
+    transition: opacity .2s ease-in-out;
+
+    opacity: 0;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+
+    svg {
+      width: padding(2);
+      height: padding(2);
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &.vertical {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .avatar-label {
+      overflow: hidden;
+
+      max-width: padding(4);
+      margin-top: padding(1/6);
+      margin-left: 0;
+
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      color: #6B6B6B;
+
+      font-weight: bold;
+    }
+  }
+
+  &.clickable {
+    cursor: pointer;
+  }
+}

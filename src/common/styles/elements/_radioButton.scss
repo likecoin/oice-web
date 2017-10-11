@@ -1,0 +1,28 @@
+.radio-button-group {
+  >div {
+    margin-left: 35px;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    align-items: center;
+    >input[type='radio'] {
+      -webkit-appearance:none; // must set this to make it works
+      width: 14px;
+	    height: 14px;
+      border: solid 1px #cecece;
+      border-radius:40px;
+      outline:none;
+      &:checked {
+        background: #16a222;
+      }
+    }
+    >label {
+      margin-left: 7px;
+      font-size: $font-size-normal;
+	    color: #4a4a4a;
+    }
+  }
+  div:first-child {
+    margin-left: 0;
+  }
+}

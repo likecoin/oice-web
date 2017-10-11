@@ -1,0 +1,111 @@
+@import "../../styles/variables";
+
+$expansion-panel-h-padding: 24px;
+$expansion-panel-v-padding: 16px;
+
+.expansion-panel-group {
+  &:not(.combined) .expansion-panel:not(:last-child) {
+    margin-bottom: $min-padding;
+  }
+
+  &.combined .expansion-panel {
+    &:not(:first-child) {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    &:not(:last-child) {
+      border-bottom: none;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}
+
+.expansion-panel,
+.expansion-panel-header,
+.expansion-panel-content {
+  border-radius: 3px;
+}
+
+.expansion-panel {
+  position: relative;
+  border: $border-style1;
+  overflow: hidden;
+  transition: background-color .25s ease-out;
+
+  &:not(.border) {
+    border: none !important;
+
+    .expansion-panel-header,
+    .expansion-panel-content {
+      padding: 0 $expansion-panel-h-padding 0 0 !important;
+    }
+
+    .arrow-icon {
+      right: 0 !important;
+      top: 0 !important;
+      bottom: 0 !important;
+    }
+  }
+
+  &.border {
+    .expansion-panel-header,
+    .expansion-panel-content {
+      padding: $expansion-panel-v-padding $expansion-panel-h-padding;
+    }
+  }
+
+  &.collapsed .expansion-panel-content {
+    max-height: 0;
+    padding: 0 $expansion-panel-h-padding;
+    opacity: 0;
+  }
+
+  &.expanded .arrow-icon {
+    transform: rotateZ(180deg);
+  }
+
+  .arrow-icon {
+    position: absolute;
+    top: 20px;
+    width: 14px;
+    height: 14px;
+    transition: transform .25s ease-out;
+  }
+}
+
+.expansion-panel-header,
+.expansion-panel-content {
+  position: relative;
+  overflow: hidden;
+}
+
+.expansion-panel-header {
+  min-height: 48px;
+  padding-right: 48px;
+
+  &:not(.either) {
+    cursor: pointer
+  }
+
+  &.center {
+    text-align: center;
+
+    .arrow-icon {
+      margin-left: 10px;
+    }
+  }
+
+  &:not(.center) .arrow-icon {
+    right: $expansion-panel-h-padding;
+  }
+
+  .arrow-icon {
+    cursor: pointer;
+  }
+}
+
+.expansion-panel-content {
+  transition: all .25s ease-out;
+}

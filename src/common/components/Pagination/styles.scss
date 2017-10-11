@@ -1,0 +1,50 @@
+@import "../../styles/variables";
+
+$dark-gray-page-color: #39393a;
+$active-red-border: 1px solid $dark-red3;
+
+.pagination {
+  display: flex;
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    border: $active-red-border;
+    color: $dark-gray-page-color;
+    margin-left: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    padding-left: 2px;
+    padding-bottom: 2px;
+    transition: background-color .15s ease-out;
+    &.active,
+    &:not(:first-child):not(:last-child):hover {
+      background-color: $dark-red3;
+      color: $pure-white;
+    }
+
+    &:first-child,
+    &:last-child {
+      width: 88px;
+      border: 1px solid $light-gray3;
+      color: $dark-gray2;
+      transition: color .15s ease-out;
+      cursor: default;
+      &.active {
+        color: $dark-gray-page-color;
+        border: $active-red-border;
+        background-color: initial;
+        cursor: pointer;
+        &:hover {
+          color: $dark-red3;
+        }
+        &:active {
+          transform: translateY(1px);
+        }
+      }
+    }
+  }
+}

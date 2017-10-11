@@ -1,0 +1,39 @@
+#editor-workspace {
+  display: inherit;
+  flex-grow: 1;
+
+  // For fixing Firefox unable to scroll
+  min-width: 0;
+  min-height: 0;
+
+  &.empty {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    overflow-y: auto;
+    background-color: $light-gray4;
+    color: $dark-gray1;
+    padding: $min-padding;
+
+    svg {
+      width: 72px;
+      height: 72px;
+      margin-bottom: $min-padding;
+    }
+  }
+
+  #macros-panel {
+    max-width: 160px;
+    flex-shrink: 0;
+  }
+
+  #blocks-panel {
+    flex-grow: 1;
+  }
+
+  #attributes-panel {
+    max-width: 360px;
+    flex-shrink: 0;
+  }
+}

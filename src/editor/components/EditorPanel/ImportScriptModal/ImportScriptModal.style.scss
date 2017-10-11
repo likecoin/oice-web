@@ -1,0 +1,31 @@
+@import "../../../styles/variables";
+
+#import-script-upload {
+  display: flex;
+
+  .text-field {
+    flex-grow: 1;
+
+    > input {
+      height: 36px;
+    }
+
+    & + .raised-button {
+      margin-left: padding(1/2);
+    }
+  }
+}
+
+#import-script-error {
+  margin-top: padding(1/2);
+
+  color: $oice-red;
+
+  h2, p {
+    display: block;
+
+    margin: 0;
+
+    font-size: 14px;
+  }
+}

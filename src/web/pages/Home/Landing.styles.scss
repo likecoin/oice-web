@@ -1,0 +1,242 @@
+@import "../../styles/variables";
+
+#landing-section {
+  overflow: hidden;
+  background-color: $light-grey-1;
+  position: relative;
+
+  .section-wrapper {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 1244px;
+    height: 100%;
+    margin: auto;
+    padding: 24px 40px 0px;
+  }
+
+  .bg-fade {
+    position: absolute;
+    z-index: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    height: 175px;
+
+    background-image: linear-gradient(to bottom, $light-grey-1, #FFF);
+  }
+
+  .slideshow {
+    position: relative;
+    flex-shrink: 0;
+
+    border-radius: 8px;
+    box-shadow: 20px 20px 100px 20px rgba(0, 0, 0, 0.2);
+
+    transition: all .1s ease-in-out;
+
+    @media screen and (max-width: $screen-tablet) {
+      margin-bottom: 20%;
+    }
+
+    @media screen and (min-width: $screen-tablet + 1px) {
+      margin-right: 20%;
+    }
+
+    .slides {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      overflow: hidden;
+
+      border-radius: inherit;
+
+      > div {
+        position: absolute;
+        top: inherit;
+        right: inherit;
+        bottom: inherit;
+        left: inherit;
+
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+
+    .replay-button {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+
+      transform: translateX(-50%);
+    }
+  }
+
+  .idol {
+    position: absolute;
+    right: -5%;
+    bottom: 0;
+    width: 380px;
+    height: 102%;
+    pointer-events: none;
+    background-image: url('/static/img/landing/idol.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+
+    @media screen and (max-width: $screen-tablet) {
+      display: none;
+    }
+  }
+
+  .slogan {
+    position: absolute;
+    z-index: 1;
+    top: 102%;
+    left: 0;
+    pointer-events: none;
+
+    width: 100%;
+    height: 50%;
+
+    @media screen and (min-width: $screen-desktop-xl + 1px) {
+      left: -20%;
+    }
+
+    @media screen and (min-width: $screen-tablet + 1px) {
+      max-width: 65%;
+      max-height: 40%;
+    }
+
+    > svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .registration-portal {
+    width: 100%;
+    height: 175px;
+    margin-top: 40px;
+    z-index: 1;
+
+    @media screen and (min-width: $screen-tablet + 1px) {
+      min-width: 400px;
+      width: calc(100% / 3);
+      align-self: flex-end;
+    }
+
+    > div {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      @media screen and (max-width: $screen-tablet) {
+        align-items: center;
+      }
+    }
+
+    .writer {
+      width: 100%;
+      padding: 14px 32px;
+      text-decoration: none;
+
+      cursor: pointer;
+      text-align: left;
+
+      color: $pure-white;
+    	border-radius: 10px;
+    	background-image: linear-gradient(280deg, #f9aadb, #e73030 51%, #df4b96);
+    	box-shadow: 20px 10px 24px 0 rgba(0, 0, 0, 0.2);
+
+      font-size: 36px;
+      font-weight: 300;
+    	line-height: 36px;
+
+    	object-fit: contain;
+
+      transition: all .25s ease-out;
+
+      &:hover {
+        color: transparentize($pure-white, 0.2);
+        transform: scale(0.99);
+        box-shadow: 10px 5px 18px 0 rgba(0, 0, 0, 0.3);
+      }
+
+      &:active {
+        color: transparentize($pure-white, 0.7);
+        transform: scale(0.97) translateY(1px);
+        box-shadow: 10px 4px 20px 2px rgba(0, 0, 0, 0.3);
+      }
+
+      @media screen and (max-width: $screen-tablet) {
+        width: auto;
+
+        text-align: center;
+
+        font-size: 24px;
+        line-height: 24px;
+      }
+    }
+
+    .reader {
+      display: inline-block;
+
+      margin: 12px 16px;
+
+      font-size: 16px;
+      font-weight: 300;
+      line-height: 16px;
+    }
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    z-index: 1;
+    bottom: 4px;
+    left: calc((100% - 40px) / 2);
+
+    box-sizing: content-box;
+    width: 24px;
+    height: 12px;
+    padding: 12px;
+
+    cursor: pointer;
+    animation-name: scroll-indicator-animation;
+    animation-duration: .75s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate-reverse;
+
+    color: $light-grey-3;
+
+    @keyframes scroll-indicator-animation {
+      0%   { transform: translateY(-3px); }
+      100% { transform: translateY(3px); }
+    }
+
+    @keyframes scroll-indicator-animation-quick {
+      0%   { transform: translateY(-2px); }
+      100% { transform: translateY(2px); }
+    }
+
+    &:hover {
+      animation-name: scroll-indicator-animation-quick;
+      animation-duration: .25s;
+
+      svg {
+        transform: scale(1.1);
+
+        color: $dark-grey-2;
+      }
+    }
+
+    svg {
+      transition: all .2s ease-in-out;
+    }
+  }
+}

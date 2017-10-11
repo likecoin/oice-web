@@ -1,0 +1,60 @@
+@import "../../../styles/variables";
+
+$circle-size: 20px;
+$circle-padding: 0;
+$duration: 1.5s;
+$steps: 3;
+
+.loading-indicator {
+  position: relative;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  height: $circle-size;
+  margin: 10px 0;
+
+  pointer-events: none !important;
+
+  > .loading-indicator-elements {
+    position: absolute;
+    top: calc((100% - #{$circle-size}) / 2);
+    left: calc((100% - #{($circle-size + $circle-padding) * $steps}) / 2);
+  }
+
+  .circle-1,
+  .circle-2,
+  .circle-3 {
+    top: 0;
+    width: $circle-size;
+    height: $circle-size;
+    border-radius: $circle-size / 2;
+    animation: circle-move $duration infinite;
+    position: absolute;
+  }
+
+  .circle-1 {
+    background-color: $dark-red1 !important;
+  }
+
+  .circle-2 {
+    background-color: $dark-green1 !important;
+    animation-delay: $duration * -1/$steps;
+  }
+
+  .circle-3 {
+    background-color: $dark-blue1 !important;
+    animation-delay: $duration * -2/$steps  ;
+  }
+}
+
+@keyframes circle-move {
+  @for $i from 0 through $steps {
+    #{$i * 100% / $steps} {
+      left: ($circle-size + $circle-padding) * if($i == $steps, 0, $i);
+      transform: scale(if($i == 0 or $i >= $steps - 1, 0.5, 1), if($i == 0 or $i >= $steps - 1, 0.5, 1));
+      z-index: if($i == 0 or $i >= $steps - 1, 0, 1);
+    }
+  }
+}

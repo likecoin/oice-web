@@ -1,0 +1,145 @@
+@import "../../styles/common";
+
+$background-image-size: 250px;
+$background-crop-shadow-size: 100px;
+$half-crop-shadow-size: $background-crop-shadow-size / 2;
+$background-total-size: $background-image-size + $background-crop-shadow-size;
+$half-background-size: $background-total-size / 2;
+
+#background-modal .form-section > div {
+  position: relative;
+
+  .coordinates {
+    position: absolute;
+    z-index: 3;
+
+    width: $half-crop-shadow-size;
+    height: $half-crop-shadow-size;
+
+    color: $dark-gray1;
+
+    font-size: 10px;
+    font-weight: 400;
+
+    &.light {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    &.top-left-coordinate {
+      top: 0;
+      left: 0;
+
+      display: flex;
+
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+
+    &.bottom-right-coordinate {
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  .background-card-image {
+    display: flex;
+    overflow: hidden;
+
+    width: $background-total-size;
+    height: $background-total-size;
+
+    border: $border-style1;
+    background-color: $pure-white;
+
+    justify-content: center;
+    align-items: center;
+
+    .crop-shadow-inner-border {
+      position: absolute;
+
+      width: $background-image-size;
+      height: $background-image-size;
+
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+  }
+
+  .empty-holder {
+    width: $background-image-size;
+    height: $background-image-size;
+
+    border: $border-style1;
+    background-color: $light-gray2;
+
+    &:before {
+      position: absolute;
+      top: $half-background-size;
+      left: 0;
+
+      width: $background-total-size;
+
+      content: "";
+
+      border-top: 1px dashed #CECECE;
+    }
+
+    &:after {
+      position: absolute;
+      top: 0;
+      left: $half-background-size;
+
+      height: $background-total-size;
+
+      content: "";
+
+      border-left: 1px dashed #CECECE;
+    }
+  }
+
+  .control-icon {
+    position: absolute;
+    z-index: 2;
+    top: 5px;
+    right: 5px;
+
+    display: flex;
+
+    width: 40px;
+    height: 40px;
+
+    cursor: pointer;
+
+    color: $pure-white;
+
+    align-items: center;
+    justify-content: center;
+
+    &.add {
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.15);
+      svg {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    &.upload {
+      svg {
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
+
+  .crop-shadow {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+
+    width: $background-total-size;
+    height: $background-total-size;
+
+    border: $half-crop-shadow-size solid rgba(0, 0, 0, 0.6);
+  }
+}

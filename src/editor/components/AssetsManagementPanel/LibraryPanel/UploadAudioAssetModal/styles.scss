@@ -1,0 +1,53 @@
+@import "../index";
+$upload-audio-item-h-padding: 20px;
+$upload-audio-item-interspace: 10px;
+$modal-border-style: 1px solid $hairline-color;
+
+.upload-audio-modal {
+  .modal-body {
+    padding-top: 0px !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+
+    .continue-add-bar {
+      padding-left: $upload-audio-item-h-padding;
+      border-bottom: $modal-border-style;
+    }
+  }
+}
+
+.upload-audio-item {
+  position: relative;
+  background-color: white;
+  padding: $upload-audio-item-h-padding;
+  border-bottom: $modal-border-style;
+
+  > *:not(:first-child) {
+    margin-top: $upload-audio-item-interspace;
+  }
+
+  .audio-item-header {
+    position: relative;
+
+    p {
+      font-weight: 500;
+      margin: 0 !important;
+    }
+
+    .close-icon {
+      width: 10px;
+      position: absolute;
+      right: 0;
+      bottom: 3px;
+    }
+  }
+
+  .upload-progress {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.54);
+  }
+}

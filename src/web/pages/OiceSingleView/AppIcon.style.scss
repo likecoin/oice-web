@@ -1,0 +1,19 @@
+@import "../../styles/variables";
+
+.app-icon {
+  display: flex;
+  flex-direction: column;
+
+  padding-bottom: padding(1/3);
+
+  align-items: center;
+
+  > img {
+    width: padding(3);
+    height: padding(3);
+  }
+
+  > span {
+    font-weight: 500;
+  }
+}

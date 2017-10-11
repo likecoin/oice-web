@@ -1,0 +1,18 @@
+@import "workspace";
+
+#editor {
+  display: flex;
+  flex-direction: column;
+
+  > div:first-child {
+    width: inherit;
+    overflow: hidden;
+    flex-grow: 1;
+    display: inherit;
+    flex-direction: inherit;
+  }
+
+  .story-oice-modal-swipeable-view {
+    > div { height: inherit; }
+  }
+}

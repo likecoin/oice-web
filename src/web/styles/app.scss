@@ -1,0 +1,112 @@
+@import "./base";
+
+.slogan-text {
+  text-align: center;
+  >h1{
+    padding: 0 $min-padding;
+    font-size: 28px;
+  	color: $font-color1;
+  }
+  >p {
+    margin-top: 24px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 658px;
+    opacity: 0.7;
+  	font-size: 16px;
+  	line-height: 1.3;
+  	text-align: center;
+  	color: $font-color1;
+    padding: 0 $min-padding;
+  }
+}
+
+.primary-button {
+  display: block;
+  color: $theme-color-red;
+  text-transform: uppercase;
+  background-color: $pure-white;
+  text-align: center;
+  border: 2px solid $theme-color-red;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 7px 33px;
+  min-width: 160px;
+}
+
+#web-google-slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:flex-start;
+  >p.create-your-story {
+    font-size: 48px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: $font-color1;
+    margin: 0;
+    margin-bottom: 24px;
+  }
+
+  a#go-to-modmod {
+    cursor: pointer;
+
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    width: 100%;
+    max-width: 300px;
+    height: 54px;
+    border-radius: 2px;
+    background-color: #ffffff;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    >img {
+      width: 28px;
+      height: 28px;
+      margin-left: 19px;
+    }
+    p {
+      margin: 0;
+      margin-left: 39px;
+      font-size: 18px;
+      font-family: 'Roboto', 'Noto Sans TC', sans-serif;
+      font-weight: 500;
+      color: $font-color1;
+    }
+    &.edit {
+      align-self: center;
+    }
+  }
+
+  #do-it-now {
+    font-size: 16px;
+    line-height: 1.2;
+    color: #9b9b9b;
+    margin: 0;
+    margin-top: 16px;
+
+  }
+}
+
+.page {
+  max-width: 1024px;
+  margin: 0 auto;
+  transition: padding-top .3s ease;
+  @media screen and (max-width: 1024px + 28px) {
+    margin-left: 14px;
+    margin-right: 14px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding-top: $nav-bar-height;
+  }
+
+  @media screen and (max-width: 768px) {
+    padding-top: $nav-bar-mobile-height;
+  }
+}

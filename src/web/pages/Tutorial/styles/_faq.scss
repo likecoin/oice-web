@@ -1,0 +1,33 @@
+.faq-list .expansion-panel {
+  &.collapsed {
+    background-color: $light-gray1;
+
+    &:hover {
+      background-color: $light-gray2;
+    }
+
+    &:active {
+      background-color: $pure-white;
+    }
+  }
+
+  &.expanded {
+    background-color: $pure-white;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: $min-padding;
+  }
+
+  .expansion-panel-header {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .expansion-panel-content {
+    *:first-child {
+      margin-top: 0;
+      padding-top: 0;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+#assets-management-panel {
+  display: flex;
+  flex-direction: column;
+  background-color: $light-gray1;
+
+  #libraries-collection,
+  #library-panel {
+    padding: 50px 0;
+    overflow-y: scroll;
+    flex-grow: 1;
+
+    .music-container {
+      padding: 20px 20px;
+
+      .audio-player {
+        padding: 0 80px;
+      }
+    }
+    .background-tab {
+      .modal {
+        margin-top: -5%;
+      }
+    }
+
+    .container {
+      width: (1024px - $min-padding) * 2
+    }
+  }
+
+  @import "libraryThumbnail";
+}

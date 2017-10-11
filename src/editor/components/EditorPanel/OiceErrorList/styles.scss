@@ -1,0 +1,18 @@
+.error-block-item,
+.error-attribute-item {
+  margin-left: 20px;
+}
+
+.error-block-item > span,
+.error-attribute-item > div > span {
+  font-weight: 600;
+  padding-right: 5px;
+}
+
+.error-block-item {
+  margin-bottom: 20px;
+}
+
+.error-attribute-item {
+  margin-top: 10px;
+}

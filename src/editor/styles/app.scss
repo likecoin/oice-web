@@ -1,0 +1,31 @@
+@import "../../common/styles/index";
+@import "variables";
+
+body {
+  overflow-x: auto;
+}
+
+#app,
+#app-container,
+#app-container > div {
+  width: inherit;
+  height: inherit;
+  overflow: auto;
+}
+
+#app {
+  // min-width: 1200px;
+}
+
+.font-color1 {
+  color: $font-color1;
+}
+.font-color2 {
+  color: $font-color2;
+}
+.font-color3 {
+  color: $font-color3;
+}
+
+@import "editor/index";
+@import "assetsManagement/index";

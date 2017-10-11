@@ -1,0 +1,102 @@
+@import "../../styles/variables";
+
+.audio-player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $hairline-color;
+  background: $light-gray1;
+
+  &:not(.disabled) {
+    &.selected,
+    &:hover {
+      background: $pure-white;
+    }
+  }
+
+  .audio-container {
+    padding-left: 10px;
+    padding-right: 10px;
+    flex: 1 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 744px;
+    width: 100%;
+  }
+
+  .play-button {
+    height: 100%;
+    flex-shrink: 1;
+    >.flat-button svg {
+        color: $dark-green1;
+        height: 48px;
+        width: 48px;
+    }
+  }
+
+  .audio-info {
+    padding: 10px;
+    height:100%;
+    flex: 6 1;
+
+    >.audio-title {
+      margin: 2px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+
+  .time-labels {
+    color: $font-color2;
+
+    >.current-time {
+      float: left;
+      margin-top: 2px;
+      margin-left: 2px;
+    }
+
+    >.total-time {
+      float: right;
+      margin-top: 2px;
+      margin-right: 2px;
+    }
+  }
+
+  .audio-volume {
+    padding: 10px;
+    display: -webkit-inline-flex;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex: 2 1;
+
+    >.mute-button {
+      padding: 5px;
+      flex-shrink: 1;
+      >.flat-button svg {
+        color: $dark-gray2;
+        height: 24px;
+        width: 24px;
+      }
+    }
+
+    >.progress-bar {
+      flex: 1 1;
+    }
+  }
+
+  .edit-button {
+    height: 80%;
+    padding: 10px;
+    flex-shrink: 1;
+    >.flat-button svg {
+      color: $dark-gray2;
+      height: 24px;
+      width: 24px;
+    }
+  }
+}

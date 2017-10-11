@@ -1,0 +1,77 @@
+@import "../../../styles/variables";
+
+#macros-panel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $light-gray1;
+  border-right: $border-style1;
+}
+
+.macros-tab-bar {
+  height: #{$blocks-panel-padding + 1px};
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  flex-shrink: 0;
+  border-bottom: $border-style1;
+
+  button {
+    height: 24px;
+    flex-grow: 1;
+    text-align: center;
+    border-radius: 4px;
+    font-size: $font-size-normal;
+    border: none;
+    background-color: transparent;
+    transition: all .3s ease;
+
+    html[lang=en] & {
+      font-size: 10px;
+    }
+
+    &.selected:first-child,
+    &:hover:first-child {
+      background-color: $blue-tab;
+      color: white;
+    }
+    &.selected:nth-child(2),
+    &:hover:nth-child(2) {
+      background-color: $green-tab;
+      color: white;
+    }
+    &.selected:nth-child(3),
+    &:hover:nth-child(3) {
+      background-color: $red-tab;
+      color: white;
+    }
+  }
+}
+
+.macros-list {
+  overflow-y: auto;
+}
+
+.macro {
+  position: relative;
+  margin: 10px;
+  font-size: $font-size-small;
+	font-weight: 500;
+  padding: 5px;
+  border-radius: 4px;
+  color: white;
+  fill: currentColor;
+  cursor: move;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+
+  > span.macro-icon {
+    width: 30px;
+    padding-right: 5px;
+  }
+
+  > span.macro-label {
+    line-height: 30px;
+  }
+}

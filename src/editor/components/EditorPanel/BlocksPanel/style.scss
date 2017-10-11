@@ -1,0 +1,175 @@
+@import "../../../styles/variables";
+
+$block-min-height: 90px;
+
+#blocks-panel {
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+
+  background-color: $light-gray2;
+
+  .editor-status-bar {
+    display: flex;
+    flex-direction: row;
+
+    height: #{$blocks-panel-padding + 1px};
+
+    border-bottom: 1px solid $dark-gray1;
+
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+
+    > .last-edit-time {
+      margin-left: padding();
+
+      color: $dark-grey-1;
+
+      font-weight: 400;
+    }
+  }
+
+  .block-list {
+    overflow-y: auto;
+    padding: 0 $blocks-panel-padding $blocks-panel-padding;
+
+    flex-grow: 1;
+  }
+
+  .separator {
+    height: 1px;
+    margin: -1px #{-$blocks-panel-padding} 0;
+
+    background-color: $dark-gray1;
+  }
+
+  .block {
+    position: relative;
+
+    min-height: $block-min-height;
+
+    &.dummy {
+      text-align: center;
+
+      color: $dark-gray1;
+      border: 3px dashed $dark-gray1;
+
+      font-size: 28px;
+      font-weight: 400;
+      line-height: $block-min-height;
+
+      &.disabled {
+        opacity: 0 !important;
+      }
+    }
+  }
+
+  .block:not(.dummy) {
+    margin-top: -1px;
+    padding: 16px;
+
+    cursor: move;
+
+    border: 1px solid $dark-gray1;
+    background-color: $light-gray1;
+
+    &.selected {
+      background-color: $pure-white;
+    }
+
+    .block-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      margin: $min-padding;
+
+      color: $font-color3;
+
+      font-size: 12px;
+    }
+
+    .block-buttons {
+      position: absolute;
+      top: 0;
+      right: 15px;
+      button {
+        margin: 0 5px;
+        svg {
+          color: $light-gray3;
+        }
+        svg:hover {
+          color: $dark-gray2;
+        }
+      }
+    }
+
+    .macro-icon {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+
+      width: 26px;
+
+      color: $pure-white;
+    }
+  }
+}
+
+.block-detail {
+  display: flex;
+
+  padding-left: 65px;
+
+  .block-image {
+    position: relative;
+
+    width: 75px;
+    min-width: 75px;
+    height: 75px;
+    margin-right: 15px;
+
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size:cover;
+  }
+}
+
+.block-content {
+  margin-top: 5px;
+  .option-block {
+    h5 {
+      color: $font-color1;
+
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .answer {
+      display: flex;
+
+      color: $font-color2;
+
+      font-size: 13px;
+      .target {
+        padding-right: 6px;
+      }
+    }
+  }
+  .title-block {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    word-break: break-all;
+
+    color: $dark-gray6;
+  }
+  .content-block {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    word-break: break-all;
+
+    color: $dark-gray2;
+  }
+}

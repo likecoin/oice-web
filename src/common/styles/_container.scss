@@ -1,0 +1,23 @@
+.container-wrapper {
+  .container {
+    display: inherit;
+    justify-content: inherit;
+    align-items: inherit;
+    width: 100%;
+    max-width: $screen-desktop;
+    margin: 0 auto;
+    padding: 0 $min-padding;
+
+    @media screen and (max-width: $screen-phone) {
+      padding: 0 $min-padding-narrow;
+    }
+  }
+
+  &.extended .container {
+    max-width: $max-width;
+  }
+
+  &.fluid .container {
+    max-width: initial;
+  }
+}

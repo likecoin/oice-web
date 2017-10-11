@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>https://oice.com/</loc>
+  <changefreq>hourly</changefreq>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://oice.com/story</loc>
+  <changefreq>hourly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://oice.com/tutorial</loc>
+  <changefreq>hourly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://oice.com/edit</loc>
+  <lastmod>2016-11-15T04:36:57+00:00</lastmod>
+  <changefreq>hourly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://oice.com/view/7a75a9295f8c4cafbc0a06a253678cc2/</loc>
+  <lastmod>2016-10-27T03:46:50+00:00</lastmod>
+  <changefreq>hourly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://oice.com/story/33866cabf01c437a92178f4d1970c88d</loc>
+  <changefreq>hourly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://oice.com/story/088a8918500f4dcf9d4954fba153e454</loc>
+  <changefreq>hourly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://oice.com/story/e09da1db2de84eb29b31fa5026b4d054</loc>
+  <changefreq>hourly</changefreq>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://oice.com/view/33866cabf01c437a92178f4d1970c88d/</loc>
+  <lastmod>2016-11-23T08:46:02+00:00</lastmod>
+  <changefreq>hourly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://oice.com/view/088a8918500f4dcf9d4954fba153e454/</loc>
+  <lastmod>2016-11-23T22:55:29+00:00</lastmod>
+  <changefreq>hourly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://oice.com/view/e09da1db2de84eb29b31fa5026b4d054/</loc>
+  <lastmod>2016-11-23T22:55:39+00:00</lastmod>
+  <changefreq>hourly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://oice.com/story/7bcc511ee3a64bcc9b61a65d350c4f6b</loc>
+  <lastmod>2016-11-23T22:55:39+00:00</lastmod>
+  <changefreq>hourly</changefreq>
+  <priority>0.51</priority>
+</url>
+<url>
+  <loc>https://oice.com/view/7bcc511ee3a64bcc9b61a65d350c4f6b</loc>
+  <lastmod>2016-11-23T22:55:39+00:00</lastmod>
+  <changefreq>hourly</changefreq>
+  <priority>0.51</priority>
+</url>
+</urlset>

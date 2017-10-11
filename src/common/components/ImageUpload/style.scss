@@ -1,0 +1,22 @@
+@import "../../styles/variables";
+
+.setting-og-image-upload {
+  display: flex;
+  overflow: hidden;
+
+  cursor: pointer;
+
+  border: 1px solid $light-grey-3;
+  border-radius: 4px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  flex-shrink: 0;
+  flex-shrink: 0;
+  justify-content: center;
+  .grey-button {
+    color: $light-grey-3;
+    border: none;
+  }
+}

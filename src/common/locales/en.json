@@ -1,0 +1,2008 @@
+{
+  "AssetSelectionModal": {
+    "label": {
+      "recentUsed": "Recently used"
+    },
+    "button": {
+      "selectMoreAssets": "More assets"
+    },
+    "placeholder": {
+      "libraryFilter": "Filter assets"
+    }
+  },
+  "AssetStore": {
+    "title": "Asset Store",
+    "label": {
+      "free": "$t(library:free)",
+      "purchased": "$t(library:purchased)"
+    },
+    "menu": {
+      "featured": "Featured",
+      "free": "Free",
+      "all": "All",
+      "latest": "Latest"
+    }
+  },
+  "AudioList": {
+    "button": {
+      "add": {
+        "bgm": "Add Music",
+        "se": "Add Sound Effects"
+      }
+    }
+  },
+  "BatchBuild": {
+    "button": {
+      "build": "Build"
+    },
+    "label": {
+      "buildAllOices": "Build all episodes",
+      "buildAllOicesInStory": "Build all episodes in this story",
+      "unstoppableWarning": "This action cannot be stopped. Are you sure?",
+      "storyIDInvalid": "Story ID is invalid",
+      "remainingOices": "{{count}} episodes remain",
+      "completed": "Finished building all episodes"
+    },
+    "placeholder": {
+      "storyId": "Story ID"
+    }
+  },
+  "ConnectStripeModal": {
+    "label": {
+      "header": "Connect to Stripe",
+      "mustConnectStripeToSellLibrary": "Please provide a Stripe account to recieve payment"
+    }
+  },
+  "CreateLibraryModal": {
+    "label": {
+      "canOnlyUseInOice": "Other users will only be able to use these assets in the oice editor",
+      "shouldConfirmPropertyRight": "Please confirm your ownership of this material or your right to distribute",
+      "shouldConfirmPropertySellingRight": "Please confirm your ownership of this material or your right to sell it",
+      "shareUploadedAssetForFree": "These assets will be uploaded and avalible to other users free of charge",
+      "willBeSoldAtAssetStore": "These assets will be uploaded and sold on the Asset Store",
+      "stripeAccountIsRequired": "Please set up a Stripe account to recieve payment",
+      "3070Share": "The payment processing company and store will take 30% of proceeds, uploaders will recieve the other 70%",
+      "othersCannotAccess": "This material will only be accessible to you and not accessible by other users",
+      "oiceProUserOnly": "Only oice backer can use this",
+      "price": "Price",
+      "onStore": "Listed on the store",
+      "notOnStore": "Not listed on the store",
+      "addAssetsFirst": "Please add assets to the library first",
+      "reconnectStripeToSellLibrary": "Please reconnect to Stripe to recieve payment"
+    }
+  },
+  "DownloadAppBadges": {
+    "label": {
+      "iosTestFootnote": "Test Version"
+    }
+  },
+  "EditAudioAssetModal": {
+    "title": {
+      "edit": {
+        "bgm": "Edit Background Music",
+        "se": "Edit Sound Effects"
+      },
+      "details": {
+        "bgm": "Music Info",
+        "se": "Sound Effect Info"
+      }
+    },
+    "button": {
+      "delete": {
+        "bgm": "Delete Music",
+        "se": "Delete Sound Effect"
+      }
+    }
+  },
+  "LandingSection": {
+    "title": "My choice, my voice",
+    "button": {
+      "replay": "Replay",
+      "register": "Register",
+      "becomeAReader": "Be a reader"
+    }
+  },
+  "AssetSection": {
+    "title": "An ocean of manga assets",
+    "label": {
+      "assetStore": "Asset Store",
+      "assetStoreDescription": "All sorts of different manga and music clips from around the world. Just pick the style you want."
+    },
+    "button": {
+      "moreAssets": "More assets"
+    }
+  },
+  "LicenseSection": {
+    "title": "<span>Sharing encouraged.</span> <span> Rights protected.</span>",
+    "label": {
+      "copyright": "Copyright",
+      "oiceCommons": "oice license",
+      "creativeCommons": "Creative Commons",
+      "no": "No",
+      "yes": "Yes",
+      "low": "Low",
+      "high": "High",
+      "openness": "Openness",
+      "open": {
+        "closed": "Closed",
+        "coordinated": "Open, coordinated",
+        "fully": "Fully open"
+      },
+      "tagging": "Attribution",
+      "approval": "Approval",
+      "profitSharing": "Profit sharing",
+      "collaborative": "Efficiency in collaboration",
+      "customize": "Customise",
+      "auto": "Auto, mandatory",
+      "manually": "Manual, self discipline",
+      "caseByCase": "Case by case",
+      "approveFirst": "Trust assumed",
+      "oiceCommonsPolicyCaption": {
+        "title": "oice license",
+        "details": "Right to use granted. Right to withdraw reserved."
+      },
+      "autoCreditsCaption": {
+        "title": "Auto attribution",
+        "details": "Down to a note. Respect all creators."
+      }
+    }
+  },
+  "FeaturedStories": {
+    "title": "<span>Choose your own path.</span> <span>Numerous genres.</span>",
+    "label": {
+      "appName": "oice: visual novels",
+      "becomeAReader": "Download the app for more stories"
+    },
+    "button": {
+      "downloadApp": "Download the app to keep reading"
+    }
+  },
+  "PricingSection": {
+    "title": "<span>Support creativity.</span> <span>Become a backer.</span>"
+  },
+  "PricingTable": {
+    "label": {
+      "free": {
+        "title": "oice member",
+        "subtitle": "Free"
+      },
+      "backer": {
+        "title": "oice <span class='bold'>backer</span>",
+        "subtitle": "Only <span style='font-size: 28px'>USD9.9</span>"
+      },
+      "features": {
+        "createAndReadOice": "create and read visual novels",
+        "uploadPublicAssets": "use and upload shared assets",
+        "uploadPrivateAssets": "upload private assets",
+        "readAllOice": "read premium stories",
+        "noLimitation": "read any time without cooldown",
+        "noAds": "ad free",
+        "memberExclusiveEvent": "backers only activities"
+      }
+    },
+    "button": {
+      "free": {
+        "action": "Become a member",
+        "already": "Thanks for supporting creativity"
+      },
+      "backer": {
+        "action": "Become a backer",
+        "already": "Thanks for supporting creativity"
+      }
+    }
+  },
+  "Footer": {
+    "label": {
+      "copyright": "© 2017 oice ltd. All rights reserved.",
+      "version": "oice v{{version}}"
+    },
+    "button": {
+      "termsOfService": "Terms of Service"
+    }
+  },
+  "ImportScriptModal": {
+    "title": "Import Script to oice",
+    "label": {
+      "stage": {
+        "uploading": "Uploading script...",
+        "preparing": "Preparing script for import.....",
+        "reading": "Reading script....",
+        "parsing": "Parsing script...",
+        "validating": "Validating script...",
+        "inserting": "Inserting script...",
+        "reloading": "Reloading script editor...",
+        "finished": "Finished importing script"
+      },
+      "parseError": "Script Import Error",
+      "errorLineAndContent": "Line number: {{line}}, Content: {{content}}"
+    },
+    "button": {
+      "chooseFile": "Choose a file",
+      "uploadScript": "Import Script"
+    }
+  },
+  "LibraryDashboard": {
+    "tabBar": {
+      "myLibraries": "$t(MyLibraryDashboard:title)",
+      "purchasedLibraries": "$t(PurchasedLibraryDashboard:title)",
+      "assetStore": "$t(AssetStore:title)"
+    },
+    "label": {
+      "numberOfAssets": "Includes {{count}} assets",
+      "price": "US$ {{price}}"
+    }
+  },
+  "LibraryDetails": {
+    "label": {
+      "description": "Description",
+      "assetCount": "Includes {{count}} assets",
+      "setting": "Library Settings",
+      "usedByOiceProOnly": "oice backer only",
+      "ownedLibraryWarning": "You created this library, you already own it!",
+      "purchaseLibraryName": "Purchase \"{{name}}\" Library",
+      "purchasingLibrary": "Purchase Library",
+      "confirmToPurchaseLibrary": "Are you sure to use {{currency}} ${{price}} to purchase library \"{{name}}\"?"
+    },
+    "placeholder": {
+      "empty": "No assets of this type"
+    },
+    "button": {
+      "add": {
+        "bgm": "Add Music",
+        "se": "Add Sound Effects"
+      },
+      "payForPrice": "Use {{currency}}",
+      "purchase": "Purchase"
+    }
+  },
+  "LoginModal": {
+    "header": "Login",
+    "label": {
+      "mustLoginToAccess": "You must first login to purchase material"
+    }
+  },
+  "MyLibraryDashboard": {
+    "title": "My Libraries",
+    "label": {
+      "public": "$t(library:public)",
+      "private": "$t(library:private)",
+      "forSale": "$t(library:forSale)",
+      "pendingForSale": "$t(library:pendingForSale)"
+    },
+    "button": {
+      "createLibrary": "Create New Library"
+    }
+  },
+  "NavBar": {
+    "button": {
+      "register": "Register as a writer",
+      "login": "Login"
+    },
+    "menu": {
+      "editor": "My Stories",
+      "asset": "Manage Assets",
+      "about": "About oice",
+      "continueEditLastOice": "Continue editing"
+    },
+    "dropdownMenu": {
+      "profile": "Profile",
+      "accountSetting": "Account settings",
+      "logout": "Logout"
+    }
+  },
+  "Profile": {
+    "title": "Account Settings",
+    "personalInformation": {
+      "title": "Personal Information",
+      "header": {
+        "basicInformation": "Basic Information",
+        "externalLinks": "External Links"
+      },
+      "label": {
+        "displayName": "Display Name",
+        "description": "Description",
+        "emailAddress": "Email Address",
+        "username": "Username"
+      },
+      "button": {
+        "editProfilePicture": "Edit Profile Picture",
+        "link": "Link",
+        "unlink": "Unlink",
+        "addLink": "Add a link"
+      },
+      "placeholder": {
+        "enterLabel": "Label",
+        "enterLink": "Link"
+      }
+    },
+    "accountSetting": {
+      "title": "Account Setting",
+      "header": {
+        "accountInformation": "Account Information",
+        "languageSetting": "Language Setting",
+        "receivePaymentSetting": "Payment Receive using Stripe"
+      },
+      "label": {
+        "account": "Account: ",
+        "member": "member",
+        "backer": "backer",
+        "expireOn": "Valid through {{date}}",
+        "upgradeToSupport": "Be our backer with USD$9.9/month",
+        "UILanguage": "UI Language",
+        "defaultStoryLanguage": "Default Story Language",
+        "stripeConnectDescription": "You must connect to Stripe to sell libraries",
+        "stripeConnected": "Stripe is already connected"
+      },
+      "button": {
+        "upgrade": "Upgrade Account",
+        "continueSubscription": "Resume Subscription",
+        "cancelSubscription": "Cancel Subscription",
+        "disconnectStripe": "Unlink Account"
+      }
+    },
+    "seekingSubscriptionMessage": {
+      "_title": "Subscription Message",
+      "buttonName": "Edit"
+    }
+  },
+  "PurchasedLibraryDashboard": {
+    "title": "Purchased Libraries",
+    "button": {
+      "goToAssetStore": "Go to $t(AssetStore:title) to get new Libraries"
+    }
+  },
+  "SmsModal": {
+    "smsMessage": "Click here to download oice",
+    "label": {
+      "fillInMobileNumber": "Fill in your phone number to recieve a mobile download link",
+      "fillInToReceiveSMS": "Fill in your phone number, we will send you a text with the download link",
+      "receiveAndClickLink": "Open the download link in the text message",
+      "smsSent": "We have sent a text message to you",
+      "downloadForBetterExperience": "Download oice app to your phone to read",
+      "appStoreMayNotContinueOice": "Downloading the app on your computer may make you lose your progess in the story",
+      "downloadToContinue": "Download oice to continue reading"
+    },
+    "button": {
+      "send": "Send text",
+      "resend": "Resend text",
+      "useOtherWays": "Other ways to download"
+    },
+    "countries": {
+      "title": "Area",
+      "nameWithCountryCode": "$t(SmsModal:countries:code:{{regionCode}}) ({{dialCode}})",
+      "code": {
+        "AD": "Andorra",
+        "AE": "UAE (United Arab Emirates)",
+        "AF": "Afghanistan",
+        "AG": "Antigua and Barbuda",
+        "AI": "Anguilla",
+        "AL": "Albania",
+        "AM": "Armenia",
+        "AN": "Netherlands Antilles",
+        "AO": "Angola",
+        "AQ": "Antarctica",
+        "AR": "Argentina",
+        "AS": "American Samoa",
+        "AT": "Austria",
+        "AU": "Australia",
+        "AW": "Aruba",
+        "AZ": "Azerbaijan",
+        "BA": "Bosnia and Herzegovina",
+        "BB": "Barbados",
+        "BD": "Bangladesh",
+        "BE": "Belgium",
+        "BF": "Burkina Faso",
+        "BG": "Bulgaria",
+        "BH": "Bahrain",
+        "BI": "Burundi",
+        "BJ": "Benin",
+        "BL": "Saint-Barthélemy",
+        "BM": "Bermuda",
+        "BN": "Brunei Darussalam",
+        "BO": "Bolivia",
+        "BR": "Brazil",
+        "BS": "Bahamas",
+        "BT": "Bhutan",
+        "BW": "Botswana",
+        "BY": "Belarus",
+        "BZ": "Belize",
+        "CA": "Canada",
+        "CC": "Cocos (Keeling) Islands",
+        "CD": "Democratic Republic of the Congo",
+        "CF": "Central African Republic",
+        "CG": "Congo",
+        "CH": "Switzerland",
+        "CI": "Côte d'Ivoire",
+        "CK": "Cook Islands",
+        "CL": "Chile",
+        "CM": "Cameroon",
+        "CN": "China",
+        "CO": "Colombia",
+        "CR": "Costa Rica",
+        "CU": "Cuba",
+        "CV": "Cape Verde",
+        "CX": "Christmas Island",
+        "CY": "Cyprus",
+        "CZ": "Czech Republic",
+        "DE": "Germany",
+        "DJ": "Djibouti",
+        "DK": "Denmark",
+        "DM": "Dominica",
+        "DO": "Dominican Republic",
+        "DZ": "Algeria",
+        "EC": "Ecuador",
+        "EE": "Estonia",
+        "EG": "Egypt",
+        "ER": "Eritrea",
+        "ES": "Spain",
+        "ET": "Ethiopia",
+        "FI": "Finland",
+        "FJ": "Fiji",
+        "FK": "Falkland Islands",
+        "FM": "Micronesia, Federated States of",
+        "FO": "Faroe Islands",
+        "FR": "France",
+        "GA": "Gabon",
+        "GB": "United Kingdom",
+        "GD": "Grenada",
+        "GE": "Georgia",
+        "GF": "French Guiana",
+        "GG": "Guernsey",
+        "GH": "Ghana",
+        "GI": "Gibraltar",
+        "GL": "Greenland",
+        "GM": "Gambia",
+        "GN": "Guinea",
+        "GP": "Guadeloupe",
+        "GQ": "Equatorial Guinea",
+        "GR": "Greece",
+        "GS": "South Georgia and the South Sandwich Islands",
+        "GT": "Guatemala",
+        "GU": "Guam",
+        "GW": "Guinea-Bissau",
+        "GY": "Guyana",
+        "HK": "Hong Kong",
+        "HN": "Honduras",
+        "HR": "Croatia",
+        "HT": "Haiti",
+        "HU": "Hungary",
+        "ID": "Indonesia",
+        "IE": "Ireland",
+        "IL": "Israel",
+        "IM": "Isle of Man",
+        "IN": "India",
+        "IO": "British Indian Ocean Territory",
+        "IQ": "Iraq",
+        "IR": "Iran",
+        "IS": "Iceland",
+        "IT": "Italy",
+        "JE": "Jersey",
+        "JM": "Jamaica",
+        "JO": "Jordan",
+        "JP": "Japan",
+        "KE": "Kenya",
+        "KG": "Kyrgyzstan",
+        "KH": "Cambodia",
+        "KI": "Kiribati",
+        "KM": "Comoros",
+        "KN": "Saint Kitts and Nevis",
+        "KP": "North Korea",
+        "KR": "South Korea",
+        "KW": "Kuwait",
+        "KY": "Cayman Islands",
+        "KZ": "Kazakhstan",
+        "LA": "Laos",
+        "LB": "Lebanon",
+        "LC": "Saint Lucia",
+        "LI": "Liechtenstein",
+        "LK": "Sri Lanka",
+        "LR": "Liberia",
+        "LS": "Lesotho",
+        "LT": "Lithuania",
+        "LU": "Luxembourg",
+        "LV": "Latvia",
+        "LY": "Libya",
+        "MA": "Morocco",
+        "MC": "Monaco",
+        "MD": "Moldova",
+        "ME": "Montenegro",
+        "MF": "Saint-Martin",
+        "MG": "Madagascar",
+        "MH": "Madagascar",
+        "MK": "Macedonia",
+        "ML": "Mali",
+        "MM": "Myanmar",
+        "MN": "Mongolia",
+        "MO": "Macao",
+        "MP": "Northern Mariana Islands",
+        "MQ": "Martinique",
+        "MR": "Mauritania",
+        "MS": "Montserrat",
+        "MT": "Malta",
+        "MU": "Mauritius",
+        "MV": "Maldives",
+        "MW": "Malawi",
+        "MX": "Mexico",
+        "MY": "Malaysia",
+        "MZ": "Mozambique",
+        "NA": "Namibia",
+        "NC": "New Caledonia",
+        "NE": "Niger",
+        "NF": "Norfolk Island",
+        "NG": "Nigeria",
+        "NI": "Nicaragua",
+        "NL": "Netherlands",
+        "NO": "Norway",
+        "NP": "Nepal",
+        "NR": "Nauru",
+        "NU": "Niue",
+        "NZ": "New Zealand",
+        "OM": "Oman",
+        "PA": "Panama",
+        "PE": "Peru",
+        "PF": "French Polynesia",
+        "PG": "Papua New Guinea",
+        "PH": "Philippines",
+        "PK": "Pakistan",
+        "PL": "Poland",
+        "PM": "Saint Pierre and Miquelon",
+        "PN": "Pitcairn",
+        "PR": "Puerto Rico",
+        "PS": "Palestine",
+        "PT": "Portugal",
+        "PW": "Palau",
+        "PY": "Paraguay",
+        "QA": "Qatar",
+        "RE": "Réunion",
+        "RO": "Romania",
+        "RS": "Serbia",
+        "RU": "Russia",
+        "RW": "Rwanda",
+        "SA": "Saudi Arabia",
+        "SB": "Solomon Islands",
+        "SC": "Seychelles",
+        "SD": "Sudan",
+        "SE": "Sweden",
+        "SG": "Singapore",
+        "SH": "Saint Helena",
+        "SI": "Slovenia",
+        "SJ": "Svalbard and Jan Mayen Islands",
+        "SK": "Slovakia",
+        "SL": "Sierra Leone",
+        "SM": "San Marino",
+        "SN": "Senegal",
+        "SO": "Somalia",
+        "SR": "Suriname",
+        "SS": "South Sudan",
+        "ST": "Sao Tome and Principe",
+        "SV": "El Salvador",
+        "SY": "Syria",
+        "SZ": "Swaziland",
+        "TC": "Turks and Caicos Islands",
+        "TD": "Chad",
+        "TG": "Togo",
+        "TH": "Thailand",
+        "TJ": "Tajikistan",
+        "TK": "Tokelau",
+        "TL": "Timor-Leste",
+        "TM": "Turkmenistan",
+        "TN": "Tunisia",
+        "TO": "Tonga",
+        "TR": "Turkey",
+        "TT": "Trinidad and Tobago",
+        "TV": "Tuvalu",
+        "TW": "Taiwan",
+        "TZ": "Tanzania",
+        "UA": "Ukraine",
+        "UG": "Uganda",
+        "US": "USA (United States of America)",
+        "UY": "Uruguay",
+        "UZ": "Uzbekistan",
+        "VA": "Holy See (Vatican City State)",
+        "VC": "Saint Vincent and Grenadines",
+        "VE": "Venezuela",
+        "VG": "British Virgin Islands",
+        "VI": "Virgin Islands, US",
+        "VN": "Viet Nam",
+        "VU": "Vanuatu",
+        "WF": "Wallis and Futuna Islands",
+        "WS": "Samoa",
+        "YE": "Yemen",
+        "YT": "Mayotte",
+        "YU": "Yugoslavia",
+        "ZA": "South Africa",
+        "ZM": "Zambia",
+        "ZR": "Zaire",
+        "ZW": "Zimbabwe"
+      }
+    }
+  },
+  "StoryDashboard": {
+    "label": {
+      "story": "My Stories",
+      "button": {
+        "createStory": "Create a new story",
+        "edit": "Edit",
+        "preview": "Preview",
+        "published": "Published",
+        "unpublished": "Unpublished",
+        "addOice": "Add an episode(oice)"
+      }
+    }
+  },
+  "StoryDetails": {
+    "label": {
+      "introduction": "Introduction",
+      "noIntroduction": "Without Introduction"
+    }
+  },
+  "TermsOfService": {
+    "title": "Terms of Service"
+  },
+  "TestFlightInvitation": {
+    "title": "Become a Tester of oice App for iOS",
+    "label": {
+      "description": "Please provide your email for receiving installation code",
+      "alreadyJoined": "The email has already registered",
+      "alreadySent": "The email has been sent, you may try again if you haven't recieve the email in 5 minutes"
+    },
+    "placeholder": {
+      "email": "Email"
+    },
+    "button": {
+      "submit": "Send",
+      "submitting": "Sending"
+    }
+  },
+  "UserPage": {
+    "label": {
+      "stats": {
+        "oices": "Stories",
+        "assets": "Assets",
+        "credits": "Credits"
+      }
+    },
+    "tabBar": {
+      "user": "User",
+      "stories": "Stories",
+      "libraries": "Libraries",
+      "credits": "Credits"
+    },
+    "placeholder": {
+      "noDescription": "No description",
+      "noStory": "{{user}} has not written any stories",
+      "noLibrary": "{{user}} has not uploaded any libraries",
+      "noCredits": "{{user}} has not participated in any other stories",
+      "noYourStory": "You have not directed any stories",
+      "noYourLibrary": "You have not uploaded any libraries",
+      "noYourCredits": "You have not participated in any other stories"
+    }
+  },
+  "UsersDropdown": {
+    "label": {
+      "userNotFound": "User not found",
+      "noUser": "User does not exist"
+    },
+    "placeholder": "Add a user"
+  },
+  "alertDialog": {
+    "confirm": {
+      "title": "Confirmation",
+      "button": {
+        "cancel": "$t(general:cancel)",
+        "confirm": "$t(general:confirm)"
+      }
+    },
+    "error": {
+      "title": "Error",
+      "button": {
+        "cancel": "Reload",
+        "confirm": "Skip"
+      }
+    },
+    "alert": {
+      "title": "Alert",
+      "button": {
+        "confirm": "I understand"
+      }
+    }
+  },
+  "asset": {
+    "type": {
+      "character": "Character",
+      "fgimage": "Foreground",
+      "bgimage": "Background",
+      "image": "Peripherals",
+      "bgm": "Music",
+      "se": "Sound effects"
+    }
+  },
+  "assets": {
+    "category": {
+      "character": "Character",
+      "bgimage": "Background",
+      "image": "Peripherals",
+      "bgm": "Music",
+      "se": "Sound Effects"
+    }
+  },
+  "assetsManagement": {
+    "title": "Assets Manager",
+    "setting": "Assets Settings",
+    "label": {
+      "confirmDelete": "Are you sure you want to delete {{name}}?"
+    },
+    "uploadMusicModal": {
+      "placeholder": {
+        "name": "Please enter a name for the music",
+        "tag": "Please select tags",
+        "creditsUrl": "Credits URL"
+      },
+      "button": {
+        "addFile": "Continue uploading",
+        "upload": "Upload"
+      },
+      "addMusic": "Add music",
+      "addSound": "Add sound effect"
+    },
+    "libraryModal": {
+      "header": {
+        "add": "Add asset library",
+        "edit": "Library Settings"
+      },
+      "label": {
+        "coverPhoto": "Cover art",
+        "license": "License",
+        "creativeCommons": "$t(license:creativeCommons)",
+        "referToProfile": "$t(license:referToProfile)",
+        "public": "Public Library",
+        "uploadCover": "Upload a cover photo",
+        "modifyPrice": "Change market price"
+      },
+      "button": {
+        "create": {
+          "public": "Create $t(library:public) Library",
+          "private": "Create $t(library:private) Library",
+          "forSale": "Create $t(library:forSale) Library"
+        },
+        "save": "$t(general:save)",
+        "delete": "Delete Library"
+      },
+      "placeholder": {
+        "name": "Library Name (required)",
+        "description": "Library Description"
+      }
+    },
+    "bgModal": {
+      "header": {
+        "add": "Add background",
+        "edit": "Edit background",
+        "view": "View background"
+      },
+      "button": {
+        "delete": "Delete background",
+        "save": "$t(general:save)"
+      },
+      "placeholder": {
+        "name": {
+          "en": "Please enter English name (required)",
+          "tw": "Please enter Chinese name",
+          "jp": "Please enter Japanese name"
+        },
+        "tag": "Select tags",
+        "creditsUrl": "Credits URL"
+      },
+      "label": {
+        "tagNotFound": "Tag not found",
+        "imageSizeNot1080": "Please upload an image of size 1080x1080px"
+      }
+    },
+    "characterModal": {
+      "title": {
+        "add": "Add Character",
+        "edit": "Edit Character",
+        "view": "View Character"
+      },
+      "button": {
+        "confirm": "Confirm",
+        "delete": "Delete Character",
+        "addFgImage": "Add character image"
+      },
+      "label": {
+        "nameTitle": "Character Name",
+        "nameEn": "English",
+        "nameTw": "中文(正體)",
+        "nameJp": "日本語",
+        "confirmDeleteFgImage": "Are you sure you want to delete \"{{name}}\"?",
+        "pleaseAddAtLeastOneFgImage": "Please add at least 1 character image",
+        "fgImageCannotBeEmpty": "Character image cannot be empty",
+        "pleaseEnterCharacterName": "Please enter character name",
+        "pleaseEnterIntegerConfig": "Role settings must be an integer",
+        "deleteImageSelection": "Are you sure you want to delete this image?",
+        "deleteCharacter": "Are you sure you want to delete this character?",
+        "fullSetting": "Global Settings",
+        "coordinate": {
+          "0": "Left Side",
+          "1": "Center",
+          "2": "Right Side"
+        },
+        "fgImage": {
+          "height": "Height",
+          "width": "Width"
+        },
+        "renamable": "Renamable"
+      },
+      "selectedCharacter": "Please select a character (required)",
+      "selectedCharacterImage": "Please select a character image",
+      "imageSelectionModalTitle": "Please select a character image ({{name}})",
+      "fliplr": "Flip",
+      "placeholder": {
+        "name": "Please enter a character name",
+        "fgImage": "Please enter an image name",
+        "creditsUrl": "Credits URL"
+      }
+    },
+    "itemModal": {
+      "header": {
+        "add": "Add an Item",
+        "edit": "Edit Item",
+        "view": "View Item"
+      },
+      "button": {
+        "delete": "Delete Item",
+        "save": "$t(general:save)"
+      },
+      "placeholder": {
+        "name": {
+          "en": "Please enter an English name (required)",
+          "tw": "Please enter Chinese name",
+          "jp": "Please enter Japanese name"
+        },
+        "creditsUrl": "Credits URL"
+      },
+      "label": {
+        "imageSizeNotLessThan1080": "Please upload an image that is at least 1080x1080px"
+      }
+    }
+  },
+  "attributesPanel": {
+    "noAttributeRow": "No settings to show",
+    "clickToShow": "Select an element to see attribute settings",
+    "pleaseChoose": "Please Select",
+    "requiredField": "Required Field",
+    "requiredAsset": "Required Asset",
+    "label": {
+      "hint": {
+        "ms": "{{label}} ($t(unit:ms))"
+      }
+    },
+    "placeholder": {
+      "dropDown": {
+        "bg": "Please select a background ($t(requiredAsset))",
+        "item": "Please select an item ($t(requiredAsset))"
+      }
+    }
+  },
+  "character": {
+    "coordinate": {
+      "left": "Left",
+      "middle": "Center",
+      "right": "Right"
+    }
+  },
+  "checkout": {
+    "label": {
+      "upgrade": "Upgrade $t(membership:paid)"
+    },
+    "button": {
+      "pay": "Pay Now"
+    }
+  },
+  "editor": {
+    "title": "Editor",
+    "basic-macros": "Act",
+    "sound-macros": "Sound",
+    "commmand-macros": "Editing",
+    "wordCount": {
+      "title": "Word count",
+      "counting": "counting...",
+      "count": "{{count}} character",
+      "count_plural": "{{count}} characters"
+    },
+    "toolbar": {
+      "button": {
+        "importScript": "Import",
+        "assetsManagement": "Assets",
+        "preview": "Preview",
+        "publish": "Publish",
+        "export": "$t(editor:exportOice.title)"
+      },
+      "placeholder": {
+        "storyName": "Choose a story",
+        "oiceName": "Choose an oice"
+      }
+    },
+    "menu": {
+      "personalPage": "Profile Page",
+      "tutorial1": "Intro Tutorial",
+      "tutorial2": "Assests Tutorial",
+      "tutorial3": "Create New Story Tutorial",
+      "tutorial": "Manual",
+      "function": "Features"
+    },
+    "emptyPleaseSelect": "Welcome to the oice editor, please select/create a new story",
+    "storiesList": {
+      "title": "My Stories",
+      "addButton": "Add a New Story",
+      "addPlaceholder": "Please enter a name for this story..."
+    },
+    "oicesList": {
+      "title": "Choose an episode(oice)",
+      "addButton": "Add a episode(oice)",
+      "addPlaceholder": "Please enter a name for this episode(oice)...",
+      "episode": "Ep. {{number}}",
+      "label": {
+        "pickAStoryForCopyOice": "Select a story for this episode(oice)"
+      }
+    },
+    "storyPicker": {
+      "title": "Select a story",
+      "placeholder": "Please select a story",
+      "button": {
+        "confirm": "Select story"
+      }
+    },
+    "storySetting": {
+      "storyContinue": "Loading",
+      "storyEnded": "Finished",
+      "selectLanguagePlaceholder": "Please choose"
+    },
+    "oiceSetting": {
+      "generalSetting": {
+        "title": "General Settings",
+        "settingOption1": "Public",
+        "settingOption2": "Only viewable with the URL",
+        "addOicePlaceholder": "Please enter an episode(oice) title (required)",
+        "addOiceDescPlaceholder": "Please enter an episode(oice) description...",
+        "advSelectBox": "Show banner at the end of the episode(oice)",
+        "advUseDefault": "Use the default banner",
+        "selectPlease": "$t(general:selectPlease)"
+      },
+      "facebookSetting": {
+        "title": "Facebook Settings",
+        "addOgTitlePlaceholder": "Please enter og title",
+        "addOgDescriptionPlaceholder": "Please enter og description...",
+        "suggestedImageSize": "Facebook Cover Photo 1200 px × 630 px"
+      },
+      "copyright": "Copyright",
+      "deleteOice": "Delete this episode(oice)",
+      "deleteOiceConfirm": "Are you sure you want to delete this episode(oice)?",
+      "saveButton": "Save",
+      "confirmButton": "Confirm",
+      "cancelButton": "Cancel",
+      "oiceNormalLinkPlaceholder": "Please enter URL",
+      "oiceiOSLinkPlaceholder": "Please enter an App Store link",
+      "oiceAndroidLinkPlaceholder": "Please enter a Google Play link"
+    },
+    "buildOiceState": {
+      "saving": "Saving oice",
+      "saveFailed": "oice save failed",
+      "validating": "Validating oice",
+      "validateFailed": "oice validation failed, server error",
+      "validateSuccessWithError": "oice validiation finished, found an error with oice parameters",
+      "building": "Building oice",
+      "buildFailed": "oice build failed, server error",
+      "buildSuccess": "oice build succeeded",
+      "buildFailedUnkownError": "oice build failed",
+      "exporting": "Exporting oice",
+      "exportFailed": "oice exoport failed, server error",
+      "exportSuccess": "oice export succeeded, click the button below to start the download"
+    },
+    "runOice": {
+      "title": {
+        "preview": "Preview episode(oice)",
+        "publish": "Publish episode(oice)"
+      },
+      "description": {
+        "preview": "oice has loaded, press the button below to start playing",
+        "publish": "oice has loaded, press the button below to start playing"
+      },
+      "oicePublicDescription": "Open on oice on the webiste or in the app",
+      "playButton": "Play"
+    },
+    "exportOice": {
+      "title": "Export",
+      "downloadButton": "Download",
+      "exportButton": "Confirm Export"
+    },
+    "oiceError": {
+      "messageLabel": "Error Message",
+      "errorBlockId": "Error Block Id",
+      "attributeName": "Attribute Name"
+    },
+    "characterSelectionModal": {
+      "title": "Select Characters",
+      "confirmButton": "Confirm",
+      "categorySelectionAll": "All"
+    },
+    "imageSelectionModal": {
+      "title": "Select Images",
+      "confirmButton": "Confirm"
+    },
+    "backgroundImageSelectionModal": {
+      "title": "Select Backgrounds",
+      "confirmButton": "Confirm"
+    },
+    "itemImageSelectionModal": {
+      "title": "Select Image"
+    },
+    "audioSelectionModal": {
+      "placeholder": {
+        "music": "Select Background Music (required)",
+        "sound": "Select Sound Effects (required)"
+      },
+      "title": {
+        "chooseMusic": "Select Background Music",
+        "chooseSound": "Select Sound Effects"
+      }
+    },
+    "blocksList": {
+      "dummyBlock": {
+        "normal": "Drag components from the menu to this block to add them",
+        "hover": "Release the compentent to insert it"
+      },
+      "statusRow": {
+        "lastSave": "Last edit was {{time}}",
+        "allChangesSaved": "All changes saved",
+        "saving": "Saving...",
+        "editing": "Editing : ",
+        "otherLanguage": "Other Languages"
+      }
+    }
+  },
+  "error": {
+    "ERR_AUDIO_FORMAT_UNSUPPORTED": "This audio format is not supported",
+    "ERR_AUDIO_TRANSCODE_FAILURE": "An error occured when encoding the audio",
+    "ERR_IMPORT_SCRIPT_ASSET_NOT_FOUND": "Assest not found with ID: {{assetIds}}",
+    "ERR_IMPORT_SCRIPT_CHARACTER_FORBID_RENAME": "You cannot rename non-generic characters, character ID: {{characterId}}",
+    "ERR_IMPORT_SCRIPT_CHARACTER_NOT_FOUND": "Character not found with ID: {{ characterIds }}",
+    "ERR_IMPORT_SCRIPT_FILE_CANNOT_OPEN": "Please upload a script file in the correct format (.txt)",
+    "ERR_IMPORT_SCRIPT_FILE_NOT_FOUND": "Please upload a script file",
+    "ERR_IMPORT_SCRIPT_LIBRARY_NOT_OWNED": "You cannot use the unowned library \"{{libraryName}}\"",
+    "ERR_IMPORT_SCRIPT_LIBRARY_NOT_PURCHASED": "You cannot use the library \"{{libraryName}}\" as you have not purchased it yet",
+    "ERR_IMPORT_SCRIPT_SHOULD_NOT_WRITE_DECLARATION_IN_SCRIPT": "Character and background declaration should be inside the <declaration> tag",
+    "ERR_IMPORT_SCRIPT_SHOULD_NOT_WRITE_SCRIPT_IN_DECLARATION": "Dialogue should be inside of the <script> tag",
+    "ERR_IMPORT_SCRIPT_SYNTAX_ERROR_UNEXPECTED_EOF": "Syntax error: UNEXPECTED_EOF",
+    "ERR_IMPORT_SCRIPT_SYNTAX_ERROR": "Syntax error",
+    "ERR_IMPORT_SCRIPT_TOKENIZATION_ERROR": "Tokenization error with message: \"{{message}}\"",
+    "ERR_IMPORT_SCRIPT_UNKNOWN_ERROR": "Unknown error with message: \"{{message}}\"",
+    "ERR_IMPORT_SCRIPT_UNRECOGNIZED_SECTION_TAG": "Only use the <declaration> and <script> tags",
+    "ERR_IMPORT_SCRIPT_USING_UNDECLARED_BACKGROUND": "Using a background not defined in the <declaration> section",
+    "ERR_IMPORT_SCRIPT_USING_UNDECLARED_CHARACTER": "Using a character not defined in the <declaration> section",
+    "ERR_IMPORT_SCRIPT_WAIT_TIME_IS_NOT_AN_INTEGER": "The wait time is not an integer",
+    "ERR_LIBRARY_NOT_FOR_SALE": "The library you visited is not avalible to the public",
+    "ERR_NOT_POSSIBLE_PHONE_NUMBER": "Please enter a valid phone number",
+    "ERR_NOT_MOBILE_PHONE_NUMBER": "Please enter a phone number",
+    "ERR_TESTFLIGHT_INVALID_TESTER_EMAIL": "Invalid email",
+    "ERR_TESTFLIGHT_TESTER_EXIST": "The email has been registered",
+    "ERR_TESTFLIGHT_RESEND_INVITATION_FAILURE": "Unable to resend invitation",
+    "ERR_TESTFLIGHT_ADD_TESTER_FAILURE": "Unable to send invitation, please try again later",
+    "ERR_USERNAME_LENGTH_TOO_SHORT": "Username must be at least 5 characters",
+    "ERR_USERNAME_CAN_ONLY_START_WITH_LETTER": "Username must start with English letter",
+    "ERR_USERNAME_CONTAINS_INVALID_CHARACTER": "Username contains invalid character",
+    "ERR_USERNAME_NOT_UNIQUE": "Username is not available",
+    "ERR_USERNAME_IS_A_NUMBER": "Username cannot be all numbers"
+  },
+  "general": {
+    "save": "Save",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "selectPlease": "Select",
+    "enterPlease": "Please Enter"
+  },
+  "interactiveTutorial": {
+    "button": {
+      "finish": "Finish tutorial",
+      "control": {
+        "skip": "Skip section",
+        "next": "Next section",
+        "previous": "Previous section"
+      }
+    },
+    "tutorial1": {
+      "step1": "First click here to select a story"
+    }
+  },
+  "library": {
+    "author": "Creator",
+    "authorWithName": "$t(author) {{author}}",
+    "credits": "Credits",
+    "public": "Public",
+    "private": "Private",
+    "forSale": "For Sale",
+    "free": "Free",
+    "pendingForSale": "Sale Pending",
+    "purchased": "Purchased",
+    "show": "Show",
+    "hide": "Hide"
+  },
+  "license": {
+    "creativeCommons": "Authorized under CC",
+    "referToProfile": "See account for license info"
+  },
+  "loadingScreen": {
+    "label": {
+      "loading": "loading"
+    }
+  },
+  "macro": {
+    "stringTypeAttributePlaceholder": "Please Enter",
+    "comment": {
+      "_title": "Comment",
+      "text": "Text"
+    },
+    "fadeoutse": {
+      "_title": "Fadeout SE",
+      "buf": "Buffer",
+      "time": "Duration"
+    },
+    "stopbgm": {
+      "_title": "Stop Music",
+      "time": "Fade out time"
+    },
+    "button": {
+      "_title": "Button",
+      "storage": "Image file",
+      "graphic": "Image",
+      "target": "Target"
+    },
+    "wv": {
+      "_title": "Wait for Video",
+      "canskip": "Can skip video"
+    },
+    "xchgbgm": {
+      "_title": "Switch Music",
+      "storage": "Music file",
+      "time": "Duration",
+      "overlap": "Overlap Duration",
+      "loop": "Loop",
+      "volume": "Volume"
+    },
+    "jump": {
+      "_title": "Jump",
+      "target": "Target Label Name"
+    },
+    "bgm": {
+      "_title": "Play Music",
+      "storage": "Music file",
+      "loop": "Loop",
+      "fadetime": "Fadein Duration",
+      "overlap": "Overlap Duration",
+      "volume": "Volume (0-100)"
+    },
+    "wm": {
+      "_title": "Wait for Motion",
+      "canskip": "Can skip Motion"
+    },
+    "resetfont": {
+      "_title": "Reset font"
+    },
+    "fadepausebgm": {
+      "_title": "Fadeout Music",
+      "time": "Duration"
+    },
+    "l": {
+      "_title": "Wait for click"
+    },
+    "image": {
+      "_title": "Display Image",
+      "mopacity": "Color Intensity",
+      "shadowx": "Shadow (left)",
+      "shadowy": "Shadow (top)",
+      "mcolor": "Color",
+      "visible": "Visible",
+      "shadowblur": "Shadow Blur",
+      "storage": "Source file",
+      "left": "Left",
+      "layer": "Layer",
+      "opacity": "Alpha",
+      "shadowopacity": "Shadow Alpha",
+      "page": "Page",
+      "top": "Top",
+      "shadow": "Shadow"
+    },
+    "r": {
+      "_title": "Change"
+    },
+    "font": {
+      "_title": "Font Settings",
+      "o2_shadowcolor": "Shadow Color",
+      "color": "Color",
+      "size": "Size",
+      "italic": "Italic",
+      "bold": "Bold",
+      "o2_shadow": "Shadow",
+      "edgecolor": "Border Color",
+      "face": "Font",
+      "edge": "Border"
+    },
+    "stopvideo": {
+      "_title": "Stop Video"
+    },
+    "ws": {
+      "_title": "Wait for Sound",
+      "buf": "Buffer",
+      "canskip": "Can skip sound"
+    },
+    "fadeinbgm": {
+      "_title": "Fadein Music",
+      "storage": "Source file",
+      "time": "Duration",
+      "loop": "Loop"
+    },
+    "glyph": {
+      "_title": "Wait Settings",
+      "left": "Left",
+      "fix": "Fixed",
+      "page": "Wait for Page Changes",
+      "top": "Top",
+      "line": "Wait for New Lines"
+    },
+    "openvideo": {
+      "_title": "Open Video",
+      "storage": "Source file"
+    },
+    "resumebgm": {
+      "_title": "Resume Music"
+    },
+    "video": {
+      "_title": "Video Settings",
+      "width": "Width",
+      "height": "Height",
+      "volume": "Volume",
+      "visible": "Visible",
+      "left": "Left",
+      "top": "Top",
+      "loop": "Loop"
+    },
+    "fadebgm": {
+      "_title": "Fadeout Music",
+      "time": "Duration",
+      "volume": "Volume"
+    },
+    "defstyle": {
+      "_title": "Set Default Style",
+      "linespacing": "Line Spacing",
+      "pitch": "Word Spacing",
+      "linesize": "Line Size"
+    },
+    "resumevideo": {
+      "_title": "Resume Video"
+    },
+    "s": {
+      "_title": "Stop"
+    },
+    "pimage": {
+      "_title": "Add Image",
+      "storage": "Source file",
+      "dx": "Destination coordinates (left)",
+      "sw": "Width",
+      "layer": "Layer",
+      "sy": "Source coordinates (top)",
+      "sh": "Height",
+      "dy": "Destination coordinates (top)",
+      "page": "Page number",
+      "sx": "Source coordinates (left)"
+    },
+    "locate": {
+      "_title": "Move",
+      "x": "Left",
+      "y": "Top"
+    },
+    "position": {
+      "_title": "Text Layer Settings",
+      "visible": "Visible",
+      "marginb": "Bottom Margin",
+      "width": "Width",
+      "marginr": "Right Margin",
+      "frame": "Background Image",
+      "margint": "Top Margin",
+      "height": "Height",
+      "marginl": "Left Margin",
+      "left": "Left",
+      "color": "Color",
+      "layer": "Layer",
+      "opacity": "Alpha",
+      "vertical": "Vertical",
+      "page": "Page",
+      "top": "Top"
+    },
+    "freeimage": {
+      "_title": "Remove Iamge",
+      "layer": "Layer",
+      "page": "Page"
+    },
+    "delay": {
+      "_title": "Set Text Display Speed",
+      "speed": "Speed"
+    },
+    "wl": {
+      "_title": "Wait for Backgroun Music",
+      "canskip": "Can skip"
+    },
+    "history": {
+      "_title": "Recording Settings",
+      "output": "Output",
+      "enabled": "Enabled"
+    },
+    "playvideo": {
+      "_title": "Play Video",
+      "storage": "Source File"
+    },
+    "return": {
+      "_title": "Return to Start",
+      "storage": "Source File",
+      "target": "Target"
+    },
+    "fadeinse": {
+      "_title": "Fadein Sound Effect",
+      "buf": "Buffer",
+      "storage": "Soure File",
+      "time": "Duration",
+      "loop": "Loop"
+    },
+    "label": {
+      "_title": "Label",
+      "caption": "Description (optional)",
+      "name": "Label Name"
+    },
+    "call": {
+      "_title": "Call Script",
+      "storage": "Source File",
+      "target": "Target"
+    },
+    "wa": {
+      "_title": "Wait for Animation",
+      "layer": "Layer",
+      "seg": "Buffer",
+      "page": "Page"
+    },
+    "pausebgm": {
+      "_title": "Pause Music"
+    },
+    "layopt": {
+      "_title": "Layer Settings",
+      "left": "Left",
+      "layer": "Layer",
+      "opacity": "Alpha",
+      "visible": "Visible",
+      "page": "Page",
+      "top": "Top"
+    },
+    "wf": {
+      "_title": "Wait for Audio Switch",
+      "buf": "Buffer",
+      "canskip": "Can skip"
+    },
+    "trans": {
+      "_title": "Switch",
+      "rule": "Rules",
+      "time": "Duration",
+      "method": "Function",
+      "layer": "Layer",
+      "stay": "Remain",
+      "vague": "Vaugeness",
+      "from": "From"
+    },
+    "wt": {
+      "_title": "Wait for Transition",
+      "canskip": "Can skip"
+    },
+    "fadeoutbgm": {
+      "_title": "Fadeout Background Music",
+      "time": "Duration"
+    },
+    "backlay": {
+      "_title": "Prepare to Switch",
+      "layer": "Layer"
+    },
+    "er": {
+      "_title": "Reset Text"
+    },
+    "stopmove": {
+      "_title": "Stop Action"
+    },
+    "stopse": {
+      "_title": "Stop Sound Effect",
+      "buf": "Buffer"
+    },
+    "fadese": {
+      "_title": "Fade Sound Effect",
+      "buf": "Buffer",
+      "time": "Duration",
+      "volume": "Volume"
+    },
+    "wait": {
+      "_title": "Wait",
+      "time": "Duration",
+      "canskip": "Can skip"
+    },
+    "resetstyle": {
+      "_title": "Reset Style"
+    },
+    "bgmopt": {
+      "_title": "Background Music Settings",
+      "volume": "Volume"
+    },
+    "seopt": {
+      "_title": "Sound Settings",
+      "buf": "Buffer",
+      "gvolume": "Global Volume",
+      "volume": "Volume"
+    },
+    "wb": {
+      "_title": "Wait for Background Music Switch",
+      "canskip": "Can skip"
+    },
+    "copylay": {
+      "_title": "Copy Layer",
+      "srclayer": "Source Layer",
+      "destlayer": "Destination Layer",
+      "srcpage": "Source Page",
+      "destpage": "Destination Page"
+    },
+    "pausevideo": {
+      "_title": "Pause Video"
+    },
+    "style": {
+      "_title": "Style Settings",
+      "align": "Alignment",
+      "linespacing": "Line Spacing",
+      "pitch": "Word Spacing",
+      "autoreturn": "Line Wrap",
+      "linesize": "Line Size"
+    },
+    "wq": {
+      "_title": "Wait for Vibrations",
+      "canskip": "Can skip"
+    },
+    "playse": {
+      "_title": "Play Sound Effect",
+      "storage": "Source file",
+      "buf": "Buffer"
+    },
+    "deffont": {
+      "_title": "Set Default Font",
+      "o2_shadowcolor": "Shadow Color",
+      "color": "Color",
+      "size": "Size",
+      "edgecolor": "Border Color",
+      "bold": "Bold",
+      "o2_shadow": "Shadow",
+      "face": "Font",
+      "edge": "Border"
+    },
+    "current": {
+      "_title": "Select Text Layer",
+      "layer": "Layer",
+      "page": "Page"
+    },
+    "text": {
+      "_title": "Show Text",
+      "text": "Text"
+    },
+    "move": {
+      "_title": "Move Layer",
+      "path": "Path",
+      "time": "Duration",
+      "layer": "Layer",
+      "spline": "Automatically Create Curve",
+      "delay": "Delay",
+      "page": "Page",
+      "accel": "Acceleration"
+    },
+    "stoptrans": {
+      "_title": "Stop Transition"
+    },
+    "quake": {
+      "_title": "Shake",
+      "time": "Duration",
+      "vmax": "Vertical Max",
+      "hmax": "Horizontal Max"
+    },
+    "p": {
+      "_title": "Wait for click"
+    },
+    "characterdialog": {
+      "_title": "Dialogue",
+      "character": "Character",
+      "dialog": "Dialogue",
+      "dialogPlaceholder": "Please enter dialogue",
+      "fg": "Foreground Image",
+      "fgexit": "Exit Order",
+      "fliplr": "Flip Image",
+      "name": "Custom name",
+      "position": "Position",
+      "skipwait": "Can skip",
+      "waitse": "Wait for Sound",
+      "hidedialog": "Hide dialogue"
+    },
+    "fg": {
+      "_title": "Show People",
+      "fliplr": "Flip Image",
+      "storage": "Source File",
+      "time": "Transition Duration",
+      "left": "Left",
+      "layer": "Layer",
+      "stay": "Remain",
+      "rule": "Transition Rule",
+      "method": "Transition Method",
+      "from": "Origin",
+      "top": "Top",
+      "canskip": "Can skip"
+    },
+    "dia": {
+      "_title": "Normal Dialogue Box"
+    },
+    "selstart": {
+      "_title": "Prepare options",
+      "hidesysbutton": "Hide Button Layer",
+      "hidemes": "Hide Conversation Layer"
+    },
+    "clbg": {
+      "_title": "Clear the Background",
+      "rule": "Transition Rule",
+      "time": "Transition Duration",
+      "method": "Transition Method",
+      "hidemes": "Hide Dialogue",
+      "clfg": "Clear Foreground",
+      "from": "Origin",
+      "stay": "Remain",
+      "canskip": "Can skip"
+    },
+    "w": {
+      "_title": "Wait for Page Change"
+    },
+    "lr": {
+      "_title": "Wait for Change"
+    },
+    "clfg": {
+      "_title": "Clear Foreground",
+      "stay": "Remain",
+      "time": "Transition Duration",
+      "method": "Transition Method",
+      "layer": "Clear All Layers",
+      "hidemes": "Hide Dialogue",
+      "rule": "Transition Rule",
+      "from": "Origin",
+      "canskip": "Can skip",
+      "clface": "Clear Images"
+    },
+    "selbutton": {
+      "_title": "Button Options",
+      "storage": "Source File",
+      "over": "Selected Button Image",
+      "target": "Target",
+      "text": "Text",
+      "on": "On-Click",
+      "normal": "Unselected Button Image"
+    },
+    "selend": {
+      "_title": "Wait for Selection",
+      "stay": "Remain",
+      "time": "Duration",
+      "method": "Transition Method",
+      "rule": "Transition Rule",
+      "from": "Origin",
+      "canskip": "Can skip"
+    },
+    "bg": {
+      "_title": "Background",
+      "mopacity": "Color Intensity",
+      "convert": "Invert",
+      "method": "Transition Method",
+      "rule": "Transition Rule",
+      "grayscale": "Grayscale",
+      "mcolor": "Filter",
+      "stay": "Remain",
+      "canskip": "Can skip",
+      "storage": "Source file",
+      "time": "Transition Duration",
+      "hidemes": "Hide Dialogue",
+      "clfg": "Clear Foreground",
+      "from": "Origin"
+    },
+    "item": {
+      "_title": "Show Image",
+      "mopacity": "Color Intensity",
+      "convert": "Invert",
+      "method": "Transition Method",
+      "rule": "Transition Rule",
+      "grayscale": "Grayscale",
+      "mcolor": "Filter",
+      "stay": "Remain",
+      "canskip": "Can skip",
+      "storage": "Source file",
+      "time": "Transition Duratio",
+      "hidemes": "Hide Dialogue",
+      "clfg": "Clear Foreground",
+      "from": "Origin",
+      "waitingtime": "Wait Duration"
+    },
+    "clearitem": {
+      "_title": "Remove Image"
+    },
+    "cm": {
+      "_title": "Clear All Text"
+    },
+    "question": {
+      "_title": "Question (Select)",
+      "text": "Text"
+    },
+    "goto": {
+      "_title": "Link",
+      "target": "Target",
+      "text": "Texts"
+    },
+    "fgExitRight": {
+      "_title": "Exit Right"
+    },
+    "fgExitLeft": {
+      "_title": "Exit Left"
+    },
+    "fgExitMiddle": {
+      "_title": "Exit Center"
+    },
+    "addTalk": {
+      "_title": "Add Dialogue",
+      "talk": "Dialogue",
+      "talkPlaceholder": "Please enter dialogue",
+      "waitse": "Wait for Sound Effect"
+    },
+    "aside": {
+      "_title": "Narration",
+      "text": "Text",
+      "textPlaceholder": "Please enter narration content",
+      "waitse": "Wait for Sound Effect",
+      "fullscreen": "Fullscreen"
+    },
+    "optionstart": {
+      "_title": "Start Selection",
+      "question": "Question"
+    },
+    "optionanswer": {
+      "_title": "Select Answer",
+      "target": "Target",
+      "text": "Option Content"
+    },
+    "optionend": {
+      "_title": "Wait for Options"
+    },
+    "optionclear": {
+      "_title": "Clear Options"
+    },
+    "autoplay": {
+      "_title": "Autoplay",
+      "delayspeed": "Delay",
+      "autoWaitTimeInterval": "Wait Time"
+    },
+    "flash": {
+      "_title": "Flash",
+      "color": "Color"
+    },
+    "focusline": {
+      "_title": "Focus Line",
+      "color": "Color",
+      "coloropacity": "Alpha"
+    },
+    "clearfocusline": {
+      "_title": "Remove Focus Line"
+    },
+    "clearmessage": {
+      "_title": "Clear Text"
+    },
+    "Cancelautomode": {
+      "_title": "Manual Play"
+    },
+    "option": {
+      "_title": "Option",
+      "question": "Question",
+      "questionPlaceholder": "Please enter a question",
+      "answers": "Answers"
+    },
+    "composedAnswer": {
+      "goToTag": "Go to",
+      "option": "Option Content",
+      "addOption": "Add an option"
+    }
+  },
+  "membership": {
+    "user": "oice Free User",
+    "paid": "oice Pro User",
+    "admin": "Administrator"
+  },
+  "oiceSingleView": {
+    "label": {
+      "episode": "Episode #{{episode}}",
+      "getApp": "Read on mobile",
+      "downloadForBetterExperience": "Download oice App",
+      "noStoryDescription": "No story description"
+    },
+    "credit": {
+      "director": "Director",
+      "fgimage": "Characters",
+      "bgimage": "Background",
+      "image": "Props",
+      "bgm": "Music",
+      "se": "Sound Effects"
+    },
+    "preview": {
+      "screenCapture": "Capture Screen",
+      "saveCover": "Save cover"
+    }
+  },
+  "pagination": {
+    "prevPage": "Previous Page",
+    "nextPage": "Next Page"
+  },
+  "site": {
+    "title": "oice: visual novels",
+    "description": "oice allows you to choose the setting, characters, props and music to pair with dialogue of your own composition. Each choice choice creates new paths, and each person will have their own experience."
+  },
+  "tutorial": {
+    "tab": {
+      "faq": "FAQ",
+      "manual": "Manual",
+      "functions": "Functions",
+      "visual": "oice Visual Tutorial"
+    }
+  },
+  "unit": {
+    "ms": "ms"
+  },
+  "StorySettingModal": {
+    "tabBar": {
+      "storySetting": "Story Settings",
+      "oiceSetting": "oice Settings",
+      "languageSetting": "Language Settings"
+    },
+    "label": {
+      "deleteStoryConfirm": "Are you sure you want to delete this story?"
+    }
+  },
+  "StorySettingTab": {
+    "label": {
+      "facebookSetting": "Facebook Setting",
+      "uploadStoryCover": "Upload Story Cover"
+    },
+    "placeholder": {
+      "name": "Please enter a story name (required)",
+      "description": "Please enter a story description..."
+    }
+  },
+  "FacebookSettingModal": {
+    "title": "$t(StorySettingTab:label:facebookSetting) — $t(Language:{{language}})",
+    "label": {
+      "uploadFacebookOgCover": "Upload Facebook OG Cover",
+      "suggestedImageSize": "(1200 px × 630 px)"
+    }
+  },
+  "OiceSettingTab": {
+    "label": {
+      "public": "Public",
+      "notPublic": "Private"
+    },
+    "placeholder": {
+      "name": "Please enter an oice title (required)"
+    }
+  },
+  "LanguageSettingTab": {
+    "label": {
+      "addLanguage": "Add Language",
+      "otherLanguage": "Other Language",
+      "episodeName": "Episode Name"
+    },
+    "placeholder": {
+      "addLanguageGuideTitle": "You can localize your story in different language by selecting them on the left side.",
+      "addLanguageGuideDescription": "Click button $t(LanguageSettingTab:label:addLanguage) and select the language you want."
+    }
+  },
+  "Language": {
+    "ab": "аҧсуа бызшәа, аҧсшәа",
+    "aa": "Afaraf",
+    "af": "Afrikaans",
+    "ak": "Akan",
+    "sq": "Shqip",
+    "am": "አማርኛ",
+    "ar": "العربية",
+    "an": "aragonés",
+    "hy": "Հայերեն",
+    "as": "অসমীয়া",
+    "av": "авар мацӀ, магӀарул мацӀ",
+    "ae": "avesta",
+    "ay": "aymar aru",
+    "az": "azərbaycan dili",
+    "bm": "bamanankan",
+    "ba": "башҡорт теле",
+    "eu": "euskara, euskera",
+    "be": "беларуская мова",
+    "bn": "বাংলা",
+    "bh": "भोजपुरी",
+    "bi": "Bislama",
+    "bs": "bosanski jezik",
+    "br": "brezhoneg",
+    "bg": "български език",
+    "my": "ဗမာစာ",
+    "ca": "català, valencià",
+    "ch": "Chamoru",
+    "ce": "нохчийн мотт",
+    "ny": "chiCheŵa, chinyanja",
+    "cv": "чӑваш чӗлхи",
+    "kw": "Kernewek",
+    "co": "corsu, lingua corsa",
+    "cr": "ᓀᐦᐃᔭᐍᐏᐣ",
+    "hr": "hrvatski jezik",
+    "cs": "čeština, český jazyk",
+    "da": "dansk",
+    "dv": "ދިވެހި",
+    "nl": "Nederlands, Vlaams",
+    "dz": "རྫོང་ཁ",
+    "en": "English",
+    "eo": "Esperanto",
+    "et": "eesti, eesti keel",
+    "ee": "Eʋegbe",
+    "fo": "føroyskt",
+    "fj": "vosa Vakaviti",
+    "fi": "suomi, suomen kieli",
+    "fr": "français",
+    "ff": "Fulfulde, Pulaar, Pular",
+    "gl": "Galego",
+    "ka": "ქართული",
+    "de": "Deutsch",
+    "el": "ελληνικά",
+    "gn": "Avañe'ẽ",
+    "gu": "ગુજરાતી",
+    "ht": "Kreyòl ayisyen",
+    "ha": "(Hausa) هَوُسَ",
+    "he": "עברית",
+    "hz": "Otjiherero",
+    "hi": "हिन्दी, हिंदी",
+    "ho": "Hiri Motu",
+    "hu": "magyar",
+    "ia": "Interlingua",
+    "id": "Bahasa Indonesia",
+    "ie": "Originally called Occidental; then Interlingue after WWII",
+    "ga": "Gaeilge",
+    "ig": "Asụsụ Igbo",
+    "ik": "Iñupiaq, Iñupiatun",
+    "io": "Ido",
+    "is": "Íslenska",
+    "it": "Italiano",
+    "iu": "ᐃᓄᒃᑎᑐᑦ",
+    "ja": "日本語",
+    "jv": "ꦧꦱꦗꦮ, Basa Jawa",
+    "kl": "kalaallisut, kalaallit oqaasii",
+    "kn": "ಕನ್ನಡ",
+    "kr": "Kanuri",
+    "ks": "कश्मीरी, كشميري‎",
+    "kk": "қазақ тілі",
+    "km": "ខ្មែរ, ខេមរភាសា, ភាសាខ្មែរ",
+    "ki": "Gĩkũyũ",
+    "rw": "Ikinyarwanda",
+    "ky": "Кыргызча, Кыргыз тили",
+    "kv": "коми кыв",
+    "kg": "Kikongo",
+    "ko": "한국어",
+    "ku": "Kurdî, كوردی‎",
+    "kj": "Kuanyama",
+    "la": "latine, lingua latina",
+    "lb": "Lëtzebuergesch",
+    "lg": "Luganda",
+    "li": "Limburgs",
+    "ln": "Lingála",
+    "lo": "ພາສາລາວ",
+    "lt": "lietuvių kalba",
+    "lu": "Kiluba",
+    "lv": "Latviešu Valoda",
+    "gv": "Gaelg, Gailck",
+    "mk": "македонски јазик",
+    "mg": "fiteny malagasy",
+    "ms": "Bahasa Melayu, بهاس ملايو‎",
+    "ml": "മലയാളം",
+    "mt": "Malti",
+    "mi": "te reo Māori",
+    "mr": "मराठी",
+    "mh": "Kajin M̧ajeļ",
+    "mn": "Монгол хэл",
+    "na": "Dorerin Naoero",
+    "nv": "Diné bizaad",
+    "nd": "isiNdebele",
+    "ne": "नेपाली",
+    "ng": "Owambo",
+    "nb": "Norsk Bokmål",
+    "nn": "Norsk Nynorsk",
+    "no": "Norsk",
+    "ii": "ꆈꌠ꒿ Nuosuhxop",
+    "nr": "isiNdebele",
+    "oc": "occitan, lenga d'òc",
+    "oj": "ᐊᓂᔑᓈᐯᒧᐎᓐ",
+    "cu": "ѩзыкъ словѣньскъ",
+    "om": "Afaan Oromoo",
+    "or": "ଓଡ଼ିଆ",
+    "os": "ирон æвзаг",
+    "pa": "ਪੰਜਾਬੀ",
+    "pi": "पाऴि",
+    "fa": "فارسی",
+    "pl": "Język Polski, Polszczyzna",
+    "ps": "پښتو",
+    "pt": "Português",
+    "qu": "Runa Simi, Kichwa",
+    "rm": "Rumantsch Grischun",
+    "rn": "Ikirundi",
+    "ro": "Română",
+    "ru": "Русский",
+    "sa": "संस्कृतम्",
+    "sc": "sardu",
+    "sd": "सिन्धी, سنڌي، سندھی‎",
+    "se": "Davvisámegiella",
+    "sm": "gagana fa'a Samoa",
+    "sg": "yângâ tî sängö",
+    "sr": "српски језик",
+    "gd": "Gàidhlig",
+    "sn": "chiShona",
+    "si": "සිංහල",
+    "sk": "Slovenčina, Slovenský Jazyk",
+    "sl": "Slovenski Jezik, Slovenščina",
+    "so": "Soomaaliga, af Soomaali",
+    "st": "Sesotho",
+    "es": "Español",
+    "su": "Basa Sunda",
+    "sw": "Kiswahili",
+    "ss": "SiSwati",
+    "sv": "Svenska",
+    "ta": "தமிழ்",
+    "te": "తెలుగు",
+    "tg": "тоҷикӣ, toçikī, تاجیکی‎",
+    "th": "ไทย",
+    "ti": "ትግርኛ",
+    "bo": "བོད་ཡིག",
+    "tk": "Türkmen, Түркмен",
+    "tl": "Wikang Tagalog",
+    "tn": "Setswana",
+    "to": "Faka Tonga",
+    "tr": "Türkçe",
+    "ts": "Xitsonga",
+    "tt": "татар теле, tatar tele",
+    "tw": "Twi",
+    "ty": "Reo Tahiti",
+    "ug": "ئۇيغۇرچە‎, Uyghurche",
+    "uk": "Українська",
+    "ur": "اردو",
+    "uz": "Oʻzbek, Ўзбек, أۇزبېك‎",
+    "ve": "Tshivenḓa",
+    "vi": "Tiếng Việt",
+    "vo": "Volapük",
+    "wa": "Walon",
+    "cy": "Cymraeg",
+    "wo": "Wollof",
+    "fy": "Frysk",
+    "xh": "isiXhosa",
+    "yi": "ייִדיש",
+    "yo": "Yorùbá",
+    "za": "Saɯ cueŋƅ, Saw cuengh",
+    "zh-HK": "粵語",
+    "zh-TW": "正體中文",
+    "zh-CN": "简体中文",
+    "zu": "isiZulu",
+    "others": "Others"
+  },
+  "LinkTooltip": {
+    "button": {
+      "copy": "copy"
+    },
+    "label": {
+      "copySuccess": "Copied to the clipboard successfully",
+      "copyFailure": "Copy was unsuccessful."
+    }
+  }
+}

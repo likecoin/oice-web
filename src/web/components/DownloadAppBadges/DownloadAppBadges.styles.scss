@@ -1,0 +1,51 @@
+@import "../../styles/variables";
+
+.get-app-button-groups {
+  display: flex;
+
+  max-width: 400px;
+  margin: -5px;
+  margin-top: 5px;
+
+  &.vertical {
+    flex-direction: column;
+  }
+
+  .get-app-button {
+    display: inline-block;
+
+    width: 50%;
+    min-width: 100px;
+    max-width: 200px;
+    margin: 5px;
+
+    > a {
+      display: block;
+
+      width: 100%;
+
+      cursor: pointer;
+
+      > img {
+        display: inherit;
+
+        width: inherit;
+      }
+    }
+
+    .footnote {
+      display: inline-block;
+
+      margin-top: 2px;
+
+      opacity: 0.55;
+      color: $pure-black;
+
+      font-size: 12px;
+
+      &.dark-background {
+        color: $pure-white;
+      }
+    }
+  }
+}

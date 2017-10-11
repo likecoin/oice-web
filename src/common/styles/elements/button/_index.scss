@@ -1,0 +1,39 @@
+.base-button {
+  font-size: inherit;
+  font-weight: 400;
+  min-height: 48px;
+  color: $font-color1;
+  cursor: pointer;
+
+  &.mini {
+    font-size: $font-size-small;
+    min-width: initial;
+    min-height: 36px;
+  }
+
+  &.block {
+    width: 100%;
+  }
+
+  > svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: color, background-color .15s ease-out;
+
+  .button-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+@import 'flatButton';
+@import 'raisedButton';
+@import 'buttonGroup';
