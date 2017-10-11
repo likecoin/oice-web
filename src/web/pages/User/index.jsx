@@ -19,6 +19,7 @@ import TabBar from 'ui-elements/TabBar';
 import { setInnerHTMLWithParsing } from 'common/utils';
 import { getAuthItem } from 'common/utils/auth';
 import { getLinkIcon } from 'web/pages/Profile/PersonalInformationTab/ExternalLink';
+import { PROFILE_ACTION } from 'web/pages/Profile/Profile.constants';
 
 import Gallery from './Gallery';
 import StoryDetails from './StoryDetails';
@@ -295,6 +296,10 @@ export default class UserPage extends React.Component {
     this.setState({ selectedItem: undefined });
   }
 
+  handleClickAvatar = () => {
+    window.location.href = `/profile?action=${PROFILE_ACTION.PERSONAL_INFORMATION}`;
+  }
+
   syncHeaderWidth() {
     if (this.tabBar) {
       const tabBar = this.tabBar.getRootElement();
@@ -314,14 +319,17 @@ export default class UserPage extends React.Component {
   }
 
   renderAvatar(size) {
-    const { user } = this.props;
+    const { user, self } = this.props;
+    const isSelfProfile = _get(user, 'id') && _get(user, 'id') === _get(self, 'id');
     return (user &&
       <div id="user-avatar">
         <Avatar
           label={user.displayName}
+          overlay={isSelfProfile}
           size={size}
           src={user.avatar}
           mini
+          onClick={isSelfProfile && this.handleClickAvatar}
         />
         <h1 id="user-displayname">
           {user.displayName}

@@ -16,13 +16,13 @@ export function update(options) {
 export function updateWithUser(user) {
   if (!user) return;
   update({
-    name: user.displayName,
+    user_id: user.id,
     email: user.email,
     user_hash: user.intercomUserHash,
+    name: user.displayName,
+    type: user.role,
 
     // custom data
-    user_id: user.id,
-    type: user.role,
     _language: user.language,
     _ui_language: user.uiLanguage,
     _is_first_login: !!user.isFirstLogin,

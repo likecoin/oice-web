@@ -1,6 +1,7 @@
 export const PROFILE_ACTION = {
   MEMBERSHIP: 'membership',
   BECOME_BACKER: 'become-backer',
+  PERSONAL_INFORMATION: 'personal-info',
 };
 
 export const TAB_BAR_ITEM = {

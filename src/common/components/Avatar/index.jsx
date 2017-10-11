@@ -3,11 +3,21 @@ import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
 
+import SettingIcon from 'common/icons/setting';
+
 import './styles.scss';
 
 
 const Avatar = (props) => {
-  const { size, src, label, mini, vertical, onClick } = props;
+  const {
+    label,
+    mini,
+    overlay,
+    size,
+    src,
+    vertical,
+    onClick,
+  } = props;
   const style = {
     width: size,
     height: size,
@@ -45,6 +55,11 @@ const Avatar = (props) => {
           {label}
         </span>
       }
+      {overlay &&
+        <div className="avatar-overlay">
+          <SettingIcon />
+        </div>
+      }
     </div>
   );
 };
@@ -54,6 +69,7 @@ Avatar.propTypes = {
   id: PropTypes.string,
   label: PropTypes.string,
   mini: PropTypes.bool,
+  overlay: PropTypes.bool,
   size: PropTypes.number,
   src: PropTypes.string,
   vertical: PropTypes.bool,
@@ -63,6 +79,7 @@ Avatar.propTypes = {
 Avatar.defaultProps = {
   label: '',
   mini: false,
+  overlay: false,
   size: 36,
   src: '',
   vertical: false,

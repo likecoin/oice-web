@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { translate } from 'react-i18next';
 
 function WordCount({ t, count }) {
-  const wordCount = !count ? t('wordCount.counting') : (
+  const wordCount = !Number.isFinite(count) ? t('wordCount.counting') : (
     t('wordCount.count', { count })
   );
   return (

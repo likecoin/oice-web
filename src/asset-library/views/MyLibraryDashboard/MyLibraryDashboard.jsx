@@ -64,10 +64,12 @@ export default class MyLibraryDashboard extends React.Component {
 
   componentDidMount() {
     this.resizeDebounce = _debounce(this.handleResize, 50);
-    this.scrollThrottle = _throttle(this.handleScroll, 20);
     window.addEventListener('resize', this.resizeDebounce, false);
-    window.addEventListener('scroll', this.scrollThrottle, false);
     this.handleResize();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.resizeDebounce);
   }
 
   getLibrarySection(type) {
@@ -90,10 +92,6 @@ export default class MyLibraryDashboard extends React.Component {
     if (this.state.columns !== columns) {
       this.setState({ columns });
     }
-  }
-
-  handleScroll = () => {
-
   }
 
   handleClickLibrary = (library) => {

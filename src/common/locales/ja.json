@@ -1724,8 +1724,8 @@
   "oiceSingleView": {
     "label": {
       "episode": "エピソード {{episode}}",
-      "getApp": "oiceを無料ダウンロードして物語を読む",
-      "downloadForBetterExperience": "oiceアプリをダウンロードしてより快適に読みましょう！",
+      "getApp": "物語を読む",
+      "downloadForBetterExperience": "oiceアプリをダウンロード",
       "noStoryDescription": "あらすじなし"
     },
     "credit": {

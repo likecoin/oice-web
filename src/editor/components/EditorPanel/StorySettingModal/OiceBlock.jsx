@@ -8,6 +8,7 @@ import { DragSource, DropTarget } from 'react-dnd';
 
 import classNames from 'classnames';
 import _get from 'lodash/get';
+import _throttle from 'lodash/throttle';
 
 import AlertDialog from 'ui-elements/AlertDialog';
 import FlatButton from 'ui-elements/FlatButton';
@@ -22,6 +23,7 @@ import * as OiceAction from 'editor/actions/oice';
 import * as Actions from './StorySettingModal.actions';
 
 import WordCount from './WordCount';
+import { WORD_COUNT_WAIT_TIME_MS } from './StorySettingModal.constants';
 
 
 const boxSource = {
@@ -117,6 +119,18 @@ export default class OiceBlock extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this._fetchWordCountThrottle = _throttle(
+      ({ dispatch, oice, index }) => {
+        dispatch(Actions.fetchOiceWordCount(oice, index));
+      },
+      WORD_COUNT_WAIT_TIME_MS,
+      {
+        leading: false, // do not invoke on the leading edge of the timeout
+      },
+    );
+  }
+
   handleClickEditOiceNameButton = () => {
     const isEditingOiceName = true;
     this.setState({
@@ -196,12 +210,12 @@ export default class OiceBlock extends React.Component {
   }
 
   handleMouseEnter = () => {
-    const { dispatch, oice, index } = this.props;
-    dispatch(Actions.fetchOiceWordCount(oice, index));
+    this._fetchWordCountThrottle(this.props);
     this.setState({ isHovering: true });
   }
 
   handleMouseLeave = () => {
+    this._fetchWordCountThrottle.cancel();
     this.setState({ isHovering: false });
   }
 

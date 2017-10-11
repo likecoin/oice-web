@@ -20,6 +20,10 @@ import * as Actions from './StorySettingModal.actions';
 
 import './StorySettingModal.style.scss';
 
+function isNewlyTranslatedStory(story) {
+  // there is no author for story with newly translated language
+  return !_get(story, 'author');
+}
 
 @translate(['StorySettingTab', 'Language', 'editor'])
 @connect(store => ({ ...store.editorPanel.StorySettingModal }))
@@ -42,7 +46,10 @@ export default class StorySettingModal extends React.Component {
 
   componentDidMount() {
     const { dispatch, story } = this.props;
-    dispatch(Actions.fetchStoryWordCount(story.id, story.language));
+    if (!isNewlyTranslatedStory(story)) {
+      // only fetch word count for existing locales
+      dispatch(Actions.fetchStoryWordCount(story.id, story.language));
+    }
   }
 
   handleToggleFacebookSetting = () => {
@@ -127,7 +134,7 @@ export default class StorySettingModal extends React.Component {
                 storyDescription,
               })}
             />
-            <WordCount count={story.wordCount} />
+            {!isNewlyTranslatedStory(story) && <WordCount count={story.wordCount} />}
           </Form.Section.Main>
         </Form.Section>
         <FacebookSettingModal

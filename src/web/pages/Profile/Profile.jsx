@@ -43,8 +43,11 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props);
 
-    let tabBarIndex = 0;
+    let tabBarIndex = 1;
     switch (_get(props.location, 'query.action')) {
+      case PROFILE_ACTION.PERSONAL_INFORMATION:
+        tabBarIndex = 0;
+        break;
       case PROFILE_ACTION.MEMBERSHIP:
       case PROFILE_ACTION.BECOME_BACKER:
         tabBarIndex = 1;

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 
 import _get from 'lodash/get';
+import _throttle from 'lodash/throttle';
 
 import Dropdown from 'ui-elements/Dropdown';
 import FlatButton from 'ui-elements/FlatButton';
@@ -18,7 +19,10 @@ import LanguageSelection from './LanguageSelection';
 import LanguageOiceList from './LanguageOiceList';
 
 import * as Actions from './StorySettingModal.actions';
-import { TAB_LIST_ITEM } from './StorySettingModal.constants';
+import {
+  TAB_LIST_ITEM,
+  WORD_COUNT_WAIT_TIME_MS,
+} from './StorySettingModal.constants';
 
 import './StorySettingModal.style.scss';
 
@@ -49,6 +53,14 @@ export default class LanguageSettingTab extends React.Component {
   }
 
   componentDidMount() {
+    this._fetchWordCountThrottle = _throttle(
+      this.handleMouseEnterOice,
+      WORD_COUNT_WAIT_TIME_MS,
+      {
+        leading: false, // do not invoke on the leading edge of the timeout
+      },
+    );
+
     const { dispatch, supportedLanguages, newLanguages } = this.props;
     // default select the first supported language
     if (supportedLanguages.length > 0) {
@@ -98,6 +110,10 @@ export default class LanguageSettingTab extends React.Component {
 
   handleMouseEnterOice = (oice, index) => {
     this.props.dispatch(Actions.fetchOiceWordCount(oice, index));
+  }
+
+  handleOnMouseLeaveOice = () => {
+    this._fetchWordCountThrottle.cancel();
   }
 
   renderLanguageSelection = (language, index) => (
@@ -154,7 +170,8 @@ export default class LanguageSettingTab extends React.Component {
         <LanguageOiceList
           oices={oices}
           onChangeName={this.handleOiceNameChange}
-          onMouseEnterOice={this.handleMouseEnterOice}
+          onMouseEnterOice={this._fetchWordCountThrottle}
+          onMouseLeaveOice={this.handleOnMouseLeaveOice}
         />
       </div>
     );

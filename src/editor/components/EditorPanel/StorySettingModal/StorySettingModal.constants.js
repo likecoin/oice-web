@@ -10,3 +10,5 @@ export const TAB_LIST = [
   TAB_LIST_ITEM.OICE,
   TAB_LIST_ITEM.LANGUAGE,
 ];
+
+export const WORD_COUNT_WAIT_TIME_MS = 1500;

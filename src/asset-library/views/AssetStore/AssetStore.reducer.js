@@ -25,11 +25,12 @@ function handleFetchStoreLibrariesEnd(state, { payload }) {
   // featured will return list of featured library
   const { libraries, pageNumber, totalPages, list } = payload;
 
+  const isFinishedFetched = (state.libraries.length > 0 && list) || (state.featuredLibraryList.length > 0 && libraries);
+
   if (list) {
-    const isLibraryFetched = state.libraries.length > 0 && state.loading;
     return update(state, {
       featuredLibraryList: { $set: list },
-      loading: { $set: !isLibraryFetched },
+      loading: { $set: !isFinishedFetched },
     });
   }
 
@@ -37,7 +38,7 @@ function handleFetchStoreLibrariesEnd(state, { payload }) {
     libraries: { $set: libraries },
     pageNumber: { $set: pageNumber || 1 },
     totalPages: { $set: totalPages || 1 },
-    loading: { $set: false },
+    loading: { $set: !isFinishedFetched },
   });
 }
 

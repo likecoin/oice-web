@@ -1,6 +1,7 @@
 import { handleActions } from 'redux-actions';
 import update from 'immutability-helper';
 
+import _cloneDeep from 'lodash/cloneDeep';
 import _uniq from 'lodash/uniq';
 
 import * as Actions from './StorySettingModal.actions';
@@ -99,7 +100,7 @@ export default handleActions({
       },
       updated: {
         [story.language]: {
-          $auto: { $set: defaultUpdatedLanguageObject },
+          $auto: { $set: _cloneDeep(defaultUpdatedLanguageObject) },
         },
       },
       mainLanguage: { $set: story.language },
@@ -241,7 +242,7 @@ export default handleActions({
       },
       updated: {
         [payload.language]: {
-          $auto: { $set: defaultUpdatedLanguageObject },
+          $auto: { $set: _cloneDeep(defaultUpdatedLanguageObject) },
         },
       },
       loading: {
@@ -274,7 +275,7 @@ export default handleActions({
         languages: { $set: updatedDeletedLanguage },
       },
       updated: {
-        [language]: { $set: defaultUpdatedLanguageObject },
+        [language]: { $set: _cloneDeep(defaultUpdatedLanguageObject) },
       },
       [languageListUpdate]: { $splice: [[index, 1]] },
     });

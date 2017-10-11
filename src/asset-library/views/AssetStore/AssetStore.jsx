@@ -73,15 +73,18 @@ export default class AssetStore extends React.Component {
   }
 
   componentDidMount() {
+    if (this.props.isAuthenticated) {
+      this.fetchFeaturedLibraryList();
+    }
+
+    this.resizeDebounce = _debounce(this.handleResize, 50);
+    window.addEventListener('resize', this.resizeDebounce, false);
+    this.handleResize();
+
     if (/^\/store$/.test(window.location.pathname)) {
       this.props.dispatch(replace('/store/collection/featured'));
       return;
     }
-    this.resizeDebounce = _debounce(this.handleResize, 50);
-    this.scrollThrottle = _throttle(this.handleScroll, 20);
-    window.addEventListener('resize', this.resizeDebounce, false);
-    window.addEventListener('scroll', this.scrollThrottle, false);
-    this.handleResize();
 
     // fetch libraries
     this.fetchLibraries({
@@ -94,12 +97,7 @@ export default class AssetStore extends React.Component {
     const { params, featuredLibraryList, isAuthenticated, uiLanguage } = nextProps;
 
     if (!this.props.isAuthenticated && isAuthenticated) {
-      const language = uiLanguage || mapUILanguageCode(i18n.language);
-      // fetch featured library list
-      this.fetchLibraries({
-        type: STORE_LIBRARY_LIST_TYPE.FEATURED,
-        language,
-      });
+      this.fetchFeaturedLibraryList();
     }
 
     // redirect when no alias and just fetched featured library list
@@ -122,6 +120,10 @@ export default class AssetStore extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.resizeDebounce, false);
+  }
+
   getStoreCollectionType = () => this.props.params.collectionId;
 
   getFeaturedLibraryAlias = ({ params } = this.props) => params.alias;
@@ -136,7 +138,9 @@ export default class AssetStore extends React.Component {
     const limit = this.state.columns * MAXIMUM_ROWS_SHOWN;
     const offset = (pageNumber - 1) * limit;
     if (type) {
-      if (type === STORE_LIBRARY_LIST_TYPE.FEATURED && featuredLibraryList.length !== 0 && !alias && !language) return;
+      if (type === STORE_LIBRARY_LIST_TYPE.FEATURED) {
+        if (!((featuredLibraryList.length === 0 && language) || alias)) return;
+      }
       dispatch(Actions.fetchStoreLibrariesByCollection({
         type,
         offset,
@@ -147,6 +151,14 @@ export default class AssetStore extends React.Component {
     } else {
       dispatch(Actions.fetchStoreLibraries(offset, limit));
     }
+  }
+
+  fetchFeaturedLibraryList() {
+    const language = this.props.uiLanguage || mapUILanguageCode(i18n.language);
+    this.fetchLibraries({
+      type: STORE_LIBRARY_LIST_TYPE.FEATURED,
+      language,
+    });
   }
 
   fetchFeaturedLibraries(alias) {
@@ -174,12 +186,11 @@ export default class AssetStore extends React.Component {
     }
   }
 
-  handleScroll = () => {
-
-  }
-
   handlePageChange = (pageNumber) => {
-    this.fetchLibraries(this.getStoreCollectionType(), pageNumber);
+    this.fetchLibraries({
+      type: this.getStoreCollectionType(),
+      pageNumber,
+    });
   }
 
   handleClickLibrary = (library) => {

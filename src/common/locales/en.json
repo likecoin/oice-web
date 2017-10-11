@@ -1724,7 +1724,7 @@
   "oiceSingleView": {
     "label": {
       "episode": "Episode #{{episode}}",
-      "getApp": "Download oice for free to read stories easily",
+      "getApp": "Read on mobile",
       "downloadForBetterExperience": "Download oice App",
       "noStoryDescription": "No story description"
     },

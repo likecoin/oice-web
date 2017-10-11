@@ -13,7 +13,14 @@ import * as Actions from './StorySettingModal.actions';
 
 import './StorySettingModal.style.scss';
 
-function OiceListItem({ t, oice, index, onChangeName, onMouseEnterOice }) {
+function isNewlyTranslatedOice(oice) {
+  // there is no author for oice with newly translated language
+  return !_get(oice, 'author');
+}
+
+function OiceListItem(props) {
+  const { t, oice, index, onChangeName, onMouseEnterOice, onMouseLeaveOice } = props;
+
   function handleChangeName(name) {
     if (onChangeName) {
       onChangeName({
@@ -23,13 +30,24 @@ function OiceListItem({ t, oice, index, onChangeName, onMouseEnterOice }) {
     }
   }
 
+  function handleMouseEnterOice() {
+    if (onMouseEnterOice && !isNewlyTranslatedOice(oice)) {
+      onMouseEnterOice(oice, index);
+    }
+  }
+
+  function handleMouseLeaveOice() {
+    if (onMouseLeaveOice) onMouseLeaveOice();
+  }
+
   return (
     <div
       className="language-oice-item"
-      onMouseEnter={() => onMouseEnterOice(oice, index)}
+      onMouseEnter={handleMouseEnterOice}
+      onMouseLeave={handleMouseLeaveOice}
     >
       <div className="left-column">
-        <WordCount count={oice.wordCount} />
+        {!isNewlyTranslatedOice(oice) && <WordCount count={oice.wordCount} />}
       </div>
       <div className="right-column">
         <span>{index + 1}</span>
@@ -57,12 +75,14 @@ OiceListItem.propTypes = {
   oice: PropTypes.object.isRequired,
   onChangeName: PropTypes.func.isRequired,
   onMouseEnterOice: PropTypes.func.isRequired,
+  onMouseLeaveOice: PropTypes.func.isRequired,
   t: PropTypes.func.isRequired,
 };
 
 const OiceListItemElement = translate('OiceSettingTab')(OiceListItem);
 
-function LanguageOiceList({ t, oices, onChangeName, onMouseEnterOice }) {
+function LanguageOiceList(props) {
+  const { t, oices, onChangeName, onMouseEnterOice, onMouseLeaveOice } = props;
   return (
     <div className="language-oice-list">
       <div className="oice-list-title">{t('label.episodeName')}</div>
@@ -73,6 +93,7 @@ function LanguageOiceList({ t, oices, onChangeName, onMouseEnterOice }) {
           index={index}
           onChangeName={onChangeName}
           onMouseEnterOice={onMouseEnterOice}
+          onMouseLeaveOice={onMouseLeaveOice}
         />
       ))}
     </div>
@@ -84,6 +105,7 @@ LanguageOiceList.propTypes = {
   t: PropTypes.func.isRequired,
   onChangeName: PropTypes.func.isRequired,
   onMouseEnterOice: PropTypes.func.isRequired,
+  onMouseLeaveOice: PropTypes.func.isRequired,
 };
 
 export default translate('LanguageSettingTab')(LanguageOiceList);
