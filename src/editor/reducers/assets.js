@@ -17,7 +17,7 @@ const initialState = {
   SEs: [],
   SEsDict: {},
   typeList: [],
-  loading: true,
+  loading: false,
 };
 
 export default handleActions({

@@ -7,15 +7,23 @@ import * as Actions from 'editor/actions/oice';
 import { actions as StorySettingModalActions } from 'editor/components/EditorPanel/StorySettingModal';
 
 const initialState = {
+  fetching: false,
   list: [],
   selected: null,
 };
 
 export default handleActions({
-  FETCHED_OICES: (state, { payload }) => ({
-    ...state,
-    list: payload,
-  }),
+  [Actions.fetchOiceBegin]: state => (
+    update(state, {
+      fetching: { $set: true },
+    })
+  ),
+  FETCHED_OICES: (state, { payload }) => (
+    update(state, {
+      list: { $set: payload },
+      fetching: { $set: false },
+    })
+  ),
   ADDED_OICE: (state, { payload }) => {
     const copyList = [...state.list];
     copyList.push(payload);
