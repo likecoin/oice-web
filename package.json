@@ -9,7 +9,8 @@
     "build": "NODE_ENV=production webpack --progress --colors",
     "forever": "NODE_ENV=production forever start ./index.js",
     "stop": "forever stop ./index.js",
-    "deploy": "npm run build && npm run server"
+    "deploy": "npm run build && npm run server",
+    "lint": "eslint index.js src/server.jsx src/IndexHTML.jsx"
   },
   "authors": [
     "Andrew Chung",
