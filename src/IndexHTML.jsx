@@ -6,8 +6,12 @@ import {
   ANDROID_APP,
   IOS_APP,
   FACEBOOK_APP_ID,
-  GTM_CONTAINER_ID,
 } from './common/constants';
+
+import {
+  GTM_CONTAINER_ID,
+} from './common/constants/key';
+
 
 const DEBUG = process.env.NODE_ENV !== 'production';
 

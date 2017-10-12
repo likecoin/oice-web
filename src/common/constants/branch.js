@@ -1,10 +1,10 @@
+import { SRV_ENV } from '../constants';
 import {
-    SRV_ENV,
-    BRANCH_KEY_PROD,
-    BRANCH_KEY_TEST,
-    BRANCH_URL_PROD,
-    BRANCH_URL_TEST,
-} from '../constants';
+  BRANCH_KEY_PROD,
+  BRANCH_KEY_TEST,
+  BRANCH_URL_PROD,
+  BRANCH_URL_TEST,
+} from './key';
 
 export const BRANCH_KEY = (
   SRV_ENV === 'production' ?

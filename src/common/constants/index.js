@@ -12,7 +12,7 @@ import {
     IOS_NAME,
     INTERCOM_APP_ID_PROD,
     INTERCOM_APP_ID_TEST,
-} from '../constants/key';
+} from './key';
 
 export const VERSION = '4.1.1';
 
@@ -54,4 +54,3 @@ export const IOS_APP = {
 export const INTERCOM_APP_ID = SRV_ENV === 'production' ? INTERCOM_APP_ID_PROD : INTERCOM_APP_ID_TEST;
 
 export const PLAY_STORE_URL = `https://play.google.com/store/apps/details?id=${ANDROID_APP.PACKAGE}`;
-
