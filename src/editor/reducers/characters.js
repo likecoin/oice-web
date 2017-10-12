@@ -6,7 +6,7 @@ import * as Actions from 'editor/actions/character';
 const initialState = {
   characterList: [],
   characterDictionary: {},
-  loading: true,
+  loading: false,
 };
 
 export default handleActions({

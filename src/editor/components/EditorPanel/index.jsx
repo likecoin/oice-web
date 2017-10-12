@@ -5,13 +5,12 @@ import { push, replace } from 'react-router-redux';
 import { translate } from 'react-i18next';
 import { findDOMNode } from 'react-dom';
 
-import SwipeableViews from 'react-swipeable-views';
-
 import uuid from 'uuid';
 
 import _get from 'lodash/get';
 
 import FlatButton from 'ui-elements/FlatButton';
+import LoadingScreen from 'ui-elements/LoadingScreen';
 import Modal from 'ui-elements/Modal';
 import RaisedButton from 'ui-elements/RaisedButton';
 
@@ -54,14 +53,18 @@ import { getComposedToBeSavedBlocks } from './util';
 
 const getBuildId = () => uuid.v4();
 
+const parseStringId = (id) => {
+  const result = parseInt(id, 10);
+  return result > 0 ? result : undefined;
+};
+
 @translate(['editor', 'macro'])
 @connect(store => ({
   blockIdsToBeSaved: store.blocks.toBeSavedIds,
   blocksDict: store.blocks.blocksDict,
   dashboardOices: store.editorPanel.dashboard.oices,
   imageList: store.assets.imageList,
-  isAddingOice: store.editorPanel.dashboard.isAddingOice,
-  isAddingStory: store.editorPanel.dashboard.isAddingStory,
+  loading: store.assets.loading || store.blocks.fetching || store.characters.loading || store.oices.fetching,
   oicesList: store.oices.list,
   selectedOice: store.oices.selected,
   selectedStory: store.stories.selected,
@@ -79,8 +82,6 @@ export default class EditorPanel extends React.Component {
     storiesList: PropTypes.array.isRequired,
     t: PropTypes.func.isRequired,
     dashboardOices: PropTypes.array,
-    isAddingOice: PropTypes.bool,
-    isAddingStory: PropTypes.bool,
     params: PropTypes.object,
     selectedOice: PropTypes.object,
     selectedStory: PropTypes.object,
@@ -93,14 +94,6 @@ export default class EditorPanel extends React.Component {
     module: PropTypes.string,
   }
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isAddingOice: props.isAddingOice,
-      isAddingStory: props.isAddingStory,
-    };
-  }
-
   getChildContext() {
     return { module: 'editor' };
   }
@@ -109,9 +102,9 @@ export default class EditorPanel extends React.Component {
     const storyId = this.getStoryId();
     const oiceId = this.getOiceId();
     const { dispatch, dashboardOices, selectedStoryId } = this.props;
-    const { isAddingOice, isAddingStory } = this.state;
 
-    if (storyId) {
+    if (storyId && oiceId) {
+      // only attempt to fetch when storyId and oiceId are positive integer
       dispatch(OiceAction.fetchOices(storyId));
       dispatch(StoryAction.fetchStoryLanguages(storyId));
       dispatch(CharacterAction.fetchCharacter(storyId));
@@ -124,26 +117,21 @@ export default class EditorPanel extends React.Component {
     this.props.dispatch(StoryAction.unselectStory());
   }
 
-  getStoryId() {
-    return parseInt(this.props.params.storyId, 10);
-  }
+  getStoryId = () => parseStringId(this.props.params.storyId);
 
-  getOiceId() {
-    return parseInt(this.props.params.oiceId, 10);
-  }
+  getOiceId = () => parseStringId(this.props.params.oiceId);
 
   getSelectedStory = (id = null) => {
     const storyId = id || this.getStoryId();
     const storiesList = this.props.storiesList;
     // default get from the storiesList, if localized will store in selectedStory
-    return this.props.selectedStory || storiesList.find(story => story.id === parseInt(storyId, 10));
+    return this.props.selectedStory || storiesList.find(story => story.id === storyId);
   }
 
   getSelectedOice = () => {
-    const { oicesList, params, selectedOice } = this.props;
-    const { oiceId } = params;
+    const { oicesList, selectedOice } = this.props;
     // default get from the oicesList, if localized will store in selectedOice
-    return selectedOice || oicesList.find(oice => oice.id === parseInt(oiceId, 10));
+    return selectedOice || oicesList.find(oice => oice.id === this.getOiceId());
   }
 
   handleOpenStorySetting = (item) => {
@@ -155,22 +143,6 @@ export default class EditorPanel extends React.Component {
         tabBarIndex: TAB_LIST.findIndex(tabListItem => item === tabListItem),
       })
     );
-  }
-
-  handleCopyOiceRequest = (oice) => {
-    const { dispatch, t } = this.props;
-    dispatch(StoryPicker.Action.open({
-      selectedId: oice.storyId,
-      onSelect: (storyId) => {
-        console.debug('handleCopyOiceRequest', storyId);
-      },
-      description: t('oicesList.label.pickAStoryForCopyOice'),
-    }));
-    if (this.getStoryId() !== oice.storyId) {
-      this.props.dispatch(CharacterAction.fetchCharacter(oice.storyId));
-      this.props.dispatch(AssetAction.fetchStoryAssetList(oice.storyId));
-    }
-    this.setState({ isStoryOiceModelOpen: false });
   }
 
   handleRunOiceButtonClick = (selectedOice, blocksToBeSaved, isPreview) => {
@@ -249,14 +221,12 @@ export default class EditorPanel extends React.Component {
   renderEditorPanel(selectedOice, selectedStory) {
     if (!selectedOice) {
       const { user, dispatch, t } = this.props;
-      const { isAddingOice, isAddingStory } = this.state;
       return (
         <EmptyEditorWorkspace
           t={t}
           onLoad={() => {
             if (
               !user.isFirstLogin &&
-              !(isAddingOice || isAddingStory) &&
               /\/edit\/?$/.test(window.location.pathname)
             ) {
               dispatch(replace('/dashboard'));
@@ -324,7 +294,7 @@ export default class EditorPanel extends React.Component {
   }
 
   render() {
-    const { storiesList, user } = this.props;
+    const { storiesList, user, loading } = this.props;
     const selectedStory = this.getSelectedStory();
     const selectedOice = this.getSelectedOice();
     return (
@@ -343,6 +313,7 @@ export default class EditorPanel extends React.Component {
         {selectedOice && <ImportScriptModal oice={selectedOice} />}
         <StoryPicker stories={storiesList} />
         <Footer fluid />
+        {loading && <LoadingScreen />}
       </div>
     );
   }

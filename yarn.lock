@@ -927,7 +927,7 @@ babel-register@^6.26.0:
     mkdirp "^0.5.1"
     source-map-support "^0.4.15"
 
-babel-runtime@^6.11.6, babel-runtime@^6.18.0, babel-runtime@^6.2.0, babel-runtime@^6.20.0, babel-runtime@^6.22.0, babel-runtime@^6.23.0, babel-runtime@^6.26.0:
+babel-runtime@^6.18.0, babel-runtime@^6.2.0, babel-runtime@^6.20.0, babel-runtime@^6.22.0, babel-runtime@^6.23.0, babel-runtime@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
   dependencies:
@@ -1659,7 +1659,7 @@ doctrine@^2.0.0:
     esutils "^2.0.2"
     isarray "^1.0.0"
 
-dom-helpers@^3.2.0, dom-helpers@^3.2.1:
+dom-helpers@^3.2.0:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-3.2.1.tgz#3203e07fed217bd1f424b019735582fc37b2825a"
 
@@ -2983,7 +2983,7 @@ jsx-ast-utils@^2.0.0:
   dependencies:
     array-includes "^3.0.3"
 
-keycode@^2.1.7, keycode@^2.1.8:
+keycode@^2.1.8:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/keycode/-/keycode-2.1.9.tgz#964a23c54e4889405b4861a5c9f0480d45141dfa"
 
@@ -3698,10 +3698,6 @@ pbkdf2-compat@2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/pbkdf2-compat/-/pbkdf2-compat-2.0.1.tgz#b6e0c8fa99494d94e0511575802a59a5c142f288"
 
-perfect-scrollbar@^0.6.12:
-  version "0.6.16"
-  resolved "https://registry.yarnpkg.com/perfect-scrollbar/-/perfect-scrollbar-0.6.16.tgz#b1d61a5245cf3962bb9a8407a3fc669d923212fc"
-
 performance-now@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-0.2.0.tgz#33ef30c5c77d4ea21c5a53869d91b56d8f2555e5"
@@ -4174,13 +4170,6 @@ rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-addons-shallow-compare@^15.4.1:
-  version "15.6.0"
-  resolved "https://registry.yarnpkg.com/react-addons-shallow-compare/-/react-addons-shallow-compare-15.6.0.tgz#b7a4e5ff9f2704c20cf686dd8a05dd08b26de252"
-  dependencies:
-    fbjs "^0.8.4"
-    object-assign "^4.1.0"
-
 react-color@^2.3.4:
   version "2.13.7"
   resolved "https://registry.yarnpkg.com/react-color/-/react-color-2.13.7.tgz#cdf49e1787dc19cc1a74ddedf7849f3a9e529923"
@@ -4272,12 +4261,6 @@ react-motion@^0.5.0:
     prop-types "^15.5.8"
     raf "^3.1.0"
 
-react-perfect-scrollbar@^0.1.1:
-  version "0.1.5"
-  resolved "https://registry.yarnpkg.com/react-perfect-scrollbar/-/react-perfect-scrollbar-0.1.5.tgz#797bc98f62860df576187c7873fdfee60bbd8ad7"
-  dependencies:
-    perfect-scrollbar "^0.6.12"
-
 react-redux@^5.0.4:
   version "5.0.6"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.6.tgz#23ed3a4f986359d68b5212eaaa681e60d6574946"
@@ -4313,33 +4296,6 @@ react-scroll@^1.5.4:
 react-stripe-checkout@^2.2.5:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/react-stripe-checkout/-/react-stripe-checkout-2.6.3.tgz#3173a870b04e5a3c321a06d24cd53c6030111c45"
-
-react-swipeable-views-core@^0.10.1:
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/react-swipeable-views-core/-/react-swipeable-views-core-0.10.1.tgz#aadb91640193679f931274eba483775f6d136e2d"
-  dependencies:
-    babel-runtime "^6.11.6"
-    warning "^3.0.0"
-
-react-swipeable-views-utils@^0.10.1:
-  version "0.10.1"
-  resolved "https://registry.yarnpkg.com/react-swipeable-views-utils/-/react-swipeable-views-utils-0.10.1.tgz#2824e31a32701ac4a97335600a43f96b75afee9f"
-  dependencies:
-    babel-runtime "^6.11.6"
-    keycode "^2.1.7"
-    react-addons-shallow-compare "^15.4.1"
-    react-event-listener "^0.4.0"
-    react-swipeable-views-core "^0.10.1"
-
-react-swipeable-views@^0.10.3:
-  version "0.10.8"
-  resolved "https://registry.yarnpkg.com/react-swipeable-views/-/react-swipeable-views-0.10.8.tgz#464b5d1b9b033c9e6671a6d991b88c9c35a2d8f0"
-  dependencies:
-    babel-runtime "^6.11.6"
-    dom-helpers "^3.2.1"
-    react-swipeable-views-core "^0.10.1"
-    react-swipeable-views-utils "^0.10.1"
-    warning "^3.0.0"
 
 react-tap-event-plugin@^2.0.1:
   version "2.0.1"

@@ -4,8 +4,6 @@ import { connect } from 'react-redux';
 import HTML5Backend from 'react-dnd-html5-backend';
 import { DragDropContext } from 'react-dnd';
 
-import LoadingScreen from 'ui-elements/LoadingScreen';
-
 import * as OiceAction from 'editor/actions/oice';
 import * as BlockAction from 'editor/actions/block';
 import * as AssetAction from 'editor/actions/asset';
@@ -21,7 +19,6 @@ import RecentUsed from './RecentUsed';
 
 
 @connect(store => ({
-  loading: store.assets.loading || store.blocks.fetching || store.characters.loading,
   blockIdsArray: store.blocks.idsArray,
   blockIdsToBeSaved: store.blocks.toBeSavedIds,
   blocksDict: store.blocks.blocksDict,
@@ -34,7 +31,6 @@ export default class EditorWorkspace extends React.Component {
     blockIdsToBeSaved: PropTypes.any.isRequired,
     blocksDict: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
-    loading: PropTypes.bool.isRequired,
     macros: PropTypes.array.isRequired,
     oice: PropTypes.object.isRequired,
     story: PropTypes.object.isRequired,
@@ -76,7 +72,6 @@ export default class EditorWorkspace extends React.Component {
       blocksDict,
       macros,
       macrosDict,
-      loading,
     } = this.props;
 
     return (
@@ -88,7 +83,6 @@ export default class EditorWorkspace extends React.Component {
           macrosDict={macrosDict}
         />
         <AttributesPanel />
-        {loading && <LoadingScreen />}
       </div>
     );
   }

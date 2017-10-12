@@ -9,7 +9,7 @@ const initialState = {
   selectedBlock: null, // set as nill! for ui convinence
   selectedLanguage: undefined,
   toBeSavedIds: new Set(),
-  fetching: true,
+  fetching: false,
 };
 
 export default handleActions({

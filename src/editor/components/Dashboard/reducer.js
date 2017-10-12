@@ -9,8 +9,6 @@ import Actions from './actions';
 const initialState = {
   oices: [],
   selectedStoryId: undefined,
-  isAddingStory: false,
-  isAddingOice: false,
 };
 
 export default handleActions({

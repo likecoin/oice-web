@@ -38,11 +38,14 @@ export const selectOice = oice => (dispatch) => {
   dispatch(push(`story/${oice.storyId}/oice/${oice.id}`));
 };
 
+export const fetchOiceBegin = createAction('FETCH_OICE_BEGIN');
 export const fetchedOices = createAction(FETCHED_OICES);
-export const fetchOices = (storyId, language) => dispatch => APIHandler(dispatch,
-  OiceAPI.fetchOices(storyId, language)
-  .then(oiceList => dispatch(fetchedOices(oiceList)))
-);
+export const fetchOices = (storyId, language) => (dispatch) => {
+  dispatch(fetchOiceBegin());
+  APIHandler(dispatch, OiceAPI.fetchOices(storyId, language)
+    .then(oiceList => dispatch(fetchedOices(oiceList)))
+  );
+};
 
 export const fetchedSelectedOice = createAction(FETCH_SELECTED_OICE);
 export const fetchSelectedOice = (oiceId, language) => dispatch => APIHandler(dispatch,
