@@ -5,8 +5,6 @@ import { push, replace } from 'react-router-redux';
 import { translate } from 'react-i18next';
 import { findDOMNode } from 'react-dom';
 
-import SwipeableViews from 'react-swipeable-views';
-
 import uuid from 'uuid';
 
 import _get from 'lodash/get';
