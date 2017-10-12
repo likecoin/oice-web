@@ -7,7 +7,7 @@ import {
   IOS_APP,
   FACEBOOK_APP_ID,
   GTM_CONTAINER_ID,
-} from './common/constants';
+} from './common/constants/key';
 
 const DEBUG = process.env.NODE_ENV !== 'production';
 

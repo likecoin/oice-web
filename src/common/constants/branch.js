@@ -4,7 +4,7 @@ import {
     BRANCH_KEY_TEST,
     BRANCH_URL_PROD,
     BRANCH_URL_TEST,
-} from '../constants';
+} from './key';
 
 export const BRANCH_KEY = (
   SRV_ENV === 'production' ?

@@ -1,6 +1,6 @@
 import request from 'superagent';
 
-import { API_URL, API_HEADER, LOG_KEY } from '../constants';
+import { API_URL, API_HEADER, LOG_KEY } from '../constants/key';
 
 export const log = ({ name, data }) =>
 request.post(`${API_URL}log/${name}`)
