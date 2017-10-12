@@ -15,7 +15,7 @@ import * as OiceSingleViewUtils from './utils';
 
 import './DeepView.style.scss';
 
-function handleDeepViewCallToAction({ oice, t, data }) {
+function initializeDeepView({ oice, t, data = {} }) {
   // Turn page to a deep view
   branch.deepview(
     // get deep link data
@@ -28,15 +28,6 @@ function handleDeepViewCallToAction({ oice, t, data }) {
       oice,
       t,
     }),
-    // options: open_app is true by default (try to open app automatically if installed and deeplink to the content)
-    undefined,
-    // callback after deepview is initialized
-    (error) => {
-      if (!error) {
-        // call to action if no error in deepview method
-        branch.deepviewCta();
-      }
-    }
   );
 }
 
@@ -47,14 +38,8 @@ export default class DeepView extends React.Component {
     oice: PropTypes.object.isRequired,
   };
 
-  handleCallToAction(abtest) {
-    const { t, oice } = this.props;
-    // a/b test for the clicking habit in deep view (cover VS button)
-    handleDeepViewCallToAction({
-      data: { abtest },
-      oice,
-      t,
-    });
+  componentDidMount() {
+    initializeDeepView(this.props);
   }
 
   render() {
@@ -66,7 +51,7 @@ export default class DeepView extends React.Component {
 
     return (
       <div className="deep-view-wrapper">
-        <div className="deep-view-cover" onClick={() => this.handleCallToAction('a')}>
+        <div className="deep-view-cover" onClick={() => branch.deepviewCta()}>
           <img alt="oice cover" src={coverImage} />
           <div className="oice-details">
             <small>
@@ -78,7 +63,7 @@ export default class DeepView extends React.Component {
         <div className="deep-view-snippet">
           <div className="get-app">
             <img alt="get oice app" src="/static/img/oice-default-cover.jpg" />
-            <span role="button" onClick={() => this.handleCallToAction('b')}>
+            <span role="button" onClick={() => branch.deepviewCta()}>
               {t('label.getApp')}
             </span>
           </div>
