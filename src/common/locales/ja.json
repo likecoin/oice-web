@@ -1772,8 +1772,8 @@
   },
   "StorySettingTab": {
     "label": {
-      "facebookSetting": "Facebook Setting",
-      "uploadStoryCover": "Upload Story Cover"
+      "facebookSetting": "Facebookの設定",
+      "uploadStoryCover": "ストーリーカバーをアップロードする"
     },
     "placeholder": {
       "namer": "タイトルを入力してください(必須)",
@@ -1783,7 +1783,7 @@
   "FacebookSettingModal": {
     "title": "Facebookの設定 — $t(Language:{{language}})",
     "label": {
-      "uploadFacebookOgCover": "Upload Facebook OG Cover",
+      "uploadFacebookOgCover": "ストーリーカバーをアップロードする",
       "suggestedImageSize": "(1200 px × 630 px)"
     }
   },
@@ -1798,13 +1798,13 @@
   },
   "LanguageSettingTab": {
     "label": {
-      "addLanguage": "Add Language",
-      "otherLanguage": "Other Language",
-      "episodeName": "Episode Name"
+      "addLanguage": "言語を追加する",
+      "otherLanguage": "他の言語",
+      "episodeName": "エピソード名"
     },
     "placeholder": {
-      "addLanguageGuideTitle": "You can localize your story in different language by selecting them on the left side.",
-      "addLanguageGuideDescription": "Click button $t(LanguageSettingTab:label:addLanguage) and select the language you want."
+      "addLanguageGuideTitle": "あなたは、左側でそれらを選択することによって、異なる言語が制作することができます。",
+      "addLanguageGuideDescription": "$t(LanguageSettingTab:label:addLanguage)ボタンをクリックし、言語を選択してください。"
     }
   },
   "Language": {
