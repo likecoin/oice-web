@@ -1,0 +1,38 @@
+.LazyLoad:not(.is-visible) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
+    z-index: 1;
+
+    width: 36px;
+    height: 36px;
+
+    content: "";
+    animation: lazy-load-spinner 0.8s infinite linear;
+
+    border-radius: 50%;
+  }
+
+  &:not(.light)::before {
+    border: 2px solid $dark-grey-1;
+    border-right-color: transparent;
+  }
+  &.light::before {
+    border: 2px solid $pure-white;
+    border-right-color: transparent;
+  }
+
+  @keyframes lazy-load-spinner {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      transform: rotate(180deg) scale(0.8);
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+    }
+  }
+}

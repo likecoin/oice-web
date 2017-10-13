@@ -4,23 +4,25 @@ import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
-import TextField from 'ui-elements/TextField';
-import FlatButton from 'ui-elements/FlatButton';
-import RaisedButton from 'ui-elements/RaisedButton';
-import AudioUpload from 'ui-elements/AudioUpload';
 import AudioPlayerList from 'ui-elements/AudioPlayerList';
 import AudioPlayer from 'ui-elements/AudioPlayer';
+import FlatButton from 'ui-elements/FlatButton';
+import Lazyload from 'react-lazy-load';
 import Progress from 'ui-elements/Progress';
+import RaisedButton from 'ui-elements/RaisedButton';
+import TextField from 'ui-elements/TextField';
 
 import CloseIcon from 'common/icons/close';
 
 import * as ASSET_TYPE from 'common/constants/assetTypes';
 import { closeAudioSelectionModal } from 'editor/actions/modal';
+import { getAudioMp4Url } from 'editor/utils/app';
+
 import {
   updateSelectedItem,
 } from './redux';
-import { getAudioMp4Url } from 'editor/utils/app';
 
+import './styles.scss';
 
 const getFilterAudio = (props) => {
   const {
@@ -137,18 +139,20 @@ export default class SelectAudioModal extends React.Component {
           onChange={this.handleOnchangeAudioList}
           onDoubleClick={this.handleOnDoubleClick}
           onPlay={this.handleOnPlayChange}
-
         >
-          {filteredAudios.map((audio, index) => (
-            audio.url &&
-              <AudioPlayer
-                key={index}
-                mode="readonly"
-                ref={ref => this[`audioPlayer_${index}`] = ref}
-                title={`${audio.nameEn}`}
-                url={getAudioMp4Url(audio)}
-              />
-          ))}
+          {filteredAudios.map((audio, index) => {
+            if (!audio.url) return null;
+            return (
+              <Lazyload key={audio.id} height={78} offsetVertical={300}>
+                <AudioPlayer
+                  ref={ref => this[`audioPlayer_${index}`] = ref}
+                  mode="readonly"
+                  title={`${audio.nameEn}`}
+                  url={getAudioMp4Url(audio)}
+                />
+              </Lazyload>
+            );
+          })}
         </AudioPlayerList>
     );
   }
