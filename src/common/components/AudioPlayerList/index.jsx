@@ -39,12 +39,10 @@ export default class AudioPlayerList extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('AudioPlayerList componentWillReceiveProps', this.props.isInBackGround, nextProps.isInBackGround);
     this.setState({ selectedIndex: nextProps.selectedIndex });
   }
 
-  handlePlayButtonClick = playIndex => {
-    console.debug('Handle handlePlayButtonClick ', playIndex);
+  handlePlayButtonClick = (playIndex) => {
     if (this.props.onPlay) this.props.onPlay(playIndex);
     this.setState({ playIndex });
   }
@@ -56,9 +54,14 @@ export default class AudioPlayerList extends React.Component {
     if (this.props.onDoubleClick) this.props.onDoubleClick(selectedIndex);
   }
 
-  createAudio(element, index) {
+  createAudioPlayer(element, index) {
+    if (element.type.displayName !== 'AudioPlayer') {
+      return null;
+    }
+
     const { disabled } = this.props;
     const { selectedIndex, playIndex } = this.state;
+
     return React.cloneElement(element, {
       key: index,
       audioListIndex: index,
@@ -69,6 +72,16 @@ export default class AudioPlayerList extends React.Component {
       disabled: element.props.disabled || disabled,
       onPlayButtonClick: this.handlePlayButtonClick,
     });
+  }
+
+  createChild(element, index) {
+    const { name } = element.type;
+    if (name === 'LazyLoad') {
+      // AudioPlayer wrapped by LazyLoad component
+      const player = this.createAudioPlayer(element.props.children, index);
+      return React.cloneElement(element, { key: index }, player);
+    }
+    return this.createAudioPlayer();
   }
 
   render() {
@@ -83,13 +96,8 @@ export default class AudioPlayerList extends React.Component {
     // Inject props into children
     React.Children.map(children, (child, index) => {
       if (!React.isValidElement(child)) return;
-      const { displayName } = child.type;
-      // console.log('AudioPlayerList ', displayName);
-      if (displayName === 'AudioPlayer') {
-        playerList.push(this.createAudio(child, index));
-      } else {
-        return;
-      }
+      const player = this.createChild(child, index);
+      if (player) playerList.push(player);
     });
 
     const className = classNames('audio-list', {

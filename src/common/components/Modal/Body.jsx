@@ -23,8 +23,8 @@ export default class ModalBody extends React.Component {
 
     return (
       <div
-        className={className}
         ref={ref => this.modalBody = ref}
+        className={className}
         style={style}
       >
         {this.props.children}

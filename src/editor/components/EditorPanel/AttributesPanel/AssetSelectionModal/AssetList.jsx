@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import _get from 'lodash/get';
 
 import GridList from 'ui-elements/GridList';
+import Lazyload from 'react-lazy-load';
 
 import CheckIcon from 'common/icons/publish';
 
@@ -45,15 +46,17 @@ export default class AssetList extends React.Component {
           );
           return (
             <div
-              className={className}
               key={asset.id}
+              className={className}
               onClick={() => this.handleListItemClick(asset.id)}
             >
               <div className="asset-item-wrapper">
-                <div
-                  className="asset-preview"
-                  style={{ backgroundImage: `url("${assetThumbnail}")` }}
-                />
+                <Lazyload className="light" width={154} height={154} offsetVertical={1000}>
+                  <div
+                    className="asset-preview"
+                    style={{ backgroundImage: `url("${assetThumbnail}")` }}
+                  />
+                </Lazyload>
                 <div className="asset-meta">
                   <div className="asset-title">
                     {assetTitle}

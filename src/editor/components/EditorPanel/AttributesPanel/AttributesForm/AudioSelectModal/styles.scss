@@ -1,0 +1,8 @@
+@import "../../../../../styles/variables";
+@import "../../../../../../common/styles/lazyload";
+
+.modal-body > .audio-list {
+  .LazyLoad:not(.is-visible) {
+    border: $border-style4;
+  }
+}

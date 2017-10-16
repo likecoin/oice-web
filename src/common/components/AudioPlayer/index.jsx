@@ -5,6 +5,8 @@ import { findDOMNode } from 'react-dom';
 import classNames from 'classnames';
 import moment from 'moment';
 
+import Halogen from 'halogen';
+
 import PlayIcon from 'common/icons/audio/play';
 import PauseIcon from 'common/icons/audio/pause';
 import EditIcon from 'common/icons/edit';
@@ -251,14 +253,16 @@ export default class AudioPlayer extends React.Component {
     this.audioObj.muted = false;
   }
 
+  isLoading = () => this.state.duration < 0;
+
   render() {
     const { title, mode, selected, disabled, audioListIndex, url } = this.props;
     const { seek, duration, isPlaying, isMuted, volume } = this.state;
     const audioClassName = classNames('audio-player', {
-      disabled: disabled || duration < 0,
+      disabled,
       selected,
     });
-    const playPercent = seek / duration;
+    const playPercent = duration > 0 ? seek / duration : 0;
     const rightButtonIcon = getRightButtonIcon(mode);
     let volumeIcon = <Volume0Icon />;
     if (!isMuted) {
@@ -269,6 +273,7 @@ export default class AudioPlayer extends React.Component {
     let buttonsWidth = 50;    // play button width
     if (mode !== 'hiddenVolume') buttonsWidth += 165;  // volume bar
     if (rightButtonIcon) buttonsWidth += 50;  // edit button
+
     return (
       <div
         ref={e => this.container = e}
@@ -276,11 +281,18 @@ export default class AudioPlayer extends React.Component {
       >
         <span className="audio-container">
           <span className="play-button">
-            <FlatButton
-              ref={e => this.playButton = e}
-              icon={isPlaying ? <PauseIcon /> : <PlayIcon />}
-              onClick={this.handlePlayButtonToggle}
-            />
+            {this.isLoading() ? (
+              <Halogen.ClipLoader
+                color={'#16A122'}
+                size="48px"
+              />
+            ) : (
+              <FlatButton
+                ref={e => this.playButton = e}
+                icon={isPlaying ? <PauseIcon /> : <PlayIcon />}
+                onClick={this.handlePlayButtonToggle}
+              />
+            )}
           </span>
           <span
             className="audio-info"
