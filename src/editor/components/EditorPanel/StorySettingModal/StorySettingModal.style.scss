@@ -81,6 +81,7 @@
       .left-details {
         display: flex;
         align-items: center;
+        width: 100%;
 
         .oice-drag-handle {
           padding-top: 2px;
@@ -100,6 +101,9 @@
         .oice-name-field {
           display: flex;
           align-items: center;
+          flex: 1;
+          margin-right: padding(1/3);
+
           > span {
             overflow: hidden;
 
@@ -126,12 +130,16 @@
               color: $dark-grey-1;
             }
           }
+          .text-field {
+            width: 100%;
+          }
         }
       }
       .right-button-group {
         display: flex;
         align-items: center;
         flex-direction: row;
+        flex-shrink: 0;
 
         .toggle-button {
           .toggle {
