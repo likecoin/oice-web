@@ -143,8 +143,12 @@ export default class AudioPlayer extends React.Component {
   }
 
   isClickOnFunctionalArea = (target) => {
-    const isClickPlayButton = findDOMNode(this.playButton).contains(target);
-    const isClickSeekBar = findDOMNode(this.progressBar).contains(target);
+    let isClickPlayButton = false;
+    if (this.playButton) isClickPlayButton = findDOMNode(this.playButton).contains(target);
+
+    let isClickSeekBar = false;
+    if (this.progressBar) isClickSeekBar = findDOMNode(this.progressBar).contains(target);
+
     // here could be edit/upload button, but when readonly it cantains null error
     let isClickVolumeButton = false;
     if (this.volumeButton) isClickVolumeButton = findDOMNode(this.volumeButton).contains(target);
