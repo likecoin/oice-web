@@ -488,7 +488,7 @@ export default class FeaturedStories extends React.Component {
     return this.state.isOicePlayerShowed && (
       <div>
         <iframe
-          src={`https://cloud.oice.com/view/${story.oice.uuid}`}
+          src={`https://cloud.oice.com/view/${story.oice.uuid}?lang=${story.oice.language}`}
           scrolling="no"
           seamless="seamless"
         />
