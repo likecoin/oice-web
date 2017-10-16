@@ -80,12 +80,6 @@ export default class BlocksPanel extends React.Component {
       }
     }
 
-    if (nextProps.blockIdsArray.length - blockIdsArray.length > 1) {
-      const newBlockId = nextProps.blockIdsArray[blockIdsArray.length];
-      const newBlock = nextProps.blocksDict[newBlockId];
-      dispatch(BlockAction.onSelectedBlock({ block: newBlock }));
-    }
-
     this.setState({
       blockIdsArray: nextProps.blockIdsArray || [],
       blocksDict: nextProps.blocksDict,
