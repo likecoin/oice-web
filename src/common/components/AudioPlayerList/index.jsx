@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { translate } from 'react-i18next';
 import classNames from 'classnames';
+import _get from 'lodash/get';
 
 import Progress from 'ui-elements/Progress';
 
@@ -55,7 +56,7 @@ export default class AudioPlayerList extends React.Component {
   }
 
   createAudioPlayer(element, index) {
-    if (element.type.displayName !== 'AudioPlayer') {
+    if (_get(element, 'type.displayName') !== 'AudioPlayer') {
       return null;
     }
 
@@ -81,7 +82,7 @@ export default class AudioPlayerList extends React.Component {
       const player = this.createAudioPlayer(element.props.children, index);
       return React.cloneElement(element, { key: index }, player);
     }
-    return this.createAudioPlayer();
+    return this.createAudioPlayer(element, index);
   }
 
   render() {
