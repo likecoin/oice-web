@@ -197,6 +197,9 @@ export default class OiceBlock extends React.Component {
   }
 
   handleClickOice = () => {
+    // stop fetching word count
+    this._fetchWordCountThrottle.cancel();
+
     // update link, fetch selected oice, close the Modal
     const { dispatch, oice } = this.props;
     dispatch(push(`story/${oice.storyId}/oice/${oice.id}`));
