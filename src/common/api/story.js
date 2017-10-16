@@ -15,8 +15,9 @@ request.get(`${API_URL}story`)
   return [];
 });
 
-export const fetchFeaturedStory = () =>
+export const fetchFeaturedStory = language =>
 request.get(`${API_URL}story/featured`)
+.query({ language })
 .set(API_HEADER)
 .then((response) => {
   if (response.ok) {

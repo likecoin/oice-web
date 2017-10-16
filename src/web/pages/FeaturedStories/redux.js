@@ -8,11 +8,11 @@ import * as StoryAPI from 'common/api/story';
 const willFetchFeaturedStories = createAction('FEATURED_STORIES_WILL_FETCH');
 const didFetchFeaturedStories = createAction('FEATURED_STORIES_DID_FETCH');
 
-export const fetchFeaturedStories = () => (dispatch) => {
+export const fetchFeaturedStories = language => (dispatch) => {
   dispatch(willFetchFeaturedStories());
   return APIHandler(dispatch,
     StoryAPI
-    .fetchFeaturedStory()
+    .fetchFeaturedStory(language)
     .then(stories => dispatch(didFetchFeaturedStories(stories)))
   );
 };
