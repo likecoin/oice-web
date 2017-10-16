@@ -259,7 +259,7 @@ export default class AudioPlayer extends React.Component {
     const { title, mode, selected, disabled, audioListIndex, url } = this.props;
     const { seek, duration, isPlaying, isMuted, volume } = this.state;
     const audioClassName = classNames('audio-player', {
-      disabled: disabled || this.isLoading(),
+      disabled,
       selected,
     });
     const playPercent = duration > 0 ? seek / duration : 0;

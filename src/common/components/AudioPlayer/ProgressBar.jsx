@@ -6,13 +6,10 @@ import './ProgressBar.scss';
 export default class ProgressBar extends React.Component {
   static defaultProps = {
     percent: 0,
-    disabled: false,
   }
 
   static propTypes = {
-    seekTo: PropTypes.func,
     percent: PropTypes.number,
-    disabled: PropTypes.bool,
     onChange: PropTypes.func,
   }
 
@@ -32,9 +29,6 @@ export default class ProgressBar extends React.Component {
       percent = (e.clientX - rect.left) / container.offsetWidth;
     }
     percent = percent >= 1 ? 1 : percent;
-    console.log('rect :%O', rect);
-    console.log('handleMouseClick %O %s', container, percent);
-    console.log('e.clientX', e.clientX, 'containerStartX', containerStartX, 'container.offsetWidth', container.offsetWidth);
     if (this.props.onChange) {
       this.props.onChange(percent);
     }
