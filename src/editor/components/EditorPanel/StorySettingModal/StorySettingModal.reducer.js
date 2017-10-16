@@ -2,6 +2,7 @@ import { handleActions } from 'redux-actions';
 import update from 'immutability-helper';
 
 import _cloneDeep from 'lodash/cloneDeep';
+import _get from 'lodash/get';
 import _uniq from 'lodash/uniq';
 
 import * as Actions from './StorySettingModal.actions';
@@ -197,7 +198,7 @@ export default handleActions({
   [Actions.updateOiceDeletion]: (state, { payload }) => {
     const { content, mainLanguage, supportedLanguages, newLanguages } = state;
     const loadedLanguage = [mainLanguage, ...supportedLanguages, ...newLanguages]
-      .filter(language => !!content[language].oices);
+      .filter(language => !!_get(content, `[${language}].oices`));
     const oiceIndex = content[mainLanguage].oices.findIndex(oice => oice.id === payload.oiceId);
     return update(state, {
       content: {
