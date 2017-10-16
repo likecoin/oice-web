@@ -35,12 +35,15 @@ import {
 } from 'common/constants/branch';
 
 import DownloadAppBadges from 'web/components/DownloadAppBadges';
+
+import * as LogActions from 'common/actions/log';
+import i18n from 'common/utils/i18n';
+
 import TestFlightInvitation from '../TestFlightInvitation';
 import Header from '../Home/Header';
 import SmsModal from '../OiceSingleView/SmsModal';
 import * as OiceSingleViewUtils from '../OiceSingleView/utils';
 
-import * as LogActions from 'common/actions/log';
 import { fetchFeaturedStories } from './redux';
 
 import ArrowIcon from './icons/arrow';
@@ -74,7 +77,7 @@ const STORY_INTRO_ROOT_STYLE = {
 };
 
 function getExtendedStoryList(stories) {
-  if (!stories) {
+  if (!stories || stories.length < 3) {
     return [];
   }
 
@@ -142,7 +145,7 @@ export default class FeaturedStories extends React.Component {
   }
 
   componentDidMount() {
-    this.props.dispatch(fetchFeaturedStories());
+    this.props.dispatch(fetchFeaturedStories(i18n.language));
     window.addEventListener('message', this.handleOiceAction, false);
 
     this.scrollThrottle = _throttle(this.handleScroll, 44);
@@ -290,6 +293,10 @@ export default class FeaturedStories extends React.Component {
                   );
 
                 case 'slider-track':
+                  if (this.state.stories.length === 0) {
+                    return null;
+                  }
+
                   return (
                     <div key={key} className="story-slider-track" style={style}>
                       <ul>{this.state.stories.map(this.renderStorySlide)}</ul>
@@ -529,9 +536,9 @@ export default class FeaturedStories extends React.Component {
   }
 
   renderSmsModal() {
-    const { stories } = this.props;
+    const { stories } = this.state;
 
-    if (!stories) {
+    if (!stories || stories.length === 0) {
       return null;
     }
 
@@ -547,6 +554,7 @@ export default class FeaturedStories extends React.Component {
 
   render() {
     const { t } = this.props;
+
     return (
       <div id="featured-stories">
         <div className="section-wrapper">
