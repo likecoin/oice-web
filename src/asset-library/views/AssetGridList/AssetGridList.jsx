@@ -44,10 +44,10 @@ function AssetGridList(props) {
             onClick={handleClickAddButton}
           />
         }
-        {assets.map((asset) => (
+        {assets.map(asset => (
           <AssetGridItem
-            asset={asset}
             key={asset.id}
+            asset={asset}
             readonly={readonly}
             type={type}
             onClick={props.onClickItem}

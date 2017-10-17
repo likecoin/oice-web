@@ -70,7 +70,7 @@ function AssetGridItem(props) {
         </Lazyload>
       ) : (
         <div onClick={handleClick}>
-          <Lazyload width={154} height={154} offsetVertical={300}>
+          <Lazyload width="100%" height="100%" offsetVertical={300}>
             <div
               className="asset-preview"
               style={{ backgroundImage: `url("${previewUrl}")` }}
