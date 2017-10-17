@@ -27,8 +27,6 @@ import { LIBRARY_TYPE } from 'asset-library/constants';
 
 import AssetGridList from 'asset-library/views/AssetGridList';
 import LoginModal from 'asset-library/views/LoginModal';
-import CreateLibraryModal, { actions as CreateLibraryModalActions }
-from '../CreateLibraryModal';
 import BackgroundModal, { actions as BackgroundModalActions }
 from 'asset-library/views/BackgroundModal';
 import CharacterModal, { actions as CharacterModalActions }
@@ -39,6 +37,8 @@ import UploadAudioAssetModal, { actions as UploadAudioAssetModalActions }
 from 'asset-library/views/UploadAudioAssetModal';
 import EditAudioAssetModal, { actions as EditAudioAssetModalActions }
 from 'asset-library/views/EditAudioAssetModal';
+import CreateLibraryModal, { actions as CreateLibraryModalActions }
+from '../CreateLibraryModal';
 
 import LibraryInfo from './LibraryInfo';
 
@@ -72,17 +72,8 @@ function getStateFromProps(props) {
   return state;
 }
 
-function getIsOwnedFromProps(props) {
-  const { library, user } = props;
-  const userId = _get(user, 'id');
-  const author = _get(library, 'author');
-  let isOwned = false;
-  if (author instanceof Array) {
-    isOwned = author.find(a => a.id === userId);
-  } else if (typeof author === 'object') {
-    isOwned = author.id === userId;
-  }
-  return isOwned;
+function getIsOwnedFromProps({ library }) {
+  return _get(library, 'isCollaborator');
 }
 
 function getIsEditableFromProps(props) {
@@ -453,8 +444,8 @@ export default class LibraryDetails extends React.Component {
             }
             <div className="library-details-assets">
               <TabBar
-                items={tabBarItems}
                 ref={ref => this.tabBar = ref}
+                items={tabBarItems}
                 selectedIndex={selectedTabBarIndex}
                 onChange={this.handleTabBarIndexChange}
               />
