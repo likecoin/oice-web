@@ -8,6 +8,7 @@ const SRV_ENV = process.env.SRV_ENV;
 const PORT = process.env.PORT || 3000;
 const NODE_ENV = process.env.NODE_ENV;
 const DEBUG = NODE_ENV !== 'production';
+const OICE_DEV = process.env.OICE_DEV;
 
 const BUILD_DIR_NAME = 'build';
 const SRC_DIR = path.join(__dirname, 'src');
@@ -38,18 +39,20 @@ const hotMiddlewareScriptEntry = (DEBUG ? [
   'webpack/hot/dev-server',
 ] : []);
 
+const editorEntry = {
+  web: ['babel-polyfill', path.join(WEB_SRC_DIR, 'index.jsx')].concat(hotMiddlewareScriptEntry),
+  editor: ['babel-polyfill', path.join(EDITOR_SRC_DIR, 'index.jsx')].concat(hotMiddlewareScriptEntry),
+  'asset-library': ['babel-polyfill', path.join(ASSET_LIBRARY_SRC_DIR, 'index.jsx')].concat(hotMiddlewareScriptEntry),
+  'ui-demo': ['babel-polyfill', path.join(SRC_DIR, 'ui-demo/index.jsx')].concat(hotMiddlewareScriptEntry),
+}
+if (!OICE_DEV) editorEntry['admin-panel'] = ['babel-polyfill', path.join(ADMIN_SRC_DIR, 'index.jsx')].concat(hotMiddlewareScriptEntry);
+
 const stylesLoaders = 'css-loader!postcss-loader!sass-loader';
 
 module.exports = {
   devtool: DEBUG ? 'eval' : null,
   context: SRC_DIR,
-  entry: {
-    web: ['babel-polyfill', path.join(WEB_SRC_DIR, 'index.jsx')].concat(hotMiddlewareScriptEntry),
-    editor: ['babel-polyfill', path.join(EDITOR_SRC_DIR, 'index.jsx')].concat(hotMiddlewareScriptEntry),
-    'asset-library': ['babel-polyfill', path.join(ASSET_LIBRARY_SRC_DIR, 'index.jsx')].concat(hotMiddlewareScriptEntry),
-    'admin-panel': ['babel-polyfill', path.join(ADMIN_SRC_DIR, 'index.jsx')].concat(hotMiddlewareScriptEntry),
-    'ui-demo': ['babel-polyfill', path.join(SRC_DIR, 'ui-demo/index.jsx')].concat(hotMiddlewareScriptEntry),
-  },
+  entry: editorEntry,
   output: {
     filename: '[name].js',
     path: BUILD_DIR,

@@ -4,12 +4,14 @@ import { INTERCOM_APP_ID } from 'common/constants';
 // TODO: Use class implementation
 
 export function boot() {
+  if (!window.Intercom) return;
   window.Intercom('boot', {
     app_id: INTERCOM_APP_ID,
   });
 }
 
 export function update(options) {
+  if (!window.Intercom) return;
   window.Intercom('update', { ...options });
 }
 
@@ -37,5 +39,6 @@ export function updateWithUser(user) {
 }
 
 export function shutdown() {
+  if (!window.Intercom) return;
   window.Intercom('shutdown');
 }

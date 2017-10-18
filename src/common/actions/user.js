@@ -16,6 +16,7 @@ import {
 import { clearLastEditingOice } from 'common/utils/editor';
 import i18next, { mapLanguageCode } from 'common/utils/i18n';
 import * as IntercomUtils from 'common/utils/intercom';
+import { IS_DEV_MODE } from 'common/constants';
 
 
 export const updateUser = createAction('UPDATED_USER');
@@ -27,7 +28,7 @@ export const loginWithGoogle = (firebaseUser, googleToken) => async (dispatch, g
   }
   dispatch(willLogin());
   try {
-    const firebaseToken = await firebaseUser.getIdToken(true);
+    const firebaseToken = IS_DEV_MODE ? '' : await firebaseUser.getIdToken(true);
     const user = await APIHandler(
       dispatch, UserAPI.loginWithGoogle(firebaseUser, firebaseToken, googleToken)
     );
@@ -51,16 +52,25 @@ export const loginWithGoogle = (firebaseUser, googleToken) => async (dispatch, g
 
 
 export const authenticate = () => (dispatch, getState) => {
-  firebase.auth().onAuthStateChanged((firebaseUser) => {
-    const { isLoggingIn, isAuthenticated } = getState().user;
-    if (!(isLoggingIn || isAuthenticated)) {
-      if (firebaseUser) {
-        dispatch(loginWithGoogle(firebaseUser));
-      } else {
-        dispatch(updateUser());
+  if (!IS_DEV_MODE) {
+    firebase.auth().onAuthStateChanged((firebaseUser) => {
+      const { isLoggingIn, isAuthenticated } = getState().user;
+      if (!(isLoggingIn || isAuthenticated)) {
+        if (firebaseUser) {
+          dispatch(loginWithGoogle(firebaseUser));
+        } else {
+          dispatch(updateUser());
+        }
       }
-    }
-  });
+    });
+  } else {
+    dispatch(loginWithGoogle({ providerData: [{
+      email: 'oice-dev',
+      displayName: 'oice-dev',
+      photoURL: '',
+      providerId: 'oice-dev',
+    }] }, 'dev'));
+  }
 };
 
 

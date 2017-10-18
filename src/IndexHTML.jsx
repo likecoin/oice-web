@@ -6,6 +6,7 @@ import {
   ANDROID_APP,
   IOS_APP,
   FACEBOOK_APP_ID,
+  IS_DEV_MODE,
 } from './common/constants';
 
 import {
@@ -76,7 +77,9 @@ export default class IndexHTML extends React.Component {
           <style dangerouslySetInnerHTML={{ __html: '.async-hide { opacity: 0 !important}' }} />
           <script src={`/static/vendor/google-optimize.js?v=${VERSION}`} />
           <script src="https://use.fontawesome.com/7f71a010f8.js" />
-          <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js" />
+          {!IS_DEV_MODE &&
+            <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js" />
+          }
           <script src={`/static/vendor/ga.js?v=${VERSION}`} />
           <script src="https://www.google-analytics.com/analytics.js" async />
           <script src={`/static/vendor/autotrack.js?v=${VERSION}`} async />
