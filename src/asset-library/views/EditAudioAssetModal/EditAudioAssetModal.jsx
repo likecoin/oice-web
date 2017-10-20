@@ -71,8 +71,8 @@ function fileReaderStartLoad(e, here) {
 }
 
 
-@translate(['assetsManagement', 'general', 'EditAudioAssetModal'])
-@connect((store) => ({ ...store.EditAudioAssetModal }))
+@translate(['assetsManagement', 'general', 'EditAudioAssetModal', 'error'])
+@connect(store => ({ ...store.EditAudioAssetModal }))
 export default class EditAudioAssetModal extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -80,6 +80,7 @@ export default class EditAudioAssetModal extends React.Component {
     t: PropTypes.func.isRequired,
     uploading: PropTypes.bool.isRequired,
     asset: PropTypes.object,
+    error: PropTypes.string,
     readonly: PropTypes.bool,
     type: PropTypes.string,
   }
@@ -104,6 +105,11 @@ export default class EditAudioAssetModal extends React.Component {
     }
   }
 
+  getTitle() {
+    const { t, type, readonly } = this.props;
+    return t(`title.${readonly ? 'details' : 'edit'}.${type}`);
+  }
+
   handleCloseButtonClick = () => {
     if (this.props.uploading) return;
     this.props.dispatch(Actions.toggle({ open: false }));
@@ -115,7 +121,6 @@ export default class EditAudioAssetModal extends React.Component {
     const file = target.files[0];
     this.setState({
       file,
-      showProgressBar: true,
     });
 
     // START FILE READER HANDLER
@@ -127,7 +132,6 @@ export default class EditAudioAssetModal extends React.Component {
     fileReader.readAsDataURL(file);
     fileReader.onload = event => this.setState({
       src: event.target.result,
-      showProgressBar: false,
     });
   }
 
@@ -179,14 +183,9 @@ export default class EditAudioAssetModal extends React.Component {
     this.props.dispatch(LibraryDetailsActions.updateAsset(asset, file));
   }
 
-  getTitle() {
-    const { t, type, readonly } = this.props;
-    return t(`title.${readonly ? 'details' : 'edit'}.${type}`);
-  }
-
   render() {
-    const { open, readonly, t, type, uploading } = this.props;
-    const { asset, file, showProgressBar, src } = this.state;
+    const { open, readonly, t, type, uploading, error } = this.props;
+    const { asset, file, src } = this.state;
 
     const deleteButton = (
       <FlatButton
@@ -223,7 +222,7 @@ export default class EditAudioAssetModal extends React.Component {
         open={open}
         onClickOutside={this.handleCloseButtonClick}
       >
-        <Modal.Header loading={uploading} onClickCloseButton={this.handleCloseButtonClick}>
+        <Modal.Header loading={uploading && !error} onClickCloseButton={this.handleCloseButtonClick}>
           {this.getTitle()}
         </Modal.Header>
         <Modal.Body>
@@ -232,7 +231,7 @@ export default class EditAudioAssetModal extends React.Component {
               <Form.Section.Main>
                 <input
                   ref={ref => this.audioUpload = ref}
-                  accept="audio/x-wav"
+                  accept="audio/x-wav,audio/mpeg3,audio/x-m4a"
                   style={{ display: 'none' }}
                   type="file"
                   onChange={this.handleAudioUploadChange}
@@ -242,6 +241,9 @@ export default class EditAudioAssetModal extends React.Component {
                   // make sure AudioPlayer only did mount when have src ;
                   // here will cause AudioPlayer did mount firstly with old url then receive new url
                 */}
+                {error && (
+                  <span>{t(error)}</span>
+                )}
                 {src &&
                   <AudioPlayer
                     mode={readonly ? 'readonly' : 'upload'}

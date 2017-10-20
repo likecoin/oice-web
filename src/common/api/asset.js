@@ -23,6 +23,17 @@ request.get(`${API_URL}story/${storyId}/assets`)
   return [];
 });
 
+export const fetchAsset = assetId =>
+request.get(`${API_URL}asset/${assetId}`)
+.withCredentials()
+.set(API_HEADER)
+.then((response) => {
+  if (response.ok) {
+    return response.body.asset;
+  }
+  return null;
+});
+
 const postAsset = (asset, file, type, progressHandler) => {
   const {
     nameEn,
@@ -73,7 +84,7 @@ postAsset(asset, file, type, progressHandler);
 
 export const updateAsset = (asset, file) => postAsset(asset, file);
 
-export const deleteAsset = (assetId) =>
+export const deleteAsset = assetId =>
 request.del(`${API_URL}asset/${assetId}`)
 .withCredentials()
 .set(API_HEADER)

@@ -1,11 +1,6 @@
 import { handleActions } from 'redux-actions';
 import update from 'immutability-helper';
 
-import * as Actions from './LibraryDetails.actions.js';
-import {
-  actions as PurchasedDashboardActions,
-} from 'asset-library/views/PurchasedLibraryDashboard';
-
 import * as ASSET_TYPES from 'common/constants/assetTypes';
 
 import { actions as CharacterModalActions } from 'asset-library/views/CharacterModal';
@@ -15,6 +10,10 @@ import { actions as EditAudioAssetModalActions } from 'asset-library/views/EditA
 import {
   actions as CreateLibraryModalActions,
 } from 'asset-library/views/CreateLibraryModal';
+import {
+  actions as PurchasedDashboardActions,
+} from 'asset-library/views/PurchasedLibraryDashboard';
+import * as Actions from './LibraryDetails.actions.js';
 
 export const initialAssetState = {
   items: [],

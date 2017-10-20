@@ -15,6 +15,10 @@ $modal-border-style: 1px solid $hairline-color;
 
       border-bottom: $modal-border-style;
     }
+
+    .audio-error {
+      padding: padding(2/3);
+    }
   }
 }
 

@@ -80,6 +80,12 @@ export default class LibraryDashboard extends React.Component {
     };
   }
 
+  componentDidMount() {
+    if (this.props.user.isAuthenticated && this.props.user.isLoggedIn) {
+      this.fetchLibraries();
+    }
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.route.isStore !== this.props.route.isStore) {
       if (nextProps.route.isStore) {

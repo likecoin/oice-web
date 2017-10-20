@@ -12,6 +12,7 @@ const initialState = {
   type: null,
   uploadProgress: {},
   uploading: false,
+  error: null,
 };
 
 export default handleActions({
@@ -21,6 +22,7 @@ export default handleActions({
     type: payload.open ? payload.type : null,
     audioFiles: payload.open ? payload.audioFiles : null,
     uploading: false,
+    error: null,
   }),
   [Actions.addAudioFiles]: (state, { payload }) => update(state, {
     audioFiles: { $push: payload },
@@ -28,26 +30,26 @@ export default handleActions({
   [Actions.removeAudioFile]: (state, { payload }) => update(state, {
     audioFiles: { $splice: [[payload, 1]] },
   }),
-  [Actions.didAddBGMs]: (state) => ({
+  [Actions.didAddBGMs]: state => ({
     ...state,
     open: false,
     uploadProgress: {},
     uploading: false,
   }),
-  [Actions.didAddSEs]: (state) => ({
+  [Actions.didAddSEs]: state => ({
     ...state,
     open: false,
     uploadProgress: {},
     uploading: false,
   }),
-  [CommonActions.addAssetsFailed]: (state) => (
+  [CommonActions.addAssetsFailed]: state => (
     state.open ? ({
       ...state,
       uploadProgress: {},
       uploading: false,
     }) : state
   ),
-  [CommonActions.startSoundUpload]: (state) => ({
+  [CommonActions.startSoundUpload]: state => ({
     ...state,
     uploading: true,
   }),
@@ -56,5 +58,10 @@ export default handleActions({
     uploadProgress: {
       [payload.index]: { $set: payload.progess },
     },
+  }),
+  [Actions.onError]: (state, { payload }) => ({
+    ...state,
+    error: payload.error,
+    uploading: false,
   }),
 }, initialState);

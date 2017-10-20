@@ -8,6 +8,7 @@ const initialState = {
   asset: null,
   type: null,
   uploading: false,
+  error: null,
 };
 
 export default handleActions({
@@ -17,29 +18,35 @@ export default handleActions({
     type: payload.open ? payload.type : null,
     asset: payload.open ? payload.asset : null,
     uploading: false,
+    error: null,
   }),
-  [CommonActions.startUpdateAsset]: (state) => ({
+  [CommonActions.startUpdateAsset]: state => ({
     ...state,
     uploading: true,
   }),
-  [Actions.didUpdateSE]: (state) => ({
+  [Actions.didUpdateSE]: state => ({
     ...state,
     open: false,
     uploading: false,
   }),
-  [Actions.didDeleteSE]: (state) => ({
+  [Actions.didDeleteSE]: state => ({
     ...state,
     open: false,
     uploading: false,
   }),
-  [Actions.didUpdateBGM]: (state) => ({
+  [Actions.didUpdateBGM]: state => ({
     ...state,
     open: false,
     uploading: false,
   }),
-  [Actions.didDeleteBGM]: (state) => ({
+  [Actions.didDeleteBGM]: state => ({
     ...state,
     open: false,
+    uploading: false,
+  }),
+  [Actions.onError]: (state, { payload }) => ({
+    ...state,
+    error: payload.error,
     uploading: false,
   }),
 }, initialState);

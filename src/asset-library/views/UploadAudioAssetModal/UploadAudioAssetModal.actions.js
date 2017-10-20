@@ -6,3 +6,4 @@ export const removeAudioFile = createAction('REMOVE_AUDIO_FILE');
 export const startSoundUpload = createAction('START_SOUND_UPLOAD');
 export const didAddBGMs = createAction('ADD_MULTIPLE_BGM');
 export const didAddSEs = createAction('ADD_MULTIPLE_SE');
+export const onError = createAction('ADD_AUDIO_UPLAOD_ERROR');

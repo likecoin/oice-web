@@ -27,8 +27,8 @@ import { getFilename } from 'common/utils';
 import './UploadAudioAssetModal.style.scss';
 
 
-@translate(['assetsManagement', 'general'])
-@connect((store) => ({
+@translate(['assetsManagement', 'general', 'error'])
+@connect(store => ({
   ...store.UploadAudioAssetModal,
   user: store.user,
 }))
@@ -40,6 +40,7 @@ export default class UploadAudioAssetModal extends React.Component {
     uploadProgress: PropTypes.object.isRequired,
     uploading: PropTypes.bool.isRequired,
     audioFiles: PropTypes.array,
+    error: PropTypes.string,
     libraryId: PropTypes.number,
     type: PropTypes.string,
     user: PropTypes.object,
@@ -60,10 +61,6 @@ export default class UploadAudioAssetModal extends React.Component {
       const serializedAudioFiles = this.getSerializedAudioFiles(audioFiles);
       this.setState({ serializedAudioFiles });
     }
-  }
-
-  handleCloseButtonClick = () => {
-    this.props.dispatch(Actions.toggle({ open: false }));
   }
 
   getSerializedAudioFiles = (audioFiles) => {
@@ -88,6 +85,11 @@ export default class UploadAudioAssetModal extends React.Component {
       });
     }
     return serializedAudioFiles;
+  }
+
+  handleCloseButtonClick = () => {
+    if (this.props.uploading) return;
+    this.props.dispatch(Actions.toggle({ open: false }));
   }
 
   handleAudioUploadOnchange = (files) => {
@@ -187,7 +189,7 @@ export default class UploadAudioAssetModal extends React.Component {
   }
 
   render() {
-    const { t, open, type, uploading } = this.props;
+    const { t, open, type, uploading, error } = this.props;
     const { serializedAudioFiles } = this.state;
 
     const valid = (
@@ -228,6 +230,9 @@ export default class UploadAudioAssetModal extends React.Component {
               onChange={this.handleAudioUploadOnchange}
             />
           </div> */}
+          {error && (
+            <span className="audio-error">{t(error)}</span>
+          )}
           {this.renderAudioFilesList(serializedAudioFiles)}
         </Modal.Body>
         <Modal.Footer rightItems={[confirmButton]} />

@@ -5,3 +5,4 @@ export const didUpdateBGM = createAction('UPDATE_BGM');
 export const didDeleteBGM = createAction('DELETE_BGM');
 export const didUpdateSE = createAction('UPDATE_SE');
 export const didDeleteSE = createAction('DELETE_SE');
+export const onError = createAction('UPDATE_AUDIO_UPLOAD_ERROR');

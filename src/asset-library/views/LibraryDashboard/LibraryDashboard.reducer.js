@@ -3,7 +3,6 @@ import update from 'immutability-helper';
 
 import { LIBRARY_TYPE, LIBRARY_TYPES } from 'asset-library/constants';
 
-import * as Actions from './LibraryDashboard.actions.js';
 import {
   actions as PurchasedDashboardActions,
 } from 'asset-library/views/PurchasedLibraryDashboard';
@@ -13,6 +12,7 @@ import {
 import {
   actions as LibraryDetailsActions,
 } from 'asset-library/views/LibraryDetails';
+import * as Actions from './LibraryDashboard.actions.js';
 
 
 export const initialLibraryState = {
@@ -135,7 +135,7 @@ export default handleActions({
   [Actions.fetchLibrariesBegin]: (state, action) => {
     const { types } = action.payload;
     let newState = state;
-    types.forEach(type => {
+    types.forEach((type) => {
       newState = update(newState, {
         [type]: {
           loading: { $set: true },
@@ -146,7 +146,7 @@ export default handleActions({
   },
   [Actions.fetchLibrariesEnd]: (state, { payload }) => {
     let newState = state;
-    payload.types.forEach(type => {
+    payload.types.forEach((type) => {
       newState = update(newState, {
         [type]: {
           libraries: { $set: payload.result[type] },

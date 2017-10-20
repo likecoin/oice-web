@@ -1,12 +1,17 @@
 import { createAction } from 'redux-actions';
 import { goBack, replace } from 'react-router-redux';
 
+import socketio from 'socket.io-client';
+
+import _get from 'lodash/get';
+
 import * as AssetAPI from 'common/api/asset';
 import * as CharacterAPI from 'common/api/character';
 import * as LibraryAPI from 'common/api/library';
 import * as StoreAPI from 'common/api/store';
 import { APIHandler } from 'common/utils/api';
 
+import { DOMAIN_URL } from 'common/constants';
 import * as ASSET_TYPE from 'common/constants/assetTypes';
 import { LIBRARY_TYPE } from 'asset-library/constants';
 
@@ -130,6 +135,21 @@ export const close = () => (dispatch) => {
  * Assets Related
  */
 
+const onError = (assetType, error, isAdd) => (dispatch) => {
+  switch (assetType) {
+    case ASSET_TYPE.MUSIC:
+    case ASSET_TYPE.SOUND:
+      if (isAdd) {
+        dispatch(UploadAudioAssetModalActions.onError({ error }));
+      } else {
+        dispatch(EditAudioAssetModalActions.onError({ error }));
+      }
+      break;
+    default:
+      break;
+  }
+};
+
 export const addAsset = (meta, file, assetType) => (dispatch) => {
   switch (assetType) {
     case ASSET_TYPE.BACKGROUND: dispatch(BackgroundModalActions.willAdd()); break;
@@ -138,16 +158,16 @@ export const addAsset = (meta, file, assetType) => (dispatch) => {
   }
   APIHandler(dispatch,
    AssetAPI.addAsset(meta, file, assetType)
-   .then(asset => {
+   .then((asset) => {
      const { libraryId } = asset;
      dispatch(updateLibraryAssetCount({
        assetCount: 1,
        libraryId,
      }));
-     dispatch(fetchLibraryAssetsByType(libraryId, assetType)).then(type => {
+     dispatch(fetchLibraryAssetsByType(libraryId, assetType)).then((type) => {
        switch (assetType) {
-         case ASSET_TYPE.BACKGROUND: dispatch(BackgroundModalActions.didAdd(asset)); break;
-         case ASSET_TYPE.ITEM: dispatch(ItemModalActions.didAdd(asset)); break;
+         case ASSET_TYPE.BACKGROUND: dispatch(BackgroundModalActions.didAdd()); break;
+         case ASSET_TYPE.ITEM: dispatch(ItemModalActions.didAdd()); break;
          default: break;
        }
      });
@@ -155,71 +175,112 @@ export const addAsset = (meta, file, assetType) => (dispatch) => {
   );
 };
 
+const isAudioAsset = type => type === ASSET_TYPE.MUSIC || type === ASSET_TYPE.SOUND;
 
+const addAssetsEnd = (assetType, count) => (dispatch, getState) => {
+  const libraryId = getState().LibraryDetails.library.id;
+  dispatch(updateLibraryAssetCount({
+    assetCount: 1,
+    libraryId,
+  }));
+  dispatch(fetchLibraryAssetsByType(libraryId, assetType)).then((type) => {
+    switch (assetType) {
+      case ASSET_TYPE.MUSIC:
+        dispatch(UploadAudioAssetModalActions.didAddBGMs());
+        break;
+      case ASSET_TYPE.SOUND:
+        dispatch(UploadAudioAssetModalActions.didAddSEs());
+        break;
+      default:
+        break;
+    }
+  });
+};
 export const addAssets = (assets, assetType, progressHandler) => async (dispatch) => {
   /* eslint-disable no-restricted-syntax */
   /* eslint-disable no-await-in-loop */
   /* eslint-disable no-loop-func */
   // temporary solution to make synchronous add assets
-  const newAssets = [];
+  let numNewAssets = 0;
   let index = 0;
   for (const { meta, file } of assets) {
-    const newAsset = await APIHandler(dispatch,
-     AssetAPI.addAsset(meta, file, assetType, (progess) => {
-       dispatch(CommonActions.updateUploadStatus({ index, progess }));
-     }), () => {
-       dispatch(CommonActions.addAssetsFailed(assetType));
-     }, [
-       'ERR_AUDIO_FORMAT_UNSUPPORTED',
-       'ERR_AUDIO_TRANSCODE_FAILURE',
-     ]);
-    if (newAsset) newAssets.push(newAsset);
+    const asset = await APIHandler(dispatch,
+      AssetAPI.addAsset(meta, file, assetType, (progess) => {
+        dispatch(CommonActions.updateUploadStatus({ index, progess }));
+      }), () => {
+        dispatch(CommonActions.addAssetsFailed(assetType));
+      }, [
+        'ERR_AUDIO_FORMAT_UNSUPPORTED',
+      ]
+    );
+    const jobId = asset.jobId;
+    if (jobId) {
+      const socket = socketio(`${DOMAIN_URL}/audio/convert`);
+      socket.on('event', async (res) => {
+        if (res.error) {
+          socket.close();
+          dispatch(onError(assetType, _get(res, 'interpolation.message'), true));
+        } else if (res.stage === 'finished') {
+          socket.close();
+          // only one audio asset will be uploaded
+          dispatch(addAssetsEnd(assetType, 1));
+        }
+      });
+      socket.emit('listen', jobId);
+    } else {
+      numNewAssets++;
+    }
     index++;
   }
-
-  const { libraryId } = newAssets[0];
-  dispatch(updateLibraryAssetCount({
-    assetCount: newAssets.length,
-    libraryId,
-  }));
-
-  dispatch(fetchLibraryAssetsByType(libraryId, assetType)).then((type) => {
-    switch (assetType) {
-      case ASSET_TYPE.MUSIC:
-        dispatch(UploadAudioAssetModalActions.didAddBGMs(newAssets));
-        break;
-      case ASSET_TYPE.SOUND:
-        dispatch(UploadAudioAssetModalActions.didAddSEs(newAssets));
-        break;
-      default: break;
-    }
-  });
+  if (!isAudioAsset(assetType)) {
+    dispatch(addAssetsEnd(assetType, numNewAssets));
+  }
 };
 
 
-export const updateAsset = (meta, file) => (dispatch) => {
+const updatedAsset = (assetType, asset) => (dispatch) => {
+  switch (assetType) {
+    case ASSET_TYPE.BACKGROUND:
+      dispatch(BackgroundModalActions.didUpdate(asset));
+      break;
+    case ASSET_TYPE.ITEM:
+      dispatch(ItemModalActions.didUpdate(asset));
+      break;
+    case ASSET_TYPE.MUSIC:
+      dispatch(EditAudioAssetModalActions.didUpdateBGM(asset));
+      break;
+    case ASSET_TYPE.SOUND:
+      dispatch(EditAudioAssetModalActions.didUpdateSE(asset));
+      break;
+    default:
+      throw new Error('Invalid asset type');
+  }
+};
+export const updateAsset = (meta, file) => async (dispatch) => {
   dispatch(CommonActions.startUpdateAsset());
-  APIHandler(dispatch, AssetAPI.updateAsset(meta, file)
- .then((asset) => {
-   switch (asset.types[0].name) {
-     case ASSET_TYPE.BACKGROUND:
-       dispatch(BackgroundModalActions.didUpdate(asset));
-       break;
-     case ASSET_TYPE.ITEM:
-       dispatch(ItemModalActions.didUpdate(asset));
-       break;
-     case ASSET_TYPE.MUSIC:
-       dispatch(EditAudioAssetModalActions.didUpdateBGM(asset));
-       break;
-     case ASSET_TYPE.SOUND:
-       dispatch(EditAudioAssetModalActions.didUpdateSE(asset));
-       break;
-     default:
-       throw new Error('Invalid asset type');
-   }
- }));
-};
 
+  const asset = await APIHandler(dispatch, AssetAPI.updateAsset(meta, file));
+  const assetType = meta.types[0].name;
+
+  const jobId = asset.jobId;
+  if (jobId) {
+    // wait until job finish
+    const socket = socketio(`${DOMAIN_URL}/audio/convert`);
+    socket.on('event', async (res) => {
+      if (res.error) {
+        socket.close();
+        dispatch(onError(assetType, _get(res, 'interpolation.message'), false));
+      } else if (res.stage === 'finished') {
+        socket.close();
+        const newAsset = await APIHandler(dispatch, AssetAPI.fetchAsset(res.assetId));
+        dispatch(updatedAsset(assetType, newAsset));
+      }
+    });
+    socket.emit('listen', jobId);
+  } else {
+    dispatch(updatedAsset(assetType, asset));
+  }
+};
 
 export const deleteAsset = ({ id, type, libraryId }) => (dispatch) => {
   APIHandler(dispatch, AssetAPI.deleteAsset(id)
