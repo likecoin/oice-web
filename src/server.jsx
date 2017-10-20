@@ -11,7 +11,7 @@ import i18nMiddleware from 'i18next-express-middleware';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './common/utils/i18n';
 
-import { API_URL } from './common/constants';
+import { API_URL, IS_DEV_MODE } from './common/constants';
 import { getHTMLTitle } from './common/utils';
 import * as OiceAPI from './common/api/oice';
 import * as LibraryAPI from './common/api/library';
@@ -195,7 +195,7 @@ server.get('*', (req, res) => {
         }
       } else if (isPathStartWith('ui-demo')) {
         props.module = 'ui-demo';
-      } else if (isPathStartWith('admin')) {
+      } else if (isPathStartWith('admin') && !IS_DEV_MODE) {
         props.module = 'admin-panel';
       } else if (isPathStartWith('user') || isPathStartWith('@')) {
         const matchResults = isPathStartWith('user') ? pathname.match(/^\/user\/(\d+).*/i) : pathname.match(/\/@([a-zA-Z0-9.-]+).*/);

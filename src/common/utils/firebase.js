@@ -18,5 +18,5 @@ export function init() {
     storageBucket: FIREBASE_STORAGE_BUCKET,
     messagingSenderId: FIREBASE_SENDER_ID,
   };
-  firebase.initializeApp(config);
+  if (window.firebase) firebase.initializeApp(config);
 }

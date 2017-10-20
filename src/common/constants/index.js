@@ -8,6 +8,7 @@ import {
     ANDROID_PACKAGE_TEST,
     ANDROID_NAME_PROD,
     ANDROID_NAME_TEST,
+    FIREBASE_API_KEY,
     IOS_STORE_ID,
     IOS_NAME,
     INTERCOM_APP_ID_PROD,
@@ -50,6 +51,8 @@ export const IOS_APP = {
   STORE_ID: IOS_STORE_ID,
   NAME: IOS_NAME,
 };
+
+export const IS_DEV_MODE = !FIREBASE_API_KEY;
 
 export const INTERCOM_APP_ID = SRV_ENV === 'production' ? INTERCOM_APP_ID_PROD : INTERCOM_APP_ID_TEST;
 
