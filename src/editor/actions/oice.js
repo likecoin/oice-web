@@ -1,11 +1,14 @@
+import request from 'superagent';
+import socketio from 'socket.io-client';
+
 import { createAction } from 'redux-actions';
 import { push, replace } from 'react-router-redux';
+
 import { DOMAIN_URL } from 'common/constants';
 import * as OiceAPI from 'common/api/oice';
 import * as BlockAPI from 'common/api/block';
-import request from 'superagent';
+import * as IntercomUtils from 'common/utils/intercom';
 
-import socketio from 'socket.io-client';
 
 import {
   FETCH_SELECTED_OICE,
@@ -66,6 +69,11 @@ const dispatchJobState = (dispatch, id, stage, message = '', data = null) => {
 const buildSocket = socketio(`${DOMAIN_URL}/build`);
 
 export const runOice = (storyId, oiceId, savingBlocks, isPreview, jobId) => (dispatch, getState) => {
+  IntercomUtils.event(isPreview ? 'preview_oice' : 'build_oice', {
+    story_id: storyId,
+    oice_id: oiceId,
+  });
+
   const dispatchState = (stage, message, data) => dispatchJobState(
     dispatch, jobId, stage, message, data
   );

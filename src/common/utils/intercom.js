@@ -38,6 +38,11 @@ export function updateWithUser(user) {
   });
 }
 
+export function event(name, meta = {}) {
+  if (!window.Intercom) return;
+  window.Intercom('trackEvent', name, meta);
+}
+
 export function shutdown() {
   if (!window.Intercom) return;
   window.Intercom('shutdown');

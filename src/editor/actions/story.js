@@ -1,6 +1,7 @@
 import { createAction } from 'redux-actions';
 import * as StoryAPI from 'common/api/story';
 import { APIHandler } from 'common/utils/api';
+import * as IntercomUtils from 'common/utils/intercom';
 
 import * as CharacterAction from './character';
 import * as AssetAction from './asset';
@@ -9,7 +10,10 @@ import * as AssetAction from './asset';
 export const fetchedStories = createAction('FETCHED_STORIES');
 export const fetchStories = () => dispatch => APIHandler(dispatch,
   StoryAPI.fetchStories()
-  .then(stories => dispatch(fetchedStories({ list: stories })))
+  .then((stories) => {
+    IntercomUtils.update({ _story_count: stories.length });
+    dispatch(fetchedStories({ list: stories }));
+  })
 );
 
 export const unselectStory = createAction('STORY_UNSELECT');
