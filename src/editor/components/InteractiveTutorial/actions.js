@@ -6,7 +6,7 @@ import update from 'immutability-helper';
 
 import * as OiceAPI from 'common/api/oice';
 import * as StoryAction from 'editor/actions/story';
-import { actions as ProfileActions } from 'web/pages/Profile';
+import * as UserAction from 'common/actions/user';
 
 const beginLoading = createAction('BEGIN_LOAD_INTERACTIVE_TUTORIAL');
 const endLoading = createAction('END_LOAD_INTERACTIVE_TUTORIAL');
@@ -45,7 +45,7 @@ export const open = (volume, startFromStep = null) => (dispatch) => {
 
 export const updateUserTutorialState = index => (dispatch, getState) => {
   const { user } = getState();
-  dispatch(ProfileActions.updateUser({ meta: JSON.stringify({
+  dispatch(UserAction.updateUser({ meta: JSON.stringify({
     tutorialState: update(user.tutorialState, {
       [index]: { $set: true },
     }),

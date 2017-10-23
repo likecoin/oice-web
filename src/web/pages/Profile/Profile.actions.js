@@ -14,7 +14,7 @@ import { APIHandler } from 'common/utils/api';
 
 // Actions
 export const updateUserProfileBegin = createAction('USER_PROFILE_UPDATE_BEGIN');
-export const updatedUserProfile = createAction('UPDATED_USER');
+export const updatedUserProfile = createAction('UPDATED_USER_PROFILE');
 export const updatedUserAvatar = createAction('UPDATED_USER_AVATAR');
 export const startLoading = createAction('START_LOADING');
 
