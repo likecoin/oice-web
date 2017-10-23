@@ -76,8 +76,7 @@ export default class AudioPlayerList extends React.Component {
   }
 
   createChild(element, index) {
-    const { name } = element.type;
-    if (name === 'LazyLoad') {
+    if (_get(element, 'props.children.type.displayName') === 'AudioPlayer') {
       // AudioPlayer wrapped by LazyLoad component
       const player = this.createAudioPlayer(element.props.children, index);
       return React.cloneElement(element, { key: index }, player);
