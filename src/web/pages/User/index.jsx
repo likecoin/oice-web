@@ -57,7 +57,7 @@ function handleLink(link) {
 }
 
 @connect(store => ({
-  self: store.Profile.userProfile,
+  self: store.user,
   ...store.UserPage,
 }))
 @translate(['UserPage'])

@@ -31,12 +31,15 @@ import './style.scss';
 
 @connect(store => ({
   user: store.user,
+  userProfile: store.Profile.userProfile,
 }))
 @translate(['general', 'Profile'])
 export default class Profile extends React.Component {
   static propTypes = {
+    dispatch: PropTypes.func.isRequired,
     t: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
+    userProfile: PropTypes.object.isRequired,
     location: PropTypes.object,
   }
 
@@ -67,6 +70,8 @@ export default class Profile extends React.Component {
     if (!nextProps.user.isLoggedIn) {
       redirectPathname.set(window.location.pathname + window.location.search);
       redirectToLoginPage();
+    } else if (!nextProps.userProfile) {
+      this.props.dispatch(Actions.updatedUserProfile(nextProps.user));
     }
   }
 
@@ -110,9 +115,9 @@ export default class Profile extends React.Component {
   }
 
   render() {
-    const { t, user } = this.props;
+    const { t, userProfile } = this.props;
 
-    if (!user.isLoggedIn) {
+    if (!userProfile) {
       return <LoadingScreen />;
     }
 
