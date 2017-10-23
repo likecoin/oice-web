@@ -52,7 +52,7 @@
       "flip": true,
       "override": false,
       "selectors": [
-        "#blocks-panel > *:first-child"
+        "#blocks-panel .block-list *:first-child"
       ],
       "cursor": "default",
       "dialog": {
