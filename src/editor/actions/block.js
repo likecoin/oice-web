@@ -8,6 +8,8 @@ import InteractiveTutorial from 'editor/components/InteractiveTutorial';
 import * as BlockAPI from 'common/api/block';
 import { APIHandler } from 'common/utils/api';
 import { setOiceLastEditTime } from 'common/utils/editor';
+import * as IntercomUtils from 'common/utils/intercom';
+
 
 function updateOiceLastEditTime(state) {
   const oiceId = _get(state, 'oices.selected.id');
@@ -80,13 +82,29 @@ export const addBlock = (
         dispatch(InteractiveTutorial.Action.achieve(tutorialStepIds));
       }
       dispatch(addBlockDnD({ block }));
+
+      IntercomUtils.event('add_block', {
+        oice_id: block.oiceId,
+        macro_id: block.macroId,
+        macro_name: block.macroName,
+        method: isDrag ? 'drag' : 'click',
+      });
     })
   );
 };
 
 export const duplicateBlock = (oiceId, serializedBlock) => dispatch => APIHandler(dispatch,
   BlockAPI.addBlock(oiceId, serializedBlock, false)
-  .then(block => dispatch(addBlockDnD({ block })))
+  .then((block) => {
+    dispatch(addBlockDnD({ block }));
+
+    IntercomUtils.event('add_block', {
+      oice_id: block.oiceId,
+      macro_id: block.macroId,
+      macro_name: block.macroName,
+      method: 'duplicate',
+    });
+  })
 );
 
 export const updateBlockView = block => (dispatch) => {
@@ -120,6 +138,8 @@ export const deleteBlock = blockId => (dispatch, getState) => {
       dispatch(removeFromSavingBlockQueue(blockId));
 
       updateOiceLastEditTime(getState());
+
+      IntercomUtils.event('delete_block');
     })
   );
 };

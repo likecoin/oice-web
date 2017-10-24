@@ -4,6 +4,7 @@ import * as StoryAPI from 'common/api/story';
 import { toggleAlertDialog } from 'ui-elements/AlertDialog/redux';
 
 import { APIHandler } from 'common/utils/api';
+import * as IntercomUtils from 'common/utils/intercom';
 
 
 const fetchedLibraries = createAction('FETCHED_LIBRARIES');
@@ -16,7 +17,16 @@ export const fetchLibraries = () => (dispatch) => APIHandler(dispatch,
 export const addedLibrary = createAction('ADDED_LIBRARY');
 export const addLibrary = (newStoryName) => dispatch => APIHandler(dispatch,
   LibraryAPI.addLibrary(newStoryName)
-  .then(library => dispatch(addedLibrary(library)))
+  .then(library => {
+    dispatch(addedLibrary(library));
+
+    IntercomUtils.event('add_library', {
+      id: library.id,
+      name: library.name,
+      description: library.description,
+      is_public: library.isPublic,
+    });
+  })
 );
 
 
