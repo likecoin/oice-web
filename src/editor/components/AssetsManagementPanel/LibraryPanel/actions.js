@@ -14,6 +14,7 @@ import * as AssetAPI from 'common/api/asset';
 import * as ASSET_TYPE from 'common/constants/assetTypes';
 
 import { APIHandler } from 'common/utils/api';
+import * as IntercomUtils from 'common/utils/intercom';
 
 
 export const fetchedSelectedLibraryById = createAction('FETCH_SELECTED_LIBRARY');
@@ -93,6 +94,10 @@ export const addAsset = (meta, file, assetType) => (dispatch) => {
         case ASSET_TYPE.ITEM: dispatch(addItemEnd(asset)); break;
         default: break;
       }
+
+      IntercomUtils.event('add_asset', {
+        type: assetType,
+      });
     })
   );
 };
@@ -130,6 +135,10 @@ export const addAssets = (assets, assetType, progressHandler) => (dispatch) => {
       default:
         break;
     }
+
+    IntercomUtils.event('add_asset', {
+      type: assetType,
+    });
   });
 };
 
@@ -159,6 +168,10 @@ export const updateAsset = (meta, file) => (dispatch) => {
       default:
         throw new Error('Invalid asset type');
     }
+
+    IntercomUtils.event('update_asset', {
+      type: asset.types[0].name,
+    });
   }));
 };
 
@@ -187,5 +200,9 @@ export const deleteAsset = ({ id, type }) => (dispatch) => {
       default:
         throw new Error('Invalid asset type');
     }
+
+    IntercomUtils.event('delete_asset', {
+      type,
+    });
   }));
 };
