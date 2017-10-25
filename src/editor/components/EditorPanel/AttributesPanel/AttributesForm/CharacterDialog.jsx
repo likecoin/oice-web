@@ -371,13 +371,13 @@ export default class CharacterDialogForm extends React.Component {
 
     return (
       <div className="attribute-panel-row">
-        <CharacterPreview
+        {!!character && <CharacterPreview
           image={characterThumbnail}
           x={coordinate.x}
           y={coordinate.y}
           flipped={isFlipRight}
           readonly
-        />
+        />}
         <Dropdown
           staticLabel={
             _get(character, 'name', t('characterModal.selectedCharacter'))
