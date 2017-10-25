@@ -16,6 +16,21 @@ import {
 
 const DEBUG = process.env.NODE_ENV !== 'production';
 
+function getFontUrl(language) {
+  if (typeof language === 'string') {
+    const lang = language.substring(0, 2).toLowerCase();
+    switch (lang) {
+      case 'ja':
+        return 'https://fonts.googleapis.com/earlyaccess/notosansjp.css';
+      case 'zh':
+        return 'https://fonts.googleapis.com/earlyaccess/notosanstc.css';
+      default:
+        break;
+    }
+  }
+  return null;
+}
+
 export default class IndexHTML extends React.Component {
   static defaultProps = {
     meta: {},
@@ -35,6 +50,7 @@ export default class IndexHTML extends React.Component {
       meta,
     } = this.props;
 
+    const fontUrl = getFontUrl(meta.ogLocale);
     return (
       <html lang={meta.ogLocale}>
         <head>
@@ -65,6 +81,9 @@ export default class IndexHTML extends React.Component {
               rel="stylesheet"
               type="text/css"
             />
+          }
+          {!!fontUrl &&
+            <link href={fontUrl} rel="stylesheet" type="text/css" />
           }
           <link
             href="/img/favicon.ico"
