@@ -212,13 +212,13 @@ export default class ImageForm extends React.Component {
 
     return (
       <div className="attribute-panel-row">
-        <ResizedImage
+        {!!imageURL && <ResizedImage
           src={imageURL}
           width={320}
           centerImage={block.macroName === 'item'}
           imageStyle={imageStyle}
           maskImageStyle={maskImageStyle}
-        />
+        />}
         <Dropdown
           placeholder={t(`placeholder.dropDown.${block.macroName}`)}
           staticLabel={name}
