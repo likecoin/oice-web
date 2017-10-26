@@ -19,11 +19,16 @@ import CloseIcon from 'common/icons/close';
 import TickIcon from 'common/icons/publish';
 
 import * as ASSET_TYPE from 'common/constants/assetTypes';
+import { MAX_AUDIO_FILE_SIZE } from 'asset-library/constants';
+
+import { getFilename } from 'common/utils';
+import {
+  getFileSizeString,
+  isFileSizeExceedLimit,
+} from 'asset-library/utils/asset';
 
 import { actions as LibraryDetailsActions } from 'asset-library/views/LibraryDetails';
 import * as Actions from './UploadAudioAssetModal.actions';
-
-import { getFilename } from 'common/utils';
 
 import './UploadAudioAssetModal.style.scss';
 
@@ -150,10 +155,9 @@ export default class UploadAudioAssetModal extends React.Component {
   renderAudioFilesList(audioFiles = []) {
     // TODO: refactor this render to another component
     const { t, uploading, uploadProgress, uploadStatus } = this.props;
-
-    return audioFiles.map((sound, index) => {
+    return audioFiles.map((audio, index) => {
       const progress = uploadProgress[index];
-      const fileSize = sound.file.size;
+      const fileSize = audio.file.size;
       const isUploaded = index < uploadStatus.length;
       const hasError = isUploaded && !!uploadStatus[index].error;
 
@@ -167,12 +171,19 @@ export default class UploadAudioAssetModal extends React.Component {
           <div className="audio-item-details">
             <div className="audio-item-header">
               <p>
-                {`${index + 1}. ${sound.file.name} (${getFileSizeString(fileSize)})`}
+                {`${index + 1}. ${audio.file.name} (${getFileSizeString(fileSize)})`}
                 {isUploaded && !hasError && <TickIcon />}
               </p>
               {hasError &&
                 <p className="audio-item-error">
                   {t(uploadStatus[index].error)}
+                </p>
+              }
+              {isFileSizeExceedLimit(fileSize) &&
+                <p className="audio-item-error">
+                  {t('ERR_AUDIO_FILE_SIZE_TOO_LARGE', {
+                    size: MAX_AUDIO_FILE_SIZE.MB,
+                  })}
                 </p>
               }
               {!uploading &&
@@ -186,19 +197,19 @@ export default class UploadAudioAssetModal extends React.Component {
             <TextField
               disabled={uploading}
               placeholder={t('uploadMusicModal.placeholder.name')}
-              value={sound.meta.nameEn}
+              value={audio.meta.nameEn}
               fullWidth
               onChange={value => this.handleNameChange(value, index)}
             />
             <UsersDropdown
-              users={sound.meta.users}
+              users={audio.meta.users}
               fullWidth
               onChange={users => this.handleCreditsChange(users, index)}
             />
             <TextField
               disabled={uploading}
               placeholder={t('uploadMusicModal.placeholder.creditsUrl')}
-              value={sound.meta.creditsUrl}
+              value={audio.meta.creditsUrl}
               fullWidth
               onChange={value => this.handleCreditsUrlChange(value, index)}
             />
@@ -214,11 +225,12 @@ export default class UploadAudioAssetModal extends React.Component {
 
     const valid = (
       serializedAudioFiles.length > 0) &&
-      serializedAudioFiles.every(({ meta }) => (
+      serializedAudioFiles.every(({ meta, file }) => (
         meta.nameEn &&
         meta.nameEn.trim().length > 0 &&
         meta.users &&
-        (meta.users.length > 0 || meta.creditsUrl.length > 0)
+        (meta.users.length > 0 || meta.creditsUrl.length > 0) &&
+        !isFileSizeExceedLimit(file.size)
       )
     );
 

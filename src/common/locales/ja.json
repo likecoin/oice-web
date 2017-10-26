@@ -1063,6 +1063,7 @@
   "error": {
     "ERR_AUDIO_FORMAT_UNSUPPORTED": "音声ファイルフォーマットが対応しません",
     "ERR_AUDIO_TRANSCODE_FAILURE": "コーデックエラー",
+    "ERR_AUDIO_FILE_SIZE_TOO_LARGE": "File size should not be larger than {{size}} Mb",
     "ERR_IMPORT_SCRIPT_ASSET_NOT_FOUND": "素材がありません。 ID: {{assetIds}}",
     "ERR_IMPORT_SCRIPT_CHARACTER_FORBID_RENAME": "キャラの名前を変更できません。キャラID: {{characterId}}",
     "ERR_IMPORT_SCRIPT_CHARACTER_NOT_FOUND": "キャラID: {{ characterIds }} 不正使用",

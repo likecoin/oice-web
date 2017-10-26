@@ -1064,6 +1064,7 @@
   "error": {
     "ERR_AUDIO_FORMAT_UNSUPPORTED": "不支持此音訊格式",
     "ERR_AUDIO_TRANSCODE_FAILURE": "音訊編碼出現錯誤",
+    "ERR_AUDIO_FILE_SIZE_TOO_LARGE": "檔案大小必須少於 {{size}} Mb",
     "ERR_IMPORT_SCRIPT_ASSET_NOT_FOUND": "使用了不正確的素材ID: {{assetIds}}",
     "ERR_IMPORT_SCRIPT_CHARACTER_FORBID_RENAME": "非通用角色不能定義新名字，角色ID: {{characterId}}",
     "ERR_IMPORT_SCRIPT_CHARACTER_NOT_FOUND": "使用了不正確的角色ID: {{ characterIds }}",

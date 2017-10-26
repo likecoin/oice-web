@@ -19,8 +19,10 @@ import UsersDropdown from 'ui-elements/UsersDropdown';
 import CloseIcon from 'common/icons/close';
 
 import * as ASSET_TYPE from 'common/constants/assetTypes';
+import { MAX_AUDIO_FILE_SIZE } from 'asset-library/constants';
 
 import { getAudioMp4Url } from 'editor/utils/app';
+import { isFileSizeExceedLimit } from 'asset-library/utils/asset';
 
 import { actions as LibraryDetailsActions } from 'asset-library/views/LibraryDetails';
 
@@ -201,7 +203,8 @@ export default class EditAudioAssetModal extends React.Component {
       (
         (asset.users && asset.users.length > 0) ||
         (asset.creditsUrl && asset.creditsUrl.length > 0)
-      )
+      ) &&
+      (file && !isFileSizeExceedLimit(file.size))
     );
 
     const confirmButton = (
@@ -245,6 +248,13 @@ export default class EditAudioAssetModal extends React.Component {
                 {error && (
                   <span className="edit-audio-error">{t(error)}</span>
                 )}
+                {!!file && isFileSizeExceedLimit(file.size) &&
+                  <span className="edit-audio-error">
+                    {t('ERR_AUDIO_FILE_SIZE_TOO_LARGE', {
+                      size: MAX_AUDIO_FILE_SIZE.MB,
+                    })}
+                  </span>
+                }
                 {src &&
                   <AudioPlayer
                     mode={readonly ? 'readonly' : 'upload'}
@@ -281,7 +291,10 @@ export default class EditAudioAssetModal extends React.Component {
           </Form>
         </Modal.Body>
         {!readonly &&
-          <Modal.Footer leftItems={[deleteButton]} rightItems={[confirmButton]} />
+          <Modal.Footer
+            leftItems={[deleteButton]}
+            rightItems={[confirmButton]}
+          />
         }
       </Modal>
     );
