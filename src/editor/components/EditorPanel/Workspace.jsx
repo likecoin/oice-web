@@ -39,15 +39,8 @@ export default class EditorWorkspace extends React.Component {
 
   componentDidMount() {
     this.loadWorkspace(this.props);
-    // timer
-    this.autoSaveTimer = setInterval(() => {
-      const { blockIdsToBeSaved, blocksDict } = this.props;
-      const blocksToBeSavedArray = getComposedToBeSavedBlocks(blockIdsToBeSaved, blocksDict);
-      const blockIdsArray = [...blockIdsToBeSaved]; // convert set to array
-      if (blockIdsToBeSaved.size > 0) {
-        this.props.dispatch(BlockAction.saveBlocks(blocksToBeSavedArray, blockIdsArray));
-      }
-    }, 5000);
+    // Auto-save timer
+    this.autoSaveTimer = setInterval(this._handleAutoSave, 5000);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -64,6 +57,15 @@ export default class EditorWorkspace extends React.Component {
     props.dispatch(StoryAction.selectStory(story));
     props.dispatch(BlockAction.fetchBlocks(oice.id, oice.language));
     props.dispatch(RecentUsed.Actions.initialize(oice.storyId));
+  }
+
+  _handleAutoSave = () => {
+    const blockIdsToBeSaved = new Set(this.props.blockIdsToBeSaved);
+    const blockIdsArray = [...blockIdsToBeSaved]; // Convert set to array
+    if (blockIdsArray.length > 0) {
+      const blocksToBeSavedArray = getComposedToBeSavedBlocks(blockIdsToBeSaved, this.props.blocksDict);
+      this.props.dispatch(BlockAction.saveBlocks(blocksToBeSavedArray, blockIdsArray));
+    }
   }
 
   render() {
