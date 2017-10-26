@@ -36,6 +36,7 @@ export default class AudioUpload extends React.Component {
           accept="audio/x-wav,audio/mpeg3,audio/x-m4a"
           style={{ display: 'none' }}
           type="file"
+          multiple
           onChange={this.handleChange}
           onClick={() => { this.audioUpload.value = ''; }} // Clear selected files
         />

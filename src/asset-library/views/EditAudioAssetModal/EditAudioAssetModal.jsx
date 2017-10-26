@@ -8,7 +8,6 @@ import update from 'immutability-helper';
 
 import AlertDialog from 'ui-elements/AlertDialog';
 import AudioPlayer from 'ui-elements/AudioPlayer';
-import AudioUpload from 'ui-elements/AudioUpload';
 import FlatButton from 'ui-elements/FlatButton';
 import Form from 'ui-elements/Form';
 import Modal from 'ui-elements/Modal';
@@ -122,6 +121,8 @@ export default class EditAudioAssetModal extends React.Component {
     this.setState({
       file,
     });
+
+    this.props.dispatch(Actions.changeAudioUpload());
 
     // START FILE READER HANDLER
     const fileReader = new FileReader();
@@ -242,7 +243,7 @@ export default class EditAudioAssetModal extends React.Component {
                   // here will cause AudioPlayer did mount firstly with old url then receive new url
                 */}
                 {error && (
-                  <span>{t(error)}</span>
+                  <span className="edit-audio-error">{t(error)}</span>
                 )}
                 {src &&
                   <AudioPlayer

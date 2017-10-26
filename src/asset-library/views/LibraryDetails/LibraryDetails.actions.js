@@ -176,63 +176,96 @@ export const addAsset = (meta, file, assetType) => (dispatch) => {
 };
 
 const isAudioAsset = type => type === ASSET_TYPE.MUSIC || type === ASSET_TYPE.SOUND;
+const getLibraryId = state => state.LibraryDetails.library.id;
 
+const didAddAssets = assetType => (dispatch) => {
+  switch (assetType) {
+    case ASSET_TYPE.MUSIC:
+      dispatch(UploadAudioAssetModalActions.didAddBGMs());
+      break;
+    case ASSET_TYPE.SOUND:
+      dispatch(UploadAudioAssetModalActions.didAddSEs());
+      break;
+    default:
+      break;
+  }
+};
 const addAssetsEnd = (assetType, count) => (dispatch, getState) => {
-  const libraryId = getState().LibraryDetails.library.id;
+  // only update view if there are any successful uploaded assets
+  if (count <= 0) {
+    dispatch(didAddAssets(assetType));
+    return;
+  }
+
+  const libraryId = getLibraryId(getState());
   dispatch(updateLibraryAssetCount({
-    assetCount: 1,
+    assetCount: count,
     libraryId,
   }));
   dispatch(fetchLibraryAssetsByType(libraryId, assetType)).then((type) => {
-    switch (assetType) {
-      case ASSET_TYPE.MUSIC:
-        dispatch(UploadAudioAssetModalActions.didAddBGMs());
-        break;
-      case ASSET_TYPE.SOUND:
-        dispatch(UploadAudioAssetModalActions.didAddSEs());
-        break;
-      default:
-        break;
-    }
+    dispatch(didAddAssets(assetType));
   });
 };
-export const addAssets = (assets, assetType, progressHandler) => async (dispatch) => {
-  /* eslint-disable no-restricted-syntax */
-  /* eslint-disable no-await-in-loop */
-  /* eslint-disable no-loop-func */
-  // temporary solution to make synchronous add assets
+export const addAssets = (uploadAssets, assetType) => async (dispatch, getState) => {
   let numNewAssets = 0;
   let index = 0;
-  for (const { meta, file } of assets) {
-    const asset = await APIHandler(dispatch,
-      AssetAPI.addAsset(meta, file, assetType, (progess) => {
-        dispatch(CommonActions.updateUploadStatus({ index, progess }));
-      }), () => {
-        dispatch(CommonActions.addAssetsFailed(assetType));
-      }, [
+  const progressHandler = (progess) => {
+    dispatch(CommonActions.updateUploadStatus({ index, progess }));
+  };
+  const addAssetFailureHandler = () => {
+    dispatch(CommonActions.addAssetsFailed(assetType));
+  };
+
+  if (isAudioAsset(assetType)) {
+    // upload multiple assets at once
+    const metas = [];
+    const files = [];
+    uploadAssets.forEach(({ meta, file }) => {
+      metas.push(meta);
+      files.push(file);
+    });
+    const { assets, jobId } = await APIHandler(dispatch,
+      AssetAPI.addAsset(metas, files, assetType, progressHandler),
+      addAssetFailureHandler,
+      [
         'ERR_AUDIO_FORMAT_UNSUPPORTED',
-      ]
+      ],
     );
-    const jobId = asset.jobId;
-    if (jobId) {
-      const socket = socketio(`${DOMAIN_URL}/audio/convert`);
-      socket.on('event', async (res) => {
-        if (res.error) {
-          socket.close();
-          dispatch(onError(assetType, _get(res, 'interpolation.message'), true));
-        } else if (res.stage === 'finished') {
-          socket.close();
-          // only one audio asset will be uploaded
-          dispatch(addAssetsEnd(assetType, 1));
-        }
-      });
-      socket.emit('listen', jobId);
-    } else {
+
+    // listen to job progress
+    const socket = socketio(`${DOMAIN_URL}/audio/convert`);
+    socket.on('event', async (res) => {
+      if (res.stage === 'transcode') {
+        dispatch(UploadAudioAssetModalActions.transcodedAudioFile({
+          id: res.assetId,
+          error: res.error,
+        }));
+      } else if (res.error) {
+        socket.close();
+        dispatch(onError(assetType, _get(res, 'interpolation.message'), true));
+      } else if (res.stage === 'finished') {
+        socket.close();
+        // count number of valid transcoded audios
+        const newAssetCounts = getState().UploadAudioAssetModal.uploadStatus.reduce((total, status) => (
+          status.error ? total : total + 1
+        ), 0);
+        dispatch(addAssetsEnd(assetType, newAssetCounts));
+      }
+    });
+    socket.emit('listen', jobId);
+  } else {
+    /* eslint-disable no-restricted-syntax */
+    /* eslint-disable no-await-in-loop */
+    /* eslint-disable no-loop-func */
+    // temporary solution to add assets synchronously
+    for (const { meta, file } of uploadAssets) {
+      const asset = await APIHandler(dispatch,
+        AssetAPI.addAsset(meta, file, assetType, progressHandler),
+        addAssetFailureHandler,
+      );
       numNewAssets++;
+      index++;
     }
-    index++;
-  }
-  if (!isAudioAsset(assetType)) {
     dispatch(addAssetsEnd(assetType, numNewAssets));
   }
 };
@@ -264,15 +297,19 @@ export const updateAsset = (meta, file) => async (dispatch) => {
 
   const jobId = asset.jobId;
   if (jobId) {
-    // wait until job finish
     const socket = socketio(`${DOMAIN_URL}/audio/convert`);
     socket.on('event', async (res) => {
-      if (res.error) {
+      if (res.stage === 'transcode') {
+        if (res.error) {
+          dispatch(onError(assetType, res.error));
+        }
+      } else if (res.error) {
         socket.close();
         dispatch(onError(assetType, _get(res, 'interpolation.message'), false));
       } else if (res.stage === 'finished') {
         socket.close();
-        const newAsset = await APIHandler(dispatch, AssetAPI.fetchAsset(res.assetId));
+        // fetch new asset with updated audio url
+        const newAsset = await APIHandler(dispatch, AssetAPI.fetchAsset(asset.id));
         dispatch(updatedAsset(assetType, newAsset));
       }
     });

@@ -1,14 +1,13 @@
 @import "../../styles/common";
 
-$upload-audio-item-h-padding: 20px;
+$upload-audio-item-h-padding: padding();
+$upload-audio-item-v-padding: padding(2/3);
 $upload-audio-item-interspace: 10px;
 $modal-border-style: 1px solid $hairline-color;
 
 .upload-audio-modal {
   .modal-body {
-    padding-top: 0px !important;
-    padding-right: 0px !important;
-    padding-left: 0px !important;
+    padding: 0 !important;
 
     .continue-add-bar {
       padding-left: $upload-audio-item-h-padding;
@@ -25,38 +24,51 @@ $modal-border-style: 1px solid $hairline-color;
 .upload-audio-item {
   position: relative;
 
-  padding: $upload-audio-item-h-padding;
-
   border-bottom: $modal-border-style;
   background-color: white;
 
-  > *:not(:first-child) {
-    margin-top: $upload-audio-item-interspace;
+  .audio-item-details {
+    padding: $upload-audio-item-v-padding $upload-audio-item-h-padding;
+    > *:not(:first-child) {
+      margin-top: $upload-audio-item-interspace;
+    }
   }
 
   .audio-item-header {
     position: relative;
 
     p {
-      margin: 0 !important;
+      margin: 0;
 
+      font-size: 14px;
       font-weight: 500;
+
+      &.audio-item-error {
+        margin: padding(1/3) 0;
+        color: $oice-red;
+      }
+
+      > svg {
+        width: padding(1/2);
+        height: padding(1/2);
+        margin: 0 padding(1/3);
+
+        color: $oice-green;
+      }
     }
 
     .close-icon {
       position: absolute;
       right: 0;
-      bottom: 3px;
+      bottom: padding(-1/2);
 
-      width: 10px;
+      width: padding(1/2);
+
+      cursor: pointer;
     }
   }
 
   .upload-progress {
-    position: absolute;
-    top: 0;
-    left: 0;
-
     width: 100%;
     height: 100%;
 
