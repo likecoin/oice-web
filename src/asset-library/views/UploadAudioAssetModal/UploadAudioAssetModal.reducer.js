@@ -54,6 +54,7 @@ export default handleActions({
     return update(state, {
       audioFiles: { [operation]: audioFiles },
       uploadStatus: { $set: [] },
+      error: { $set: null },
     });
   },
   [Actions.removeAudioFile]: (state, { payload }) => update(state, {

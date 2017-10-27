@@ -9,17 +9,23 @@ import RaisedButton from 'ui-elements/RaisedButton';
 export default class ModalFooter extends React.Component {
   static displayName = 'ModalFooter';
   static defaultProps = {
+    leftButtonDisabled: false,
     rightButtonDisable: false,
   }
+
   static propTypes = {
     t: PropTypes.func.isRequired,
+
+    leftButtonDisabled: PropTypes.bool,
     leftButtonTitle: PropTypes.string,
-    rightButtonTitle: PropTypes.string,
     leftItems: PropTypes.arrayOf(PropTypes.node),
+
+    rightButtonDisable: PropTypes.bool,
+    rightButtonTitle: PropTypes.string,
     rightItems: PropTypes.arrayOf(PropTypes.node),
+
     onClickLeftButton: PropTypes.func,
     onClickRightButton: PropTypes.func,
-    rightButtonDisable: PropTypes.bool,
   }
 
   handleOnClickLeftButton = () => {
@@ -31,11 +37,12 @@ export default class ModalFooter extends React.Component {
   }
 
   renderLeftItems() {
-    const { t, leftItems } = this.props;
+    const { t, leftItems, leftButtonTitle, leftButtonDisabled } = this.props;
     if (!leftItems) {
       return (
         <FlatButton
-          label={this.props.leftButtonTitle || t('cancel')}
+          disabled={leftButtonDisabled}
+          label={leftButtonTitle || t('cancel')}
           onClick={this.handleOnClickLeftButton}
         />
       );
@@ -48,9 +55,9 @@ export default class ModalFooter extends React.Component {
     if (!rightItems) {
       return (
         <RaisedButton
-          primary
           disabled={this.props.rightButtonDisable}
           label={this.props.rightButtonTitle || t('confirm')}
+          primary
           onClick={this.handleClickRightButton}
         />
       );

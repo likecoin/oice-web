@@ -11,7 +11,6 @@ import AudioUpload from 'ui-elements/AudioUpload';
 import FlatButton from 'ui-elements/FlatButton';
 import Modal from 'ui-elements/Modal';
 import Progress from 'ui-elements/Progress';
-import RaisedButton from 'ui-elements/RaisedButton';
 import TextField from 'ui-elements/TextField';
 import UsersDropdown from 'ui-elements/UsersDropdown';
 
@@ -99,7 +98,13 @@ export default class UploadAudioAssetModal extends React.Component {
   }
 
   handleAudioUploadOnchange = (files) => {
-    this.props.dispatch(Actions.addAudioFiles(files));
+    const { dispatch, uploadStatus } = this.props;
+    if (uploadStatus.some(status => !!status.error)) {
+      // empty the audio file list when re-upload since the list only contains files with transcode error
+      this.setState({ serializedAudioFiles: [] }, () => dispatch(Actions.addAudioFiles(files)));
+    } else {
+      dispatch(Actions.addAudioFiles(files));
+    }
   }
 
   handleDeleteItem = (index) => {
@@ -235,14 +240,14 @@ export default class UploadAudioAssetModal extends React.Component {
     );
 
     const hasTranscodeError = uploadStatus.some(status => !!status.error);
-    const confirmButton = (
-      <RaisedButton
-        disabled={!valid || uploading || hasTranscodeError}
-        label={t('uploadMusicModal.button.upload')}
-        primary
-        onClick={this.handleConfirmButtonClick}
-      />
-    );
+    const footerProps = {
+      leftButtonDisabled: uploading,
+      onClickLeftButton: this.handleCloseButtonClick,
+
+      rightButtonDisable: !valid || uploading || hasTranscodeError,
+      rightButtonTitle: t('uploadMusicModal.button.upload'),
+      onClickRightButton: this.handleConfirmButtonClick,
+    };
 
     const className = classNames('upload-audio-modal');
 
@@ -252,7 +257,10 @@ export default class UploadAudioAssetModal extends React.Component {
         open={open}
         onClickOutside={this.handleCloseButtonClick}
       >
-        <Modal.Header onClickCloseButton={this.handleCloseButtonClick}>
+        <Modal.Header
+          closeButtonDisabled={uploading}
+          onClickCloseButton={this.handleCloseButtonClick}
+        >
           {t(`uploadMusicModal.${type === ASSET_TYPE.MUSIC ? 'addMusic' : 'addSound'}`)}
         </Modal.Header>
         <Modal.Body>
@@ -268,10 +276,7 @@ export default class UploadAudioAssetModal extends React.Component {
           )}
           {this.renderAudioFilesList(serializedAudioFiles)}
         </Modal.Body>
-        <Modal.Footer
-          rightItems={[confirmButton]}
-          onClickLeftButton={this.handleCloseButtonClick}
-        />
+        <Modal.Footer {...{ ...footerProps }} />
       </Modal>
     );
   }

@@ -101,6 +101,10 @@ export default class AudioPlayer extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.url !== nextProps.url) {
+      this.setState({
+        seek: 0,
+        duration: -1,
+      });
       this.initAudioObject(nextProps.url);
     }
     if (this.props.isPlay && nextProps.isPlay === false) {
@@ -142,6 +146,51 @@ export default class AudioPlayer extends React.Component {
     }
   }
 
+  handleContainerDoubleClick = ({ target }) => {
+    if (this.isClickOnFunctionalArea(target)) return;
+    if (this.props.onDoubleClickContainer) this.props.onDoubleClickContainer(this.props.audioListIndex);
+  }
+
+  handleContainerClick = ({ target }) => {
+    if (this.isClickOnFunctionalArea(target)) return;
+    if (this.props.onClickContainer) this.props.onClickContainer(this.props.audioListIndex);
+  }
+
+  handleError = (error) => {
+    const { onError } = this.props;
+    if (onError) onError(error);
+  }
+
+  handleSeek = (percent) => {
+    if (!this.audioObj) return;
+    this.audioObj.currentTime = percent * this.audioObj.duration;
+  }
+
+  handlePlayButtonToggle = (e) => {
+    if (this.state.isPlaying) {
+      this.pauseAudio();
+    } else {
+      this.playAudio();
+    }
+    if (this.props.onPlayButtonClick) this.props.onPlayButtonClick(this.props.audioListIndex);
+  }
+
+  handleMuteButtonToggle = (e) => {
+    if (!this.audioObj) return;
+    const isMuted = !this.state.isMuted;
+    this.setState({ isMuted });
+    this.audioObj.muted = isMuted;
+  }
+
+  handleVolumeChange = (volume) => {
+    if (!this.audioObj) return;
+    this.setState({ volume, isMuted: false });
+    this.audioObj.volume = this.state.volume;
+    this.audioObj.muted = false;
+  }
+
+  isLoading = () => this.state.duration < 0;
+
   isClickOnFunctionalArea = (target) => {
     let isClickPlayButton = false;
     if (this.playButton) isClickPlayButton = findDOMNode(this.playButton).contains(target);
@@ -165,21 +214,6 @@ export default class AudioPlayer extends React.Component {
         isClickEditButton ||
            isClickSeekBar) return true;
     return false;
-  }
-
-  handleContainerDoubleClick = ({ target }) => {
-    if (this.isClickOnFunctionalArea(target)) return;
-    if (this.props.onDoubleClickContainer) this.props.onDoubleClickContainer(this.props.audioListIndex);
-  }
-
-  handleContainerClick = ({ target }) => {
-    if (this.isClickOnFunctionalArea(target)) return;
-    if (this.props.onClickContainer) this.props.onClickContainer(this.props.audioListIndex);
-  }
-
-  handleError = (error) => {
-    const { onError } = this.props;
-    if (onError) onError(error);
   }
 
   initAudioObject(url) {
@@ -216,27 +250,6 @@ export default class AudioPlayer extends React.Component {
     this.setState({ duration: 0 });
   }
 
-  handleSeek = (percent) => {
-    if (!this.audioObj) return;
-    this.audioObj.currentTime = percent * this.audioObj.duration;
-  }
-
-  handlePlayButtonToggle = (e) => {
-    if (this.state.isPlaying) {
-      this.pauseAudio();
-    } else {
-      this.playAudio();
-    }
-    if (this.props.onPlayButtonClick) this.props.onPlayButtonClick(this.props.audioListIndex);
-  }
-
-  handleMuteButtonToggle = (e) => {
-    if (!this.audioObj) return;
-    const isMuted = !this.state.isMuted;
-    this.setState({ isMuted });
-    this.audioObj.muted = isMuted;
-  }
-
   playAudio = () => {
     if (!this.audioObj) return;
     const playPromise = this.audioObj.play();
@@ -249,15 +262,6 @@ export default class AudioPlayer extends React.Component {
     if (!this.audioObj || !this.state.isPlaying) return;
     this.audioObj.pause();
   }
-
-  handleVolumeChange = (volume) => {
-    if (!this.audioObj) return;
-    this.setState({ volume, isMuted: false });
-    this.audioObj.volume = this.state.volume;
-    this.audioObj.muted = false;
-  }
-
-  isLoading = () => this.state.duration < 0;
 
   render() {
     const { title, mode, selected, disabled, audioListIndex, url } = this.props;

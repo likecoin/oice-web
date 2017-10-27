@@ -6,4 +6,4 @@ export const removeAudioFile = createAction('REMOVE_AUDIO_FILE');
 export const transcodedAudioFile = createAction('AUDIO_FILE_TRANSCODED');
 export const didAddBGMs = createAction('ADD_MULTIPLE_BGM');
 export const didAddSEs = createAction('ADD_MULTIPLE_SE');
-export const onError = createAction('ADD_AUDIO_UPLOaD_ERROR');
+export const onError = createAction('ADD_AUDIO_UPLOAD_ERROR');
