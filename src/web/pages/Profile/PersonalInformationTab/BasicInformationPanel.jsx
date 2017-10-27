@@ -7,7 +7,7 @@ import _debounce from 'lodash/debounce';
 import _get from 'lodash/get';
 import _pick from 'lodash/pick';
 
-import Halogen from 'halogen';
+import CircularLoader from 'ui-elements/CircularLoader';
 import LoadingScreen from 'ui-elements/LoadingScreen';
 import OutlineButton from 'ui-elements/OutlineButton';
 import TextField from 'ui-elements/TextField';
@@ -159,11 +159,11 @@ export default class Profile extends React.Component {
           />
         </div>
         {item === BASIC_INFORMATION.USERNAME && (
-          <Halogen.ClipLoader
+          <CircularLoader
             className="clip-loader"
-            color={'#16A122'}
+            color="green"
             loading={isValidating}
-            size="24px"
+            size={24}
           />
         )}
         {item === BASIC_INFORMATION.USERNAME && error && (

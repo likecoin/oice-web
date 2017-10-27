@@ -5,8 +5,6 @@ import { findDOMNode } from 'react-dom';
 import classNames from 'classnames';
 import moment from 'moment';
 
-import Halogen from 'halogen';
-
 import PlayIcon from 'common/icons/audio/play';
 import PauseIcon from 'common/icons/audio/pause';
 import EditIcon from 'common/icons/edit';
@@ -16,8 +14,10 @@ import Volume0Icon from 'common/icons/volume/0';
 import Volume1Icon from 'common/icons/volume/1';
 import Volume2Icon from 'common/icons/volume/2';
 import Volume3Icon from 'common/icons/volume/3';
-import ProgressBar from './ProgressBar';
+
+import CircularLoader from '../CircularLoader';
 import FlatButton from '../FlatButton';
+import ProgressBar from './ProgressBar';
 
 import './styles.scss';
 
@@ -290,10 +290,7 @@ export default class AudioPlayer extends React.Component {
         <span className="audio-container">
           <span className="play-button">
             {this.isLoading() ? (
-              <Halogen.ClipLoader
-                color={'#16A122'}
-                size="48px"
-              />
+              <CircularLoader color="green" size={48} />
             ) : (
               <FlatButton
                 ref={e => this.playButton = e}
