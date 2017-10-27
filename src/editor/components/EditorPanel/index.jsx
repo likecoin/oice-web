@@ -134,6 +134,11 @@ export default class EditorPanel extends React.Component {
     return selectedOice || oicesList.find(oice => oice.id === this.getOiceId());
   }
 
+  getBlocksToBeSaved = () => {
+    const { blockIdsToBeSaved, blocksDict } = this.props;
+    return getComposedToBeSavedBlocks(blockIdsToBeSaved, blocksDict);
+  }
+
   handleOpenStorySetting = (item) => {
     const selectedStory = this.getSelectedStory();
     this.props.dispatch(
@@ -145,7 +150,7 @@ export default class EditorPanel extends React.Component {
     );
   }
 
-  handleRunOiceButtonClick = (selectedOice, blocksToBeSaved, isPreview) => {
+  handleRunOiceButtonClick = (selectedOice, isPreview) => {
     if (selectedOice) {
       const jobId = getBuildId();
       this.props.dispatch(RunOiceModal.Action.open({
@@ -159,14 +164,14 @@ export default class EditorPanel extends React.Component {
       this.props.dispatch(OiceAction.runOice(
         selectedOice.storyId,
         selectedOice.id,
-        blocksToBeSaved,
+        this.getBlocksToBeSaved(),
         isPreview,
         jobId,
       ));
     }
   }
 
-  handleExportOiceButtonClick = (selectedOice, blocksToBeSavedArray) => {
+  handleExportOiceButtonClick = (selectedOice) => {
     if (selectedOice) {
       const jobId = getBuildId();
       this.props.dispatch(ExportOiceModal.Action.open({
@@ -175,7 +180,7 @@ export default class EditorPanel extends React.Component {
       this.props.dispatch(OiceAction.exportOice(
         selectedOice.storyId,
         selectedOice.id,
-        blocksToBeSavedArray,
+        this.getBlocksToBeSaved(),
         jobId,
       ));
     }
@@ -241,9 +246,7 @@ export default class EditorPanel extends React.Component {
   }
 
   renderToolbar(selectedOice, selectedStory) {
-    const { blockIdsToBeSaved, blocksDict, t, user } = this.props;
-    const blocksToBeSaved = getComposedToBeSavedBlocks(blockIdsToBeSaved, blocksDict);
-    const blockIdsArray = [...blockIdsToBeSaved]; // convert set to array
+    const { t, user } = this.props;
     return (
       <EditorToolbar
         menu={
@@ -254,28 +257,22 @@ export default class EditorPanel extends React.Component {
             onRequestOpenTutorial={this.handleOpenTutorialRequest}
           />
         }
-        oiceName={selectedOice && selectedOice.name}
-        storyName={selectedStory && selectedStory.name}
+        oiceName={!!selectedOice && selectedOice.name}
+        storyName={!!selectedStory && selectedStory.name}
         user={user}
         onClickAssetManagement={this.handleAssetsMangementButtonClick}
-        onClickExportOice={() => this.handleExportOiceButtonClick(
-          selectedOice, blocksToBeSaved
-        )}
+        onClickExportOice={() => this.handleExportOiceButtonClick(selectedOice)}
         onClickImportButton={this.handleRequestOpenImportScriptModal}
         onClickOiceSetting={() => this.handleOpenStorySetting(TAB_LIST_ITEM.OICE)}
-        onClickRunOice={() => this.handleRunOiceButtonClick(
-          selectedOice, blocksToBeSaved, false
-        )}
+        onClickRunOice={() => this.handleRunOiceButtonClick(selectedOice, false)}
         onClickStorySetting={() => this.handleOpenStorySetting(TAB_LIST_ITEM.STORY)}
-        onPreviewOiceButtonClick={() => this.handleRunOiceButtonClick(
-          selectedOice, blocksToBeSaved, true
-        )}
+        onPreviewOiceButtonClick={() => this.handleRunOiceButtonClick(selectedOice, true)}
       />
     );
   }
 
   renderRunOiceModal(selectedOice) {
-    return selectedOice && (
+    return !!selectedOice && (
       <RunOiceModal
         selectedOice={selectedOice}
         onClose={this.handleCloseRunOiceModalRequest}
@@ -284,7 +281,7 @@ export default class EditorPanel extends React.Component {
   }
 
   renderExportOiceModal(selectedOice) {
-    return selectedOice && (
+    return !!selectedOice && (
       <ExportOiceModal
         oiceId={selectedOice.id}
         storyId={selectedOice.storyId}
@@ -310,7 +307,7 @@ export default class EditorPanel extends React.Component {
           {this.renderToolbar(selectedOice, selectedStory)}
           {this.renderEditorPanel(selectedOice, selectedStory)}
         </div>
-        {selectedOice && <ImportScriptModal oice={selectedOice} />}
+        {!!selectedOice && <ImportScriptModal oice={selectedOice} />}
         <StoryPicker stories={storiesList} />
         <Footer fluid />
         {loading && <LoadingScreen />}
