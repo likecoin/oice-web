@@ -15,7 +15,7 @@ import {
     INTERCOM_APP_ID_TEST,
 } from './key';
 
-export const VERSION = '4.2.0';
+export const VERSION = '4.3.0';
 
 export const SRV_ENV = process.env.SRV_ENV;
 export const IS_CLIENT = process.env.IS_CLIENT;
