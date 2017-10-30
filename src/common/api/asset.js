@@ -88,10 +88,15 @@ const postAsset = (asset, file, type, progressHandler) => {
 
   return post.then((response) => {
     if (response.ok) {
-      return hasMultipleAssets ? {
-        assets: response.body.assets,
+      const result = {
         jobId: response.body.jobId,
-      } : response.body.asset;
+      };
+      if (hasMultipleAssets) {
+        result.assets = response.body.assets;
+      } else {
+        result.asset = response.body.asset;
+      }
+      return result;
     }
     return null;
   });

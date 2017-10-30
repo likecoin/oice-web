@@ -158,7 +158,7 @@ export const addAsset = (meta, file, assetType) => (dispatch) => {
   }
   APIHandler(dispatch,
    AssetAPI.addAsset(meta, file, assetType)
-   .then((asset) => {
+   .then(({ asset }) => {
      const { libraryId } = asset;
      dispatch(updateLibraryAssetCount({
        assetCount: 1,
@@ -259,7 +259,7 @@ export const addAssets = (uploadAssets, assetType) => async (dispatch, getState)
     /* eslint-disable no-loop-func */
     // temporary solution to add assets synchronously
     for (const { meta, file } of uploadAssets) {
-      const asset = await APIHandler(dispatch,
+      const { asset } = await APIHandler(dispatch,
         AssetAPI.addAsset(meta, file, assetType, progressHandler),
         addAssetFailureHandler,
       );
@@ -292,10 +292,9 @@ const updatedAsset = (assetType, asset) => (dispatch) => {
 export const updateAsset = (meta, file) => async (dispatch) => {
   dispatch(CommonActions.startUpdateAsset());
 
-  const asset = await APIHandler(dispatch, AssetAPI.updateAsset(meta, file));
+  const { asset, jobId } = await APIHandler(dispatch, AssetAPI.updateAsset(meta, file));
   const assetType = meta.types[0].name;
 
-  const jobId = asset.jobId;
   if (jobId) {
     const socket = socketio(`${DOMAIN_URL}/audio/convert`);
     socket.on('event', async (res) => {
