@@ -9,8 +9,7 @@ import MoreIcon from 'common/icons/more';
 
 import { VOLUMES } from '../InteractiveTutorial/constants';
 
-const handlePersonalPageClick = () => window.open('/profile');
-const handleTutorialClick = () => window.open('/tutorial/manual');
+const handleTutorialClick = () => window.open('https://intercom.help/oice');
 const handleFunctionPageClick = () => window.open('/about#backer');
 
 const EditorMenu = (props) => {
@@ -52,11 +51,6 @@ const EditorMenu = (props) => {
 
   return (
     <Menu anchorEl={toggleEditorMenuButton} hasBadge={hasBadge}>
-      {/* <Menu.Item
-        primaryText={t('menu.personalPage')}
-        onClick={handlePersonalPageClick}
-        />
-      <Divider /> */}
       {tutorialMenuItems}
       <Divider />
       <Menu.Item
