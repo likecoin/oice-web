@@ -1,18 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { push, replace } from 'react-router-redux';
+import { replace } from 'react-router-redux';
 import { translate } from 'react-i18next';
-import { findDOMNode } from 'react-dom';
 
 import uuid from 'uuid';
 
 import _get from 'lodash/get';
 
-import FlatButton from 'ui-elements/FlatButton';
 import LoadingScreen from 'ui-elements/LoadingScreen';
-import Modal from 'ui-elements/Modal';
-import RaisedButton from 'ui-elements/RaisedButton';
 
 import InteractiveTutorial from 'editor/components/InteractiveTutorial';
 
@@ -36,7 +32,6 @@ import {
   TAB_LIST,
 } from 'editor/components/EditorPanel/StorySettingModal/StorySettingModal.constants';
 
-import Dashboard from '../Dashboard';
 import EditorMenu from './Menu';
 import EditorToolbar from './Toolbar/index';
 import EditorWorkspace from './Workspace';

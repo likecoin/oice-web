@@ -10,7 +10,6 @@ import MoreIcon from 'common/icons/more';
 import { VOLUMES } from '../InteractiveTutorial/constants';
 
 const handleTutorialClick = () => window.open('https://intercom.help/oice');
-const handleFunctionPageClick = () => window.open('/about#backer');
 
 const EditorMenu = (props) => {
   const { t, tutorialState, userRole, onRequestOpenTutorial } = props;
@@ -56,10 +55,6 @@ const EditorMenu = (props) => {
       <Menu.Item
         primaryText={t('menu.tutorial')}
         onClick={handleTutorialClick}
-      />
-      <Menu.Item
-        primaryText={t('menu.function')}
-        onClick={handleFunctionPageClick}
       />
     </Menu>
   );

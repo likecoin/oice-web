@@ -924,12 +924,10 @@
       }
     },
     "menu": {
-      "personalPage": "個人主頁",
       "tutorial1": "查看教程（新手教程）",
       "tutorial2": "查看教程（角色教程）",
       "tutorial3": "查看教程（新建教程）",
-      "tutorial": "教程",
-      "function": "功能"
+      "tutorial": "幫助"
     },
     "emptyPleaseSelect": "歡迎使用 oice 編輯器，請先創建/選擇你的故事。",
     "storiesList": {
