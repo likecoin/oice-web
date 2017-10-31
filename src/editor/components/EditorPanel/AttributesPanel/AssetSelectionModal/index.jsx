@@ -35,9 +35,8 @@ function getStateFromProps(nextProps, prevProps = {}) {
     );
     if (libraries) {
       state.selectedLibraryIndex = (asset ?
-        libraries.findIndex(l => (
-          l.id === asset.libraryId
-        )) : 0 // select the first library by default for new story
+        libraries.findIndex(l => l.id === asset.libraryId) :
+        0 // select the first library by default for new story
       );
     }
   }
