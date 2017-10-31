@@ -65,8 +65,8 @@ export default class MacrosPanel extends React.Component {
     const selectedMacroGroup = list[selectedMacroGroupIndex];
     if (macros.length > 0) {
       return (
-        <div className="macros-list" ref={ref => this.macrosList = ref}>
-          {selectedMacroGroup.map((macro) => (
+        <div ref={ref => this.macrosList = ref} className="macros-list">
+          {selectedMacroGroup.map(macro => (
             <Macro key={macro.id} macro={macro} />
           ))}
         </div>

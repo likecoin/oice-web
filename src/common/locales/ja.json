@@ -923,12 +923,10 @@
       }
     },
     "menu": {
-      "personalPage": "マイページ",
       "tutorial1": "初心者のチュートリアルへ",
       "tutorial2": "キャラのチュートリアルへ",
       "tutorial3": "新規のチュートリアルへ",
-      "tutorial": "チュートリアル",
-      "function": "ツール"
+      "tutorial": "ヘルプ"
     },
     "emptyPleaseSelect": "ようこそoiceエディターへ，新規ストーリーまたはマイ新規ストーリーを選択してください",
     "storiesList": {
