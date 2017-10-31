@@ -11,7 +11,7 @@ import { VOLUMES } from '../InteractiveTutorial/constants';
 
 const handlePersonalPageClick = () => window.open('/profile');
 const handleTutorialClick = () => window.open('/tutorial/manual');
-const handleFunctionPageClick = () => window.open('/pricing');
+const handleFunctionPageClick = () => window.open('/about#backer');
 
 const EditorMenu = (props) => {
   const { t, tutorialState, userRole, onRequestOpenTutorial } = props;
