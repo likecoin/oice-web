@@ -30,12 +30,15 @@ function getStateFromProps(nextProps, prevProps = {}) {
 
   if (nextProps.open && !prevProps.open) {
     const asset = (selectedAssetId ?
-      assets.find(a => a.id === selectedAssetId) : recentUsedAssets[0]
+      assets.find(a => a.id === selectedAssetId) :
+      recentUsedAssets[0]
     );
-    if (libraries && asset) {
-      state.selectedLibraryIndex = libraries.findIndex(l => (
-        l.id === asset.libraryId
-      ));
+    if (libraries) {
+      state.selectedLibraryIndex = (asset ?
+        libraries.findIndex(l => (
+          l.id === asset.libraryId
+        )) : 0 // select the first library by default for new story
+      );
     }
   }
   return state;
