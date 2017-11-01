@@ -2,12 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { translate } from 'react-i18next';
 import classNames from 'classnames';
-import Container from './Container';
 
+import Container from './Container';
 import Separator from './Separator';
 
 import { VERSION } from 'common/constants';
 
+
+const footerLeftItems = [
+  {
+    key: 'termsOfService',
+    link: '/terms',
+  },
+  {
+    key: 'blog',
+    link: 'https://v.oice.com',
+  },
+  {
+    key: 'help',
+    link: 'https://intercom.help/oice',
+  },
+];
 
 @translate(['Footer'])
 export default class Footer extends React.Component {
@@ -28,10 +43,16 @@ export default class Footer extends React.Component {
         <Separator />
         <Container fluid={fluid}>
           <div className="left">
-            <span>
-              <a href="/terms">{t('button.termsOfService')}</a>
-            </span>
-            <hr />
+            {footerLeftItems.map(item => (
+              <div className="footer-item">
+                <span>
+                  <a href={item.link} rel="noopener noreferrer" target="_blank">
+                    {t(`button.${item.key}`)}
+                  </a>
+                </span>
+                <hr />
+              </div>
+            ))}
           </div>
           <div className="right">
             <span className="footer-email">

@@ -197,7 +197,9 @@
       "version": "oice v{{version}}"
     },
     "button": {
-      "termsOfService": "授權聲明 - oice license"
+      "termsOfService": "授權聲明 - oice license",
+      "blog": "Blog",
+      "help": "幫助"
     }
   },
   "ImportScriptModal": {

@@ -197,7 +197,9 @@
       "version": "oice v{{version}}"
     },
     "button": {
-      "termsOfService": "利用規約"
+      "termsOfService": "利用規約",
+      "blog": "ブログ",
+      "help": "ヘルプ"
     }
   },
   "ImportScriptModal": {
