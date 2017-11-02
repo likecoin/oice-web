@@ -197,7 +197,9 @@
       "version": "oice v{{version}}"
     },
     "button": {
-      "termsOfService": "Terms of Service"
+      "termsOfService": "Terms of Service",
+      "blog": "Blog",
+      "help": "Help"
     }
   },
   "ImportScriptModal": {
