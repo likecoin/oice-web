@@ -88,7 +88,7 @@ export const addAsset = (meta, file, assetType) => (dispatch) => {
   }
   APIHandler(dispatch,
     AssetAPI.addAsset(meta, file, assetType)
-    .then(asset => {
+    .then(({ asset }) => {
       switch (assetType) {
         case ASSET_TYPE.BACKGROUND: dispatch(addedBackground(asset)); break;
         case ASSET_TYPE.ITEM: dispatch(addItemEnd(asset)); break;

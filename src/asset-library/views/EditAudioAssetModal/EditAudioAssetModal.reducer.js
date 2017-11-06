@@ -1,5 +1,7 @@
 import { handleActions } from 'redux-actions';
 
+import update from 'immutability-helper';
+
 import * as Actions from './EditAudioAssetModal.actions';
 import * as CommonActions from '../LibraryDetails/LibraryDetails.common.actions';
 
@@ -8,7 +10,23 @@ const initialState = {
   asset: null,
   type: null,
   uploading: false,
+  error: null,
 };
+
+function handleDidUpdateAudio(state) {
+  return update(state, {
+    // do not close modal to show error if any
+    open: { $set: !!state.error },
+    uploading: { $set: false },
+  });
+}
+
+function handleDidDeleteAudio(state) {
+  return update(state, {
+    open: { $set: false },
+    uploading: { $set: false },
+  });
+}
 
 export default handleActions({
   [Actions.toggle]: (state, { payload }) => ({
@@ -17,29 +35,20 @@ export default handleActions({
     type: payload.open ? payload.type : null,
     asset: payload.open ? payload.asset : null,
     uploading: false,
+    error: null,
   }),
-  [CommonActions.startUpdateAsset]: (state) => ({
-    ...state,
-    uploading: true,
+  [Actions.changeAudioUpload]: state => update(state, {
+    error: { $set: null },
   }),
-  [Actions.didUpdateSE]: (state) => ({
-    ...state,
-    open: false,
-    uploading: false,
+  [CommonActions.startUpdateAsset]: state => update(state, {
+    uploading: { $set: true },
   }),
-  [Actions.didDeleteSE]: (state) => ({
-    ...state,
-    open: false,
-    uploading: false,
-  }),
-  [Actions.didUpdateBGM]: (state) => ({
-    ...state,
-    open: false,
-    uploading: false,
-  }),
-  [Actions.didDeleteBGM]: (state) => ({
-    ...state,
-    open: false,
-    uploading: false,
+  [Actions.didUpdateSE]: state => handleDidUpdateAudio(state),
+  [Actions.didDeleteSE]: state => handleDidDeleteAudio(state),
+  [Actions.didUpdateBGM]: state => handleDidUpdateAudio(state),
+  [Actions.didDeleteBGM]: state => handleDidDeleteAudio(state),
+  [Actions.onError]: (state, { payload }) => update(state, {
+    error: { $set: payload.error },
+    uploading: { $set: false },
   }),
 }, initialState);

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
@@ -75,19 +74,14 @@ const getSelectedAudioIndex = (selectedAudio, audios) => {
     onSelected,
   };
 })
-@translate(['editor', 'general'])
 export default class SelectAudioModal extends React.Component {
-
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    t: PropTypes.func.isRequired,
     audios: PropTypes.array,
     libraries: PropTypes.array,
     open: PropTypes.bool,
     selectedAudio: PropTypes.any,
     selectedIndex: PropTypes.number, // dropdownList index From SelectionModal
-    onClickListItem: PropTypes.func,
-    onDoubleClickListItem: PropTypes.func,
     onSelected: PropTypes.func,
   }
   constructor(props) {

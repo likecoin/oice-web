@@ -25,14 +25,14 @@ export const mobileRedirectToWeb = () => {
   }
 };
 
-export const setInnerHTML = (htmlString) => ({
+export const setInnerHTML = htmlString => ({
   dangerouslySetInnerHTML: { __html: htmlString },
 });
 
 export function setInnerHTMLWithParsing(string, options = { link: true }) {
   let htmlString = (string || '').replace(/\n/g, '<br/>');
   if (options.link) {
-    htmlString = htmlString.replace(/(https?:\/\/[^\s]+)/g, (url) => (
+    htmlString = htmlString.replace(/(https?:\/\/[^\s]+)/g, url => (
       `<a href="${url}" target="_blank">${url}</a>`
     ));
   }

@@ -9,7 +9,7 @@ import moment from 'moment';
 
 import _get from 'lodash/get';
 
-import Halogen from 'halogen';
+import CircularLoader from 'ui-elements/CircularLoader';
 import Dropdown from 'ui-elements/Dropdown';
 import OutlineButton from 'ui-elements/OutlineButton';
 import SubNavBar from 'ui-elements/SubNavBar';
@@ -125,9 +125,9 @@ export default class AccountSettingTab extends React.Component {
     let actionButton;
     if (loading) {
       actionButton = (
-        <Halogen.ClipLoader
-          color={isBacker ? '#FFFFFF' : '#0097E8'}
-          size="28px"
+        <CircularLoader
+          color={isBacker ? 'white' : 'blue'}
+          size={28}
         />
       );
     } else if (isBacker && !isCancelled && !isTrial) {

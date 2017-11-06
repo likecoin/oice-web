@@ -8,7 +8,6 @@ import update from 'immutability-helper';
 
 import AlertDialog from 'ui-elements/AlertDialog';
 import AudioPlayer from 'ui-elements/AudioPlayer';
-import AudioUpload from 'ui-elements/AudioUpload';
 import FlatButton from 'ui-elements/FlatButton';
 import Form from 'ui-elements/Form';
 import Modal from 'ui-elements/Modal';
@@ -20,8 +19,10 @@ import UsersDropdown from 'ui-elements/UsersDropdown';
 import CloseIcon from 'common/icons/close';
 
 import * as ASSET_TYPE from 'common/constants/assetTypes';
+import { MAX_AUDIO_FILE_SIZE } from 'asset-library/constants';
 
 import { getAudioMp4Url } from 'editor/utils/app';
+import { isFileSizeExceedLimit } from 'asset-library/utils/asset';
 
 import { actions as LibraryDetailsActions } from 'asset-library/views/LibraryDetails';
 
@@ -71,8 +72,8 @@ function fileReaderStartLoad(e, here) {
 }
 
 
-@translate(['assetsManagement', 'general', 'EditAudioAssetModal'])
-@connect((store) => ({ ...store.EditAudioAssetModal }))
+@translate(['assetsManagement', 'general', 'EditAudioAssetModal', 'error'])
+@connect(store => ({ ...store.EditAudioAssetModal }))
 export default class EditAudioAssetModal extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -80,6 +81,7 @@ export default class EditAudioAssetModal extends React.Component {
     t: PropTypes.func.isRequired,
     uploading: PropTypes.bool.isRequired,
     asset: PropTypes.object,
+    error: PropTypes.string,
     readonly: PropTypes.bool,
     type: PropTypes.string,
   }
@@ -104,6 +106,11 @@ export default class EditAudioAssetModal extends React.Component {
     }
   }
 
+  getTitle() {
+    const { t, type, readonly } = this.props;
+    return t(`title.${readonly ? 'details' : 'edit'}.${type}`);
+  }
+
   handleCloseButtonClick = () => {
     if (this.props.uploading) return;
     this.props.dispatch(Actions.toggle({ open: false }));
@@ -115,8 +122,9 @@ export default class EditAudioAssetModal extends React.Component {
     const file = target.files[0];
     this.setState({
       file,
-      showProgressBar: true,
     });
+
+    this.props.dispatch(Actions.changeAudioUpload());
 
     // START FILE READER HANDLER
     const fileReader = new FileReader();
@@ -127,7 +135,6 @@ export default class EditAudioAssetModal extends React.Component {
     fileReader.readAsDataURL(file);
     fileReader.onload = event => this.setState({
       src: event.target.result,
-      showProgressBar: false,
     });
   }
 
@@ -179,14 +186,9 @@ export default class EditAudioAssetModal extends React.Component {
     this.props.dispatch(LibraryDetailsActions.updateAsset(asset, file));
   }
 
-  getTitle() {
-    const { t, type, readonly } = this.props;
-    return t(`title.${readonly ? 'details' : 'edit'}.${type}`);
-  }
-
   render() {
-    const { open, readonly, t, type, uploading } = this.props;
-    const { asset, file, showProgressBar, src } = this.state;
+    const { open, readonly, t, type, uploading, error } = this.props;
+    const { asset, file, src } = this.state;
 
     const deleteButton = (
       <FlatButton
@@ -201,7 +203,8 @@ export default class EditAudioAssetModal extends React.Component {
       (
         (asset.users && asset.users.length > 0) ||
         (asset.creditsUrl && asset.creditsUrl.length > 0)
-      )
+      ) &&
+      (file && !isFileSizeExceedLimit(file.size))
     );
 
     const confirmButton = (
@@ -223,7 +226,7 @@ export default class EditAudioAssetModal extends React.Component {
         open={open}
         onClickOutside={this.handleCloseButtonClick}
       >
-        <Modal.Header loading={uploading} onClickCloseButton={this.handleCloseButtonClick}>
+        <Modal.Header loading={uploading && !error} onClickCloseButton={this.handleCloseButtonClick}>
           {this.getTitle()}
         </Modal.Header>
         <Modal.Body>
@@ -232,7 +235,7 @@ export default class EditAudioAssetModal extends React.Component {
               <Form.Section.Main>
                 <input
                   ref={ref => this.audioUpload = ref}
-                  accept="audio/x-wav"
+                  accept="audio/x-wav,audio/mpeg3,audio/x-m4a"
                   style={{ display: 'none' }}
                   type="file"
                   onChange={this.handleAudioUploadChange}
@@ -242,6 +245,16 @@ export default class EditAudioAssetModal extends React.Component {
                   // make sure AudioPlayer only did mount when have src ;
                   // here will cause AudioPlayer did mount firstly with old url then receive new url
                 */}
+                {error && (
+                  <span className="edit-audio-error">{t(error)}</span>
+                )}
+                {!!file && isFileSizeExceedLimit(file.size) &&
+                  <span className="edit-audio-error">
+                    {t('ERR_AUDIO_FILE_SIZE_TOO_LARGE', {
+                      size: MAX_AUDIO_FILE_SIZE.MB,
+                    })}
+                  </span>
+                }
                 {src &&
                   <AudioPlayer
                     mode={readonly ? 'readonly' : 'upload'}
@@ -278,7 +291,10 @@ export default class EditAudioAssetModal extends React.Component {
           </Form>
         </Modal.Body>
         {!readonly &&
-          <Modal.Footer leftItems={[deleteButton]} rightItems={[confirmButton]} />
+          <Modal.Footer
+            leftItems={[deleteButton]}
+            rightItems={[confirmButton]}
+          />
         }
       </Modal>
     );

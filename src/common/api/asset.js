@@ -23,7 +23,18 @@ request.get(`${API_URL}story/${storyId}/assets`)
   return [];
 });
 
-const postAsset = (asset, file, type, progressHandler) => {
+export const fetchAsset = assetId =>
+request.get(`${API_URL}asset/${assetId}`)
+.withCredentials()
+.set(API_HEADER)
+.then((response) => {
+  if (response.ok) {
+    return response.body.asset;
+  }
+  return null;
+});
+
+const getAssetMeta = (asset) => {
   const {
     nameEn,
     nameTw,
@@ -33,6 +44,7 @@ const postAsset = (asset, file, type, progressHandler) => {
   } = asset;
 
   if (nameEn.length === 0) return Promise.reject('Asset name cannot be empty.');
+
   const meta = {
     nameEn,
     nameTw,
@@ -42,27 +54,49 @@ const postAsset = (asset, file, type, progressHandler) => {
   if (users) meta.credits = users.map(user => user.id);
   if (asset.characterId) meta.characterId = asset.characterId;
 
+  return meta;
+};
+
+const postAsset = (asset, file, type, progressHandler) => {
+  const libraryId = asset.libraryId || asset[0].libraryId;
   const url = (type ?
-    `${API_URL}library/${asset.libraryId}/assets/${type}` :
+    `${API_URL}library/${libraryId}/assets/${type}` :
     `${API_URL}asset/${asset.id}`
   );
 
   let post = request
   .post(url)
   .withCredentials()
-  .set(API_HEADER)
-  .field('meta', JSON.stringify(meta));
+  .set(API_HEADER);
 
-  if (file) {
-    post = post.attach('asset', file);
-    post = post.on('progress', (e) => {
-      if (progressHandler) progressHandler(e.percent);
+  const hasMultipleAssets = Array.isArray(asset);
+  let meta;
+  if (hasMultipleAssets) {
+    meta = asset.map(a => getAssetMeta(a));
+    file.forEach((f, index) => {
+      post.attach(`asset${index}`, f);
     });
+  } else {
+    meta = getAssetMeta(asset);
+    post = post.attach('asset', file);
   }
+
+  post.field('meta', JSON.stringify(meta));
+  post = post.on('progress', (e) => {
+    if (progressHandler) progressHandler(e.percent);
+  });
 
   return post.then((response) => {
     if (response.ok) {
-      return response.body.asset;
+      const result = {
+        jobId: response.body.jobId,
+      };
+      if (hasMultipleAssets) {
+        result.assets = response.body.assets;
+      } else {
+        result.asset = response.body.asset;
+      }
+      return result;
     }
     return null;
   });
@@ -73,7 +107,7 @@ postAsset(asset, file, type, progressHandler);
 
 export const updateAsset = (asset, file) => postAsset(asset, file);
 
-export const deleteAsset = (assetId) =>
+export const deleteAsset = assetId =>
 request.del(`${API_URL}asset/${assetId}`)
 .withCredentials()
 .set(API_HEADER)

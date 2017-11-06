@@ -1,0 +1,32 @@
+@import "../../styles/variables";
+
+.circular-loader {
+  animation: circular-loader-animation 0.8s infinite linear;
+
+  border: 2px solid $dark-grey-1;
+  border-right-color: transparent !important;
+  border-radius: 50%;
+
+  &.white {
+    border-color: $pure-white;
+  }
+  &.blue {
+    border-color: $oice-blue;
+  }
+  &.green {
+    border-color: $oice-green;
+  }
+
+
+  @keyframes circular-loader-animation {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      transform: rotate(180deg) scale(0.8);
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+    }
+  }
+}

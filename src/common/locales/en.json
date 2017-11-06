@@ -1063,6 +1063,7 @@
   "error": {
     "ERR_AUDIO_FORMAT_UNSUPPORTED": "This audio format is not supported",
     "ERR_AUDIO_TRANSCODE_FAILURE": "An error occured when encoding the audio",
+    "ERR_AUDIO_FILE_SIZE_TOO_LARGE": "File size should not be larger than {{size}} Mb",
     "ERR_IMPORT_SCRIPT_ASSET_NOT_FOUND": "Assest not found with ID: {{assetIds}}",
     "ERR_IMPORT_SCRIPT_CHARACTER_FORBID_RENAME": "You cannot rename non-generic characters, character ID: {{characterId}}",
     "ERR_IMPORT_SCRIPT_CHARACTER_NOT_FOUND": "Character not found with ID: {{ characterIds }}",

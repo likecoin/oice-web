@@ -1,19 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import FlatButton from '../FlatButton';
+import FlatButton from 'common/components/FlatButton';
+import Progress from 'common/components/Progress';
+
 import QuestionIcon from 'common/icons/question';
 import CloseIcon from 'common/icons/close';
-import Progress from 'common/components/Progress';
 
 export default class ModalHeader extends React.Component {
   static defaultProps = {
     loading: false,
     showQuestionButton: false,
+    closeButtonDisabled: false,
   }
 
   static propTypes = {
     children: PropTypes.node,
+    closeButtonDisabled: PropTypes.bool,
     loading: PropTypes.bool,
     onClickQuestionButton: PropTypes.func,
     onClickCloseButton: PropTypes.func,
@@ -42,6 +45,7 @@ export default class ModalHeader extends React.Component {
           }
           {this.props.onClickCloseButton &&
             <FlatButton
+              disabled={this.props.closeButtonDisabled}
               icon={<CloseIcon />}
               onClick={this.handleOnClickCloseButton}
             />

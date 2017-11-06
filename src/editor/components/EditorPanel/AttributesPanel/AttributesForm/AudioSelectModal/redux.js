@@ -4,6 +4,8 @@ import {
   handleActions,
 } from 'redux-actions';
 
+import * as Actions from 'editor/actions/modal';
+
 // Actions
 export const UPDATE_SELECTED_AUDIO = 'UPDATE_SELECTED_AUDIO';
 
@@ -16,10 +18,11 @@ export const updateSelectedItem = createAction(UPDATE_SELECTED_AUDIO);
 const initialState = {
   // for SelectionModal
   open: false,
-  libraries: [], // array
+  libraries: [],
   title: '',
   width: null,
   className: null,
+
   // audio
   selectedAudio: null,
   audios: [],
@@ -27,7 +30,7 @@ const initialState = {
 };
 
 export default handleActions({
-  OPEN_AUDIO_SELECTION_MODAL: (state, { payload }) => ({
+  [Actions.openAudioSelectionModal]: (state, { payload }) => ({
     ...state,
     open: true,
     libraries: payload.libraries || [],
@@ -38,11 +41,13 @@ export default handleActions({
     audios: payload.audios || [],
     onSelected: payload.onSelected || null,
   }),
-  CLOSE_AUDIO_SELECTION_MODAL: (state, { payload }) => ({
+  [Actions.closeAudioSelectionModal]: (state, { payload }) => ({
     ...state,
     open: false,
+    libraries: [],
+    audios: [],
   }),
-  UPDATE_SELECTED_AUDIO: (state, { payload }) => ({
+  [updateSelectedItem]: (state, { payload }) => ({
     ...state,
     selectedAudio: payload,
   }),
