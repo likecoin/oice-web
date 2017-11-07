@@ -147,11 +147,10 @@ export default class OiceSingleView extends React.Component {
   }
 
   handleOiceStart = () => {
-    if (!this.state.isPreview) {
+    if (!this.state.isPreview && !this.state.isStartedPlaying) {
       this.props.dispatch(Actions.incrementOiceViewCount(this.props.oice.id));
-    } else {
-      this.setState({ isStartedPlaying: true });
     }
+    this.setState({ isStartedPlaying: true });
   }
 
   handleOiceEnd = () => {
