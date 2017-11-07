@@ -10,7 +10,10 @@ import Lazyload from 'react-lazy-load';
 import CheckIcon from 'common/icons/publish';
 
 import { DOMAIN_URL } from 'common/constants';
-import { getThumbnail } from 'common/utils';
+import {
+  getThumbnail,
+  getWindowHeight,
+} from 'common/utils';
 
 
 export default class AssetList extends React.Component {
@@ -51,7 +54,7 @@ export default class AssetList extends React.Component {
               onClick={() => this.handleListItemClick(asset.id)}
             >
               <div className="asset-item-wrapper">
-                <Lazyload className="light" width={154} height={154} offsetVertical={1000}>
+                <Lazyload className="light" width={154} height={154} offsetVertical={getWindowHeight()}>
                   <div
                     className="asset-preview"
                     style={{ backgroundImage: `url("${assetThumbnail}")` }}

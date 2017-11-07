@@ -6,3 +6,9 @@
     border: $border-style4;
   }
 }
+
+.modal-footer {
+  .dropdown .dropdown-menu-row-item:last-child .dropdown-menu-item {
+    color: $dark-red1;
+  }
+}

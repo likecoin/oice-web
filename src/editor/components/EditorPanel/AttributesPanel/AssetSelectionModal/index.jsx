@@ -33,7 +33,7 @@ function getStateFromProps(nextProps, prevProps = {}) {
       assets.find(a => a.id === selectedAssetId) :
       recentUsedAssets[0]
     );
-    if (libraries) {
+    if (libraries && libraries.length > 0) {
       state.selectedLibraryIndex = (asset ?
         libraries.findIndex(l => l.id === asset.libraryId) :
         0 // select the first library by default for new story

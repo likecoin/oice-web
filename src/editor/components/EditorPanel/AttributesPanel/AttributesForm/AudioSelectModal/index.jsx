@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 import SelectionModal from 'ui-elements/SelectionModal';
 import Body from './Body';
-// import './style.scss';
 
 import { closeAudioSelectionModal } from 'editor/actions/modal';
 
@@ -99,7 +98,6 @@ export default class CharacterSelectionModal extends React.Component {
         title={title}
         handleOnClose={this.handleOnClose}
         handleOnConfirmButton={this.handleOnConfirmButton}
-        onSelectDropdownList={this.handleOnSelectDropdownList}
         disableConformButton={!selectedAudio}
       >
         <Body />

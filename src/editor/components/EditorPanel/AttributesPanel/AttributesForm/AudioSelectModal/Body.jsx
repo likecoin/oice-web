@@ -15,6 +15,8 @@ import CloseIcon from 'common/icons/close';
 
 import * as ASSET_TYPE from 'common/constants/assetTypes';
 import { closeAudioSelectionModal } from 'editor/actions/modal';
+
+import { getWindowHeight } from 'common/utils';
 import { getAudioMp4Url } from 'editor/utils/app';
 
 import {
@@ -31,9 +33,11 @@ const getFilterAudio = (props) => {
   } = props;
 
   let filteredDatas = [...audios];
-  if (selectedIndex > libraries.length) window.location.href = '/store';
-  if (selectedIndex > 0) {
-    const selectedCategory = libraries[selectedIndex - 1];
+  if (audios && selectedIndex === libraries.length) {
+    window.location.href = '/store';
+    filteredDatas = null;
+  } else if (selectedIndex >= 0) {
+    const selectedCategory = libraries[selectedIndex];
     filteredDatas = audios.filter(item => item.libraryId === selectedCategory.id);
   }
   return filteredDatas;
@@ -137,7 +141,7 @@ export default class SelectAudioModal extends React.Component {
           {filteredAudios.map((audio, index) => {
             if (!audio.url) return null;
             return (
-              <Lazyload key={audio.id} height={78} offsetVertical={300}>
+              <Lazyload key={audio.id} height={78} offsetVertical={getWindowHeight()}>
                 <AudioPlayer
                   ref={ref => this[`audioPlayer_${index}`] = ref}
                   mode="readonly"
