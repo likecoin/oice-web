@@ -27,5 +27,5 @@ export const getSelectedValueFromPosition = (position) => {
 };
 
 export function convertAttributeDefinitions(definitions) {
-  return _keyBy(definitions, (definition) => definition.name);
+  return _keyBy(definitions, definition => definition.name);
 }

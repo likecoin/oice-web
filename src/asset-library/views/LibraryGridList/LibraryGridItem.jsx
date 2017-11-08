@@ -135,12 +135,6 @@ export default class LibraryGridItem extends React.Component {
     );
   }
 
-  renderAssetStoreLabels() {
-    return (
-      <div>Hi</div>
-    );
-  }
-
   render() {
     const { t, library, type, togglingLibraryId, onClick, onToggle } = this.props;
     const cover = getThumbnail(

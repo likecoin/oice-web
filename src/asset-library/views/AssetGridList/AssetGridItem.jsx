@@ -11,7 +11,10 @@ import Lazyload from 'react-lazy-load';
 import AddIcon from 'common/icons/add-thin';
 
 import * as ASSET_TYPES from 'common/constants/assetTypes';
-import { getThumbnail } from 'common/utils';
+import {
+  getThumbnail,
+  getWindowHeight,
+} from 'common/utils';
 import { getAudioMp4Url } from 'editor/utils/app';
 
 
@@ -58,7 +61,7 @@ function AssetGridItem(props) {
   return (
     <li className={className}>
       {isAudioAsset ? (
-        <Lazyload height={78} offsetVertical={300}>
+        <Lazyload height={78} offsetVertical={getWindowHeight()}>
           <AudioPlayer
             key={asset.id}
             mode={readonly ? 'info' : 'edit'}
@@ -70,7 +73,7 @@ function AssetGridItem(props) {
         </Lazyload>
       ) : (
         <div onClick={handleClick}>
-          <Lazyload width="100%" height="100%" offsetVertical={300}>
+          <Lazyload width="100%" height="100%" offsetVertical={getWindowHeight()}>
             <div
               className="asset-preview"
               style={{ backgroundImage: `url("${previewUrl}")` }}

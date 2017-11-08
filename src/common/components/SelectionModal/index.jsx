@@ -29,20 +29,19 @@ export default class SelectionModal extends React.Component {
       dropdownList = props.libraries.map(library => (library.name));
     }
     this.state = {
-      selectedIndex: 0,
+      selectedIndex: undefined,
       dropdownList,
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    let dropdownList = [];
-    if (nextProps.libraries) {
-      dropdownList = nextProps.libraries.map(library => (library.name));
-    }
+    const { libraries } = nextProps;
+    const newState = {
+      dropdownList: libraries ? libraries.map(library => (library.name)) : [],
+      selectedIndex: libraries && libraries.length > 0 ? 0 : undefined,
+    };
     // this.setState
-    this.setState({
-      dropdownList,
-    });
+    this.setState(newState);
   }
 
   handleOnClose = () => {
@@ -75,13 +74,12 @@ export default class SelectionModal extends React.Component {
     const { t, open, className, width, disableConformButton, title } = this.props;
     const { dropdownList } = this.state;
     const dropdownItems = [
-      t('characterSelectionModal.categorySelectionAll'),
       ...dropdownList,
       t('button.selectMoreAssets'),
     ];
     const dropdown = (
       <Dropdown
-        placeholder={t('selectPlease')}
+        placeholder={t('placeholder.libraryFilter')}
         selectedIndexes={[this.state.selectedIndex]}
         values={dropdownItems.map(item => ({ icon: null, text: item }))}
         width={250}

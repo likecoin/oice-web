@@ -177,6 +177,14 @@ export async function getImageUrlFromFile(imageFile) {
   });
 }
 
+export function getWindowHeight() {
+  return (
+    window.innerHeight ||
+    document.documentElement.clientHeight ||
+    document.body.clientHeight
+  );
+}
+
 export default {
   Stripe: StripeUtils,
 };
