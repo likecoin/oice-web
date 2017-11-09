@@ -1663,6 +1663,7 @@
     },
     "aside": {
       "_title": "旁白",
+      "name": "名稱",
       "text": "旁白",
       "textPlaceholder": "請輸入旁白",
       "waitse": "等待音效完結",
