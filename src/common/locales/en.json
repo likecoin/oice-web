@@ -50,7 +50,8 @@
   "ConnectStripeModal": {
     "label": {
       "header": "Connect to Stripe",
-      "mustConnectStripeToSellLibrary": "Please provide a Stripe account to recieve payment"
+      "mustConnectStripeToSellLibrary": "Please provide a Stripe account to recieve payment",
+      "taiwaneseClickHere": "For Taiwanese, click here to proceed"
     }
   },
   "CreateLibraryModal": {

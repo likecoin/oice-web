@@ -50,7 +50,8 @@
   "ConnectStripeModal": {
     "label": {
       "header": "Stripeに接続",
-      "mustConnectStripeToSellLibrary": "支払いを受けるためにStripeアカウントと接続してください"
+      "mustConnectStripeToSellLibrary": "支払いを受けるためにStripeアカウントと接続してください",
+      "taiwaneseClickHere": "台湾人はここに"
     }
   },
   "CreateLibraryModal": {

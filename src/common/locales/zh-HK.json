@@ -50,7 +50,8 @@
   "ConnectStripeModal": {
     "label": {
       "header": "連接Stripe",
-      "mustConnectStripeToSellLibrary": "請提供 Stripe 帳號用作收款"
+      "mustConnectStripeToSellLibrary": "請提供 Stripe 帳號用作收款",
+      "taiwaneseClickHere": "臺灣人請按這裡"
     }
   },
   "CreateLibraryModal": {

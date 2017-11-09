@@ -1,12 +1,26 @@
+@import "../../styles/common";
+
 #connect-stripe-modal {
   .modal-two-body {
     display: flex;
     flex-direction: column;
 
-    padding: 16px 24px 24px !important;
-  }
-}
+    padding: padding(2/3) padding() padding() !important;
 
-.stripe-connect-wrapper {
-  text-align: center;
+    .stripe-connect-wrapper {
+      text-align: center;
+    }
+
+    > a {
+      margin-top: padding();
+
+      text-align: center;
+
+      color: $dark-grey-1;
+
+      &:hover {
+        color: $dark-grey-2;
+      }
+    }
+  }
 }
