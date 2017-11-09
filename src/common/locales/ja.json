@@ -1,7 +1,8 @@
 {
   "AssetSelectionModal": {
     "label": {
-      "recentUsed": "最近使った素材"
+      "recentUsed": "最近使った素材",
+      "filteredLibrary": "選択された素材コレクション"
     },
     "button": {
       "selectMoreAssets": "他の素材を使う"

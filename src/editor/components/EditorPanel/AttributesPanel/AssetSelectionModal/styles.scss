@@ -19,24 +19,26 @@
 
   .library-filter-container {
     position: relative;
+    display: flex;
+    align-items: center;
 
-    &::before {
-      position: absolute;
+    &::after {
+      flex-grow: 1;
 
-      width: 100%;
       height: 1px;
-      margin-top: 18px;
 
       content: "";
 
       border-top: $border-style1;
     }
 
-    .dropdown {
-      margin: auto;
+    h1 {
+      display: inline-block;
+    }
 
-      border-right: $light-gray1 $min-padding solid;
-      border-left: $light-gray1 $min-padding solid;
+    .dropdown {
+      display: inline-block;
+      margin: 0 padding();
     }
 
     .dropdown-menu-row-item:last-child .dropdown-menu-item {

@@ -1,7 +1,8 @@
 {
   "AssetSelectionModal": {
     "label": {
-      "recentUsed": "Recently used"
+      "recentUsed": "Recently used",
+      "filteredLibrary": "Filtered Library"
     },
     "button": {
       "selectMoreAssets": "More assets"
