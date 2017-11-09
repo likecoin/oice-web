@@ -78,13 +78,16 @@ export default class SelectionModal extends React.Component {
       t('button.selectMoreAssets'),
     ];
     const dropdown = (
-      <Dropdown
-        placeholder={t('placeholder.libraryFilter')}
-        selectedIndexes={[this.state.selectedIndex]}
-        values={dropdownItems.map(item => ({ icon: null, text: item }))}
-        width={250}
-        onChange={this.handleOnDropDownSelect}
-      />
+      <div className="footer-item">
+        <span className="label">{t('placeholder.libraryFilter')}</span>
+        <Dropdown
+          placeholder={t('placeholder.libraryFilter')}
+          selectedIndexes={[this.state.selectedIndex]}
+          values={dropdownItems.map(item => ({ icon: null, text: item }))}
+          width={250}
+          onChange={this.handleOnDropDownSelect}
+        />
+      </div>
     );
     const confirmButton = (
       <RaisedButton

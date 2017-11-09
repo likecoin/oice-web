@@ -8,7 +8,11 @@
 }
 
 .modal-footer {
-  .dropdown .dropdown-menu-row-item:last-child .dropdown-menu-item {
-    color: $dark-red1;
+  .dropdown {
+    margin: 0 !important;
+
+    .dropdown-menu-row-item:last-child .dropdown-menu-item {
+      color: $dark-red1;
+    }
   }
 }

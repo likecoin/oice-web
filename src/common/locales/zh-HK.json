@@ -1,7 +1,8 @@
 {
   "AssetSelectionModal": {
     "label": {
-      "recentUsed": "故事中最近使用"
+      "recentUsed": "故事中最近使用",
+      "filteredLibrary": "篩選素材庫"
     },
     "button": {
       "selectMoreAssets": "選用更多素材"

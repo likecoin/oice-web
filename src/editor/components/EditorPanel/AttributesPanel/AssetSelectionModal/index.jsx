@@ -144,8 +144,9 @@ export default class AssetSelectionModal extends React.Component {
               onSelect={this.handleAssetSelect}
             />
           }
-          {libraries &&
+          {!!libraries &&
             <div className="library-filter-container">
+              <h1>{t('label.filteredLibrary')}</h1>
               <Dropdown
                 placeholder={t('placeholder.libraryFilter')}
                 selectedIndexes={[selectedLibraryIndex]}

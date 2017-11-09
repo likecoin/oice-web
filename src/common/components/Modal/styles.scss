@@ -104,6 +104,18 @@ $modal-footer-items-inter-width: 10px;
   padding: $modal-footer-padding;
   height: $modal-footer-height;
 
+  .footer-item {
+    display: flex;
+    align-items: center;
+
+    height: 100%;
+
+    > span.label {
+      font-size: 12px;
+      margin-right: padding(1/2);
+    }
+  }
+
   .modal-footer-left-items > *:not(:first-child) {
     margin-right: $modal-footer-items-inter-width;
   }
