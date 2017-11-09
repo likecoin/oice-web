@@ -1,38 +1,41 @@
 @import "../../styles/variables";
 
-$dashboard-background-color: #F4F4F4;
-$horizontal-padding: 24px;
-$horizontal-padding-mobile: 12px;
+$horizontal-padding: padding();
+$horizontal-padding-mobile: padding(1/2);
 
 #dashboard-container {
-  background-color: $dashboard-background-color;
+  position: relative;
+  padding-bottom: $footer-height;
 
   #sub-navbar.narrow + #story-dashboard {
-    padding-top: 140px;
+    padding-top: padding(6);
   }
 
   #story-dashboard {
-    padding: 10px 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
+
+    padding: padding(1/2) 0;
 
     > div {
-      padding-left: $horizontal-padding;
       padding-right: $horizontal-padding;
+      padding-left: $horizontal-padding;
     }
 
     #story-gallery {
       display: flex;
       justify-content: center;
-      max-width: 1244px;
+
+      max-width: $max-width;
 
       .gallery-expansion-panel {
         margin: 0;
         .gallery-expansion-panel-content-wrapper {
-          border-radius: 4px;
-          padding-bottom: 16px;
-          padding-right: 16px;
+          padding-right: padding(2/3);
+          padding-bottom: padding(2/3);
+
+          border-radius: padding(1/6);
         }
 
       }
@@ -40,8 +43,8 @@ $horizontal-padding-mobile: 12px;
 
     @media screen and (max-width: $screen-tablet) {
       > div {
-        padding-left: $horizontal-padding-mobile;
         padding-right: $horizontal-padding-mobile;
+        padding-left: $horizontal-padding-mobile;
       }
     }
   }

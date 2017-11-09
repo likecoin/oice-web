@@ -4,14 +4,16 @@ $sub-navbar-expand-height: 80px;
 $sub-navbar-narrow-height: 32px;
 
 #sub-navbar {
-  display: flex;
-  width: 100%;
-  height: $sub-navbar-expand-height;
-  background-color: $pure-white;
-  align-items: flex-end;
   z-index: 1;
-  margin-top: #{$nav-bar-height + 1px};
+
+  display: flex;
+  align-items: flex-end;
+
+  width: 100%;
+  padding-top: $sub-navbar-expand-height;
+
   border-bottom: 1px solid $light-grey-3;
+  background-color: $pure-white;
 
   span {
     transition: font-size 0.15s ease-in-out;
@@ -35,6 +37,7 @@ $sub-navbar-narrow-height: 32px;
     position: fixed;
 
     height: $sub-navbar-narrow-height;
+    padding-top: #{$nav-bar-height + $sub-navbar-narrow-height};
 
     span {
       font-size: 16px;

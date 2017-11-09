@@ -110,7 +110,7 @@ $user-profile-border-style: solid 1px $light-gray3;
 #user-profile {
   position: relative;
 
-  max-width: 1244px;
+  max-width: $max-width;
 
   .panel {
     background-color: $pure-white;

@@ -12,6 +12,7 @@ import _debounce from 'lodash/debounce';
 import _throttle from 'lodash/throttle';
 
 import Container from 'ui-elements/Container';
+import Footer from 'ui-elements/Footer';
 import NavBar from 'ui-elements/NavBar';
 import SubNavBar from 'ui-elements/SubNavBar';
 
@@ -286,6 +287,7 @@ export default class Dashboard extends React.Component {
             />
           </div>
         </div>
+        <Footer />
         {selectedItem && <StorySettingModal />}
       </div>
     );

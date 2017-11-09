@@ -70,7 +70,7 @@ export default class AssetLibraryApp extends React.Component {
         {this.props.children}
         <AlertDialog />
         <InteractiveTutorial />
-        {/* <Footer /> */}
+        <Footer />
       </div>
     );
   }

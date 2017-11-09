@@ -8,10 +8,16 @@ body {
 #app,
 #web,
 #login {
-  height: 100%;
+  min-height: 100%;
+}
+
+#app {
+  position: relative;
 }
 
 #web {
+  padding-bottom: $footer-height;
+
   > *:not(.nav-bar):not(.footer) {
     min-height: calc(100% - #{$footer-height});
     padding-top: $nav-bar-height;

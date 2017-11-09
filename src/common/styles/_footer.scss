@@ -1,11 +1,14 @@
 .footer {
+  position: absolute;
+  bottom: 0;
+
   overflow: hidden;
   flex-shrink: 0;
 
+  width: 100%;
   min-height: $footer-height;
 
   background-color: $pure-white;
-
   .container {
     display: flex;
     justify-content: space-between;
@@ -45,6 +48,7 @@
     .right,
     .footer-item {
       display: flex;
+
       font-size: 12px;
       line-height: 24px;
 

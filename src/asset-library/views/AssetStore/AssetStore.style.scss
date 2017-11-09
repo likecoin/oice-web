@@ -4,10 +4,13 @@ $list-height: padding(5/3);
 $sidebar-width: 248px;
 
 #asset-store {
+  position: relative;
+
   width: 100%;
 
   .library-dashboard-container {
     flex-direction: column;
+
     padding: padding() 66px;
 
     .content {
