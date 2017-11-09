@@ -37,9 +37,6 @@ $link-tooltip-height: padding(4/3);
 
     &:hover {
       visibility: visible !important;
-    }
-
-    &.show {
       opacity: 1;
     }
 
@@ -50,6 +47,10 @@ $link-tooltip-height: padding(4/3);
     &.place-left:after {
       display: none;
     }
+  }
+
+  .__react_component_tooltip.show {
+    opacity: 1;
   }
 
   &:hover {

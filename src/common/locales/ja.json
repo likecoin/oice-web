@@ -1765,7 +1765,7 @@
     "tabBar": {
       "storySetting": "ストーリーの設定",
       "oiceSetting": "oiceの設定",
-      "languageSetting": "Language Settings"
+      "languageSetting": "言語設定"
     },
     "label": {
       "deleteStoryConfirm": "このストーリーを削除しますか？"

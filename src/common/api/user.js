@@ -5,14 +5,14 @@ import { API_URL, API_HEADER } from '../constants';
 
 
 export const loginWithGoogle = (firebaseUser, firebaseToken, googleToken) => {
-  const { email, displayName, photoURL, providerId } = firebaseUser.providerData[0];
+  const { displayName, photoURL, providerId } = firebaseUser.providerData[0];
   const payload = {
     isAnonymous: false,
+    email: firebaseUser.email,
     firebaseUserId: firebaseUser.uid,
     language: mapLanguageCode(i18next.language),
     firebaseToken,
     googleToken,
-    email,
     displayName,
     photoURL,
   };
