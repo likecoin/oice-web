@@ -382,8 +382,7 @@ export default class OiceSingleView extends React.Component {
     });
 
     const deepLinkOiceUuid = isEndedPlaying ? oice.nextEpisode.uuid : oice.uuid;
-    const deepLink = `${BRANCH_URL}?uuid=${deepLinkOiceUuid}&$desktop_url=${OiceSingleViewUtils.getDesktopURL(deepLinkOiceUuid, oice.language)}&~channel=qrcodeWeb&referrer2=${document.referrer}`;
-
+    const deepLink = `${BRANCH_URL}?uuid=${deepLinkOiceUuid}&$desktop_url=${OiceSingleViewUtils.getDesktopURL(deepLinkOiceUuid, oice.language)}&~channel=qrcodeWeb&referrer2=${document.referrer}&isPreview=${isPreview}`;
     return (
       <Container
         ref={ref => this.container = ref}
@@ -454,6 +453,7 @@ export default class OiceSingleView extends React.Component {
           <SmsModal
             isCloseButtonShowed={!isEndedPlaying}
             isEndedPlaying={isEndedPlaying}
+            isPreview={isPreview}
             oice={oice}
             open={smsModalOpen}
             onToggle={this.handleToggleSmsModal}
