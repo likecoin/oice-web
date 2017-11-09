@@ -13,10 +13,6 @@ body {
   overflow: auto;
 }
 
-#app {
-  // min-width: 1200px;
-}
-
 .font-color1 {
   color: $font-color1;
 }
@@ -28,4 +24,3 @@ body {
 }
 
 @import "editor/index";
-@import "assetsManagement/index";
