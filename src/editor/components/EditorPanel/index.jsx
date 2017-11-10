@@ -12,8 +12,6 @@ import LoadingScreen from 'ui-elements/LoadingScreen';
 
 import InteractiveTutorial from 'editor/components/InteractiveTutorial';
 
-import Footer from 'common/components/Footer';
-
 import * as AssetAction from 'editor/actions/asset';
 import * as CharacterAction from 'editor/actions/character';
 import * as OiceAction from 'editor/actions/oice';
@@ -73,6 +71,7 @@ export default class EditorPanel extends React.Component {
     blockIdsToBeSaved: PropTypes.any.isRequired,
     blocksDict: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
     oicesList: PropTypes.array.isRequired,
     storiesList: PropTypes.array.isRequired,
     t: PropTypes.func.isRequired,
@@ -304,7 +303,6 @@ export default class EditorPanel extends React.Component {
         </div>
         {!!selectedOice && <ImportScriptModal oice={selectedOice} />}
         <StoryPicker stories={storiesList} />
-        <Footer fluid />
         {loading && <LoadingScreen />}
       </div>
     );

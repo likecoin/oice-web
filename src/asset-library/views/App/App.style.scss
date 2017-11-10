@@ -6,7 +6,10 @@ body {
 }
 
 #app {
-  height: 100%;
+  position: relative;
+  padding-bottom: $footer-height;
+
+  min-height: 100%;
 }
 
 #asset-library,

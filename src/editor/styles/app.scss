@@ -7,14 +7,10 @@ body {
 
 #app,
 #app-container,
-#app-container > div {
+#editor {
   width: inherit;
   height: inherit;
   overflow: auto;
-}
-
-#app {
-  // min-width: 1200px;
 }
 
 .font-color1 {
@@ -28,4 +24,3 @@ body {
 }
 
 @import "editor/index";
-@import "assetsManagement/index";

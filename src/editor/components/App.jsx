@@ -4,7 +4,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { DragDropContext } from 'react-dnd';
-import { replace } from 'react-router-redux';
 import HTML5Backend from 'react-dnd-html5-backend';
 import TouchBackend from 'react-dnd-touch-backend';
 
