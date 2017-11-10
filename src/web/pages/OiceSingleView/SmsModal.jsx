@@ -58,14 +58,17 @@ export default class SmsModal extends React.Component {
 
     // Props
     oice: PropTypes.object.isRequired,
-    isEndedPlaying: PropTypes.bool,
     isCloseButtonShowed: PropTypes.bool,
+    isEndedPlaying: PropTypes.bool,
+    isPreview: PropTypes.bool,
     open: PropTypes.bool,
     onToggle: PropTypes.func,
   }
 
   static defaultProps = {
     isCloseButtonShowed: true,
+    isEndedPlaying: false,
+    isPreview: false,
     onToggle: undefined,
   }
 
@@ -176,7 +179,7 @@ export default class SmsModal extends React.Component {
   }
 
   sendSMS = (phone) => {
-    const { dispatch, t, oice, isEndedPlaying } = this.props;
+    const { dispatch, t, oice, isEndedPlaying, isPreview } = this.props;
     const deepLinkOice = isEndedPlaying ? {
       ...this.props.oice.nextEpisode,
       // add required og information
@@ -187,6 +190,7 @@ export default class SmsModal extends React.Component {
       channel: 'SMS',
       data: {
         $custom_sms_text: `${t('smsMessage')} {{ link }}`,
+        isPreview,
       },
       oice: deepLinkOice,
       t,

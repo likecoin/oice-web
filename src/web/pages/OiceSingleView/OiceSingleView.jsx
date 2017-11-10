@@ -9,6 +9,7 @@ import { Motion, spring } from 'react-motion';
 
 import classNames from 'classnames';
 import _get from 'lodash/get';
+import queryString from 'query-string';
 
 import QRCode from 'qrcode.react';
 import AlertDialog from 'ui-elements/AlertDialog';
@@ -147,10 +148,12 @@ export default class OiceSingleView extends React.Component {
   }
 
   handleOiceStart = () => {
-    if (!this.state.isPreview && !this.state.isStartedPlaying) {
-      this.props.dispatch(Actions.incrementOiceViewCount(this.props.oice.id));
+    if (!this.state.isStartedPlaying) {
+      if (!this.state.isPreview) {
+        this.props.dispatch(Actions.incrementOiceViewCount(this.props.oice.id));
+      }
+      this.setState({ isStartedPlaying: true });
     }
-    this.setState({ isStartedPlaying: true });
   }
 
   handleOiceEnd = () => {
@@ -382,7 +385,18 @@ export default class OiceSingleView extends React.Component {
     });
 
     const deepLinkOiceUuid = isEndedPlaying ? oice.nextEpisode.uuid : oice.uuid;
-    const deepLink = `${BRANCH_URL}?uuid=${deepLinkOiceUuid}&$desktop_url=${OiceSingleViewUtils.getDesktopURL(deepLinkOiceUuid, oice.language)}&~channel=qrcodeWeb&referrer2=${document.referrer}`;
+    const query = queryString.stringify({
+      // data for branch or webhook
+      $desktop_url: OiceSingleViewUtils.getDesktopURL(deepLinkOiceUuid, oice.language),
+      '~channel': 'qrcodeWeb',
+      referrer2: document.referrer,
+
+      // data related to oice
+      uuid: deepLinkOiceUuid,
+      language: oice.language,
+      isPreview,
+    });
+    const deepLink = `${BRANCH_URL}?${query}`;
 
     return (
       <Container
@@ -454,6 +468,7 @@ export default class OiceSingleView extends React.Component {
           <SmsModal
             isCloseButtonShowed={!isEndedPlaying}
             isEndedPlaying={isEndedPlaying}
+            isPreview={isPreview}
             oice={oice}
             open={smsModalOpen}
             onToggle={this.handleToggleSmsModal}

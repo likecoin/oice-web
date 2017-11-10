@@ -2,9 +2,9 @@ import _get from 'lodash/get';
 
 import {
   DOMAIN_URL,
-  LOG_KEY,
   PLAY_STORE_URL,
 } from 'common/constants';
+import { LOG_KEY } from 'common/constants/key';
 
 export function getDesktopURL(uuid, language) {
   return `${DOMAIN_URL}/story/${uuid}?lang=${language}`;
