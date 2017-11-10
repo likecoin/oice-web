@@ -297,10 +297,10 @@
   "Profile": {
     "title": "アカウント設定",
     "personalInformation": {
-      "title": "Personal Information",
+      "title": "個人情報",
       "header": {
-        "basicInformation": "Basic Information",
-        "externalLinks": "外部リンクの"
+        "basicInformation": "基本情報",
+        "externalLinks": "外部リンク"
       },
       "label": {
         "displayName": "ユーザー名",
@@ -310,30 +310,30 @@
       },
       "button": {
         "editProfilePicture": "プロフィール写真を変更",
-        "link": "Link",
-        "unlink": "Unlink",
-        "addLink": "Add a link"
+        "link": "リンク",
+        "unlink": "リンクを解除する",
+        "addLink": "リンクを追加する"
       },
       "placeholder": {
-        "enterLabel": "Label",
-        "enterLink": "リンクの"
+        "enterLabel": "説明",
+        "enterLink": "リンク"
       }
     },
     "accountSetting": {
-      "title": "Account Setting",
+      "title": "アカウント設定",
       "header": {
-        "accountInformation": "Account Information",
-        "languageSetting": "Language Setting",
-        "receivePaymentSetting": "Payment Receive using Stripe"
+        "accountInformation": "アカウント情報",
+        "languageSetting": "言語設定",
+        "receivePaymentSetting": "Stripeにお支払い受取"
       },
       "label": {
         "account": "アカウント: ",
         "member": "無料メンバー",
         "backer": "backer",
         "expireOn": "有効期限は{{date}}までです",
-        "upgradeToSupport": "Be our backer with USD$9.9/month",
-        "UILanguage": "UI Language",
-        "defaultStoryLanguage": "Default Story Language",
+        "upgradeToSupport": "月額USD9.9でoice backerになる",
+        "UILanguage": "UI言語",
+        "defaultStoryLanguage": "デフォルトのストーリー言語",
         "stripeConnectDescription": "支払を受けとるにはStripeへ接続してください",
         "stripeConnected": "Stripeに接続されています"
       },
@@ -1055,10 +1055,10 @@
       },
       "statusRow": {
         "lastSave": "最終編集: {{time}}",
-        "allChangesSaved": "All changes saved",
+        "allChangesSaved": "変更を保存しました",
         "saving": "保存しています...",
-        "editing": "Editing : ",
-        "otherLanguage": "Other Languages"
+        "editing": "編集中 : ",
+        "otherLanguage": "他の言語"
       }
     }
   },
@@ -2002,11 +2002,11 @@
   },
   "LinkTooltip": {
     "button": {
-      "copy": "copy"
+      "copy": "コピー"
     },
     "label": {
-      "copySuccess": "Copied to the clipboard successfully",
-      "copyFailure": "Copy was unsuccessful."
+      "copySuccess": "コピーされました",
+      "copyFailure": "コピーが失敗しました。"
     }
   }
 }
