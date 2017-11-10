@@ -211,27 +211,26 @@ export default class Block extends React.Component {
       case 'aside':
       case 'characterdialog': {
         let character;
-        if (block.macroName === 'characterdialog') {
-          if (attributes.character) {
-            const characterId = attributes.character.value;
-            character = this.props.characterDictionary[characterId];
-          }
+        if (block.macroName === 'characterdialog' && attributes.character) {
+          const characterId = attributes.character.value;
+          character = this.props.characterDictionary[characterId];
         }
 
         const isGeneric = _get(character, 'isGeneric', false);
-        const characterName = (isGeneric ?
+        const name = (
+          block.macroName === 'aside' || isGeneric ?
           _get(block, 'attributes.name.value') :
           _get(character, 'name')
         );
 
         return (
           <div>
-            {character &&
+            {!!name &&
               <div className="title-block">
-                {characterName}
+                {name}
               </div>
             }
-            {attributes.paragraph &&
+            {!!attributes.paragraph &&
               <div className="content-block">
                 {attributes.paragraph.value}
               </div>
