@@ -132,7 +132,9 @@ module.exports = {
   ].concat(DEBUG ? [
     // Development
     new webpack.ProgressPlugin((percentage, msg) => {
-      console.log(msg);
+      process.stdout.clearLine(1);
+      process.stdout.write(`${msg} [${(percentage * 100).toFixed(1)}%]`);
+      process.stdout.cursorTo(0);
     }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
