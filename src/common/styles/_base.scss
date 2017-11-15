@@ -4,22 +4,21 @@
 
 html {
   background-color: $light-gray1;
+  font-family: 'Source Sans Pro', sans-serif;
+
+  &[lang^="zh"] {
+    font-family: 'Source Sans Pro', 'Noto Sans TC', sans-serif;
+  }
+  &[lang^="ja"] {
+    font-family: 'Source Sans Pro', 'Noto Sans JP', sans-serif;
+  }
 }
 
 body {
   margin: 0;
   color: $font-color1;
   font-size: $font-size-normal;
-  font-family: 'Source Sans Pro', sans-serif;
   font-weight: 300;
-
-  // it will also match more specific language specifications (e.g. zh-Hant, zh-TW, etc)
-  &:lang(ja) {
-    font-family: 'Source Sans Pro', 'Noto Sans JP', sans-serif;
-  }
-  &:lang(zh) {
-    font-family: 'Source Sans Pro', 'Noto Sans TC', sans-serif;
-  }
 }
 
 hr {
