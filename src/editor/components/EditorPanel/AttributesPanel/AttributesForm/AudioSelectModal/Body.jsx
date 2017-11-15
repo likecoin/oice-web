@@ -19,6 +19,8 @@ import { closeAudioSelectionModal } from 'editor/actions/modal';
 import { getWindowHeight } from 'common/utils';
 import { getAudioMp4Url } from 'editor/utils/app';
 
+import EmptyPlaceholder from '../../EmptyPlaceholder';
+
 import {
   updateSelectedItem,
 } from './redux';
@@ -54,30 +56,10 @@ const getSelectedAudioIndex = (selectedAudio, audios) => {
   return selectedAudioIndex;
 };
 
-@connect((store) => {
-  const {
-    open,
-    libraries,
-    title,
-    width,
-    className,
-
-    selectedAudio,
-    audios,
-    onSelected,
-  } = store.audioSelectModal;
-  return {
-    open,
-    libraries,
-    title,
-    width,
-    className,
-    // audio
-    selectedAudio,
-    audios,
-    onSelected,
-  };
-})
+@connect(store => ({
+  ...store.audioSelectModal,
+  libraries: store.libraries.list,
+}))
 export default class SelectAudioModal extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -130,28 +112,30 @@ export default class SelectAudioModal extends React.Component {
     } = this.props;
     const { filteredAudios } = this.state;
     const selectedAudioIndex = getSelectedAudioIndex(selectedAudio, filteredAudios);
+    if (!filteredAudios || filteredAudios.length === 0) {
+      return <EmptyPlaceholder />;
+    }
     return (
-      filteredAudios && filteredAudios.length > 0 &&
-        <AudioPlayerList
-          selectedIndex={selectedAudioIndex}
-          onChange={this.handleOnchangeAudioList}
-          onDoubleClick={this.handleOnDoubleClick}
-          onPlay={this.handleOnPlayChange}
-        >
-          {filteredAudios.map((audio, index) => {
-            if (!audio.url) return null;
-            return (
-              <Lazyload key={audio.id} height={78} offsetVertical={getWindowHeight()}>
-                <AudioPlayer
-                  ref={ref => this[`audioPlayer_${index}`] = ref}
-                  mode="readonly"
-                  title={`${audio.nameEn}`}
-                  url={getAudioMp4Url(audio)}
-                />
-              </Lazyload>
-            );
-          })}
-        </AudioPlayerList>
+      <AudioPlayerList
+        selectedIndex={selectedAudioIndex}
+        onChange={this.handleOnchangeAudioList}
+        onDoubleClick={this.handleOnDoubleClick}
+        onPlay={this.handleOnPlayChange}
+      >
+        {filteredAudios.map((audio, index) => {
+          if (!audio.url) return null;
+          return (
+            <Lazyload key={audio.id} height={78} offsetVertical={getWindowHeight()}>
+              <AudioPlayer
+                ref={ref => this[`audioPlayer_${index}`] = ref}
+                mode="readonly"
+                title={`${audio.nameEn}`}
+                url={getAudioMp4Url(audio)}
+              />
+            </Lazyload>
+          );
+        })}
+      </AudioPlayerList>
     );
   }
 }

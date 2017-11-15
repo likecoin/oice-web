@@ -4,28 +4,33 @@ import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 
 import AudioPlayer from 'ui-elements/AudioPlayer';
+import Checkbox from 'ui-elements/Checkbox';
 import Dropdown from 'ui-elements/Dropdown';
 import Tag from 'ui-elements/Tag';
 import SliderBar from 'ui-elements/SliderBar';
-import Checkbox from 'ui-elements/Checkbox';
+
+import RecentUsed from 'editor/components/EditorPanel/RecentUsed';
 
 import * as BlockAction from 'editor/actions/block';
 import * as ASSET_TYPE from 'common/constants/assetTypes';
 import { getAudioMp4Url } from 'editor/utils/app';
 
+import * as SELECTION_MODAL_CONSTANT from 'editor/constants/selectionModal';
 import AudioSelectionModal from './AudioSelectModal';
 import AttributeRow from '../AttributeRow';
 import { saveAttributeValue } from '../utils';
-import * as SELECTION_MODAL_CONSTANT from 'editor/constants/selectionModal';
 
 import { openAudioSelectionModal } from 'editor/actions/modal';
 
+const { SE, BGM } = RecentUsed.Constants;
 
 @translate(['editor', 'macro', 'attributesPanel'])
-@connect(store => ({
-  BGMs: store.assets.BGMs,
-  SEs: store.assets.SEs,
-  libraries: store.libraries.list,
+@connect(({ assets, libraries, editorPanel }) => ({
+  BGMs: assets.BGMs,
+  SEs: assets.SEs,
+  libraries: libraries.list,
+  recentUsedBGM: editorPanel.RecentUsed[BGM][0],
+  recentUsedSE: editorPanel.RecentUsed[SE][0],
 }))
 
 export default class AudioAttributesForm extends React.Component {
@@ -35,91 +40,97 @@ export default class AudioAttributesForm extends React.Component {
     attributesDefList: PropTypes.array.isRequired,
     block: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
+    recentUsedBGM: PropTypes.object.isRequired,
+    recentUsedSE: PropTypes.object.isRequired,
     t: PropTypes.func.isRequired,
-    fullWidth: PropTypes.bool,
     libraries: PropTypes.array,
   }
 
-  static defaultProps = {
-    fullWidth: true,
+  getAssetType = () => this.props.block.macroName;
+
+  getAudioAssetsList() {
+    const { BGMs, SEs } = this.props;
+    return this.isBGM() ? BGMs : SEs;
   }
 
-  handleChange = (selectedAudioAsset, attributeName) => {
+  handleAudioSelect = (asset, attributeName) => {
+    const { dispatch, block } = this.props;
+
     const updatedBlock = saveAttributeValue(
       attributeName,
-      this.props.block,
-      selectedAudioAsset.id.toString(),
+      block,
+      asset.id.toString(),
       'reference',
     );
-    updatedBlock.attributes.storage.asset = selectedAudioAsset;
-    // updatedBlock.attributes[0].asset = selectedAudioAsset; // HARD-CODE
+    updatedBlock.attributes.storage.asset = asset;
     this.props.dispatch(BlockAction.updateBlockView(updatedBlock));
-  }
-
-  handleOnClickAudioSelection = (type, audios, selectedAudio, attributeName) => {
-    const { t } = this.props;
-    if (this.audioPlayer) {
-      this.audioPlayer.pauseAudio();
-    }
-    const title = t(`${type === ASSET_TYPE.MUSIC ? 'audioSelectionModal.title.chooseMusic' : 'audioSelectionModal.title.chooseSound'}`);
-    this.props.dispatch(openAudioSelectionModal({
-      libraries: this.props.libraries,
-      title,
-      width: 600,
-      className: SELECTION_MODAL_CONSTANT.AUDIO,
-      selectedAudio,
-      audios,
-      onSelected: (value) => this.handleChange(value, attributeName),
+    this.props.dispatch(RecentUsed.Actions.push({
+      asset,
+      assetType: this.isBGM() ? BGM : SE,
     }));
   }
 
-  getAudioAssetsList() {
-    const { block, BGMs, SEs } = this.props;
-    if (block.macroName === 'bgm') return BGMs;
-    return SEs;
+  handleOnClickAudioSelection = (audios, selectedAudio, attributeName) => {
+    const { t, recentUsedBGM, recentUsedSE } = this.props;
+    if (this.audioPlayer) {
+      this.audioPlayer.pauseAudio();
+    }
+    const title = t(`${this.isBGM() ? 'audioSelectionModal.title.chooseMusic' : 'audioSelectionModal.title.chooseSound'}`);
+    const recentUsedAsset = this.isBGM() ? recentUsedBGM : recentUsedSE;
+    this.props.dispatch(openAudioSelectionModal({
+      audios,
+      recentUsedAsset,
+      selectedAudio,
+      title,
+      className: SELECTION_MODAL_CONSTANT.AUDIO,
+      width: 600,
+      onSelected: value => this.handleAudioSelect(value, attributeName),
+    }));
+  }
+
+  isBGM() {
+    return this.getAssetType() === 'bgm';
   }
 
   renderAudioInput(index, attributeDef) {
     const { block, t } = this.props;
+    const assetType = this.getAssetType();
     const attributeName = attributeDef.name; // "storage"
-    let attributeLabel = t(`${block.macroName}.${attributeName}`);
+
+    let attributeLabel = t(`${assetType}.${attributeName}`);
     if (attributeDef.required) {
       attributeLabel = `${attributeLabel} (${t('requiredAsset')})`;
     }
+
     const attribute = block.attributes[attributeName] || {};
 
     const selectedAudioAssetId = attribute.asset ? attribute.asset.id : 0;
     const selectedAudioAssetName = attribute.asset ? attribute.asset.nameEn : '';
     const selectedAudioAssetUrl = attribute.asset ? getAudioMp4Url(attribute.asset) : '';
-    let type = '';
-    if (block.macroName === ASSET_TYPE.MUSIC) {
-      type = 'bgm';
-    } else {
-      type = 'se';
-    }
+
     const audioList = this.getAudioAssetsList();
+    const dropdownPlaceholder = this.isBGM() ?
+      t('audioSelectionModal.placeholder.music') :
+      t('audioSelectionModal.placeholder.sound');
 
     const audioComponent = (
       <div
-        className="attribute-panel-row"
         key={index}
+        className="attribute-panel-row"
       >
         {selectedAudioAssetUrl &&
           <AudioPlayer
+            ref={e => this.audioPlayer = e}
             mode={'hiddenVolume'}
-            ref={(e) => this.audioPlayer = e}
             title={selectedAudioAssetName}
             url={selectedAudioAssetUrl}
             selected
           />
         }
         <Dropdown
-          staticLabel={type === ASSET_TYPE.MUSIC ?
-            (selectedAudioAssetName || t('audioSelectionModal.placeholder.music')) :
-            (selectedAudioAssetName || t('audioSelectionModal.placeholder.sound'))}
+          staticLabel={selectedAudioAssetName || dropdownPlaceholder}
           fullWidth
           onClick={() => this.handleOnClickAudioSelection(
-            type,
             audioList,
             attribute.asset,
             attributeName
@@ -137,17 +148,14 @@ export default class AudioAttributesForm extends React.Component {
     if (attributesDefList && attributesDefList.constructor === Array) {
       const lastIndex = attributesDefList.length - 1;
       attributesDefList.forEach((attributeDef, index) => {
-        // if (attributeDef.name === 'time' || attributeDef.name === 'overlap') {
-        //   return;
-        // }
         if (attributeDef.name === 'storage') {
           attributeInputs.push(this.renderAudioInput(index, attributeDef));
         } else {
           attributeInputs.push(
             <AttributeRow
+              key={index}
               attributeDef={attributeDef}
               block={block}
-              key={index}
             />
           );
         }

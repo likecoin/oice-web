@@ -6,6 +6,22 @@ import Modal from 'ui-elements/Modal';
 import RaisedButton from 'ui-elements/RaisedButton';
 import Dropdown from 'ui-elements/Dropdown';
 
+function getStateFromProps(nextProps, prevProps = {}) {
+  const { libraries, recentUsedAsset, selectedAsset, open } = nextProps;
+  const newState = {
+    dropdownList: libraries.map(library => library.name),
+  };
+  if (open && !prevProps.open && libraries) {
+    // determine selectedIndex of library when open
+    const targetAsset = selectedAsset || recentUsedAsset;
+    newState.selectedIndex = (targetAsset ?
+      libraries.findIndex(library => library.id === targetAsset.libraryId) :
+      0 // select the first library by default
+    );
+  }
+
+  return newState;
+}
 
 @translate(['editor', 'general', 'AssetSelectionModal'])
 export default class SelectionModal extends React.Component {
@@ -18,30 +34,23 @@ export default class SelectionModal extends React.Component {
     handleOnClose: PropTypes.func,
     handleOnConfirmButton: PropTypes.func,
     libraries: PropTypes.array,
+    recentUsedAsset: PropTypes.object,
+    selectedAsset: PropTypes.object,
     title: PropTypes.string,
     width: PropTypes.number,
   }
 
   constructor(props) {
     super(props);
-    let dropdownList = [];
-    if (props.libraries) {
-      dropdownList = props.libraries.map(library => (library.name));
-    }
+
     this.state = {
+      dropdownList: [],
       selectedIndex: undefined,
-      dropdownList,
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    const { libraries } = nextProps;
-    const newState = {
-      dropdownList: libraries ? libraries.map(library => (library.name)) : [],
-      selectedIndex: libraries && libraries.length > 0 ? 0 : undefined,
-    };
-    // this.setState
-    this.setState(newState);
+    this.setState(getStateFromProps(nextProps, this.props));
   }
 
   handleOnClose = () => {
