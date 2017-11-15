@@ -40,10 +40,10 @@ export default class AudioAttributesForm extends React.Component {
     attributesDefList: PropTypes.array.isRequired,
     block: PropTypes.object.isRequired,
     dispatch: PropTypes.func.isRequired,
-    recentUsedBGM: PropTypes.object.isRequired,
-    recentUsedSE: PropTypes.object.isRequired,
     t: PropTypes.func.isRequired,
     libraries: PropTypes.array,
+    recentUsedBGM: PropTypes.object,
+    recentUsedSE: PropTypes.object,
   }
 
   getAssetType = () => this.props.block.macroName;
