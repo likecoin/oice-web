@@ -3,6 +3,8 @@
 .setting-og-image-upload {
   display: flex;
   overflow: hidden;
+  flex-shrink: 0;
+  justify-content: center;
 
   cursor: pointer;
 
@@ -10,11 +12,7 @@
   border-radius: 4px;
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
-
-  flex-shrink: 0;
-  flex-shrink: 0;
-  justify-content: center;
+  background-size: cover;
   .grey-button {
     color: $light-grey-3;
     border: none;
