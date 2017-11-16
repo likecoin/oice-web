@@ -434,6 +434,19 @@ export default class CharacterDialogForm extends React.Component {
         <hr />
         <AttributeRow.Group>
           <AttributeRow
+            attributeDef={definitions.dim}
+            block={block}
+            fullWidth={false}
+          />
+          <AttributeRow
+            attributeDef={definitions.move}
+            block={block}
+            fullWidth={false}
+          />
+        </AttributeRow.Group>
+        <hr />
+        <AttributeRow.Group>
+          <AttributeRow
             attributeDef={definitions.fgexit}
             block={block}
             fullWidth={false}
