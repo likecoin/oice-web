@@ -351,6 +351,12 @@ $user-profile-border-style: solid 1px $light-gray3;
 
 .user-portfolio-gallery-item-wrapper {
   width: 100%;
+
+  > a {
+    text-decoration: none;
+
+    color: unset;
+  }
 }
 
 .user-portfolio-gallery-item {

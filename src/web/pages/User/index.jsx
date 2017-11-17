@@ -260,16 +260,14 @@ export default class UserPage extends React.Component {
     this.setState({ selectedTabBarIndex: index });
   }
 
-  handleItemSelect = (type, item) => {
+  getLink = (type, item) => {
     switch (type) {
       case 'story':
-        window.location.href = `/story/${item.oiceUuid}`;
-        break;
+        return `/story/${item.oiceUuid}`;
       case 'library':
-        window.open(`/store/library/${item.id}`, '_blank');
-        break;
+        return `/store/library/${item.id}`;
       default:
-        break;
+        return null;
     }
   }
 
@@ -452,7 +450,7 @@ export default class UserPage extends React.Component {
     const gallaryProps = {
       columns,
       columnWidth,
-      onSelect: this.handleItemSelect,
+      getLink: this.getLink,
       onSelectionCheck: this.handleSelectionCheck,
     };
 
