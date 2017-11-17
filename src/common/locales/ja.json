@@ -1804,7 +1804,8 @@
     "label": {
       "addLanguage": "言語を追加する",
       "otherLanguage": "他の言語",
-      "episodeName": "エピソード名"
+      "episodeName": "エピソード名",
+      "confirmToDeleteLanguage": "言語を削除しますか？"
     },
     "placeholder": {
       "addLanguageGuideTitle": "あなたは、左側でそれらを選択することによって、異なる言語が制作することができます。",

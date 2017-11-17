@@ -1804,7 +1804,8 @@
     "label": {
       "addLanguage": "Add Language",
       "otherLanguage": "Other Language",
-      "episodeName": "Episode Name"
+      "episodeName": "Episode Name",
+      "confirmToDeleteLanguage": "Confirm to delete the language?"
     },
     "placeholder": {
       "addLanguageGuideTitle": "You can localize your story in different language by selecting them on the left side.",
