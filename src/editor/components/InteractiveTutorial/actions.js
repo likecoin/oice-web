@@ -45,11 +45,12 @@ export const open = (volume, startFromStep = null) => (dispatch) => {
 
 export const updateUserTutorialState = index => (dispatch, getState) => {
   const { user } = getState();
-  dispatch(UserAction.updateUser({ meta: JSON.stringify({
+  const meta = {
     tutorialState: update(user.tutorialState, {
       [index]: { $set: true },
     }),
-  }) }));
+  };
+  dispatch(UserAction.updateUserMeta({ meta }));
 };
 
 export default {
