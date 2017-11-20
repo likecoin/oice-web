@@ -316,7 +316,8 @@
       },
       "placeholder": {
         "enterLabel": "Label",
-        "enterLink": "Link"
+        "enterLink": "Link",
+        "enterDisplayName": "Please enter"
       }
     },
     "accountSetting": {
@@ -1019,8 +1020,20 @@
     },
     "oiceError": {
       "messageLabel": "Error Message",
-      "errorBlockId": "Error Block Id",
-      "attributeName": "Attribute Name"
+      "errorBlock": "Error Block",
+      "errorAttribute": "Error Attribute",
+      "value": "Attribute Value",
+      "code": {
+        "ERR_OICE_VALIDATE_ASSET_REQUIRED_BGIMAGE": "Missing selected picture. Please check the \"background\" element at block {{blockIndex}} #{{blockId}}.",
+        "ERR_OICE_VALIDATE_ASSET_REQUIRED_FGIMAGE": "Missing selected character. Please check the \"Dialogue\" element at block {{blockIndex}} #{{blockId}}.",
+        "ERR_OICE_VALIDATE_ASSET_REQUIRED_IMAGE": "Missing selected sprite. Please check the \"Dialogue\" element at block {{blockIndex}} #{{blockId}}.",
+        "ERR_OICE_VALIDATE_ASSET_REQUIRED_BGM": "Missing selected picture. Please check the \"Show Image\" element at block {{blockIndex}} #{{blockId}}.",
+        "ERR_OICE_VALIDATE_ASSET_REQUIRED_SE": "Missing selected music. Please check the \"Play Music\" element at block {{blockIndex}} #{{blockId}}.",
+        "ERR_OICE_VALIDATE_CHARACTER_REQUIRED": "Missing selected sound. Please check the \"Play Sound Effect\" element at block {{blockIndex}} #{{blockId}}.",
+        "ERR_OICE_VALIDATE_ATTRIBUTE_REQUIRED": "The label in the \"Go to\" field cannot be found. Please check the \"Option\" element at block {{blockIndex}} #{{blockId}}.",
+        "ERR_OICE_VALIDATE_INVALID_OPTION_TARGET": "Mandatory field must be filled.  Please check the element at block {{blockIndex}} #{{blockId}}.",
+        "ERR_OICE_VALIDATE_INVALID_JUMP_TARGET": "The Target Label Name {{value}} cannot be found. Please check the \"Jump\" element at block {{blockIndex}} #{{blockId}}."
+      }
     },
     "characterSelectionModal": {
       "title": "Select Characters",

@@ -316,7 +316,8 @@
       },
       "placeholder": {
         "enterLabel": "説明",
-        "enterLink": "リンク"
+        "enterLink": "リンク",
+        "enterDisplayName": "入力してください"
       }
     },
     "accountSetting": {
@@ -1019,8 +1020,20 @@
     },
     "oiceError": {
       "messageLabel": "エラーメッセージ",
-      "errorBlockId": "エラーブロックID",
-      "attributeName": "属性名"
+      "errorBlock": "エラーブロック",
+      "errorAttribute": "エラー属性",
+      "value": "属性值",
+      "code": {
+        "ERR_OICE_VALIDATE_ASSET_REQUIRED_BGIMAGE": "画像が選択されていません。「背景画像表示」のブロック{{blockIndex}} #{{blockId}}を確認してください。",
+        "ERR_OICE_VALIDATE_ASSET_REQUIRED_FGIMAGE": "キャラが選択されていません。「キャラのセリフ」のブロック{{blockIndex}} #{{blockId}}を確認してください。",
+        "ERR_OICE_VALIDATE_ASSET_REQUIRED_IMAGE": "表情画像が選択されていません。「キャラのセリフ」のブロック{{blockIndex}} #{{blockId}}を確認してください。",
+        "ERR_OICE_VALIDATE_ASSET_REQUIRED_BGM": "画像が選択されていません。「アイテム表示」のブロック{{blockIndex}} #{{blockId}}を確認してください。",
+        "ERR_OICE_VALIDATE_ASSET_REQUIRED_SE": "音楽が選択されていません。「BGM再生」のブロック{{blockIndex}} #{{blockId}}を確認してください。",
+        "ERR_OICE_VALIDATE_CHARACTER_REQUIRED": "音楽が選択されていません。 「効果音を再生」のブロック{{blockIndex}} #{{blockId}}を確認してください。",
+        "ERR_OICE_VALIDATE_ATTRIBUTE_REQUIRED": "タブがまだ入力されていない。「選択肢」のブロック{{blockIndex}} #{{blockId}}を確認してください。",
+        "ERR_OICE_VALIDATE_INVALID_OPTION_TARGET": "入力必須欄がまだ入力されていない。ブロック{{blockIndex}} #{{blockId}}を確認してください。",
+        "ERR_OICE_VALIDATE_INVALID_JUMP_TARGET": "ジャンプの目標「{{value}}」は見つけません。 「ジャンプ」のブロック{{blockIndex}} #{{blockId}}を確認してください。"
+      }
     },
     "characterSelectionModal": {
       "title": "キャラの選択",

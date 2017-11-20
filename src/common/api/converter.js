@@ -7,23 +7,10 @@ export default {
     if (rawErroredOiceList === undefined) {
       return [];
     }
-    const erroredKSList = Object.keys(rawErroredOiceList).map((key) => {
-      const errorsBody = rawErroredOiceList[key]; // errorsBody is a array
-      const erroredBlocksArray = errorsBody.map((oiceError) => {
-        const block = oiceError.block;
-        const errors = oiceError.errors;
-        const erroredBlock = {
-          blockId: block.id,
-          errors,
-        };
-        return erroredBlock;
-      });
-      return {
-        OiceName: key, // first.ks
-        erroredBlocks: erroredBlocksArray,
-      };
-    });
-    return erroredKSList;
+    return Object.keys(rawErroredOiceList).map(ksFile => ({
+      ksFile, // first.ks
+      erroredBlocks: rawErroredOiceList[ksFile],
+    }));
   },
 
   serializeAttributes(attributes) {
