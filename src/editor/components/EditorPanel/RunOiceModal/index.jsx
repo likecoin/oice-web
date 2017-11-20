@@ -66,13 +66,8 @@ export default class RunOiceModal extends React.Component {
     const prevStage = prevProps.buildState.stage;
     if (prevStage !== stage && stage === SUCCESS && preview) {
       const popup = this.handleOnClickPlayButton();
-      if (popup) this.handleOnClose(); // Close modal when popup opens
+      if (popup) this._handleCloseRequest(); // Close modal when popup opens
     }
-  }
-
-
-  handleOnClose = () => {
-    if (this.props.onClose) this.props.onClose();
   }
 
   handleOnClickPlayButton = () => {
@@ -82,6 +77,10 @@ export default class RunOiceModal extends React.Component {
       return window.open(getLocalizedOiceLink(data, language), STR_WINDOW_NAME);
     }
     return null;
+  }
+
+  _handleCloseRequest = () => {
+    if (this.props.onClose) this.props.onClose();
   }
 
   renderErrorMessages(errorsObj) {
@@ -131,7 +130,11 @@ export default class RunOiceModal extends React.Component {
         return (
           <div>
             <p>{message}</p>
-            <OiceErrorList t={t} errors={data} />
+            <OiceErrorList
+              t={t}
+              errors={data}
+              onFocusBlock={this._handleCloseRequest}
+            />
           </div>
         );
       case SUCCESS:
@@ -182,9 +185,9 @@ export default class RunOiceModal extends React.Component {
         <Modal
           id="run-oice-modal"
           open={this.props.open}
-          onClickOutside={this.handleOnClose}
+          onClickOutside={this._handleCloseRequest}
         >
-          <Modal.Header onClickCloseButton={this.handleOnClose}>
+          <Modal.Header onClickCloseButton={this._handleCloseRequest}>
             {t(`runOice.title.${preview ? 'preview' : 'publish'}`)}
           </Modal.Header>
           <Modal.Body>
