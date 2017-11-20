@@ -1807,7 +1807,8 @@
     "label": {
       "addLanguage": "新增語言",
       "otherLanguage": "副語言",
-      "episodeName": "集數名稱"
+      "episodeName": "集數名稱",
+      "confirmToDeleteLanguage": "確定刪除語言？"
     },
     "placeholder": {
       "addLanguageGuideTitle": "你可以在左方為故事新增其他語言版本",

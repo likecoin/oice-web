@@ -5,6 +5,7 @@ import { findDOMNode } from 'react-dom';
 import classNames from 'classnames';
 
 import FlatButton from 'ui-elements/FlatButton';
+
 import RemoveIcon from 'common/icons/close-2';
 
 import * as ASSET_TYPES from 'common/constants/assetTypes';
@@ -24,6 +25,7 @@ class LanguageSelection extends React.Component {
     const { onDelete } = this.props;
     if (onDelete) onDelete();
   }
+
   render() {
     const { onClick, onDelete, label, selected } = this.props;
     const className = classNames('language-selection', {

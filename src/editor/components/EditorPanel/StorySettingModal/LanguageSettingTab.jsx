@@ -6,6 +6,7 @@ import { translate } from 'react-i18next';
 import _get from 'lodash/get';
 import _throttle from 'lodash/throttle';
 
+import AlertDialog from 'ui-elements/AlertDialog';
 import Dropdown from 'ui-elements/Dropdown';
 import FlatButton from 'ui-elements/FlatButton';
 import Progress from 'ui-elements/Progress';
@@ -122,7 +123,11 @@ export default class LanguageSettingTab extends React.Component {
       label={this.props.t(language)}
       selected={this.state.language === language}
       onClick={() => this.handleClickLanguage(language)}
-      onDelete={() => this.handleDeleteLanguage(language)}
+      onDelete={() => this.props.dispatch(AlertDialog.toggle({
+        open: true,
+        body: this.props.t('label.confirmToDeleteLanguage'),
+        confirmCallback: () => this.handleDeleteLanguage(language),
+      }))}
     />
   );
 
