@@ -87,3 +87,13 @@ export const signOut = () => dispatch => APIHandler(dispatch,
     }
   })
 );
+
+export const updateUserMeta = ({ meta, avatar }) => async (dispatch) => {
+  const user = await APIHandler(dispatch, UserAPI.updateUser({
+    avatar,
+    meta: JSON.stringify(meta),
+  }));
+  dispatch(updateUser(user));
+
+  return user;
+};

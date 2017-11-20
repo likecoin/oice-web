@@ -8,6 +8,8 @@ import AlertDialog from 'ui-elements/AlertDialog';
 import * as UserAPI from 'common/api/user';
 import * as UserLinkAPI from 'common/api/userLink';
 
+import { updateUserMeta } from 'common/actions/user';
+
 import { backToWeb } from 'common/utils';
 import { APIHandler } from 'common/utils/api';
 
@@ -18,7 +20,7 @@ export const updatedUserProfile = createAction('UPDATED_USER_PROFILE');
 export const updatedUserAvatar = createAction('UPDATED_USER_AVATAR');
 export const startLoading = createAction('START_LOADING');
 
-export const updateUser = payload => (dispatch, getState) => {
+export const updateUser = payload => async (dispatch, getState) => {
   const currentUser = getState().Profile.userProfile;
 
   const keys = Object.keys(payload);
@@ -35,14 +37,12 @@ export const updateUser = payload => (dispatch, getState) => {
   // only update when the user field is changed
   if (Object.keys(updatedObject).length > 0 || payload.avatar) {
     dispatch(updateUserProfileBegin());
-    APIHandler(dispatch, UserAPI.updateUser({
-      meta: JSON.stringify({ ...updatedObject }),
+    const updatedUser = await dispatch(updateUserMeta({
+      meta: updatedObject,
       avatar: payload.avatar,
-    })
-    .then((userInfo) => {
-      dispatch(updatedUserProfile(userInfo));
-      if (payload.avatar) dispatch(updatedUserAvatar(userInfo.avatar));
     }));
+    dispatch(updatedUserProfile(updatedUser));
+    if (payload.avatar) dispatch(updatedUserAvatar(updatedUser.avatar));
   }
 };
 
