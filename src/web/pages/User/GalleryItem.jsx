@@ -2,12 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
+
+import _get from 'lodash/get';
+
 import { getThumbnail } from 'common/utils';
 
 import AddIcon from 'common/icons/add-thin';
 
 const GalleryItem = (props) => {
-  const { item, selected, style } = props;
+  const { item, getLink, selected, style, onClick } = props;
 
   const className = classNames(
     'user-portfolio-gallery-item', {
@@ -16,13 +19,23 @@ const GalleryItem = (props) => {
   );
 
   function handleClick() {
-    if (props.onClick) props.onClick(item);
+    if (onClick) onClick(item);
   }
 
   const cover = getThumbnail(
     item.cover || item.coverStorage || '/static/img/oice-default-cover2.jpg',
     300
   );
+
+  let Wrapper = 'div';
+  const wrapperProps = {
+    className,
+  };
+  if (getLink) {
+    Wrapper = 'a';
+    wrapperProps.href = getLink(item);
+    wrapperProps.target = '_blank';
+  }
 
   return (
     <li
@@ -31,7 +44,7 @@ const GalleryItem = (props) => {
       style={style}
       onClick={handleClick}
     >
-      <div className={className}>
+      <Wrapper {...{ ...wrapperProps }}>
         <div
           className="preview"
           style={{ backgroundImage: `url("${cover}")` }}
@@ -39,13 +52,14 @@ const GalleryItem = (props) => {
         <div className="title">
           {item.name}
         </div>
-      </div>
+      </Wrapper>
     </li>
   );
 };
 
 GalleryItem.propTypes = {
   item: PropTypes.object.isRequired,
+  getLink: PropTypes.func,
   selected: PropTypes.bool,
   style: PropTypes.object,
   onClick: PropTypes.func,

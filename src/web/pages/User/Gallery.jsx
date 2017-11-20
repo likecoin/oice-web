@@ -19,6 +19,7 @@ export default class Gallery extends React.Component {
     galleryExpansionPanelHeight: PropTypes.number,
     items: PropTypes.array,
     newItemTitleString: PropTypes.string,
+    getLink: PropTypes.func,
     onSelect: PropTypes.func,
     onSelectAddItem: PropTypes.func,
     onSelectionCheck: PropTypes.func,
@@ -28,6 +29,8 @@ export default class Gallery extends React.Component {
     columnWidth: 170,
     items: [],
   }
+
+  getLink = item => this.props.getLink(this.props.type, item);
 
   handleItemClick = (item) => {
     const { type, onSelect } = this.props;
@@ -41,6 +44,7 @@ export default class Gallery extends React.Component {
       emptyChild,
       expandedChild,
       galleryExpansionPanelHeight,
+      getLink,
       items,
       newItemTitleString,
       onSelectAddItem,
@@ -88,6 +92,7 @@ export default class Gallery extends React.Component {
             <GalleryItem
               key={item.id}
               item={item}
+              getLink={getLink && this.getLink}
               selected={selected}
               style={itemStyle}
               onClick={this.handleItemClick}

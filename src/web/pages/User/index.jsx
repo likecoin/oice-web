@@ -260,25 +260,14 @@ export default class UserPage extends React.Component {
     this.setState({ selectedTabBarIndex: index });
   }
 
-  handleItemSelect = (type, item) => {
+  getLink = (type, item) => {
     switch (type) {
-      case 'story': {
-        if (this.state.isMobile) {
-          window.location.href = `/story/${item.oiceUuid}`;
-        }
-        const { dispatch, user } = this.props;
-        const { selectedItem } = this.state;
-        if (_get(selectedItem, 'id') !== item.id) {
-          dispatch(Actions.closeOiceList());
-          dispatch(Actions.fetchOicesFromStory(user.id, item.id));
-          this.setState({ selectedItem: item });
-        } else {
-          this.setState({ selectedItem: undefined });
-        }
-        break;
-      }
+      case 'story':
+        return `/story/${item.oiceUuid}`;
+      case 'library':
+        return `/store/library/${item.id}`;
       default:
-        break;
+        return null;
     }
   }
 
@@ -461,14 +450,7 @@ export default class UserPage extends React.Component {
     const gallaryProps = {
       columns,
       columnWidth,
-      expandedChild: !isMobile && (
-        <StoryDetails
-          oices={oices}
-          story={selectedItem}
-          onRequestClose={this.handleStoryDetailsCloseRequest}
-        />
-      ),
-      onSelect: this.handleItemSelect,
+      getLink: this.getLink,
       onSelectionCheck: this.handleSelectionCheck,
     };
 
