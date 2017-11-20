@@ -1527,6 +1527,8 @@
       "fliplr": "左右反轉",
       "name": "自定義名稱",
       "position": "位置",
+      "dim": "退場變暗",
+      "move": "退場移動",
       "skipwait": "略過等待",
       "waitse": "等待音效完結",
       "hidedialog": "隱藏對話框"

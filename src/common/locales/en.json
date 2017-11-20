@@ -1526,6 +1526,8 @@
       "fliplr": "Flip Image",
       "name": "Custom name",
       "position": "Position",
+      "dim": "Dim when inactive",
+      "move": "Move when inactive",
       "skipwait": "Can skip",
       "waitse": "Wait for Sound",
       "hidedialog": "Hide dialogue"
