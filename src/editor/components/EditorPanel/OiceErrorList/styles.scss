@@ -1,18 +1,60 @@
-.error-block-item,
-.error-attribute-item {
-  margin-left: 20px;
-}
+@import "../../../styles/variables";
 
-.error-block-item > span,
-.error-attribute-item > div > span {
+error-block-item > span,
+.error-attribute-item > div > span:first-child {
+  display: inline-block;
   font-weight: 600;
-  padding-right: 5px;
 }
 
 .error-block-item {
-  margin-bottom: 20px;
+  color: #A94442;
+
+  background-color: #F2DEDE;
+  border-radius: 4px;
+  border: 1px solid #EBCCCC;
+
+
+  &:not(:first-child) {
+    margin-top: padding(1/2);
+  }
+
+  h1 {
+    padding: padding(1/3) padding(1/3) 0;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  div {
+    padding: padding(1/3);
+  }
+}
+
+.error-attribute-list {
+  border: 1px solid #d9aaaa;
+  border-radius: 4px;
+  display: block;
 }
 
 .error-attribute-item {
-  margin-top: 10px;
+  &:not(:first-child) {
+    border-top: 1px solid #d9aaaa;
+  }
+
+  > table {
+    width: 100%;
+
+    padding: 8px;
+
+    td {
+      padding: 2px 4px;
+
+      vertical-align: top;
+
+      &:first-child {
+        width: 100px;
+        font-weight: 500;
+      }
+    }
+  }
 }
