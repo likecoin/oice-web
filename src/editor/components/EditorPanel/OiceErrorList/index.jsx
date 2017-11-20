@@ -9,7 +9,7 @@ function ErrorAttributeList(props) {
   return (
     <ul className="error-attribute-list">
       {errors.map(({ attributeName, code, value }) => (
-        <li key={attributeName} className="error-attribute-item">
+        <li key={attributeName + code} className="error-attribute-item">
           <table>
             <tr>
               <td><span>{t('oiceError.errorAttribute')}</span></td>
@@ -39,13 +39,13 @@ ErrorAttributeList.propTypes = {
   macroName: PropTypes.string.isRequired,
   errors: PropTypes.arrayOf(PropTypes.shape({
     attributeName: PropTypes.string.isRequired,
-    code: PropTypes.number.isRequired,
+    code: PropTypes.string.isRequired,
     value: PropTypes.string,
   })),
 };
 
 const OiceErrorList = (props) => {
-  const { t, errors } = props;
+  const { t, errors, onFocusBlock } = props;
 
   return (
     <ul>
@@ -53,9 +53,28 @@ const OiceErrorList = (props) => {
         const { id, macroName, order } = error.block;
         const blockIndex = order + 1;
         const errorAttributes = error.errors;
+
+        function focusBlock() {
+          const blockElement = document.getElementById(`block-${id}`);
+          if (blockElement) {
+            blockElement.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            blockElement.click();
+            if (onFocusBlock) {
+              onFocusBlock();
+            }
+          }
+        }
+
         return (
-          <li key={id} className="error-block-item">
-            <h1>{t('oiceError.errorBlock')} {blockIndex} #{id} - {t(`macro:${macroName}._title`)}</h1>
+          <li
+            key={id}
+            className="error-block-item"
+            role="button"
+            onClick={focusBlock}
+          >
+            <h1 role="presentation">
+              {t('oiceError.errorBlock')} {blockIndex} #{id} - {t(`macro:${macroName}._title`)}
+            </h1>
             <div>
               <ErrorAttributeList
                 blockId={id}
@@ -75,6 +94,7 @@ const OiceErrorList = (props) => {
 OiceErrorList.propTypes = {
   t: PropTypes.func.isRequired,
   errors: PropTypes.array,
+  onFocusBlock: PropTypes.func,
 };
 
 export default OiceErrorList;
