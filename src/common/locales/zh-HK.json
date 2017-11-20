@@ -1020,8 +1020,20 @@
     },
     "oiceError": {
       "messageLabel": "錯誤信息",
-      "errorBlockId": "錯誤區塊ID",
-      "attributeName": "屬性"
+      "errorBlock": "錯誤區塊",
+      "errorAttribute": "錯誤屬性",
+      "value": "屬性值",
+      "code": {
+        "ERR_OICE_VALIDATE_ASSET_REQUIRED_BGIMAGE": "未選擇圖片。請檢查區塊 {{blockIndex}} #{{blockId}} 的「顯示背景」元件。",
+        "ERR_OICE_VALIDATE_ASSET_REQUIRED_FGIMAGE": "未選擇角色。請檢查區塊 {{blockIndex}} #{{blockId}} 的「角色對白」元件。",
+        "ERR_OICE_VALIDATE_ASSET_REQUIRED_IMAGE": "未選擇角色立繪。請檢查區塊 {{blockIndex}} #{{blockId}} 的「角色對白」元件。",
+        "ERR_OICE_VALIDATE_ASSET_REQUIRED_BGM": "未選擇圖片。請檢查區塊 {{blockIndex}} #{{blockId}} 的「顯示週邊」元件。",
+        "ERR_OICE_VALIDATE_ASSET_REQUIRED_SE": "未選擇音樂。請檢查區塊 {{blockIndex}} #{{blockId}} 的「播放背景音樂」元件。",
+        "ERR_OICE_VALIDATE_CHARACTER_REQUIRED": "未選擇音效。請檢查區塊 {{blockIndex}} #{{blockId}} 的「播放音效」元件。",
+        "ERR_OICE_VALIDATE_ATTRIBUTE_REQUIRED": "選項前往的標籤尚未定義。請檢查區塊 {{blockIndex}} #{{blockId}} 的「選項」元件。",
+        "ERR_OICE_VALIDATE_INVALID_OPTION_TARGET": "漏填必填的欄位。請檢查區塊 {{blockIndex}} #{{blockId}} 的元件。",
+        "ERR_OICE_VALIDATE_INVALID_JUMP_TARGET": "找不到跳轉的目標 {{value}}。請檢查區塊 {{blockIndex}} #{{blockId}} 的「跳轉」元件。"
+      }
     },
     "characterSelectionModal": {
       "title": "選擇角色",
@@ -1358,7 +1370,7 @@
     "label": {
       "_title": "標籤",
       "caption": "描述(選填)",
-      "name": "標籤*"
+      "name": "標籤"
     },
     "call": {
       "_title": "呼叫腳本",
@@ -1612,7 +1624,7 @@
       "mcolor": "濾鏡",
       "stay": "停留",
       "canskip": "可以跳過",
-      "storage": "檔案",
+      "storage": "背景圖片",
       "time": "切換時間",
       "hidemes": "消除對話框",
       "clfg": "清除立繪",
@@ -1628,7 +1640,7 @@
       "mcolor": "濾鏡",
       "stay": "停留",
       "canskip": "可以跳過",
-      "storage": "檔案",
+      "storage": "圖片檔案",
       "time": "切換時間",
       "hidemes": "消除對話框",
       "clfg": "清除立繪",
