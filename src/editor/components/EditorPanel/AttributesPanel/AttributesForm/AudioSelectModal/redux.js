@@ -18,7 +18,6 @@ export const updateSelectedItem = createAction(UPDATE_SELECTED_AUDIO);
 const initialState = {
   // for SelectionModal
   open: false,
-  libraries: [],
   title: '',
   width: null,
   className: null,
@@ -27,24 +26,24 @@ const initialState = {
   selectedAudio: null,
   audios: [],
   onSelected: null,
+  recentUsedAsset: null,
 };
 
 export default handleActions({
   [Actions.openAudioSelectionModal]: (state, { payload }) => ({
     ...state,
+    audios: payload.audios || [],
+    className: payload.className || null,
     open: true,
-    libraries: payload.libraries || [],
+    recentUsedAsset: payload.recentUsedAsset || null,
+    selectedAudio: payload.selectedAudio,
     title: payload.title || '',
     width: payload.width || null,
-    className: payload.className || null,
-    selectedAudio: payload.selectedAudio,
-    audios: payload.audios || [],
     onSelected: payload.onSelected || null,
   }),
   [Actions.closeAudioSelectionModal]: (state, { payload }) => ({
     ...state,
     open: false,
-    libraries: [],
     audios: [],
   }),
   [updateSelectedItem]: (state, { payload }) => ({

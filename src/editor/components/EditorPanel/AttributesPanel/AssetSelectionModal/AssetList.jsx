@@ -15,6 +15,8 @@ import {
   getWindowHeight,
 } from 'common/utils';
 
+import EmptyPlaceholder from '../EmptyPlaceholder';
+
 
 export default class AssetList extends React.Component {
   static propTypes = {
@@ -36,7 +38,9 @@ export default class AssetList extends React.Component {
       selectedAssetId,
       assets,
     } = this.props;
-
+    if (!assets || assets.length === 0) {
+      return <EmptyPlaceholder />;
+    }
     return (
       <div className="asset-list">
         {assets.map((asset) => {

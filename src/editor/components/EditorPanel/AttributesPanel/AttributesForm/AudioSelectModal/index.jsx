@@ -7,55 +7,25 @@ import Body from './Body';
 
 import { closeAudioSelectionModal } from 'editor/actions/modal';
 
-const getSelectedAudioIndex = (selectedAudio, audios) => {
-  let selectedAudioIndex = -1;
-  if (selectedAudio && audios) {
-    audios.forEach((audio, index) => {
-      if (audio.id === selectedAudio.id) {
-        selectedAudioIndex = index;
-      }
-    });
-  }
-  return selectedAudioIndex;
-};
 
-
-@connect((store) => {
-  const {
-    open,
-    libraries,
-    title,
-    width,
-    className,
-
-    selectedAudio,
-    audios,
-    onSelected,
-  } = store.audioSelectModal;
-  return {
-    open,
-    libraries,
-    title,
-    width,
-    className,
-    // audio
-    selectedAudio,
-    audios,
-    onSelected,
-  };
-})
-export default class CharacterSelectionModal extends React.Component {
+@connect(store => ({
+  ...store.audioSelectModal,
+  libraries: store.libraries.list,
+}))
+export default class AudioSelectionModal extends React.Component {
   static propTypes = {
     onSelected: PropTypes.func,
     dispatch: PropTypes.func,
     open: PropTypes.bool.isRequired,
-    libraries: PropTypes.array,
-    title: PropTypes.string,
-    className: PropTypes.string,
-    width: PropTypes.number,
     audios: PropTypes.array,
+    className: PropTypes.string,
+    libraries: PropTypes.array,
+    recentUsedAsset: PropTypes.object,
     selectedAudio: PropTypes.any,
+    title: PropTypes.string,
+    width: PropTypes.number,
   }
+
   static defaultProps = {
     open: false,
     width: 590,
@@ -80,25 +50,31 @@ export default class CharacterSelectionModal extends React.Component {
 
   render() {
     const {
-      open,
+      audios,
+      className,
       libraries,
+      open,
+      recentUsedAsset,
+      selectedAudio,
       title,
       width,
-      className,
-      audios,
-      selectedAudio,
     } = this.props;
-
+    const selectedIndex = (recentUsedAsset ?
+      libraries.findIndex(library => library.id === recentUsedAsset.libraryId) :
+      0 // select the first library by default
+    );
     return (
       <SelectionModal
-        open={open}
-        libraries={libraries}
         className={className}
-        width={width}
+        disableConformButton={!selectedAudio}
+        libraries={libraries}
+        open={open}
+        recentUsedAsset={recentUsedAsset}
+        selectedAsset={selectedAudio}
         title={title}
+        width={width}
         handleOnClose={this.handleOnClose}
         handleOnConfirmButton={this.handleOnConfirmButton}
-        disableConformButton={!selectedAudio}
       >
         <Body />
       </SelectionModal>
