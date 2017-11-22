@@ -3,7 +3,6 @@
 #about {
   position: relative;
 
-
   a {
     cursor: pointer;
     text-decoration: underline;
@@ -108,6 +107,7 @@
 
   .section-wrapper {
     position: relative;
+    z-index: 1;
   }
 
   .section-title {
