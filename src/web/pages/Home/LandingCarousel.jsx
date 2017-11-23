@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { translate } from 'react-i18next';
 import { spring, TransitionMotion } from 'react-motion';
 
 import _get from 'lodash/get';
@@ -90,6 +91,136 @@ SlideWrapper.propTypes = {
 };
 
 
+function Author({ id, name, avatar }) {
+  return (
+    <a href={`/user/${id}`}>
+      <img alt={name} src={avatar} />
+      <span>{name}</span>
+    </a>
+  );
+}
+
+Author.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  avatar: PropTypes.string,
+};
+
+
+const CreditsGroup = translate()(({ t, id, authors }) => (
+  <div className="library-carousel_credits-group">
+    <span className="group-name">{t(`asset:type.${id}`)}</span>
+    <ul className="library-carousel_authors">
+      {authors.map(author => (
+        <li key={author.id}>
+          <Author {...author} />
+        </li>
+      ))}
+    </ul>
+  </div>
+));
+
+CreditsGroup.propTypes = {
+  id: PropTypes.string,
+  authors: PropTypes.array,
+};
+
+CreditsGroup.types = [
+  'character',
+  'bgimage',
+  'image',
+  'bgm',
+  'se',
+];
+
+
+function Credits({ authors, library, style }) {
+  if (!authors || !library) return null;
+
+  return (
+    <ul className="library-carousel_credits" style={style}>
+
+      {CreditsGroup.types.map((groupId) => {
+        const libraryAuthorIds = library.authors[groupId];
+        if (!libraryAuthorIds) return null;
+
+        const libraryAuthors = libraryAuthorIds.map(id => authors[id]);
+
+        return (
+          <li key={groupId}>
+            <CreditsGroup id={groupId} authors={libraryAuthors} />
+          </li>
+        );
+      })}
+
+    </ul>
+  );
+}
+
+Credits.propTypes = {
+  authors: PropTypes.object,
+  library: PropTypes.object,
+  style: PropTypes.object,
+};
+
+Credits.getStyle = {
+  entering: () => ({ opacity: spring(1) }),
+  leaving: () => ({ opacity: spring(0) }),
+};
+
+
+function CreditsWrapper({ content, position, index }) {
+  if (!content || !content.layouts) return null;
+
+  const layouts = [
+    content.layouts[index][position],
+    content.layouts[(index + 1) % content.layouts.length][position],
+  ];
+
+  const creditsStyles = layouts.map((libraryId, i) => {
+    const isActive = i === 0;
+    return {
+      key: `${libraryId}`,
+      data: {
+        libraryId,
+      },
+      style: Credits.getStyle[isActive ? 'entering' : 'leaving'](),
+    };
+  });
+
+  return (
+    <div className={classNames('library-carousel_credits-wrapper', position)}>
+
+      <TransitionMotion
+        willEnter={Credits.getStyle.entering}
+        willLeave={Credits.getStyle.leaving}
+        styles={creditsStyles}
+      >
+        {interpolatedStyles => (
+          <div>
+            {interpolatedStyles.map(({ key, data, style }) => (
+              <Credits
+                key={key}
+                authors={content.authors}
+                library={content.libraries && content.libraries[data.libraryId]}
+                style={style}
+              />
+            ))}
+          </div>
+        )}
+      </TransitionMotion>
+
+    </div>
+  );
+}
+
+CreditsWrapper.propTypes = {
+  position: PropTypes.oneOf(['left', 'right']).isRequired,
+  index: PropTypes.number.isRequired,
+  content: PropTypes.object,
+};
+
+
 export default class LandingCarousel extends React.Component {
   static interval = 5000;
 
@@ -129,7 +260,11 @@ export default class LandingCarousel extends React.Component {
         "example": {
           "bg": "<URL>",
           "sprite": "<URL>",
-          "authors": ["example"]
+          "authors": {
+            "<TYPE>": [
+              "example"
+            ]
+          }
         },
       }
     }
@@ -169,6 +304,11 @@ export default class LandingCarousel extends React.Component {
 
         {/* Gradient for authors */}
         <div className="gradient-overlay" />
+
+        <div className="library-carousel_credits-panel">
+          <CreditsWrapper {...props} position="left" />
+          <CreditsWrapper {...props} position="right" />
+        </div>
 
       </div>
     );
