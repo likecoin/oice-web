@@ -11,6 +11,51 @@ import classNames from 'classnames';
 import './LandingCarousel.styles.scss';
 
 
+function animated(WrappedComponent) {
+  return class extends React.Component {
+    static propTypes = {
+      layouts: PropTypes.array.isRequired,
+      enteringStyle: PropTypes.oneOfType([
+        PropTypes.func,
+        PropTypes.object,
+      ]),
+      leavingStyle: PropTypes.oneOfType([
+        PropTypes.func,
+        PropTypes.object,
+      ]),
+    }
+
+    render() {
+      const {
+        layouts,
+        enteringStyle,
+        leavingStyle,
+        ...childrenProps
+      } = this.props;
+
+      const transitionStyles = layouts.map((layout, i) => {
+        const libraryId = layout[childrenProps.position];
+        const isActive = i === 0;
+        return {
+          key: `${libraryId}`,
+          data: {
+            libraryId,
+          },
+          style: isActive ? enteringStyle : leavingStyle,
+        };
+      });
+
+      return (
+        <WrappedComponent
+          {...childrenProps}
+          transitionStyles={transitionStyles}
+        />
+      );
+    }
+  };
+}
+
+
 function Slide({ style, library }) {
   return (
     <div className="slide" style={style}>
@@ -37,24 +82,8 @@ Slide.getStyle = {
 };
 
 
-function SlideWrapper({ content, position, index }) {
-  if (!content || !content.layouts) return null;
-
-  const layouts = [
-    content.layouts[index][position],
-    content.layouts[(index + 1) % content.layouts.length][position],
-  ];
-
-  const slideStyles = layouts.map((libraryId, i) => {
-    const isActive = i === 0;
-    return {
-      key: `${libraryId}`,
-      data: {
-        libraryId,
-      },
-      style: Slide.getStyle[isActive ? 'entering' : 'leaving'](),
-    };
-  });
+const SlideWrapper = animated((props) => {
+  const { libraries, transitionStyles, position } = props;
 
   // Determine slide left or right
   const xMultiplier = (position === 'left' ? -1 : 1);
@@ -65,14 +94,14 @@ function SlideWrapper({ content, position, index }) {
       <TransitionMotion
         willEnter={Slide.getStyle.entering}
         willLeave={Slide.getStyle.leaving}
-        styles={slideStyles}
+        styles={transitionStyles}
       >
         {interpolatedStyles =>
           <div>
             {interpolatedStyles.map(({ key, data, style }) => (
               <Slide
                 key={key}
-                library={content.libraries[data.libraryId]}
+                library={libraries[data.libraryId]}
                 style={{ transform: `translateX(${style.x * xMultiplier}%)` }}
               />
             ))}
@@ -82,12 +111,11 @@ function SlideWrapper({ content, position, index }) {
 
     </div>
   );
-}
+});
 
 SlideWrapper.propTypes = {
+  libraries: PropTypes.object.isRequired,
   position: PropTypes.oneOf(['left', 'right']).isRequired,
-  index: PropTypes.number.isRequired,
-  content: PropTypes.object,
 };
 
 
@@ -169,24 +197,8 @@ Credits.getStyle = {
 };
 
 
-function CreditsWrapper({ content, position, index }) {
-  if (!content || !content.layouts) return null;
-
-  const layouts = [
-    content.layouts[index][position],
-    content.layouts[(index + 1) % content.layouts.length][position],
-  ];
-
-  const creditsStyles = layouts.map((libraryId, i) => {
-    const isActive = i === 0;
-    return {
-      key: `${libraryId}`,
-      data: {
-        libraryId,
-      },
-      style: Credits.getStyle[isActive ? 'entering' : 'leaving'](),
-    };
-  });
+const CreditsWrapper = animated((props) => {
+  const { authors, libraries, transitionStyles, position } = props;
 
   return (
     <div className={classNames('library-carousel_credits-wrapper', position)}>
@@ -194,15 +206,15 @@ function CreditsWrapper({ content, position, index }) {
       <TransitionMotion
         willEnter={Credits.getStyle.entering}
         willLeave={Credits.getStyle.leaving}
-        styles={creditsStyles}
+        styles={transitionStyles}
       >
         {interpolatedStyles => (
           <div>
             {interpolatedStyles.map(({ key, data, style }) => (
               <Credits
                 key={key}
-                authors={content.authors}
-                library={content.libraries && content.libraries[data.libraryId]}
+                authors={authors}
+                library={libraries[data.libraryId]}
                 style={style}
               />
             ))}
@@ -212,12 +224,12 @@ function CreditsWrapper({ content, position, index }) {
 
     </div>
   );
-}
+});
 
 CreditsWrapper.propTypes = {
+  authors: PropTypes.object.isRequired,
+  libraries: PropTypes.object.isRequired,
   position: PropTypes.oneOf(['left', 'right']).isRequired,
-  index: PropTypes.number.isRequired,
-  content: PropTypes.object,
 };
 
 
@@ -291,23 +303,45 @@ export default class LandingCarousel extends React.Component {
   render() {
     const { currentSlideIndex, content } = this.state;
 
+    if (!content || !content.layouts) return null;
+
+    const layouts = [
+      content.layouts[currentSlideIndex],
+      content.layouts[(currentSlideIndex + 1) % content.layouts.length],
+    ];
+
+    const { authors, libraries } = content;
+
     const props = {
-      content,
-      index: currentSlideIndex,
+      layouts,
+      authors,
+      libraries,
+    };
+
+    const slideProps = {
+      ...props,
+      enteringStyle: Slide.getStyle.entering(),
+      leavingStyle: Slide.getStyle.leaving(),
+    };
+
+    const creditProps = {
+      ...props,
+      enteringStyle: Credits.getStyle.entering(),
+      leavingStyle: Credits.getStyle.leaving(),
     };
 
     return (
       <div className="library-carousel">
 
-        <SlideWrapper {...props} position="left" />
-        <SlideWrapper {...props} position="right" />
+        <SlideWrapper {...slideProps} position="left" />
+        <SlideWrapper {...slideProps} position="right" />
 
         {/* Gradient for authors */}
         <div className="gradient-overlay" />
 
-        <div className="library-carousel_credits-panel">
-          <CreditsWrapper {...props} position="left" />
-          <CreditsWrapper {...props} position="right" />
+        <div className="library-carousel_credits-layer">
+          <CreditsWrapper {...creditProps} position="left" />
+          <CreditsWrapper {...creditProps} position="right" />
         </div>
 
       </div>
