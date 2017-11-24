@@ -43,7 +43,7 @@ function animated(WrappedComponent) {
           },
           style: isActive ? enteringStyle : leavingStyle,
         };
-      });
+      }).reverse();
 
       return (
         <WrappedComponent
@@ -92,7 +92,6 @@ const SlideWrapper = animated((props) => {
     <div className={classNames('slides', position)}>
 
       <TransitionMotion
-        willEnter={Slide.getStyle.entering}
         willLeave={Slide.getStyle.leaving}
         styles={transitionStyles}
       >
@@ -204,7 +203,6 @@ const CreditsWrapper = animated((props) => {
     <div className={classNames('library-carousel_credits-wrapper', position)}>
 
       <TransitionMotion
-        willEnter={Credits.getStyle.entering}
         willLeave={Credits.getStyle.leaving}
         styles={transitionStyles}
       >
