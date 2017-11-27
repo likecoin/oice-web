@@ -54,6 +54,9 @@ if (typeof window === 'undefined') {
   instance = instance.use(BrowserLanguageDetector);
 }
 
+const i18n = instance.use(Cache)
+                     .init(options);
+
 // Strip away region code, e.g. `en-US` will become `en`
 const stripRegionCode = code => code.match(/^([a-z]{2})?/i)[1];
 export const mapLanguageCode = (languageCode) => {
@@ -81,6 +84,25 @@ export const isStoryLanguageSupported = (languageCode) => {
   return !!SUPPORTED_STORY_LANGUAGES.find(isEqualToLanguageCode);
 };
 
-export default instance
-               .use(Cache)
-               .init(options);
+
+const ZH_CODES = ['zh-HK', 'zh-TW', 'zh-CN'];
+export function getLocalizedValue(object) {
+  const code = i18n.language;
+  let value = object[code];
+  if (!value && /^zh/.test(code)) {
+    const zhCode = ZH_CODES.find(zHCode => zHCode in object);
+    value = object[zhCode];
+  }
+
+  if (!value && 'en' in object) {
+    value = object.en;
+  }
+
+  if (!value && object) {
+    value = Object.values(object)[0];
+  }
+
+  return value;
+}
+
+export default i18n;

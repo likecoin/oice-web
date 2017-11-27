@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { translate } from 'react-i18next';
 import { spring, TransitionMotion } from 'react-motion';
+import { withContentRect } from 'react-measure';
 
 import _get from 'lodash/get';
 import classNames from 'classnames';
@@ -83,13 +84,13 @@ Slide.getStyle = {
 
 
 const SlideWrapper = animated((props) => {
-  const { libraries, transitionStyles, position } = props;
+  const { libraries, transitionStyles, position, top } = props;
 
   // Determine slide left or right
   const xMultiplier = (position === 'left' ? -1 : 1);
 
   return (
-    <div className={classNames('slides', position)}>
+    <div className={classNames('slides', position)} style={{ top }}>
 
       <TransitionMotion
         willLeave={Slide.getStyle.leaving}
@@ -115,6 +116,7 @@ const SlideWrapper = animated((props) => {
 SlideWrapper.propTypes = {
   libraries: PropTypes.object.isRequired,
   position: PropTypes.oneOf(['left', 'right']).isRequired,
+  top: PropTypes.number,
 };
 
 
@@ -230,9 +232,15 @@ CreditsWrapper.propTypes = {
   position: PropTypes.oneOf(['left', 'right']).isRequired,
 };
 
-
+@withContentRect('bounds')
 export default class LandingCarousel extends React.Component {
   static interval = 5000;
+
+  static propTypes = {
+    // Injected by withContentRect HoC
+    measureRef: PropTypes.func,
+    contentRect: PropTypes.object,
+  }
 
   constructor(props) {
     super(props);
@@ -299,6 +307,7 @@ export default class LandingCarousel extends React.Component {
   }
 
   render() {
+    const { measureRef, contentRect } = this.props;
     const { currentSlideIndex, content } = this.state;
 
     if (!content || !content.layouts) return null;
@@ -318,6 +327,7 @@ export default class LandingCarousel extends React.Component {
 
     const slideProps = {
       ...props,
+      top: Math.max(0, contentRect.bounds.top),
       enteringStyle: Slide.getStyle.entering(),
       leavingStyle: Slide.getStyle.leaving(),
     };
@@ -329,7 +339,7 @@ export default class LandingCarousel extends React.Component {
     };
 
     return (
-      <div className="library-carousel">
+      <div ref={measureRef} className="library-carousel" >
 
         <SlideWrapper {...slideProps} position="left" />
         <SlideWrapper {...slideProps} position="right" />
@@ -341,7 +351,6 @@ export default class LandingCarousel extends React.Component {
           <CreditsWrapper {...creditProps} position="left" />
           <CreditsWrapper {...creditProps} position="right" />
         </div>
-
       </div>
     );
   }

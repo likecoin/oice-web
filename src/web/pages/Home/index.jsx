@@ -23,6 +23,7 @@ import AssetSection from './AssetSection';
 import LicenseSection from './LicenseSection';
 import LandingSection from './Landing';
 import Pricing from './Pricing';
+import NewsHeader from './NewsHeader';
 
 import './styles.scss';
 
@@ -51,7 +52,7 @@ const ANCHOR = {
 };
 
 const SCROLL_OPTIONS = {
-  offset: -48,
+  offset: -72,
   smooth: 'easeInOutQuad',
 };
 
@@ -190,9 +191,12 @@ export default class Home extends React.Component {
   render() {
     return (
       <div id="about">
-        {this._renderNavigation()}
 
         <Element name={SECTION.LANDING}>
+          <NewsHeader />
+
+          {this._renderNavigation()}
+
           <LandingSection
             onClickRegisterReader={this._handleClickRegisterReader}
             onClickScrollIndicator={this._handleClickScrollIndicator}
@@ -216,11 +220,10 @@ export default class Home extends React.Component {
         </Element>
 
         <Element
-          id="scrollspy-last-section"
           name={SECTION.PRICING}
-          style={{ height: window.innerHeight - 48 }}
-        />
-        <Pricing />
+        >
+          <Pricing />
+        </Element>
       </div>
     );
   }
