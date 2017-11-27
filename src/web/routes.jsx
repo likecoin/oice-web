@@ -13,6 +13,7 @@ import UserPage from 'web/pages/User';
 import Footer from 'common/components/Footer';
 import Stripe from 'web/pages/Stripe';
 import IOSInvitation from 'web/pages/IOSInvitation';
+import Competition1718 from 'web/pages/Competition1718';
 
 const goToEdit = () => {
   window.location.pathname = '/edit';
@@ -56,6 +57,10 @@ const routes = (
       <Route
         components={{ children: UserPage, Footer }}
         path="@:username"
+      />
+      <Route
+        components={{ children: Competition1718, Footer }}
+        path="competition1718"
       />
       <Redirect from="*" to="about" />
     </Route>
