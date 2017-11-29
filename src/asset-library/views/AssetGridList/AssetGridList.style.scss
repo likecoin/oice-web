@@ -137,7 +137,7 @@ $asset-grid-item-interspace: 20px;
 .asset-preview {
   .character & {
     background-position: center 10px;
-    background-size: contain;
+    background-size: cover;
   }
 
   .bgimage & {
