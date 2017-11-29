@@ -4,7 +4,7 @@
     "details": [
       {
         "appID": "/* REPLACE APP ID */",
-        "paths": ["*"]
+        "paths": ["/story/*"]
       }
     ]
   }
