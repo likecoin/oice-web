@@ -1,12 +1,13 @@
 /* global firebase: true */
 
 import React from 'react';
-import { I18n } from 'react-i18next';
 import Sticky from 'react-stickynode';
 import PropTypes from 'prop-types';
 
 import _times from 'lodash/times';
 import classNames from 'classnames';
+
+import i18n from 'common/utils/i18n';
 
 import Avatar from 'ui-elements/Avatar';
 import Card from 'ui-elements/Card';
@@ -128,7 +129,7 @@ export default class Competition1718 extends React.Component {
         </Card.Header>
         <Card.Meta>
           <div className="credits">
-            <I18n>{(t => <span>{t('oiceSingleView:credit.director')}</span>)}</I18n>
+            <span>{i18n.t('oiceSingleView:credit.director')}</span>
             <Avatar
               label={story.author.name}
               src={story.author.avatar}

@@ -2,7 +2,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { I18n } from 'react-i18next';
 import { spring, TransitionMotion } from 'react-motion';
 
 import _find from 'lodash/find';
