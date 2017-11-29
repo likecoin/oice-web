@@ -107,6 +107,9 @@ export default class IndexHTML extends React.Component {
           <script src={`/static/vendor/gtm.js?v=${VERSION}`} />
           <script src={`/static/vendor/branch-deepview.js?v=${VERSION}`} />
           <script src={`/static/vendor/intercom.js?v=${VERSION}`} />
+          {/* Typekit */}
+          <script src="https://use.typekit.net/lds7dmt.js" />
+          <script dangerouslySetInnerHTML={{ __html: 'try{Typekit.load({ async: true });}catch(e){}' }} />
         </head>
         <body>
           <noscript>
