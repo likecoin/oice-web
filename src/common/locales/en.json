@@ -1,14 +1,14 @@
 {
   "AssetSelectionModal": {
     "label": {
-      "recentUsed": "Recently used",
+      "recentUsed": "Recently Used",
       "filteredLibrary": "Filtered Library"
     },
     "button": {
-      "selectMoreAssets": "More assets"
+      "selectMoreAssets": "More Assets"
     },
     "placeholder": {
-      "libraryFilter": "Filter assets"
+      "libraryFilter": "Filter Assets"
     }
   },
   "AssetStore": {
@@ -152,7 +152,7 @@
   "FeaturedStories": {
     "title": "<span>Choose your own path.</span> <span>Numerous genres.</span>",
     "label": {
-      "appName": "oice: visual novels",
+      "appName": "oice: Visual Novels",
       "becomeAReader": "Download the app for more stories"
     },
     "button": {
@@ -221,7 +221,7 @@
       "errorLineAndContent": "Line number: {{line}}, Content: {{content}}"
     },
     "button": {
-      "chooseFile": "Choose a file",
+      "chooseFile": "Choose a File",
       "uploadScript": "Import Script"
     }
   },
@@ -286,11 +286,11 @@
       "editor": "My Stories",
       "asset": "Manage Assets",
       "about": "About oice",
-      "continueEditLastOice": "Continue editing"
+      "continueEditLastOice": "Continue Editing"
     },
     "dropdownMenu": {
       "profile": "Profile",
-      "accountSetting": "Account settings",
+      "accountSetting": "Account Settings",
       "logout": "Logout"
     }
   },
@@ -368,9 +368,9 @@
       "downloadToContinue": "Download oice to continue reading"
     },
     "button": {
-      "send": "Send text",
-      "resend": "Resend text",
-      "useOtherWays": "Other ways to download"
+      "send": "Send Text",
+      "resend": "Resend Text",
+      "useOtherWays": "Other Ways to Download"
     },
     "countries": {
       "title": "Area",
@@ -744,11 +744,11 @@
         "creditsUrl": "Credits URL"
       },
       "button": {
-        "addFile": "Continue uploading",
+        "addFile": "Continue Uploading",
         "upload": "Upload"
       },
-      "addMusic": "Add music",
-      "addSound": "Add sound effect"
+      "addMusic": "Add Music",
+      "addSound": "Add Sound Effect"
     },
     "libraryModal": {
       "header": {
@@ -761,8 +761,8 @@
         "creativeCommons": "$t(license:creativeCommons)",
         "referToProfile": "$t(license:referToProfile)",
         "public": "Public Library",
-        "uploadCover": "Upload a cover photo",
-        "modifyPrice": "Change market price"
+        "uploadCover": "Upload a Cover Photo",
+        "modifyPrice": "Change Market Price"
       },
       "button": {
         "create": {
@@ -774,27 +774,27 @@
         "delete": "Delete Library"
       },
       "placeholder": {
-        "name": "Library Name (required)",
+        "name": "Library Name (Required)",
         "description": "Library Description"
       }
     },
     "bgModal": {
       "header": {
-        "add": "Add background",
-        "edit": "Edit background",
-        "view": "View background"
+        "add": "Add Background",
+        "edit": "Edit Background",
+        "view": "View Background"
       },
       "button": {
-        "delete": "Delete background",
+        "delete": "Delete Background",
         "save": "$t(general:save)"
       },
       "placeholder": {
         "name": {
-          "en": "Please enter English name (required)",
+          "en": "Please enter English name (Required)",
           "tw": "Please enter Chinese name",
           "jp": "Please enter Japanese name"
         },
-        "tag": "Select tags",
+        "tag": "Select Tags",
         "creditsUrl": "Credits URL"
       },
       "label": {
@@ -811,7 +811,7 @@
       "button": {
         "confirm": "Confirm",
         "delete": "Delete Character",
-        "addFgImage": "Add character image"
+        "addFgImage": "Add Character Image"
       },
       "label": {
         "nameTitle": "Character Name",
@@ -923,7 +923,7 @@
         "export": "$t(editor:exportOice.title)"
       },
       "placeholder": {
-        "storyName": "Choose a story",
+        "storyName": "Choose a Story",
         "oiceName": "Choose an oice"
       }
     },
@@ -952,13 +952,13 @@
       "title": "Select a story",
       "placeholder": "Please select a story",
       "button": {
-        "confirm": "Select story"
+        "confirm": "Select Story"
       }
     },
     "storySetting": {
       "storyContinue": "Loading",
       "storyEnded": "Finished",
-      "selectLanguagePlaceholder": "Please choose"
+      "selectLanguagePlaceholder": "Please Choose"
     },
     "oiceSetting": {
       "generalSetting": {
@@ -1003,8 +1003,8 @@
     },
     "runOice": {
       "title": {
-        "preview": "Preview episode(oice)",
-        "publish": "Publish episode(oice)"
+        "preview": "Preview Episode(oice)",
+        "publish": "Publish Episode(oice)"
       },
       "description": {
         "preview": "oice has loaded, press the button below to start playing",
@@ -1068,7 +1068,7 @@
       },
       "statusRow": {
         "lastSave": "Last edit was {{time}}",
-        "allChangesSaved": "All changes saved",
+        "allChangesSaved": "All Changes Saved",
         "saving": "Saving...",
         "editing": "Editing : ",
         "otherLanguage": "Other Languages"
@@ -1118,11 +1118,11 @@
   },
   "interactiveTutorial": {
     "button": {
-      "finish": "Finish tutorial",
+      "finish": "Finish Tutorial",
       "control": {
-        "skip": "Skip section",
-        "next": "Next section",
-        "previous": "Previous section"
+        "skip": "Skip Section",
+        "next": "Next Section",
+        "previous": "Previous Section"
       }
     },
     "tutorial1": {
@@ -1148,7 +1148,7 @@
   },
   "loadingScreen": {
     "label": {
-      "loading": "loading"
+      "loading": "Loading"
     }
   },
   "macro": {
@@ -1164,21 +1164,21 @@
     },
     "stopbgm": {
       "_title": "Stop Music",
-      "time": "Fade out time"
+      "time": "Fade Out Time"
     },
     "button": {
       "_title": "Button",
-      "storage": "Image file",
+      "storage": "Image File",
       "graphic": "Image",
       "target": "Target"
     },
     "wv": {
       "_title": "Wait for Video",
-      "canskip": "Can skip video"
+      "canskip": "Can Skip Video"
     },
     "xchgbgm": {
       "_title": "Switch Music",
-      "storage": "Music file",
+      "storage": "Music File",
       "time": "Duration",
       "overlap": "Overlap Duration",
       "loop": "Loop",
@@ -1190,7 +1190,7 @@
     },
     "bgm": {
       "_title": "Play Music",
-      "storage": "Music file",
+      "storage": "Music File",
       "loop": "Loop",
       "fadetime": "Fadein Duration",
       "overlap": "Overlap Duration",
@@ -1198,27 +1198,27 @@
     },
     "wm": {
       "_title": "Wait for Motion",
-      "canskip": "Can skip Motion"
+      "canskip": "Can Skip Motion"
     },
     "resetfont": {
-      "_title": "Reset font"
+      "_title": "Reset Font"
     },
     "fadepausebgm": {
       "_title": "Fadeout Music",
       "time": "Duration"
     },
     "l": {
-      "_title": "Wait for click"
+      "_title": "Wait for Click"
     },
     "image": {
       "_title": "Display Image",
       "mopacity": "Color Intensity",
-      "shadowx": "Shadow (left)",
-      "shadowy": "Shadow (top)",
+      "shadowx": "Shadow (Left)",
+      "shadowy": "Shadow (Top)",
       "mcolor": "Color",
       "visible": "Visible",
       "shadowblur": "Shadow Blur",
-      "storage": "Source file",
+      "storage": "Source File",
       "left": "Left",
       "layer": "Layer",
       "opacity": "Alpha",
@@ -1248,7 +1248,7 @@
     "ws": {
       "_title": "Wait for Sound",
       "buf": "Buffer",
-      "canskip": "Can skip sound"
+      "canskip": "Can Skip Sound"
     },
     "fadeinbgm": {
       "_title": "Fadein Music",
@@ -1300,15 +1300,15 @@
     },
     "pimage": {
       "_title": "Add Image",
-      "storage": "Source file",
-      "dx": "Destination coordinates (left)",
+      "storage": "Source File",
+      "dx": "Destination Coordinates (Left)",
       "sw": "Width",
       "layer": "Layer",
-      "sy": "Source coordinates (top)",
+      "sy": "Source Coordinates (Top)",
       "sh": "Height",
-      "dy": "Destination coordinates (top)",
-      "page": "Page number",
-      "sx": "Source coordinates (left)"
+      "dy": "Destination Coordinates (Top)",
+      "page": "Page Number",
+      "sx": "Source Coordinates (Left)"
     },
     "locate": {
       "_title": "Move",
@@ -1344,7 +1344,7 @@
     },
     "wl": {
       "_title": "Wait for Backgroun Music",
-      "canskip": "Can skip"
+      "canskip": "Can Skip"
     },
     "history": {
       "_title": "Recording Settings",
@@ -1369,7 +1369,7 @@
     },
     "label": {
       "_title": "Label",
-      "caption": "Description (optional)",
+      "caption": "Description (Optional)",
       "name": "Label Name"
     },
     "call": {
@@ -1398,7 +1398,7 @@
     "wf": {
       "_title": "Wait for Audio Switch",
       "buf": "Buffer",
-      "canskip": "Can skip"
+      "canskip": "Can Skip"
     },
     "trans": {
       "_title": "Switch",
@@ -1412,7 +1412,7 @@
     },
     "wt": {
       "_title": "Wait for Transition",
-      "canskip": "Can skip"
+      "canskip": "Can Skip"
     },
     "fadeoutbgm": {
       "_title": "Fadeout Background Music",
@@ -1441,7 +1441,7 @@
     "wait": {
       "_title": "Wait",
       "time": "Duration",
-      "canskip": "Can skip"
+      "canskip": "Can Skip"
     },
     "resetstyle": {
       "_title": "Reset Style"
@@ -1458,7 +1458,7 @@
     },
     "wb": {
       "_title": "Wait for Background Music Switch",
-      "canskip": "Can skip"
+      "canskip": "Can Skip"
     },
     "copylay": {
       "_title": "Copy Layer",
@@ -1480,11 +1480,11 @@
     },
     "wq": {
       "_title": "Wait for Vibrations",
-      "canskip": "Can skip"
+      "canskip": "Can Skip"
     },
     "playse": {
       "_title": "Play Sound Effect",
-      "storage": "Source file",
+      "storage": "Source File",
       "buf": "Buffer"
     },
     "deffont": {
@@ -1527,7 +1527,7 @@
       "hmax": "Horizontal Max"
     },
     "p": {
-      "_title": "Wait for click"
+      "_title": "Wait for Click"
     },
     "characterdialog": {
       "_title": "Dialogue",
@@ -1537,13 +1537,13 @@
       "fg": "Foreground Image",
       "fgexit": "Exit Order",
       "fliplr": "Flip Image",
-      "name": "Custom name",
+      "name": "Custom Name",
       "position": "Position",
-      "dim": "Dim when inactive",
-      "move": "Move when inactive",
-      "skipwait": "Can skip",
+      "dim": "Dim When Inactive",
+      "move": "Move When Inactive",
+      "skipwait": "Can Skip",
       "waitse": "Wait for Sound",
-      "hidedialog": "Hide dialogue"
+      "hidedialog": "Hide Dialogue"
     },
     "fg": {
       "_title": "Show People",
@@ -1557,13 +1557,13 @@
       "method": "Transition Method",
       "from": "Origin",
       "top": "Top",
-      "canskip": "Can skip"
+      "canskip": "Can Skip"
     },
     "dia": {
       "_title": "Normal Dialogue Box"
     },
     "selstart": {
-      "_title": "Prepare options",
+      "_title": "Prepare Options",
       "hidesysbutton": "Hide Button Layer",
       "hidemes": "Hide Conversation Layer"
     },
@@ -1576,7 +1576,7 @@
       "clfg": "Clear Foreground",
       "from": "Origin",
       "stay": "Remain",
-      "canskip": "Can skip"
+      "canskip": "Can Skip"
     },
     "w": {
       "_title": "Wait for Page Change"
@@ -1593,7 +1593,7 @@
       "hidemes": "Hide Dialogue",
       "rule": "Transition Rule",
       "from": "Origin",
-      "canskip": "Can skip",
+      "canskip": "Can Skip",
       "clface": "Clear Images"
     },
     "selbutton": {
@@ -1612,7 +1612,7 @@
       "method": "Transition Method",
       "rule": "Transition Rule",
       "from": "Origin",
-      "canskip": "Can skip"
+      "canskip": "Can Skip"
     },
     "bg": {
       "_title": "Background",
@@ -1623,8 +1623,8 @@
       "grayscale": "Grayscale",
       "mcolor": "Filter",
       "stay": "Remain",
-      "canskip": "Can skip",
-      "storage": "Source file",
+      "canskip": "Can Skip",
+      "storage": "Source File",
       "time": "Transition Duration",
       "hidemes": "Hide Dialogue",
       "clfg": "Clear Foreground",
@@ -1639,8 +1639,8 @@
       "grayscale": "Grayscale",
       "mcolor": "Filter",
       "stay": "Remain",
-      "canskip": "Can skip",
-      "storage": "Source file",
+      "canskip": "Can Skip",
+      "storage": "Source File",
       "time": "Transition Duratio",
       "hidemes": "Hide Dialogue",
       "clfg": "Clear Foreground",
@@ -2018,7 +2018,7 @@
   },
   "LinkTooltip": {
     "button": {
-      "copy": "copy"
+      "copy": "Copy"
     },
     "label": {
       "copySuccess": "Copied to the clipboard successfully",
