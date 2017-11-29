@@ -1,0 +1,250 @@
+@import "../../styles/variables";
+
+.library-carousel {
+  position: relative;
+
+  height: inherit;
+
+  .gradient-overlay {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    height: 230px;
+
+    pointer-events: none;
+
+    background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.0),
+      rgba(31, 21, 36, 0.7)
+    );
+  }
+
+  $slide-translate-x: 70px; // Determine the distant of translation in a time period
+
+  .slides {
+    $longer-side-diff: 100px; // Determine the slope the mask
+
+    position: fixed;
+    z-index: 0;
+    top: 48px; // For navigation menu height
+
+    overflow: hidden;
+
+    width: calc((100% / 2) + #{$longer-side-diff / 2});
+    height: inherit;
+
+    &.left {
+      left: 0;
+
+      $slide-mask-left: polygon(
+        0 0,
+        100% 0%,
+        calc(100% - #{$longer-side-diff}) 100%,
+        0% 100%
+      );
+      clip-path: $slide-mask-left;
+
+      .bg {
+        right: 0;
+
+        clip-path: $slide-mask-left;
+      }
+
+      .sprite {
+        right: calc(#{$longer-side-diff / 2} + 5%);
+
+        background-position-x: right;
+      }
+    }
+
+    &.right {
+      right: 0;
+
+      $slide-mask-right: polygon(
+        #{$longer-side-diff} 0,
+        100% 0%,
+        100% 100%,
+        0 100%
+      );
+      clip-path: $slide-mask-right;
+
+      .bg {
+        left: -#{$slide-translate-x};
+
+        clip-path: $slide-mask-right;
+      }
+
+      .sprite {
+        left: calc(#{$longer-side-diff / 2} + 5%);
+
+        background-position-x: left;
+      }
+    }
+
+    > div {
+      position: relative;
+
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .slide {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    .bg {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+
+      width: calc(100% + 100px);
+
+      animation-name: 'slide-bg-animation';
+      animation-duration: 10s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+
+      background-position: center;
+      background-size: cover;
+
+      @keyframes slide-bg-animation {
+        0%   { transform: translateX(0); }
+        100% { transform: translateX($slide-translate-x); }
+      }
+    }
+
+    .sprite {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+
+      width: 100%;
+
+      background-repeat: no-repeat;
+      background-position-y: bottom;
+      background-size: auto 384px;
+    }
+  }
+}
+
+.library-carousel_credits-layer {
+  position: relative;
+
+  display: flex;
+
+  width: 100%;
+  max-width: $max-width;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.library-carousel_credits-wrapper {
+  position: relative;
+  width: 50%;
+  padding: 0 padding() padding();
+
+  &.left {
+    justify-content: flex-start;
+  }
+
+  &.right {
+    justify-content: flex-end;
+  }
+
+  > div {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+  }
+}
+
+$author-avatar-size: 24px;
+
+.library-carousel_credits {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+
+  .group-name {
+    display: inline-block;
+
+    min-width: $author-avatar-size;
+
+    text-align: center;
+
+    color: $pure-white;
+
+    font-size: 8pt;
+    line-height: 2;
+  }
+
+  .left & {
+    left: 0;
+
+    > li {
+      margin-right: padding(2/3);
+    }
+  }
+
+  .right & {
+    right: 0;
+
+    > li {
+      margin-left: padding(2/3);
+    }
+  }
+}
+
+.library-carousel_authors {
+  display: flex;
+
+  li {
+    .left &:not(:first-child) {
+      margin-left: padding(2/3);
+    }
+
+    .right &:not(:last-child) {
+      margin-right: padding(2/3);
+    }
+
+    a,
+    a:hover,
+    a:active {
+      display: flex;
+      align-items: center;
+
+      text-decoration: none !important;
+
+      color: $pure-white !important;
+    }
+
+    img {
+      width: $author-avatar-size;
+      height: $author-avatar-size;
+      margin-right: padding(1/3);
+
+      border: 1.5px solid $pure-white;
+      border-radius: 50%;
+    }
+
+    span {
+      text-align: left;
+
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.5;
+
+      @media screen and (max-width: $screen-tablet) {
+        display: none;
+      }
+    }
+  }
+}

@@ -1,6 +1,9 @@
 hr.o-separator {
-  margin: 0;
+  position: relative;
+
   width: 100%;
   height: 2px;
+  margin: 0;
+
 	background-image: linear-gradient(to left, #a8ff97, #69ecf2 30%, #77caf6 50%, #b792ff 70%, #fe7ba1);
 }

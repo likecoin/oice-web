@@ -1,5 +1,6 @@
 .footer {
   position: absolute;
+  z-index: 1;
   bottom: 0;
 
   overflow: hidden;
@@ -9,6 +10,7 @@
   min-height: $footer-height;
 
   background-color: $pure-white;
+
   .container {
     display: flex;
     justify-content: space-between;

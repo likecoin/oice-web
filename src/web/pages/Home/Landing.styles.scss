@@ -1,116 +1,68 @@
 @import "../../styles/variables";
 
+$carousel-height: 384px;
+
 #landing-section {
-  overflow: hidden;
-  background-color: $light-grey-1;
   position: relative;
 
+  overflow: hidden;
+
+  background-color: $light-grey-1;
+
+  .carousel-wrapper {
+    height: $carousel-height;
+  }
+
   .section-wrapper {
-    display: flex;
-    flex-direction: column;
-
-    max-width: $max-width;
     height: 100%;
-    margin: auto;
     padding: 24px 40px 0px;
-  }
 
-  .bg-fade {
-    position: absolute;
-    z-index: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    background-color: $pure-white;
 
-    height: 175px;
+    > div {
+      display: flex;
+      flex-direction: column;
 
-    background-image: linear-gradient(to bottom, $light-grey-1, #FFF);
-  }
-
-  .slideshow {
-    position: relative;
-    flex-shrink: 0;
-
-    border-radius: 8px;
-    box-shadow: 20px 20px 100px 20px rgba(0, 0, 0, 0.2);
-
-    transition: all .1s ease-in-out;
-
-    @media screen and (max-width: $screen-tablet) {
-      margin-bottom: 20%;
+      max-width: $max-width;
+      margin: auto;
     }
 
-    @media screen and (min-width: $screen-tablet + 1px) {
-      margin-right: 20%;
-    }
-
-    .slides {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-
-      overflow: hidden;
-
-      border-radius: inherit;
-
-      > div {
-        position: absolute;
-        top: inherit;
-        right: inherit;
-        bottom: inherit;
-        left: inherit;
-
-        background-repeat: no-repeat;
-        background-size: contain;
-      }
-    }
-
-    .replay-button {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-
-      transform: translateX(-50%);
+    @media screen and (min-width: $screen-desktop + 1px) {
+      min-height: 320px;
     }
   }
 
   .idol {
     position: absolute;
-    right: -5%;
-    bottom: 0;
-    width: 380px;
-    height: 102%;
+    top: -#{$carousel-height};
+    left: 50%;
+
+    width: 360px;
+    height: 640px;
+    margin-top: 10px;
+
+    transform: translateX(-50%);
     pointer-events: none;
+
     background-image: url('/static/img/landing/idol.png');
     background-repeat: no-repeat;
-    background-size: contain;
     background-position: bottom;
+    background-size: contain;
 
-    @media screen and (max-width: $screen-tablet) {
-      display: none;
+    @media screen and (max-width: $screen-desktop) {
+      mask-image: linear-gradient(white 60%, transparent 80%);
     }
   }
 
   .slogan {
     position: absolute;
     z-index: 1;
-    top: 102%;
-    left: 0;
+    top: 0;
+    right: 60%;
+
+    height: 100%;
+
     pointer-events: none;
-
-    width: 100%;
-    height: 50%;
-
-    @media screen and (min-width: $screen-desktop-xl + 1px) {
-      left: -20%;
-    }
-
-    @media screen and (min-width: $screen-tablet + 1px) {
-      max-width: 65%;
-      max-height: 40%;
-    }
 
     > svg {
       width: 100%;
@@ -119,21 +71,24 @@
   }
 
   .registration-portal {
+    z-index: 1;
+
     width: 100%;
     height: 175px;
     margin-top: 40px;
-    z-index: 1;
 
     @media screen and (min-width: $screen-tablet + 1px) {
-      min-width: 400px;
-      width: calc(100% / 3);
       align-self: flex-end;
+
+      width: calc(100% / 3);
+      min-width: 400px;
     }
 
     > div {
-      width: 100%;
       display: flex;
       flex-direction: column;
+
+      width: 100%;
 
       @media screen and (max-width: $screen-tablet) {
         align-items: center;
@@ -143,10 +98,11 @@
     .writer {
       width: 100%;
       padding: 14px 32px;
-      text-decoration: none;
 
       cursor: pointer;
+      transition: all .25s ease-out;
       text-align: left;
+      text-decoration: none;
 
       color: $pure-white;
     	border-radius: 10px;
@@ -159,17 +115,17 @@
 
     	object-fit: contain;
 
-      transition: all .25s ease-out;
-
       &:hover {
-        color: transparentize($pure-white, 0.2);
         transform: scale(0.99);
+
+        color: transparentize($pure-white, 0.2);
         box-shadow: 10px 5px 18px 0 rgba(0, 0, 0, 0.3);
       }
 
       &:active {
-        color: transparentize($pure-white, 0.7);
         transform: scale(0.97) translateY(1px);
+
+        color: transparentize($pure-white, 0.7);
         box-shadow: 10px 4px 20px 2px rgba(0, 0, 0, 0.3);
       }
 
