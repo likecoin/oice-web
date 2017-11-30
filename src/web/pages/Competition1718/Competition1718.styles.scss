@@ -150,6 +150,16 @@
         }
       }
     }
+
+    .tabbar-item {
+      &:not(:first-child) {
+        margin-left: padding(2);
+      }
+
+      &.selected > span::before {
+        background-color: $oice-blue;
+      }
+    }
   }
 
   .page-content {
@@ -180,40 +190,28 @@
     }
   }
 
-  .grid-gallery {
-    margin: 0 -12px;
-  }
+  .credits {
+    display: flex;
+    align-items: center;
 
-  .card-container {
-    margin-bottom: padding(2/3);
+    > span {
+      margin-right: padding(1/2);
 
-    border: none;
-    border-radius: 0;
-    background-color: transparent;
+      color: $dark-grey-1;
 
-    &:hover {
-      box-shadow: none;
+      font-size: 12px;
     }
 
-    .card-image {
-      border-bottom: none;
+    .avatar {
+      display: inherit;
+      align-items: inherit;
     }
 
-    .card-content {
-      margin: padding(1/3) 0 padding(2/3);
-      padding: padding(1/3) 0;
-
-      border-bottom: 1px solid $light-grey-3;
-      background-color: transparent;
-    }
-
-    .card-header {
-      white-space: normal;
-
-    	color: $dark-grey-2;
-
-      font-size: 22px;
-    	line-height: 1.2;
+    .avatar-label {
+      font-size: 18px;
     }
   }
+
+  @import './EntriesPage.styles.scss';
+  @import './PrizesPage.styles.scss';
 }

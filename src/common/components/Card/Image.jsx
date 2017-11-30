@@ -1,25 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default class CardImage extends React.Component {
-  static propTypes = {
-    style: PropTypes.object,
-    width: PropTypes.number,
-    src: PropTypes.string.isRequired,
-  }
-
-  render() {
-    const { style, src, width } = this.props;
-    return (
-      <div
-        className="card-image"
-        style={{
-          ...style,
-          width,
-          height: width,
-          backgroundImage: `url('${src}')`,
-        }}
-      />
-    );
-  }
+export default function CardImage({ style, src, width, ...props }) {
+  return (
+    <props.wrapper
+      className="card-image"
+      {...props}
+      style={{
+        ...style,
+        width,
+        height: width,
+        backgroundImage: `url('${src}')`,
+      }}
+    />
+  );
 }
+
+CardImage.propTypes = {
+  style: PropTypes.object,
+  width: PropTypes.number,
+  src: PropTypes.string.isRequired,
+  wrapper: PropTypes.string,
+};
+
+CardImage.defaultProps = {
+  wrapper: 'div',
+};

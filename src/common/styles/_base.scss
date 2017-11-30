@@ -4,13 +4,13 @@
 
 html {
   background-color: $light-gray1;
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'source-sans-pro', sans-serif;
 
   &[lang^="zh"] {
-    font-family: 'Source Sans Pro', 'Noto Sans TC', sans-serif;
+    font-family: 'source-sans-pro', 'source-han-sans-traditional', sans-serif;
   }
   &[lang^="ja"] {
-    font-family: 'Source Sans Pro', 'Noto Sans JP', sans-serif;
+    font-family: 'source-sans-pro', 'source-han-sans-japanese', sans-serif;
   }
 }
 

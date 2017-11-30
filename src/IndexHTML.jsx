@@ -16,20 +16,6 @@ import {
 
 const DEBUG = process.env.NODE_ENV !== 'production';
 
-function getFontUrl(language) {
-  if (typeof language === 'string') {
-    const lang = language.substring(0, 2).toLowerCase();
-    switch (lang) {
-      case 'ja':
-        return 'https://fonts.googleapis.com/earlyaccess/notosansjp.css';
-      case 'zh':
-        return 'https://fonts.googleapis.com/earlyaccess/notosanstc.css';
-      default:
-        break;
-    }
-  }
-  return null;
-}
 
 export default class IndexHTML extends React.Component {
   static defaultProps = {
@@ -50,7 +36,6 @@ export default class IndexHTML extends React.Component {
       meta,
     } = this.props;
 
-    const fontUrl = getFontUrl(meta.ogLocale);
     return (
       <html lang={meta.ogLocale}>
         <head>
@@ -82,9 +67,6 @@ export default class IndexHTML extends React.Component {
               type="text/css"
             />
           }
-          {!!fontUrl &&
-            <link href={fontUrl} rel="stylesheet" type="text/css" />
-          }
           <link
             href="/img/favicon.ico"
             rel="shortcut icon"
@@ -107,6 +89,9 @@ export default class IndexHTML extends React.Component {
           <script src={`/static/vendor/gtm.js?v=${VERSION}`} />
           <script src={`/static/vendor/branch-deepview.js?v=${VERSION}`} />
           <script src={`/static/vendor/intercom.js?v=${VERSION}`} />
+          {/* Typekit */}
+          <script src="https://use.typekit.net/lds7dmt.js" />
+          <script dangerouslySetInnerHTML={{ __html: 'try{Typekit.load({ async: true });}catch(e){}' }} />
         </head>
         <body>
           <noscript>
