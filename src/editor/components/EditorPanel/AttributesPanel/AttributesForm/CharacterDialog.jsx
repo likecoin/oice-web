@@ -117,7 +117,7 @@ function getStateFromProps(props) {
 export default class CharacterDialogForm extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
-    characterLibraryIdSet: PropTypes.object.isRequired,
+    characterLibraryIdSet: PropTypes.instanceOf(Set).isRequired,
     t: PropTypes.func.isRequired,
     attributesDefList: PropTypes.array,
     block: PropTypes.any,

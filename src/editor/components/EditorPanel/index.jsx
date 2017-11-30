@@ -251,8 +251,8 @@ export default class EditorPanel extends React.Component {
             onRequestOpenTutorial={this.handleOpenTutorialRequest}
           />
         }
-        oiceName={!!selectedOice && selectedOice.name}
-        storyName={!!selectedStory && selectedStory.name}
+        oiceName={selectedOice ? selectedOice.name : ''}
+        storyName={selectedStory ? selectedStory.name : ''}
         user={user}
         onClickAssetManagement={this.handleAssetsMangementButtonClick}
         onClickExportOice={() => this.handleExportOiceButtonClick(selectedOice)}

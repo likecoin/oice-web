@@ -57,7 +57,7 @@ export default class AssetSelectionModal extends React.Component {
     dispatch: PropTypes.func.isRequired,
     t: PropTypes.func.isRequired,
     assets: PropTypes.array,
-    assetLibraryIds: PropTypes.object,
+    assetLibraryIds: PropTypes.array,
     libraries: PropTypes.object,
     open: PropTypes.bool,
     recentUsedAssets: PropTypes.array,
