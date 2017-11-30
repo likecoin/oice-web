@@ -29,21 +29,23 @@ import './styles.scss';
 
 const getFilterAudio = (props) => {
   const {
-    libraries,
     audios,
+    assetLibraryIds,
+    libraries,
     selectedIndex, // dropdownList index
   } = props;
 
   let filteredDatas = [...audios];
-  if (audios && selectedIndex === libraries.length) {
+  if (assetLibraryIds && selectedIndex === assetLibraryIds.length) {
     window.location.href = '/store';
     filteredDatas = null;
   } else if (selectedIndex >= 0) {
-    const selectedCategory = libraries[selectedIndex];
+    const selectedCategory = libraries[assetLibraryIds[selectedIndex]];
     filteredDatas = audios.filter(item => item.libraryId === selectedCategory.id);
   }
   return filteredDatas;
 };
+
 const getSelectedAudioIndex = (selectedAudio, audios) => {
   let selectedAudioIndex = -1;
   if (selectedAudio && audios) {
@@ -58,13 +60,13 @@ const getSelectedAudioIndex = (selectedAudio, audios) => {
 
 @connect(store => ({
   ...store.audioSelectModal,
-  libraries: store.libraries.list,
+  libraries: store.libraries.dict,
 }))
 export default class SelectAudioModal extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     audios: PropTypes.array,
-    libraries: PropTypes.array,
+    libraries: PropTypes.object,
     open: PropTypes.bool,
     selectedAudio: PropTypes.any,
     selectedIndex: PropTypes.number, // dropdownList index From SelectionModal
