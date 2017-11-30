@@ -44,6 +44,10 @@ export default class CharacterPreview extends React.Component {
       loading: false,
       width: -1,
       height: -1,
+      measure: {
+        width: -1,
+        height: -1,
+      },
     };
   }
 
@@ -97,11 +101,15 @@ export default class CharacterPreview extends React.Component {
     image.src = imageURL;
   }
 
-  renderMeasuredChildren = (dimensions) => {
-    const { x, y, flipped, readonly } = this.props;
-    const { imageDataURL } = this.state;
+  _handleMeasureResize = (contentRect) => {
+    this.setState({ measure: contentRect.bounds });
+  }
 
-    const ratio = dimensions.width / OICE_SIZE;
+  _renderMeasuredChildren = ({ measureRef }) => {
+    const { x, y, flipped, readonly } = this.props;
+    const { measure, imageDataURL } = this.state;
+
+    const ratio = measure.width / OICE_SIZE;
     const relativeWidth = this.state.width * ratio;
     const relativeHeight = this.state.height * ratio;
 
@@ -127,7 +135,7 @@ export default class CharacterPreview extends React.Component {
     );
 
     return (
-      <div>
+      <div ref={measureRef}>
         <CharacterPreviewDroppableContainer onDrop={handleDrop}>
           <CharacterPreviewDraggableItem x={x * ratio} y={y * ratio} readonly={readonly}>
             {characterPreviewImage}
@@ -153,7 +161,9 @@ export default class CharacterPreview extends React.Component {
         {!readonly && <hr className="guideline cross horizontal" />}
         {!readonly && <hr className="guideline cross vertical" />}
         <div>
-          <Measure>{this.renderMeasuredChildren}</Measure>
+          <Measure bounds onResize={this._handleMeasureResize}>
+            {this._renderMeasuredChildren}
+          </Measure>
         </div>
         {loading && <Progress.LoadingIndicator />}
       </div>
