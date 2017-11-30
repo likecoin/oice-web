@@ -4,6 +4,7 @@ import Actions from './actions';
 
 const initialState = {
   assets: [],
+  assetLibraryIds: [],
   libraries: null,
   open: false,
   recentUsedAssets: [],
@@ -20,6 +21,7 @@ export default handleActions({
     const recentUsedAssets = (payload.recentUsedAssets || []).filter(a => assetIds.has(a.id));
     return {
       ...state,
+      assetLibraryIds: payload.assetLibraryIds,
       libraries: payload.libraries,
       open: true,
       selectedAssetId: payload.selectedAssetId || 0,

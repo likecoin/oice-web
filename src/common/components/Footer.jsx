@@ -44,7 +44,7 @@ export default class Footer extends React.Component {
         <Container fluid={fluid}>
           <div className="left">
             {footerLeftItems.map(item => (
-              <div className="footer-item">
+              <div key={item.key} className="footer-item">
                 <span>
                   <a href={item.link} rel="noopener noreferrer" target="_blank">
                     {t(`button.${item.key}`)}
