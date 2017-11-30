@@ -286,8 +286,13 @@ export default class Competition1718 extends React.Component {
   }
 
   _renderStory = story => (
-    <Card key={story.id} onClick={() => window.location.href = story.link}>
-      <Card.Image src={story.thumbnail} />
+    <Card key={story.id} hidePointer>
+      <Card.Image
+        wrapper="a"
+        src={story.thumbnail}
+        alt={story.name}
+        href={story.link}
+      />
       <Card.Content>
         <Card.Header>
           {story.name}

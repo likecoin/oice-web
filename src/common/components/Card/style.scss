@@ -36,16 +36,21 @@
   .triangle-border {
     z-index: 3;
   }
+
   .card-image {
+    position: relative;
+
+    display: block;
+
     width: 100%;
     height: 0;
     padding-bottom: 100%;
-    background-repeat: no-repeat;
-    background-size:cover;
-    background-position: center center;
-    background-color: $dark-gray7;
-    position: relative;
+
     border-bottom: 1px solid $light-gray3;
+    background-color: $dark-gray7;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size:cover;
   }
 
   .card-content {
