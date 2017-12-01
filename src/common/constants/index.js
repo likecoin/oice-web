@@ -15,7 +15,9 @@ import {
     INTERCOM_APP_ID_TEST,
 } from './key';
 
-export const VERSION = '4.5.0';
+import packageJSON from '../../../package.json';
+
+export const VERSION = packageJSON.version;
 
 export const SRV_ENV = process.env.SRV_ENV;
 export const IS_CLIENT = process.env.IS_CLIENT;
