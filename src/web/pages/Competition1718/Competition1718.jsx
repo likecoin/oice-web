@@ -79,7 +79,14 @@ export default class Competition1718 extends React.Component {
                                   .once('value')
                                   .then(snapshot => snapshot.val());
 
-    if (content) this.setState(content);
+    if (content) {
+      const filteredTabBarItems = _get(content, 'header.tabBarItems', [])
+                                  .filter(({ enabled }) => enabled);
+
+      content.header.tabBarItems = filteredTabBarItems;
+
+      this.setState(content);
+    }
   }
 
   _handleTabChange = (activeTabIndex) => {
@@ -142,9 +149,9 @@ export default class Competition1718 extends React.Component {
   _renderTabBar() {
     const { header, activeTabIndex } = this.state;
 
-    if (!header.tabBarItems) return null;
+    const tabBarItems = _get(header, 'tabBarItems', []);
 
-    const filteredTabBarItems = header.tabBarItems.filter(({ enabled }) => enabled);
+    if (tabBarItems.length < 2) return null;
 
     return (
       <Sticky
@@ -155,7 +162,7 @@ export default class Competition1718 extends React.Component {
 
         <TabBar
           className="asset-library-dashboard-tabbar"
-          items={filteredTabBarItems.map(({ title }) => ({ text: title }))}
+          items={tabBarItems.map(({ title }) => ({ text: title }))}
           selectedIndex={activeTabIndex}
           onChange={this._handleTabChange}
         />

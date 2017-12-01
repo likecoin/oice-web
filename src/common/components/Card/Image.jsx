@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function CardImage({ style, src, width, ...props }) {
+export default function CardImage({ wrapper, style, src, width, ...props }) {
+  const Wrapper = wrapper;
   return (
-    <props.wrapper
+    <Wrapper
       className="card-image"
       {...props}
       style={{
