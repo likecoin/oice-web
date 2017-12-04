@@ -15,20 +15,29 @@ $carousel-height: 384px;
 
   .section-wrapper {
     height: 100%;
-    padding: 24px 40px 0px;
 
     background-color: $pure-white;
 
     > div {
-      display: flex;
-      flex-direction: column;
+      position: relative;
 
-      max-width: $max-width;
-      margin: auto;
+      min-height: 268px;
     }
 
-    @media screen and (min-width: $screen-desktop + 1px) {
-      min-height: 320px;
+    .panel {
+      position: relative;
+
+      display: flex;
+      align-items: center;
+
+      min-height: 144px;
+      padding: 16px 24px;
+
+      background-color: $light-grey-1;
+
+      @media screen and (max-width: $screen-tablet) {
+        flex-direction: column;
+      }
     }
   }
 
@@ -50,54 +59,83 @@ $carousel-height: 384px;
     background-size: contain;
 
     @media screen and (max-width: $screen-desktop) {
-      mask-image: linear-gradient(white 60%, transparent 80%);
+      mask-image: linear-gradient(
+        white 58%,
+        transparentize(white, 0.85) 70%,
+        white 100%
+      );
+    }
+
+    @media screen and (max-width: $screen-tablet) {
+      display: none;
     }
   }
 
   .slogan {
-    position: absolute;
     z-index: 1;
-    top: 0;
-    right: 60%;
 
-    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    pointer-events: none;
+    width: 100%;
 
-    > svg {
-      width: 100%;
-      height: 100%;
+    > div {
+      margin: -4px -16px;
+
+	    background-image: linear-gradient(to left, #55a8e5, #7850d9 50%, #730a70);
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      -webkit-text-fill-color: transparent;
+
+      @media screen and (max-width: $screen-tablet) {
+        justify-content: center;
+      }
+
+      span {
+        display: block;
+
+        margin: 4px 16px;
+
+        font-size: 44px;
+        line-height: 1;
+
+        @media screen and (max-width: $screen-tablet) {
+          text-align: center;
+        }
+
+        @media screen and (max-width: $screen-phone) {
+          font-size: 32px;
+        }
+      }
     }
   }
 
   .registration-portal {
+    position: relative;
     z-index: 1;
 
+    display: flex;
+    justify-content: center;
+
     width: 100%;
-    height: 175px;
-    margin-top: 40px;
-
-    @media screen and (min-width: $screen-tablet + 1px) {
-      align-self: flex-end;
-
-      width: calc(100% / 3);
-      min-width: 400px;
-    }
 
     > div {
       display: flex;
       flex-direction: column;
 
-      width: 100%;
-
       @media screen and (max-width: $screen-tablet) {
         align-items: center;
+
+        width: 100%;
       }
     }
 
     .writer {
       width: 100%;
-      padding: 14px 32px;
+      margin-top: 18px;
+      padding: 8px 32px;
 
       cursor: pointer;
       transition: all .25s ease-out;
@@ -109,7 +147,7 @@ $carousel-height: 384px;
     	background-image: linear-gradient(280deg, #f9aadb, #e73030 51%, #df4b96);
     	box-shadow: 20px 10px 24px 0 rgba(0, 0, 0, 0.2);
 
-      font-size: 36px;
+      font-size: 30px;
       font-weight: 300;
     	line-height: 36px;
 
@@ -129,6 +167,10 @@ $carousel-height: 384px;
         box-shadow: 10px 4px 20px 2px rgba(0, 0, 0, 0.3);
       }
 
+      @media screen and (min-width: $screen-tablet + 1px ) {
+        min-width: 360px;
+      }
+
       @media screen and (max-width: $screen-tablet) {
         width: auto;
 
@@ -140,9 +182,11 @@ $carousel-height: 384px;
     }
 
     .reader {
+      top: 100%;
+
       display: inline-block;
 
-      margin: 12px 16px;
+      margin: 12px 32px;
 
       font-size: 16px;
       font-weight: 300;

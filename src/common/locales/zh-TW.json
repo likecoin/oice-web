@@ -98,6 +98,9 @@
   },
   "LandingSection": {
     "title": "我自由我導",
+    "label": {
+      "slogan": "<span>各式動漫人物</span><span>演繹你的故事</span>"
+    },
     "button": {
       "replay": "重播",
       "register": "註冊成為編導",

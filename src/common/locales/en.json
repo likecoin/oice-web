@@ -98,6 +98,9 @@
   },
   "LandingSection": {
     "title": "My choice, my voice",
+    "label": {
+      "slogan": "<span>Worldwide cartoon characters to act your story.</span>"
+    },
     "button": {
       "replay": "Replay",
       "register": "Register",
