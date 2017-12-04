@@ -1,8 +1,10 @@
 .prize-list {
   .prize {
-    padding: 32px 0 56px;
+    padding: 16px 0 28px;
 
     border-bottom: 1px solid $light-grey-3;
+
+    $thumbnail-size: 277px;
 
     h4, p {
       margin: padding(1/3) 0;
@@ -10,7 +12,6 @@
 
     .prize-details {
       display: flex;
-      align-items: flex-start;
 
       margin: #{-1 * padding(2/3)};
       padding: padding(1/3) 0 padding(2/3);
@@ -18,15 +19,49 @@
       color: $dark-grey-2;
 
       > * {
-        margin: #{padding(2/3)}
+        margin: #{padding(2/3)} #{padding(2/3)} 8px;
       }
 
       @media screen and (max-width: $screen-phone) {
+        align-items: center;
         flex-direction: column;
+
+        > * {
+          max-width: $thumbnail-size;
+        }
+      }
+    }
+
+    .credits {
+      display: flex;
+      align-items: center;
+
+      @media screen and (max-width: $screen-phone) {
+        flex-direction: column;
+
+        > * {
+          width: 100%;
+          max-width: $thumbnail-size;
+        }
       }
     }
 
     .story-thumbnail {
+      img {
+        width: $thumbnail-size;
+        height: $thumbnail-size;
+
+        transition: transform .3s ease-in-out;
+
+        border: 1px solid $light-grey-3;
+
+        object-fit: cover;
+
+        &:hover {
+          transform: translateY(-4px);
+        }
+      }
+
       @media screen and (max-width: $screen-phone) {
         align-self: center;
       }
@@ -37,15 +72,26 @@
 
       color: $dark-grey-1;
 
-      font-size: 26px;
+      font-size: 22px;
       font-weight: 300;
     }
 
     .story-info {
       h4 {
-        font-size: 26px;
+        font-size: 22px;
         font-weight: 500;
         line-height: 1.2;
+
+        a {
+          transition: color .3s ease-in-out;
+          text-decoration: none;
+
+          color: $dark-grey-2;
+
+          &:hover {
+            color: darken($dark-grey-2, 30);
+          }
+        }
       }
 
       p {
@@ -56,7 +102,7 @@
 
     .judges-comment {
       h4 {
-        margin: 48px 0 0;
+        margin: 24px 0 0;
 
         font-size: 15px;
         font-weight: 400;
@@ -65,20 +111,26 @@
 
       p {
         margin-top: 0;
+
         color: $dark-grey-1;
 
         font-family: 'source-han-serif-tc', serif;
-        font-size: 26px;
+        font-size: 22px;
         font-weight: 500;
         line-height: 1.4;
+
+        @media screen and (max-width: $screen-phone) {
+          font-size: 22px;
+        }
       }
     }
   }
 }
 
 .prizes-page footer {
-  padding: 40px 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
+
+  padding: 40px 0;
 }

@@ -120,27 +120,19 @@ export default class Competition1718 extends React.Component {
         className="page-header"
       >
 
-        <Sticky
-          top="#web-navbar"
-          bottomBoundary=".competition1718"
-          enabled={!this._isMobile}
-        >
-
-          <div className="headline">
-            <div className="title">
-              <h1>{title}</h1>
-              <h2>{subtitle}</h2>
-            </div>
-
-            <a className="more-info" href={moreInfoButton.link}>
-              {moreInfoButton.title}
-            </a>
-
+        <div className="headline">
+          <div className="title">
+            <h1>{title}</h1>
+            <h2>{subtitle}</h2>
           </div>
 
-          {this._renderTabBar()}
+          <a className="more-info" href={moreInfoButton.link}>
+            {moreInfoButton.title}
+          </a>
 
-        </Sticky>
+        </div>
+
+        {this._renderTabBar()}
 
       </header>
     );
@@ -157,7 +149,7 @@ export default class Competition1718 extends React.Component {
       <Sticky
         top="#web-navbar"
         bottomBoundary=".competition1718"
-        enabled={this._isMobile}
+        enabled
       >
 
         <TabBar
@@ -226,7 +218,9 @@ export default class Competition1718 extends React.Component {
                     <h3 className="prize-title">{prize.title}</h3>
 
                     <div className="story-info">
-                      <h4>{story.name}</h4>
+                      <h4>
+                        <a alt={story.name} href={story.link}>{story.name}</a>
+                      </h4>
                       <p>{story.description}</p>
                     </div>
                     <div className="judges-comment">
@@ -238,14 +232,14 @@ export default class Competition1718 extends React.Component {
                 </div>
 
                 <div className="credits">
-                  <span>{i18n.t('oiceSingleView:credit.director')}</span>
-                  <Avatar
-                    label={story.author.name}
-                    src={story.author.avatar}
-                    size={34}
-                  />
+                  <div>
+                    <Avatar
+                      label={story.author.name}
+                      src={story.author.avatar}
+                      size={34}
+                    />
+                  </div>
                 </div>
-
               </div>
             );
           })}
@@ -302,11 +296,10 @@ export default class Competition1718 extends React.Component {
       />
       <Card.Content>
         <Card.Header>
-          {story.name}
+          <a alt={story.name} href={story.link}>{story.name}</a>
         </Card.Header>
         <Card.Meta>
           <div className="credits">
-            <span>{i18n.t('oiceSingleView:credit.director')}</span>
             <Avatar
               label={story.author.name}
               src={story.author.avatar}
