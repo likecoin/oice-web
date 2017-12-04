@@ -157,10 +157,7 @@ export default class Home extends React.Component {
   }
 
   _handleClickRegisterReader = () => {
-    const oiceAppBanner = document.querySelector('#featured-stories');
-    const frameHeight = Math.max(oiceAppBanner.clientHeight - window.innerHeight, 0);
-    const offset = oiceAppBanner.offsetTop - (frameHeight === 0 ? 48 : 0) + frameHeight;
-    animateScroll.scrollTo(offset, {
+    scroller.scrollTo(SECTION.STORY, {
       ...SCROLL_OPTIONS,
       duration: 750,
     });
