@@ -18,7 +18,6 @@ import Avatar from 'ui-elements/Avatar';
 import Card from 'ui-elements/Card';
 import GridList from 'ui-elements/GridList';
 import OutlineButton from 'ui-elements/OutlineButton';
-import Separator from 'ui-elements/Separator';
 import TabBar from 'ui-elements/TabBar';
 
 import { isMobileAgent } from 'common/utils';
@@ -317,7 +316,6 @@ export default class Competition1718 extends React.Component {
         ref={(r) => { this._pageElement = r; }}
         className="competition1718"
       >
-        <Separator />
         <section className="page-container">
 
           {this._renderBanner()}
