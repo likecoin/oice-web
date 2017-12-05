@@ -79,7 +79,7 @@ Slide.propTypes = {
 
 Slide.getStyle = {
   entering: () => ({ x: 0 }),
-  leaving: () => ({ x: spring(120, { stiffness: 100, damping: 35 }) }),
+  leaving: () => ({ x: spring(150, { stiffness: 100, damping: 35 }) }),
 };
 
 

@@ -25,30 +25,34 @@ function LandingSection(props) {
       <div className="section-wrapper">
         <div>
 
-          {/* Oice Idol */}
-          <div className="idol" />
+          <div className="panel">
+            {/* Oice Idol */}
+            <div className="idol" />
 
-          {/* Slogan */}
-          <div className="slogan"><Slogan /></div>
+            {/* Slogan */}
+            <div className="slogan">
+              <div dangerouslySetInnerHTML={{ __html: t('label.slogan') }} />
+            </div>
 
-          {/* Login buttons */}
-          <div className="registration-portal">
-            <div>
-              <a className="writer" href="/edit">{t('button.register')}</a>
-              <a className="reader" onClick={props.onClickRegisterReader}>
-                {t('button.becomeAReader')}
-              </a>
+            {/* Login buttons */}
+            <div className="registration-portal">
+              <div>
+                <a className="writer" href="/edit">{t('button.register')}</a>
+                <a className="reader" onClick={props.onClickRegisterReader}>
+                  {t('button.becomeAReader')}
+                </a>
+              </div>
             </div>
           </div>
 
           {/* Scroll indicator in the bottom */}
-          <div
+          {/* <div
             className="scroll-indicator"
             role="button"
             onClick={props.onClickScrollIndicator}
           >
             <ScrollIndicatorIcon />
-          </div>
+          </div> */}
 
         </div>
       </div>

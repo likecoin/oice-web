@@ -27,7 +27,6 @@
   align-items: center;
   justify-content: space-between;
 
-  max-width: $max-width;
   height: 100%;
   margin: 0 auto;
   padding: padding(1/3) padding();
@@ -35,10 +34,13 @@
   a.cta {
     padding: 4px padding();
 
+    transition: background-color .3s 1px;
     text-decoration: none !important;
 
     color: $pure-white !important;
     border: 1px solid $pure-white;
+    border-radius: 36px;
+    background-color: transparentize($pure-black, 0.95);
 
     &:hover,
     &:active {

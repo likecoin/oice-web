@@ -98,6 +98,9 @@
   },
   "LandingSection": {
     "title": "ホーム",
+    "label": {
+      "slogan": "<span>色々漫画キャラで</span><span>物語を作成する</span>"
+    },
     "button": {
       "replay": "リプレイ",
       "register": "登録する",
