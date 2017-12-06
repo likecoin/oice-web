@@ -72,7 +72,7 @@ export default class AudioAttributesForm extends React.Component {
     this.props.dispatch(BlockAction.updateBlockView(updatedBlock));
     this.props.dispatch(RecentUsed.Actions.push({
       asset,
-      assetType: this.isBGM() ? BGM : SE,
+      assetType: isBGM(block) ? BGM : SE,
     }));
   }
 

@@ -36,7 +36,7 @@ function getStateFromProps(nextProps, prevProps = {}) {
       recentUsedAssets[0]
     );
 
-    if (assetLibraryIds.length > 0 && !_isEmpty(libraries)) {
+    if (assetLibraryIds && assetLibraryIds.length > 0 && !_isEmpty(libraries)) {
       state.selectedLibraryIndex = (asset ?
         assetLibraryIds.findIndex(id => id === asset.libraryId) :
         0 // select the first library by default for new story
@@ -121,7 +121,7 @@ export default class AssetSelectionModal extends React.Component {
     } = this.state;
 
     let filteredAssets = [...assets];
-    if (libraries && filteredAssets.length > 0 && selectedLibraryIndex >= 0) {
+    if (assetLibraryIds && libraries && filteredAssets.length > 0 && selectedLibraryIndex >= 0) {
       const selectedLibrary = libraries[assetLibraryIds[selectedLibraryIndex]];
       filteredAssets = assets.filter(
         item => item.libraryId === selectedLibrary.id
