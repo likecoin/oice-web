@@ -1,6 +1,10 @@
 {
   "volume": "fe48fc2",
-  "forkOiceId": "1055",
+  "forkOiceId": {
+    "zh-HK": "1055",
+    "en": "11261",
+    "ja": "11260"
+  },
   "steps": [
     {
       "id": "9b00e93",

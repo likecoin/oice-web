@@ -8,6 +8,9 @@ import * as OiceAPI from 'common/api/oice';
 import * as StoryAction from 'editor/actions/story';
 import * as UserAction from 'common/actions/user';
 
+import i18next, { mapLanguageCode } from 'common/utils/i18n';
+
+
 const beginLoading = createAction('BEGIN_LOAD_INTERACTIVE_TUTORIAL');
 const endLoading = createAction('END_LOAD_INTERACTIVE_TUTORIAL');
 const achieve = createAction('ACHIEVE_INTERACTIVE_TUTORIAL_CHECKPOINT');
@@ -26,15 +29,19 @@ export const open = (volume, startFromStep = null) => (dispatch) => {
     .then(response => response.body);
   switch (volume) {
     case 1:
-      promise.then(tutorial => OiceAPI.fork(tutorial.forkOiceId)
-        .then(oice => dispatch(StoryAction.fetchStories())
+      promise.then((tutorial) => {
+        const language = mapLanguageCode(i18next.language);
+        const forkOiceId = tutorial.forkOiceId[language] || tutorial.forkOiceId.en;
+
+        OiceAPI.fork(forkOiceId)
+          .then(oice => dispatch(StoryAction.fetchStories())
           .then(() => {
             dispatch(setVariable({ storyId: oice.storyId }));
             dispatch(endLoading({ tutorial, startFromStep }));
             dispatch(replace('/dashboard'));
           })
-        )
-      );
+        );
+      });
       break;
     default:
       promise.then(tutorial => dispatch(endLoading({ tutorial, startFromStep })));
