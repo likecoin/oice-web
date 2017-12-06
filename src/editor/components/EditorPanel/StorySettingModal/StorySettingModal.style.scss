@@ -17,6 +17,7 @@
     .form-section-side {
       color: $dark-grey-1;
       > .cover-description {
+        max-width: padding(6);
         margin-bottom: 0;
         > p {
           margin: 0;
@@ -81,6 +82,7 @@
       .left-details {
         display: flex;
         align-items: center;
+
         width: 100%;
 
         .oice-drag-handle {
@@ -102,6 +104,7 @@
           display: flex;
           align-items: center;
           flex: 1;
+
           margin-right: padding(1/3);
 
           > span {
