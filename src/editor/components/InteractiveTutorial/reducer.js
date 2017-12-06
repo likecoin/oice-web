@@ -51,19 +51,19 @@ export default handleActions({
   [Action.revert]: ((state, { payload }) =>
     getNextStateWithStepIdsAndResult(state, payload, false)
   ),
-  [Action.next]: (state) => ({
+  [Action.next]: state => ({
     ...state,
     currentStep: Math.min(state.currentStep + 1, state.steps.length - 1),
   }),
-  [Action.back]: (state) => ({
+  [Action.back]: state => ({
     ...state,
     currentStep: Math.max(state.currentStep - 1, 0),
   }),
-  [Action.skip]: (state) => ({
+  [Action.skip]: state => ({
     ...state,
     currentStep: state.steps.length - 1,
   }),
-  [Action.close]: (state) => ({
+  [Action.close]: state => ({
     ...state,
     open: false,
     variables: {},
