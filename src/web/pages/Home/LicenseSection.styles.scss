@@ -208,7 +208,7 @@
 
     padding-left: $magnifying-glass-extend;
 
-    margin: -50px 0 84px 32px;
+    margin: -50px $magnifying-glass-extend 84px 0;
 
     @media screen and (max-width: $screen-desktop - 1px) {
       margin: 0 0 128px;

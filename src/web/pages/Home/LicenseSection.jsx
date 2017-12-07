@@ -102,11 +102,11 @@ export default class LicenseSection extends React.Component {
           <div className="section-body">
             <div className="bg-overlay" />
 
-            <div className="licenses-table">
+            {/* <div className="licenses-table">
               <div>
                 {LICENSES_TABLE.map(this._renderLicenseColumn)}
               </div>
-            </div>
+            </div> */}
 
             <div className="credits-demo">
               <div className="portrait-phone">
