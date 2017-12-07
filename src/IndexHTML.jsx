@@ -77,7 +77,6 @@ export default class IndexHTML extends React.Component {
           <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
           <style dangerouslySetInnerHTML={{ __html: '.async-hide { opacity: 0 !important}' }} />
-          <script src={`/static/vendor/google-optimize.js?v=${VERSION}`} />
           {!IS_DEV_MODE &&
             <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js" />
           }
