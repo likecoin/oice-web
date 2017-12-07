@@ -65,7 +65,7 @@
     "react-redux": "^5.0.4",
     "react-router": "^2.7.0",
     "react-router-redux": "^4.0.5",
-    "react-scroll": "^1.5.4",
+    "react-scroll": "1.7.3",
     "react-stickynode": "^1.4.0",
     "react-stripe-checkout": "^2.2.5",
     "react-tap-event-plugin": "^2.0.1",
