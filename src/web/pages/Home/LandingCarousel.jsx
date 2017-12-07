@@ -327,7 +327,7 @@ export default class LandingCarousel extends React.Component {
 
     const slideProps = {
       ...props,
-      top: Math.max(0, contentRect.bounds.top),
+      top: Math.max(0, _get(contentRect, 'bounds.top', 0)),
       enteringStyle: Slide.getStyle.entering(),
       leavingStyle: Slide.getStyle.leaving(),
     };
