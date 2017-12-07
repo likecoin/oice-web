@@ -103,7 +103,7 @@
     },
     "button": {
       "replay": "重播",
-      "register": "註冊成為編導",
+      "register": "註冊成為導演",
       "becomeAReader": "我想成為讀者"
     }
   },
@@ -678,10 +678,10 @@
     },
     "placeholder": {
       "noDescription": "無用戶簡介",
-      "noStory": "{{user}}沒有編導任何故事",
+      "noStory": "{{user}}沒有導演任何故事",
       "noLibrary": "{{user}}沒有上載任何素材庫",
       "noCredits": "{{user}}沒有參與其他故事",
-      "noYourStory": "你沒有編導任何故事",
+      "noYourStory": "你沒有導演任何故事",
       "noYourLibrary": "你沒有上載任何素材庫",
       "noYourCredits": "你沒有參與其他故事"
     }
@@ -1751,7 +1751,7 @@
       "noStoryDescription": "無故事簡介"
     },
     "credit": {
-      "director": "編導",
+      "director": "導演",
       "fgimage": "角色",
       "bgimage": "背景",
       "image": "週邊",
