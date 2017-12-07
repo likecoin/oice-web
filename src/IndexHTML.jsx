@@ -74,10 +74,10 @@ export default class IndexHTML extends React.Component {
           />
           <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
           <link href="/img/apple-touch-icon.png" rel="apple-touch-icon" />
+          <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
           <style dangerouslySetInnerHTML={{ __html: '.async-hide { opacity: 0 !important}' }} />
           <script src={`/static/vendor/google-optimize.js?v=${VERSION}`} />
-          <script src="https://use.fontawesome.com/7f71a010f8.js" />
           {!IS_DEV_MODE &&
             <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js" />
           }
