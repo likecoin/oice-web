@@ -4342,7 +4342,7 @@ react-router@^2.7.0:
     loose-envify "^1.2.0"
     warning "^3.0.0"
 
-react-scroll@^1.5.4:
+react-scroll@1.5.4:
   version "1.5.4"
   resolved "https://registry.yarnpkg.com/react-scroll/-/react-scroll-1.5.4.tgz#8c5c4ced659553be1fa39959776c85055fceb137"
   dependencies:
