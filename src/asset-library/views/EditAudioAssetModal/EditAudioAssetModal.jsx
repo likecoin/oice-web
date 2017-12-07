@@ -12,7 +12,6 @@ import FlatButton from 'ui-elements/FlatButton';
 import Form from 'ui-elements/Form';
 import Modal from 'ui-elements/Modal';
 import Progress from 'ui-elements/Progress';
-import RaisedButton from 'ui-elements/RaisedButton';
 import TextField from 'ui-elements/TextField';
 import UsersDropdown from 'ui-elements/UsersDropdown';
 
@@ -197,6 +196,7 @@ export default class EditAudioAssetModal extends React.Component {
         onClick={this.handleDeleteAudioButtonClick}
       />
     );
+
     const valid = (
       asset.nameEn &&
       asset.nameEn.trim().length > 0 &&
@@ -204,17 +204,14 @@ export default class EditAudioAssetModal extends React.Component {
         (asset.users && asset.users.length > 0) ||
         (asset.creditsUrl && asset.creditsUrl.length > 0)
       ) &&
-      (file && !isFileSizeExceedLimit(file.size))
+      (!file || (file && !isFileSizeExceedLimit(file.size))) // uploaded file and not exceeding size limit
     );
 
-    const confirmButton = (
-      <RaisedButton
-        disabled={!valid || uploading}
-        label={t('save')}
-        primary
-        onClick={this.handleConfirmButtonClick}
-      />
-    );
+    const confirmButtonProps = {
+      rightButtonDisable: !valid || uploading,
+      rightButtonTitle: t('save'),
+      onClickRightButton: this.handleConfirmButtonClick,
+    };
 
     const className = classNames(
       'edit-audio-modal',
@@ -293,7 +290,7 @@ export default class EditAudioAssetModal extends React.Component {
         {!readonly &&
           <Modal.Footer
             leftItems={[deleteButton]}
-            rightItems={[confirmButton]}
+            {...confirmButtonProps}
           />
         }
       </Modal>
