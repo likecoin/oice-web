@@ -1,7 +1,7 @@
 @import "../../styles/variables";
 
 .caption {
-  text-align: left;
+  text-align: center;
 
   &.absolute {
     position: absolute;
@@ -9,18 +9,12 @@
     top: 100%;
     width: max-content;
 
-    @media screen and (max-width: $screen-desktop - 1px) {
-      left: 50%;
-      transform: translateX(-50%);
-    }
+    left: 50%;
+    transform: translateX(-50%);
 
     @media screen and (max-width: $screen-phone) {
       width: 100%;
     }
-  }
-
-  @media screen and (max-width: $screen-desktop - 1px) {
-    text-align: center;
   }
 
   h2 {

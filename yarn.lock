@@ -58,6 +58,10 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
+animation-frame@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/animation-frame/-/animation-frame-0.3.0.tgz#3bb3f446ba53da38bba345582f435be3ab8aee29"
+
 ansi-escapes@^1.1.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-1.4.0.tgz#d3a8a83b319aa67793662b13e761c7911422306e"
@@ -2031,7 +2035,7 @@ eventlistener@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/eventlistener/-/eventlistener-0.0.1.tgz#ed2baabb852227af2bcf889152c72c63ca532eb8"
 
-events@^1.0.0:
+events@^1.0.0, events@^1.0.2:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/events/-/events-1.1.1.tgz#9ebdb7635ad099c70dcc4c2a1f5004288e8bd924"
 
@@ -3158,6 +3162,10 @@ lodash.throttle@^4.0.0, lodash.throttle@^4.1.1:
 lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
+
+lodash@^3.10.1:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
 lodash@^4.0.0, lodash@^4.0.1, lodash@^4.12.0, lodash@^4.13.1, lodash@^4.14.0, lodash@^4.17.4, lodash@^4.2.0, lodash@^4.2.1, lodash@^4.3.0, lodash@~4.17.4:
   version "4.17.4"
@@ -4349,6 +4357,24 @@ react-scroll@1.5.4:
     object-assign "^4.1.1"
     prop-types "^15.5.8"
 
+react-spark-scroll-rekapi@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-spark-scroll-rekapi/-/react-spark-scroll-rekapi-4.0.0.tgz#c582eaa2b9910ac6ec2291774baeb8a34e9498a4"
+  dependencies:
+    animation-frame "^0.3.0"
+    events "^1.0.2"
+    lodash "^3.10.1"
+    react-spark-scroll "^4.0.0"
+    rekapi "^1.4.4"
+
+react-spark-scroll@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/react-spark-scroll/-/react-spark-scroll-4.0.0.tgz#be6de59951dc3b736a803f107b873ea5c1ca355d"
+  dependencies:
+    animation-frame "^0.3.0"
+    events "^1.0.2"
+    lodash "^3.10.1"
+
 react-stickynode@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/react-stickynode/-/react-stickynode-1.4.0.tgz#8ddbc64e2e6174d9836aac58c81efe5493dafc37"
@@ -4603,6 +4629,13 @@ regjsparser@^0.1.4:
   dependencies:
     jsesc "~0.5.0"
 
+rekapi@^1.4.4:
+  version "1.7.4"
+  resolved "https://registry.yarnpkg.com/rekapi/-/rekapi-1.7.4.tgz#2e984a0bd2527f2bc8df1ced8758539181cad307"
+  dependencies:
+    requirejs "2.1.10"
+    shifty "1.5.0"
+
 relateurl@0.2.x:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
@@ -4684,6 +4717,10 @@ require-uncached@^1.0.2:
   dependencies:
     caller-path "^0.1.0"
     resolve-from "^1.0.0"
+
+requirejs@2.1.10:
+  version "2.1.10"
+  resolved "https://registry.yarnpkg.com/requirejs/-/requirejs-2.1.10.tgz#1e1d7f608790e532a422c6199dad2abe15484b54"
 
 requires-port@1.x.x:
   version "1.0.0"
@@ -4844,6 +4881,10 @@ shelljs@^0.7.5:
     glob "^7.0.0"
     interpret "^1.0.0"
     rechoir "^0.6.2"
+
+shifty@1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/shifty/-/shifty-1.5.0.tgz#b4af0bfc73db3cf756a6c115fe7522c23efe40bd"
 
 signal-exit@^3.0.0:
   version "3.0.2"
