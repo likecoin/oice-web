@@ -10,7 +10,12 @@ import { closeAudioSelectionModal } from 'editor/actions/modal';
 
 @connect(store => ({
   ...store.audioSelectModal,
-  libraries: store.audioSelectModal.assetLibraryIds.map(id => store.libraries.dict[id]),
+  libraries: (
+    // prevent library is selected but neither purchased nor owned by user
+    store.audioSelectModal.assetLibraryIds
+    .filter(id => !!store.libraries.dict[id])
+    .map(id => store.libraries.dict[id])
+  ),
 }))
 export default class AudioSelectionModal extends React.Component {
   static propTypes = {

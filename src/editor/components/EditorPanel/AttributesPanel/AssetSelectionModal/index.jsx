@@ -27,7 +27,10 @@ function getStateFromProps(nextProps, prevProps = {}) {
   } = nextProps;
 
   const state = {
-    dropdownListItems: assetLibraryIds ? assetLibraryIds.map(id => libraries[id].name) : [],
+    dropdownListItems: assetLibraryIds ? (
+      // prevent library is selected but neither purchased nor owned by user
+      assetLibraryIds.filter(id => !!libraries[id]).map(id => libraries[id].name)
+    ) : [],
   };
 
   if (nextProps.open && !prevProps.open) {
