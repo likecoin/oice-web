@@ -1,8 +1,12 @@
+/* global firebase: true */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { translate } from 'react-i18next';
 
 import classNames from 'classnames';
+
+import { SparkScroll } from 'common/utils/sparkScroll';
 
 import Caption from './Caption';
 import Header from './Header';
@@ -10,78 +14,113 @@ import Header from './Header';
 import './LicenseSection.styles.scss';
 
 
-const LICENSE_PROPERTIES = [
-  'openness',
-  'tagging',
-  'approval',
-  'profitSharing',
-  'collaborative',
-];
-
-const LICENSES_TABLE = [
-  {
-    title: 'copyright',
-    highlighted: false,
-    openness: 'open.closed',
-    tagging: 'customize',
-    approval: 'caseByCase',
-    profitSharing: 'customize',
-    collaborative: 'low',
-  },
-  {
-    title: 'oiceCommons',
-    highlighted: true,
-    openness: 'open.coordinated',
-    tagging: 'customize',
-    approval: 'approveFirst',
-    profitSharing: 'yes',
-    collaborative: 'high',
-  },
-  {
-    title: 'creativeCommons',
-    highlighted: false,
-    openness: 'open.fully',
-    tagging: 'manually',
-    approval: 'no',
-    profitSharing: 'no',
-    collaborative: 'high',
-  },
-];
-
 @translate('LicenseSection')
 export default class LicenseSection extends React.Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
   }
 
-  _renderLicenseColumn = (license) => {
-    const { t } = this.props;
-    const { highlighted, title } = license;
-    const className = classNames('license-column', title, {
-      highlighted,
-    });
-    return (
-      <div key={title} className={className}>
-        <header>
-          <h2>{t(`label.${title}`)}</h2>
-        </header>
+  constructor(props) {
+    super(props);
 
-        <ul>
-          {LICENSE_PROPERTIES.map(property => (
-            <li key={property}>
-              <h3>{t(`label.${property}`)}</h3>
-              <span>{t(`label.${license[property]}`)}</span>
-            </li>
-          ))}
-        </ul>
-
-        {title === 'oiceCommons' &&
-          <Caption
-            title={t('label.oiceCommonsPolicyCaption.title')}
-            details={t('label.oiceCommonsPolicyCaption.details')}
-            isAbsolute
-          />
+    this.state = {
+      angle: 20,
+      authors: [
+        /*
+        Example of author:
+        {
+          "avatar": "",
+          "position": {
+            "row": "top",
+            "column": "left"
+          }
         }
+        */
+      ],
+    };
+  }
+
+  componentDidMount() {
+    this._fetchContent();
+  }
+
+  async _fetchContent() {
+    const content = await firebase.database()
+                                  .ref('license-section')
+                                  .once('value')
+                                  .then(snapshot => snapshot.val())
+                                  .catch(() => null);
+    if (content) this.setState(content);
+  }
+
+  _renderAuthor = ({ avatar, position, type }) => {
+    if (!(position instanceof Object)) return null;
+
+    const className = classNames('author', Object.values(position));
+
+    const { angle } = this.state;
+    const radian = (isNaN(angle) ? 20 : parseInt(angle, 10)) * (Math.PI / 180);
+    const sinAngle = Math.sin(radian);
+    const cosAngle = Math.cos(radian);
+
+    // Calculate the position of the author
+    const style = {
+      marginLeft: 50,
+      marginTop: position.row === 'middle' ? 0 : 50,
+    };
+
+    if (position.column === 'left') {
+      style.marginLeft *= -1;
+    }
+
+    if (position.row !== 'middle') {
+      style.marginLeft *= cosAngle;
+      style.marginTop *= sinAngle;
+
+      if (position.row === 'top') {
+        style.marginTop *= -1;
+      }
+    }
+
+    style.marginLeft += '%';
+    style.marginTop += '%';
+
+    const typeName = this.props.t(`oiceSingleView:credit.${type}`);
+
+    return (
+      <SparkScroll.li key={className} className={className} style={style}>
+        <SparkScroll.div
+          timeline={{
+            ease: 'easeInQuad',
+            topBottom: { opacity: 0, transform: 'scale(0)' },
+            'centerCenter-150': { opacity: 1, transform: 'scale(1)' },
+          }}
+        >
+          <div>
+            <img alt={typeName} src={avatar} />
+            <span>{typeName}</span>
+          </div>
+        </SparkScroll.div>
+      </SparkScroll.li>
+    );
+  }
+
+  _renderAuthorsRing() {
+    const { authors } = this.state;
+
+    if (!Array.isArray(authors)) return null;
+
+    return (
+      <div className="ring">
+        <SparkScroll.div
+          timeline={{
+            ease: 'easeOutQuad',
+            topBottom: { transform: 'scale(0)' },
+            'centerCenter-150': { transform: 'scale(1)' },
+          }}
+        >
+          <ul>{authors.map(this._renderAuthor)}</ul>
+        </SparkScroll.div>
       </div>
     );
   }
@@ -102,13 +141,17 @@ export default class LicenseSection extends React.Component {
           <div className="section-body">
             <div className="bg-overlay" />
 
-            {/* <div className="licenses-table">
-              <div>
-                {LICENSES_TABLE.map(this._renderLicenseColumn)}
-              </div>
-            </div> */}
+            <SparkScroll.div
+              className="credits-demo"
+              timeline={{
+                ease: 'easeOutQuad',
+                topBottom: { opacity: 0, transform: 'translateY(100px)' },
+                'centerCenter-150': { opacity: 1, transform: 'translateY(0)' },
+              }}
+            >
 
-            <div className="credits-demo">
+              {this._renderAuthorsRing()}
+
               <div className="portrait-phone">
                 <img src={screenshot} alt="oice App" />
                 <div
@@ -118,11 +161,11 @@ export default class LicenseSection extends React.Component {
               </div>
 
               <Caption
-                title={t('label.autoCreditsCaption.title')}
-                details={t('label.autoCreditsCaption.details')}
+                details={t('label.caption')}
                 isAbsolute
               />
-            </div>
+            </SparkScroll.div>
+
           </div>
 
         </div>

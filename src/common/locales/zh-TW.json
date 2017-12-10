@@ -118,38 +118,9 @@
     }
   },
   "LicenseSection": {
-    "title": "<span>鼓勵分享創意</span> <span>同時保障權益</span>",
+    "title": "<span>自動標識所有參與創作者</span>",
     "label": {
-      "copyright": "版權所有",
-      "oiceCommons": "oice授權",
-      "creativeCommons": "創用CC",
-      "no": "無",
-      "yes": "有",
-      "low": "低",
-      "high": "高",
-      "openness": "開放程度",
-      "open": {
-        "closed": "全封閉",
-        "coordinated": "協調開放",
-        "fully": "全開放"
-      },
-      "tagging": "來源標識",
-      "approval": "審批機制",
-      "profitSharing": "利益分配",
-      "collaborative": "協作效率",
-      "customize": "訂製",
-      "auto": "自動、強制",
-      "manually": "手動、自律",
-      "caseByCase": "逐次審批",
-      "approveFirst": "先信任後驗閱",
-      "oiceCommonsPolicyCaption": {
-        "title": "oice license 協議",
-        "details": "素材默認授權，保留修訂權利。"
-      },
-      "autoCreditsCaption": {
-        "title": "自動標識所有參與創作者",
-        "details": "小至一粒音符，尊重創作人每分付出。"
-      }
+      "caption": "小至一粒音符，尊重創作人每分付出。"
     }
   },
   "FeaturedStories": {
