@@ -118,38 +118,9 @@
     }
   },
   "LicenseSection": {
-    "title": "著作物の権利について",
+    "title": "<span>すべての制作者が</span><span>自動的にタグ付けされます</span>",
     "label": {
-      "copyright": "Copyright",
-      "oiceCommons": "oice license",
-      "creativeCommons": "Creative Commons",
-      "no": "なし",
-      "yes": "あり",
-      "low": "低",
-      "high": "高",
-      "openness": "オープンさ",
-      "open": {
-        "closed": "クローズド",
-        "coordinated": "ややオープン",
-        "fully": "オープン"
-      },
-      "tagging": "権利表記",
-      "approval": "使用許諾",
-      "profitSharing": "利益分配",
-      "collaborative": "共同制作のしやすさ",
-      "customize": "選択可",
-      "auto": "強制／自動",
-      "manually": "任意／手動",
-      "caseByCase": "都度許諾",
-      "approveFirst": "一括で許諾済",
-      "oiceCommonsPolicyCaption": {
-        "title": "oice license",
-        "details": "Right to use granted. Right to withdraw reserved."
-      },
-      "autoCreditsCaption": {
-        "title": "すべての制作者が自動的にタグ付けされます",
-        "details": "どんな素材でも、その制作者を尊重します。"
-      }
+      "caption": "どんな素材でも、その制作者を尊重します。"
     }
   },
   "FeaturedStories": {

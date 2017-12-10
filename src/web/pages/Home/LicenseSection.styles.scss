@@ -9,6 +9,9 @@
     background-image: linear-gradient(53deg, #83EEFF, #C3ABFD 50%, #FF9BF7);
 
     header {
+      position: relative;
+      z-index: 2;
+      
       background-color: transparent;
     }
   }
@@ -51,6 +54,7 @@
     }
 
     .ring {
+      z-index: 0;
       position: absolute;
       top: 50%;
       left: 50%;

@@ -161,8 +161,7 @@ export default class LicenseSection extends React.Component {
               </div>
 
               <Caption
-                title={t('label.autoCreditsCaption.title')}
-                details={t('label.autoCreditsCaption.details')}
+                details={t('label.caption')}
                 isAbsolute
               />
             </SparkScroll.div>

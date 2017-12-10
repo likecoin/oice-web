@@ -118,38 +118,9 @@
     }
   },
   "LicenseSection": {
-    "title": "<span>Sharing encouraged.</span> <span> Rights protected.</span>",
+    "title": "<span>Auto Attribution</span>",
     "label": {
-      "copyright": "Copyright",
-      "oiceCommons": "oice license",
-      "creativeCommons": "Creative Commons",
-      "no": "No",
-      "yes": "Yes",
-      "low": "Low",
-      "high": "High",
-      "openness": "Openness",
-      "open": {
-        "closed": "Closed",
-        "coordinated": "Open, coordinated",
-        "fully": "Fully open"
-      },
-      "tagging": "Attribution",
-      "approval": "Approval",
-      "profitSharing": "Profit sharing",
-      "collaborative": "Efficiency in collaboration",
-      "customize": "Customise",
-      "auto": "Auto, mandatory",
-      "manually": "Manual, self discipline",
-      "caseByCase": "Case by case",
-      "approveFirst": "Trust assumed",
-      "oiceCommonsPolicyCaption": {
-        "title": "oice license",
-        "details": "Right to use granted. Right to withdraw reserved."
-      },
-      "autoCreditsCaption": {
-        "title": "Auto attribution",
-        "details": "Down to a note. Respect all creators."
-      }
+      "caption": "Down to a note. Respect all creators."
     }
   },
   "FeaturedStories": {
