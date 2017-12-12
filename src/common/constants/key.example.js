@@ -37,3 +37,6 @@ export const FIREBASE_DB_URL = '';
 export const FIREBASE_PROJ_ID = '';
 export const FIREBASE_STORAGE_BUCKET = '';
 export const FIREBASE_SENDER_ID = '';
+
+export const GOOGLE_PLAY_LINK = '';
+export const APP_STORE_LINK = '';
