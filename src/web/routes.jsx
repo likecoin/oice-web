@@ -12,8 +12,10 @@ import Profile from 'web/pages/Profile';
 import UserPage from 'web/pages/User';
 import Footer from 'common/components/Footer';
 import Stripe from 'web/pages/Stripe';
-import IOSInvitation from 'web/pages/IOSInvitation';
 import Competition1718 from 'web/pages/Competition1718';
+
+import { APP_STORE_LINK } from 'common/constants/key';
+
 
 const goToEdit = () => {
   window.location.pathname = '/edit';
@@ -49,7 +51,7 @@ const routes = (
       />
       <Route path="edit" onEnter={goToEdit} />
       <Route components={Stripe} path="stripe" />
-      <Route components={IOSInvitation} path="ios" />
+      <Route path="ios" onEnter={() => { window.location.href = APP_STORE_LINK; }} />
       <Route
         components={{ children: UserPage, Footer }}
         path="user(/:id)"
