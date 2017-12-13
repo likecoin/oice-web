@@ -4,6 +4,8 @@ jobs:
     working_directory: ~/oice-web
     docker:
       - image: node:6-alpine
+    environment:
+      TERM: dumb
     steps:
       - run: apk add --no-cache curl git gzip tar
       - checkout
