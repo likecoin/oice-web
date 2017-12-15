@@ -6,7 +6,6 @@ import App from 'web/App';
 import Login from 'web/pages/Login';
 import Home from 'web/pages/Home';
 import OiceSingleView from 'web/pages/OiceSingleView';
-import Tutorial from 'web/pages/Tutorial';
 import TermsOfService from 'web/pages/TermsOfService';
 import Profile from 'web/pages/Profile';
 import UserPage from 'web/pages/User';
@@ -35,12 +34,7 @@ const routes = (
       >
         <Route path="preview" />
       </Route>
-      <Route
-        components={{ children: Tutorial, Footer }}
-        path="tutorial"
-      >
-        <Route path=":tutorialType(/:id)" />
-      </Route>
+      <Route path="tutorial" onEnter={() => window.location.href = 'https://intercom.help/oice'} />
       <Route
         components={{ children: Profile, Footer }}
         path="profile"
