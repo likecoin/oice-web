@@ -52,6 +52,7 @@ export default class IndexHTML extends React.Component {
           <meta content={meta.ogUrl} property="og:url" />
           <meta content={meta.ogImage} property="og:image" />
           <meta content={meta.ogDescription} property="og:description" />
+          <meta content={meta.ogDescription} name="description" />
           <meta content={meta.ogLocale} property="og:locale" />
           <meta content="website" property="og:type" />
           <meta content="black" name="apple-mobile-web-app-status-bar-style" />
