@@ -137,12 +137,14 @@ export default class FeaturedStories extends React.Component {
       isOicePlayerShowed: true,
       isCallForActionShowed: false,
       isSmsModalOpened: false,
+      numOfShownStories: 0,
       scrollingOffset: document.querySelector('body').scrollTop || 0,
     };
 
     branch.init(BRANCH_KEY);
 
     this.deferredHandleRestAnimation = _debounce(this.handleRestAnimation, 500);
+    this._deferredHandleStorySliderTrackResize = _debounce(this._handleStorySliderTrackResize, 500);
   }
 
   componentDidMount() {
@@ -189,7 +191,7 @@ export default class FeaturedStories extends React.Component {
       // Deferred loading of oice player for smoother animation
       this.showOicePlayerTimer = setTimeout(() => {
         this.setState({ isOicePlayerShowed: true });
-      }, 1000);
+      }, 1500);
     });
   }
 
@@ -215,6 +217,14 @@ export default class FeaturedStories extends React.Component {
 
   handleLogOnClickAppStoreIcon = () => {
     this.props.dispatch(LogActions.logClickWeb('getAppButtonAppStore'));
+  }
+
+  _handleStorySliderTrackResize = (contentRect) => {
+    const { width } = contentRect.bounds;
+    const numOfShownStories = Math.ceil((width - SLIDE_ACTIVE_WIDTH_WITH_MARGIN) / SLIDE_WIDTH_WITH_MARGIN) + (ACTIVE_STORY_INDEX * 2) - 1;
+    if (this.state.numOfShownStories !== numOfShownStories) {
+      this.setState({ numOfShownStories });
+    }
   }
 
   selectStorySlide = (index) => {
@@ -299,16 +309,33 @@ export default class FeaturedStories extends React.Component {
                   }
 
                   return (
-                    <div key={key} className="story-slider-track" style={style}>
-                      <ul>{this.state.stories.map(this.renderStorySlide)}</ul>
-                      {this.renderActiveStoryIntroWrapper()}
-                      <div className="prev-button">
-                        <span role="button" onClick={this.handleClickPreviousButton}><ArrowIcon /></span>
-                      </div>
-                      <div className="next-button">
-                        <span role="button" onClick={this.handleClickNextButton}><ArrowIcon /></span>
-                      </div>
-                    </div>
+                    <Measure bounds onResize={this._deferredHandleStorySliderTrackResize}>
+                      {({ measureRef }) => (
+                        <div
+                          ref={measureRef}
+                          key={key}
+                          className="story-slider-track"
+                          style={style}
+                        >
+                          <ul>
+                            {this.state.stories
+                              .slice(0, this.state.numOfShownStories)
+                              .map(this.renderStorySlide)}
+                          </ul>
+                          {this.renderActiveStoryIntroWrapper()}
+                          <div className="prev-button">
+                            <span role="button" onClick={this.handleClickPreviousButton}>
+                              <ArrowIcon />
+                            </span>
+                          </div>
+                          <div className="next-button">
+                            <span role="button" onClick={this.handleClickNextButton}>
+                              <ArrowIcon />
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                    </Measure>
                   );
 
                 default:
