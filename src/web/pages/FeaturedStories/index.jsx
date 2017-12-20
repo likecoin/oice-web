@@ -25,6 +25,7 @@ import OutlineButton from 'ui-elements/OutlineButton';
 import Progress from 'ui-elements/Progress';
 
 import {
+  getThumbnail,
   getOiceCdnUrlFromUuid,
   isMobileAgent,
 } from 'common/utils';
@@ -340,7 +341,7 @@ export default class FeaturedStories extends React.Component {
 
     const className = classNames('story', { active: isActive });
 
-    const coverURL = story.cover || '/static/img/oice-default-cover.jpg';
+    const coverURL = getThumbnail(story.cover) || '/static/img/oice-default-cover.jpg';
 
     return (
       <Motion
