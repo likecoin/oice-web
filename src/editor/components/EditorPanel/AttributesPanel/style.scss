@@ -1,30 +1,32 @@
 @import "../../../styles/variables";
 
 #attributes-panel {
-  width: 100%;
-  // display: flex;
-  // flex-direction: column;
   position: relative;
-  background-color: $light-gray1;
+
+  width: 100%;
+
   border-left: $border-style1;
+  background-color: $light-gray1;
 
   .save-button {
     margin: 20px;
   }
 
   hr {
-    margin: 0;
-    width: 100%;
     float: left;
+
+    width: 100%;
+    margin: 0;
   }
 }
 
 #attribute-header {
-  height: $blocks-panel-padding;
   display: flex;
-  flex-shrink: 0;
   align-items: center;
+  flex-shrink: 0;
   justify-content: space-between;
+
+  height: $blocks-panel-padding;
   padding: {
     top: 0;
     bottom: 0;
@@ -37,13 +39,16 @@
 }
 
 .attributes-form {
-  margin-top: $blocks-panel-padding;
-  overflow-y: auto;
-  height: calc(100% - #{$blocks-panel-padding});
   position: absolute;
   top: 0;
   right: 0;
+
+  overflow-y: auto;
+
   width: 100%;
+  height: calc(100% - #{$blocks-panel-padding});
+  margin-top: $blocks-panel-padding;
+  padding-bottom: padding(4);
 
   .dropdown:not(:first-child) {
     margin-top: $min-padding;
@@ -51,16 +56,19 @@
 }
 
 div.attributes-form-empty {
-  color: $dark-gray2;
-  font-size: 14px;
   margin: 20px;
+
+  color: $dark-gray2;
+
+  font-size: 14px;
 }
 
 .attribute-panel-row-group,
 .attribute-panel-row {
-  padding: $attributes-panel-padding;
   float: left;
+
   width: 100%;
+  padding: $attributes-panel-padding;
 }
 
 .attribute-panel-row-group .attribute-panel-row {
@@ -75,10 +83,12 @@ div.attributes-form-empty {
   }
 
   > h5 {
+    margin-bottom: $min-padding-narrow;
+
     color: $dark-gray2;
+
     font-size: $font-size-normal;
     font-weight: 300;
-    margin-bottom: $min-padding-narrow;
   }
 }
 
@@ -91,11 +101,13 @@ div.attributes-form-empty {
   }
 }
 
-div.option-attribute-panel {
+.option-attribute-panel {
   .option {
     display: flex;
+
     padding-top: 10px;
     padding-bottom: 3px;
+
     border-bottom: 1px solid $font-color3;
 
     .option-label {
@@ -103,6 +115,7 @@ div.option-attribute-panel {
       padding-right: 3px;
       span {
         color: $font-color2;
+
         font-size: 13px;
       }
     }
@@ -114,20 +127,23 @@ div.option-attribute-panel {
 
         > span {
           color: $font-color2;
+
           font-size: 13px;
         }
         > div.option-cross-button {
-          text-align: right;
           margin-left: auto;
+
+          text-align: right;
 
           .flat-button {
             min-height: 13px;
             padding: 0;
           }
           svg {
-            color: $font-color2;
             width: 13px;
             height: 13px;
+
+            color: $font-color2;
           }
         }
       }
@@ -135,21 +151,25 @@ div.option-attribute-panel {
   }
 }
 
-div.attribute-form-image {
+.attribute-form-image {
   .background {
     .image {
+      position: relative;
+
       width: 100%;
       padding-bottom: 100%;
-      background-repeat: no-repeat;
-      background-size:cover;
-      background-position: center center;
-      position: relative;
+
       border: $border-style1;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size:cover;
     }
     .image-meta {
       text-align: center;
-      font-size: 13px;
+
       color: $font-color3;
+
+      font-size: 13px;
     }
   }
   .option {
@@ -157,13 +177,15 @@ div.attribute-form-image {
   }
 }
 
-div.attribute-form-character-dialog {
+.attribute-form-character-dialog {
   .check-box {
     margin-top: 10px;
   }
   .image-meta {
     text-align: center;
-    font-size: 13px;
+
     color: $font-color3;
+
+    font-size: 13px;
   }
 }
