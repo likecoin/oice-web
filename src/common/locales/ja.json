@@ -1998,5 +1998,14 @@
       "copySuccess": "コピーされました",
       "copyFailure": "コピーが失敗しました。"
     }
+  },
+  "NextEpisodeModal": {
+    "label": {
+      "wantToWatchNextEpisode": "次のエピソード？",
+      "downloadForFree": "今すぐ無料でダウンロード"
+    },
+    "button": {
+      "watchInApp": "oice appで読む"
+    }
   }
 }

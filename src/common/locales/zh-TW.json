@@ -1998,5 +1998,14 @@
       "copySuccess": "成功複製到剪貼簿",
       "copyFailure": "複製失敗"
     }
+  },
+  "NextEpisodeModal": {
+    "label": {
+      "wantToWatchNextEpisode": "想看下一回？",
+      "downloadForFree": "立即免費下載"
+    },
+    "button": {
+      "watchInApp": "用 oice app 繼續觀看"
+    }
   }
 }

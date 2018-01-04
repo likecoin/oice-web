@@ -58,7 +58,7 @@ export default class SmsModal extends React.Component {
 
     // Props
     oice: PropTypes.object.isRequired,
-    isCloseButtonShowed: PropTypes.bool,
+    showCloseButton: PropTypes.bool,
     isEndedPlaying: PropTypes.bool,
     isPreview: PropTypes.bool,
     open: PropTypes.bool,
@@ -66,7 +66,7 @@ export default class SmsModal extends React.Component {
   }
 
   static defaultProps = {
-    isCloseButtonShowed: true,
+    showCloseButton: true,
     isEndedPlaying: false,
     isPreview: false,
     onToggle: undefined,
@@ -180,12 +180,7 @@ export default class SmsModal extends React.Component {
 
   sendSMS = (phone) => {
     const { dispatch, t, oice, isEndedPlaying, isPreview } = this.props;
-    const deepLinkOice = isEndedPlaying ? {
-      ...this.props.oice.nextEpisode,
-      // add required og information
-      storyName: oice.storyName,
-      language: oice.language,
-    } : oice;
+    const deepLinkOice = isEndedPlaying ? OiceSingleViewUtils.getNextEpisodeOice(oice) : oice;
     const linkData = OiceSingleViewUtils.getDeepLinkObject({
       channel: 'SMS',
       data: {
@@ -280,7 +275,7 @@ export default class SmsModal extends React.Component {
   }
 
   render() {
-    const { t, isEndedPlaying, isCloseButtonShowed, open, onToggle } = this.props;
+    const { t, isEndedPlaying, showCloseButton, open, onToggle } = this.props;
     const { isShowSMS } = this.state;
     const backButton = (
       <FlatButton
@@ -293,9 +288,9 @@ export default class SmsModal extends React.Component {
         id="sms-modal"
         open={open}
         width={592}
-        onClickOutside={isCloseButtonShowed ? onToggle : null}
+        onClickOutside={showCloseButton ? onToggle : null}
       >
-        <Modal.Header onClickCloseButton={isCloseButtonShowed ? onToggle : null}>
+        <Modal.Header onClickCloseButton={showCloseButton ? onToggle : null}>
           {isEndedPlaying ? t('label.downloadToContinue') : t('label.downloadForBetterExperience') }
         </Modal.Header>
         <Modal.Body padding={false}>

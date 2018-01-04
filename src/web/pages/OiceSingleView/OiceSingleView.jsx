@@ -41,6 +41,7 @@ import {
 
 import AppIcon from './AppIcon';
 import DeepView from './DeepView';
+import NextEpisodeModal from './NextEpisodeModal';
 import SmsModal from './SmsModal';
 
 import * as Actions from './OiceSingleView.actions';
@@ -58,6 +59,8 @@ export const CREDITS_KEY = [
   'bgm',
   'se',
 ];
+
+const isMobile = isMobileAgent();
 
 @translate(['oiceSingleView'])
 @connect(store => ({
@@ -91,10 +94,10 @@ export default class OiceSingleView extends React.Component {
       isEndedPlaying: false,
       isPreview: /preview\/?$/.test(window.location.pathname),
       language: _get(this.props, 'location.query.lang'),
-      mobile: false,
+      isMobileSize: false,
       oicePlayerSize: 0,
       viewUrl: null,
-      smsModalOpen: false,
+      callToActionModalOpen: false,
     };
   }
 
@@ -161,7 +164,7 @@ export default class OiceSingleView extends React.Component {
       this.props.dispatch(LogActions.logReadOice(this.props.oice.uuid));
       this.setState({
         isEndedPlaying: true,
-        smsModalOpen: true,
+        callToActionModalOpen: true,
       });
     }
   }
@@ -193,15 +196,15 @@ export default class OiceSingleView extends React.Component {
     }
   }
 
-  handleToggleSmsModal = () => {
-    const smsModalOpen = !this.state.smsModalOpen;
-    if (!smsModalOpen) {
+  handleToggleCallToActionModal = () => {
+    const callToActionModalOpen = !this.state.callToActionModalOpen;
+    if (!callToActionModalOpen) {
       const { dispatch, oice } = this.props;
       dispatch(LogActions.logClickWeb('downloadOiceApp', {
         oiceUuid: oice.uuid,
       }));
     }
-    this.setState({ smsModalOpen });
+    this.setState({ callToActionModalOpen });
   }
 
   handleScreenCaptureButtonClick = () => {
@@ -235,23 +238,23 @@ export default class OiceSingleView extends React.Component {
     const paddingLeft = getIntegerFromPropertyValue(container.firstChild, 'padding-left');
     const sidebarWidth = sidebar.clientWidth;
     const containerWidth = container.firstChild.clientWidth;
-    const mobile = containerWidth <= 550; // Need to update CSS when changing this value
+    const isMobileSize = containerWidth <= 768;
 
     const maxOicePlayerHeight = window.innerHeight - paddingTop - (marginTop * 2);
-    const maxOicePlayerWidth = containerWidth - (mobile ? 0 : sidebarWidth) - (paddingLeft * 2);
+    const maxOicePlayerWidth = containerWidth - (isMobileSize ? 0 : sidebarWidth) - (paddingLeft * 2);
 
     let oicePlayerSize = 0;
-    if (mobile) {
+    if (isMobileSize) {
       oicePlayerSize = maxOicePlayerWidth;
     } else if (maxOicePlayerWidth < maxOicePlayerHeight) {
       oicePlayerSize = maxOicePlayerWidth;
     } else {
       oicePlayerSize = maxOicePlayerHeight;
     }
-    const marginLeft = mobile ? 0 : paddingLeft + ((maxOicePlayerWidth - oicePlayerSize) / 2);
+    const marginLeft = isMobileSize ? 0 : paddingLeft + ((maxOicePlayerWidth - oicePlayerSize) / 2);
 
     if (prevContainerWidth !== containerWidth) {
-      this.setState({ oicePlayerSize, containerWidth, marginLeft, mobile });
+      this.setState({ oicePlayerSize, containerWidth, marginLeft, isMobileSize });
     }
 
     // XXX: Hard code, IE10+
@@ -358,26 +361,26 @@ export default class OiceSingleView extends React.Component {
       isEndedPlaying,
       isPreview,
       marginLeft,
-      mobile,
+      isMobileSize,
       oicePlayerSize,
-      smsModalOpen,
+      callToActionModalOpen,
     } = this.state;
 
     const style = {
       oicePlayerWrapper: {
-        position: mobile ? 'relative' : 'fixed',
+        position: isMobileSize ? 'relative' : 'fixed',
         width: oicePlayerSize,
         height: oicePlayerSize,
         left: marginLeft,
       },
       sidebar: {
-        height: mobile ? null : oicePlayerSize,
-        marginLeft: mobile ? null : oicePlayerSize,
+        height: isMobileSize ? null : oicePlayerSize,
+        marginLeft: isMobileSize ? null : oicePlayerSize,
       },
     };
 
     const containerClassName = classNames('oice-single-view', {
-      mobile,
+      mobile: isMobileSize,
     });
 
     const oiceChapter = t('label.episode', {
@@ -455,23 +458,31 @@ export default class OiceSingleView extends React.Component {
               <OutlineButton
                 color="blue"
                 label={t('label.downloadForBetterExperience')}
-                onClick={this.handleToggleSmsModal}
+                onClick={this.handleToggleCallToActionModal}
               />
-              <hr />
-              <div className="qr-code">
+              {!isMobileSize && <hr />}
+              {!isMobileSize && <div className="qr-code">
                 <QRCode value={deepLink} />
-              </div>
+              </div>}
             </div>
           </div>
         </div>
-        {oice &&
+        {oice && !isMobile &&
           <SmsModal
-            isCloseButtonShowed={!isEndedPlaying}
             isEndedPlaying={isEndedPlaying}
             isPreview={isPreview}
             oice={oice}
-            open={smsModalOpen}
-            onToggle={this.handleToggleSmsModal}
+            open={callToActionModalOpen}
+            showCloseButton={!isEndedPlaying}
+            onToggle={this.handleToggleCallToActionModal}
+          />
+        }
+        {oice && isMobile &&
+          <NextEpisodeModal
+            oice={oice}
+            open={callToActionModalOpen}
+            isEndedPlaying={isEndedPlaying}
+            onToggle={this.handleToggleCallToActionModal}
           />
         }
       </Container>
@@ -481,13 +492,7 @@ export default class OiceSingleView extends React.Component {
   render() {
     const { oice } = this.props;
     if (!oice) return <LoadingScreen />;
-    if (!isMobileAgent()) {
-      return this.renderOiceSingleView();
-    }
-    return (
-      <DeepView
-        oice={oice}
-      />
-    );
+
+    return this.renderOiceSingleView();
   }
 }
