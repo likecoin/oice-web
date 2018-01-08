@@ -97,11 +97,19 @@ server.get('*', (req, res) => {
         const story = { ...props.story };
         const library = { ...props.library };
         const user = { ...props.user };
+        const competition1718 = { ...props.competition1718 };
 
         const isEditor = props.module === 'editor';
         const isAssetLibrary = props.module === 'asset-library';
 
-        const title = getHTMLTitle(t, oice.ogTitle || oice.name || story.name || library.name || user.displayName, props.module);
+        const title = getHTMLTitle(t,
+          oice.ogTitle ||
+          oice.name ||
+          story.name ||
+          library.name ||
+          user.displayName ||
+          competition1718.title,
+          props.module);
 
         const viewport = classNames(
           `width=${isAssetLibrary || isEditor ? '1024' : 'device-width'},`,
@@ -123,6 +131,8 @@ server.get('*', (req, res) => {
           ogImage = `${baseURL}/static/img/oice-default-cover.jpg`;
         } else if (user.avatar) {
           ogImage = user.avatar;
+        } else if (competition1718.ogImage) {
+          ogImage = competition1718.ogImage;
         }
 
         const ogDescription = (
@@ -131,9 +141,10 @@ server.get('*', (req, res) => {
           story.description ||
           library.description ||
           user.description ||
+          competition1718.description ||
           t('site:description')
         );
-        const ogLocale = (oice.locale || req.i18n.language).replace('-', '_'); // Facebook requires underscore
+        const ogLocale = (oice.locale || competition1718.locale || req.i18n.language).replace('-', '_'); // Facebook requires underscore
         const ogUrl = defaultOg.url;
 
         const meta = {
@@ -144,6 +155,8 @@ server.get('*', (req, res) => {
           title,
           viewport,
         };
+
+        console.log('meta %o', meta);
 
         const htmlProps = {
           meta,
@@ -205,6 +218,13 @@ server.get('*', (req, res) => {
             res.status(404).send('User Not Found');
           });
         }
+      } else if (isPathStartWith('competition1718')) {
+        props.competition1718 = {
+          ogImage: 'https://firebasestorage.googleapis.com/v0/b/api-project-82698378.appspot.com/o/competition1718%2Fbanner.jpg?alt=media&token=ec08ab47-3dac-44b5-a50a-cb3b420bf9b2',
+          description: '第一屆「我自由我導」視覺小說創作比賽共有五十一份參賽作品，全部都列出在比賽專頁上了。快來欣賞這些作品的精彩內容吧，免費的喔！',
+          title: '第一屆「我自由我導」視覺小說創作比賽－參賽作品',
+          locale: 'zh-HK',
+        };
       }
 
       res.status(200).send(renderHTML(props));
