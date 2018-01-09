@@ -1,4 +1,8 @@
+/* global branch: true */
+
 import _get from 'lodash/get';
+
+import i18n from 'common/utils/i18n';
 
 import {
   DOMAIN_URL,
@@ -10,7 +14,16 @@ export function getDesktopURL(uuid, language) {
   return `${DOMAIN_URL}/story/${uuid}?lang=${language}`;
 }
 
-export function getDeepLinkObject({ t, channel, oice, data = {} }) {
+export function getNextEpisodeOice(oice) {
+  return {
+    ...oice.nextEpisode,
+    // add required og information
+    storyName: oice.storyName,
+    language: oice.language,
+  };
+}
+
+export function getDeepLinkObject({ channel, oice, data = {} }) {
   const {
     image,
     ogImage,
@@ -27,10 +40,11 @@ export function getDeepLinkObject({ t, channel, oice, data = {} }) {
     _get(image, 'button') ||
     `${DOMAIN_URL}/static/img/oice-default-cover.jpg`
   );
-  const $og_description = storyDescription || ogDescription || description || t('site:description');
+  const $og_description = storyDescription || ogDescription || description || i18n.t('site:description');
   const $og_title = `${storyName}: ${name}`;
   const language = oice.language;
   const desktopUrl = getDesktopURL(uuid, language);
+
   return ({
     channel,
     data: {
@@ -46,4 +60,19 @@ export function getDeepLinkObject({ t, channel, oice, data = {} }) {
       ...data,
     },
   });
+}
+
+export function initializeDeepView({ oice, data = {} }) {
+  // Turn page to a deep view
+  branch.deepview(
+    // get deep link data
+    getDeepLinkObject({
+      channel: 'deepviewButton',
+      data: {
+        referrer2: document.referrer,
+        ...data,
+      },
+      oice,
+    }),
+  );
 }

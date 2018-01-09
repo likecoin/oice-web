@@ -1998,5 +1998,14 @@
       "copySuccess": "Copied to the clipboard successfully",
       "copyFailure": "Copy was unsuccessful."
     }
+  },
+  "NextEpisodeModal": {
+    "label": {
+      "wantToWatchNextEpisode": "Next episode?",
+      "downloadForFree": "Download now for FREE"
+    },
+    "button": {
+      "watchInApp": "Read it by oice app"
+    }
   }
 }

@@ -10,26 +10,11 @@ import Avatar from 'ui-elements/Avatar';
 
 import { getThumbnail } from 'common/utils';
 import { BRANCH_KEY } from 'common/constants/branch';
-import * as OiceSingleViewUtils from './utils';
+import { initializeDeepView } from './utils';
 
 
 import './DeepView.style.scss';
 
-function initializeDeepView({ oice, t, data = {} }) {
-  // Turn page to a deep view
-  branch.deepview(
-    // get deep link data
-    OiceSingleViewUtils.getDeepLinkObject({
-      channel: 'deepviewButton',
-      data: {
-        referrer2: document.referrer,
-        ...data,
-      },
-      oice,
-      t,
-    }),
-  );
-}
 
 @translate('oiceSingleView')
 export default class DeepView extends React.Component {

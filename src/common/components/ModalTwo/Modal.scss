@@ -127,14 +127,14 @@ $modal-footer-items-inter-width: 10px;
 }
 
 @keyframes modal-wrapper-move {
-    from {
-      margin-top: padding(5.5);
+  from {
+    transform: translateY(padding(5.5));
 
-      opacity: 0;
-    }
-    to {
-      margin-top: padding(10/3);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
 
-      opacity: 1;
-    }
+    opacity: 1;
+  }
 }
