@@ -142,9 +142,6 @@ export default class FeaturedStories extends React.Component {
     };
 
     branch.init(BRANCH_KEY);
-
-    this.deferredHandleRestAnimation = _debounce(this.handleRestAnimation, 500);
-    this._deferredHandleStorySliderTrackResize = _debounce(this._handleStorySliderTrackResize, 500);
   }
 
   componentDidMount() {
@@ -195,6 +192,8 @@ export default class FeaturedStories extends React.Component {
     });
   }
 
+  deferredHandleRestAnimation = _debounce(this.handleRestAnimation, 500);
+
   handleOiceAction = ({ data }) => {
     if (typeof data !== 'string') return;
     try {
@@ -221,11 +220,13 @@ export default class FeaturedStories extends React.Component {
 
   _handleStorySliderTrackResize = (contentRect) => {
     const { width } = contentRect.bounds;
-    const numOfShownStories = Math.ceil((width - SLIDE_ACTIVE_WIDTH_WITH_MARGIN) / SLIDE_WIDTH_WITH_MARGIN) + (ACTIVE_STORY_INDEX * 2) - 1;
+    const numOfShownStories = (Math.ceil((width - SLIDE_ACTIVE_WIDTH_WITH_MARGIN) / SLIDE_WIDTH_WITH_MARGIN) * 2 - 1) + (ACTIVE_STORY_INDEX * 2) - 1;
     if (this.state.numOfShownStories !== numOfShownStories) {
       this.setState({ numOfShownStories });
     }
   }
+
+  _deferredHandleStorySliderTrackResize = _debounce(this._handleStorySliderTrackResize, 500);
 
   selectStorySlide = (index) => {
     this.clearShowOicePlayerTimer();
