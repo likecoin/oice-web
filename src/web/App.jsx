@@ -21,7 +21,10 @@ import {
 
 import './styles/app.scss';
 
+
 const isIOS = /(iPhone|iPad)/i.test(navigator.userAgent);
+const isSingleView = () => /(story\/.*|terms$)/.test(window.location.pathname);
+
 
 @connect(store => ({
   user: store.user,
@@ -37,7 +40,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(UserAction.authenticate());
-    IntercomUtils.boot();
+    if (!isSingleView()) IntercomUtils.boot();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -55,10 +58,9 @@ export default class App extends React.Component {
   }
 
   render() {
-    const isSingleView = /(story\/\.*|terms$)/.test(window.location.pathname);
     return (
       <div id="web">
-        {!isSingleView && (
+        {!isSingleView() && (
           <NavBar id="web-navbar" user={this.props.user} fixed fluid />
         )}
         {this.props.user.isAuthenticated && this.props.children}
