@@ -207,6 +207,15 @@ export default class OiceSingleView extends React.Component {
     this.setState({ callToActionModalOpen });
   }
 
+  handleCTA = () => {
+    console.log('Hi');
+    const { oice } = this.props;
+    OiceSingleViewUtils.initializeDeepView({
+      oice: this.state.isEndedPlaying ? OiceSingleViewUtils.getNextEpisodeOice(oice) : oice,
+    });
+    branch.deepviewCta();
+  }
+
   handleScreenCaptureButtonClick = () => {
     this.postOiceAction({ type: 'oice.screenCapture' });
   }
@@ -401,6 +410,14 @@ export default class OiceSingleView extends React.Component {
     });
     const deepLink = `${BRANCH_URL}?${query}`;
 
+    const oiceDetailsClass = classNames('oice-details', {
+      extended: isMobile,
+    });
+
+    const getAppClass = classNames('get-app', {
+      sticky: isMobile,
+    });
+
     return (
       <Container
         ref={ref => this.container = ref}
@@ -420,7 +437,7 @@ export default class OiceSingleView extends React.Component {
           className="oice-single-view-sidebar"
           style={{ ...style.sidebar }}
         >
-          <div className="oice-details">
+          <div className={oiceDetailsClass}>
             <div className="oice-header">
               <div className="oice-chapter">
                 {`${oice.storyName} ${oiceChapter}`}
@@ -452,14 +469,16 @@ export default class OiceSingleView extends React.Component {
                 </ExpansionPanel.Content>
               </ExpansionPanel>
             }
-            {credits && !isPreview && <hr />}
-            <div className="get-app">
-              <AppIcon />
-              <OutlineButton
-                color="blue"
-                label={t('label.downloadForBetterExperience')}
-                onClick={this.handleToggleCallToActionModal}
-              />
+            {credits && !isPreview && !isMobile && <hr />}
+            <div className={getAppClass}>
+              <div className="cta-banner">
+                <AppIcon />
+                <OutlineButton
+                  color="blue"
+                  label={t('label.downloadForBetterExperience')}
+                  onClick={this.handleCTA}
+                />
+              </div>
               {!isMobileSize && <hr />}
               {!isMobileSize && <div className="qr-code">
                 <QRCode value={deepLink} />
