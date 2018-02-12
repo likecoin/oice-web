@@ -2003,8 +2003,7 @@
   },
   "NextEpisodeModal": {
     "label": {
-      "wantToWatchNextEpisode": "次のエピソード？",
-      "downloadForFree": "今すぐ無料でダウンロード"
+      "wantToWatchNextEpisode": "次のエピソード？"
     },
     "button": {
       "watchInApp": "oice appで読む"

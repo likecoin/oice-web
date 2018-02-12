@@ -101,7 +101,6 @@ export default class NextEpisodeModal extends React.Component {
             <div className="button" onClick={this.handleCTA}>
               {t('button.watchInApp')}
             </div>
-            <p onClick={this.handleCTA}>{t('label.downloadForFree')}</p>
           </div>
         </Modal.Body>
       </Modal>

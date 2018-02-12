@@ -2003,8 +2003,7 @@
   },
   "NextEpisodeModal": {
     "label": {
-      "wantToWatchNextEpisode": "想看下一回？",
-      "downloadForFree": "立即免費下載"
+      "wantToWatchNextEpisode": "想看下一回？"
     },
     "button": {
       "watchInApp": "用 oice app 繼續觀看"
