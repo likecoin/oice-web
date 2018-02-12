@@ -280,7 +280,8 @@
         "displayName": "ユーザー名",
         "description": "自己紹介",
         "emailAddress": "アカウント",
-        "username": "ユーザーネーム"
+        "username": "ユーザーネーム",
+        "likeCoinId": "LikeCoin ID"
       },
       "button": {
         "editProfilePicture": "プロフィール写真を変更",
@@ -1081,7 +1082,8 @@
     "ERR_USERNAME_CAN_ONLY_START_WITH_LETTER": "Username must start with English letter",
     "ERR_USERNAME_CONTAINS_INVALID_CHARACTER": "無効な文字が含まれています",
     "ERR_USERNAME_NOT_UNIQUE": "このユーザーネームは選択できません",
-    "ERR_USERNAME_IS_A_NUMBER": "数字だけにすることはできません"
+    "ERR_USERNAME_IS_A_NUMBER": "数字だけにすることはできません",
+    "ERR_LIKE_COIN_ID_CONTAINS_INVALID_CHARACTER": "無効な文字が含まれています"
   },
   "general": {
     "save": "保存",
