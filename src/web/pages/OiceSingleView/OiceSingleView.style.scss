@@ -158,6 +158,7 @@ $arrow-icon-size: 14px;
 
       hr {
         margin: 0;
+        margin-top: 16px;
 
         opacity: 0.8;
         border-top: $border-style4;
@@ -192,7 +193,7 @@ $arrow-icon-size: 14px;
             width: 48px;
             height: auto;
 
-            border-radius: 22%;
+            border-radius: 24%;
             box-shadow: 2px 4px 7px 0 rgba(0, 0, 0, 0.3);
           }
         }
