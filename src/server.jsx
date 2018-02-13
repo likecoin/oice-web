@@ -63,10 +63,24 @@ if (DEBUG) {
   }));
 }
 
+const WHITE_LIST_SCRIPT_SRC = [
+  'cloud.oice.com',
+  'oicetest.glorychronicle.com',
+  'cdn.branch.io cdnjs.cloudflare.com',
+  'connect.facebook.net',
+  'js.intercomcdn.com',
+  'use.typekit.com',
+  'www.facebook.com',
+  'www.google-analytics.com',
+  'www.googletagmanager.com',
+  'www.gstatic.com',
+];
+
 server.use((req, res, next) => {
   res.setHeader('X-Frame-Options', 'DENY');
   res.setHeader('X-XSS-Protection', '1; mode=block');
   res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('Content-Security-Policy', `script-src 'self' ${WHITE_LIST_SCRIPT_SRC.join(' ')}`);
   next();
 });
 
