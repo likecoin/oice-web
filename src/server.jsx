@@ -64,12 +64,15 @@ if (DEBUG) {
 }
 
 const WHITE_LIST_SCRIPT_SRC = [
-  'cloud.oice.com',
-  'oicetest.glorychronicle.com',
+  'app.link',
   'cdn.branch.io cdnjs.cloudflare.com',
+  'cloud.oice.com',
   'connect.facebook.net',
+  'geoip-db.com',
   'js.intercomcdn.com',
-  'use.typekit.com',
+  'oicetest.glorychronicle.com',
+  'use.typekit.net',
+  'widget.intercom.io',
   'www.facebook.com',
   'www.google-analytics.com',
   'www.googletagmanager.com',
