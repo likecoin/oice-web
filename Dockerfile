@@ -1,14 +1,15 @@
 FROM node:6-alpine
 RUN mkdir /app
 WORKDIR /app
-ADD package.json /app/package.json
+RUN npm uninstall npm -g && yarn global add npm@5
+COPY package.json package-lock.json /app/
 RUN cd /app && apk add --no-cache --virtual .build-deps \
     make \
     gcc \
     git \
     g++ \
     python \
-    && yarn && apk del .build-deps
+    && npm install && apk del .build-deps
 ENV OICE_DEV 1
 COPY [ ".babelrc", ".eslintrc", "index.js", "package.json", "webpack.config.js", "/app/" ]
 COPY dist/ /app/dist/
