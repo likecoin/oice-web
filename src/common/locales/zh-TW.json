@@ -1072,6 +1072,7 @@
     "ERR_IMPORT_SCRIPT_USING_UNDECLARED_CHARACTER": "使用未在<declaration>定義的角色",
     "ERR_IMPORT_SCRIPT_WAIT_TIME_IS_NOT_AN_INTEGER": "等待時間並非數字",
     "ERR_LIBRARY_NOT_FOR_SALE": "你所訪問的素材庫尚未公開",
+    "ERR_LIBRARY_PURCHASE_FAILURE": "購買素材庫時出現錯誤，請聯絡我們",
     "ERR_NOT_POSSIBLE_PHONE_NUMBER": "請輸入正確的電話號碼",
     "ERR_NOT_MOBILE_PHONE_NUMBER": "請輸入手機號碼",
     "ERR_TESTFLIGHT_INVALID_TESTER_EMAIL": "電郵地址不正確",

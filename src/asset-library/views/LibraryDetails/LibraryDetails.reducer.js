@@ -122,10 +122,15 @@ function handleWillPurchaseLibrary(state) {
 }
 
 function handleDidPurchaseLibrary(state, { payload }) {
-  return update(state, {
-    library: { $set: payload },
+  const newState = {
     purchasing: { $set: false },
-  });
+  };
+
+  if (payload) {
+    newState.library = { $set: payload };
+  }
+
+  return update(state, newState);
 }
 
 function handleUpdatedLibraryAssetCount(state, { payload }) {
