@@ -1072,6 +1072,7 @@
     "ERR_IMPORT_SCRIPT_USING_UNDECLARED_CHARACTER": "キャラを使用する前に、<declaration>の記述が必要です",
     "ERR_IMPORT_SCRIPT_WAIT_TIME_IS_NOT_AN_INTEGER": "「ウェイト時間」に非数字文字を記入した",
     "ERR_LIBRARY_NOT_FOR_SALE": "未公開素材コレクションをアクセスした",
+    "ERR_LIBRARY_PURCHASE_FAILURE": "素材コレクションの購入中にエラーが発生しました。お問い合わせください",
     "ERR_NOT_POSSIBLE_PHONE_NUMBER": "正しい電話番号を入力してください",
     "ERR_NOT_MOBILE_PHONE_NUMBER": "携帯電話番号を入力してください",
     "ERR_TESTFLIGHT_INVALID_TESTER_EMAIL": "無効なメール",

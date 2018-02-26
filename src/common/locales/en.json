@@ -1072,6 +1072,7 @@
     "ERR_IMPORT_SCRIPT_USING_UNDECLARED_CHARACTER": "Using a character not defined in the <declaration> section",
     "ERR_IMPORT_SCRIPT_WAIT_TIME_IS_NOT_AN_INTEGER": "The wait time is not an integer",
     "ERR_LIBRARY_NOT_FOR_SALE": "The library you visited is not avalible to the public",
+    "ERR_LIBRARY_PURCHASE_FAILURE": "An error occurred while purchasing the asset library. Please contact us.",
     "ERR_NOT_POSSIBLE_PHONE_NUMBER": "Please enter a valid phone number",
     "ERR_NOT_MOBILE_PHONE_NUMBER": "Please enter a phone number",
     "ERR_TESTFLIGHT_INVALID_TESTER_EMAIL": "Invalid email",

@@ -119,7 +119,13 @@ export const purchaseLibrary = (id, token) => (dispatch, getState) => {
         }
       }
       dispatch(LibraryDashboardActions.fetchLibraries([LIBRARY_TYPE.SELECTED, LIBRARY_TYPE.UNSELECTED]));
-    })
+    }).catch((error) => {
+      dispatch(UserAction.updateUser({ hasPaymentInfo: false }));
+      dispatch(purchaseLibraryEnd());
+      throw error;
+    }),
+    null,
+    ['ERR_LIBRARY_PURCHASE_FAILURE'],
   );
 };
 
