@@ -23,7 +23,6 @@ import {
   BASIC_INFORMATION_LEFT_ITEMS,
 } from '../Profile.constants';
 
-import '../style.scss';
 
 const DEFERRED_USERNAME_VALIDATION_DURATION = 800; // in ms
 

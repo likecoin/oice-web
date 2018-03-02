@@ -7,7 +7,8 @@ import StripeCheckout from 'react-stripe-checkout';
 import OutlineButton from 'ui-elements/OutlineButton';
 import { STRIPE_KEY } from 'common/constants/stripe';
 
-import * as Actions from './Profile.actions';
+import * as Actions from '../Profile.actions';
+
 
 @connect()
 @translate('checkout')

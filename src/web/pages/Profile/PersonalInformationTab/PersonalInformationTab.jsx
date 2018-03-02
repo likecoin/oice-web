@@ -11,8 +11,6 @@ import ExternalLinkPanel from './ExternalLinkPanel';
 
 import * as Actions from '../Profile.actions';
 
-import '../style.scss';
-
 
 @connect(store => ({
   user: store.Profile.userProfile,
