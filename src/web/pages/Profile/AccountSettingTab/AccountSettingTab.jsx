@@ -31,6 +31,7 @@ import { showPaymentInProfile } from 'common/utils/auth';
 import { isNormalUser } from 'common/utils/user';
 
 import OiceCheckout from './OiceCheckout';
+import LikeCoinIntegrationPanel from './LikeCoinIntegrationPanel';
 import ProfilePanel from '../ProfilePanel';
 
 import { PROFILE_ACTION } from '../Profile.constants';
@@ -255,6 +256,7 @@ export default class AccountSettingTab extends React.Component {
     return (
       <div id="account-setting-container">
         {this.renderAccountInfoPanel(user)}
+        <LikeCoinIntegrationPanel />
         {this.renderLanguageSettingPanel(user)}
         {this.renderReceivePaymentSetting(user)}
       </div>

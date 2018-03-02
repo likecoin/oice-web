@@ -175,4 +175,10 @@ export default handleActions({
       },
     })
   ),
+  [Actions.connectLikeCoinEnd]: (state, { payload }) => {
+    if (!payload.user) return state;
+    return update(state, {
+      userProfile: { $set: payload.user },
+    });
+  },
 }, initialState);

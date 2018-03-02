@@ -320,6 +320,13 @@
         "disconnectStripe": "解除連接"
       }
     },
+    "LikeCoinIntegrationPanel": {
+      "title": "LikeCoin",
+      "button": {
+        "register": "註冊",
+        "login": "登入"
+      }
+    },
     "seekingSubscriptionMessage": {
       "_title": "訂閱訊息",
       "buttonName": "編輯"
@@ -1084,7 +1091,12 @@
     "ERR_USERNAME_CONTAINS_INVALID_CHARACTER": "用戶名稱含有無效字符",
     "ERR_USERNAME_NOT_UNIQUE": "此用戶名稱已有人使用",
     "ERR_USERNAME_IS_A_NUMBER": "用戶名稱不得全部使用數字",
-    "ERR_LIKE_COIN_ID_CONTAINS_INVALID_CHARACTER": "LikeCoin ID 含有無效字符"
+    "ERR_LIKE_COIN_ID_CONTAINS_INVALID_CHARACTER": "LikeCoin ID 含有無效字符",
+    "ERR_LIKECOIN_CONNECT_INVALID_ID": "LikeCoin ID無效",
+    "ERR_LIKECOIN_CONNECT_INVALID_ADDRESS": "此錢包地址尚未申請LikeCoin ID",
+    "ERR_LIKECOIN_CONNECT_MISSING_PARAMS": "LikeCoin ID綁定發生錯誤",
+    "ERR_LIKECOIN_CONNECT_DUPLICATED": "此LikeCoin ID已被綁定",
+    "ERR_LIKECOIN_CONNECT_ALREADY": "不能綁定到另一個LikeCoin ID"
   },
   "general": {
     "save": "儲存",

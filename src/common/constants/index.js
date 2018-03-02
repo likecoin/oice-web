@@ -13,6 +13,8 @@ import {
     IOS_NAME,
     INTERCOM_APP_ID_PROD,
     INTERCOM_APP_ID_TEST,
+    LIKECOIN_URL_TEST,
+    LIKECOIN_URL_PROD,
 } from './key';
 
 import packageJSON from '../../../package.json';
@@ -57,5 +59,7 @@ export const IOS_APP = {
 export const IS_DEV_MODE = !FIREBASE_API_KEY;
 
 export const INTERCOM_APP_ID = SRV_ENV === 'production' ? INTERCOM_APP_ID_PROD : INTERCOM_APP_ID_TEST;
+
+export const LIKECOIN_URL = SRV_ENV === 'production' ? LIKECOIN_URL_PROD : LIKECOIN_URL_TEST;
 
 export const PLAY_STORE_URL = `https://play.google.com/store/apps/details?id=${ANDROID_APP.PACKAGE}`;

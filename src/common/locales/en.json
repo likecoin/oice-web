@@ -320,6 +320,13 @@
         "disconnectStripe": "Unlink Account"
       }
     },
+    "LikeCoinIntegrationPanel": {
+      "title": "LikeCoin",
+      "button": {
+        "register": "Register",
+        "login": "Login"
+      }
+    },
     "seekingSubscriptionMessage": {
       "_title": "Subscription Message",
       "buttonName": "Edit"
@@ -1084,7 +1091,12 @@
     "ERR_USERNAME_CONTAINS_INVALID_CHARACTER": "Username contains invalid character",
     "ERR_USERNAME_NOT_UNIQUE": "Username is not available",
     "ERR_USERNAME_IS_A_NUMBER": "Username cannot be all numbers",
-    "ERR_LIKE_COIN_ID_CONTAINS_INVALID_CHARACTER": "LikeCoin ID contains invalid character"
+    "ERR_LIKE_COIN_ID_CONTAINS_INVALID_CHARACTER": "LikeCoin ID contains invalid character",
+    "ERR_LIKECOIN_CONNECT_INVALID_ID": "LikeCoin ID is invalid",
+    "ERR_LIKECOIN_CONNECT_INVALID_ADDRESS": "This wallet address is not register with LikeCoin ID",
+    "ERR_LIKECOIN_CONNECT_MISSING_PARAMS": "LikeCoin binding is failed",
+    "ERR_LIKECOIN_CONNECT_DUPLICATED": "This LikeCoin ID is already bound by other account",
+    "ERR_LIKECOIN_CONNECT_ALREADY": "You cannot bind different LikeCoin ID"
   },
   "general": {
     "save": "Save",

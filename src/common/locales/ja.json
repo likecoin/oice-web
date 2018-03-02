@@ -320,6 +320,13 @@
         "disconnectStripe": "接続の解除"
       }
     },
+    "LikeCoinIntegrationPanel": {
+      "title": "LikeCoin",
+      "button": {
+        "register": "登録",
+        "login": "ログイン"
+      }
+    },
     "seekingSubscriptionMessage": {
       "_title": "購読メッセージ",
       "buttonName": "変更"
@@ -1084,7 +1091,12 @@
     "ERR_USERNAME_CONTAINS_INVALID_CHARACTER": "無効な文字が含まれています",
     "ERR_USERNAME_NOT_UNIQUE": "このユーザーネームは選択できません",
     "ERR_USERNAME_IS_A_NUMBER": "数字だけにすることはできません",
-    "ERR_LIKE_COIN_ID_CONTAINS_INVALID_CHARACTER": "無効な文字が含まれています"
+    "ERR_LIKE_COIN_ID_CONTAINS_INVALID_CHARACTER": "無効な文字が含まれています",
+    "ERR_LIKECOIN_CONNECT_INVALID_ID": "LikeCoin ID無効",
+    "ERR_LIKECOIN_CONNECT_INVALID_ADDRESS": "このウォレットのアドレスはLikeCoin IDにまだ適用されていません",
+    "ERR_LIKECOIN_CONNECT_MISSING_PARAMS": "LikeCoin IDバインドでエラーが発生しました",
+    "ERR_LIKECOIN_CONNECT_DUPLICATED": "このLikeCoin IDは既にバインドされています",
+    "ERR_LIKECOIN_CONNECT_ALREADY": "他のLikeCoin IDにバインドできません"
   },
   "general": {
     "save": "保存",
