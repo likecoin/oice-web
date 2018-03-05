@@ -118,8 +118,8 @@ request.del(`${API_URL}membership/connect`)
   response.ok ? response.body.message : null
 ));
 
-export const connectLikeCoin = ({ likeCoinId }) =>
+export const connectLikeCoin = payload =>
 request.post(`${API_URL}likecoin/connect`)
 .withCredentials()
-.send({ likeCoinId })
+.send(payload)
 .then(response => response.body.user);

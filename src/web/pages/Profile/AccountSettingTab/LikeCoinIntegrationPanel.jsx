@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 
-import classNames from 'classnames';
-import _debounce from 'lodash/debounce';
-import _get from 'lodash/get';
 import _pick from 'lodash/pick';
 
 import CircularLoader from 'ui-elements/CircularLoader';
 import LoadingScreen from 'ui-elements/LoadingScreen';
 import OutlineButton from 'ui-elements/OutlineButton';
 
+import LikeCoinManager from 'common/utils/LikeCoin';
+
 import {
   DOMAIN_URL,
   LIKECOIN_URL,
+  SRV_ENV,
 } from 'common/constants';
 
 import ProfilePanel from '../ProfilePanel';
@@ -29,14 +29,22 @@ import {
 import './LikeCoinIntegrationPanel.styles.scss';
 
 
-@connect(store => _pick(store.Profile.userProfile, [
-  'likeCoinId',
-]))
+@connect((store) => {
+  const { id, ...props } = _pick(store.Profile.userProfile, [
+    'id',
+    'likeCoinId',
+  ]);
+  return {
+    ...props,
+    userId: id,
+  };
+})
 @translate('Profile')
 export default class LikeCoinIntegrationPanel extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     t: PropTypes.func.isRequired,
+    userId: PropTypes.number,
     likeCoinId: PropTypes.string,
   }
 
@@ -62,15 +70,27 @@ export default class LikeCoinIntegrationPanel extends React.Component {
   }
 
   _handleLoginLikeCoinButtonClick = () => {
-    // TODO
+    LikeCoinManager.init({
+      isTestNet: SRV_ENV !== 'production',
+      onConnect: this._handleLikeCoinManagerConnect,
+      onError: this._handleLikeCoinManagerError,
+    });
+  }
+
+  _handleLikeCoinManagerConnect = async () => {
+    const { userId } = this.props;
+    LikeCoinManager.removeConnectionListener();
+    const address = LikeCoinManager.getWalletAddress();
+    const signature = await LikeCoinManager.signObject({ userId, address });
+    this.props.dispatch(Actions.connectLikeCoin({ address, signature }));
+  }
+
+  _handleLikeCoinManagerError = (error) => {
+    console.error(error.message);
   }
 
   _renderBanner() {
     const { t, likeCoinId } = this.props;
-
-    const bannerClass = classNames('likecoin-id-banner', {
-      registered: !!likeCoinId,
-    });
 
     return (
       <div className="likecoin-id-banner">
@@ -101,11 +121,7 @@ export default class LikeCoinIntegrationPanel extends React.Component {
   }
 
   render() {
-    const { t, likeCoinId } = this.props;
-
-    const bannerClass = classNames('likecoin-id-banner', {
-      registered: !!likeCoinId,
-    });
+    const { t } = this.props;
 
     return (
       <ProfilePanel header={t('LikeCoinIntegrationPanel.title')}>
