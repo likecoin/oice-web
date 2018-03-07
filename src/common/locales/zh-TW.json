@@ -335,6 +335,30 @@
         "login": "我已有LikeCoin ID"
       }
     },
+    "LikeCoinLoginModal": {
+      "title": {
+        "desktopChromeRequired": "需使用電腦版 Chrome 瀏覽器",
+        "metaMaskRequired": "需要插件",
+        "switchToRinkeby": "切換至 Rinkeby 測試網絡",
+        "switchToMainNet": "切換至 Mainnet 正式網絡",
+        "unlockMetaMask": "登入 MetaMask",
+        "signMetaMask": "在 MetaMask 按 Sign",
+        "connectWithLikeCoin": "正在登入 LikeCoin"
+      },
+      "label": {
+        "desktopChromeRequired": "需要使用支援以太坊加密貨幣錢包 MetaMask 的瀏覽器。\n請使用電腦版 Chrome 瀏覽器並安裝 MetaMask 插件",
+        "metaMaskRequired": "需要 MetaMask 用作登入。請使用 Chrome 瀏覽器以安裝 MetaMask 插件.",
+        "switchToRinkeby": "需要使用 Rinkeby 測試網，請切換至 Rinkeby.",
+        "switchToMainNet": "需要使用正式網絡，請切換至 Mainnet。",
+        "signMetaMask": "請在 MetaMask 按 [Sign]",
+        "unlockMetaMask": "需要讀取 MetaMask ，請登入 MetaMask"
+      },
+      "button": {
+        "installChrome": "安裝 Chrome",
+        "installMetaMask": "安裝 MetaMask",
+        "installedMetaMask": "已安裝"
+      }
+    },
     "seekingSubscriptionMessage": {
       "_title": "訂閱訊息",
       "buttonName": "編輯"

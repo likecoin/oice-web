@@ -25,7 +25,6 @@ class LikeCoinManager {
 
   removeConnectionListener() {
     if (this._connectionListener) {
-      clearTimeout(this._connectionListener);
       this._connectionListener = null;
     }
   }
@@ -42,13 +41,16 @@ class LikeCoinManager {
     }
   }
 
-  destory() {
+  removeAllListeners() {
     if (this.web3PollingTimer) {
       clearTimeout(this.web3PollingTimer);
       this.web3PollingTimer = null;
     }
 
-    this.removeConnectionListener();
+    if (this.accountPollingTimer) {
+      clearInterval(this.accountPollingTimer);
+      this.accountPollingTimer = null;
+    }
   }
 
   getWalletAddress() {

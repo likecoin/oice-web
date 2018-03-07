@@ -330,9 +330,33 @@
         "yourLikeCoinWillBeDisplayedHere": "収入はここに表示されます"
       },
       "button": {
-        "whatIsLikeCoin": "What is LikeCoin?",
-        "register": "Register LikeCoin ID",
-        "login": "I already have LikeCoin ID"
+        "whatIsLikeCoin": "LikeCoinとは何ですか",
+        "register": "LikeCoin IDを登録する",
+        "login": "LikeCoin IDを持っている"
+      }
+    },
+    "LikeCoinLoginModal": {
+      "title": {
+        "desktopChromeRequired": "Chromeが必要です",
+        "metaMaskRequired": "MetaMaskが必要です",
+        "switchToRinkeby": "Rinkebyネットワークに切り替えです",
+        "switchToMainNet": "Mainネットワークに切り替えです",
+        "unlockMetaMask": "MetaMaskに署名です",
+        "signMetaMask": "[Sign] ボタンを押します",
+        "connectWithLikeCoin": "LikeCoinと接続中"
+      },
+      "label": {
+        "desktopChromeRequired": "Chromeブラウザで開くてださい。",
+        "metaMaskRequired": "Metamaskをインストールしてください。",
+        "switchToRinkeby": "正しいネットワークに切り替えてください。",
+        "switchToMainNet": "正しいネットワークに切り替えてください。",
+        "signMetaMask": "[Sign] ボタンを押してください。",
+        "unlockMetaMask": "MetaMaskにログインしてください。"
+      },
+      "button": {
+        "installChrome": "Chromeをインストールする",
+        "installMetaMask": "MetaMaskをインストールする",
+        "installedMetaMask": "インストール済み"
       }
     },
     "seekingSubscriptionMessage": {

@@ -335,6 +335,30 @@
         "login": "I already have LikeCoin ID"
       }
     },
+    "LikeCoinLoginModal": {
+      "title": {
+        "desktopChromeRequired": "Desktop Chrome Required",
+        "metaMaskRequired": "MetaMask Required",
+        "switchToRinkeby": "Switch to Rinkeby network",
+        "switchToMainNet": "Switch to Main network",
+        "unlockMetaMask": "Unlock Metamask.",
+        "signMetaMask": "Sign on MetaMask",
+        "connectWithLikeCoin": "Logging in to LikeCoin"
+      },
+      "label": {
+        "desktopChromeRequired": "Please switch to desktop Chrome then install MetaMask plugin.",
+        "metaMaskRequired": "Please install Metamask extension.",
+        "switchToRinkeby": "Please switch to the correct network.",
+        "switchToMainNet": "Please switch to the correct network.",
+        "signMetaMask": "Please click [Sign] on Metamask to continue.",
+        "unlockMetaMask": "Please unlock your Metamask."
+      },
+      "button": {
+        "installChrome": "Install Chrome",
+        "installMetaMask": "Install MetaMask",
+        "installedMetaMask": "Done! Installed"
+      }
+    },
     "seekingSubscriptionMessage": {
       "_title": "Subscription Message",
       "buttonName": "Edit"
