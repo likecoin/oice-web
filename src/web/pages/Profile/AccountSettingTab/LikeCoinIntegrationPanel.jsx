@@ -29,6 +29,13 @@ import {
 import './LikeCoinIntegrationPanel.styles.scss';
 
 
+function getLikeCoinRegistrationURL() {
+  const redirectURL = new URL(window.location.href);
+  redirectURL.searchParams.append('action', 'register-likecoin');
+  return `${LIKECOIN_URL}/register?redirect=${redirectURL.toString()}`;
+}
+
+
 @connect((store) => {
   const { id, ...props } = _pick(store.Profile.userProfile, [
     'id',
@@ -64,9 +71,7 @@ export default class LikeCoinIntegrationPanel extends React.Component {
   }
 
   _handleRegisterLikeCoinIdButtonClick = () => {
-    const redirectURL = new URL(window.location.href);
-    redirectURL.searchParams.append('action', 'register-likecoin');
-    window.location.assign(`${LIKECOIN_URL}/register?redirect=${redirectURL.toString()}`);
+    window.location.assign(getLikeCoinRegistrationURL());
   }
 
   _handleLoginLikeCoinButtonClick = () => {
@@ -89,31 +94,64 @@ export default class LikeCoinIntegrationPanel extends React.Component {
     console.error(error.message);
   }
 
-  _renderBanner() {
+  _renderConnectedBanner() {
     const { t, likeCoinId } = this.props;
 
     return (
-      <div className="likecoin-id-banner">
+      <div className="connected">
         <div>
-          <span className="likecoin-id-label">LikeCoin ID</span>
 
-          {likeCoinId ? (
-            <a className="likecoin-payment-url" href={`${LIKECOIN_URL}/${likeCoinId}`}>
-              <span className="url">{LIKECOIN_URL}/</span>
-              <span className="id">{likeCoinId}</span>
+          <div className="likecoin-id-label">
+            <span>{t('LikeCoinIntegrationPanel.label.id')}</span>
+            <a
+              className="likecoin-user-url blue"
+              href={`${LIKECOIN_URL}/${likeCoinId}`}
+            >
+              {likeCoinId}
             </a>
-          ) : (
-            <div className="connect-options">
-              <OutlineButton
-                label={t('LikeCoinIntegrationPanel.button.register')}
-                onClick={this._handleRegisterLikeCoinIdButtonClick}
-              />
-              <OutlineButton
-                label={t('LikeCoinIntegrationPanel.button.login')}
-                onClick={this._handleLoginLikeCoinButtonClick}
-              />
+          </div>
+
+          <div className="likecoin-wallet-info">
+            <div>
+
+              <span>{t('LikeCoinIntegrationPanel.label.soonStart')}</span>
+              <span>{t('LikeCoinIntegrationPanel.label.yourLikeCoinWillBeDisplayedHere')}</span>
+
             </div>
-          )}
+          </div>
+
+        </div>
+      </div>
+    );
+  }
+
+  _renderNotYetConnectBanner() {
+    const { t } = this.props;
+    return (
+      <div className="unconnected">
+        <div>
+
+          <div className="description">
+            <p
+              className="content"
+              dangerouslySetInnerHTML={{
+                __html: t('LikeCoinIntegrationPanel.label.content', {
+                  link: getLikeCoinRegistrationURL(),
+                }),
+              }}
+            />
+            <p className="footnote">{t('LikeCoinIntegrationPanel.label.footnote')}</p>
+          </div>
+
+          <div className="action-buttons">
+            <OutlineButton
+              label={t('LikeCoinIntegrationPanel.button.register')}
+              onClick={this._handleRegisterLikeCoinIdButtonClick}
+            />
+            <a className="dark-grey" onClick={this._handleLoginLikeCoinButtonClick}>
+              {t('LikeCoinIntegrationPanel.button.login')}
+            </a>
+          </div>
 
         </div>
       </div>
@@ -121,14 +159,33 @@ export default class LikeCoinIntegrationPanel extends React.Component {
   }
 
   render() {
-    const { t } = this.props;
+    const { t, likeCoinId } = this.props;
 
     return (
-      <ProfilePanel header={t('LikeCoinIntegrationPanel.title')}>
-        <div className="left-column">
-          <div>
-            {this._renderBanner()}
+      <ProfilePanel
+        className="likecoin-integration-panel"
+        header={t('LikeCoinIntegrationPanel.title')}
+        customHeaderRightComponent={(
+          <a
+            className="more-info-link light-grey"
+            href="https://likecoin.store"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {t('LikeCoinIntegrationPanel.button.whatIsLikeCoin')}
+          </a>
+        )}
+      >
+        <div className="likecoin-integration-panel-container">
+
+          <div className="likecoin-connect-banner">
+            {likeCoinId ?
+              this._renderConnectedBanner()
+            :
+              this._renderNotYetConnectBanner()
+            }
           </div>
+
         </div>
       </ProfilePanel>
     );

@@ -21,6 +21,7 @@ function ProfilePanel(props) {
     disableSaveButton,
     header,
     onClickSave,
+    customHeaderRightComponent,
   } = props;
   const className = classNames('profile-panel', props.className);
 
@@ -28,7 +29,7 @@ function ProfilePanel(props) {
     <div className={className}>
       <div className="panel-header">
         <h2>{header}</h2>
-        {onClickSave &&
+        {!customHeaderRightComponent && onClickSave &&
           <OutlineButton
             color={'green'}
             disabled={disableSaveButton}
@@ -36,6 +37,7 @@ function ProfilePanel(props) {
             onClick={onClickSave}
           />
         }
+        {customHeaderRightComponent}
       </div>
       <div className="panel-content">
         {children}
@@ -47,9 +49,10 @@ function ProfilePanel(props) {
 ProfilePanel.propTypes = {
   t: PropTypes.func.isRequired,
   children: PropTypes.node,
-  className: PropTypes.object,
+  className: PropTypes.string,
   disableSaveButton: PropTypes.bool,
   header: PropTypes.string,
+  customHeaderRightComponent: PropTypes.node,
   onClickSave: PropTypes.func,
 };
 

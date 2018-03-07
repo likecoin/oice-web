@@ -321,10 +321,18 @@
       }
     },
     "LikeCoinIntegrationPanel": {
-      "title": "LikeCoin",
+      "title": "利潤",
+      "label": {
+        "content": "立即<a class=\"blue\" href=\"{{link}}\">創建LikeCoin ID</a> (LikeCoin ID同時可作為 oice ID)",
+        "footnote": "LikeCoin ID除可同時作為 oice ID 之外，還可以以故事或素材賺LikeCoin。\n(創建LikeCoin ID需要使用 Chrome 瀏覽器及安裝MetaMask插件)",
+        "id": "oice及LikeCoin ID: ",
+        "soonStart": "LikeCoin計劃快將啟動。",
+        "yourLikeCoinWillBeShowedHere": "你於oice賺取的LikeCoin將在此顯示"
+      },
       "button": {
-        "register": "註冊",
-        "login": "登入"
+        "whatIsLikeCoin": "LikeCoin是什麼?",
+        "register": "創建LikeCoin ID",
+        "login": "我已有LikeCoin ID"
       }
     },
     "seekingSubscriptionMessage": {

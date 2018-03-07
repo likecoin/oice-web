@@ -1,38 +1,116 @@
-.likecoin-id-banner {
-  padding: 2px;
+@import "../../../styles/variables";
 
-  border-radius: 10px;
-  background-image: linear-gradient(251deg, #d2f0f0, #f0e6b4);
+.likecoin-integration-panel {
 
-  > div {
-    padding: 16px;
-
-    border-radius: 8px;
-    background-color: white;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .likecoin-integration-panel-container {
+    position: relative;
   }
 
-  .connect-options {
-    display: flex;
+  .more-info-link {
+    font-size: 12px;
+  }
+}
 
-    > *:not(:first-child) {
-      margin-left: 8px;
+.likecoin-connect-banner {
+
+  .unconnected {
+    > div {
+      display: flex;
+    }
+
+    .description {
+      margin-right: 70px;
+
+      > * {
+        margin: 8px auto;
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+
+      .content {
+        color: $dark-grey-2;
+
+        font-size: 14px;
+      }
+
+      .footnote {
+        text-align: left;
+
+        color: $dark-grey-1;
+
+        font-size: 12px;
+        line-height: 1.33;
+      }
+    }
+
+    .action-buttons {
+      > * {
+        margin: auto;
+
+        font-size: 12px;
+
+        &:not(:first-child) {
+          display: block;
+
+          margin-top: 10px;
+
+          text-align: center;
+        }
+      }
+
+      .outline-button {
+        width: max-content;
+
+        border-color: $light-grey-2 !important;
+        background-image: linear-gradient(251deg, #d2f0f0, #f0e6b4);
+
+        font-weight: bold;
+
+        &:hover {
+          color: $dark-grey-1 !important;
+        }
+      }
     }
   }
 
-  .likecoin-payment-url {
-    text-decoration: none;
-    .url {
-      color: lighten(#4A4A4A, 50);
-    }
-  }
+  .connected {
+    .likecoin-id-label {
+      margin-bottom: padding(2/3);
 
-  .likecoin-id-label,
-  .likecoin-payment-url {
-    color: #4A4A4A;
-    font-size: 20px;
+      color: $dark-grey-1;
+
+
+      .likecoin-user-url {
+        text-decoration: none;
+      }
+    }
+
+    .likecoin-wallet-info {
+      padding: 3px;
+
+      border-radius: 10px;
+      background-image: linear-gradient(251deg, #d2f0f0, #f0e6b4);
+
+      > div {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: 32px 32px 32px 16px;
+
+        color: #462814;
+        border-radius: 8px;
+        background-color: white;
+
+        > span {
+          &:last-child {
+            color: $dark-grey-1;
+
+            font-size: 12px;
+          }
+        }
+      }
+    }
   }
 }

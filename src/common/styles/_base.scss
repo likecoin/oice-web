@@ -69,11 +69,41 @@ p {
 }
 
 a {
+  cursor: pointer;
+  text-decoration: underline;
+
   color: $dark-red1;
 
   &:active,
   &:hover {
     color: $dark-red2;
+  }
+
+  &.blue {
+    color: $oice-blue;
+
+    &:active,
+    &:hover {
+      color: darken($oice-blue, 20);
+    }
+  }
+
+  &.light-grey {
+    color: $dark-grey-1;
+
+    &:active,
+    &:hover {
+      color: darken($dark-grey-1, 20);
+    }
+  }
+
+  &.dark-grey {
+    color: $dark-grey-2;
+
+    &:active,
+    &:hover {
+      color: darken($dark-grey-2, 20);
+    }
   }
 }
 

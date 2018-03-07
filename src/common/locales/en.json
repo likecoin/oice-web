@@ -321,10 +321,18 @@
       }
     },
     "LikeCoinIntegrationPanel": {
-      "title": "LikeCoin",
+      "title": "Profit",
+      "label": {
+        "content": "<a class=\"blue\" href=\"{{link}}\">Register LikeCoin ID</a> now (LikeCoin ID serves an oice ID)",
+        "footnote": "After registration, you will earn LikeCoin by creating oice and uploading asset.\n(Chrome with MetaMask installed is needed when register LikeCoin ID)",
+        "id": "oice and LikeCoin ID: ",
+        "soonStart": "LikeCoin is coming soon.",
+        "yourLikeCoinWillBeDisplayedHere": "LikeCoin profit will be displayed here"
+      },
       "button": {
-        "register": "Register",
-        "login": "Login"
+        "whatIsLikeCoin": "What is LikeCoin?",
+        "register": "Register LikeCoin ID",
+        "login": "I already have LikeCoin ID"
       }
     },
     "seekingSubscriptionMessage": {
