@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import classNames from 'classnames';
 
-import CharacterPreview from 'ui-elements/CharacterPreview';
 import ButtonGroup from 'ui-elements/ButtonGroup';
+import CharacterPreview from 'ui-elements/CharacterPreview';
 import RaisedButton from 'ui-elements/RaisedButton';
-import ExpansionPanel from 'ui-elements/ExpansionPanel';
 
 import * as itemKey from 'ui-elements/CharacterPreview/ItemKey';
 

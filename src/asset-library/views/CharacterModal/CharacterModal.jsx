@@ -5,11 +5,8 @@ import { translate } from 'react-i18next';
 
 import _get from 'lodash/get';
 
-import AlertDialog from 'ui-elements/AlertDialog';
 import ExpansionPanel from 'ui-elements/ExpansionPanel';
-import FlatButton from 'ui-elements/FlatButton';
 import Modal from 'ui-elements/Modal';
-import RaisedButton from 'ui-elements/RaisedButton';
 
 import FGImagesList from './FGImagesList';
 import CharacterPositionPreview from './CharacterPositionPreview';
@@ -25,10 +22,10 @@ import * as Actions from './CharacterModal.actions';
 import './CharacterModal.style.scss';
 
 
-const isInteger = (value) => Number.isInteger(value) || value === '';
+const isInteger = value => Number.isInteger(value) || value === '';
 
 @translate(['assetsManagement', 'editor'])
-@connect((store) => ({ ...store.CharacterModal }))
+@connect(store => ({ ...store.CharacterModal }))
 export default class CharacterModal extends React.Component {
   static propTypes = {
     character: PropTypes.object.isRequired,
@@ -58,10 +55,26 @@ export default class CharacterModal extends React.Component {
     this.props.dispatch(Actions.closeCharacterModal());
   }
 
-  renderExpansionPanel() {
-    const { character, expanded, readonly, t } = this.props;
+  renderCharacterDescription() {
+    const { dispatch, t, readonly, character } = this.props;
+    const description = _get(character, 'description');
+
+    if (!description) return null;
     return (
-      !readonly &&
+      <div className="character-description">
+        <div className="character-modal-panel-description-title">
+          {t('characterModal.label.descriptionTitle')}
+        </div>
+        <div className="character-modal-panel-description-content">
+          {description}
+        </div>
+      </div>
+    );
+  }
+
+  renderExpansionPanel() {
+    const { character, expanded, t } = this.props;
+    return (
       <ExpansionPanel
         open={expanded}
         onClick={this.handleExpansionPanelHeaderClick}
@@ -70,7 +83,7 @@ export default class CharacterModal extends React.Component {
           {t('characterModal.label.fullSetting')}
         </ExpansionPanel.Header>
         <ExpansionPanel.Content>
-          <EditCharacterNamesPanel character={character} />
+          <EditCharacterNamesPanel />
           <CoordinateConfigPanel />
         </ExpansionPanel.Content>
       </ExpansionPanel>
@@ -92,7 +105,8 @@ export default class CharacterModal extends React.Component {
             <FGImagesList limitedMode={readonly} />
             <CharacterPositionPreview limitedMode={readonly} />
           </div>
-          {this.renderExpansionPanel()}
+          {!readonly && this.renderExpansionPanel()}
+          {readonly && this.renderCharacterDescription()}
         </Modal.Body>
         {!readonly && <Footer libraryId={libraryId} />}
       </Modal>

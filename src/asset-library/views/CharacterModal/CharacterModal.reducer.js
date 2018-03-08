@@ -17,7 +17,7 @@ import * as Actions from './CharacterModal.actions';
 const minifyCharacter = (character) => {
   const minifiedCharacter = {};
   Object.keys(character).forEach((key) => {
-    if (/^(id|name|isGeneric|width|height|order|config)$/.test(key)) {
+    if (/^(id|name|isGeneric|width|height|order|config|description)$/.test(key)) {
       minifiedCharacter[key] = character[key];
     }
   });

@@ -790,6 +790,7 @@
       },
       "label": {
         "nameTitle": "Character Name",
+        "descriptionTitle": "Character Description",
         "nameEn": "English",
         "nameTw": "中文(正體)",
         "nameJp": "日本語",
@@ -797,6 +798,7 @@
         "pleaseAddAtLeastOneFgImage": "Please add at least 1 character image",
         "fgImageCannotBeEmpty": "Character image cannot be empty",
         "pleaseEnterCharacterName": "Please enter character name",
+        "pleaseEnterCharacterDescription": "Please enter character description",
         "pleaseEnterIntegerConfig": "Role settings must be an integer",
         "deleteImageSelection": "Are you sure you want to delete this image?",
         "deleteCharacter": "Are you sure you want to delete this character?",

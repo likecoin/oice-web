@@ -790,6 +790,7 @@
       },
       "label": {
         "nameTitle": "キャラの名前",
+        "descriptionTitle": "キャラクター紹介",
         "nameEn": "English",
         "nameTw": "中文(繁体)",
         "nameJp": "日本語",
@@ -797,6 +798,7 @@
         "pleaseAddAtLeastOneFgImage": "キャラには画像が少なくとも1つ必要です。",
         "fgImageCannotBeEmpty": "タイトルは必須です。",
         "pleaseEnterCharacterName": "キャラの名前を入力してください",
+        "pleaseEnterCharacterDescription": "キャラクター紹介を入力してください",
         "pleaseEnterIntegerConfig": "キャラの座標は整数でなければなりません。やり直してください",
         "deleteImageSelection": "画像を削除しますか。",
         "deleteCharacter": "キャラを削除しますか。",

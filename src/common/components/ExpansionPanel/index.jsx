@@ -74,12 +74,14 @@ export default class ExpansionPanel extends React.Component {
     const {
       center,
     } = props;
-    const className = classNames({
-      'expansion-panel-header': true,
-      [props.className]: true,
-      center,
-      either,
-    });
+    const className = classNames(
+      'expansion-panel-header',
+      props.className,
+      {
+        center,
+        either,
+      }
+    );
     return (
       <div
         {...{ className }}
@@ -102,9 +104,10 @@ export default class ExpansionPanel extends React.Component {
   }
 
   renderContent(props) {
-    const className = classNames(props.className, {
-      'expansion-panel-content': true,
-    });
+    const className = classNames(
+      'expansion-panel-content',
+      props.className
+    );
     return (
       <div className={className}>
         {props.children}

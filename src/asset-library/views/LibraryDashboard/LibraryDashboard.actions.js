@@ -11,12 +11,12 @@ import * as PurchasedDashboardActions from 'asset-library/views/PurchasedLibrary
 
 export const fetchLibrariesBegin = createAction('FETCH_ASSET_LIBRARY_BEGIN');
 export const fetchLibrariesEnd = createAction('FETCH_ASSET_LIBRARY_END');
-export const fetchLibraries = (libraryTypes) => dispatch => {
+export const fetchLibraries = libraryTypes => (dispatch) => {
   const types = libraryTypes || LIBRARY_TYPES;
   dispatch(fetchLibrariesBegin({ types }));
   APIHandler(dispatch,
     LibraryAPI.fetchLibraries(types)
-    .then(libraries => {
+    .then((libraries) => {
       const payload = { result: {}, types };
       types.forEach(type => payload.result[type] = libraries[type]);
       dispatch(fetchLibrariesEnd(payload));

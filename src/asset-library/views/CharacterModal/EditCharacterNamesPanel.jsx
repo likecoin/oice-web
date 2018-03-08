@@ -50,6 +50,19 @@ export default class EditCharacterNamesPanel extends React.Component {
           label={t('characterModal.label.renamable')}
           onChange={this.handleChangeGenericValue}
         />
+        <div className="character-description">
+          <div className="character-modal-panel-description-title">
+            {t('characterModal.label.descriptionTitle')}
+          </div>
+          <TextField
+            fullWidth
+            multiLine
+            maxLength={1024}
+            placeholder={t('characterModal.label.pleaseEnterCharacterDescription')}
+            value={character.description}
+            onChange={value => this.handleChange('description', value)}
+          />
+        </div>
       </div>
     );
   }

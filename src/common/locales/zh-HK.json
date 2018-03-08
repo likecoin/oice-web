@@ -790,6 +790,7 @@
       },
       "label": {
         "nameTitle": "角色名稱",
+        "descriptionTitle": "角色簡介",
         "nameEn": "English",
         "nameTw": "中文(正體)",
         "nameJp": "日本語",
@@ -797,6 +798,7 @@
         "pleaseAddAtLeastOneFgImage": "角色至少需要一張立繪",
         "fgImageCannotBeEmpty": "立繪名稱不能為空",
         "pleaseEnterCharacterName": "請輸入角色名稱",
+        "pleaseEnterCharacterDescription": "請輸入角色簡介",
         "pleaseEnterIntegerConfig": "角色座標必須為整數，請重新修改",
         "deleteImageSelection": "確認刪除立繪？",
         "deleteCharacter": "確認刪除角色?",

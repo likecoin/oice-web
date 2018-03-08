@@ -4,7 +4,6 @@ import { findDOMNode } from 'react-dom';
 import { translate } from 'react-i18next';
 import classNames from 'classnames';
 
-import Dropdown from 'ui-elements/Dropdown';
 import FlatButton from 'ui-elements/FlatButton';
 import ImageUpload from 'ui-elements/ImageUpload';
 import TextField from 'ui-elements/TextField';
@@ -120,20 +119,6 @@ export default class FGImageRow extends React.Component {
             value={fgImage.meta.creditsUrl}
             onChange={this.handleCreditsUrlChange}
           />
-          {/* <Dropdown
-            limit={4}
-            ref={e => this.dropdown = e}
-            searchNotFoundText=""
-            searchPlaceholder=""
-            selectedIndexes={[0, 1]}
-            values={['繁體中文', '简体中文', 'English', '日本語', '언문'].map((item) => (
-            { icon: null, text: item }
-            ))}
-            fullWidth
-            multiple
-            search
-            showCount
-          /> */}
         </div>
         {!limitedMode &&
           <div className="fg-row-cross-button">

@@ -8,10 +8,7 @@ import classNames from 'classnames';
 import uuid from 'uuid';
 
 import AlertDialog from 'ui-elements/AlertDialog';
-import ExpansionPanel from 'ui-elements/ExpansionPanel';
 import FlatButton from 'ui-elements/FlatButton';
-import RaisedButton from 'ui-elements/RaisedButton';
-import TextField from 'ui-elements/TextField';
 
 import AddIcon from 'common/icons/add';
 
