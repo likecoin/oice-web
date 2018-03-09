@@ -33,6 +33,7 @@ const initialState = {
     isValidating: false,
     isValidated: true,
   },
+  hasLikeCoinError: false,
 };
 
 function getSavingLinkIndex(state, linkId) {
@@ -175,4 +176,20 @@ export default handleActions({
       },
     })
   ),
+  [Actions.connectLikeCoinBegin]: state => update(state, {
+    hasLikeCoinError: { $set: false },
+  }),
+  [Actions.connectLikeCoinEnd]: (state, { payload }) => {
+    if (payload.error) {
+      return update(state, {
+        hasLikeCoinError: { $set: true },
+      });
+    }
+
+    if (!payload.user) return state;
+    return update(state, {
+      userProfile: { $set: payload.user },
+      hasLikeCoinError: { $set: false },
+    });
+  },
 }, initialState);

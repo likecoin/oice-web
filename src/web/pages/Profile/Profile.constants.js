@@ -18,7 +18,7 @@ export const BASIC_INFORMATION = {
   DISPLAY_NAME: 'displayName',
   DESCRIPTION: 'description',
   EMAIL_ADDRESS: 'emailAddress',
-  USERNAME: 'username',
+  USERNAME: 'likeCoinId',
   SEEKING_SUBSCRIPTION_MESSAGE: 'seekingSubscriptionMessage',
   ROLE: 'role',
   LANGUAGE: 'language',
@@ -30,7 +30,7 @@ export const BASIC_INFORMATION_LEFT_ITEMS = [
   BASIC_INFORMATION.DISPLAY_NAME,
   BASIC_INFORMATION.DESCRIPTION,
   BASIC_INFORMATION.USERNAME,
-  BASIC_INFORMATION.LIKE_COIN_ID,
+  // BASIC_INFORMATION.LIKE_COIN_ID,
   // BASIC_INFORMATION.EMAIL_ADDRESS, TODO: wait for the support in server
 ];
 

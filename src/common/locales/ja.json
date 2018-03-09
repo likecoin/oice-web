@@ -281,7 +281,7 @@
         "description": "自己紹介",
         "emailAddress": "アカウント",
         "username": "ユーザーネーム",
-        "likeCoinId": "LikeCoin ID"
+        "likeCoinId": "ユーザーリンク (LikeCoin ID)"
       },
       "button": {
         "editProfilePicture": "プロフィール写真を変更",
@@ -318,6 +318,45 @@
         "continueSubscription": "サブスクリプションの継続",
         "cancelSubscription": "サブスクリプションのキャンセル",
         "disconnectStripe": "接続の解除"
+      }
+    },
+    "LikeCoinIntegrationPanel": {
+      "title": "収入",
+      "label": {
+        "content": "今すぐ<a class=\"blue\" href=\"{{link}}\">LikeCoin IDを登録する</a> (LikeCoin IDはoice IDとして機能します)",
+        "footnote": "LikeCoin IDはoice IDとして機能し、ストーリーと素材を作成してLikeCoinを獲得します。\n(LikeCoin IDを登録するときは、MetaMaskがインストールされたChromeが必要です)",
+        "id": "oiceとLikeCoin ID: ",
+        "soonStart": "LikeCoinはすぐに来ています。",
+        "yourLikeCoinWillBeDisplayedHere": "収入はここに表示されます"
+      },
+      "button": {
+        "whatIsLikeCoin": "LikeCoinとは何ですか",
+        "register": "LikeCoin IDを登録する",
+        "login": "LikeCoin IDを持っている"
+      }
+    },
+    "LikeCoinLoginModal": {
+      "title": {
+        "desktopChromeRequired": "Chromeが必要です",
+        "metaMaskRequired": "MetaMaskが必要です",
+        "switchToRinkeby": "Rinkebyネットワークに切り替えです",
+        "switchToMainNet": "Mainネットワークに切り替えです",
+        "unlockMetaMask": "MetaMaskに署名です",
+        "signMetaMask": "[Sign] ボタンを押します",
+        "connectWithLikeCoin": "LikeCoinと接続中"
+      },
+      "label": {
+        "desktopChromeRequired": "Chromeブラウザで開くてださい。",
+        "metaMaskRequired": "Metamaskをインストールしてください。",
+        "switchToRinkeby": "正しいネットワークに切り替えてください。",
+        "switchToMainNet": "正しいネットワークに切り替えてください。",
+        "signMetaMask": "[Sign] ボタンを押してください。",
+        "unlockMetaMask": "MetaMaskにログインしてください。"
+      },
+      "button": {
+        "installChrome": "Chromeをインストールする",
+        "installMetaMask": "MetaMaskをインストールする",
+        "installedMetaMask": "インストール済み"
       }
     },
     "seekingSubscriptionMessage": {
@@ -1086,7 +1125,12 @@
     "ERR_USERNAME_CONTAINS_INVALID_CHARACTER": "無効な文字が含まれています",
     "ERR_USERNAME_NOT_UNIQUE": "このユーザーネームは選択できません",
     "ERR_USERNAME_IS_A_NUMBER": "数字だけにすることはできません",
-    "ERR_LIKE_COIN_ID_CONTAINS_INVALID_CHARACTER": "無効な文字が含まれています"
+    "ERR_LIKE_COIN_ID_CONTAINS_INVALID_CHARACTER": "無効な文字が含まれています",
+    "ERR_LIKECOIN_CONNECT_INVALID_ID": "LikeCoin ID無効",
+    "ERR_LIKECOIN_CONNECT_INVALID_ADDRESS": "このウォレットのアドレスはLikeCoin IDにまだ適用されていません",
+    "ERR_LIKECOIN_CONNECT_MISSING_PARAMS": "LikeCoin IDバインドでエラーが発生しました",
+    "ERR_LIKECOIN_CONNECT_DUPLICATED": "このLikeCoin IDは既にバインドされています",
+    "ERR_LIKECOIN_CONNECT_ALREADY": "他のLikeCoin IDにバインドできません"
   },
   "general": {
     "save": "保存",

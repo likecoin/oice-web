@@ -180,3 +180,32 @@ export const validateUsername = username => async (dispatch) => {
     setTimeout(() => dispatch(validateUsernameEnd()), 500);
   }
 };
+
+export const connectLikeCoinBegin = createAction('LIKECOIN_CONNECT_BEGIN');
+export const connectLikeCoinEnd = createAction('LIKECOIN_CONNECT_END');
+export const connectLikeCoin = ({
+  likeCoinId,
+  address,
+  signature,
+}) => async (dispatch) => {
+  dispatch(connectLikeCoinBegin());
+  const user = await APIHandler(dispatch,
+    UserAPI.connectLikeCoin({
+      likeCoinId,
+      address,
+      signature,
+    }).catch((error) => {
+      dispatch(connectLikeCoinEnd({ error }));
+      throw error;
+    }),
+    null,
+    [
+      'ERR_LIKECOIN_CONNECT_INVALID_ID',
+      'ERR_LIKECOIN_CONNECT_INVALID_ADDRESS',
+      'ERR_LIKECOIN_CONNECT_MISSING_PARAMS',
+      'ERR_LIKECOIN_CONNECT_DUPLICATED',
+      'ERR_LIKECOIN_CONNECT_ALREADY',
+    ],
+  );
+  dispatch(connectLikeCoinEnd({ user }));
+};

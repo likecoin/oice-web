@@ -3,12 +3,10 @@ jobs:
   build:
     working_directory: ~/oice-web
     docker:
-      - image: node:6-alpine
+      - image: node:8
     environment:
       TERM: dumb
     steps:
-      - run: apk add --no-cache curl git gzip tar
-      - run: npm uninstall npm -g && yarn global add npm@5
       - checkout
       - run: git submodule sync && git submodule update --init;
       - restore_cache:
@@ -32,9 +30,8 @@ jobs:
             curl --retry 10 --retry-delay 5 -v http://localhost:3000/
       - run:
           name: Lint Test
-          command: yarn run lint
+          command: npm run lint
       - save_cache:
           key: oice-web-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
           paths:
-            - "~/.cache/yarn"
-
+            - ./node_modules
