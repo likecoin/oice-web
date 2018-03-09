@@ -46,6 +46,7 @@ function getLikeCoinRegistrationURL() {
   const { likecoinaction, likecoinId } = store.routing.locationBeforeTransitions.query;
   return {
     ...props,
+    hasError: store.Profile.hasLikeCoinError,
     userId: id,
     action: likecoinaction,
     registeredLikeCoinId: likecoinId,
@@ -56,6 +57,7 @@ export default class LikeCoinIntegrationPanel extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     t: PropTypes.func.isRequired,
+    hasError: PropTypes.bool,
     userId: PropTypes.number,
     likeCoinId: PropTypes.string,
     action: PropTypes.string,
@@ -76,12 +78,20 @@ export default class LikeCoinIntegrationPanel extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const hasAction = !!nextProps.action;
-    if (nextProps.likeCoinId) {
+    if (!this.props.hasError && nextProps.hasError) {
+      if (this._likeCoinModal) this._likeCoinModal.hide();
+    } else if (nextProps.likeCoinId) {
       this._handleLikeCoinCloseConnection();
     } else if (nextProps.action === 'login-likecoin') {
       if (this._likeCoinModal) this._likeCoinModal.show();
     }
+  }
+
+  _clearURLSearchParams() {
+    const pushURL = new URL(window.location.href);
+    pushURL.searchParams.delete('likecoinaction');
+    pushURL.searchParams.delete('likecoinId');
+    this.props.dispatch(push(window.location.pathname + pushURL.search));
   }
 
   _handleRegisterLikeCoinIdButtonClick = () => {
@@ -95,15 +105,12 @@ export default class LikeCoinIntegrationPanel extends React.Component {
   }
 
   _handleLikeCoinConnect = ({ address, signature }) => {
+    this._clearURLSearchParams();
     this.props.dispatch(Actions.connectLikeCoin({ address, signature }));
   }
 
   _handleLikeCoinCloseConnection = () => {
-    const pushURL = new URL(window.location.href);
-    pushURL.searchParams.delete('likecoinaction');
-    pushURL.searchParams.delete('likecoinId');
-    this.props.dispatch(push(window.location.pathname + pushURL.search));
-
+    this._clearURLSearchParams();
     if (this._likeCoinModal) this._likeCoinModal.hide();
   }
 
