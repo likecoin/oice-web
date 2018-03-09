@@ -23,7 +23,6 @@ import {
   BASIC_INFORMATION_LEFT_ITEMS,
 } from '../Profile.constants';
 
-import '../style.scss';
 
 const DEFERRED_USERNAME_VALIDATION_DURATION = 800; // in ms
 
@@ -146,6 +145,10 @@ export default class Profile extends React.Component {
     const isMultiLine = item === BASIC_INFORMATION.DESCRIPTION;
     const value = this.state[item];
 
+    if (item === BASIC_INFORMATION.USERNAME && !value) {
+      return null;
+    }
+
     let showWarning = false;
     if (
       (item === BASIC_INFORMATION.DISPLAY_NAME && !value) ||
@@ -158,18 +161,19 @@ export default class Profile extends React.Component {
       <div key={item} className="profile-setting-row">
         <h5>{t(`personalInformation.label.${item}`)}</h5>
         <div className="text-field-input">
-          {item === BASIC_INFORMATION.USERNAME && (
-            <span>{DOMAIN_URL}/@</span>
+          {item === BASIC_INFORMATION.USERNAME ? (
+            <a href={`${DOMAIN_URL}/@${value}`}><span>{DOMAIN_URL}/@{value}</span></a>
+          ) : (
+            <TextField
+              maxLength={isMultiLine ? 1024 : 256}
+              multiLine={isMultiLine}
+              placeholder={t('enterPlease')}
+              showWarning={showWarning}
+              value={value}
+              fullWidth
+              onChange={text => this.handleBasicInformationChange(text, item)}
+            />
           )}
-          <TextField
-            maxLength={isMultiLine ? 1024 : 256}
-            multiLine={isMultiLine}
-            placeholder={t('enterPlease')}
-            showWarning={showWarning}
-            value={value}
-            fullWidth
-            onChange={text => this.handleBasicInformationChange(text, item)}
-          />
         </div>
         {item === BASIC_INFORMATION.USERNAME && (
           <CircularLoader

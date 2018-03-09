@@ -30,13 +30,12 @@ import { LIBRARY_ACTION } from 'asset-library/constants';
 import { showPaymentInProfile } from 'common/utils/auth';
 import { isNormalUser } from 'common/utils/user';
 
-import ProfilePanel from './ProfilePanel';
 import OiceCheckout from './OiceCheckout';
+import LikeCoinIntegrationPanel from './LikeCoinIntegrationPanel';
+import ProfilePanel from '../ProfilePanel';
 
-import { PROFILE_ACTION } from './Profile.constants';
-import * as Actions from './Profile.actions';
-
-import './style.scss';
+import { PROFILE_ACTION } from '../Profile.constants';
+import * as Actions from '../Profile.actions';
 
 
 @connect(store => ({
@@ -257,6 +256,7 @@ export default class AccountSettingTab extends React.Component {
     return (
       <div id="account-setting-container">
         {this.renderAccountInfoPanel(user)}
+        <LikeCoinIntegrationPanel />
         {this.renderLanguageSettingPanel(user)}
         {this.renderReceivePaymentSetting(user)}
       </div>

@@ -218,7 +218,7 @@ server.get('*', (req, res) => {
       } else if (isPathStartWith('admin') && !IS_DEV_MODE) {
         props.module = 'admin-panel';
       } else if (isPathStartWith('user') || isPathStartWith('@')) {
-        const matchResults = isPathStartWith('user') ? pathname.match(/^\/user\/(\d+).*/i) : pathname.match(/\/@([a-zA-Z0-9.-]+).*/);
+        const matchResults = isPathStartWith('user') ? pathname.match(/^\/user\/(\d+).*/i) : pathname.match(/\/@([a-zA-Z0-9.-_]+).*/);
         if (matchResults) {
           const userKey = matchResults[1];
           props.user = await UserAPI.fetchUserProfile(userKey).catch((response) => {

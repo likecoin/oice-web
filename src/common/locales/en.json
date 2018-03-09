@@ -281,7 +281,7 @@
         "description": "Description",
         "emailAddress": "Email Address",
         "username": "Username",
-        "likeCoinId": "LikeCoin ID"
+        "likeCoinId": "User Link (LikeCoin ID)"
       },
       "button": {
         "editProfilePicture": "Edit Profile Picture",
@@ -318,6 +318,45 @@
         "continueSubscription": "Resume Subscription",
         "cancelSubscription": "Cancel Subscription",
         "disconnectStripe": "Unlink Account"
+      }
+    },
+    "LikeCoinIntegrationPanel": {
+      "title": "Profit",
+      "label": {
+        "content": "<a class=\"blue\" href=\"{{link}}\">Register LikeCoin ID</a> now (LikeCoin ID serves an oice ID)",
+        "footnote": "After registration, you will earn LikeCoin by creating oice and uploading asset.\n(Chrome with MetaMask installed is needed when register LikeCoin ID)",
+        "id": "oice and LikeCoin ID: ",
+        "soonStart": "LikeCoin is coming soon.",
+        "yourLikeCoinWillBeDisplayedHere": "LikeCoin profit will be displayed here"
+      },
+      "button": {
+        "whatIsLikeCoin": "What is LikeCoin?",
+        "register": "Register LikeCoin ID",
+        "login": "I already have LikeCoin ID"
+      }
+    },
+    "LikeCoinLoginModal": {
+      "title": {
+        "desktopChromeRequired": "Desktop Chrome Required",
+        "metaMaskRequired": "MetaMask Required",
+        "switchToRinkeby": "Switch to Rinkeby network",
+        "switchToMainNet": "Switch to Main network",
+        "unlockMetaMask": "Unlock Metamask.",
+        "signMetaMask": "Sign on MetaMask",
+        "connectWithLikeCoin": "Logging in to LikeCoin"
+      },
+      "label": {
+        "desktopChromeRequired": "Please switch to desktop Chrome then install MetaMask plugin.",
+        "metaMaskRequired": "Please install Metamask extension.",
+        "switchToRinkeby": "Please switch to the correct network.",
+        "switchToMainNet": "Please switch to the correct network.",
+        "signMetaMask": "Please click [Sign] on Metamask to continue.",
+        "unlockMetaMask": "Please unlock your Metamask."
+      },
+      "button": {
+        "installChrome": "Install Chrome",
+        "installMetaMask": "Install MetaMask",
+        "installedMetaMask": "Done! Installed"
       }
     },
     "seekingSubscriptionMessage": {
@@ -1084,7 +1123,12 @@
     "ERR_USERNAME_CONTAINS_INVALID_CHARACTER": "Username contains invalid character",
     "ERR_USERNAME_NOT_UNIQUE": "Username is not available",
     "ERR_USERNAME_IS_A_NUMBER": "Username cannot be all numbers",
-    "ERR_LIKE_COIN_ID_CONTAINS_INVALID_CHARACTER": "LikeCoin ID contains invalid character"
+    "ERR_LIKE_COIN_ID_CONTAINS_INVALID_CHARACTER": "LikeCoin ID contains invalid character",
+    "ERR_LIKECOIN_CONNECT_INVALID_ID": "LikeCoin ID is invalid",
+    "ERR_LIKECOIN_CONNECT_INVALID_ADDRESS": "This wallet address is not register with LikeCoin ID",
+    "ERR_LIKECOIN_CONNECT_MISSING_PARAMS": "LikeCoin binding is failed",
+    "ERR_LIKECOIN_CONNECT_DUPLICATED": "This LikeCoin ID is already bound by other account",
+    "ERR_LIKECOIN_CONNECT_ALREADY": "You cannot bind different LikeCoin ID"
   },
   "general": {
     "save": "Save",

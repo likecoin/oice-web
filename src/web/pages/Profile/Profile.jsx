@@ -27,7 +27,8 @@ import {
   TAB_BAR_ITEMS,
 } from './Profile.constants';
 
-import './style.scss';
+import './Profile.styles.scss';
+
 
 @connect(store => ({
   user: store.user,
@@ -39,7 +40,7 @@ export default class Profile extends React.Component {
     dispatch: PropTypes.func.isRequired,
     t: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
-    userProfile: PropTypes.object.isRequired,
+    userProfile: PropTypes.object,
     location: PropTypes.object,
   }
 

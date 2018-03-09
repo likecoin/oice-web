@@ -30,6 +30,7 @@
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-0": "^6.24.1",
+    "boron": "^0.2.3",
     "classnames": "^2.2.5",
     "express": "^4.15.2",
     "extract-text-webpack-plugin": "1.0.1",
@@ -85,7 +86,8 @@
     "superagent-jsonp": "^0.1.1",
     "svg-react-loader": "^0.3.7",
     "url-loader": "^0.5.8",
-    "uuid": "^2.0.3"
+    "uuid": "^2.0.3",
+    "web3": "^1.0.0-beta.30"
   },
   "devDependencies": {
     "css-loader": "^0.28.1",

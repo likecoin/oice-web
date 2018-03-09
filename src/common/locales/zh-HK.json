@@ -281,7 +281,7 @@
         "description": "個人介紹",
         "emailAddress": "電郵地址",
         "username": "用戶名稱",
-        "likeCoinId": "LikeCoin ID"
+        "likeCoinId": "用戶連結 (LikeCoin ID)"
       },
       "button": {
         "editProfilePicture": "更改頭像",
@@ -318,6 +318,45 @@
         "continueSubscription": "繼續續費",
         "cancelSubscription": "取消續費",
         "disconnectStripe": "解除連接"
+      }
+    },
+    "LikeCoinIntegrationPanel": {
+      "title": "利潤",
+      "label": {
+        "content": "立即<a class=\"blue\" href=\"{{link}}\">創建LikeCoin ID</a> (LikeCoin IDがoice IDとして機能する)",
+        "footnote": "LikeCoin ID除可同時作為 oice ID 之外，還可以以故事或素材賺LikeCoin。\n(創建LikeCoin ID需要使用 Chrome 瀏覽器及安裝MetaMask插件)",
+        "id": "oice及LikeCoin ID: ",
+        "soonStart": "LikeCoin計劃快將啟動。",
+        "yourLikeCoinWillBeShowedHere": "你於oice賺取的LikeCoin將在此顯示"
+      },
+      "button": {
+        "whatIsLikeCoin": "LikeCoin是什麼?",
+        "register": "創建LikeCoin ID",
+        "login": "我已有LikeCoin ID"
+      }
+    },
+    "LikeCoinLoginModal": {
+      "title": {
+        "desktopChromeRequired": "需使用電腦版 Chrome 瀏覽器",
+        "metaMaskRequired": "需要插件",
+        "switchToRinkeby": "切換至 Rinkeby 測試網絡",
+        "switchToMainNet": "切換至 Mainnet 正式網絡",
+        "unlockMetaMask": "登入 MetaMask",
+        "signMetaMask": "在 MetaMask 按 Sign",
+        "connectWithLikeCoin": "正在登入 LikeCoin"
+      },
+      "label": {
+        "desktopChromeRequired": "需要使用支援以太坊加密貨幣錢包 MetaMask 的瀏覽器。\n請使用電腦版 Chrome 瀏覽器並安裝 MetaMask 插件",
+        "metaMaskRequired": "需要 MetaMask 用作登入。請使用 Chrome 瀏覽器以安裝 MetaMask 插件.",
+        "switchToRinkeby": "需要使用 Rinkeby 測試網，請切換至 Rinkeby.",
+        "switchToMainNet": "需要使用正式網絡，請切換至 Mainnet。",
+        "signMetaMask": "請在 MetaMask 按 [Sign]",
+        "unlockMetaMask": "需要讀取 MetaMask ，請登入 MetaMask"
+      },
+      "button": {
+        "installChrome": "安裝 Chrome",
+        "installMetaMask": "安裝 MetaMask",
+        "installedMetaMask": "已安裝"
       }
     },
     "seekingSubscriptionMessage": {
@@ -1084,7 +1123,12 @@
     "ERR_USERNAME_CONTAINS_INVALID_CHARACTER": "用戶名稱含有無效字符",
     "ERR_USERNAME_NOT_UNIQUE": "此用戶名稱已有人使用",
     "ERR_USERNAME_IS_A_NUMBER": "用戶名稱不得全部使用數字",
-    "ERR_LIKE_COIN_ID_CONTAINS_INVALID_CHARACTER": "LikeCoin ID 含有無效字符"
+    "ERR_LIKE_COIN_ID_CONTAINS_INVALID_CHARACTER": "LikeCoin ID 含有無效字符",
+    "ERR_LIKECOIN_CONNECT_INVALID_ID": "LikeCoin ID無效",
+    "ERR_LIKECOIN_CONNECT_INVALID_ADDRESS": "此錢包地址尚未申請LikeCoin ID",
+    "ERR_LIKECOIN_CONNECT_MISSING_PARAMS": "LikeCoin ID綁定發生錯誤",
+    "ERR_LIKECOIN_CONNECT_DUPLICATED": "此LikeCoin ID已被綁定",
+    "ERR_LIKECOIN_CONNECT_ALREADY": "不能綁定到另一個LikeCoin ID"
   },
   "general": {
     "save": "儲存",
