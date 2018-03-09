@@ -18,7 +18,7 @@ export const BASIC_INFORMATION = {
   DISPLAY_NAME: 'displayName',
   DESCRIPTION: 'description',
   EMAIL_ADDRESS: 'emailAddress',
-  USERNAME: 'username',
+  USERNAME: 'likeCoinId',
   SEEKING_SUBSCRIPTION_MESSAGE: 'seekingSubscriptionMessage',
   ROLE: 'role',
   LANGUAGE: 'language',

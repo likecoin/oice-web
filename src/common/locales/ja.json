@@ -281,7 +281,7 @@
         "description": "自己紹介",
         "emailAddress": "アカウント",
         "username": "ユーザーネーム",
-        "likeCoinId": "LikeCoin ID"
+        "likeCoinId": "ユーザーリンク (LikeCoin ID)"
       },
       "button": {
         "editProfilePicture": "プロフィール写真を変更",

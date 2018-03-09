@@ -281,7 +281,7 @@
         "description": "個人介紹",
         "emailAddress": "電郵地址",
         "username": "用戶名稱",
-        "likeCoinId": "LikeCoin ID"
+        "likeCoinId": "用戶連結 (LikeCoin ID)"
       },
       "button": {
         "editProfilePicture": "更改頭像",

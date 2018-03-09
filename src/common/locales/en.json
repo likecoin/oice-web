@@ -281,7 +281,7 @@
         "description": "Description",
         "emailAddress": "Email Address",
         "username": "Username",
-        "likeCoinId": "LikeCoin ID"
+        "likeCoinId": "User Link (LikeCoin ID)"
       },
       "button": {
         "editProfilePicture": "Edit Profile Picture",
