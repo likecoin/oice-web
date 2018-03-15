@@ -41,4 +41,5 @@ export const LINK_ALIAS = {
   INSTAGRAM: 'instagram',
   SOUNDCLOUD: 'soundcloud',
   MIRROR_FICTION: 'mirrorfiction',
+  LIKECOIN: 'LikeCoin',
 };

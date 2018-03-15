@@ -679,7 +679,8 @@
         "oices": "oice",
         "assets": "素材",
         "credits": "クレジット"
-      }
+      },
+      "supportByLikeCoin": "LikeCoin をもって支援する"
     },
     "tabBar": {
       "user": "ユーザー",
