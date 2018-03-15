@@ -679,7 +679,8 @@
         "oices": "oice",
         "assets": "素材",
         "credits": "參與"
-      }
+      },
+      "supportByLikeCoin": "以 LikeCoin 支持"
     },
     "tabBar": {
       "user": "用戶",

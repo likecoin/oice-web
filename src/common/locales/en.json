@@ -679,7 +679,8 @@
         "oices": "Stories",
         "assets": "Assets",
         "credits": "Credits"
-      }
+      },
+      "supportByLikeCoin": "Support by LikeCoin"
     },
     "tabBar": {
       "user": "User",

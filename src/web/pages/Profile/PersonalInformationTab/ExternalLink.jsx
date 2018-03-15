@@ -24,6 +24,7 @@ import InstagramIcon from 'common/icons/links/ig-icon';
 import SoundcloudIcon from 'common/icons/links/sc-icon';
 import MirrorIcon from 'common/icons/links/mirr-icon';
 import UrlIcon from 'common/icons/links/url-icon';
+import ClapIcon from 'common/icons/links/clap';
 
 import FacebookGreyIcon from 'common/icons/links/fb-icon-grey';
 import TwitterGreyIcon from 'common/icons/links/tw-icon-grey';
@@ -32,6 +33,7 @@ import InstagramGreyIcon from 'common/icons/links/ig-icon-grey';
 import SoundcloudGreyIcon from 'common/icons/links/sc-icon-grey';
 import MirrorGreyIcon from 'common/icons/links/mirr-icon-grey';
 import UrlGreyIcon from 'common/icons/links/url-icon-grey';
+import ClapGreyIcon from 'common/icons/links/clap-grey';
 
 
 import { LINK_ALIAS } from '../Profile.constants';
@@ -50,6 +52,8 @@ export function getLinkIcon(alias, grey = false) {
       return grey ? <SoundcloudGreyIcon /> : <SoundcloudIcon />;
     case LINK_ALIAS.MIRROR_FICTION:
       return grey ? <MirrorGreyIcon /> : <MirrorIcon />;
+    case LINK_ALIAS.LIKECOIN:
+      return grey ? <ClapGreyIcon /> : <ClapIcon />;
     default:
       return grey ? <UrlGreyIcon /> : <UrlIcon />;
   }

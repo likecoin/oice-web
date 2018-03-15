@@ -19,7 +19,13 @@ import TabBar from 'ui-elements/TabBar';
 import { setInnerHTMLWithParsing } from 'common/utils';
 import { getAuthItem } from 'common/utils/auth';
 import { getLinkIcon } from 'web/pages/Profile/PersonalInformationTab/ExternalLink';
-import { PROFILE_ACTION } from 'web/pages/Profile/Profile.constants';
+import {
+  LINK_ALIAS,
+  PROFILE_ACTION,
+} from 'web/pages/Profile/Profile.constants';
+import {
+  LIKECOIN_URL,
+} from 'common/constants';
 
 import Gallery from './Gallery';
 import StoryDetails from './StoryDetails';
@@ -318,7 +324,7 @@ export default class UserPage extends React.Component {
           size={size}
           src={user.avatar}
           mini
-          onClick={isSelfProfile && this.handleClickAvatar}
+          onClick={isSelfProfile ? this.handleClickAvatar : null}
         />
         <h1 id="user-displayname">
           {user.displayName}
@@ -354,9 +360,15 @@ export default class UserPage extends React.Component {
   );
 
   renderExternalLinks() {
-    const { links } = this.props;
+    const { t, links, user } = this.props;
+    const likeCoinId = _get(user, 'likeCoinId');
     return (
       <div id="user-external-links">
+        {!!likeCoinId && this.renderExternalLinkItem({
+          link: `${LIKECOIN_URL}/${likeCoinId}`,
+          typeAlias: LINK_ALIAS.LIKECOIN,
+          label: t('label.supportByLikeCoin'),
+        })}
         {links.map(this.renderExternalLinkItem)}
       </div>
     );
