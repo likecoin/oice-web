@@ -28,8 +28,7 @@ function getStateFromProps(nextProps, prevProps = {}) {
 
   const state = {
     dropdownListItems: assetLibraryIds ? (
-      // prevent library is selected but neither purchased nor owned by user
-      assetLibraryIds.filter(id => !!libraries[id]).map(id => libraries[id].name)
+      assetLibraryIds.map(id => libraries[id].name)
     ) : [],
   };
 
@@ -49,10 +48,17 @@ function getStateFromProps(nextProps, prevProps = {}) {
   return state;
 }
 
-@connect(store => ({
-  ...store.editorPanel.AttributesPanel.AssetSelectionModal,
-  libraries: store.libraries.dict,
-}))
+@connect((store) => {
+  const { assetLibraryIds } = store.editorPanel.AttributesPanel.AssetSelectionModal;
+  const libraries = store.libraries.dict;
+  // prevent library is selected but neither purchased nor owned by user
+  const filteredAssetLibraryIds = assetLibraryIds.filter(id => !!libraries[id]);
+  return {
+    ...store.editorPanel.AttributesPanel.AssetSelectionModal,
+    libraries,
+    assetLibraryIds: filteredAssetLibraryIds,
+  };
+})
 @translate(['AssetSelectionModal'])
 export default class AssetSelectionModal extends React.Component {
   static Actions = Actions;
