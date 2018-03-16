@@ -52,7 +52,7 @@ function getStateFromProps(nextProps, prevProps = {}) {
   const { assetLibraryIds } = store.editorPanel.AttributesPanel.AssetSelectionModal;
   const libraries = store.libraries.dict;
   // prevent library is selected but neither purchased nor owned by user
-  const filteredAssetLibraryIds = assetLibraryIds.filter(id => !!libraries[id]);
+  const filteredAssetLibraryIds = assetLibraryIds ? assetLibraryIds.filter(id => !!libraries[id]) : assetLibraryIds;
   return {
     ...store.editorPanel.AttributesPanel.AssetSelectionModal,
     libraries,
