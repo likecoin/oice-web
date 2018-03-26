@@ -49,13 +49,17 @@ request.del(`${API_URL}membership`)
   response.ok ? response.body : null
 ));
 
-export const getUserProfile = () =>
-request.get(`${API_URL}profile`)
-.withCredentials()
-.set(API_HEADER)
-.then(response => (
-  response.ok ? response.body.user : {}
-));
+export const getUserProfile = ({ cookie }) => {
+  const req = request.get(`${API_URL}profile`)
+  .withCredentials()
+  .set(API_HEADER);
+
+  if (cookie) req.set('Cookie', cookie);
+
+  return req.then(response => (
+    response.ok ? response.body.user : {}
+  ));
+};
 
 export const profileUsernameCheck = username =>
 request.post(`${API_URL}profile/username/check`)

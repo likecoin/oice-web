@@ -110,15 +110,8 @@ export default class UserPage extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const { id, username } = nextProps.params;
-    if (!id && !username) {
-      if (nextProps.self) {
-        // Redirect to user's user page when not user id given in the URL
-        this.props.dispatch(push(`/user/${nextProps.self.id}`));
-      } else {
-        // Redirect to home when not log in
-        this.props.dispatch(push('/about'));
-      }
-    } else if (
+
+    if (
       (this.props.params.id !== id) ||
       (this.props.params.username !== username)
     ) {
@@ -144,6 +137,17 @@ export default class UserPage extends React.Component {
     if (this.scrollThrottle) this.scrollThrottle.cancel();
     window.removeEventListener('resize', this.resizeDebounce, false);
     window.removeEventListener('scroll', this.scrollThrottle, false);
+  }
+
+  getLink = (type, item) => {
+    switch (type) {
+      case 'story':
+        return `/story/${item.oiceUuid}`;
+      case 'library':
+        return `/store/library/${item.id}`;
+      default:
+        return null;
+    }
   }
 
   handleResize = () => {
@@ -264,17 +268,6 @@ export default class UserPage extends React.Component {
 
   handleTabBarIndexChange = (index) => {
     this.setState({ selectedTabBarIndex: index });
-  }
-
-  getLink = (type, item) => {
-    switch (type) {
-      case 'story':
-        return `/story/${item.oiceUuid}`;
-      case 'library':
-        return `/store/library/${item.id}`;
-      default:
-        return null;
-    }
   }
 
   handleSelectionCheck = (type, item) => {
