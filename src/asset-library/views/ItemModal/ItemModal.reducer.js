@@ -14,7 +14,7 @@ export default handleActions({
     open: payload.open,
     item: payload.open ? payload.asset : null,
   }),
-  [actions.willAdd]: (state) => ({
+  [actions.willAdd]: state => ({
     ...state,
     loading: true,
   }),
@@ -23,13 +23,17 @@ export default handleActions({
     open: false,
     loading: false,
   }),
+  [actions.willUpdate]: state => ({
+    ...state,
+    loading: true,
+  }),
   [actions.didUpdate]: (state, { payload }) => ({
     ...state,
     open: false,
     item: payload,
     loading: false,
   }),
-  [actions.willDelete]: (state) => ({
+  [actions.willDelete]: state => ({
     ...state,
     loading: true,
   }),
