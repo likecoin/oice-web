@@ -27,6 +27,8 @@ import ToggleButton from 'ui-elements/ToggleButton';
 
 import InteractiveTutorial from 'editor/components/InteractiveTutorial';
 
+import Throttle from 'common/utils/Throttle';
+
 import { LIBRARY_TYPE } from 'asset-library/constants';
 
 import { isNormalUser } from 'common/utils/user';
@@ -428,13 +430,17 @@ export default class CreateLibraryModal extends React.Component {
       (libraryType === LIBRARY_TYPE.FORSALE && !library.price)
     );
     const confirmButton = (
-      <OutlineButton
-        color={'red'}
-        disabled={disabledConfirm}
-        label={t('libraryModal.button.save')}
-        fluid
-        onClick={this.handleConfirmButtonClick}
-      />
+      <Throttle>
+        {throttle => (
+          <OutlineButton
+            color={'red'}
+            disabled={disabledConfirm}
+            label={t('libraryModal.button.save')}
+            fluid
+            onClick={throttle(this.handleConfirmButtonClick)}
+          />
+        )}
+      </Throttle>
     );
     return (
       <div id="create-library-modal">

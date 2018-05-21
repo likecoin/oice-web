@@ -23,6 +23,7 @@ import StorySettingModal, {
 } from 'editor/components/EditorPanel/StorySettingModal';
 
 import * as SubNavBarConstants from 'ui-elements/SubNavBar/constants';
+import Throttle from 'common/utils/Throttle';
 
 import StoryDetails from './StoryDetails';
 
@@ -277,14 +278,18 @@ export default class Dashboard extends React.Component {
           id="story-dashboard"
         >
           <div id="story-gallery">
-            <Gallery
-              {...gallaryProps}
-              galleryExpansionPanelHeight={galleryExpansionPanelHeight}
-              items={storiesList}
-              newItemTitleString={t('label.button.createStory')}
-              type="story"
-              onSelectAddItem={this.handleOnSelectAddItem}
-            />
+            <Throttle>
+              {throttle => (
+                <Gallery
+                  {...gallaryProps}
+                  galleryExpansionPanelHeight={galleryExpansionPanelHeight}
+                  items={storiesList}
+                  newItemTitleString={t('label.button.createStory')}
+                  type="story"
+                  onSelectAddItem={throttle(this.handleOnSelectAddItem)}
+                />
+              )}
+            </Throttle>
           </div>
         </div>
         <Footer />

@@ -13,6 +13,8 @@ import OutlineButton from 'ui-elements/OutlineButton';
 
 import InteractiveTutorial from 'editor/components/InteractiveTutorial';
 
+import Throttle from 'common/utils/Throttle';
+
 import AddIcon from 'common/icons/add';
 import CloseIcon from 'common/icons/close-bold';
 import PlayIcon from 'common/icons/play';
@@ -127,13 +129,17 @@ export default class StoryDetails extends React.Component {
             </div>
           );
         })}
-        <div
-          className="oice-row add"
-          onClick={this.handleClickAddOiceButton}
-        >
-          <AddIcon />
-          <span>{t('label.button.addOice')}</span>
-        </div>
+        <Throttle>
+          {throttle => (
+            <div
+              className="oice-row add"
+              onClick={throttle(this.handleClickAddOiceButton)}
+            >
+              <AddIcon />
+              <span>{t('label.button.addOice')}</span>
+            </div>
+          )}
+        </Throttle>
       </div>
     );
   }
