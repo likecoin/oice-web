@@ -70,7 +70,17 @@ export default class StorySettingModal extends React.Component {
   }
 
   handleCloseStorySettingModal = () => {
-    this.props.dispatch(Actions.toggle({ open: false }));
+    const { dispatch, t } = this.props;
+    if (!isSettingUpdated(this.props)) {
+      dispatch(Actions.toggle({ open: false }));
+    } else {
+      dispatch(AlertDialog.toggle({
+        body: t('label.closeConfirm'),
+        confirmCallback: () => {
+          dispatch(Actions.toggle({ open: false }));
+        },
+      }));
+    }
   }
 
   handleClickOutside = () => {
