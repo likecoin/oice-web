@@ -1810,7 +1810,8 @@
       "languageSetting": "言語設定"
     },
     "label": {
-      "deleteStoryConfirm": "このストーリーを削除しますか？"
+      "deleteStoryConfirm": "このストーリーを削除しますか？",
+      "closeConfirm": "変更が保存されていません。続行しますか？"
     }
   },
   "StorySettingTab": {
