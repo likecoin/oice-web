@@ -4,16 +4,14 @@ import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import { push } from 'react-router-redux';
 
-import classNames from 'classnames';
 import _get from 'lodash/get';
 import _isEmpty from 'lodash/isEmpty';
 import _debounce from 'lodash/debounce';
 import _throttle from 'lodash/throttle';
 
 import Avatar from 'ui-elements/Avatar';
-import Card from 'ui-elements/Card';
 import Container from 'ui-elements/Container';
-import LoadingScreen from 'ui-elements/LoadingScreen';
+import Progress from 'ui-elements/Progress';
 import TabBar from 'ui-elements/TabBar';
 
 import { setInnerHTMLWithParsing } from 'common/utils';
@@ -87,7 +85,7 @@ export default class UserPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTabBarIndex: -1,
+      selectedTabBarIndex: 1,
       columnWidth: 220,
       isMobile: false,
     };
@@ -398,8 +396,10 @@ export default class UserPage extends React.Component {
         id="user-profile-info"
       >
         {this.renderAvatar(142)}
-        {this.renderDescription()}
-        {this.renderExternalLinks()}
+        <div className="user-details">
+          {this.renderDescription()}
+          {this.renderExternalLinks()}
+        </div>
         {this.renderStats()}
       </div>
     );
@@ -432,6 +432,7 @@ export default class UserPage extends React.Component {
       credits,
       libraries,
       oices,
+      loading,
       self,
       stories,
       t,
@@ -460,7 +461,11 @@ export default class UserPage extends React.Component {
     };
 
     const isSelf = _get(user, 'id') === _get(self, 'id');
-    function getPlaceholderTranslateKey(key) {
+
+    function getTabPlaceholder(key) {
+      if (loading) {
+        return <Progress.LoadingIndicator />;
+      }
       return t(`placeholder.no${isSelf ? 'Your' : ''}${key}`, {
         user: _get(user, 'displayName', ''),
       });
@@ -478,19 +483,19 @@ export default class UserPage extends React.Component {
         {this.renderProfileTab()}
         <Gallery
           {...gallaryProps}
-          emptyChild={getPlaceholderTranslateKey('Story')}
+          emptyChild={getTabPlaceholder('Story')}
           items={stories}
           type="story"
         />
         <Gallery
           {...gallaryProps}
-          emptyChild={getPlaceholderTranslateKey('Library')}
+          emptyChild={getTabPlaceholder('Library')}
           items={libraries}
           type="library"
         />
         <Gallery
           {...gallaryProps}
-          emptyChild={getPlaceholderTranslateKey('Credits')}
+          emptyChild={getTabPlaceholder('Credits')}
           items={credits}
           type="story"
         />
@@ -501,18 +506,14 @@ export default class UserPage extends React.Component {
   render() {
     return (
       <Container id="user-profile-wrapper" fluid>
-        {this.props.loading ? (
-          <LoadingScreen />
-        ) : (
-          <div
-            ref={ref => this.contentContainer = ref}
-            id="user-profile"
-          >
-            {this.renderMobileHeader()}
-            {this.renderProfile()}
-            {this.renderPortfolio()}
-          </div>
-        )}
+        <div
+          ref={ref => this.contentContainer = ref}
+          id="user-profile"
+        >
+          {this.renderMobileHeader()}
+          {this.renderProfile()}
+          {this.renderPortfolio()}
+        </div>
       </Container>
     );
   }

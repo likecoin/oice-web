@@ -101,7 +101,7 @@ export default class TabBar extends React.Component {
     );
 
     const tabBarNav = (
-      <ul className="tabbar-nav" ref={(ref) => this.nav = ref}>
+      <ul ref={ref => this.nav = ref} className="tabbar-nav">
         {items.map(this.renderItems)}
       </ul>
     );
@@ -112,9 +112,9 @@ export default class TabBar extends React.Component {
 
     return (
       <div
+        ref={ref => this.rootElement = ref}
         className={rootClassName}
         id={id}
-        ref={(ref) => this.rootElement = ref}
       >
         {tabBarNav}
         <div className="tabbar-content-wrapper">
