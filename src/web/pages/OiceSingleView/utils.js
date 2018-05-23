@@ -8,7 +8,10 @@ import {
   DOMAIN_URL,
   PLAY_STORE_URL,
 } from 'common/constants';
-import { LOG_KEY } from 'common/constants/key';
+import {
+  LOG_KEY,
+  APP_STORE_LINK,
+} from 'common/constants/key';
 
 export function getDesktopURL(uuid, language) {
   return `${DOMAIN_URL}/story/${uuid}?lang=${language}`;
@@ -53,7 +56,7 @@ export function getDeepLinkObject({ channel, oice, data = {} }) {
       language,
       $desktop_url: desktopUrl,
       $android_url: PLAY_STORE_URL,
-      $ios_url: desktopUrl,
+      $ios_url: APP_STORE_LINK,
       $og_title,
       $og_description,
       $og_image_url,
