@@ -6,6 +6,7 @@ import {
   ANDROID_APP,
   IOS_APP,
   FACEBOOK_APP_ID,
+  SENTRY_DSN,
   IS_DEV_MODE,
 } from './common/constants';
 
@@ -78,6 +79,7 @@ export default class IndexHTML extends React.Component {
           <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
           <style dangerouslySetInnerHTML={{ __html: '.async-hide { opacity: 0 !important}' }} />
+          <script src="https://cdn.ravenjs.com/3.24.2/raven.min.js" crossorigin="anonymous" />
           {!IS_DEV_MODE &&
             <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js" />
           }
@@ -92,6 +94,7 @@ export default class IndexHTML extends React.Component {
           {/* Typekit */}
           <script src="https://use.typekit.net/lds7dmt.js" />
           <script dangerouslySetInnerHTML={{ __html: 'try{Typekit.load({ async: true });}catch(e){}' }} />
+          <script dangerouslySetInnerHTML={{ __html: `Raven.config('${SENTRY_DSN}').install()` }} />
         </head>
         <body>
           <noscript>
