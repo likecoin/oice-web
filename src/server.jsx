@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { match, Route, IndexRoute, RouterContext } from 'react-router';
+import cookieParser from 'cookie-parser';
 
 import i18nMiddleware from 'i18next-express-middleware';
 import { I18nextProvider } from 'react-i18next';
@@ -71,6 +72,7 @@ server.use((req, res, next) => {
 });
 
 server.disable('x-powered-by');
+server.use(cookieParser());
 server.use(i18nMiddleware.handle(i18n));
 server.use(express.static(DIST_PATH));
 
@@ -219,11 +221,29 @@ server.get('*', (req, res) => {
         props.module = 'admin-panel';
       } else if (isPathStartWith('user') || isPathStartWith('@')) {
         const matchResults = isPathStartWith('user') ? pathname.match(/^\/user\/(\d+).*/i) : pathname.match(/\/@([a-zA-Z0-9.-_]+).*/);
+        const userKey = matchResults ? matchResults[1] : null;
         if (matchResults) {
-          const userKey = matchResults[1];
           props.user = await UserAPI.fetchUserProfile(userKey).catch((response) => {
-            res.status(404).send('User Not Found');
+            res.redirect('/about');
           });
+        } else {
+          const { cookies } = req;
+          const cookieKeys = Object.keys(cookies);
+          const cookieString = cookieKeys.reduce((acc, key) => (
+            `${acc}${key}=${cookies[key]};`
+          ), '');
+          props.user = await UserAPI.getUserProfile({ cookie: cookieString }).catch((response) => {
+            res.redirect('/about');
+          });
+        }
+
+        if (props.user) {
+          const { likeCoinId, id } = props.user;
+          if (likeCoinId && userKey !== likeCoinId) {
+            res.redirect(`/@${likeCoinId}`);
+          } else if (!matchResults) {
+            res.redirect(`/user/@${id}`);
+          }
         }
       } else if (isPathStartWith('competition1718')) {
         props.competition1718 = {
