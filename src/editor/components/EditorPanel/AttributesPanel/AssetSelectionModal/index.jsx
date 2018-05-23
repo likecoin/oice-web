@@ -8,7 +8,6 @@ import _isEmpty from 'lodash/isEmpty';
 
 import Dropdown from 'ui-elements/Dropdown';
 import Modal from 'ui-elements/Modal';
-import RaisedButton from 'ui-elements/RaisedButton';
 
 import AssetList from './AssetList';
 
