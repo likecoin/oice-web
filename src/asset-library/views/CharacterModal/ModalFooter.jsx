@@ -16,7 +16,7 @@ import * as constants from 'common/constants';
 import * as Actions from './CharacterModal.actions';
 
 
-const isInteger = (value) => Number.isInteger(value) || value === '';
+const isInteger = value => Number.isInteger(value) || value === '';
 
 @translate(['assetsManagement', 'editor'])
 @connect((store) => {
@@ -99,7 +99,7 @@ export default class CharacterModalFooter extends React.Component {
   handleDeleteButtonClick = () => {
     const { character, deletedFGImageIds, fgImages, libraryId, dispatch, t } = this.props;
     let assetCount = -deletedFGImageIds.length;
-    fgImages.forEach(fg => {
+    fgImages.forEach((fg) => {
       if (fg.meta.id) {
         assetCount--;
       }

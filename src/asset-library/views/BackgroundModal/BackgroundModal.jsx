@@ -29,10 +29,10 @@ const defaultBackgroundState = {
   nameJp: '',
   url: null,
   users: [],
-  creditsUrl: ''
+  creditsUrl: '',
 };
 
-const getStateFromProps = (props) => ({
+const getStateFromProps = props => ({
   imgRatio: {
     x: 1,
     y: 1,
@@ -56,6 +56,7 @@ export default class BackgroundModal extends React.Component {
     t: PropTypes.func.isRequired,
     background: PropTypes.object,
     libraryId: PropTypes.number,
+    loading: PropTypes.bool,
     readonly: PropTypes.bool,
     user: PropTypes.object,
   }
@@ -66,7 +67,9 @@ export default class BackgroundModal extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState(getStateFromProps(nextProps));
+    if (this.props.loading === nextProps.loading) {
+      this.setState(getStateFromProps(nextProps));
+    }
     if (nextProps.open && !this.props.open && this.imageCropper) {
       this.imageCropper.clearCropperImageFile();
     }
@@ -146,8 +149,8 @@ export default class BackgroundModal extends React.Component {
     const { background, hasUploadedImage } = this.state;
     return (
       <ImageCropper
-        readonly={readonly}
         ref={ref => this.imageCropper = ref}
+        readonly={readonly}
         src={background.url}
         onReady={this.handleReady}
       />
@@ -155,7 +158,7 @@ export default class BackgroundModal extends React.Component {
   }
 
   render() {
-    const { t, open, readonly } = this.props;
+    const { t, loading, open, readonly } = this.props;
     const { background, hasUploadedImage } = this.state;
 
     const isAdding = !this.props.background;
@@ -172,7 +175,7 @@ export default class BackgroundModal extends React.Component {
     const valid = !isImageUrlEmpty && isFilledAssetName && !isCreditsEmpty;
     const confirmButton = (readonly ? null : (
       <RaisedButton
-        disabled={!valid}
+        disabled={!valid || loading}
         label={t('bgModal.button.save')}
         primary
         onClick={this.handleConfirmButtonClick}
@@ -193,7 +196,10 @@ export default class BackgroundModal extends React.Component {
         width={398}
         onClickOutside={this.handleCloseModalButtonClick}
       >
-        <Modal.Header onClickCloseButton={this.handleCloseModalButtonClick}>
+        <Modal.Header
+          loading={loading}
+          onClickCloseButton={this.handleCloseModalButtonClick}
+        >
           {modalHeader}
         </Modal.Header>
         <Modal.Body>
@@ -206,7 +212,7 @@ export default class BackgroundModal extends React.Component {
                   readonly={readonly}
                   value={background.nameEn}
                   fullWidth
-                  onChange={(e) => this.handleNameChange(e, 'nameEn')}
+                  onChange={e => this.handleNameChange(e, 'nameEn')}
                 />
                 {/* <TextField
                   placeholder={t('bgModal.placeholder.name.tw')}
