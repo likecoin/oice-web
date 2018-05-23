@@ -13,7 +13,7 @@ import OutlineButton from 'ui-elements/OutlineButton';
 
 import InteractiveTutorial from 'editor/components/InteractiveTutorial';
 
-import Throttle from 'common/utils/Throttle';
+import Throttle from 'ui-elements/Throttle';
 
 import AddIcon from 'common/icons/add';
 import CloseIcon from 'common/icons/close-bold';

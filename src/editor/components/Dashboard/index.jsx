@@ -23,7 +23,7 @@ import StorySettingModal, {
 } from 'editor/components/EditorPanel/StorySettingModal';
 
 import * as SubNavBarConstants from 'ui-elements/SubNavBar/constants';
-import Throttle from 'common/utils/Throttle';
+import Throttle from 'ui-elements/Throttle';
 
 import StoryDetails from './StoryDetails';
 

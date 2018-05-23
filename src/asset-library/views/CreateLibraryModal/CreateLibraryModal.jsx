@@ -27,7 +27,7 @@ import ToggleButton from 'ui-elements/ToggleButton';
 
 import InteractiveTutorial from 'editor/components/InteractiveTutorial';
 
-import Throttle from 'common/utils/Throttle';
+import Throttle from 'ui-elements/Throttle';
 
 import { LIBRARY_TYPE } from 'asset-library/constants';
 
