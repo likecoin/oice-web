@@ -200,7 +200,7 @@ server.get('*', (req, res) => {
         const foundUUID = pathname.match(regexUUID);
         const uuid = foundUUID[0];
         props.oice = await OiceAPI.fetchOiceOgByUUID(uuid).catch((response) => {
-          res.status(500).send(`Error occurs when fetching oice information ${response}`);
+          // res.status(500).send(`Error occurs when fetching oice information ${response}`);
         });
       } else if (isPathStartWith('edit')) {
         props.module = 'editor';
