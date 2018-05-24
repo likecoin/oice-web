@@ -94,7 +94,7 @@ export default class IndexHTML extends React.Component {
           {/* Typekit */}
           <script src="https://use.typekit.net/lds7dmt.js" />
           <script dangerouslySetInnerHTML={{ __html: 'try{Typekit.load({ async: true });}catch(e){}' }} />
-          <script dangerouslySetInnerHTML={{ __html: `Raven.config('${SENTRY_DSN}').install()` }} />
+          {!IS_DEV_MODE && <script dangerouslySetInnerHTML={{ __html: `Raven.config('${SENTRY_DSN}').install()` }} />}
         </head>
         <body>
           <noscript>
