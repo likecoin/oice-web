@@ -28,6 +28,7 @@ export const BRANCH_URL_PROD = '';
 export const BRANCH_URL_TEST = '';
 
 export const FACEBOOK_APP_ID = '';
+export const SENTRY_DSN = '';
 
 export const GTM_CONTAINER_ID = '';
 
