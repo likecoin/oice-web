@@ -6,12 +6,12 @@ import {
   ANDROID_APP,
   IOS_APP,
   FACEBOOK_APP_ID,
-  SENTRY_DSN,
   IS_DEV_MODE,
 } from './common/constants';
 
 import {
   GTM_CONTAINER_ID,
+  SENTRY_DSN,
 } from './common/constants/key';
 
 
