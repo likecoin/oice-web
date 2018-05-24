@@ -57,7 +57,7 @@ export default class AssetStore extends React.Component {
     libraries: PropTypes.array.isRequired,
     pageNumber: PropTypes.number.isRequired,
     totalPages: PropTypes.number.isRequired,
-    uiLanguage: PropTypes.string.isRequired,
+    uiLanguage: PropTypes.string,
     children: PropTypes.node,
   }
 
