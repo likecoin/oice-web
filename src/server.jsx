@@ -76,6 +76,10 @@ server.use(cookieParser());
 server.use(i18nMiddleware.handle(i18n));
 server.use(express.static(DIST_PATH));
 
+server.get('/healthz', (req, res) => {
+  res.sendStatus(200);
+});
+
 server.get('*', (req, res) => {
   const reqURL = req.url;
   const baseURL = `${DEBUG ? 'http' : 'https'}://${req.get('host')}`;
