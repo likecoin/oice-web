@@ -1,15 +1,22 @@
 import { createAction } from 'redux-actions';
 import * as LibraryAPI from 'common/api/library';
 import * as StoryAPI from 'common/api/story';
-import { toggleAlertDialog } from 'ui-elements/AlertDialog/redux';
 
 import { APIHandler } from 'common/utils/api';
-import * as IntercomUtils from 'common/utils/intercom';
 
+import { LIBRARY_TYPE } from 'asset-library/constants';
+
+
+const selectedLibraryTypes = [
+  LIBRARY_TYPE.PUBLIC,
+  LIBRARY_TYPE.PRIVATE,
+  LIBRARY_TYPE.FORSALE,
+  LIBRARY_TYPE.SELECTED,
+];
 
 const fetchedLibraries = createAction('FETCHED_LIBRARIES');
 export const fetchLibraries = () => dispatch => APIHandler(dispatch,
-  LibraryAPI.fetchLibraries()
+  LibraryAPI.fetchLibraries(selectedLibraryTypes)
   .then(libraries => dispatch(fetchedLibraries(libraries)))
 );
 

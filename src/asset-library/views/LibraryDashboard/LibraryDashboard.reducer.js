@@ -1,7 +1,12 @@
 import { handleActions } from 'redux-actions';
 import update from 'immutability-helper';
 
-import { LIBRARY_TYPE, LIBRARY_TYPES } from 'asset-library/constants';
+import {
+  LIBRARY_TYPE,
+  LIBRARY_TYPES,
+  MY_LIBRARY_TYPES,
+  PURCHASED_LIBRARY_TYPES,
+} from 'asset-library/constants';
 
 import {
   actions as PurchasedDashboardActions,
@@ -21,40 +26,18 @@ export const initialLibraryState = {
   loading: false,
 };
 
-const initialStoreLibraryState = {
-  libraries: [],
-  pageNumber: 0,
-  totalPages: 0,
-};
-
 const initialState = {
   public: initialLibraryState,
   private: initialLibraryState,
   forSale: initialLibraryState,
   selected: initialLibraryState,
   unselected: initialLibraryState,
+
+  isFetchingMyLibraries: false,
+  isFetchedMyLibraries: false,
+  isFetchingPurchasedLibraries: false,
+  isFetchedPurchasedLibraries: false,
 };
-
-function updateLibrary(state, libraryId, newState) {
-  let index;
-  let libraryGroup;
-  LIBRARY_TYPES.find((libraryType) => {
-    index = state[libraryType].libraries.findIndex(library => library.id === libraryId);
-    if (index !== -1) {
-      libraryGroup = libraryType;
-      return true;
-    }
-    return false;
-  });
-
-  return update(state, {
-    [libraryGroup]: {
-      libraries: {
-        [index]: newState,
-      },
-    },
-  });
-}
 
 function getMyLibraryType(library) {
   let libraryType = 'public';
@@ -132,27 +115,51 @@ function handleUpdatedLibraryAssetCount(state, { payload }) {
 }
 
 export default handleActions({
-  [Actions.fetchLibrariesBegin]: (state, action) => {
-    const { types } = action.payload;
+  [Actions.fetchLibrariesBegin]: (state, { payload }) => {
+    const { types } = payload;
     let newState = state;
+
+    const fetchState = {};
+    if (types.includes(LIBRARY_TYPE.PUBLIC)) {
+      fetchState.isFetchingMyLibraries = { $set: true };
+    }
+    if (types.includes(LIBRARY_TYPE.SELECTED)) {
+      fetchState.isFetchingPurchasedLibraries = { $set: true };
+    }
+
     types.forEach((type) => {
       newState = update(newState, {
         [type]: {
           loading: { $set: true },
         },
+        ...fetchState,
       });
     });
+
     return newState;
   },
   [Actions.fetchLibrariesEnd]: (state, { payload }) => {
     let newState = state;
-    payload.types.forEach((type) => {
+    const { types } = payload;
+
+    const fetchState = {};
+    if (types.includes(LIBRARY_TYPE.PUBLIC)) {
+      fetchState.isFetchingMyLibraries = { $set: false };
+      fetchState.isFetchedMyLibraries = { $set: true };
+    }
+    if (types.includes(LIBRARY_TYPE.SELECTED)) {
+      fetchState.isFetchingPurchasedLibraries = { $set: false };
+      fetchState.isFetchedPurchasedLibraries = { $set: true };
+    }
+
+    types.forEach((type) => {
       newState = update(newState, {
         [type]: {
           libraries: { $set: payload.result[type] },
           loaded: { $set: true },
           loading: { $set: false },
         },
+        ...fetchState,
       });
     });
     return newState;

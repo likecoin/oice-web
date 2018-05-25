@@ -7,11 +7,6 @@ import { translate } from 'react-i18next';
 import _get from 'lodash/get';
 
 import InteractiveTutorial from 'editor/components/InteractiveTutorial';
-import TabBar from 'ui-elements/TabBar';
-
-import SettingIcon from 'common/icons/setting';
-import StoreSmallIcon from 'common/icons/store-small-icon';
-import StoreSmallActiveIcon from 'common/icons/store-small-icon-active';
 
 import {
   actions as CreateLibraryModalActions,
@@ -26,6 +21,8 @@ import {
 import {
   LIBRARY_ACTION,
   LIBRARY_TYPE,
+  MY_LIBRARY_TYPES,
+  PURCHASED_LIBRARY_TYPES,
   TAB_BAR_ITEM,
 } from 'asset-library/constants';
 import { isNormalUser } from 'common/utils/user';
@@ -41,14 +38,16 @@ import './LibraryDashboard.style.scss';
 
 @translate('LibraryDashboard')
 @connect((store) => {
-  const { routing, LibraryDashboard, LibraryDetails, AssetLibraryTabBar, user } = store;
+  const { routing, AssetLibraryTabBar, LibraryDashboard, user } = store;
   const isFirstEnter = _get(routing, 'locationBeforeTransitions.action', 'POP') === 'POP';
-  const hasFetchedUserLibraries = LibraryDashboard.public.libraries.length > 0;
   return {
-    hasFetchedUserLibraries,
     isFirstEnter,
-    tabBarValue: AssetLibraryTabBar.value,
     user,
+    tabBarValue: AssetLibraryTabBar.value,
+    isFetchingMyLibraries: LibraryDashboard.isFetchingMyLibraries,
+    isFetchedMyLibraries: LibraryDashboard.isFetchedMyLibraries,
+    isFetchingPurchasedLibraries: LibraryDashboard.isFetchingPurchasedLibraries,
+    isFetchedPurchasedLibraries: LibraryDashboard.isFetchedPurchasedLibraries,
   };
 })
 export default class LibraryDashboard extends React.Component {
@@ -61,13 +60,15 @@ export default class LibraryDashboard extends React.Component {
     t: PropTypes.func.isRequired,
     tabBarValue: PropTypes.object.isRequired,
     children: PropTypes.node,
-    hasFetchedUserLibraries: PropTypes.bool,
+    isFetchingMyLibraries: PropTypes.bool,
+    isFetchedMyLibraries: PropTypes.bool,
+    isFetchingPurchasedLibraries: PropTypes.bool,
+    isFetchedPurchasedLibraries: PropTypes.bool,
     user: PropTypes.object,
   }
 
   static defaultProps = {
     children: undefined,
-    hasFetchedUserLibraries: undefined,
     user: undefined,
   }
 
@@ -127,14 +128,31 @@ export default class LibraryDashboard extends React.Component {
   }
 
   fetchLibraries(props = this.props, types) {
-    const { user, hasFetchedUserLibraries } = props;
-    if (user.isLoggedIn && !hasFetchedUserLibraries) {
-      this.props.dispatch(Actions.fetchLibraries(types));
-    }
-  }
+    const {
+      user,
+      dispatch,
+      isFetchingMyLibraries,
+      isFetchedMyLibraries,
+      isFetchingPurchasedLibraries,
+      isFetchedPurchasedLibraries,
+    } = props;
 
-  handleRequestFetchLibraries = (types) => {
-    this.fetchLibraries(types);
+    if (user.isLoggedIn) {
+      if (
+        props.tabBarValue.key === TAB_BAR_ITEM.MY_LIBRARIES.key &&
+        !isFetchingMyLibraries &&
+        !isFetchedMyLibraries
+      ) {
+        dispatch(Actions.fetchLibraries(MY_LIBRARY_TYPES));
+      }
+      if (
+        props.tabBarValue.key === TAB_BAR_ITEM.PURCHASED_LIBRARIES.key &&
+        !isFetchingPurchasedLibraries &&
+        !isFetchedPurchasedLibraries
+      ) {
+        dispatch(Actions.fetchLibraries(PURCHASED_LIBRARY_TYPES));
+      }
+    }
   }
 
   handleRequestCloseLibraryDetails = (libraryId) => {
@@ -217,7 +235,6 @@ export default class LibraryDashboard extends React.Component {
               children={libraryDetails}
               location={this.props.location}
               onClickAddLibraryButton={this.handleToggleCreateLibraryModal}
-              onRequestFetchLibraries={this.handleRequestFetchLibraries}
             />
             <CreateLibraryModal
               libraryType={libraryType}
@@ -231,7 +248,6 @@ export default class LibraryDashboard extends React.Component {
           <PurchasedLibraryDashboard
             children={libraryDetails}
             onClickAssetStore={this.handleOnClickAssetStoreButton}
-            onRequestFetchLibraries={this.handleRequestFetchLibraries}
           />
         );
       case TAB_BAR_ITEM.ASSET_STORE.key:

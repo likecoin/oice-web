@@ -9,27 +9,23 @@ import _throttle from 'lodash/throttle';
 
 import Progress from 'ui-elements/Progress';
 import SubNavBar from 'ui-elements/SubNavBar';
-import AddIcon from 'common/icons/add-thin';
 import StoreLargeIcon from 'common/icons/store-large-icon';
 
 import AssetLibraryTabBar from 'asset-library/views/AssetLibraryTabBar';
 import LibraryGridList from 'asset-library/views/LibraryGridList';
 
-import { LIBRARY_TYPE, STORE_TYPE } from 'asset-library/constants';
+import { STORE_TYPE } from 'asset-library/constants';
 
 import * as Actions from './PurchasedLibraryDashboard.actions';
 
 import './PurchasedLibraryDashboard.style.scss';
 
-const LIBRARY_TYPES = [
-  LIBRARY_TYPE.SELECTED,
-  LIBRARY_TYPE.UNSELECTED,
-];
 
 @translate('PurchasedLibraryDashboard')
 @connect((store) => {
   const state = store.LibraryDashboard;
   return {
+    loading: state.isFetchingPurchasedLibraries && !state.isFetchedPurchasedLibraries,
     selected: state.selected,
     unselected: state.unselected,
     ...store.PurchasedLibraryDashboard,
@@ -38,11 +34,11 @@ const LIBRARY_TYPES = [
 export default class PurchasedLibraryDashboard extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
     selected: PropTypes.object.isRequired,
     t: PropTypes.func.isRequired,
     unselected: PropTypes.object.isRequired,
     onClickAssetStore: PropTypes.func.isRequired,
-    onRequestFetchLibraries: PropTypes.func.isRequired,
     children: PropTypes.node,
     togglingLibraryId: PropTypes.number,
   }
@@ -129,8 +125,7 @@ export default class PurchasedLibraryDashboard extends React.Component {
   }
 
   render() {
-    const { t, togglingLibraryId } = this.props;
-    const loading = LIBRARY_TYPES.some(type => this.props[type].loading);
+    const { t, togglingLibraryId, loading } = this.props;
 
     return (
       <div id="purchase-library-dashboard">

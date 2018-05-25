@@ -14,23 +14,40 @@ export const LIBRARY_TYPES = [
   LIBRARY_TYPE.UNSELECTED,
 ];
 
+export const MY_LIBRARY_TYPES = [
+  LIBRARY_TYPE.PUBLIC,
+  LIBRARY_TYPE.PRIVATE,
+  LIBRARY_TYPE.FORSALE,
+];
+
+export const PURCHASED_LIBRARY_TYPES = [
+  LIBRARY_TYPE.SELECTED,
+  LIBRARY_TYPE.UNSELECTED,
+];
+
 export const LIBRARY_ACTION = {
   ADD_PRIVATE_LIBRARY: 'add-private-library',
   ADD_SALE_LIBRARY: 'add-sale-library',
   START_TUTORIAL: 'tutorial',
 };
 
+export const STORE_TYPE = {
+  MYLIBRARIES: 'myLibraries',
+  PURCHASEDLIBRARIES: 'purchasedLibraries',
+  ASSETSTORE: 'assetStore',
+};
+
 export const TAB_BAR_ITEM = {
   MY_LIBRARIES: {
-    key: 'myLibraries',
+    key: STORE_TYPE.MYLIBRARIES,
     path: '/asset',
   },
   PURCHASED_LIBRARIES: {
-    key: 'purchasedLibraries',
+    key: STORE_TYPE.PURCHASEDLIBRARIES,
     path: '/asset',
   },
   ASSET_STORE: {
-    key: 'assetStore',
+    key: STORE_TYPE.ASSETSTORE,
     path: '/store',
   },
 };
@@ -40,13 +57,6 @@ export const TAB_BAR_ITEM_LIST = [
   TAB_BAR_ITEM.PURCHASED_LIBRARIES,
   TAB_BAR_ITEM.ASSET_STORE,
 ];
-
-
-export const STORE_TYPE = {
-  MYLIBRARIES: 'myLibraries',
-  PURCHASEDLIBRARIES: 'purchasedLibraries',
-  ASSETSTORE: 'assetStore',
-};
 
 export const STORE_LIBRARY_LIST_TYPE = {
   FEATURED: 'featured',

@@ -1,10 +1,10 @@
 import request from 'superagent';
 import { API_URL, API_HEADER } from '../constants';
-import Converter from './converter';
 
-export const fetchLibraries = () =>
+export const fetchLibraries = type =>
 request.get(`${API_URL}library`)
 .withCredentials()
+.query({ type })
 .set(API_HEADER)
 .then((response) => {
   if (response.ok) {
