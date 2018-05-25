@@ -199,9 +199,7 @@ server.get('*', (req, res) => {
         const regexUUID = /[0-9a-f]{32}/;
         const foundUUID = pathname.match(regexUUID);
         const uuid = foundUUID[0];
-        props.oice = await OiceAPI.fetchOiceOgByUUID(uuid).catch((response) => {
-          res.status(500).send(`Error occurs when fetching oice information ${response}`);
-        });
+        props.oice = await OiceAPI.fetchOiceOgByUUID(uuid).catch();
       } else if (isPathStartWith('edit')) {
         props.module = 'editor';
       } else if (isPathStartWith('asset') || isPathStartWith('store')) {

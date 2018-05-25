@@ -510,7 +510,9 @@ export default class OiceSingleView extends React.Component {
 
   render() {
     const { oice } = this.props;
-    if (!oice) return <LoadingScreen />;
+    if (!oice) {
+      return <LoadingScreen showReload />;
+    }
 
     return this.renderOiceSingleView();
   }
