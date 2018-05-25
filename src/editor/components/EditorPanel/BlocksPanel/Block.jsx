@@ -20,6 +20,7 @@ import CloseIcon from 'common/icons/close';
 import DuplicateIcon from 'common/icons/duplicate';
 
 import { DOMAIN_URL } from 'common/constants';
+import { getThumbnail } from 'common/utils';
 
 import OptionBlock from './BlockContent/OptionBlock';
 import { DummyBlock } from './DummyBlock';
@@ -111,7 +112,7 @@ const getThumbnailImageURL = (attribute) => {
   if (attribute && attribute.asset.types) {
     const type = attribute.asset.types[0].type;
     if (type === 'image') {
-      imageURL = `${DOMAIN_URL}${attribute.asset.url}`;
+      imageURL = `${DOMAIN_URL}${getThumbnail(attribute.asset.url, 200)}`;
     }
   }
   return imageURL;
