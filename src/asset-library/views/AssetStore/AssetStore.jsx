@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { push, replace } from 'react-router-redux';
+import { replace } from 'react-router-redux';
 import { translate } from 'react-i18next';
 
 import _debounce from 'lodash/debounce';
@@ -25,6 +25,7 @@ import {
 import AssetStoreSideBar from './AssetStoreSideBar';
 
 import * as Actions from './AssetStore.actions';
+import * as LibraryDetailsCommonActions from '../LibraryDetails/LibraryDetails.common.actions';
 
 import './AssetStore.style.scss';
 
@@ -194,7 +195,7 @@ export default class AssetStore extends React.Component {
   }
 
   handleClickLibrary = (library) => {
-    this.props.dispatch(push(`/store/library/${library.id}`));
+    this.props.dispatch(LibraryDetailsCommonActions.setLibraryDetailsLibrary({ library }));
   }
 
   renderLibrary = () => {
