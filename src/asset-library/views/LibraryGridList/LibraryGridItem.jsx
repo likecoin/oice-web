@@ -34,7 +34,7 @@ export default class LibraryGridItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      toggled: props.library.toggled,
+      toggled: props.library.isSelected,
     };
   }
 
@@ -126,7 +126,7 @@ export default class LibraryGridItem extends React.Component {
   renderPurchasedLibraryToggle() {
     const { toggled } = this.state;
     return (
-      <div className="library-toggle" ref={(ref => this.toggleButton = ref)}>
+      <div ref={(ref => this.toggleButton = ref)} className="library-toggle">
         <ToggleButton
           toggled={toggled}
           onToggle={this.handleToggle}
