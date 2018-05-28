@@ -128,7 +128,9 @@ function handleDidPurchaseLibrary(state, { payload }) {
   };
 
   if (payload) {
-    newState.library = { $set: payload };
+    newState.library = {
+      $merge: { isPurchased: true },
+    };
   }
 
   return update(state, newState);
