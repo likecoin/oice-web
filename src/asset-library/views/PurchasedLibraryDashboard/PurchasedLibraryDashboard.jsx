@@ -16,7 +16,13 @@ import LibraryGridList from 'asset-library/views/LibraryGridList';
 
 import { STORE_TYPE } from 'asset-library/constants';
 
-import * as Actions from './PurchasedLibraryDashboard.actions';
+import {
+  addSelectedLibraryToUser,
+  removeSelectedLibraryFromUser,
+} from './PurchasedLibraryDashboard.actions';
+import {
+  setLibraryDetailsLibrary as openLibrary,
+} from '../LibraryDetails/LibraryDetails.common.actions';
 
 import './PurchasedLibraryDashboard.style.scss';
 
@@ -30,10 +36,16 @@ import './PurchasedLibraryDashboard.style.scss';
     unselected: state.unselected,
     ...store.PurchasedLibraryDashboard,
   };
+}, {
+  addSelectedLibraryToUser,
+  removeSelectedLibraryFromUser,
+  openLibrary,
 })
 export default class PurchasedLibraryDashboard extends React.Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
+    addSelectedLibraryToUser: PropTypes.func.isRequired,
+    removeSelectedLibraryFromUser: PropTypes.func.isRequired,
+    openLibrary: PropTypes.func.isRequired,
     loading: PropTypes.bool.isRequired,
     selected: PropTypes.object.isRequired,
     t: PropTypes.func.isRequired,
@@ -53,9 +65,7 @@ export default class PurchasedLibraryDashboard extends React.Component {
 
   componentDidMount() {
     this.resizeDebounce = _debounce(this.handleResize, 50);
-    this.scrollThrottle = _throttle(this.handleScroll, 20);
     window.addEventListener('resize', this.resizeDebounce, false);
-    window.addEventListener('scroll', this.scrollThrottle, false);
     this.handleResize();
   }
 
@@ -77,19 +87,13 @@ export default class PurchasedLibraryDashboard extends React.Component {
     }
   }
 
-  handleScroll = () => {
-
-  }
-
-  handleClickLibrary = (library) => {
-    this.props.dispatch(push(`/asset/library/${library.id}`));
-  }
+  handleLibraryClick = (library) => this.props.openLibrary({ library })
 
   handleToggleLibrary = (libraryId, toggled) => {
     if (toggled) {
-      this.props.dispatch(Actions.addSelectedLibraryToUser(libraryId));
+      this.props.addSelectedLibraryToUser(libraryId);
     } else {
-      this.props.dispatch(Actions.removeSelectedLibraryFromUser(libraryId));
+      this.props.removeSelectedLibraryFromUser(libraryId);
     }
   }
 
@@ -102,7 +106,7 @@ export default class PurchasedLibraryDashboard extends React.Component {
         libraries={[...selected.libraries, ...unselected.libraries]}
         togglingLibraryId={togglingLibraryId}
         type={STORE_TYPE.PURCHASEDLIBRARIES}
-        onClick={this.handleClickLibrary}
+        onClick={this.handleLibraryClick}
         onToggleLibrary={this.handleToggleLibrary}
       />
     );
