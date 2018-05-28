@@ -44,11 +44,15 @@ function handleFetchStoreLibrariesEnd(state, { payload }) {
 
 function handleDidPurchaseLibrary(state, { payload }) {
   const index = state.libraries.findIndex(library => library.id === payload.id);
-  return update(state, {
-    libraries: {
-      [index]: { $set: payload },
-    },
-  });
+  if (index >= 0) {
+    return update(state, {
+      libraries: {
+        [index]: { $merge: { isPurchased: true } },
+      },
+    });
+  }
+
+  return state;
 }
 
 export default handleActions({
