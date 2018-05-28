@@ -55,7 +55,6 @@ export default class MacrosPanel extends React.Component {
     const { macros, t } = this.props;
     const MacrosKeyObject = _keyBy(macros, 'name');
     const list = _.chain(MacrosKeyObject)
-                  .filter({ isHidden: false }) // filter all isHidden true macro
                   .orderBy(['groupOrder', 'order', 'id']) // for list as defined order
                   .groupBy('groupOrder')
                   .sortBy('')
