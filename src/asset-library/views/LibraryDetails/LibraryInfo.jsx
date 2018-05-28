@@ -52,7 +52,6 @@ CreditSection.defaultProps = {
 function LibraryInfo(props) {
   const {
     isStore,
-    library,
     mode,
     purchasing,
     t,
@@ -60,6 +59,16 @@ function LibraryInfo(props) {
     user,
     onToggle,
   } = props;
+
+  const library = {
+    name: '',
+    description: '',
+    price: 0,
+    assetCount: 0,
+    ...props.library,
+  };
+
+  const libraryThumbnail = getThumbnail(library.coverStorage, 200);
 
   const buttonProps = {
     color: undefined,
@@ -99,16 +108,13 @@ function LibraryInfo(props) {
       break;
   }
 
-  const isToggled = !!library && (
+  const isToggled = (
     togglingLibraryId === library.id ? !library.isSelected : library.isSelected
   );
-  const toggleButtonDisabled = !library || !isNaN(togglingLibraryId);
+  const toggleButtonDisabled = !isNaN(togglingLibraryId);
   const toggleButtonClassName = classNames({
     disabled: toggleButtonDisabled,
   });
-
-  const libraryThumbnail = library ? getThumbnail(library.coverStorage, 200) : '';
-  const libraryName = library ? library.name : '';
 
   function handleOnToggle(toggled) {
     if (onToggle) onToggle(library.id, toggled);
@@ -136,7 +142,7 @@ function LibraryInfo(props) {
         currency="USD"
         email={user.email}
         image={libraryThumbnail}
-        name={t('label.purchaseLibraryName', { name: libraryName })}
+        name={t('label.purchaseLibraryName', { name: library.name })}
         panelLabel={t('button.payForPrice', { currency: 'US' })}
         stripeKey={STRIPE_KEY}
         token={handleReceiveStripeToken}
@@ -150,12 +156,12 @@ function LibraryInfo(props) {
     <div className="library-info">
       <div className="library-column-thumbnail">
         <img
-          alt={libraryName}
+          alt={library.name}
           src={libraryThumbnail}
         />
       </div>
       <div className="library-column-info">
-        <h1>{libraryName}</h1>
+        <h1>{library.name}</h1>
         {library.description && <h2>{t('label.description')}</h2>}
         {library.description && <p>{library.description}</p>}
         <div className="library-credits">
