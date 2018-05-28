@@ -19,17 +19,21 @@ function CreditSection(props) {
   return (
     <div className="credit-section">
       <h3>{title}</h3>
-      <div className="credit-users">
-        {users.map((user) =>
-          <Avatar
-            key={user.id}
-            label={user.displayName}
-            size={32}
-            src={getThumbnail(user.avatar, 200)}
-            onClick={() => window.location.href = `/user/${user.id}`}
-          />
-        )}
-      </div>
+      {users &&
+        <div className="credit-users">
+          {users.map((user) =>
+            user && (
+              <Avatar
+                key={user.id}
+                label={user.displayName}
+                size={32}
+                src={getThumbnail(user.avatar, 200)}
+                onClick={() => window.location.href = `/user/${user.id}`}
+              />
+            )
+          )}
+        </div>
+      }
     </div>
   );
 }
@@ -48,7 +52,6 @@ CreditSection.defaultProps = {
 function LibraryInfo(props) {
   const {
     isStore,
-    library,
     mode,
     purchasing,
     t,
@@ -56,6 +59,16 @@ function LibraryInfo(props) {
     user,
     onToggle,
   } = props;
+
+  const library = {
+    name: '',
+    description: '',
+    price: 0,
+    assetCount: 0,
+    ...props.library,
+  };
+
+  const libraryThumbnail = getThumbnail(library.coverStorage, 200);
 
   const buttonProps = {
     color: undefined,
@@ -95,16 +108,13 @@ function LibraryInfo(props) {
       break;
   }
 
-
-  const isToggled = (togglingLibraryId === library.id) ?
-    !library.isSelected :
-    library.isSelected;
+  const isToggled = (
+    togglingLibraryId === library.id ? !library.isSelected : library.isSelected
+  );
   const toggleButtonDisabled = !isNaN(togglingLibraryId);
   const toggleButtonClassName = classNames({
     disabled: toggleButtonDisabled,
   });
-
-  const libraryThumbnail = getThumbnail(library.coverStorage, 200);
 
   function handleOnToggle(toggled) {
     if (onToggle) onToggle(library.id, toggled);
@@ -127,7 +137,7 @@ function LibraryInfo(props) {
       <StripeCheckout
         ComponentClass="div"
         allowRememberMe={false}
-        amount={library.price * 100}
+        amount={library ? library.price * 100 : 0}
         className="fluid"
         currency="USD"
         email={user.email}
@@ -155,8 +165,18 @@ function LibraryInfo(props) {
         {library.description && <h2>{t('label.description')}</h2>}
         {library.description && <p>{library.description}</p>}
         <div className="library-credits">
-          <CreditSection title={t('author')} users={[library.author]} />
-          <CreditSection title={t('credits')} users={library.credits} />
+          {library.author &&
+            <CreditSection
+              title={t('author')}
+              users={[library.author]}
+            />
+          }
+          {library.credits && library.credits.length > 0 &&
+            <CreditSection
+              title={t('credits')}
+              users={library.credits}
+            />
+          }
         </div>
       </div>
       <div className="library-column-stats">
@@ -198,8 +218,8 @@ function LibraryInfo(props) {
 }
 
 LibraryInfo.propTypes = {
-  library: PropTypes.object.isRequired,
   t: PropTypes.func.isRequired,
+  library: PropTypes.object,
   isStore: PropTypes.bool,
   mode: PropTypes.oneOf(['free', 'paid', 'purchased', 'owned']),
   purchasing: PropTypes.bool,
