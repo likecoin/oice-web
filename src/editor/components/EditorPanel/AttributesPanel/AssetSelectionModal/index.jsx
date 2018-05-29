@@ -40,10 +40,7 @@ function getStateFromProps(nextProps, prevProps = {}) {
 
     if (assetLibraryIds && assetLibraryIds.length > 0 && !_isEmpty(libraries)) {
       // select the first library (index 0) if asset's library is no longer selected / new story
-      state.selectedLibraryIndex = (asset ?
-        Math.max(assetLibraryIds.findIndex(id => id === asset.libraryId), 0) :
-        0
-      );
+      state.selectedLibraryIndex = Math.max(0, (asset || null) && assetLibraryIds.findIndex(id => id === asset.libraryId));
     }
   }
   return state;
@@ -144,7 +141,6 @@ export default class AssetSelectionModal extends React.Component {
 
   render() {
     const {
-      libraries,
       open,
       recentUsedAssets,
       selectedAssetId,
