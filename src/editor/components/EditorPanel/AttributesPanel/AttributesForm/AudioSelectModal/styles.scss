@@ -2,7 +2,7 @@
 @import "../../../../../../common/styles/lazyload";
 
 .modal-body > .audio-list {
-  .LazyLoad:not(.is-visible) {
+  .lazyload-placeholder {
     border: $border-style4;
   }
 }

@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import _get from 'lodash/get';
 
 import GridList from 'ui-elements/GridList';
-import Lazyload from 'react-lazy-load';
+import LazyLoad from 'react-lazyload';
 
 import CheckIcon from 'common/icons/publish';
 
@@ -17,6 +17,10 @@ import {
 
 import EmptyPlaceholder from '../EmptyPlaceholder';
 
+
+const LazyLoadPlaceholder = (
+  <div className="lazyload-placeholder light" />
+);
 
 export default class AssetList extends React.Component {
   static propTypes = {
@@ -58,12 +62,20 @@ export default class AssetList extends React.Component {
               onClick={() => this.handleListItemClick(asset.id)}
             >
               <div className="asset-item-wrapper">
-                <Lazyload className="light" width={154} height={154} offsetVertical={getWindowHeight()}>
+                <LazyLoad
+                  height={154}
+                  offset={-48}
+                  placeholder={LazyLoadPlaceholder}
+                  throttle={250}
+                  once
+                  overflow
+                  scroll
+                >
                   <div
                     className="asset-preview"
                     style={{ backgroundImage: `url("${assetThumbnail}")` }}
                   />
-                </Lazyload>
+                </LazyLoad>
                 <div className="asset-meta">
                   <div className="asset-title">
                     {assetTitle}

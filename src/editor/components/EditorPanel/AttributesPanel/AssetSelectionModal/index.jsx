@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
+import { forceCheck } from 'react-lazyload';
 
 import classNames from 'classnames';
 import _isEmpty from 'lodash/isEmpty';
@@ -38,9 +39,10 @@ function getStateFromProps(nextProps, prevProps = {}) {
     );
 
     if (assetLibraryIds && assetLibraryIds.length > 0 && !_isEmpty(libraries)) {
+      // select the first library (index 0) if asset's library is no longer selected / new story
       state.selectedLibraryIndex = (asset ?
-        assetLibraryIds.findIndex(id => id === asset.libraryId) :
-        0 // select the first library by default for new story
+        Math.max(assetLibraryIds.findIndex(id => id === asset.libraryId), 0) :
+        0
       );
     }
   }
@@ -86,7 +88,36 @@ export default class AssetSelectionModal extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState(getStateFromProps(nextProps, this.props));
+    this.setState(getStateFromProps(nextProps, this.props), this.handleAssetModalUpdate);
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if (
+      this.state.selectedLibraryIndex !== nextState.selectedLibraryIndex ||
+      this.props.assets.length !== nextProps.assets.length
+    ) {
+      const {
+        assets,
+        assetLibraryIds,
+        libraries,
+      } = nextProps;
+      const { selectedLibraryIndex } = nextState;
+
+      let filteredAssets;
+      if (assetLibraryIds && libraries && assets.length > 0 && selectedLibraryIndex >= 0) {
+        const selectedLibrary = libraries[assetLibraryIds[selectedLibraryIndex]];
+        filteredAssets = assets.filter(
+          item => item.libraryId === selectedLibrary.id
+        );
+      }
+      this.setState({ filteredAssets: filteredAssets || [...assets] });
+    }
+  }
+
+  handleAssetModalUpdate = () => {
+    if (this.props.open) {
+      forceCheck();
+    }
   }
 
   handleDropdownSelect = (selectedIndexes) => {
@@ -97,7 +128,7 @@ export default class AssetSelectionModal extends React.Component {
         this.handleCloseRequest();
         window.location.href = '/store';
       } else {
-        this.setState({ selectedLibraryIndex: index });
+        this.setState({ selectedLibraryIndex: index }, this.handleAssetModalUpdate);
       }
     }
   }
@@ -113,28 +144,20 @@ export default class AssetSelectionModal extends React.Component {
 
   render() {
     const {
-      assets,
-      assetLibraryIds,
       libraries,
       open,
       recentUsedAssets,
       selectedAssetId,
       t,
       title,
+      assetLibraryIds,
     } = this.props;
 
     const {
       dropdownListItems,
       selectedLibraryIndex,
+      filteredAssets,
     } = this.state;
-
-    let filteredAssets = [...assets];
-    if (assetLibraryIds && libraries && filteredAssets.length > 0 && selectedLibraryIndex >= 0) {
-      const selectedLibrary = libraries[assetLibraryIds[selectedLibraryIndex]];
-      filteredAssets = assets.filter(
-        item => item.libraryId === selectedLibrary.id
-      );
-    }
 
     const isShowRecentUsed = (recentUsedAssets.length > 0);
 
@@ -148,7 +171,7 @@ export default class AssetSelectionModal extends React.Component {
         <Modal.Header onClickCloseButton={this.handleCloseRequest}>
           {title}
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body ref={ref => this.modalBody = ref}>
           {isShowRecentUsed &&
             <h1>{t('label.recentUsed')}</h1>
           }
@@ -158,7 +181,7 @@ export default class AssetSelectionModal extends React.Component {
               onSelect={this.handleAssetSelect}
             />
           }
-          {!!libraries &&
+          {!!assetLibraryIds &&
             <div className="library-filter-container">
               <h1>{t('label.filteredLibrary')}</h1>
               <Dropdown
