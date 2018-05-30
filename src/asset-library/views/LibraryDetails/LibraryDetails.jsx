@@ -246,9 +246,11 @@ export default class LibraryDetails extends React.Component {
 
   handleTabBarIndexChange = (selectedTabBarIndex) => {
     const assetType = ASSET_TYPES.LIST[selectedTabBarIndex];
-    if (!this.props.assets[assetType].loaded) {
+    const { loaded, loading } = this.props.assets[assetType];
+    if (!loaded && !loading) {
       this.fetchAssets(this.props, assetType);
     }
+
     this.setState({ selectedTabBarIndex });
   }
 
