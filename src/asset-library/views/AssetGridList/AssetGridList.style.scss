@@ -102,7 +102,7 @@ $asset-grid-item-interspace: 20px;
 }
 
 .asset-preview,
-.asset-grid-item:not(.se):not(.bgm) .LazyLoad:not(.is-visible) {
+.asset-grid-item:not(.se):not(.bgm) .lazyload-placeholder {
   padding-top: 100%;
   position: relative;
 
@@ -127,7 +127,7 @@ $asset-grid-item-interspace: 20px;
 
 .bgm,
 .se {
-  .LazyLoad:not(.is-visible) {
+  .lazyload-placeholder {
     background-color: $pure-white !important;
     border-radius: padding(1/3);
     border: $border-style4;

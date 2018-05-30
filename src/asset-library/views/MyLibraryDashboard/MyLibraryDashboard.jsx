@@ -5,7 +5,6 @@ import { push } from 'react-router-redux';
 import { translate } from 'react-i18next';
 
 import _debounce from 'lodash/debounce';
-import _throttle from 'lodash/throttle';
 
 import GreyButton from 'ui-elements/GreyButton';
 import Progress from 'ui-elements/Progress';
@@ -15,36 +14,41 @@ import AddIcon from 'common/icons/add-thin';
 import AssetLibraryTabBar from 'asset-library/views/AssetLibraryTabBar';
 import LibraryGridList from 'asset-library/views/LibraryGridList';
 
-import { LIBRARY_TYPE, STORE_TYPE, TAB_BAR_ITEM } from 'asset-library/constants';
+import {
+  MY_LIBRARY_TYPES,
+  STORE_TYPE,
+} from 'asset-library/constants';
 
 import { UserLoggedIn } from 'asset-library/utils/auth';
 
 import { USER_ROLE_NORMAL } from 'common/constants/userRoles';
 import { isNormalUser } from 'common/utils/user';
 
+import {
+  setLibraryDetailsLibrary as openLibrary,
+} from '../LibraryDetails/LibraryDetails.common.actions';
+
 import './MyLibraryDashboard.style.scss';
 
-const LIBRARY_TYPES = [
-  LIBRARY_TYPE.PUBLIC,
-  LIBRARY_TYPE.PRIVATE,
-  LIBRARY_TYPE.FORSALE,
-];
 
 @UserLoggedIn
 @translate('MyLibraryDashboard')
 @connect((store) => {
   const state = store.LibraryDashboard;
   return {
+    loading: state.isFetchingMyLibraries && !state.isFetchedMyLibraries,
     public: state.public,
     private: state.private,
     forSale: state.forSale,
     user: store.user,
   };
+}, {
+  openLibrary,
 })
 export default class MyLibraryDashboard extends React.Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
     forSale: PropTypes.object.isRequired,
+    loading: PropTypes.bool.isRequired,
     location: PropTypes.object.isRequired,
     private: PropTypes.object.isRequired,
     public: PropTypes.object.isRequired,
@@ -95,12 +99,10 @@ export default class MyLibraryDashboard extends React.Component {
   }
 
   handleClickLibrary = (library) => {
-    const { dispatch, user } = this.props;
-    if (library.price >= 0 || !isNormalUser(user.role)) {
-      dispatch(push(`/asset/library/${library.id}/edit`));
-    } else {
-      dispatch(push(`/asset/library/${library.id}`));
-    }
+    this.props.openLibrary(({
+      library,
+      isEdit: library.price >= 0 || !isNormalUser(this.props.user.role),
+    }));
   }
 
   renderSection = (type) => {
@@ -140,8 +142,7 @@ export default class MyLibraryDashboard extends React.Component {
   }
 
   render() {
-    const { t } = this.props;
-    const loading = LIBRARY_TYPES.some(type => this.props[type].loading);
+    const { t, loading } = this.props;
 
     return (
       <div id="my-library-dashboard">
@@ -155,7 +156,7 @@ export default class MyLibraryDashboard extends React.Component {
             </div>
           ) : (<div className="content">
             <ul className="library-section-list">
-              {LIBRARY_TYPES.map(this.renderSection)}
+              {MY_LIBRARY_TYPES.map(this.renderSection)}
             </ul>
           </div>
           )}

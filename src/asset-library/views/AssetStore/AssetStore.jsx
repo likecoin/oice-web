@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { push, replace } from 'react-router-redux';
+import { replace } from 'react-router-redux';
 import { translate } from 'react-i18next';
 
 import _debounce from 'lodash/debounce';
 import _get from 'lodash/get';
-import _throttle from 'lodash/throttle';
 
 import Pagination from 'ui-elements/Pagination';
 import Progress from 'ui-elements/Progress';
@@ -25,6 +24,7 @@ import {
 import AssetStoreSideBar from './AssetStoreSideBar';
 
 import * as Actions from './AssetStore.actions';
+import * as LibraryDetailsCommonActions from '../LibraryDetails/LibraryDetails.common.actions';
 
 import './AssetStore.style.scss';
 
@@ -57,7 +57,7 @@ export default class AssetStore extends React.Component {
     libraries: PropTypes.array.isRequired,
     pageNumber: PropTypes.number.isRequired,
     totalPages: PropTypes.number.isRequired,
-    uiLanguage: PropTypes.string.isRequired,
+    uiLanguage: PropTypes.string,
     children: PropTypes.node,
   }
 
@@ -194,7 +194,7 @@ export default class AssetStore extends React.Component {
   }
 
   handleClickLibrary = (library) => {
-    this.props.dispatch(push(`/store/library/${library.id}`));
+    this.props.dispatch(LibraryDetailsCommonActions.setLibraryDetailsLibrary({ library, isStore: true }));
   }
 
   renderLibrary = () => {

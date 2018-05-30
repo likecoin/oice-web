@@ -1,13 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import HTML5Backend from 'react-dnd-html5-backend';
-import { DragDropContext } from 'react-dnd';
 
 import * as OiceAction from 'editor/actions/oice';
 import * as BlockAction from 'editor/actions/block';
-import * as AssetAction from 'editor/actions/asset';
-import * as LibraryAction from 'editor/actions/library';
 import * as StoryAction from 'editor/actions/story';
 
 import BlocksPanel from './BlocksPanel';

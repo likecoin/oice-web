@@ -4,16 +4,14 @@ import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import { push } from 'react-router-redux';
 
-import classNames from 'classnames';
 import _get from 'lodash/get';
 import _isEmpty from 'lodash/isEmpty';
 import _debounce from 'lodash/debounce';
 import _throttle from 'lodash/throttle';
 
 import Avatar from 'ui-elements/Avatar';
-import Card from 'ui-elements/Card';
 import Container from 'ui-elements/Container';
-import LoadingScreen from 'ui-elements/LoadingScreen';
+import Progress from 'ui-elements/Progress';
 import TabBar from 'ui-elements/TabBar';
 
 import { setInnerHTMLWithParsing } from 'common/utils';
@@ -87,7 +85,7 @@ export default class UserPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTabBarIndex: -1,
+      selectedTabBarIndex: 1,
       columnWidth: 220,
       isMobile: false,
     };
@@ -110,15 +108,8 @@ export default class UserPage extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const { id, username } = nextProps.params;
-    if (!id && !username) {
-      if (nextProps.self) {
-        // Redirect to user's user page when not user id given in the URL
-        this.props.dispatch(push(`/user/${nextProps.self.id}`));
-      } else {
-        // Redirect to home when not log in
-        this.props.dispatch(push('/about'));
-      }
-    } else if (
+
+    if (
       (this.props.params.id !== id) ||
       (this.props.params.username !== username)
     ) {
@@ -144,6 +135,17 @@ export default class UserPage extends React.Component {
     if (this.scrollThrottle) this.scrollThrottle.cancel();
     window.removeEventListener('resize', this.resizeDebounce, false);
     window.removeEventListener('scroll', this.scrollThrottle, false);
+  }
+
+  getLink = (type, item) => {
+    switch (type) {
+      case 'story':
+        return `/story/${item.oiceUuid}`;
+      case 'library':
+        return `/store/library/${item.id}`;
+      default:
+        return null;
+    }
   }
 
   handleResize = () => {
@@ -264,17 +266,6 @@ export default class UserPage extends React.Component {
 
   handleTabBarIndexChange = (index) => {
     this.setState({ selectedTabBarIndex: index });
-  }
-
-  getLink = (type, item) => {
-    switch (type) {
-      case 'story':
-        return `/story/${item.oiceUuid}`;
-      case 'library':
-        return `/store/library/${item.id}`;
-      default:
-        return null;
-    }
   }
 
   handleSelectionCheck = (type, item) => {
@@ -405,8 +396,10 @@ export default class UserPage extends React.Component {
         id="user-profile-info"
       >
         {this.renderAvatar(142)}
-        {this.renderDescription()}
-        {this.renderExternalLinks()}
+        <div className="user-details">
+          {this.renderDescription()}
+          {this.renderExternalLinks()}
+        </div>
         {this.renderStats()}
       </div>
     );
@@ -439,6 +432,7 @@ export default class UserPage extends React.Component {
       credits,
       libraries,
       oices,
+      loading,
       self,
       stories,
       t,
@@ -467,7 +461,11 @@ export default class UserPage extends React.Component {
     };
 
     const isSelf = _get(user, 'id') === _get(self, 'id');
-    function getPlaceholderTranslateKey(key) {
+
+    function getTabPlaceholder(key) {
+      if (loading) {
+        return <Progress.LoadingIndicator />;
+      }
       return t(`placeholder.no${isSelf ? 'Your' : ''}${key}`, {
         user: _get(user, 'displayName', ''),
       });
@@ -485,19 +483,19 @@ export default class UserPage extends React.Component {
         {this.renderProfileTab()}
         <Gallery
           {...gallaryProps}
-          emptyChild={getPlaceholderTranslateKey('Story')}
+          emptyChild={getTabPlaceholder('Story')}
           items={stories}
           type="story"
         />
         <Gallery
           {...gallaryProps}
-          emptyChild={getPlaceholderTranslateKey('Library')}
+          emptyChild={getTabPlaceholder('Library')}
           items={libraries}
           type="library"
         />
         <Gallery
           {...gallaryProps}
-          emptyChild={getPlaceholderTranslateKey('Credits')}
+          emptyChild={getTabPlaceholder('Credits')}
           items={credits}
           type="story"
         />
@@ -508,18 +506,14 @@ export default class UserPage extends React.Component {
   render() {
     return (
       <Container id="user-profile-wrapper" fluid>
-        {this.props.loading ? (
-          <LoadingScreen />
-        ) : (
-          <div
-            ref={ref => this.contentContainer = ref}
-            id="user-profile"
-          >
-            {this.renderMobileHeader()}
-            {this.renderProfile()}
-            {this.renderPortfolio()}
-          </div>
-        )}
+        <div
+          ref={ref => this.contentContainer = ref}
+          id="user-profile"
+        >
+          {this.renderMobileHeader()}
+          {this.renderProfile()}
+          {this.renderPortfolio()}
+        </div>
       </Container>
     );
   }

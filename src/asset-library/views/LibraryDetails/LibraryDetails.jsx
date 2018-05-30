@@ -4,9 +4,12 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { translate } from 'react-i18next';
 
+import { forceCheck } from 'react-lazyload';
+
 import classNames from 'classnames';
 import _get from 'lodash/get';
 import _maxBy from 'lodash/maxBy';
+import _throttle from 'lodash/throttle';
 import _unescape from 'lodash/unescape';
 
 import AlertDialog from 'ui-elements/AlertDialog';
@@ -58,7 +61,7 @@ function getStateFromProps(props) {
   const state = {};
 
   if (library) {
-    if (user && library.author.id === user.id) {
+    if (user && library.author && library.author.id === user.id) {
       state.mode = 'owned';
     } else if (library.isPurchased) {
       state.mode = 'purchased';
@@ -139,12 +142,19 @@ export default class LibraryDetails extends React.Component {
       ...getStateFromProps(props),
     };
 
+    this.scrollThrottle = _throttle(this.handleScroll, 500);
+
     console.info('LibraryDetails\n-params%o\n-route%o', props.params, props.route);
   }
 
   componentDidMount() {
     const { libraryId } = this.props.params;
     this.fetchDetails(libraryId);
+    ASSET_TYPES.LIST.forEach(assetType => this.fetchAssets(this.props, assetType));
+
+    if (!this.props.modal) {
+      window.addEventListener('scroll', this.scrollThrottle);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -152,8 +162,10 @@ export default class LibraryDetails extends React.Component {
     const { libraryId } = params;
 
     // Fetch library details when change library
+    // Fetch all types of assets when library changes
     if (libraryId !== this.props.params.libraryId) {
       this.fetchDetails(libraryId);
+      ASSET_TYPES.LIST.forEach(assetType => this.fetchAssets(nextProps, assetType));
     }
 
     if (!loaded) return;
@@ -172,11 +184,6 @@ export default class LibraryDetails extends React.Component {
       // Redirect to store when entering as full page
       this.props.dispatch(push(`/store/library/${libraryId}`));
       return;
-    }
-
-    // Fetch all types of assets when library changes
-    if (_get(nextProps, 'library.id') !== _get(this.props, 'library.id')) {
-      ASSET_TYPES.LIST.forEach(assetType => this.fetchAssets(nextProps, assetType));
     }
 
     // Switch asset type if current type does not have any asset
@@ -218,11 +225,16 @@ export default class LibraryDetails extends React.Component {
   }
 
   fetchAssets(props, assetType) {
-    const { dispatch, library } = props;
+    const { dispatch, library, params } = props;
+    const libraryId = library ? library.id : params.libraryId;
     if (getIsOwnedFromProps(props)) {
-      return dispatch(Actions.fetchLibraryAssetsByType(library.id, assetType));
+      return dispatch(Actions.fetchLibraryAssetsByType(libraryId, assetType));
     }
-    return dispatch(Actions.fetchStoreLibraryAssetsByType(library.id, assetType));
+    return dispatch(Actions.fetchStoreLibraryAssetsByType(libraryId, assetType));
+  }
+
+  handleScroll = () => {
+    forceCheck();
   }
 
   handleClick = (event) => {
@@ -234,9 +246,11 @@ export default class LibraryDetails extends React.Component {
 
   handleTabBarIndexChange = (selectedTabBarIndex) => {
     const assetType = ASSET_TYPES.LIST[selectedTabBarIndex];
-    if (!this.props.assets[assetType].loaded) {
+    const { loaded, loading } = this.props.assets[assetType];
+    if (!loaded && !loading) {
       this.fetchAssets(this.props, assetType);
     }
+
     this.setState({ selectedTabBarIndex });
   }
 
@@ -405,7 +419,7 @@ export default class LibraryDetails extends React.Component {
 
     return (
       <div className={className} onClick={this.handleClick}>
-        {loaded ? (
+        {loaded || modal ? (
           <div ref={ref => this.container = ref} className="library-details-container">
             {!modal &&
               <SubNavBar

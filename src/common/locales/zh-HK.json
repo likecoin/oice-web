@@ -1172,7 +1172,8 @@
   },
   "loadingScreen": {
     "label": {
-      "loading": "載入中"
+      "loading": "載入中",
+      "reload": "$t(alertDialog:error:button:cancel)"
     }
   },
   "macro": {
@@ -1810,7 +1811,8 @@
       "languageSetting": "其他語言"
     },
     "label": {
-      "deleteStoryConfirm": "確定刪除此故事?"
+      "deleteStoryConfirm": "確定刪除此故事?",
+      "closeConfirm": "你有尚未儲存的更新。你確定要繼續嗎？"
     }
   },
   "StorySettingTab": {

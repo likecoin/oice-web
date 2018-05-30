@@ -295,7 +295,13 @@ const updatedAsset = (assetType, asset) => (dispatch) => {
       throw new Error('Invalid asset type');
   }
 };
-export const updateAsset = (meta, file) => async (dispatch) => {
+export const updateAsset = (meta, file, type) => async (dispatch) => {
+  switch (type) {
+    case ASSET_TYPE.BACKGROUND: dispatch(BackgroundModalActions.willUpdate()); break;
+    case ASSET_TYPE.ITEM: dispatch(ItemModalActions.willUpdate()); break;
+    default: break;
+  }
+
   dispatch(CommonActions.startUpdateAsset());
 
   const { asset, jobId } = await APIHandler(dispatch, AssetAPI.updateAsset(meta, file));

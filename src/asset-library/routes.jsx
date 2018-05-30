@@ -23,17 +23,17 @@ const libraryDetailsComponent = {
 
 export default (
   <Route components={App} path="/">
-    <Route component={dashboardComponent} path="asset">
+    <Route components={dashboardComponent} path="asset">
       <Redirect from="library" to="/asset" />
-      <Route component={libraryDetailsComponent} path="library/:libraryId" />
+      <Route components={libraryDetailsComponent} path="library/:libraryId" />
     </Route>
-    <Route component={libraryDetailsComponent} path="asset/library/:libraryId/edit" isEdit />
+    <Route components={libraryDetailsComponent} path="asset/library/:libraryId/edit" isEdit />
     <Route components={dashboardComponent} path="store" isStore>
       <Redirect from="collection" to="/store" />
       <Redirect from="library" to="/store" />
-      <Route component={libraryDetailsComponent} path="library/:libraryId" isStore />
+      <Route components={libraryDetailsComponent} path="library/:libraryId" isStore />
     </Route>
-    <Route component={dashboardComponent} path="store/collection/:collectionId" isStore>
+    <Route components={dashboardComponent} path="store/collection/:collectionId" isStore>
       <Route path=":alias" isStore />
     </Route>
   </Route>

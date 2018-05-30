@@ -36,7 +36,7 @@ const defaultBackgroundState = {
   creditsUrl: '',
 };
 
-const getStateFromProps = (props) => ({
+const getStateFromProps = props => ({
   imgRatio: {
     x: 1,
     y: 1,
@@ -49,9 +49,10 @@ const getStateFromProps = (props) => ({
 });
 
 @translate(['assetsManagement', 'assets'])
-@connect(store => {
-  const { open, item } = store.ItemModal;
+@connect((store) => {
+  const { open, item, loading } = store.ItemModal;
   return {
+    loading,
     open,
     asset: item,
     user: store.user,
@@ -70,6 +71,7 @@ export default class ItemModal extends React.Component {
     asset: PropTypes.object,
     displayImageSize: PropTypes.number,
     libraryId: PropTypes.number,
+    loading: PropTypes.bool,
     maxImageSize: PropTypes.number,
     readonly: PropTypes.bool,
     user: PropTypes.object,
@@ -91,7 +93,9 @@ export default class ItemModal extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState(getStateFromProps(nextProps));
+    if (this.props.loading === nextProps.loading) {
+      this.setState(getStateFromProps(nextProps));
+    }
     this.resizeImage(nextProps.asset);
   }
 
@@ -255,6 +259,7 @@ export default class ItemModal extends React.Component {
   render() {
     const {
       t,
+      loading,
       open,
       readonly,
     } = this.props;
@@ -274,12 +279,15 @@ export default class ItemModal extends React.Component {
     const isCreditsEmpty = asset.creditsUrl.length <= 0 && (asset.users && asset.users.length <= 0);
 
     const valid = !isImageUrlEmpty && isFilledAssetName && !isCreditsEmpty;
-    const confirmButton = (readonly ? null : (<RaisedButton
-      disabled={!valid}
-      label={t('itemModal.button.save')}
-      primary
-      onClick={this.handleConfirmButtonClick}
-    />)
+    const confirmButton = (
+      readonly ?
+      null :
+      (<RaisedButton
+        disabled={!valid || loading}
+        label={t('itemModal.button.save')}
+        primary
+        onClick={this.handleConfirmButtonClick}
+      />)
     );
 
     return (
@@ -290,6 +298,7 @@ export default class ItemModal extends React.Component {
         onClickOutside={this.handleCloseModalButtonClick}
       >
         <Modal.Header
+          loading={loading}
           onClickCloseButton={this.handleCloseModalButtonClick}
         >
           {readonly ?
@@ -307,7 +316,7 @@ export default class ItemModal extends React.Component {
                   readonly={readonly}
                   value={asset.nameEn}
                   fullWidth
-                  onChange={(e) => this.handleNameChange(e, 'nameEn')}
+                  onChange={e => this.handleNameChange(e, 'nameEn')}
                 />
                 {/* <TextField
                   placeholder={t('itemModal.placeholder.name.tw')}

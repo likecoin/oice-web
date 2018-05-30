@@ -33,8 +33,7 @@ $user-profile-border-style: solid 1px $light-gray3;
 
     display: flex;
 
-    min-width: 110px;
-    margin: padding(1/6) 0;
+    margin: padding(1/6) padding(2/3) padding(1/6) 0;
 
     cursor: pointer;
     text-decoration: none;
@@ -110,6 +109,7 @@ $user-profile-border-style: solid 1px $light-gray3;
 #user-profile {
   position: relative;
 
+  width: 100%;
   max-width: $max-width;
 
   .panel {
@@ -123,6 +123,10 @@ $user-profile-border-style: solid 1px $light-gray3;
 
   @media screen and (max-width: $screen-phone) {
     width: 100%;
+  }
+
+  @media (min-width: $screen-phone + 1px) {
+    padding: padding(1/2) padding();
   }
 
   @media screen and (min-width: $screen-desktop + 1px) {
@@ -257,6 +261,7 @@ $user-profile-border-style: solid 1px $light-gray3;
   position: relative;
 
   display: inline-block;
+  width: 100%;
 
   @media screen and (min-width: $screen-phone + 1px) {
     .tabbar-item:first-child {
@@ -351,6 +356,8 @@ $user-profile-border-style: solid 1px $light-gray3;
 
 .user-portfolio-gallery-item-wrapper {
   width: 100%;
+
+  margin: 0 padding(1/12);
 
   > a {
     text-decoration: none;

@@ -13,9 +13,10 @@ import {
 import {
   actions as PurchasedDashboardActions,
 } from 'asset-library/views/PurchasedLibraryDashboard';
-import * as Actions from './LibraryDetails.actions.js';
+import * as Actions from './LibraryDetails.actions';
+import * as CommonActions from './LibraryDetails.common.actions';
 
-export const initialAssetState = {
+const initialAssetState = {
   items: [],
   loaded: false,
   loading: false,
@@ -36,7 +37,7 @@ const initialState = {
 };
 
 function handleWillFetchLibraryDetails(state) {
-  return update(initialState, {
+  return update(state.library ? state : initialState, {
     loading: { $set: true },
   });
 }
@@ -127,7 +128,9 @@ function handleDidPurchaseLibrary(state, { payload }) {
   };
 
   if (payload) {
-    newState.library = { $set: payload };
+    newState.library = {
+      $merge: { isPurchased: true },
+    };
   }
 
   return update(state, newState);
@@ -149,6 +152,12 @@ function handleDidUpdateLibrary(state, { payload }) {
 }
 
 export default handleActions({
+  [CommonActions.didSetLibraryDetailsLibrary]: (state, { payload }) => update(
+    initialState,
+    {
+      library: { $set: payload.library },
+    },
+  ),
   [Actions.fetchLibraryDetailsBegin]: handleWillFetchLibraryDetails,
   [Actions.fetchLibraryDetailsEnd]: handleDidFetchLibraryDetails,
   [Actions.fetchStoreLibraryDetailsBegin]: handleWillFetchLibraryDetails,

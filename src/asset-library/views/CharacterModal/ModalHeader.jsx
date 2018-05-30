@@ -8,7 +8,7 @@ import Modal from 'ui-elements/Modal';
 import * as Actions from './CharacterModal.actions';
 
 
-const isInteger = (value) => Number.isInteger(value) || value === '';
+const isInteger = value => Number.isInteger(value) || value === '';
 
 @translate(['assetsManagement', 'editor'])
 @connect((store) => {
