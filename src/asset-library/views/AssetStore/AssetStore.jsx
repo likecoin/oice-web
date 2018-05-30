@@ -195,7 +195,7 @@ export default class AssetStore extends React.Component {
   }
 
   handleClickLibrary = (library) => {
-    this.props.dispatch(LibraryDetailsCommonActions.setLibraryDetailsLibrary({ library }));
+    this.props.dispatch(LibraryDetailsCommonActions.setLibraryDetailsLibrary({ library, isStore: true }));
   }
 
   renderLibrary = () => {

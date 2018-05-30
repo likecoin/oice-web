@@ -24,6 +24,10 @@ import { UserLoggedIn } from 'asset-library/utils/auth';
 import { USER_ROLE_NORMAL } from 'common/constants/userRoles';
 import { isNormalUser } from 'common/utils/user';
 
+import {
+  setLibraryDetailsLibrary as openLibrary,
+} from '../LibraryDetails/LibraryDetails.common.actions';
+
 import './MyLibraryDashboard.style.scss';
 
 
@@ -38,10 +42,11 @@ import './MyLibraryDashboard.style.scss';
     forSale: state.forSale,
     user: store.user,
   };
+}, {
+  openLibrary,
 })
 export default class MyLibraryDashboard extends React.Component {
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
     forSale: PropTypes.object.isRequired,
     loading: PropTypes.bool.isRequired,
     location: PropTypes.object.isRequired,
@@ -94,12 +99,10 @@ export default class MyLibraryDashboard extends React.Component {
   }
 
   handleClickLibrary = (library) => {
-    const { dispatch, user } = this.props;
-    if (library.price >= 0 || !isNormalUser(user.role)) {
-      dispatch(push(`/asset/library/${library.id}/edit`));
-    } else {
-      dispatch(push(`/asset/library/${library.id}`));
-    }
+    this.props.openLibrary(({
+      library,
+      isEdit: library.price >= 0 || !isNormalUser(this.props.user.role),
+    }));
   }
 
   renderSection = (type) => {
