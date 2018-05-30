@@ -90,6 +90,7 @@ export default class AssetSelectionModal extends React.Component {
 
   componentWillUpdate(nextProps, nextState) {
     if (
+      this.props.selectedAssetId !== nextProps.selectedAssetId ||
       this.state.selectedLibraryIndex !== nextState.selectedLibraryIndex ||
       this.props.assets.length !== nextProps.assets.length
     ) {
