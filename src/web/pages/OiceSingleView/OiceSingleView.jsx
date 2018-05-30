@@ -208,12 +208,15 @@ export default class OiceSingleView extends React.Component {
   }
 
   handleCTA = () => {
-    console.log('Hi');
     const { oice } = this.props;
-    OiceSingleViewUtils.initializeDeepView({
-      oice: this.state.isEndedPlaying ? OiceSingleViewUtils.getNextEpisodeOice(oice) : oice,
-    });
-    branch.deepviewCta();
+    if (isMobile) {
+      OiceSingleViewUtils.initializeDeepView({
+        oice: this.state.isEndedPlaying ? OiceSingleViewUtils.getNextEpisodeOice(oice) : oice,
+      });
+      branch.deepviewCta();
+    } else {
+      this.handleToggleCallToActionModal();
+    }
   }
 
   handleScreenCaptureButtonClick = () => {
