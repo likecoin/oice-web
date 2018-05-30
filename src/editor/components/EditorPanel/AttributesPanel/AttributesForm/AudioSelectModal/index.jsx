@@ -22,7 +22,6 @@ export default class AudioSelectionModal extends React.Component {
     onSelected: PropTypes.func,
     dispatch: PropTypes.func,
     open: PropTypes.bool.isRequired,
-    audios: PropTypes.array,
     className: PropTypes.string,
     libraries: PropTypes.array,
     recentUsedAsset: PropTypes.object,
@@ -55,7 +54,6 @@ export default class AudioSelectionModal extends React.Component {
 
   render() {
     const {
-      audios,
       className,
       libraries,
       open,
@@ -64,10 +62,7 @@ export default class AudioSelectionModal extends React.Component {
       title,
       width,
     } = this.props;
-    const selectedIndex = (recentUsedAsset ?
-      libraries.findIndex(library => library.id === recentUsedAsset.libraryId) :
-      0 // select the first library by default
-    );
+
     return (
       <SelectionModal
         className={className}

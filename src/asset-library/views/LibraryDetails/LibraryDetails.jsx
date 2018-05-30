@@ -4,9 +4,12 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 import { translate } from 'react-i18next';
 
+import { forceCheck } from 'react-lazyload';
+
 import classNames from 'classnames';
 import _get from 'lodash/get';
 import _maxBy from 'lodash/maxBy';
+import _throttle from 'lodash/throttle';
 import _unescape from 'lodash/unescape';
 
 import AlertDialog from 'ui-elements/AlertDialog';
@@ -139,6 +142,8 @@ export default class LibraryDetails extends React.Component {
       ...getStateFromProps(props),
     };
 
+    this.scrollThrottle = _throttle(this.handleScroll, 500);
+
     console.info('LibraryDetails\n-params%o\n-route%o', props.params, props.route);
   }
 
@@ -146,6 +151,10 @@ export default class LibraryDetails extends React.Component {
     const { libraryId } = this.props.params;
     this.fetchDetails(libraryId);
     ASSET_TYPES.LIST.forEach(assetType => this.fetchAssets(this.props, assetType));
+
+    if (!this.props.modal) {
+      window.addEventListener('scroll', this.scrollThrottle);
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -222,6 +231,10 @@ export default class LibraryDetails extends React.Component {
       return dispatch(Actions.fetchLibraryAssetsByType(libraryId, assetType));
     }
     return dispatch(Actions.fetchStoreLibraryAssetsByType(libraryId, assetType));
+  }
+
+  handleScroll = () => {
+    forceCheck();
   }
 
   handleClick = (event) => {

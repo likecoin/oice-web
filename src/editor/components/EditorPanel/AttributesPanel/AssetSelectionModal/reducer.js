@@ -5,7 +5,6 @@ import Actions from './actions';
 const initialState = {
   assets: [],
   assetLibraryIds: [],
-  libraries: null,
   open: false,
   recentUsedAssets: [],
   selectedAssetId: 0,
@@ -22,7 +21,6 @@ export default handleActions({
     return {
       ...state,
       assetLibraryIds: payload.assetLibraryIds,
-      libraries: payload.libraries,
       open: true,
       selectedAssetId: payload.selectedAssetId || 0,
       title: payload.title || '',

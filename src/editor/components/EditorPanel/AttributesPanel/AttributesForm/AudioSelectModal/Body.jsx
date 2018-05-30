@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import AudioPlayerList from 'ui-elements/AudioPlayerList';
 import AudioPlayer from 'ui-elements/AudioPlayer';
 import FlatButton from 'ui-elements/FlatButton';
-import Lazyload from 'react-lazy-load';
+import LazyLoad, { forceCheck } from 'react-lazyload';
 import Progress from 'ui-elements/Progress';
 import RaisedButton from 'ui-elements/RaisedButton';
 import TextField from 'ui-elements/TextField';
@@ -58,13 +58,26 @@ const getSelectedAudioIndex = (selectedAudio, audios) => {
   return selectedAudioIndex;
 };
 
-@connect(store => ({
-  ...store.audioSelectModal,
-  libraries: store.libraries.dict,
-}))
+@connect((store) => {
+  const { assetLibraryIds } = store.audioSelectModal;
+  const libraries = store.libraries.dict;
+  // prevent library is selected but neither purchased nor owned by user
+  const filteredAssetLibraryIds = (
+    assetLibraryIds ?
+    assetLibraryIds.filter(id => !!libraries[id]) :
+    assetLibraryIds
+  );
+
+  return {
+    ...store.audioSelectModal,
+    libraries,
+    assetLibraryIds: filteredAssetLibraryIds,
+  };
+})
 export default class SelectAudioModal extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
+    assetLibraryIds: PropTypes.array,
     audios: PropTypes.array,
     libraries: PropTypes.object,
     open: PropTypes.bool,
@@ -83,10 +96,16 @@ export default class SelectAudioModal extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const filteredAudios = getFilterAudio(nextProps);
-    this.setState({ filteredAudios });
-    if (nextProps.open === false && nextProps.open !== this.props.open) {
+    this.setState({ filteredAudios }, this.handleAssetModalUpdate);
+    if (nextProps.open === false && !this.props.open) {
       const { playIndex } = this.state;
       if (this[`audioPlayer_${playIndex}`]) this[`audioPlayer_${playIndex}`].pauseAudio();
+    }
+  }
+
+  handleAssetModalUpdate = () => {
+    if (this.props.open) {
+      forceCheck();
     }
   }
 
@@ -94,7 +113,7 @@ export default class SelectAudioModal extends React.Component {
     this.setState({ playIndex });
   }
 
-  handleOnchangeAudioList = (selectedIndex) => {
+  handleOnChangeAudioList = (selectedIndex) => {
     const { filteredAudios } = this.state;
     const selectedAudio = filteredAudios[selectedIndex];
     this.props.dispatch(updateSelectedItem(selectedAudio));
@@ -120,21 +139,29 @@ export default class SelectAudioModal extends React.Component {
     return (
       <AudioPlayerList
         selectedIndex={selectedAudioIndex}
-        onChange={this.handleOnchangeAudioList}
+        onChange={this.handleOnChangeAudioList}
         onDoubleClick={this.handleOnDoubleClick}
         onPlay={this.handleOnPlayChange}
       >
         {filteredAudios.map((audio, index) => {
           if (!audio.url) return null;
           return (
-            <Lazyload key={audio.id} height={78} offsetVertical={getWindowHeight()}>
+            <LazyLoad
+              key={audio.id}
+              height={78}
+              offset={0}
+              throttle={250}
+              once
+              overflow
+              scroll
+            >
               <AudioPlayer
                 ref={ref => this[`audioPlayer_${index}`] = ref}
                 mode="readonly"
                 title={`${audio.nameEn}`}
                 url={getAudioMp4Url(audio)}
               />
-            </Lazyload>
+            </LazyLoad>
           );
         })}
       </AudioPlayerList>

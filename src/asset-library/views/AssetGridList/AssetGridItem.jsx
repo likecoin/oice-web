@@ -6,7 +6,7 @@ import _get from 'lodash/get';
 
 import AudioPlayer from 'ui-elements/AudioPlayer';
 import GreyButton from 'ui-elements/GreyButton';
-import Lazyload from 'react-lazy-load';
+import LazyLoad from 'react-lazyload';
 
 import AddIcon from 'common/icons/add-thin';
 
@@ -61,7 +61,14 @@ function AssetGridItem(props) {
   return (
     <li className={className}>
       {isAudioAsset ? (
-        <Lazyload height={78} offsetVertical={getWindowHeight()}>
+        <LazyLoad
+          height={78}
+          offset={0}
+          throttle={250}
+          once
+          overflow
+          scroll
+        >
           <AudioPlayer
             key={asset.id}
             mode={readonly ? 'info' : 'edit'}
@@ -70,15 +77,22 @@ function AssetGridItem(props) {
             onClickEditButton={handleClick}
             onClickInfoButton={handleClick}
           />
-        </Lazyload>
+        </LazyLoad>
       ) : (
         <div onClick={handleClick}>
-          <Lazyload width="100%" height="100%" offsetVertical={getWindowHeight()}>
+          <LazyLoad
+            height={'100%'}
+            offset={0}
+            throttle={250}
+            once
+            overflow
+            scroll
+          >
             <div
               className="asset-preview"
               style={{ backgroundImage: `url("${previewUrl}")` }}
             />
-          </Lazyload>
+          </LazyLoad>
           <div className="asset-info">
             <span className="title">{assetName}</span>
           </div>

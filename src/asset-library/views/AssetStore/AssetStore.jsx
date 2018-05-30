@@ -6,7 +6,6 @@ import { translate } from 'react-i18next';
 
 import _debounce from 'lodash/debounce';
 import _get from 'lodash/get';
-import _throttle from 'lodash/throttle';
 
 import Pagination from 'ui-elements/Pagination';
 import Progress from 'ui-elements/Progress';
