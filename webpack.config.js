@@ -125,7 +125,13 @@ module.exports = {
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'common',
-      minChunks: 3,
+      minChunks(module, count) {
+        return (
+          count >= 3 &&
+          // Do not externalize if the request is a CSS file
+          !/\.(css|less|scss|sass|styl|stylus)$/.test(module.request)
+        )
+      }
     }),
     new webpack.DefinePlugin({
       'process.env': {
