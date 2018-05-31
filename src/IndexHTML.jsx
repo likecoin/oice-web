@@ -81,7 +81,7 @@ export default class IndexHTML extends React.Component {
           <style dangerouslySetInnerHTML={{ __html: '.async-hide { opacity: 0 !important}' }} />
           <script src="https://cdn.ravenjs.com/3.24.2/raven.min.js" crossorigin="anonymous" />
           {!IS_DEV_MODE &&
-            <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js" />
+            <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js" />
           }
           <script src={`/static/vendor/ga.js?v=${VERSION}`} />
           <script src="https://www.google-analytics.com/analytics.js" async />
