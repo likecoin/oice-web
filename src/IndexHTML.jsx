@@ -108,6 +108,10 @@ export default class IndexHTML extends React.Component {
           </noscript>
           <div id="app">{children}</div>
           <script
+            src={`/build/common.js?v=${VERSION}`}
+            type="application/javascript"
+          />
+          <script
             src={`/build/${module}.js?v=${VERSION}`}
             type="application/javascript"
           />

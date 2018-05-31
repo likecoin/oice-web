@@ -122,6 +122,11 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin({ filename: '[name].css' }),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',
+      minChunks: 3,
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         SRV_ENV: JSON.stringify(SRV_ENV),
