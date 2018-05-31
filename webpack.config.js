@@ -2,7 +2,6 @@ const webpack = require('webpack');   //  for plugin use
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const WebpackStripLoader = require('strip-loader');
 
 const SRV_ENV = process.env.SRV_ENV;
 const PORT = process.env.PORT || 3000;
@@ -47,10 +46,22 @@ const editorEntry = {
 };
 if (!OICE_DEV) editorEntry['admin-panel'] = ['babel-polyfill', path.join(ADMIN_SRC_DIR, 'index.jsx')].concat(hotMiddlewareScriptEntry);
 
-const stylesLoaders = 'css-loader!postcss-loader!sass-loader';
+const stylesLoaders = [
+  {
+    loader: 'css-loader',
+    options: {
+      importLoaders: 2
+    }
+  },
+  {
+    loader: 'postcss-loader',
+    options: { plugins: () => [autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })] },
+  },
+  'sass-loader',
+];
 
 module.exports = {
-  devtool: DEBUG ? 'eval' : null,
+  devtool: DEBUG ? 'eval' : false,
   context: SRC_DIR,
   entry: editorEntry,
   output: {
@@ -58,50 +69,45 @@ module.exports = {
     path: BUILD_DIR,
     publicPath: `/${BUILD_DIR_NAME}/`,
   },
+  stats: { children: false },
   module: {
-    preLoaders: DEBUG ? [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'eslint-loader',
-      },
-    ] : null,
-    loaders: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loaders: ['react-hot', 'babel-loader'],
-      },
-      {
-        test: /\.json$/,
-        loader: 'json-loader',
+        use: ['react-hot-loader', 'babel-loader'],
       },
       {
         test: /\.s?css$/,
-        loader: DEBUG ? `style-loader!${stylesLoaders}` : ExtractTextPlugin.extract('style-loader', stylesLoaders),
+        use: DEBUG ? ['style-loader'].concat(stylesLoaders)
+          : ExtractTextPlugin.extract( {fallback: 'style-loader', use: stylesLoaders }),
       },
       {
         test: /\.svg$/,
-        loader: 'babel?presets[]=es2015,presets[]=react!svg-react',
+        use: ['babel-loader?presets[]=es2015,presets[]=react', 'svg-react-loader'],
       },
       {
         test: /\.(png|jpg|jpeg|gif|woff|woff2)$/,
-        loader: 'file?name=[hash].[ext]',
+        loader: 'file-loader?name=[hash].[ext]',
       },
       {
         test: /\.md$/,
-        loader: 'html-loader!remarkable',
+        use: [
+          'html-loader',
+          'remarkable-loader',
+        ],
       },
-    ].concat(DEBUG ? [] : [
+    ].concat(DEBUG ? [
       {
-        test: [/\.js$/, /\.es6$/],
+        test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: WebpackStripLoader.loader('console.log'),
+        enforce: "pre",
+        loader: 'eslint-loader',
       },
-    ]),
+    ] : []),
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.json', '.svg', '.md'],
+    extensions: ['.js', '.jsx', '.json', '.svg', '.md'],
     alias: {
       admin: ADMIN_SRC_DIR,
       common: COMMON_DIR,
@@ -114,14 +120,8 @@ module.exports = {
       'react/lib/ReactMount': 'react-dom/lib/ReactMount',
     },
   },
-  postcss: () => [autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })],
-  remarkable: {
-    preset: 'full',
-    linkify: true,
-    typographer: true,
-  },
   plugins: [
-    new ExtractTextPlugin('[name].css'),
+    new ExtractTextPlugin({ filename: '[name].css' }),
     new webpack.DefinePlugin({
       'process.env': {
         SRV_ENV: JSON.stringify(SRV_ENV),
@@ -129,6 +129,13 @@ module.exports = {
         IS_CLIENT: JSON.stringify(true),
       },
     }),
+    new webpack.LoaderOptionsPlugin({
+      remarkable: {
+        preset: 'full',
+        linkify: true,
+        typographer: true,
+      },
+    })
   ].concat(DEBUG ? [
     // Development
     new webpack.ProgressPlugin((percentage, msg) => {
@@ -136,15 +143,11 @@ module.exports = {
       process.stdout.write(`${msg} [${(percentage * 100).toFixed(1)}%]`);
       process.stdout.cursorTo(0);
     }),
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
   ] : [
     // Production
-    // new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({ 'global.GENTLY': false }),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: false,
       compress: {
@@ -152,7 +155,4 @@ module.exports = {
       },
     }),
   ]),
-  eslint: {
-    configFile: './.eslintrc',
-  },
 };

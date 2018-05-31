@@ -99,6 +99,7 @@ export default class IndexHTML extends React.Component {
         <body>
           <noscript>
             <iframe
+              title="google tag manager"
               height="0"
               src={`https://www.googletagmanager.com/ns.html?id=${GTM_CONTAINER_ID}`}
               style={{ display: 'none', visibility: 'hidden' }}
