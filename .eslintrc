@@ -22,6 +22,7 @@
         "functions": "ignore"
       }
     ],
+    "function-paren-newline": 0,
     "global-require": 0,
     "import/extensions": 0,
     "import/first": 1,
