@@ -138,11 +138,24 @@ module.exports = {
       },
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'common',
+      name: 'vendor',
       minChunks(module, count) {
         return (
-          count >= 3 &&
-          // Do not externalize if the request is a CSS file
+          count > 1 &&
+          /node_modules/.test(module.context) &&
+          // Do not externalize if the request is a CSS file which can potentially emit CSS assets!
+          !/\.(css|less|scss|sass|styl|stylus)$/.test(module.request)
+        )
+      }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',
+      chunks: Object.keys(editorEntry),
+      minChunks(module, count) {
+        // A module is extracted into the vendor chunk when...
+        return (
+          count > 2 &&
+          // Do not externalize if the request is a CSS file which can potentially emit CSS assets!
           !/\.(css|less|scss|sass|styl|stylus)$/.test(module.request)
         )
       }
