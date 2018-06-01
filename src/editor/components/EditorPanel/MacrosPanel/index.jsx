@@ -4,7 +4,10 @@ import { translate } from 'react-i18next';
 
 import classNames from 'classnames';
 import _keyBy from 'lodash/keyBy';
-import _ from 'lodash';
+import flow from "lodash/fp/flow";
+import groupBy from "lodash/fp/groupBy";
+import orderBy from "lodash/fp/orderBy";
+import sortBy from "lodash/fp/sortBy";
 
 import * as MacroAction from 'editor/actions/macro';
 import Macro from './Macro';
@@ -54,11 +57,12 @@ export default class MacrosPanel extends React.Component {
   renderMacrosTab() {
     const { macros, t } = this.props;
     const MacrosKeyObject = _keyBy(macros, 'name');
-    const list = _.chain(MacrosKeyObject)
-                  .orderBy(['groupOrder', 'order', 'id']) // for list as defined order
-                  .groupBy('groupOrder')
-                  .sortBy('')
-                  .value();
+
+    const list = flow(
+      orderBy(['groupOrder', 'order', 'id'], ['asc', 'asc', 'asc']), // for list as defined order
+      groupBy('groupOrder'),
+      sortBy('')
+    )(MacrosKeyObject);
 
     const { selectedMacroGroupIndex } = this.state;
     const selectedMacroGroup = list[selectedMacroGroupIndex];
