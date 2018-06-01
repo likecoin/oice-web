@@ -123,16 +123,6 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin({ filename: '[name].css' }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'common',
-      minChunks(module, count) {
-        return (
-          count >= 3 &&
-          // Do not externalize if the request is a CSS file
-          !/\.(css|less|scss|sass|styl|stylus)$/.test(module.request)
-        )
-      }
-    }),
     new webpack.DefinePlugin({
       'process.env': {
         SRV_ENV: JSON.stringify(SRV_ENV),
@@ -146,9 +136,24 @@ module.exports = {
         linkify: true,
         typographer: true,
       },
-    })
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',
+      minChunks(module, count) {
+        return (
+          count >= 3 &&
+          // Do not externalize if the request is a CSS file
+          !/\.(css|less|scss|sass|styl|stylus)$/.test(module.request)
+        )
+      }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'manifest',
+      minChunks: Infinity,
+    }),
   ].concat(DEBUG ? [
     // Development
+    new webpack.NamedModulesPlugin(),
     new webpack.ProgressPlugin((percentage, msg) => {
       process.stdout.clearLine(1);
       process.stdout.write(`${msg} [${(percentage * 100).toFixed(1)}%]`);
@@ -158,9 +163,11 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
   ] : [
     // Production
+    new webpack.HashedModuleIdsPlugin(),
     new webpack.DefinePlugin({ 'global.GENTLY': false }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: false,
+      parallel: true,
       compress: {
         drop_console: true,
       },
