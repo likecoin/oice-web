@@ -19,7 +19,7 @@ jobs:
             npm install
       - run:
           name: Build
-          command: npm run build
+          command: npm run build:slient
       - run:
           name: Start Test
           command: npm run server

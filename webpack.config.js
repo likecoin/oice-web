@@ -70,8 +70,14 @@ module.exports = {
     path: BUILD_DIR,
     publicPath: `/${BUILD_DIR_NAME}/`,
   },
+  performance: {
+    maxEntrypointSize: 1000000,
+    maxAssetSize: 300000,
+    hints: DEBUG ? false : 'warning'
+  },
   stats: { children: false },
   module: {
+    noParse: /es6-promise\.js$/, // Avoid webpack shimming process
     rules: [
       {
         test: /\.jsx?$/,
@@ -184,7 +190,9 @@ module.exports = {
       parallel: true,
       compress: {
         drop_console: true,
+        warnings: false,
       },
     }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
   ]),
 };
