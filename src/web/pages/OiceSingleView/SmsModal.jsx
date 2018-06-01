@@ -4,10 +4,6 @@ import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 
 import classNames from 'classnames';
-import {
-  PhoneNumberUtil,
-  PhoneNumberType as PHONE_NUMBER_TYPE,
-} from 'google-libphonenumber';
 
 import _get from 'lodash/get';
 
@@ -34,7 +30,6 @@ import * as OiceSingleViewUtils from './utils';
 
 import './SmsModal.style.scss';
 
-const PhoneUtils = PhoneNumberUtil.getInstance();
 
 const ERR_NOT_POSSIBLE_PHONE_NUMBER = 'ERR_NOT_POSSIBLE_PHONE_NUMBER';
 const ERR_NOT_MOBILE_PHONE_NUMBER = 'ERR_NOT_MOBILE_PHONE_NUMBER';
@@ -109,7 +104,7 @@ export default class SmsModal extends React.Component {
     this.setState({ phoneNumber });
   }
 
-  handleOnClickSendSMS = () => {
+  handleOnClickSendSMS = async () => {
     const { dispatch, t, countries, oice } = this.props;
     const { phoneNumber, selectedCountryCodeIndex } = this.state;
     const { regionCode, dialCode } = countries[selectedCountryCodeIndex];
@@ -120,6 +115,12 @@ export default class SmsModal extends React.Component {
 
     // phone validation
     try {
+      const {
+        PhoneNumberUtil,
+        PhoneNumberType:PHONE_NUMBER_TYPE
+      } = await import(/* webpackChunkName: "libphonenumber" */ 'google-libphonenumber');
+
+      const PhoneUtils = PhoneNumberUtil.getInstance();
       const number = PhoneUtils.parseAndKeepRawInput(phoneNumber, regionCode);
       const phoneNumberType = PhoneUtils.getNumberType(number);
       if (phoneNumberType === -1) {

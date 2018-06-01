@@ -66,6 +66,7 @@ module.exports = {
   entry: editorEntry,
   output: {
     filename: '[name].js',
+    chunkFilename: '[name].js',
     path: BUILD_DIR,
     publicPath: `/${BUILD_DIR_NAME}/`,
   },
