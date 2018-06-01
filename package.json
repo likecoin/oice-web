@@ -1,6 +1,6 @@
 {
   "name": "oice-web",
-  "version": "4.9.2",
+  "version": "4.9.3",
   "description": "oice Frontend",
   "main": "/src/index.js",
   "scripts": {

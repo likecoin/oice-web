@@ -244,7 +244,7 @@ server.get('*', (req, res) => {
           if (likeCoinId && userKey !== likeCoinId) {
             res.redirect(`/@${likeCoinId}`);
           } else if (!matchResults) {
-            res.redirect(`/user/@${id}`);
+            res.redirect(`/user/${id}`);
           }
         }
       } else if (isPathStartWith('competition1718')) {
