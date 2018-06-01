@@ -135,7 +135,7 @@ server.get('*', (req, res) => {
 
         let ogImage = defaultOg.image;
         if (story.ogImage) {
-          ogImage = story.ogImage;
+          ({ ogImage } = story);
         } else if (library.cover) {
           ogImage = library.cover;
         } else if (oice.storyCover) {
@@ -145,7 +145,7 @@ server.get('*', (req, res) => {
         } else if (user.avatar) {
           ogImage = user.avatar;
         } else if (competition1718.ogImage) {
-          ogImage = competition1718.ogImage;
+          ({ ogImage } = competition1718);
         }
 
         const ogDescription = (

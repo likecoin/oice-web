@@ -81,7 +81,7 @@ export default class IndexHTML extends React.Component {
           <style dangerouslySetInnerHTML={{ __html: '.async-hide { opacity: 0 !important}' }} />
           <script src="https://cdn.ravenjs.com/3.24.2/raven.min.js" crossorigin="anonymous" />
           {!IS_DEV_MODE &&
-            <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js" />
+            <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js" />
           }
           <script src={`/static/vendor/ga.js?v=${VERSION}`} />
           <script src="https://www.google-analytics.com/analytics.js" async />
@@ -95,10 +95,16 @@ export default class IndexHTML extends React.Component {
           <script src="https://use.typekit.net/lds7dmt.js" />
           <script dangerouslySetInnerHTML={{ __html: 'try{Typekit.load({ async: true });}catch(e){}' }} />
           {!IS_DEV_MODE && <script dangerouslySetInnerHTML={{ __html: `Raven.config('${SENTRY_DSN}').install()` }} />}
+          <link rel="preload" href={`/build/manifest.js?v=${VERSION}`} as="script" />
+          <link rel="preload" href={`/build/common.js?v=${VERSION}`} as="script" />
+          <link rel="prefetch" href={`/build/web.js?v=${VERSION}`} />
+          <link rel="prefetch" href={`/build/editor.js?v=${VERSION}`} />
+          <link rel="prefetch" href={`/build/asset-library.js?v=${VERSION}`} />
         </head>
         <body>
           <noscript>
             <iframe
+              title="google tag manager"
               height="0"
               src={`https://www.googletagmanager.com/ns.html?id=${GTM_CONTAINER_ID}`}
               style={{ display: 'none', visibility: 'hidden' }}
@@ -106,6 +112,14 @@ export default class IndexHTML extends React.Component {
             />
           </noscript>
           <div id="app">{children}</div>
+          <script
+            src={`/build/manifest.js?v=${VERSION}`}
+            type="application/javascript"
+          />
+          <script
+            src={`/build/common.js?v=${VERSION}`}
+            type="application/javascript"
+          />
           <script
             src={`/build/${module}.js?v=${VERSION}`}
             type="application/javascript"
