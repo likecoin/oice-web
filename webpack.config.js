@@ -1,4 +1,4 @@
-const webpack = require('webpack');   //  for plugin use
+const webpack = require('webpack'); // for plugin use
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
@@ -20,19 +20,6 @@ const WEB_SRC_DIR = path.join(SRC_DIR, 'web');
 const DIST_DIR = path.join(__dirname, 'dist');
 const BUILD_DIR = path.join(DIST_DIR, BUILD_DIR_NAME);
 
-const AUTOPREFIXER_BROWSERS = [
-  'Android >= 4.4',
-  'Chrome >= 49',
-  'Edge >= 12',
-  'Firefox >= 49',
-  'ie >= 11',
-  'iOS >= 8',
-  'Opera >= 42',
-  'Safari >= 8',
-  'Samsung >= 4',
-  'UCAndroid >= 11',
-];
-
 const hotMiddlewareScriptEntry = (DEBUG ? [
   'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000&reload=true',
   'webpack/hot/dev-server',
@@ -50,12 +37,16 @@ const stylesLoaders = [
   {
     loader: 'css-loader',
     options: {
-      importLoaders: 2
-    }
+      importLoaders: 2,
+    },
   },
   {
     loader: 'postcss-loader',
-    options: { plugins: () => [autoprefixer({ browsers: AUTOPREFIXER_BROWSERS })] },
+    options: {
+      plugins: () => [
+        autoprefixer(),
+      ],
+    },
   },
   'sass-loader',
 ];
@@ -87,7 +78,7 @@ module.exports = {
       {
         test: /\.s?css$/,
         use: DEBUG ? ['style-loader'].concat(stylesLoaders)
-          : ExtractTextPlugin.extract( {fallback: 'style-loader', use: stylesLoaders }),
+          : ExtractTextPlugin.extract({ fallback: 'style-loader', use: stylesLoaders }),
       },
       {
         test: /\.svg$/,
