@@ -6,6 +6,12 @@
   ],
   "plugins": [
     "lodash",
-    "transform-decorators-legacy"
+    "transform-decorators-legacy",
+    [
+      "transform-react-remove-prop-types",
+      {
+        "ignoreFilenames": ["node_modules"]
+      }
+    ]
   ]
 }
