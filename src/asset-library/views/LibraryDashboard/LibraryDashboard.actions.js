@@ -15,19 +15,19 @@ export const fetchLibraries = types => (dispatch) => {
   dispatch(fetchLibrariesBegin({ types }));
   APIHandler(dispatch,
     LibraryAPI.fetchLibraries(types)
-    .then((libraries) => {
-      const payload = { result: {}, types };
-      types.forEach(type => payload.result[type] = libraries[type]);
-      dispatch(fetchLibrariesEnd(payload));
-      // toggled library will request selected and unselected library list
-      const isSelectedLibrary = (
-        types.length === 2
-        && _interscetion(types, [LIBRARY_TYPE.SELECTED, LIBRARY_TYPE.UNSELECTED]).length === 2
-      );
-      if (isSelectedLibrary) {
-        // un-disabled the toggled library item
-        dispatch(PurchasedDashboardActions.changeSelectedLibraryToUserEnd());
-      }
-    })
+      .then((libraries) => {
+        const payload = { result: {}, types };
+        types.forEach(type => payload.result[type] = libraries[type]);
+        dispatch(fetchLibrariesEnd(payload));
+        // toggled library will request selected and unselected library list
+        const isSelectedLibrary = (
+          types.length === 2
+          && _interscetion(types, [LIBRARY_TYPE.SELECTED, LIBRARY_TYPE.UNSELECTED]).length === 2
+        );
+        if (isSelectedLibrary) {
+          // un-disabled the toggled library item
+          dispatch(PurchasedDashboardActions.changeSelectedLibraryToUserEnd());
+        }
+      })
   );
 };

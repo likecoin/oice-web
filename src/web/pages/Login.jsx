@@ -8,9 +8,7 @@ import AlertDialog from 'ui-elements/AlertDialog';
 import LoadingScreen from 'ui-elements/LoadingScreen';
 
 import { IS_DEV_MODE } from 'common/constants';
-import {
-  redirectPathname,
- } from 'common/utils/auth';
+import { redirectPathname } from 'common/utils/auth';
 
 import * as UserAction from 'common/actions/user';
 
@@ -40,12 +38,12 @@ export default class Login extends React.Component {
               const googleToken = result.credential.accessToken;
               // Create account here
               this.props.dispatch(UserAction.loginWithGoogle(firebaseUser, googleToken))
-              .then((oiceUser) => {
-                if (oiceUser) {
-                  const redirectPath = redirectPathname.get() || '/';
-                  window.location.href = redirectPath;
-                }
-              });
+                .then((oiceUser) => {
+                  if (oiceUser) {
+                    const redirectPath = redirectPathname.get() || '/';
+                    window.location.href = redirectPath;
+                  }
+                });
             } else {
               window.location.href = redirectPathname.get() || '/';
             }
@@ -61,7 +59,8 @@ export default class Login extends React.Component {
           displayName: 'oice-dev',
           photoURL: '',
           providerId: 'oice-dev',
-        }] }, 'dev'));
+        }],
+      }, 'dev'));
     }
   }
 

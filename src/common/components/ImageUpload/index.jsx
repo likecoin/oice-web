@@ -20,7 +20,7 @@ const thumnailHoverSpringParameters = {
 
 export default class ImageUpload extends React.Component {
   static defaultProps = {
-    whidth: 98,
+    width: 98,
     height: 98,
     accept: 'image/*',
   }

@@ -18,9 +18,7 @@ import SubNavBar from 'ui-elements/SubNavBar';
 
 import Gallery from 'web/pages/User/Gallery';
 import InteractiveTutorial from 'editor/components/InteractiveTutorial';
-import StorySettingModal, {
-  actions as StorySettingModalActions,
-} from 'editor/components/EditorPanel/StorySettingModal';
+import StorySettingModal, { actions as StorySettingModalActions } from 'editor/components/EditorPanel/StorySettingModal';
 
 import * as SubNavBarConstants from 'ui-elements/SubNavBar/constants';
 import Throttle from 'ui-elements/Throttle';
@@ -235,7 +233,9 @@ export default class Dashboard extends React.Component {
   }
 
   render() {
-    const { t, oices, storiesList, user } = this.props;
+    const {
+      t, oices, storiesList, user,
+    } = this.props;
     const {
       columns,
       columnWidth,

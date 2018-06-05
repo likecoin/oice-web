@@ -13,7 +13,9 @@ import * as Actions from './AssetLibraryTabBar.actions';
 
 
 function AssetLibraryTabBar(props) {
-  const { dispatch, t, value, loggedIn } = props;
+  const {
+    dispatch, t, value, loggedIn,
+  } = props;
 
   let selectedTabBarIndex = 0;
   const tabBarItems = TAB_BAR_ITEM_LIST.map((TAB_BAR_ITEM, index) => {

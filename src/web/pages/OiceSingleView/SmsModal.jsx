@@ -105,7 +105,9 @@ export default class SmsModal extends React.Component {
   }
 
   handleOnClickSendSMS = async () => {
-    const { dispatch, t, countries, oice } = this.props;
+    const {
+      dispatch, t, countries, oice,
+    } = this.props;
     const { phoneNumber, selectedCountryCodeIndex } = this.state;
     const { regionCode, dialCode } = countries[selectedCountryCodeIndex];
 
@@ -117,7 +119,7 @@ export default class SmsModal extends React.Component {
     try {
       const {
         PhoneNumberUtil,
-        PhoneNumberType:PHONE_NUMBER_TYPE
+        PhoneNumberType: PHONE_NUMBER_TYPE,
       } = await import(/* webpackChunkName: "libphonenumber" */ 'google-libphonenumber');
 
       const PhoneUtils = PhoneNumberUtil.getInstance();
@@ -180,7 +182,9 @@ export default class SmsModal extends React.Component {
   }
 
   sendSMS = (phone) => {
-    const { dispatch, t, oice, isEndedPlaying, isPreview } = this.props;
+    const {
+      dispatch, t, oice, isEndedPlaying, isPreview,
+    } = this.props;
     const deepLinkOice = isEndedPlaying ? OiceSingleViewUtils.getNextEpisodeOice(oice) : oice;
     const linkData = OiceSingleViewUtils.getDeepLinkObject({
       channel: 'SMS',
@@ -195,10 +199,12 @@ export default class SmsModal extends React.Component {
   }
 
   renderWriteMobileNumbers = () => {
-    const { t, countries, sendingSMS, sentSMS } = this.props;
+    const {
+      t, countries, sendingSMS, sentSMS,
+    } = this.props;
     const { phoneNumber, selectedCountryCodeIndex } = this.state;
     const className = classNames('send-sms', { sentSMS });
-    const selectedIndexes = isNaN(selectedCountryCodeIndex) ? [] : [selectedCountryCodeIndex];
+    const selectedIndexes = Number.isNaN(selectedCountryCodeIndex) ? [] : [selectedCountryCodeIndex];
     const dropdownValues = countries.map(country => ({
       text: t('countries.nameWithCountryCode', { ...country }),
       icon: null,
@@ -276,7 +282,9 @@ export default class SmsModal extends React.Component {
   }
 
   render() {
-    const { t, isEndedPlaying, showCloseButton, open, onToggle } = this.props;
+    const {
+      t, isEndedPlaying, showCloseButton, open, onToggle,
+    } = this.props;
     const { isShowSMS } = this.state;
     const backButton = (
       <FlatButton

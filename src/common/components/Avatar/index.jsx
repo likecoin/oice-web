@@ -40,16 +40,18 @@ const Avatar = (props) => {
           src={src}
           style={style}
         />
-        ) : (<div
-          className="avatar-letter"
-          style={{
-            ...style,
-            lineHeight: `${size}px`,
-          }}
-        >
-          {label[0] && label[0].toUpperCase()}
-        </div>
-      )}
+        ) : (
+          <div
+            className="avatar-letter"
+            style={{
+              ...style,
+              lineHeight: `${size}px`,
+            }}
+          >
+            {label[0] && label[0].toUpperCase()}
+          </div>
+        )
+      }
       {!mini && label &&
         <span className="avatar-label">
           {label}

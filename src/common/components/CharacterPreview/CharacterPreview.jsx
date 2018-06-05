@@ -106,7 +106,9 @@ export default class CharacterPreview extends React.Component {
   }
 
   _renderMeasuredChildren = ({ measureRef }) => {
-    const { x, y, flipped, readonly } = this.props;
+    const {
+      x, y, flipped, readonly,
+    } = this.props;
     const { measure, imageDataURL } = this.state;
 
     const ratio = measure.width / OICE_SIZE;

@@ -56,7 +56,9 @@ export default class CharacterPreviewDraggableItem extends React.Component {
   shouldComponentUpdate = shouldPureComponentUpdate
 
   render() {
-    const { connectDragSource, isDragging, children, x, y } = this.props;
+    const {
+      connectDragSource, isDragging, children, x, y,
+    } = this.props;
 
     const className = classNames('character-preview-draggable-item');
 

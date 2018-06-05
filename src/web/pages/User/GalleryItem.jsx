@@ -10,7 +10,13 @@ import { getThumbnail } from 'common/utils';
 import AddIcon from 'common/icons/add-thin';
 
 const GalleryItem = (props) => {
-  const { item, getLink, selected, style, onClick } = props;
+  const {
+    item,
+    getLink,
+    selected,
+    style,
+    onClick,
+  } = props;
 
   const className = classNames(
     'user-portfolio-gallery-item', {

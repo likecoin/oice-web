@@ -40,7 +40,6 @@ export default class Menu extends React.Component {
   }
 
   static defaultProps ={
-    anchorEl: <span>Click Me</span>,
     anchorOrigin: {
       horizontal: 'right',
       vertical: 'bottom',
@@ -102,8 +101,6 @@ export default class Menu extends React.Component {
         menuItemList.push(this.createMenuItem(child, index));
       } else if (displayName === 'Divider') {
         menuItemList.push(React.cloneElement(child, { key: index }));
-      } else {
-        return;
       }
     });
 

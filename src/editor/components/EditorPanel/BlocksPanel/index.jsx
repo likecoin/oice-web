@@ -54,7 +54,9 @@ export default class BlocksPanel extends React.Component {
 
   constructor(props) {
     super(props);
-    const { blockIdsArray, blocksDict, selectedBlock, selectedLanguage } = this.props;
+    const {
+      blockIdsArray, blocksDict, selectedBlock, selectedLanguage,
+    } = this.props;
     this.state = {
       isDragging: false,
       hasNoSessionChanges: true,
@@ -66,7 +68,9 @@ export default class BlocksPanel extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { dispatch, blockIdsArray, toBeSavedBlockLength, selectedOice } = this.props;
+    const {
+      dispatch, blockIdsArray, toBeSavedBlockLength, selectedOice,
+    } = this.props;
 
     if (nextProps.selectedOice && selectedOice !== nextProps.selectedOice) {
       this.updateLastSaveTime(nextProps.selectedOice);
@@ -224,8 +228,8 @@ export default class BlocksPanel extends React.Component {
     return (
       blockIdsArray.map((blockId, index) => {
         const block = blocksDict[blockId];
-        const macro = this.props.macrosDict[block.macroId];
-        const macroId = block.macroId;
+        const { macroId } = block;
+        const macro = this.props.macrosDict[macroId];
         return (
           <Block
             ref={ref => this[`blockComponent_${block.id}`] = ref}

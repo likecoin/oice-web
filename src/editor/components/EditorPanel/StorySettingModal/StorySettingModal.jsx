@@ -27,7 +27,9 @@ import {
 
 import './StorySettingModal.style.scss';
 
-function isSettingUpdated({ deleted, updated, hasUpdatedOiceOrder, newLanguages }) {
+function isSettingUpdated({
+  deleted, updated, hasUpdatedOiceOrder, newLanguages,
+}) {
   return Object.keys(updated).some(language => (
     updated[language] && (updated[language].story || updated[language].oices.length > 0)
   )) || hasUpdatedOiceOrder || newLanguages.length > 0 || deleted.oices.length > 0 || deleted.languages.length > 0;
@@ -62,7 +64,9 @@ export default class StorySettingModal extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { dispatch, content, mainLanguage, open } = nextProps;
+    const {
+      dispatch, content, mainLanguage, open,
+    } = nextProps;
     if (open && !this.props.open) {
       // prefetch languages supported by the story
       dispatch(Actions.fetchLanguage(content[mainLanguage].story));
@@ -126,7 +130,9 @@ export default class StorySettingModal extends React.Component {
   }
 
   render() {
-    const { t, open, mainLanguage, content, saving, tabBarIndex } = this.props;
+    const {
+      t, open, mainLanguage, content, saving, tabBarIndex,
+    } = this.props;
 
     const story = _get(this.props, `content[${mainLanguage}].story`);
 

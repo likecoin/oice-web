@@ -3,9 +3,7 @@ import _keyBy from 'lodash/keyBy';
 import _values from 'lodash/values';
 import _forEach from 'lodash/forEach';
 
-import {
-  FETCHED_MACROS,
-} from 'editor/constants/actionTypes';
+import { FETCHED_MACROS } from 'editor/constants/actionTypes';
 
 import MacroDefines from 'editor/constants/macro';
 

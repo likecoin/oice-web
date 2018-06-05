@@ -7,7 +7,9 @@ import RaisedButton from 'ui-elements/RaisedButton';
 import Dropdown from 'ui-elements/Dropdown';
 
 function getStateFromProps(nextProps, prevProps = {}) {
-  const { libraries, recentUsedAsset, selectedAsset, open } = nextProps;
+  const {
+    libraries, recentUsedAsset, selectedAsset, open,
+  } = nextProps;
   const newState = {
     dropdownList: libraries.map(library => library.name),
   };
@@ -80,7 +82,9 @@ export default class SelectionModal extends React.Component {
   }
 
   render() {
-    const { t, open, className, width, disableConformButton, title } = this.props;
+    const {
+      t, open, className, width, disableConformButton, title,
+    } = this.props;
     const { dropdownList } = this.state;
     const dropdownItems = [
       ...dropdownList,

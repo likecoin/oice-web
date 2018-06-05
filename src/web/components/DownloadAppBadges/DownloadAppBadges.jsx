@@ -13,7 +13,9 @@ import './DownloadAppBadges.styles.scss';
 
 
 function DownloadAppBadges(props) {
-  const { t, appleLink, googleLink, isDarkBackground, isVertical } = props;
+  const {
+    t, appleLink, googleLink, isDarkBackground, isVertical,
+  } = props;
 
   const rootClassName = classNames('get-app-button-groups', {
     vertical: isVertical,

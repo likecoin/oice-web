@@ -26,7 +26,9 @@ export default class MenuItem extends React.Component {
   }
 
   render() {
-    const { disabled, primaryText, secondaryText, icon } = this.props;
+    const {
+      disabled, primaryText, secondaryText, icon,
+    } = this.props;
 
     const className = classNames('menu-item', {
       disabled,

@@ -17,9 +17,9 @@ const fetchOices = (storyId, language) => (dispatch) => {
   dispatch(updateSelectedStoryId(storyId));
   APIHandler(dispatch,
     OiceAPI.fetchOices(storyId, language)
-    .then(oices =>
-      dispatch(fetchedOices(oices))
-    )
+      .then(oices =>
+        dispatch(fetchedOices(oices))
+      )
   );
 };
 

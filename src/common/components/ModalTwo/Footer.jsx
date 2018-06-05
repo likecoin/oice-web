@@ -53,7 +53,9 @@ export default class ModalFooter extends React.Component {
   renderRightItems() {
     const { rightItems } = this.props;
     if (!rightItems) {
-      const { t, rightButtonColor, rightButtonDisable, rightButtonTitle } = this.props;
+      const {
+        t, rightButtonColor, rightButtonDisable, rightButtonTitle,
+      } = this.props;
       return (
         <OutlineButton
           color={rightButtonColor}

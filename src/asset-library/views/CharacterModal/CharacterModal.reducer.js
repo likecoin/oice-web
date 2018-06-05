@@ -77,28 +77,28 @@ export default handleActions({
       loading: initialState.loading,
     };
   },
-  [Actions.closeCharacterModal]: (state) => ({
+  [Actions.closeCharacterModal]: state => ({
     ...state,
     open: false,
   }),
-  [Actions.toggleExpansionCharacterModal]: (state) => update(state, {
-    expanded: { $apply: (expanded) => !expanded },
+  [Actions.toggleExpansionCharacterModal]: state => update(state, {
+    expanded: { $apply: expanded => !expanded },
   }),
-  [Actions.postCharacterBegin]: (state) => ({
+  [Actions.postCharacterBegin]: state => ({
     ...state,
     loading: true,
   }),
-  [Actions.addedCharacter]: (state) => ({
+  [Actions.addedCharacter]: state => ({
     ...state,
     open: false,
     loading: false,
   }),
-  [Actions.updatedCharacter]: (state) => ({
+  [Actions.updatedCharacter]: state => ({
     ...state,
     open: false,
     loading: false,
   }),
-  [Actions.deletedCharacter]: (state) => ({
+  [Actions.deletedCharacter]: state => ({
     ...state,
     open: false,
     loading: false,
@@ -115,7 +115,7 @@ export default handleActions({
     const config = { ...state.character.config };
     Object.keys(payload).forEach((key) => {
       const value = payload[key];
-      if (isNaN(value)) {
+      if (Number.isNaN(value)) {
         delete config[key];
       } else {
         config[key] = value;

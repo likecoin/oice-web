@@ -104,15 +104,15 @@ export default class InteractiveTutorialOverlay extends React.Component {
     this.clearTimer();
   }
 
+  setTimer() {
+    this.clearTimer();
+    this.positionTimer = setInterval(this.position, 200);
+  }
+
   position = () => {
     const { variables, selectors } = this.props;
     const rect = calculateRect(selectors, variables) || getStateFromRect();
     this.setState(getStateFromRect(rect));
-  }
-
-  setTimer() {
-    this.clearTimer();
-    this.positionTimer = setInterval(this.position, 200);
   }
 
   clearTimer() {

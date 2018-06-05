@@ -37,7 +37,9 @@ export default class ModalFooter extends React.Component {
   }
 
   renderLeftItems() {
-    const { t, leftItems, leftButtonTitle, leftButtonDisabled } = this.props;
+    const {
+      t, leftItems, leftButtonTitle, leftButtonDisabled,
+    } = this.props;
     if (!leftItems) {
       return (
         <FlatButton

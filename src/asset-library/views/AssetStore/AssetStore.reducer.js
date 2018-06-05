@@ -1,9 +1,7 @@
 import { handleActions } from 'redux-actions';
 import update from 'immutability-helper';
 
-import {
-  actions as LibraryDetailsActions,
-} from 'asset-library/views/LibraryDetails';
+import { actions as LibraryDetailsActions } from 'asset-library/views/LibraryDetails';
 import * as Actions from './AssetStore.actions';
 
 const initialState = {
@@ -23,7 +21,9 @@ function handleFetchStoreLibrariesBegin(state, { payload }) {
 
 function handleFetchStoreLibrariesEnd(state, { payload }) {
   // featured will return list of featured library
-  const { libraries, pageNumber, totalPages, list } = payload;
+  const {
+    libraries, pageNumber, totalPages, list,
+  } = payload;
 
   const isFinishedFetched = (state.libraries.length > 0 && list) || (state.featuredLibraryList.length > 0 && libraries);
 

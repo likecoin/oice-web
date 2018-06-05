@@ -6,13 +6,10 @@ import CloseIcon from 'common/icons/close-bold';
 
 export default class ModalHeader extends React.Component {
   static defaultProps = {
-    loading: false,
-    showQuestionButton: false,
   }
 
   static propTypes = {
     children: PropTypes.node,
-    loading: PropTypes.bool,
     onClickCloseButton: PropTypes.func,
   }
 

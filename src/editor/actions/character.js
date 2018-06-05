@@ -8,12 +8,12 @@ export const fetchCharacter = storyId => (dispatch) => {
   dispatch(fetchCharacterBegin());
   APIHandler(dispatch,
     CharacterAPI.fetchCharacter(storyId)
-    .then(characters => dispatch(fetchedCharacter(characters)))
+      .then(characters => dispatch(fetchedCharacter(characters)))
   );
 };
 
 export const fetchedCharacterByLibrary = createAction('FETCH_LIBRARY_CHARACTERS');
 export const fetchCharacterByLibrary = libraryId => dispatch => APIHandler(dispatch,
   CharacterAPI.fetchCharacterByLibrary(libraryId)
-  .then(characters => dispatch(fetchedCharacterByLibrary(characters)))
+    .then(characters => dispatch(fetchedCharacterByLibrary(characters)))
 );

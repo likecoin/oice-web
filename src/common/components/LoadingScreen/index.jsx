@@ -59,7 +59,7 @@ export default class LoadingScreen extends React.Component {
           </h5>
           {showRefreshButton && (
             <OutlineButton
-              color={'green'}
+              color="green"
               label={t('label.reload')}
               onClick={this.refresh}
             />

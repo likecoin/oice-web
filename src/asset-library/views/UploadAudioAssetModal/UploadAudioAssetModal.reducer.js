@@ -13,7 +13,7 @@ const initialState = {
   type: null,
   uploadProgress: {},
   uploading: false,
-  uploadStatus: [],   // array of { id, error }
+  uploadStatus: [], // array of { id, error }
   error: null,
 };
 

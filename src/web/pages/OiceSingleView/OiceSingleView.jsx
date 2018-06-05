@@ -89,14 +89,12 @@ export default class OiceSingleView extends React.Component {
        * just for force re-render
        * @type {Boolean}
        */
-      isCreditExpand: false,
       isStartedPlaying: false,
       isEndedPlaying: false,
       isPreview: /preview\/?$/.test(window.location.pathname),
       language: _get(this.props, 'location.query.lang'),
       isMobileSize: false,
       oicePlayerSize: 0,
-      viewUrl: null,
       callToActionModalOpen: false,
     };
   }
@@ -144,10 +142,6 @@ export default class OiceSingleView extends React.Component {
 
   loadOice(oiceUuid) {
     this.props.dispatch(Actions.fetchOiceInfo(oiceUuid, this.state.language));
-  }
-
-  handleToggleCredit = (isCreditExpand) => {
-    this.setState({ isCreditExpand });
   }
 
   handleOiceStart = () => {
@@ -233,9 +227,9 @@ export default class OiceSingleView extends React.Component {
     // Post action to oice
     const serializedAction = JSON.stringify(action);
     document
-    .getElementsByClassName('oice-player')[0]
-    .contentWindow
-    .postMessage(serializedAction, '*');
+      .getElementsByClassName('oice-player')[0]
+      .contentWindow
+      .postMessage(serializedAction, '*');
 
     return true;
   }
@@ -266,7 +260,12 @@ export default class OiceSingleView extends React.Component {
     const marginLeft = isMobileSize ? 0 : paddingLeft + ((maxOicePlayerWidth - oicePlayerSize) / 2);
 
     if (prevContainerWidth !== containerWidth) {
-      this.setState({ oicePlayerSize, containerWidth, marginLeft, isMobileSize });
+      this.setState({
+        oicePlayerSize,
+        containerWidth,
+        marginLeft,
+        isMobileSize,
+      });
     }
 
     // XXX: Hard code, IE10+
@@ -433,6 +432,7 @@ export default class OiceSingleView extends React.Component {
             className="oice-player"
             scrolling="no" // For responsive behavior in iOS
             src={this.getOiceViewUrl(isPreview, oice)}
+            title={oice.uuid}
           />
         </div>
         <div
@@ -483,9 +483,11 @@ export default class OiceSingleView extends React.Component {
                 />
               </div>
               {!isMobileSize && <hr />}
-              {!isMobileSize && <div className="qr-code">
-                <QRCode value={deepLink} />
-              </div>}
+              {!isMobileSize && (
+                <div className="qr-code">
+                  <QRCode value={deepLink} />
+                </div>
+              )}
             </div>
           </div>
         </div>

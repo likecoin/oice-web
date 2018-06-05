@@ -26,7 +26,7 @@ export default class CharacterPreviewDemo extends React.Component {
 
   handleLeftOnChange = () => {
     console.log('handleLeftOnChange', this.leftTextField);
-    const value = this.leftTextField.value;
+    const { value } = this.leftTextField;
     if (value) {
       this.setState({ characterLeft: parseInt(value, 10) });
     }
@@ -34,7 +34,7 @@ export default class CharacterPreviewDemo extends React.Component {
 
   handleTopOnChange = () => {
     console.log('handleTopOnChange', this.topTextField);
-    const value = this.topTextField.value;
+    const { value } = this.topTextField;
     if (value) {
       this.setState({ characterTop: parseInt(value, 10) });
     }
@@ -105,19 +105,19 @@ export default class CharacterPreviewDemo extends React.Component {
           </div>
           <div style={{ margin: '10px 10%' }}>
             <input
+              ref={(e) => { this.leftTextField = e; }}
               disabled={this.state.isStatic}
               name="fname"
               placeholder="Left"
-              ref={(e) => { this.leftTextField = e; }}
               type="number"
               value={this.state.characterLeft}
               onChange={this.handleLeftOnChange}
             />
             <input
+              ref={(e) => { this.topTextField = e; }}
               disabled={this.state.isStatic}
               name="fname"
               placeholder="Top"
-              ref={(e) => { this.topTextField = e; }}
               type="number"
               value={this.state.characterTop}
               onChange={this.handleTopOnChange}

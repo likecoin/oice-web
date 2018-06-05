@@ -7,12 +7,8 @@ import { actions as CharacterModalActions } from 'asset-library/views/CharacterM
 import { actions as BackgroundModalActions } from 'asset-library/views/BackgroundModal';
 import { actions as ItemModalActions } from 'asset-library/views/ItemModal';
 import { actions as EditAudioAssetModalActions } from 'asset-library/views/EditAudioAssetModal';
-import {
-  actions as CreateLibraryModalActions,
-} from 'asset-library/views/CreateLibraryModal';
-import {
-  actions as PurchasedDashboardActions,
-} from 'asset-library/views/PurchasedLibraryDashboard';
+import { actions as CreateLibraryModalActions, } from 'asset-library/views/CreateLibraryModal';
+import { actions as PurchasedDashboardActions, } from 'asset-library/views/PurchasedLibraryDashboard';
 import * as Actions from './LibraryDetails.actions';
 import * as CommonActions from './LibraryDetails.common.actions';
 
@@ -77,9 +73,9 @@ function handleDidFetchLibraryAssetsByType(state, action) {
 function findAssetIndex(state, type, assetId) {
   return (
     state
-    .assets[type]
-    .items
-    .findIndex(asset => asset.id === assetId)
+      .assets[type]
+      .items
+      .findIndex(asset => asset.id === assetId)
   );
 }
 
@@ -169,7 +165,7 @@ export default handleActions({
   [Actions.purchaseLibraryBegin]: handleWillPurchaseLibrary,
   [Actions.purchaseLibraryEnd]: handleDidPurchaseLibrary,
   [Actions.updatedLibraryAssetCount]: handleUpdatedLibraryAssetCount,
-  [Actions.didClose]: (state) => update(state, {
+  [Actions.didClose]: state => update(state, {
     loaded: { $set: false },
   }),
   [CharacterModalActions.updatedCharacter]: (state, { payload }) => updateAsset(

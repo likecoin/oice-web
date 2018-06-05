@@ -51,16 +51,6 @@ export default class StoryDetails extends React.Component {
     window.removeEventListener('resize', this.resizeDebounce, false);
   }
 
-  initializeList = () => {
-    this.storyDetails.children[0].style.transform = '';
-    const { firstPage } = this.getNumberOfItemsInRowOfPage();
-    this.setState({
-      page: 0,
-      currentStartIndex: 0,
-      numberOfItemsShown: firstPage,
-    });
-  }
-
   getNumberOfItemsInRowOfPage = () => {
     const containerWidth = this.getContainerWidth();
     return {
@@ -73,41 +63,9 @@ export default class StoryDetails extends React.Component {
     const galleryWrapper = document.querySelector('#user-profile-info');
     if (galleryWrapper) {
       const galleryWidth = parseInt(galleryWrapper.style.maxWidth, 10);
-      if (!isNaN(galleryWidth)) return galleryWidth - STORY_DETAIL_MARGIN;
+      if (!Number.isNaN(galleryWidth)) return galleryWidth - STORY_DETAIL_MARGIN;
     }
     return 0;
-  }
-
-  isLeftScrollable = () => {
-    const { page } = this.state;
-    return page !== 0;
-  }
-
-  isRightScrollable = () => {
-    const { oices } = this.props;
-    const { currentStartIndex, numberOfItemsShown } = this.state;
-    return ((currentStartIndex + numberOfItemsShown) < oices.length);
-  }
-
-  updateLayout = () => {
-    // calculate if number of items shown is still the same
-    const { page } = this.state;
-    const { firstPage, otherPages } = this.getNumberOfItemsInRowOfPage();
-    // find out whether page should change according to width size changes
-    const numberOfOices = this.props.oices.length;
-    const numberOfPages = Math.ceil((numberOfOices - firstPage) / otherPages) + 1;
-    const newPage = (page >= numberOfPages) ? page - 1 : page;
-    let numberOfItemsShown = firstPage;
-    let currentStartIndex = 0;
-    if (newPage !== 0) {
-      numberOfItemsShown = otherPages;
-      currentStartIndex = firstPage + ((newPage - 1) * otherPages);
-    }
-    this.setState({
-      currentStartIndex,
-      numberOfItemsShown,
-      page: newPage,
-    });
   }
 
   handleCloseButtonClick = () => {
@@ -146,6 +104,48 @@ export default class StoryDetails extends React.Component {
     });
   }
 
+  initializeList = () => {
+    this.storyDetails.children[0].style.transform = '';
+    const { firstPage } = this.getNumberOfItemsInRowOfPage();
+    this.setState({
+      page: 0,
+      currentStartIndex: 0,
+      numberOfItemsShown: firstPage,
+    });
+  }
+
+  isLeftScrollable = () => {
+    const { page } = this.state;
+    return page !== 0;
+  }
+
+  isRightScrollable = () => {
+    const { oices } = this.props;
+    const { currentStartIndex, numberOfItemsShown } = this.state;
+    return ((currentStartIndex + numberOfItemsShown) < oices.length);
+  }
+
+  updateLayout = () => {
+    // calculate if number of items shown is still the same
+    const { page } = this.state;
+    const { firstPage, otherPages } = this.getNumberOfItemsInRowOfPage();
+    // find out whether page should change according to width size changes
+    const numberOfOices = this.props.oices.length;
+    const numberOfPages = Math.ceil((numberOfOices - firstPage) / otherPages) + 1;
+    const newPage = (page >= numberOfPages) ? page - 1 : page;
+    let numberOfItemsShown = firstPage;
+    let currentStartIndex = 0;
+    if (newPage !== 0) {
+      numberOfItemsShown = otherPages;
+      currentStartIndex = firstPage + ((newPage - 1) * otherPages);
+    }
+    this.setState({
+      currentStartIndex,
+      numberOfItemsShown,
+      page: newPage,
+    });
+  }
+
   repositionOices(page) {
     if (this.storyDetails) {
       const containerWidth = this.getContainerWidth();
@@ -179,8 +179,8 @@ export default class StoryDetails extends React.Component {
 
     const groupOne = (
       <div
-        className="oice-group"
         key={`oice-group-${oiceGroups.length + 1}`}
+        className="oice-group"
         style={{
           justifyContent: isOnePage ? 'initial' : 'center',
           paddingLeft: groupOneSpace,
@@ -191,8 +191,8 @@ export default class StoryDetails extends React.Component {
           index < numberOfItemsInPage1
         ) && (
           <OiceItem
-            index={index + 1}
             key={oice.id}
+            index={index + 1}
             oice={oice}
           />
         ))}
@@ -212,16 +212,16 @@ export default class StoryDetails extends React.Component {
       };
       oiceGroups.push(
         <div
-          className="oice-group"
           key={`oice-group-${oiceGroups.length + 1}`}
+          className="oice-group"
           style={oiceGroupStyle}
         >
           {oices.map((oice, index) => (
             index >= i && index < indexOfLastItem
           ) && (
             <OiceItem
-              index={index + 1}
               key={oice.id}
+              index={index + 1}
               oice={oice}
             />
           ))}
@@ -237,8 +237,8 @@ export default class StoryDetails extends React.Component {
     return (
       <div className="story-details-wrapper">
         <div
-          className="story-details"
           ref={ref => this.storyDetails = ref}
+          className="story-details"
           style={{ width: this.getContainerWidth() }}
         >
           <div className="story-info">

@@ -36,7 +36,6 @@ export default class TestFlightInvitation extends React.Component {
   }
 
   static defaultProps = {
-    isCloseButtonShowed: true,
     onToggle: undefined,
   }
 
@@ -64,7 +63,14 @@ export default class TestFlightInvitation extends React.Component {
   }
 
   render() {
-    const { t, open, isSending, isSent, errorMessage, onToggle } = this.props;
+    const {
+      t,
+      open,
+      isSending,
+      isSent,
+      errorMessage,
+      onToggle,
+    } = this.props;
     const { email } = this.state;
 
     return (

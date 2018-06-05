@@ -87,9 +87,11 @@ export default class OiceSettingTab extends React.Component {
       <div className="oice-tab">
         {!oices ? (
           <Progress.LoadingIndicator />
-        ) : (<div className="oice-rows">
-          {oices.map(this.renderOiceRow)}
-        </div>)}
+        ) : (
+          <div className="oice-rows">
+            {oices.map(this.renderOiceRow)}
+          </div>
+        )}
       </div>
     );
   }

@@ -8,15 +8,9 @@ import _get from 'lodash/get';
 
 import InteractiveTutorial from 'editor/components/InteractiveTutorial';
 
-import {
-  actions as CreateLibraryModalActions,
-} from 'asset-library/views/CreateLibraryModal';
-import {
-  actions as AssetLibraryTabBarActions,
-} from 'asset-library/views/AssetLibraryTabBar';
-import {
-  updateUserTutorialState,
-} from 'editor/components/InteractiveTutorial/actions';
+import { actions as CreateLibraryModalActions } from 'asset-library/views/CreateLibraryModal';
+import { actions as AssetLibraryTabBarActions } from 'asset-library/views/AssetLibraryTabBar';
+import { updateUserTutorialState } from 'editor/components/InteractiveTutorial/actions';
 
 import {
   LIBRARY_ACTION,
@@ -38,7 +32,9 @@ import './LibraryDashboard.style.scss';
 
 @translate('LibraryDashboard')
 @connect((store) => {
-  const { routing, AssetLibraryTabBar, LibraryDashboard, user } = store;
+  const {
+    routing, AssetLibraryTabBar, LibraryDashboard, user,
+  } = store;
   const isFirstEnter = _get(routing, 'locationBeforeTransitions.action', 'POP') === 'POP';
   return {
     isFirstEnter,
@@ -205,7 +201,9 @@ export default class LibraryDashboard extends React.Component {
   }
 
   render() {
-    const { isFirstEnter, t, params, tabBarValue } = this.props;
+    const {
+      isFirstEnter, t, params, tabBarValue,
+    } = this.props;
 
     const { selectedTabBarIndex, libraryType } = this.state;
 

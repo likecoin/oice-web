@@ -21,9 +21,7 @@ import {
   LINK_ALIAS,
   PROFILE_ACTION,
 } from 'web/pages/Profile/Profile.constants';
-import {
-  LIKECOIN_URL,
-} from 'common/constants';
+import { LIKECOIN_URL } from 'common/constants';
 
 import Gallery from './Gallery';
 import StoryDetails from './StoryDetails';
@@ -213,21 +211,21 @@ export default class UserPage extends React.Component {
         const { scrollTop } = document.querySelector('body');
         const navBarHeight = (
           document
-          .querySelector('#web-navbar')
-          .getBoundingClientRect()
-          .height
+            .querySelector('#web-navbar')
+            .getBoundingClientRect()
+            .height
         );
         const containerPaddingTop = parseInt(
           window
-          .getComputedStyle(this.contentContainer.parentNode)
-          .paddingTop,
+            .getComputedStyle(this.contentContainer.parentNode)
+            .paddingTop,
           10
         );
         const mobileHeaderHeight = (
           this
-          .mobileHeader
-          .getBoundingClientRect()
-          .height
+            .mobileHeader
+            .getBoundingClientRect()
+            .height
         );
         const tabBarNavHeight = tabBarNav.getBoundingClientRect().height;
 

@@ -92,8 +92,8 @@ export default class BackgroundModal extends React.Component {
     const imageFile = this.imageCropper.getImageFile();
     this.props.dispatch(
       isAdding ?
-      LibraryDetailsActions.addAsset(background, imageFile, ASSET_TYPE.BACKGROUND) :
-      LibraryDetailsActions.updateAsset(background, imageFile, ASSET_TYPE.BACKGROUND)
+        LibraryDetailsActions.addAsset(background, imageFile, ASSET_TYPE.BACKGROUND) :
+        LibraryDetailsActions.updateAsset(background, imageFile, ASSET_TYPE.BACKGROUND)
     );
   }
 
@@ -158,7 +158,9 @@ export default class BackgroundModal extends React.Component {
   }
 
   render() {
-    const { t, loading, open, readonly } = this.props;
+    const {
+      t, loading, open, readonly,
+    } = this.props;
     const { background, hasUploadedImage } = this.state;
 
     const isAdding = !this.props.background;
@@ -184,8 +186,8 @@ export default class BackgroundModal extends React.Component {
 
     let modalHeader = (
       readonly ?
-      t('bgModal.header.view') :
-      t(`bgModal.header.${isAdding ? 'add' : 'edit'}`)
+        t('bgModal.header.view') :
+        t(`bgModal.header.${isAdding ? 'add' : 'edit'}`)
     );
     if (!isAdding) modalHeader = `${modalHeader} (${background.id})`;
 

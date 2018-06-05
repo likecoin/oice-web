@@ -5,7 +5,9 @@ import classNames from 'classnames';
 import './style.scss';
 
 const TriangleLabel = (props) => {
-  const { id, reference, selected, selectedColor } = props;
+  const {
+    id, reference, selected, selectedColor,
+  } = props;
   const className = classNames('triangle-label', {
     selected,
   });

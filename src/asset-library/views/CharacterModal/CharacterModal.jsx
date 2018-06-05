@@ -56,7 +56,9 @@ export default class CharacterModal extends React.Component {
   }
 
   renderCharacterDescription() {
-    const { dispatch, t, readonly, character } = this.props;
+    const {
+      dispatch, t, readonly, character,
+    } = this.props;
     const description = _get(character, 'description');
 
     if (!description) return null;
@@ -91,7 +93,9 @@ export default class CharacterModal extends React.Component {
   }
 
   render() {
-    const { character, libraryId, readonly, open, t } = this.props;
+    const {
+      character, libraryId, readonly, open, t,
+    } = this.props;
     return (
       <Modal
         id="character-modal"

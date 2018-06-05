@@ -38,8 +38,8 @@ export const postCharacter = (aCharacter, fgImages, deletedFGImageIds) => async 
   dispatch(postCharacterBegin());
   const adding = !aCharacter.id;
   const request = (adding) ?
-  CharacterAPI.addCharacter(aCharacter) :
-  CharacterAPI.updateCharacter(aCharacter);
+    CharacterAPI.addCharacter(aCharacter) :
+    CharacterAPI.updateCharacter(aCharacter);
 
   // create or update character
   const { id, libraryId } = await APIHandler(dispatch, request);
@@ -82,13 +82,13 @@ export const postCharacter = (aCharacter, fgImages, deletedFGImageIds) => async 
 export const deleteCharacter = ({ id, assetCount, libraryId }) => (dispatch) => {
   dispatch(postCharacterBegin());
   APIHandler(dispatch, CharacterAPI.deleteCharacter(id)
-  .then(() => {
-    dispatch(deletedCharacter(id));
-    dispatch(
-      LibraryDetailsActions.updateLibraryAssetCount({
-        assetCount,
-        libraryId,
-      })
-    );
-  }));
+    .then(() => {
+      dispatch(deletedCharacter(id));
+      dispatch(
+        LibraryDetailsActions.updateLibraryAssetCount({
+          assetCount,
+          libraryId,
+        })
+      );
+    }));
 };

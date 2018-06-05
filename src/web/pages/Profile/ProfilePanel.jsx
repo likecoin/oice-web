@@ -31,7 +31,7 @@ function ProfilePanel(props) {
         <h2>{header}</h2>
         {!customHeaderRightComponent && onClickSave &&
           <OutlineButton
-            color={'green'}
+            color="green"
             disabled={disableSaveButton}
             label={t('save')}
             onClick={onClickSave}

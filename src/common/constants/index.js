@@ -1,28 +1,27 @@
 import _get from 'lodash/get';
 import platform from 'platform';
 import {
-    DOMAIN_URL_PROD,
-    DOMAIN_URL_K8S,
-    DOMAIN_URL_LOCAL,
-    ANDROID_PACKAGE_PROD,
-    ANDROID_PACKAGE_TEST,
-    ANDROID_NAME_PROD,
-    ANDROID_NAME_TEST,
-    FIREBASE_API_KEY,
-    IOS_STORE_ID,
-    IOS_NAME,
-    INTERCOM_APP_ID_PROD,
-    INTERCOM_APP_ID_TEST,
-    LIKECOIN_URL_TEST,
-    LIKECOIN_URL_PROD,
+  DOMAIN_URL_PROD,
+  DOMAIN_URL_K8S,
+  DOMAIN_URL_LOCAL,
+  ANDROID_PACKAGE_PROD,
+  ANDROID_PACKAGE_TEST,
+  ANDROID_NAME_PROD,
+  ANDROID_NAME_TEST,
+  FIREBASE_API_KEY,
+  IOS_STORE_ID,
+  IOS_NAME,
+  INTERCOM_APP_ID_PROD,
+  INTERCOM_APP_ID_TEST,
+  LIKECOIN_URL_TEST,
+  LIKECOIN_URL_PROD,
 } from './key';
 
 import packageJSON from '../../../package.json';
 
 export const VERSION = packageJSON.version;
 
-export const SRV_ENV = process.env.SRV_ENV;
-export const IS_CLIENT = process.env.IS_CLIENT;
+export const { SRV_ENV, IS_CLIENT } = process.env;
 
 const get_domain_URL = () => {
   switch (SRV_ENV) {

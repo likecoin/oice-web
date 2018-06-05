@@ -2,37 +2,37 @@ import request from 'superagent';
 import { API_URL, API_HEADER } from '../constants';
 
 export const fetchTypedAssetsListByLibrary = (libraryId, assetType) =>
-request.get(`${API_URL}library/${libraryId}/assets/${assetType}`)
-.withCredentials()
-.set(API_HEADER)
-.then((response) => {
-  if (response.ok) {
-    return response.body.assets;
-  }
-  return [];
-});
+  request.get(`${API_URL}library/${libraryId}/assets/${assetType}`)
+    .withCredentials()
+    .set(API_HEADER)
+    .then((response) => {
+      if (response.ok) {
+        return response.body.assets;
+      }
+      return [];
+    });
 
 export const fetchStoryAssetList = storyId =>
-request.get(`${API_URL}story/${storyId}/assets`)
-.withCredentials()
-.set(API_HEADER)
-.then((response) => {
-  if (response.ok) {
-    return response.body.assets;
-  }
-  return [];
-});
+  request.get(`${API_URL}story/${storyId}/assets`)
+    .withCredentials()
+    .set(API_HEADER)
+    .then((response) => {
+      if (response.ok) {
+        return response.body.assets;
+      }
+      return [];
+    });
 
 export const fetchAsset = assetId =>
-request.get(`${API_URL}asset/${assetId}`)
-.withCredentials()
-.set(API_HEADER)
-.then((response) => {
-  if (response.ok) {
-    return response.body.asset;
-  }
-  return null;
-});
+  request.get(`${API_URL}asset/${assetId}`)
+    .withCredentials()
+    .set(API_HEADER)
+    .then((response) => {
+      if (response.ok) {
+        return response.body.asset;
+      }
+      return null;
+    });
 
 const getAssetMeta = (asset) => {
   const {
@@ -43,7 +43,7 @@ const getAssetMeta = (asset) => {
     creditsUrl,
   } = asset;
 
-  if (nameEn.length === 0) return Promise.reject('Asset name cannot be empty.');
+  if (nameEn.length === 0) return Promise.reject(new Error('Asset name cannot be empty.'));
 
   const meta = {
     nameEn,
@@ -65,9 +65,9 @@ const postAsset = (asset, file, type, progressHandler) => {
   );
 
   let post = request
-  .post(url)
-  .withCredentials()
-  .set(API_HEADER);
+    .post(url)
+    .withCredentials()
+    .set(API_HEADER);
 
   const hasMultipleAssets = Array.isArray(asset);
   let meta;
@@ -103,17 +103,17 @@ const postAsset = (asset, file, type, progressHandler) => {
 };
 
 export const addAsset = (asset, file, type, progressHandler) =>
-postAsset(asset, file, type, progressHandler);
+  postAsset(asset, file, type, progressHandler);
 
 export const updateAsset = (asset, file) => postAsset(asset, file);
 
 export const deleteAsset = assetId =>
-request.del(`${API_URL}asset/${assetId}`)
-.withCredentials()
-.set(API_HEADER)
-.then((response) => {
-  if (response.ok) {
-    return response.body.message;
-  }
-  return null;
-});
+  request.del(`${API_URL}asset/${assetId}`)
+    .withCredentials()
+    .set(API_HEADER)
+    .then((response) => {
+      if (response.ok) {
+        return response.body.message;
+      }
+      return null;
+    });

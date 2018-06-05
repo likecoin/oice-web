@@ -34,7 +34,9 @@ export default class ToggleButton extends React.Component {
   }
 
   render() {
-    const { leftLabel, rightLabel, toggled, narrow } = this.props;
+    const {
+      leftLabel, rightLabel, toggled, narrow,
+    } = this.props;
     const hasLabel = leftLabel && rightLabel;
     const className = classNames('toggle-button', this.props.className, {
       narrow,
@@ -58,7 +60,7 @@ export default class ToggleButton extends React.Component {
           type="checkbox"
           onChange={() => this.handleToggle()}
         />
-        <label className="switch" htmlFor={`check-box-${this.uuid}`} />
+        <label className="switch" htmlFor={`check-box-${this.uuid}`} />  {/* eslint-disable-line */}
         {hasLabel &&
           <span className={rightLabelClassNames}>{rightLabel}</span>
         }

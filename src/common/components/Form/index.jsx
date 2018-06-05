@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './styles.scss';
 
-const FormSectionSide = (props) => (
+const FormSectionSide = props => (
   <div className="form-section-side">
     {props.children}
   </div>
@@ -15,7 +15,7 @@ FormSectionSide.propTypes = {
 };
 
 
-const FormSectionMain = (props) => (
+const FormSectionMain = props => (
   <div className="form-section-main">
     {props.children}
   </div>
@@ -26,7 +26,7 @@ FormSectionMain.propTypes = {
   children: PropTypes.node,
 };
 
-const FormSection = (props) => (
+const FormSection = props => (
   <div className="form-section">
     {props.children}
   </div>
@@ -39,7 +39,7 @@ FormSection.propTypes = {
 FormSection.Side = FormSectionSide;
 FormSection.Main = FormSectionMain;
 
-const Form = (props) => (
+const Form = props => (
   <div className="form">
     {props.children}
   </div>

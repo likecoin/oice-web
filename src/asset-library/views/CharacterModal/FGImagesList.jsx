@@ -21,7 +21,8 @@ import { getFilename } from 'common/utils';
 
 @translate(['assetsManagement', 'editor'])
 @connect((store) => {
-  const { fgimages,
+  const {
+    fgimages,
     character,
     fgImages,
     selectedFgIndex,
@@ -75,35 +76,35 @@ export default class FGImagesList extends React.Component {
     } = character;
 
     const promises = [...target.files]
-    .map((file, index) => new Promise((resolve) => {
-      const fileReader = new FileReader();
-      fileReader.onload = (event) => {
-        const src = event.target.result;
-        const image = new Image();
-        image.src = src;
-        image.onload = () => {
-          if (index === 0 && fgImages.length === 0) {
-            // Use the first FG image size as character size
-            dispatch(Actions.updateCharacterSize({
-              width: image.width,
-              height: image.height,
-            }));
-          }
-          resolve({
-            meta: {
-              key: uuid.v4(),
-              nameEn: getFilename(file.name),
-              users: [user],
-              creditsUrl: '',
-            },
-            src: image.src,
-            file,
-            sync: false,
-          });
+      .map((file, index) => new Promise((resolve) => {
+        const fileReader = new FileReader();
+        fileReader.onload = (event) => {
+          const src = event.target.result;
+          const image = new Image();
+          image.src = src;
+          image.onload = () => {
+            if (index === 0 && fgImages.length === 0) {
+              // Use the first FG image size as character size
+              dispatch(Actions.updateCharacterSize({
+                width: image.width,
+                height: image.height,
+              }));
+            }
+            resolve({
+              meta: {
+                key: uuid.v4(),
+                nameEn: getFilename(file.name),
+                users: [user],
+                creditsUrl: '',
+              },
+              src: image.src,
+              file,
+              sync: false,
+            });
+          };
         };
-      };
-      fileReader.readAsDataURL(file);
-    }));
+        fileReader.readAsDataURL(file);
+      }));
 
     Promise.all(promises).then(results => dispatch(Actions.addFGImages(results)));
   }

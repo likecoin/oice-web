@@ -25,7 +25,9 @@ const getStoryId = (state) => {
 
 // reorder fetched oices according to user updated
 const reorderOiceList = (state, oices) => {
-  const { deleted, mainLanguage, content, hasUpdatedOiceOrder } = state.editorPanel.StorySettingModal;
+  const {
+    deleted, mainLanguage, content, hasUpdatedOiceOrder,
+  } = state.editorPanel.StorySettingModal;
   let updatedOiceList = oices.filter(oice => !deleted.oices.includes(oice.id));
   if (hasUpdatedOiceOrder) {
     const currentOices = content[mainLanguage].oices;
@@ -167,7 +169,9 @@ export const saveStorySettingModal = () => async (dispatch, getState) => {
       Promise.all(newLanguageRequests).then(translatedStories => callback(null, translatedStories));
     },
   }, (error, result) => {
-    const { stories, oices, oiceOrder, translatedStories } = result;
+    const {
+      stories, oices, oiceOrder, translatedStories,
+    } = result;
 
     if (stories.length > 0) {
       const mainStory = stories.find(story => _get(story, 'language') === mainLanguage);
@@ -203,7 +207,7 @@ export const saveStorySettingModal = () => async (dispatch, getState) => {
 
       // check whether user is in editor panel, if yes, update them to one of the new language
       if (isInEditorPanel) {
-        selectedLanguage = languages[0];
+        [selectedLanguage] = languages;
         dispatch(StoryAction.selectedStory(translatedStories[0]));
       }
     } else {
@@ -252,9 +256,9 @@ export const fetchOices = ({ id, language }) => (dispatch) => {
   dispatch(fetchOicesBegin());
   APIHandler(dispatch,
     OiceAPI.fetchOices(id, language)
-    .then((oices) => {
-      dispatch(fetchOicesEnd({ oices, language }));
-    })
+      .then((oices) => {
+        dispatch(fetchOicesEnd({ oices, language }));
+      })
   );
 };
 
@@ -304,7 +308,9 @@ export const updateStoryName = createAction('STORY_NAME_UPDATE');
 export const updateStoryDescription = createAction('STORY_DESCRIPTION_UPDATE');
 export const updateStoryCover = createAction('STORY_COVER_UPDATE');
 export const saveStoryOgImageEnd = createAction('STORY_OG_IMAGE_SAVE_END');
-export const saveStoryOgImage = ({ language, story, ogImage, ogImageFile }) => async (dispatch) => {
+export const saveStoryOgImage = ({
+  language, story, ogImage, ogImageFile,
+}) => async (dispatch) => {
   const newStory = await APIHandler(dispatch,
     StoryAPI.updateStory({
       ...story,

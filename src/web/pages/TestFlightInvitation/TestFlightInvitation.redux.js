@@ -13,8 +13,8 @@ export const sendInvitation = email => (dispatch) => {
   dispatch(willSendInvitation());
   return APIHandler(dispatch,
     TestFlightAPI
-    .addTester(email)
-    .then(response => dispatch(didSendInvitation(response))),
+      .addTester(email)
+      .then(response => dispatch(didSendInvitation(response))),
     null,
     [
       'ERR_TESTFLIGHT_INVALID_TESTER_EMAIL',

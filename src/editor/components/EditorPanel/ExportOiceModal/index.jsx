@@ -29,7 +29,7 @@ import Reducer from './reducer';
 
 
 @translate(['editor'])
-@connect(store => {
+@connect((store) => {
   const {
     index,
     exportOiceModal,
@@ -44,7 +44,6 @@ export default class ExportOiceModal extends React.Component {
   static Reducer = Reducer;
   static propTypes = {
     buildState: PropTypes.object,
-    dispatch: PropTypes.func.isRequired,
     oiceId: PropTypes.number.isRequired,
     onClose: PropTypes.func,
     open: PropTypes.bool,
@@ -58,7 +57,7 @@ export default class ExportOiceModal extends React.Component {
 
   handleOnClickDownloadButton = () => {
     const { buildState, oiceId } = this.props;
-    const data = buildState.data;
+    const { data } = buildState;
     if (buildState.stage === SUCCESS) {
       window.open(`${API_URL}oice/${oiceId}/export/${data}`, '_blank');
     }
@@ -66,8 +65,7 @@ export default class ExportOiceModal extends React.Component {
 
   renderBody(t) {
     const { buildState, oiceId, storyId } = this.props;
-    const stage = buildState.stage;
-    const data = buildState.data;
+    const { stage, data } = buildState;
     const message = t(`buildOiceState.${buildState.message}`);
     switch (stage) {
       case FAILED_ERRORS:
@@ -96,8 +94,10 @@ export default class ExportOiceModal extends React.Component {
   }
 
   render() {
-    const { t, buildState, oiceId, storyId } = this.props;
-    const stage = buildState.stage;
+    const {
+      t, buildState, oiceId, storyId,
+    } = this.props;
+    const { stage } = buildState;
 
     const downloadOiceButton = (
       <RaisedButton

@@ -2,12 +2,13 @@ import React, { Component, Children } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import ExpansionPanelGroup from './Group';
 import ArrowIcon from 'common/icons/arrow/down';
+
+import ExpansionPanelGroup from './Group';
 
 import './style.scss';
 
-const ExpansionPanelSection = (props) => <div {...props} />;
+const ExpansionPanelSection = props => <div {...props} />;
 
 ExpansionPanelSection.displayName = 'ExpansionPanelSection';
 
@@ -140,8 +141,6 @@ export default class ExpansionPanel extends React.Component {
       if (displayName === 'ExpansionPanelSection') {
         if (index === 0) headerProps = child.props;
         if (index === 1) contentProps = child.props;
-      } else {
-        return;
       }
     });
 

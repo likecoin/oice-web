@@ -22,10 +22,6 @@ export default class Dropdown extends React.Component {
     onChange: PropTypes.func,
   }
 
-  static defaultProps = {
-    options: [],
-  }
-
   constructor(props) {
     super(props);
 

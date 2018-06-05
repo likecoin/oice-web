@@ -94,7 +94,9 @@ export default class ImportScriptModal extends React.Component {
   }
 
   render() {
-    const { t, stage, loading, progress, error } = this.props;
+    const {
+      t, stage, loading, progress, error,
+    } = this.props;
     const { file } = this.state;
 
     const uploadButton = (

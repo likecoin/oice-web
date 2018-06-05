@@ -6,7 +6,9 @@ import './OutlineButton.style.scss';
 
 
 function OutlineButton(props) {
-  const { color, disabled, fluid, icon, label, width } = props;
+  const {
+    color, disabled, fluid, icon, label, width,
+  } = props;
 
   const className = classNames(
     'outline-button',

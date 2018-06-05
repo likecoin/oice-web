@@ -48,29 +48,29 @@ export const updateUser = payload => async (dispatch, getState) => {
 
 export const getUserProfile = () => (dispatch) => {
   APIHandler(dispatch, UserAPI.getUserProfile()
-  .then((userInfo) => {
-    dispatch(updatedUserProfile(userInfo));
-  }));
+    .then((userInfo) => {
+      dispatch(updatedUserProfile(userInfo));
+    }));
 };
 
 export const updateMembership = token => (dispatch) => {
   APIHandler(dispatch, UserAPI.postMembership(token)
-  .then((response) => {
-    const userInfo = response.user;
-    dispatch(updatedUserProfile(userInfo));
-    dispatch(startLoading(false));
-    // localStorage.setItem('currentUser', JSON.stringify(userInfo));
-  }));
+    .then((response) => {
+      const userInfo = response.user;
+      dispatch(updatedUserProfile(userInfo));
+      dispatch(startLoading(false));
+      // localStorage.setItem('currentUser', JSON.stringify(userInfo));
+    }));
 };
 
 export const cancelSubscription = () => (dispatch) => {
   APIHandler(dispatch, UserAPI.cancelSubscription()
-  .then((response) => {
-    const userInfo = response.user;
-    dispatch(updatedUserProfile(userInfo));
-    dispatch(startLoading(false));
-    // localStorage.setItem('currentUser', JSON.stringify(userInfo));
-  }));
+    .then((response) => {
+      const userInfo = response.user;
+      dispatch(updatedUserProfile(userInfo));
+      dispatch(startLoading(false));
+      // localStorage.setItem('currentUser', JSON.stringify(userInfo));
+    }));
 };
 
 export const fetchExternalLinksBegin = createAction('FETCH_EXTERNAL_LINKS_BEGIN');

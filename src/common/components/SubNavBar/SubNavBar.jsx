@@ -9,7 +9,9 @@ import './SubNavBar.style.scss';
 
 
 function SubNavBar(props) {
-  const { fluid, icon, narrow, secondaryText, text } = props;
+  const {
+    fluid, icon, narrow, secondaryText, text,
+  } = props;
   const className = classNames(props.className, { narrow });
   const titleClassName = classNames('title', {
     canClick: secondaryText !== null && secondaryText !== undefined,

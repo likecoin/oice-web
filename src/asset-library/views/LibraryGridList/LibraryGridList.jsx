@@ -37,13 +37,13 @@ function LibraryGridList(props) {
     while (children.length < columns) {
       children.push(
         <li
-          className="library-grid-item dummy"
           key={`dummy-${children.length}`}
+          className="library-grid-item dummy"
         />
       );
     }
     return (
-      <li className="library-grid-list-row" key={index} >
+      <li key={index} className="library-grid-list-row" >
         <ul className="library-grid-list-row-container">
           {children}
         </ul>

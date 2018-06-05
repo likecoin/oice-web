@@ -11,7 +11,7 @@ export const UserLoggedIn = UserAuthWrapper({
 });
 
 export const LibraryBelongsToUser = UserAuthWrapper({
-  authSelector: state => {
+  authSelector: (state) => {
     const { user, LibraryDetails } = state;
     if (user && LibraryDetails.library) {
       if (user.id !== LibraryDetails.library.author[0].id) {

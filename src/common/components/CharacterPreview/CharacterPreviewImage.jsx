@@ -5,7 +5,9 @@ import classNames from 'classnames';
 
 
 export default function CharacterPreviewImage(props) {
-  const { image, width, height, flipped, readonly } = props;
+  const {
+    image, width, height, flipped, readonly,
+  } = props;
 
   const className = classNames('character-preview-image', { flipped, readonly });
 
@@ -30,7 +32,6 @@ CharacterPreviewImage.propTypes = {
 };
 
 CharacterPreviewImage.defaultProps = {
-  image: PropTypes.string.isRequired,
   width: -1,
   height: -1,
   flipped: false,

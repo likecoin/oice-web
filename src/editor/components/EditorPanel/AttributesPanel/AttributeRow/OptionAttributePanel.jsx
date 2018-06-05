@@ -24,6 +24,7 @@ export default class OptionAttributePanel extends React.Component {
   }
 
   static propTypes = {
+    dispatch: PropTypes.func.isRequired,
     fullWidth: PropTypes.bool,
     t: PropTypes.func,
     answerOptions: PropTypes.string,
@@ -49,14 +50,14 @@ export default class OptionAttributePanel extends React.Component {
   }
 
   onChangeValue = (value, answerInfo) => {
-    const answerIndex = answerInfo.answerIndex;
+    const { answerIndex } = answerInfo;
     const answerType = answerInfo.type;
     const { answerOptions } = this.state;
     answerOptions[answerIndex][answerType] = value;
     this.updateStore(answerOptions);
   }
 
-  onClickRemoveOption = index => {
+  onClickRemoveOption = (index) => {
     const answerOptions = [...this.state.answerOptions];
     answerOptions.splice(index, 1);
     this.updateStore(answerOptions);
@@ -83,15 +84,15 @@ export default class OptionAttributePanel extends React.Component {
     const contentInfo = { answerIndex: i, type: 'content' };
     return (
       <div
-        className="option"
         key={i}
+        className="option"
       >
         <div className="option-label">
           <span>{t('composedAnswer.goToTag')}</span>
           <TextField
             value={answerOption.target}
             fullWidth={fullWidth}
-            onChange={(value) => this.onChangeValue(value, targetInfo)}
+            onChange={value => this.onChangeValue(value, targetInfo)}
           />
         </div>
         <div className="option-content">
@@ -110,7 +111,7 @@ export default class OptionAttributePanel extends React.Component {
           <TextField
             value={answerOption.content}
             fullWidth={fullWidth}
-            onChange={(value) => this.onChangeValue(value, contentInfo)}
+            onChange={value => this.onChangeValue(value, contentInfo)}
           />
         </div>
       </div>
@@ -118,7 +119,7 @@ export default class OptionAttributePanel extends React.Component {
   }
 
   render() {
-    const { t, question } = this.props;
+    const { t } = this.props;
     const { answerOptions } = this.state;
     const numOptions = answerOptions.length;
 

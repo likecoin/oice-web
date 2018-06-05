@@ -24,7 +24,7 @@ export default class OptionBlock extends React.Component {
         <div className="answers">
           {
             answers.map((answer, i) => (
-              <div className="answer" key={i}>
+              <div key={i} className="answer">
                 <div className="target">
                   {`${t('optionanswer.target')}(${answer.target})`}
                 </div>

@@ -64,28 +64,30 @@ export const authenticate = () => (dispatch, getState) => {
       }
     });
   } else {
-    dispatch(loginWithGoogle({ providerData: [{
-      email: 'oice-dev',
-      displayName: 'oice-dev',
-      photoURL: '',
-      providerId: 'oice-dev',
-    }] }, 'dev'));
+    dispatch(loginWithGoogle({
+      providerData: [{
+        email: 'oice-dev',
+        displayName: 'oice-dev',
+        photoURL: '',
+        providerId: 'oice-dev',
+      }],
+    }, 'dev'));
   }
 };
 
 
 export const signOut = () => dispatch => APIHandler(dispatch,
   UserAPI.signOut()
-  .then((message) => {
-    if (firebase.auth().currentUser || getAuthItem()) {
-      firebase.auth().signOut().then(() => {
-        IntercomUtils.shutdown();
-        clearLocalItems();
-        clearLastEditingOice();
-        backToWeb();
-      });
-    }
-  })
+    .then((message) => {
+      if (firebase.auth().currentUser || getAuthItem()) {
+        firebase.auth().signOut().then(() => {
+          IntercomUtils.shutdown();
+          clearLocalItems();
+          clearLastEditingOice();
+          backToWeb();
+        });
+      }
+    })
 );
 
 export const updateUserMeta = ({ meta, avatar }) => async (dispatch) => {

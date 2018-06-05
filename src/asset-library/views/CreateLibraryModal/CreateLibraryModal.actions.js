@@ -18,19 +18,19 @@ export const addLibrary = library => (dispatch) => {
   APIHandler(
     dispatch,
     LibraryAPI.addLibrary(library)
-    .then((newLibrary) => {
-      dispatch(addedLibrary(newLibrary));
+      .then((newLibrary) => {
+        dispatch(addedLibrary(newLibrary));
 
-      IntercomUtils.event('add_library', {
-        id: newLibrary.id,
-        name: newLibrary.name,
-        description: newLibrary.description,
-        is_public: newLibrary.isPublic,
-      });
+        IntercomUtils.event('add_library', {
+          id: newLibrary.id,
+          name: newLibrary.name,
+          description: newLibrary.description,
+          is_public: newLibrary.isPublic,
+        });
 
-      dispatch(LibraryDashboardActions.fetchLibraries([library.type]));
-      dispatch(replace(`/asset/library/${newLibrary.id}/edit`));
-    })
+        dispatch(LibraryDashboardActions.fetchLibraries([library.type]));
+        dispatch(replace(`/asset/library/${newLibrary.id}/edit`));
+      })
   );
 };
 
@@ -39,9 +39,9 @@ export const updateLibrary = library => (dispatch) => {
   APIHandler(
     dispatch,
     LibraryAPI.updateLibrary(library)
-    .then((newLibrary) => {
-      dispatch(updatedLibrary(newLibrary));
-    })
+      .then((newLibrary) => {
+        dispatch(updatedLibrary(newLibrary));
+      })
   );
 };
 
@@ -50,10 +50,10 @@ export const deleteLibrary = library => (dispatch) => {
   APIHandler(
     dispatch,
     LibraryAPI.deleteLibrary(library.id)
-    .then(() => {
-      dispatch(deletedLibrary(library));
-      dispatch(replace('/asset'));
-    })
+      .then(() => {
+        dispatch(deletedLibrary(library));
+        dispatch(replace('/asset'));
+      })
   );
 };
 
@@ -62,8 +62,8 @@ export const fetchPriceTiers = () => (dispatch) => {
   APIHandler(
     dispatch,
     StoreAPI.fetchPriceTiers()
-    .then((priceTiers) => {
-      dispatch(fetchPriceTiersEnd(priceTiers));
-    })
+      .then((priceTiers) => {
+        dispatch(fetchPriceTiersEnd(priceTiers));
+      })
   );
 };

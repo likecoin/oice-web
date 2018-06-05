@@ -12,22 +12,22 @@ import { APIHandler } from 'common/utils/api';
 export const fetchedOiceCredits = createAction('OICE_CREDITS_FETCHED');
 export const fetchOiceCredits = id => (dispatch) => {
   OiceAPI.fetchOiceCredits(id)
-  .then(credits => dispatch(fetchedOiceCredits(credits)));
+    .then(credits => dispatch(fetchedOiceCredits(credits)));
 };
 
 export const fetchedOiceInfo = createAction('OICE_INFO_FETCHED');
 export const fetchOiceInfo = (oiceUuid, language) => (dispatch) => {
   APIHandler(dispatch, OiceAPI.fetchOiceOgByUUID(oiceUuid, language)
-  .then((oice) => {
-    dispatch(fetchedOiceInfo(oice));
-    dispatch(fetchOiceCredits(oice.id));
-  }));
+    .then((oice) => {
+      dispatch(fetchedOiceInfo(oice));
+      dispatch(fetchOiceCredits(oice.id));
+    }));
 };
 
 export const incrementedOiceViewCount = createAction('OICE_VIEW_COUNT_INCREMENTED');
 export const incrementOiceViewCount = oiceId => (dispatch) => {
   OiceAPI.incrementOiceViewCount(oiceId)
-  .then(ok => console.log());
+    .then(ok => console.log());
 };
 
 export const fetchedCountriesJson = createAction('SMS_COUNTRIES_FETCHED');

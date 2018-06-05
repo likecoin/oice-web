@@ -59,7 +59,9 @@ export default class ResizedImage extends React.Component {
   }
 
   render() {
-    const { src, width, centerImage, imageStyle, maskImageStyle } = this.props;
+    const {
+      src, width, centerImage, imageStyle, maskImageStyle,
+    } = this.props;
     const { ratio, loading } = this.state;
 
     const position = {

@@ -64,7 +64,9 @@ export default class LinkTooltip extends React.Component {
   }
 
   render() {
-    const { t, link, delayHide, disabled, float, place } = this.props;
+    const {
+      t, link, delayHide, disabled, float, place,
+    } = this.props;
     const className = classNames('link-tooltip', this.props.className, {
       disabled: disabled || !link,
     });

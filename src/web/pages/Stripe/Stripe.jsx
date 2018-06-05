@@ -13,7 +13,7 @@ import Utils from 'common/utils';
 import {
   getAuthItem,
   redirectToLoginPage,
- } from 'common/utils/auth';
+} from 'common/utils/auth';
 
 import { DOMAIN_URL } from 'common/constants';
 
@@ -57,7 +57,9 @@ export default class Stripe extends React.Component {
     }
   }
 
-  handleRequestConnectStripe = ({ action, code, error, error_description, redirect }) => {
+  handleRequestConnectStripe = ({
+    action, code, error, error_description, redirect,
+  }) => {
     if (code && redirect) {
       this.props.dispatch(Actions.connectStripe(code, redirect));
     } else if (error) {

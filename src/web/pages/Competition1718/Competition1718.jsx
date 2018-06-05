@@ -74,13 +74,13 @@ export default class Competition1718 extends React.Component {
 
   _fetchContent= async () => {
     const content = await firebase.database()
-                                  .ref('competition1718')
-                                  .once('value')
-                                  .then(snapshot => snapshot.val());
+      .ref('competition1718')
+      .once('value')
+      .then(snapshot => snapshot.val());
 
     if (content) {
       const filteredTabBarItems = _get(content, 'header.tabBarItems', [])
-                                  .filter(({ enabled }) => enabled);
+        .filter(({ enabled }) => enabled);
 
       content.header.tabBarItems = filteredTabBarItems;
 
@@ -265,7 +265,7 @@ export default class Competition1718 extends React.Component {
     if (!body.entries) return null;
 
     const randomizedStories = Object.values(body.entries)
-                                    .sort(() => 0.5 - Math.random());
+      .sort(() => 0.5 - Math.random());
 
     return (
       <div className="entries-page">

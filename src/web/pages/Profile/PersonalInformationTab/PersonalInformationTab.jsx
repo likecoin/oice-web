@@ -69,7 +69,7 @@ export default class PersonalInformationTab extends React.Component {
           />
         </div>
         <OutlineButton
-          color={'light-grey'}
+          color="light-grey"
           label={t('personalInformation.button.editProfilePicture')}
           onClick={() => this.avatarUpload && this.avatarUpload.click()}
         />

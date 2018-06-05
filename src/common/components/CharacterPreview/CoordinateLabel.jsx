@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 function CoordinateLabel(props) {
-  const { x, y, top, right, bottom, left } = props;
-  const className = classNames('coordinate-label', { top, right, bottom, left });
+  const {
+    x, y, top, right, bottom, left,
+  } = props;
+  const className = classNames('coordinate-label', {
+    top, right, bottom, left,
+  });
   return (
     <div className={className}>{`(${x}, ${y})`}</div>
   );

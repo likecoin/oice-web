@@ -21,7 +21,7 @@ export default handleActions({
   [LOCATION_CHANGE]: (state, action) => {
     const { pathname } = action.payload;
 
-    let value = state.value;
+    let { value } = state;
     if (!new RegExp(value.path, 'i').test(pathname)) {
       if (new RegExp(TAB_BAR_ITEM.MY_LIBRARIES.path, 'i').test(pathname)) {
         value = TAB_BAR_ITEM.MY_LIBRARIES;

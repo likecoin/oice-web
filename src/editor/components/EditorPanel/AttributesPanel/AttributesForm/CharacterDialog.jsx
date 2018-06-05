@@ -34,9 +34,7 @@ import {
   saveAttributeValue,
 } from '../utils';
 
-import {
-  setDefaultConfigForCharacterFg,
-} from 'editor/utils/app';
+import { setDefaultConfigForCharacterFg } from 'editor/utils/app';
 
 
 function getImageFromCharacterById(character, characterImageId) {

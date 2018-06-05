@@ -23,7 +23,7 @@ export default class FacebookSettingModal extends React.Component {
   };
 
   static defaultProps = {
-    ogCover: undefined,
+    ogImage: undefined,
   };
 
   constructor(props) {
@@ -51,7 +51,9 @@ export default class FacebookSettingModal extends React.Component {
   }
 
   render() {
-    const { t, open, language, ogImage } = this.props;
+    const {
+      t, open, language, ogImage,
+    } = this.props;
     const rightButtonProps = {
       rightButtonDisable: !this.state.ogImage,
       rightButtonTitle: t('save'),

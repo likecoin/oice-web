@@ -33,7 +33,6 @@ export default class ButtonGroup extends React.Component {
   }
 
   handleButtonClick = (event, selectedIndex) => {
-    console.debug('Handle button click ', selectedIndex);
     this.setState({ selectedIndex });
     if (this.props.onChange) this.props.onChange(selectedIndex);
   }

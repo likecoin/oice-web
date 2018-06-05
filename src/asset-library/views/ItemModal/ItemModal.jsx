@@ -143,8 +143,8 @@ export default class ItemModal extends React.Component {
     const { asset, imageFile } = this.state;
     this.props.dispatch(
       isAdding ?
-      LibraryDetailsActions.addAsset(asset, imageFile, ASSET_TYPE.ITEM) :
-      LibraryDetailsActions.updateAsset(asset, imageFile, ASSET_TYPE.ITEM)
+        LibraryDetailsActions.addAsset(asset, imageFile, ASSET_TYPE.ITEM) :
+        LibraryDetailsActions.updateAsset(asset, imageFile, ASSET_TYPE.ITEM)
     );
   }
 
@@ -281,13 +281,15 @@ export default class ItemModal extends React.Component {
     const valid = !isImageUrlEmpty && isFilledAssetName && !isCreditsEmpty;
     const confirmButton = (
       readonly ?
-      null :
-      (<RaisedButton
-        disabled={!valid || loading}
-        label={t('itemModal.button.save')}
-        primary
-        onClick={this.handleConfirmButtonClick}
-      />)
+        null :
+        (
+          <RaisedButton
+            disabled={!valid || loading}
+            label={t('itemModal.button.save')}
+            primary
+            onClick={this.handleConfirmButtonClick}
+          />
+        )
     );
 
     return (

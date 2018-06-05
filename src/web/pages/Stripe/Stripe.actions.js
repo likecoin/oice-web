@@ -14,18 +14,18 @@ export const connectStripe = (code, redirectUrl) => (dispatch) => {
   APIHandler(
     dispatch,
     UserAPI.connectStripe({ code })
-    .then(response => {
-      goToUrl(redirectUrl);
-    })
+      .then((response) => {
+        goToUrl(redirectUrl);
+      })
   );
 };
 
-export const disconnectStripe = (redirectUrl) => (dispatch) => {
+export const disconnectStripe = redirectUrl => (dispatch) => {
   APIHandler(
     dispatch,
     UserAPI.disconnectStripe()
-    .then(response => {
-      goToUrl(redirectUrl);
-    })
+      .then((response) => {
+        goToUrl(redirectUrl);
+      })
   );
 };

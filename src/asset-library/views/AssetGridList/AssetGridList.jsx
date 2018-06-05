@@ -11,7 +11,9 @@ import './AssetGridList.style.scss';
 
 
 function AssetGridList(props) {
-  const { assets, loaded, loading, readonly, type } = props;
+  const {
+    assets, loaded, loading, placeholder, readonly, type, onClickItem,
+  } = props;
 
   const className = classNames('asset-grid-list', type);
 
@@ -31,7 +33,7 @@ function AssetGridList(props) {
     if (readonly && loaded && assets.length === 0) {
       return (
         <div className="asset-grid-list-empty">
-          {props.placeholder}
+          {placeholder}
         </div>
       );
     }
@@ -50,7 +52,7 @@ function AssetGridList(props) {
             asset={asset}
             readonly={readonly}
             type={type}
-            onClick={props.onClickItem}
+            onClick={onClickItem}
           />
         ))}
       </ol>

@@ -19,7 +19,9 @@ export default class Container extends React.Component {
   getContainerElement = () => this.container
 
   render() {
-    const { id, fluid, isExtended, children } = this.props;
+    const {
+      id, fluid, isExtended, children,
+    } = this.props;
     const className = classNames(
       'container-wrapper',
       {
@@ -30,7 +32,7 @@ export default class Container extends React.Component {
     );
     return (
       <div {...{ id, className }}>
-        <div className="container" ref={ref => this.container = ref}>
+        <div ref={ref => this.container = ref} className="container">
           {children}
         </div>
       </div>

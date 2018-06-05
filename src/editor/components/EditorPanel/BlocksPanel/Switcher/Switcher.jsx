@@ -29,18 +29,12 @@ export default class Switcher extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      indexedValues: props.values.map((value, index) => ({ index, value })),
       open: false,
     };
   }
 
   componentWillReceiveProps(nextProps) {
     const { values, selectedIndex } = nextProps;
-    if (values) {
-      this.setState({
-        indexedValues: values.map((value, index) => ({ index, value })),
-      });
-    }
   }
 
   componentWillUpdate(nextProps, nextState) {
