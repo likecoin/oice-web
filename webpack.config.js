@@ -171,9 +171,9 @@ module.exports = {
       process.stdout.cursorTo(0);
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
   ] : [
     // Production
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.HashedModuleIdsPlugin(),
     new webpack.DefinePlugin({ 'global.GENTLY': false }),
     new webpack.optimize.UglifyJsPlugin({
