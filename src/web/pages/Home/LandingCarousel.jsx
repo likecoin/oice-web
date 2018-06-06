@@ -1,5 +1,3 @@
-/* global firebase: true */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { translate } from 'react-i18next';
@@ -8,6 +6,8 @@ import { withContentRect } from 'react-measure';
 
 import _get from 'lodash/get';
 import classNames from 'classnames';
+
+import firebase from 'common/utils/firebase';
 
 import './LandingCarousel.styles.scss';
 

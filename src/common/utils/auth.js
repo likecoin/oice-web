@@ -1,5 +1,3 @@
-/* global firebase: true */
-
 export const redirectToLoginPage = () => window.location.href = '/login';
 
 export const setAuthItem = (email, token) => {

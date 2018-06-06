@@ -22,6 +22,9 @@
   ],
   "license": "GPL-3.0",
   "dependencies": {
+    "@firebase/app": "^0.3.3",
+    "@firebase/auth": "^0.5.3",
+    "@firebase/database": "^0.3.3",
     "boron": "^0.2.3",
     "classnames": "^2.2.5",
     "cookie-parser": "^1.4.3",
