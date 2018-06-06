@@ -30,6 +30,7 @@ export const DummyBlock = translate(['editor'])((props) => {
     connectDropTarget,
     hover,
     disabled,
+    style,
   } = props;
 
   const className = classNames('block', 'dummy', {
@@ -38,7 +39,7 @@ export const DummyBlock = translate(['editor'])((props) => {
   });
 
   const component = (
-    <div {...{ className }}>
+    <div {...{ className, style }}>
       {t(`blocksList.dummyBlock.${hover ? 'hover' : 'normal'}`)}
     </div>
   );
@@ -53,6 +54,7 @@ DummyBlock.propTypes = {
   connectDropTarget: PropTypes.func,
   hover: PropTypes.bool,
   disabled: PropTypes.bool,
+  style: PropTypes.object,
 };
 
 DummyBlock.defaultProps = {

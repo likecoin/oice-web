@@ -90,8 +90,6 @@ export default class UserPage extends React.Component {
   }
 
   componentDidMount() {
-    const authItem = getAuthItem();
-
     const { id, username } = this.props.params;
     if (id || username) {
       this.props.dispatch(Actions.fetchUserProfile(id || username));

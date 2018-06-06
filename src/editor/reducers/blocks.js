@@ -16,6 +16,8 @@ export default handleActions({
   [Actions.fetchBlocksBegin]: state => ({
     ...state,
     fetching: true,
+    idsArray: [],
+    blocksDict: {},
   }),
   [Actions.fetchBlocksEnd]: (state, { payload }) => {
     const { blockList, language } = payload;
