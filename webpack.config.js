@@ -38,6 +38,7 @@ const stylesLoaders = [
     loader: 'css-loader',
     options: {
       importLoaders: 2,
+      minimize: true,
     },
   },
   {
