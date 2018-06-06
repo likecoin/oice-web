@@ -37,6 +37,8 @@ export default class IndexHTML extends React.Component {
       meta,
     } = this.props;
 
+    const modules = ['web', 'editor', 'asset-library'];
+
     return (
       <html lang={meta.ogLocale}>
         <head>
@@ -98,9 +100,13 @@ export default class IndexHTML extends React.Component {
           <link rel="preload" href={`/build/manifest.js?v=${VERSION}`} as="script" />
           <link rel="preload" href={`/build/vendor.js?v=${VERSION}`} as="script" />
           <link rel="preload" href={`/build/common.js?v=${VERSION}`} as="script" />
-          <link rel="prefetch" href={`/build/web.js?v=${VERSION}`} />
-          <link rel="prefetch" href={`/build/editor.js?v=${VERSION}`} />
-          <link rel="prefetch" href={`/build/asset-library.js?v=${VERSION}`} />
+          {modules.map(m => (
+            <link
+              key={m}
+              rel={module === m ? 'preload' : 'prefetch'}
+              href={`/build/${m}.js?v=${VERSION}`}
+            />
+          ))}
         </head>
         <body>
           <noscript>
