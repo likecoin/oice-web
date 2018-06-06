@@ -1,17 +1,32 @@
 {
-  "presets": [
-    "es2015",
-    "react",
-    "stage-0"
-  ],
-  "plugins": [
-    "lodash",
-    "transform-decorators-legacy",
-    [
-      "transform-react-remove-prop-types",
-      {
-        "ignoreFilenames": ["node_modules"]
-      }
-    ]
-  ]
+  "env": {
+    "development": {
+      "presets": [
+        "es2015",
+        "react",
+        "stage-0"
+      ],
+      "plugins": [
+        "lodash",
+        "transform-decorators-legacy"
+      ]
+    },
+    "production": {
+      "presets": [
+        "es2015",
+        "react",
+        "stage-0"
+      ],
+      "plugins": [
+        "lodash",
+        "transform-decorators-legacy",
+        [
+          "transform-react-remove-prop-types",
+          {
+            "ignoreFilenames": ["node_modules"]
+          }
+        ]
+      ]
+    }
+  }
 }
