@@ -4,6 +4,7 @@ import { translate } from 'react-i18next';
 
 import classNames from 'classnames';
 import _keyBy from 'lodash/keyBy';
+import filter from 'lodash/fp/filter';
 import flow from 'lodash/fp/flow';
 import groupBy from 'lodash/fp/groupBy';
 import orderBy from 'lodash/fp/orderBy';
@@ -23,7 +24,24 @@ export default class MacrosPanel extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { selectedMacroGroupIndex: 0 };
+    this.state = {
+      selectedMacroGroupIndex: 0,
+      macroList: null,
+    };
+  }
+
+  componentWillReceiveProps({ macros }) {
+    if (!this.state.macroList && macros.length > 0) {
+      const MacrosKeyObject = _keyBy(macros, 'name');
+      const macroList = flow(
+        filter(macro => !macro.isHidden),
+        orderBy(['groupOrder', 'order', 'id'], ['asc', 'asc', 'asc']), // for list as defined order
+        groupBy('groupOrder'),
+        sortBy('')
+      )(MacrosKeyObject);
+
+      this.setState({ macroList });
+    }
   }
 
   handleTabSwitch = (index) => {
@@ -55,27 +73,17 @@ export default class MacrosPanel extends React.Component {
   }
 
   renderMacrosTab() {
-    const { macros, t } = this.props;
-    const MacrosKeyObject = _keyBy(macros, 'name');
+    const { macroList, selectedMacroGroupIndex } = this.state;
+    if (!macroList) return null;
 
-    const list = flow(
-      orderBy(['groupOrder', 'order', 'id'], ['asc', 'asc', 'asc']), // for list as defined order
-      groupBy('groupOrder'),
-      sortBy('')
-    )(MacrosKeyObject);
-
-    const { selectedMacroGroupIndex } = this.state;
-    const selectedMacroGroup = list[selectedMacroGroupIndex];
-    if (macros.length > 0) {
-      return (
-        <div ref={ref => this.macrosList = ref} className="macros-list">
-          {selectedMacroGroup.map(macro => (
-            <Macro key={macro.id} macro={macro} />
-          ))}
-        </div>
-      );
-    }
-    return null;
+    const selectedMacroGroup = macroList[selectedMacroGroupIndex];
+    return (
+      <div ref={ref => this.macrosList = ref} className="macros-list">
+        {selectedMacroGroup.map(macro => (
+          <Macro key={macro.id} macro={macro} />
+        ))}
+      </div>
+    );
   }
 
   render() {
