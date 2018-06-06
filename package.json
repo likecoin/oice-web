@@ -11,7 +11,7 @@
     "forever": "NODE_ENV=production forever start ./index.js",
     "stop": "forever stop ./index.js",
     "deploy": "npm run build && npm run server",
-    "lint": "eslint index.js src/server.jsx src/IndexHTML.jsx"
+    "lint": "eslint src index.js src/server.jsx src/IndexHTML.jsx"
   },
   "authors": [
     "Andrew Chung",
