@@ -12,7 +12,7 @@ export default handleActions({
     ...state,
     open: true,
   }),
-  [Action.close]: (state) => ({
+  [Action.close]: state => ({
     ...state,
     open: false,
   }),

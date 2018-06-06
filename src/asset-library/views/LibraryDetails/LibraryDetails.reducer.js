@@ -7,8 +7,8 @@ import { actions as CharacterModalActions } from 'asset-library/views/CharacterM
 import { actions as BackgroundModalActions } from 'asset-library/views/BackgroundModal';
 import { actions as ItemModalActions } from 'asset-library/views/ItemModal';
 import { actions as EditAudioAssetModalActions } from 'asset-library/views/EditAudioAssetModal';
-import { actions as CreateLibraryModalActions, } from 'asset-library/views/CreateLibraryModal';
-import { actions as PurchasedDashboardActions, } from 'asset-library/views/PurchasedLibraryDashboard';
+import { actions as CreateLibraryModalActions } from 'asset-library/views/CreateLibraryModal';
+import { actions as PurchasedDashboardActions } from 'asset-library/views/PurchasedLibraryDashboard';
 import * as Actions from './LibraryDetails.actions';
 import * as CommonActions from './LibraryDetails.common.actions';
 

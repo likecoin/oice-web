@@ -1,15 +1,11 @@
 import { handleActions } from 'redux-actions';
 
-import { startSoundUpload } from './UploadAudioAssetModal/actions';
-import {
-  addAssetsFailed,
-} from './actions';
-
-import {
-  getUpdatedAssetsList,
-} from './utils';
-
 import * as ASSET_TYPE from 'common/constants/assetTypes';
+
+import { addAssetsFailed } from './actions';
+import { startSoundUpload } from './UploadAudioAssetModal/actions';
+
+import { getUpdatedAssetsList } from './utils';
 
 
 const initialState = {

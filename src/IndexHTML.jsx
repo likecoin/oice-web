@@ -19,15 +19,15 @@ const DEBUG = process.env.NODE_ENV !== 'production';
 
 
 export default class IndexHTML extends React.Component {
-  static defaultProps = {
-    meta: {},
-    module: 'web',
-  }
-
   static propTypes = {
     children: PropTypes.node,
     meta: PropTypes.object,
     module: PropTypes.string,
+  }
+
+  static defaultProps = {
+    meta: {},
+    module: 'web',
   }
 
   render() {

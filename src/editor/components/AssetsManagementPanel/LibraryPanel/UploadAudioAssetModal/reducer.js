@@ -1,6 +1,4 @@
-import {
-  handleActions,
-} from 'redux-actions';
+import { handleActions } from 'redux-actions';
 import { replace } from 'react-router-redux';
 import update from 'immutability-helper';
 
@@ -41,26 +39,26 @@ export default handleActions({
   [removeAudioFile]: (state, { payload }) => update(state, {
     audioFiles: { $splice: [[payload, 1]] },
   }),
-  [addedBGMs]: (state) => ({
+  [addedBGMs]: state => ({
     ...state,
     open: false,
     uploadProgress: {},
     uploading: false,
   }),
-  [addedSEs]: (state) => ({
+  [addedSEs]: state => ({
     ...state,
     open: false,
     uploadProgress: {},
     uploading: false,
   }),
-  [addAssetsFailed]: (state) => (
+  [addAssetsFailed]: state => (
     state.open ? ({
       ...state,
       uploadProgress: {},
       uploading: false,
     }) : state
   ),
-  [startSoundUpload]: (state) => ({
+  [startSoundUpload]: state => ({
     ...state,
     uploading: true,
   }),

@@ -43,36 +43,36 @@ export default handleActions({
 export const toggleLibraryModal = createAction(TOGGLE_LIBRARY_MODAL);
 
 const addedLibrary = createAction(ADD_LIBRARY);
-export const addLibrary = (library) => (dispatch) => {
+export const addLibrary = library => (dispatch) => {
   LibraryAPI.addLibrary(library)
-  .then(newLibrary => {
-    dispatch(addedLibrary(newLibrary));
-    dispatch(replace(`library/${newLibrary.id}`));
-  })
-  .catch(error => {
-    console.error('addLibrary %O', error);
-  });
+    .then((newLibrary) => {
+      dispatch(addedLibrary(newLibrary));
+      dispatch(replace(`library/${newLibrary.id}`));
+    })
+    .catch((error) => {
+      console.error('addLibrary %O', error);
+    });
 };
 
 const updatedLibrary = createAction(UPDATE_LIBRARY);
-export const updateLibrary = (library) => (dispatch) => {
+export const updateLibrary = library => (dispatch) => {
   LibraryAPI.updateLibrary(library)
-  .then(aLibrary => {
-    dispatch(updatedLibrary(aLibrary));
-  })
-  .catch(error => {
-    console.error('updateLibrary %O', error);
-  });
+    .then((aLibrary) => {
+      dispatch(updatedLibrary(aLibrary));
+    })
+    .catch((error) => {
+      console.error('updateLibrary %O', error);
+    });
 };
 
 const deletedLibrary = createAction(DELETE_LIBRARY);
-export const deleteLibrary = (library) => (dispatch) => {
+export const deleteLibrary = library => (dispatch) => {
   LibraryAPI.deleteLibrary(library.id)
-  .then(() => {
-    dispatch(deletedLibrary(library));
-    dispatch(replace('/libraries'));
-  })
-  .catch(error => {
-    console.error('deleteLibrary %O', error);
-  });
+    .then(() => {
+      dispatch(deletedLibrary(library));
+      dispatch(replace('/libraries'));
+    })
+    .catch((error) => {
+      console.error('deleteLibrary %O', error);
+    });
 };

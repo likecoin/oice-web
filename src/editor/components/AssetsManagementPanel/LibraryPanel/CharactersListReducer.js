@@ -6,9 +6,7 @@ import {
   deletedCharacter,
 } from './CharacterModal/actions';
 
-import {
-  getUpdatedAssetsList,
-} from './utils';
+import { getUpdatedAssetsList } from './utils';
 
 // Reducers
 const initialState = {

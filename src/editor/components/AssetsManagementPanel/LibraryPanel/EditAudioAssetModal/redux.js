@@ -21,26 +21,26 @@ export default handleActions({
     uploading: false,
     readonly: payload.open ? payload.readonly : state.readonly,
   }),
-  START_UPDATE_ASSET: (state) => ({
+  START_UPDATE_ASSET: state => ({
     ...state,
     uploading: true,
   }),
-  UPDATE_SE: (state) => ({
+  UPDATE_SE: state => ({
     ...state,
     open: false,
     uploading: false,
   }),
-  DELETE_SE: (state) => ({
+  DELETE_SE: state => ({
     ...state,
     open: false,
     uploading: false,
   }),
-  UPDATE_BGM: (state) => ({
+  UPDATE_BGM: state => ({
     ...state,
     open: false,
     uploading: false,
   }),
-  DELETE_BGM: (state) => ({
+  DELETE_BGM: state => ({
     ...state,
     open: false,
     uploading: false,
