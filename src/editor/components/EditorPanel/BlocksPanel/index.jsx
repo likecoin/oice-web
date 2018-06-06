@@ -7,6 +7,11 @@ import { DropTarget } from 'react-dnd';
 import { findDOMNode } from 'react-dom';
 import moment from 'moment';
 
+import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
+import CellMeasurer, { CellMeasurerCache } from 'react-virtualized/dist/commonjs/CellMeasurer';
+import List from 'react-virtualized/dist/commonjs/List';
+import 'react-virtualized/styles.css';
+
 import _findIndex from 'lodash/findIndex';
 import _get from 'lodash/get';
 
@@ -27,6 +32,15 @@ import DummyBlock from './DummyBlock';
 import Switcher from './Switcher';
 
 import './style.scss';
+
+
+const BlockPlaceholder = props => (
+  <div className="block loading" {...props}>
+    <div className="name-placeholder" />
+    <div className="content-placeholder" />
+  </div>
+);
+
 
 @connect(store => ({
   selectedOice: store.oices.selected,
@@ -54,9 +68,13 @@ export default class BlocksPanel extends React.Component {
 
   constructor(props) {
     super(props);
+
     const {
-      blockIdsArray, blocksDict, selectedBlock, selectedLanguage,
+      blockIdsArray,
+      blocksDict,
+      selectedBlock,
     } = this.props;
+
     this.state = {
       isDragging: false,
       hasNoSessionChanges: true,
@@ -64,7 +82,13 @@ export default class BlocksPanel extends React.Component {
       blocksDict,
       onSelectedBlockId: selectedBlock ? selectedBlock.id : null,
       lastSaveTime: undefined,
+      movingBlockId: undefined,
     };
+
+    this._cache = new CellMeasurerCache({
+      defaultHeight: 108,
+      fixedWidth: true,
+    });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -82,6 +106,7 @@ export default class BlocksPanel extends React.Component {
         this.setState({ hasNoSessionChanges: false });
         this.clearLastSaveTimer();
       }
+      this.resizeBlockList();
     }
 
     this.setState({
@@ -102,6 +127,7 @@ export default class BlocksPanel extends React.Component {
           blockElement.scrollIntoView({ block: 'end', behavior: 'smooth' });
         }
       }
+      this.handleBlockListUpdate();
     }
   }
 
@@ -122,6 +148,12 @@ export default class BlocksPanel extends React.Component {
     this.props.dispatch(BlockAction.onSelectedBlock({ block: blocksDict[blockId] }));
   }
 
+  handleBlockListUpdate = () => {
+    if (this.blockList) {
+      this.blockList.forceUpdateGrid();
+    }
+  }
+
   handleBlockMove = (dragIndex, hoverIndex) => {
     const { blockIdsArray } = this.state;
     const dragBlockId = blockIdsArray[dragIndex];
@@ -131,9 +163,11 @@ export default class BlocksPanel extends React.Component {
         [hoverIndex, 0, dragBlockId],
       ],
     });
+
     this.setState({
       blockIdsArray: blockIdsArrayMoved,
-    });
+      movingBlockId: dragBlockId,
+    }, this.resizeBlockList);
   }
 
   handleBlockDidMove = (hoverIndex) => {
@@ -151,6 +185,14 @@ export default class BlocksPanel extends React.Component {
       parentId = parentBlockId;
     }
     this.props.dispatch(BlockAction.moveBlock(dragBlockId, parentId));
+    this.setState({ movingBlockId: null }, this.handleBlockListUpdate);
+  }
+
+  handleBlockDrop = () => {
+    this.setState({
+      movingBlockId: null,
+      isDragging: false,
+    }, this.handleBlockListUpdate);
   }
 
   handleMacroDrop = (index, macroId) => {
@@ -202,6 +244,13 @@ export default class BlocksPanel extends React.Component {
     dispatch(BlockAction.fetchBlocks(selectedOice.id, language));
   }
 
+  handleOverBlock = ({ type }) => {
+    if (type === ItemTypes.MACRO) {
+      this._cache.clearAll();
+    }
+    this.resizeBlockList();
+  }
+
   startLastSaveTimer() {
     this.clearLastSaveTimer();
     this.getLastSaveTimer = setInterval(() => {
@@ -223,32 +272,86 @@ export default class BlocksPanel extends React.Component {
     }
   }
 
-  renderBlocksList(blockIdsArray, blocksDict) {
+  rowRenderer = ({
+    key, index, style, isVisible, isScrolling, parent,
+  }) => {
+    const { t, blocksDict, macrosDict } = this.props;
+    const { isDragging, blockIdsArray } = this.state;
+    const lastIndex = blockIdsArray.length;
+
+    if (index === blockIdsArray.length) {
+      return (
+        <DummyBlock
+          disabled={isDragging}
+          index={lastIndex}
+          style={style}
+          onDropMacro={this.handleMacroDrop}
+        />
+      );
+    }
+
+    const block = blocksDict[blockIdsArray[index]];
+    const { macroId } = block;
+    const macro = macrosDict[macroId];
+
+    if (!isVisible && isScrolling) {
+      return <BlockPlaceholder style={style} />;
+    }
+
+    return (
+      <CellMeasurer
+        key={key}
+        cache={this._cache}
+        columnIndex={0}
+        minHeight={108}
+        parent={parent}
+        rowIndex={index}
+      >
+        <Block
+          ref={ref => this[`blockComponent_${block.id}`] = ref}
+          index={index}
+          block={block}
+          onDragging={this.handleOnDragging}
+          moveBlock={this.handleBlockMove}
+          didMoveBlock={this.handleBlockDidMove}
+          onDropBlock={this.handleBlockDrop}
+          onDropMacro={this.handleMacroDrop}
+          onDuplicate={this.handleBlockDuplicate}
+          onOverBlock={this.handleOverBlock}
+          toBeAddBlock={this.toBeAddBlock}
+          onClick={() => this.handleBlockClick(block.id, macroId)}
+          isSelected={this.state.onSelectedBlockId === block.id}
+          macroColor={macro.groupColor}
+          macroIcon={macro.icon}
+          style={style}
+          blockList={this.getRefList}
+          movingBlockId={this.state.movingBlockId}
+        />
+      </CellMeasurer>
+    );
+  }
+
+  resizeBlockList = () => {
+    if (this.blockList) {
+      this.blockList.recomputeRowHeights();
+    }
+  }
+
+  renderBlocksList(blockIdsArray) {
     // it is uncertain for whether have components so findDOMNode get undefined when call in componentDidMount
     return (
-      blockIdsArray.map((blockId, index) => {
-        const block = blocksDict[blockId];
-        const { macroId } = block;
-        const macro = this.props.macrosDict[macroId];
-        return (
-          <Block
-            ref={ref => this[`blockComponent_${block.id}`] = ref}
-            key={block.id}
-            index={index}
-            block={block}
-            onDragging={this.handleOnDragging}
-            moveBlock={this.handleBlockMove}
-            didMoveBlock={this.handleBlockDidMove}
-            onDropMacro={this.handleMacroDrop}
-            onDuplicate={this.handleBlockDuplicate}
-            toBeAddBlock={this.toBeAddBlock}
-            onClick={() => this.handleBlockClick(blockId, macroId)}
-            showDeleteBtn={this.state.onSelectedBlockId === block.id}
-            macroColor={macro.groupColor}
-            macroIcon={macro.icon}
+      <AutoSizer>
+        {({ height, width }) => (
+          <List
+            ref={ref => this.blockList = ref}
+            height={height}
+            rowCount={blockIdsArray.length + 1}
+            rowHeight={this._cache.rowHeight}
+            rowRenderer={this.rowRenderer}
+            width={width}
           />
-        );
-      })
+        )}
+      </AutoSizer>
     );
   }
 
@@ -286,9 +389,8 @@ export default class BlocksPanel extends React.Component {
       selectedLanguage,
       supportedLanguages,
     } = this.props;
-    const { blockIdsArray, blocksDict, isDragging } = this.state;
+    const { blockIdsArray, blocksDict } = this.state;
     if (!selectedOice || !supportedLanguages) return null;
-    const lastIndex = blockIdsArray.length;
     const languageIndex = supportedLanguages.findIndex(language =>
       language === selectedLanguage || 0
     );
@@ -309,12 +411,7 @@ export default class BlocksPanel extends React.Component {
           </div>
         </div>
         <div className="block-list">
-          {macrosDict && this.renderBlocksList(blockIdsArray, blocksDict)}
-          <DummyBlock
-            disabled={isDragging}
-            index={lastIndex}
-            onDropMacro={this.handleMacroDrop}
-          />
+          {macrosDict && this.renderBlocksList(blockIdsArray)}
         </div>
       </div>
     );

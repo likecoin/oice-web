@@ -55,8 +55,10 @@ const blockTarget = {
     const blockId = dragItem.id;
     // dragItem is the object get for beginDrag in Macro Component
     // props here can just get the props from parent but not redux
-    if (dragItem.type === 'macro') {
+    if (dragItem.type === ItemTypes.MACRO) {
       props.onDropMacro(hoverIndex, macroId);
+    } else if (dragItem.type === ItemTypes.BLOCK) {
+      props.onDropBlock();
     }
 
     // could return message to drage source
@@ -157,21 +159,35 @@ export default class Block extends React.Component {
     t: PropTypes.func.isRequired,
     characterDictionary: PropTypes.object,
     dragItemType: PropTypes.any,
+    isSelected: PropTypes.bool,
     macroColor: PropTypes.string,
     macroIcon: PropTypes.any,
-    showDeleteBtn: PropTypes.bool,
+    movingBlockId: PropTypes.number,
+    style: PropTypes.object,
     onClick: PropTypes.func,
     onDuplicate: PropTypes.func,
+    onOverBlock: PropTypes.func,
   };
 
   constructor(props) {
     super(props);
-    this.state = convertPropsToState(props);
-    this.state.hover = false;
+    this.state = {
+      ...convertPropsToState(props),
+      isHovered: false,
+    };
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState(convertPropsToState(nextProps));
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isOver, dragItemType } = this.props;
+    if (prevProps.isOver !== isOver) {
+      this.props.onOverBlock({
+        type: dragItemType ? dragItemType.type : null,
+      });
+    }
   }
 
   handleDuplicateButtonClick = (index, id) => {
@@ -186,12 +202,12 @@ export default class Block extends React.Component {
     this.props.onClick();
   }
 
-  handleMouseOver = () => {
-    this.setState({ hover: true });
+  handleMouseEnter = () => {
+    this.setState({ isHovered: true });
   }
 
-  handleMouseOut = () => {
-    this.setState({ hover: false });
+  handleMouseLeave = () => {
+    this.setState({ isHovered: false });
   }
 
   renderBlockContent(attributes) {
@@ -275,13 +291,15 @@ export default class Block extends React.Component {
       index,
       isDragging,
       isOver,
+      isSelected,
       dragItemType,
       macroColor,
       macroIcon,
-      showDeleteBtn,
+      style,
       t,
+      movingBlockId,
     } = this.props;
-    const { backgroundImage, attributes } = this.state;
+    const { backgroundImage, attributes, isHovered } = this.state;
 
     const triangleLabel = (icon, selected) => (
       <TriangleLabel
@@ -296,11 +314,16 @@ export default class Block extends React.Component {
     });
 
     const blockClassName = classNames('block', {
-      selected: showDeleteBtn,
+      selected: isSelected,
     });
+
     // change blocks oreder case
-    if (isDragging) {
-      return connectDropTarget(<div><DummyBlock hover /></div>);
+    if (movingBlockId === block.id) {
+      return connectDropTarget(
+        <div>
+          <DummyBlock style={style} hover />
+        </div>
+      );
     }
 
     const isShowSeparator = /(label|bg)/.test(block.macroName);
@@ -309,14 +332,20 @@ export default class Block extends React.Component {
       <div
         className={containerClassName}
         id={`block-${block.id}`}
+        style={style}
         onClick={this.handleClick}
-        onMouseOut={this.handleMouseOut}
-        onMouseOver={this.handleMouseOver}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
       >
-        {isOver && dragItemType && dragItemType.type === 'macro' && <DummyBlock hover />}
-        {isShowSeparator && <div className="separator" />}
+        {isOver && dragItemType && dragItemType.type === ItemTypes.MACRO &&
+          <DummyBlock hover />
+        }
+        {isShowSeparator &&
+          <div className="separator" />
+        }
+
         <div className={blockClassName}>
-          {macroIcon && triangleLabel(macroIcon, showDeleteBtn)}
+          {macroIcon && triangleLabel(macroIcon, isSelected)}
           <div className="block-info">
             {`${index + 1} #${block.id}`}
           </div>
@@ -332,7 +361,7 @@ export default class Block extends React.Component {
               <span>{t(`${block.macroName}._title`)}</span>
               <div
                 className="block-buttons"
-                style={{ display: showDeleteBtn || this.state.hover ? 'inline' : 'none' }}
+                style={{ display: isSelected || isHovered ? 'inline' : 'none' }}
               >
                 <FlatButton
                   icon={<DuplicateIcon />}
