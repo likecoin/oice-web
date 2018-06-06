@@ -49,6 +49,10 @@ class ImageCropper extends React.Component {
     }
   }
 
+  getCroppedImageDataUrl = () => this.cropper.getCroppedCanvas().toDataURL();
+
+  getImageFile = () => convertDataURLtoFile(this.getCroppedImageDataUrl());
+
   onReady = () => {
     const { onReady } = this.props;
     // initialize image position
@@ -90,20 +94,18 @@ class ImageCropper extends React.Component {
     // set data here will create infinite loop
   }
 
-  getCroppedImageDataUrl = () => this.cropper.getCroppedCanvas().toDataURL();
-
-  getImageFile = () => convertDataURLtoFile(this.getCroppedImageDataUrl());
-
   clearCropperImageFile = () => this.setState({ imageFile: null });
 
   renderImageCropper = () => {
-    const { height, readonly, src, width } = this.props;
+    const {
+      height, readonly, src, width,
+    } = this.props;
     const { imageFile, ready } = this.state;
     return (
       <div>
         <input
-          accept="image/*"
           ref={ref => this.imageUpload = ref}
+          accept="image/*"
           style={{ display: 'none' }}
           type="file"
           multiple
@@ -111,6 +113,7 @@ class ImageCropper extends React.Component {
           onClick={() => this.imageUpload.value = ''} // Clear selected files
         />
         <Cropper
+          ref={ref => this.cropper = ref}
           aspectRatio={1}
           center={false}
           crop={this.handleCrop}
@@ -121,7 +124,6 @@ class ImageCropper extends React.Component {
           minCropBoxHeight={DEFAULT_CROPBOX_SIZE}
           minCropBoxWidth={DEFAULT_CROPBOX_SIZE}
           ready={this.onReady}
-          ref={(ref) => this.cropper = ref}
           src={imageFile || src}
           style={{
             height,
@@ -157,7 +159,9 @@ class ImageCropper extends React.Component {
   }
 
   render() {
-    const { height, readonly, src, width } = this.props;
+    const {
+      height, readonly, src, width,
+    } = this.props;
     return (
       <div className="image-cropper" style={{ height, width }}>
         {!readonly && this.renderImageCropper()}

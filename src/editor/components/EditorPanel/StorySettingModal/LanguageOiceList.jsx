@@ -19,7 +19,9 @@ function isNewlyTranslatedOice(oice) {
 }
 
 function OiceListItem(props) {
-  const { t, oice, index, onChangeName, onMouseEnterOice, onMouseLeaveOice } = props;
+  const {
+    t, oice, index, onChangeName, onMouseEnterOice, onMouseLeaveOice,
+  } = props;
 
   function handleChangeName(name) {
     if (onChangeName) {
@@ -82,7 +84,9 @@ OiceListItem.propTypes = {
 const OiceListItemElement = translate('OiceSettingTab')(OiceListItem);
 
 function LanguageOiceList(props) {
-  const { t, oices, onChangeName, onMouseEnterOice, onMouseLeaveOice } = props;
+  const {
+    t, oices, onChangeName, onMouseEnterOice, onMouseLeaveOice,
+  } = props;
   return (
     <div className="language-oice-list">
       <div className="oice-list-title">{t('label.episodeName')}</div>

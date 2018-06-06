@@ -45,19 +45,6 @@ export default class LibraryGridItem extends React.Component {
     }
   }
 
-  handleToggle = (toggled) => {
-    const { library, onToggle } = this.props;
-    if (onToggle) onToggle(library.id, toggled);
-    this.setState({ toggled });
-  }
-
-  handleClick = (event) => {
-    if (this.toggleButton && this.toggleButton.contains(event.target)) return;
-
-    const { library, onClick } = this.props;
-    if (onClick) onClick(library);
-  }
-
   getLibraryStatusString(libraryStatus) {
     const { t, library, type } = this.props;
     const { price, launchedAt, isPurchased } = library;
@@ -79,6 +66,19 @@ export default class LibraryGridItem extends React.Component {
       }
     }
     return str;
+  }
+
+  handleToggle = (toggled) => {
+    const { library, onToggle } = this.props;
+    if (onToggle) onToggle(library.id, toggled);
+    this.setState({ toggled });
+  }
+
+  handleClick = (event) => {
+    if (this.toggleButton && this.toggleButton.contains(event.target)) return;
+
+    const { library, onClick } = this.props;
+    if (onClick) onClick(library);
   }
 
   renderLibraryPriceInfo(libraryStatus) {
@@ -136,7 +136,9 @@ export default class LibraryGridItem extends React.Component {
   }
 
   render() {
-    const { t, library, type, togglingLibraryId, onClick, onToggle } = this.props;
+    const {
+      t, library, type, togglingLibraryId, onClick, onToggle,
+    } = this.props;
     const cover = getThumbnail(
       library.coverStorage || '/static/img/oice-default-cover2.jpg',
       300

@@ -20,9 +20,7 @@ import {
   addSelectedLibraryToUser,
   removeSelectedLibraryFromUser,
 } from './PurchasedLibraryDashboard.actions';
-import {
-  setLibraryDetailsLibrary as openLibrary,
-} from '../LibraryDetails/LibraryDetails.common.actions';
+import { setLibraryDetailsLibrary as openLibrary } from '../LibraryDetails/LibraryDetails.common.actions';
 
 import './PurchasedLibraryDashboard.style.scss';
 
@@ -87,7 +85,7 @@ export default class PurchasedLibraryDashboard extends React.Component {
     }
   }
 
-  handleLibraryClick = (library) => this.props.openLibrary({ library })
+  handleLibraryClick = library => this.props.openLibrary({ library })
 
   handleToggleLibrary = (libraryId, toggled) => {
     if (toggled) {
@@ -98,7 +96,9 @@ export default class PurchasedLibraryDashboard extends React.Component {
   }
 
   renderLibrary = () => {
-    const { selected, t, togglingLibraryId, unselected } = this.props;
+    const {
+      selected, t, togglingLibraryId, unselected,
+    } = this.props;
     const { columns } = this.state;
     return (
       <LibraryGridList
@@ -141,11 +141,12 @@ export default class PurchasedLibraryDashboard extends React.Component {
             <div className="loading">
               <Progress.LoadingIndicator />
             </div>
-          ) : (<div className="content">
-            <ul className="library-section-list">
-              {this.renderLibrary()}
-            </ul>
-          </div>
+          ) : (
+            <div className="content">
+              <ul className="library-section-list">
+                {this.renderLibrary()}
+              </ul>
+            </div>
           )}
         </div>
         {this.props.children}

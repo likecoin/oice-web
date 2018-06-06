@@ -55,7 +55,7 @@ if (typeof window === 'undefined') {
 }
 
 const i18n = instance.use(Cache)
-                     .init(options);
+  .init(options);
 
 // Strip away region code, e.g. `en-US` will become `en`
 const stripRegionCode = code => code.match(/^([a-z]{2})?/i)[1];
@@ -99,7 +99,7 @@ export function getLocalizedValue(object) {
   }
 
   if (!value && object) {
-    value = Object.values(object)[0];
+    [value] = Object.values(object);
   }
 
   return value;

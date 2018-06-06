@@ -56,7 +56,9 @@ export default class ExternalLinkList extends React.Component {
   }
 
   renderExternalLink = (link, index) => {
-    const { t, types, savingIds, deletingIds } = this.props;
+    const {
+      t, types, savingIds, deletingIds,
+    } = this.props;
     const statusProps = {
       isSaving: savingIds.includes(link.id),
       isDeleting: deletingIds.includes(link.id),
@@ -93,7 +95,10 @@ export default class ExternalLinkList extends React.Component {
   }
 
   render() {
-    const { t, loading, links, onChangeName } = this.props;
+    const {
+      t, loading, links, onChangeName,
+    } = this.props;
+
     return (
       <ProfilePanel
         header={t('personalInformation.header.externalLinks')}

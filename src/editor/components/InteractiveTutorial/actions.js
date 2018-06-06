@@ -35,12 +35,12 @@ export const open = (volume, startFromStep = null) => (dispatch) => {
 
         OiceAPI.fork(forkOiceId)
           .then(oice => dispatch(StoryAction.fetchStories())
-          .then(() => {
-            dispatch(setVariable({ storyId: oice.storyId }));
-            dispatch(endLoading({ tutorial, startFromStep }));
-            dispatch(replace('/dashboard'));
-          })
-        );
+            .then(() => {
+              dispatch(setVariable({ storyId: oice.storyId }));
+              dispatch(endLoading({ tutorial, startFromStep }));
+              dispatch(replace('/dashboard'));
+            })
+          );
       });
       break;
     default:

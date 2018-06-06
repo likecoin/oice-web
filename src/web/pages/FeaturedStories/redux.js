@@ -12,8 +12,8 @@ export const fetchFeaturedStories = language => (dispatch) => {
   dispatch(willFetchFeaturedStories());
   return APIHandler(dispatch,
     StoryAPI
-    .fetchFeaturedStory(language)
-    .then(stories => dispatch(didFetchFeaturedStories(stories)))
+      .fetchFeaturedStory(language)
+      .then(stories => dispatch(didFetchFeaturedStories(stories)))
   );
 };
 

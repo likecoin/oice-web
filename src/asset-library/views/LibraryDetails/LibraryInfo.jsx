@@ -21,7 +21,7 @@ function CreditSection(props) {
       <h3>{title}</h3>
       {users &&
         <div className="credit-users">
-          {users.map((user) =>
+          {users.map(user =>
             user && (
               <Avatar
                 key={user.id}
@@ -111,7 +111,7 @@ function LibraryInfo(props) {
   const isToggled = (
     togglingLibraryId === library.id ? !library.isSelected : library.isSelected
   );
-  const toggleButtonDisabled = !isNaN(togglingLibraryId);
+  const toggleButtonDisabled = !Number.isNaN(togglingLibraryId);
   const toggleButtonClassName = classNames({
     disabled: toggleButtonDisabled,
   });

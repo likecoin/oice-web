@@ -97,7 +97,9 @@ export default class CharacterModalFooter extends React.Component {
   }
 
   handleDeleteButtonClick = () => {
-    const { character, deletedFGImageIds, fgImages, libraryId, dispatch, t } = this.props;
+    const {
+      character, deletedFGImageIds, fgImages, libraryId, dispatch, t,
+    } = this.props;
     let assetCount = -deletedFGImageIds.length;
     fgImages.forEach((fg) => {
       if (fg.meta.id) {
@@ -118,7 +120,9 @@ export default class CharacterModalFooter extends React.Component {
   }
 
   render() {
-    const { character, editing, limitedMode, loading, fgImages, t } = this.props;
+    const {
+      character, editing, limitedMode, loading, fgImages, t,
+    } = this.props;
 
     const flatButton = (!limitedMode && editing &&
       <FlatButton

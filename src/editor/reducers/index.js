@@ -8,15 +8,7 @@ export { default as attributesDef } from './attributesDef';
 export { default as blocks } from './blocks';
 export { default as assets } from './assets';
 export { default as characters } from './characters';
-export {
-  default as editorPanel,
-} from 'editor/components/EditorPanel/reducer';
-export {
-  default as alertDialog,
-} from 'ui-elements/AlertDialog/redux';
-export {
-  default as audioSelectModal,
-} from 'editor/components/EditorPanel/AttributesPanel/AttributesForm/AudioSelectModal/redux';
-export {
-  default as interactiveTutorial,
-} from 'editor/components/InteractiveTutorial/reducer';
+export { default as editorPanel } from 'editor/components/EditorPanel/reducer';
+export { default as alertDialog } from 'ui-elements/AlertDialog/redux';
+export { default as audioSelectModal } from 'editor/components/EditorPanel/AttributesPanel/AttributesForm/AudioSelectModal/redux';
+export { default as interactiveTutorial } from 'editor/components/InteractiveTutorial/reducer';

@@ -70,7 +70,8 @@ export default class RaisedButton extends React.Component {
 
     return (
       <div
-        id={this.props.id} {...{ className }}
+        id={this.props.id}
+        {...{ className }}
         ref={ref => this.button = ref}
         style={{ color }}
         onClick={this.handleClick}

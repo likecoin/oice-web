@@ -25,8 +25,6 @@ import './style.scss';
 @translate(['macro', 'attributesPanel'])
 @connect(store => ({
   attrDefObj: store.attributesDef.attrDefObj,
-  blockIdsArray: store.blocks.idsArray,
-  blocksDict: store.blocks.blocksDict,
   macrosDict: store.macros.dict,
   selectedBlock: store.blocks.selectedBlock,
 }))
@@ -35,8 +33,6 @@ export default class AttributesPanel extends React.Component {
     dispatch: PropTypes.func.isRequired,
     t: PropTypes.func.isRequired,
     attrDefObj: PropTypes.object,
-    blockIdsArray: PropTypes.array,
-    blocksDict: PropTypes.object,
     macrosDict: PropTypes.object,
     selectedBlock: PropTypes.any,
   }
@@ -52,7 +48,7 @@ export default class AttributesPanel extends React.Component {
     const { selectedBlock, attrDefObj } = nextProps;
     const { selectedBlockInState } = this.state;
     if (selectedBlock && attrDefObj) {
-      const macroId = selectedBlock.macroId;
+      const { macroId } = selectedBlock;
       if (!(macroId in attrDefObj)) {
         this.props.dispatch(MacroAction.fetchMacroAttributesDef(macroId));
       }
@@ -72,7 +68,7 @@ export default class AttributesPanel extends React.Component {
   handleSaveBtn = () => {
     const { selectedBlock } = this.props;
     const blockId = selectedBlock.id;
-    const attributes = selectedBlock.attributes;
+    const { attributes } = selectedBlock;
 
     this.props.dispatch(BlockAction.updateBlock(blockId, attributes));
   }
@@ -115,12 +111,12 @@ export default class AttributesPanel extends React.Component {
   renderContent(block) {
     const { attrDefObj, t } = this.props;
     if (block) {
-      const macroId = block.macroId;
+      const { macroId } = block;
       const attributesDefList = attrDefObj[macroId];
       if (attributesDefList) {
         if (attributesDefList.length > 0) {
           return (
-            <div className="attributes-form" ref={ref => this.attributesForm = ref}>
+            <div ref={ref => this.attributesForm = ref} className="attributes-form">
               {this.renderAttributesForm(block, attributesDefList)}
             </div>
           );
@@ -171,7 +167,7 @@ export default class AttributesPanel extends React.Component {
     const { selectedBlock, macrosDict } = this.props;
     let macroColor = 'default';
     if (selectedBlock) {
-      const macroId = selectedBlock.macroId;
+      const { macroId } = selectedBlock;
 
       const groupColor = _get(macrosDict, `${macroId}.groupColor`);
       if (groupColor) {

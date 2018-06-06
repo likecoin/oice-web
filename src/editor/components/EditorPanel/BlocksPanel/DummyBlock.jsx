@@ -10,7 +10,7 @@ const blockTarget = {
   drop(props, monitor, component) {
     const hoverIndex = props.index;
     const dragItem = monitor.getItem();
-    const macroId = dragItem.macroId;
+    const { macroId } = dragItem;
 
     if (props.onDropMacro) props.onDropMacro(hoverIndex, macroId);
 
@@ -20,7 +20,7 @@ const blockTarget = {
   },
 
   hover(props, monitor, component) {
-    const macroId = monitor.getItem().macroId;
+    const { macroId } = monitor.getItem();
   },
 };
 

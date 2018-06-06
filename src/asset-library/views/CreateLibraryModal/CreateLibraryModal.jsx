@@ -114,7 +114,6 @@ export default class CreateLibraryModal extends React.Component {
     edit: false,
     library: defaultLibraryState,
     libraryType: undefined,
-    open: false,
   }
 
   constructor(props) {
@@ -135,7 +134,9 @@ export default class CreateLibraryModal extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { edit, library, libraryType, user } = nextProps;
+    const {
+      edit, library, libraryType, user,
+    } = nextProps;
     const imageFileSrc = _get(library, 'cover') || _get(user, 'avatar');
     this.setState({
       library: edit ? library : defaultLibraryState,
@@ -175,7 +176,7 @@ export default class CreateLibraryModal extends React.Component {
   }
 
   handleNameChange = (name) => {
-    let library = this.state.library;
+    let library = { ...this.state.library };
     library = update(library, {
       name: { $set: name },
     });
@@ -183,7 +184,7 @@ export default class CreateLibraryModal extends React.Component {
   }
 
   handleDescriptionChange = (description) => {
-    let library = this.state.library;
+    let library = { ...this.state.library };
     library = update(library, {
       description: { $set: description },
     });
@@ -300,7 +301,9 @@ export default class CreateLibraryModal extends React.Component {
         <div className="library-type-details">
           {
             LIBRARY_TYPES.map((libraryType) => {
-              const { type, color, enabled, icon, description } = libraryType;
+              const {
+                type, color, enabled, icon, description,
+              } = libraryType;
               const key = `library-type-${type}`;
               if (enabled) {
                 return (
@@ -310,7 +313,9 @@ export default class CreateLibraryModal extends React.Component {
                       <ul>
                         {
                           description.map((translateKey, index) => (
-                            <li key={`description-${index}`}>{t(translateKey)}</li>
+                            <li key={`description-${index}`}>
+                              {t(translateKey)}
+                            </li>
                           ))
                         }
                       </ul>
@@ -334,7 +339,9 @@ export default class CreateLibraryModal extends React.Component {
 
   renderLibrarySettingsCreatePage = () => {
     const { t, priceTiers, edit } = this.props;
-    const { imageFileSrc, library, libraryType, selectedPriceIndex } = this.state;
+    const {
+      imageFileSrc, library, libraryType, selectedPriceIndex,
+    } = this.state;
     const libraryIndex = LIBRARY_TYPES.findIndex(type => type.type === libraryType);
     let prices = [];
     let selectedIndexes = [];
@@ -344,8 +351,8 @@ export default class CreateLibraryModal extends React.Component {
     }
     const libraryToggled = (
       (typeof library.isLaunched !== 'undefined') ?
-      library.isLaunched :
-      library.launchedAt !== null
+        library.isLaunched :
+        library.launchedAt !== null
     );
     return (
       <div className="create-library-modal-form">
@@ -409,7 +416,9 @@ export default class CreateLibraryModal extends React.Component {
   }
 
   render() {
-    const { t, edit, open, onClickCloseButton } = this.props;
+    const {
+      t, edit, open, onClickCloseButton,
+    } = this.props;
     const { library, libraryType, connectStripeModalOpen } = this.state;
     const modalHeader = edit ? 'edit' : 'add';
     const leftButton = (!edit ?
@@ -433,7 +442,7 @@ export default class CreateLibraryModal extends React.Component {
       <Throttle>
         {throttle => (
           <OutlineButton
-            color={'red'}
+            color="red"
             disabled={disabledConfirm}
             label={t('libraryModal.button.save')}
             fluid

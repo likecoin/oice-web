@@ -26,21 +26,21 @@ const defaultLoading = TAB_LIST.reduce((loading, tab) => ({
 
 const initialState = {
   // status
-  open: false,              // whether modal is open
-  saving: false,            // whether modal is saving
-  loading: defaultLoading,  // tab loading bools
-  tabBarIndex: 0,           // indicate index of current tab
+  open: false, // whether modal is open
+  saving: false, // whether modal is saving
+  loading: defaultLoading, // tab loading bools
+  tabBarIndex: 0, // indicate index of current tab
 
   // data
-  content: {},              // store all contents in the modal, including changes
-  mainLanguage: undefined,  // indicate the main language of story
-  supportedLanguages: [],   // languages supported by the story originally
+  content: {}, // store all contents in the modal, including changes
+  mainLanguage: undefined, // indicate the main language of story
+  supportedLanguages: [], // languages supported by the story originally
 
   // updated status
-  updated: {},                // indicate which part of content has been updated by user
+  updated: {}, // indicate which part of content has been updated by user
   hasUpdatedOiceOrder: false, // whether oice order has been updated
-  newLanguages: [],           // languages newly chosen by the user
-  deleted: {                  // indicate oices / languages to be deleted
+  newLanguages: [], // languages newly chosen by the user
+  deleted: { // indicate oices / languages to be deleted
     oices: [],
     languages: [],
   },
@@ -55,13 +55,15 @@ function updateStoryState({ state, language, payload }) {
     },
     updated: {
       [language]: {
-        story: { $set: true },  // indicate an update of story
+        story: { $set: true }, // indicate an update of story
       },
     },
   });
 }
 
-function updateOiceState({ state, language, oiceId, payload }) {
+function updateOiceState({
+  state, language, oiceId, payload,
+}) {
   const index = state.content[language].oices.findIndex(oice => oice.id === oiceId);
   const updatedOiceIds = state.updated[language].oices.add(oiceId);
   return update(state, {
@@ -163,8 +165,8 @@ export default handleActions({
   [Actions.updateOiceOrder]: (state, { payload }) => {
     const { dragIndex, hoverIndex } = payload;
     return update(state, {
-      content: { $apply:
-        languages => Object.keys(languages).reduce((updatedContent, key) => ({
+      content: {
+        $apply: languages => Object.keys(languages).reduce((updatedContent, key) => ({
           ...updatedContent,
           [key]: update(languages[key], {
             oices: {
@@ -173,8 +175,8 @@ export default handleActions({
                 [hoverIndex, 0, languages[key].oices[dragIndex]],
               ],
             },
-          }
-        ) }), {}),
+          }),
+        }), {}),
       },
       hasUpdatedOiceOrder: { $set: true },
     });
@@ -196,7 +198,9 @@ export default handleActions({
     })
   ),
   [Actions.updateOiceDeletion]: (state, { payload }) => {
-    const { content, mainLanguage, supportedLanguages, newLanguages } = state;
+    const {
+      content, mainLanguage, supportedLanguages, newLanguages,
+    } = state;
     const loadedLanguage = [mainLanguage, ...supportedLanguages, ...newLanguages]
       .filter(language => !!_get(content, `[${language}].oices`));
     const oiceIndex = content[mainLanguage].oices.findIndex(oice => oice.id === payload.oiceId);
@@ -260,7 +264,7 @@ export default handleActions({
     })
   ),
   [Actions.removeStoryLanguage]: (state, { payload }) => {
-    const language = payload.language;
+    const { language } = payload;
     let languageListUpdate = 'newLanguages';
     let index = state.newLanguages.findIndex(newLanguage => newLanguage === language);
     if (index === -1) {
@@ -310,10 +314,12 @@ export default handleActions({
       content: {
         [payload.language]: {
           oices: {
-            [payload.index]: { $merge: {
-              wordCount: payload.wordCount,
-              isCounting: false,
-            } },
+            [payload.index]: {
+              $merge: {
+                wordCount: payload.wordCount,
+                isCounting: false,
+              },
+            },
           },
         },
       },

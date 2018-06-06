@@ -51,7 +51,7 @@ const blockTarget = {
     const dragItem = monitor.getItem();
     const dragIndex = dragItem.index; // block
 
-    const macroId = dragItem.macroId;
+    const { macroId } = dragItem;
     const blockId = dragItem.id;
     // dragItem is the object get for beginDrag in Macro Component
     // props here can just get the props from parent but not redux
@@ -110,7 +110,7 @@ const blockTarget = {
 const getThumbnailImageURL = (attribute) => {
   let imageURL = '';
   if (attribute && attribute.asset.types) {
-    const type = attribute.asset.types[0].type;
+    const { type } = attribute.asset.types[0];
     if (type === 'image') {
       imageURL = `${DOMAIN_URL}${getThumbnail(attribute.asset.url, 200)}`;
     }
@@ -220,8 +220,8 @@ export default class Block extends React.Component {
         const isGeneric = _get(character, 'isGeneric', false);
         const name = (
           block.macroName === 'aside' || isGeneric ?
-          _get(block, 'attributes.name.value') :
-          _get(character, 'name')
+            _get(block, 'attributes.name.value') :
+            _get(character, 'name')
         );
 
         return (

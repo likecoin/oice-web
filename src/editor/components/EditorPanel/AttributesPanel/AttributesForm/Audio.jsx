@@ -77,7 +77,9 @@ export default class AudioAttributesForm extends React.Component {
   }
 
   handleOnClickAudioSelection = (audios, selectedAudio, attributeName) => {
-    const { dispatch, t, assets, block, libraryIdSet, recentUsedAssets } = this.props;
+    const {
+      dispatch, t, assets, block, libraryIdSet, recentUsedAssets,
+    } = this.props;
     if (this.audioPlayer) {
       this.audioPlayer.pauseAudio();
     }
@@ -127,7 +129,7 @@ export default class AudioAttributesForm extends React.Component {
         {selectedAudioAssetUrl &&
           <AudioPlayer
             ref={e => this.audioPlayer = e}
-            mode={'hiddenVolume'}
+            mode="hiddenVolume"
             title={selectedAudioAssetName}
             url={selectedAudioAssetUrl}
             selected

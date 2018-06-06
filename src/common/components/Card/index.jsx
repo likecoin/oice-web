@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import CardImage from './Image';
 import CardContent from './Content';
@@ -7,8 +8,6 @@ import CardHeader from './Header';
 import CardMeta from './Meta';
 import AddIcon from '../../icons/add';
 
-
-import classNames from 'classnames';
 
 import './style.scss';
 

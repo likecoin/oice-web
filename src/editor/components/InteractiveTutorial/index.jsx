@@ -43,7 +43,6 @@ export default class InteractiveTutorial extends React.Component {
       left: 0,
       right: 0,
       top: 0,
-      closed: true,
       opened: false,
       step: null,
     };
@@ -114,7 +113,9 @@ export default class InteractiveTutorial extends React.Component {
 
   positionDialog() {
     if (this.tutor) {
-      const { offsetLeft, offsetRight, offsetTop, offsetWidth } = this.tutor;
+      const {
+        offsetLeft, offsetRight, offsetTop, offsetWidth,
+      } = this.tutor;
       let top = offsetTop;
       if (this.dialog) {
         const { offsetHeight } = this.dialog;
@@ -220,10 +221,10 @@ export default class InteractiveTutorial extends React.Component {
               variables={variables}
             />
             <img
-              key={step.id}
               ref={ref => this.tutor = ref}
+              key={step.id}
+              alt="presentation"
               className="tutor"
-              role="presentation"
               src={`/static/interactive-tutorial/fg-images/${step.fgImage}.png`}
               onLoad={this.handleFGImageLoad}
             />

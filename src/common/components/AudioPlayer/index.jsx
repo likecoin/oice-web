@@ -88,11 +88,6 @@ export default class AudioPlayer extends React.Component {
     };
   }
 
-  componentWillMount() {
-    const { initialVal } = this.props;
-    this.setState({ value: initialVal });
-  }
-
   componentDidMount() {
     this.initAudioObject(this.props.url);
     this.container.addEventListener('click', this.handleContainerClick);
@@ -264,8 +259,12 @@ export default class AudioPlayer extends React.Component {
   }
 
   render() {
-    const { title, mode, selected, disabled, audioListIndex, url } = this.props;
-    const { seek, duration, isPlaying, isMuted, volume } = this.state;
+    const {
+      title, mode, selected, disabled, audioListIndex, url,
+    } = this.props;
+    const {
+      seek, duration, isPlaying, isMuted, volume,
+    } = this.state;
     const audioClassName = classNames('audio-player', {
       disabled,
       selected,
@@ -278,9 +277,9 @@ export default class AudioPlayer extends React.Component {
       if (volume > 0.55) volumeIcon = <Volume2Icon />;
       if (volume > 0.85) volumeIcon = <Volume3Icon />;
     }
-    let buttonsWidth = 50;    // play button width
-    if (mode !== 'hiddenVolume') buttonsWidth += 165;  // volume bar
-    if (rightButtonIcon) buttonsWidth += 50;  // edit button
+    let buttonsWidth = 50; // play button width
+    if (mode !== 'hiddenVolume') buttonsWidth += 165; // volume bar
+    if (rightButtonIcon) buttonsWidth += 50; // edit button
 
     return (
       <div

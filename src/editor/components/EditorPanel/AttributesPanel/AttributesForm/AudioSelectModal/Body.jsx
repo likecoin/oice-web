@@ -21,9 +21,7 @@ import { getAudioMp4Url } from 'editor/utils/app';
 
 import EmptyPlaceholder from '../../EmptyPlaceholder';
 
-import {
-  updateSelectedItem,
-} from './redux';
+import { updateSelectedItem } from './redux';
 
 import './styles.scss';
 
@@ -64,8 +62,8 @@ const getSelectedAudioIndex = (selectedAudio, audios) => {
   // prevent library is selected but neither purchased nor owned by user
   const filteredAssetLibraryIds = (
     assetLibraryIds ?
-    assetLibraryIds.filter(id => !!libraries[id]) :
-    assetLibraryIds
+      assetLibraryIds.filter(id => !!libraries[id]) :
+      assetLibraryIds
   );
 
   return {

@@ -115,8 +115,7 @@ export default class RunOiceModal extends React.Component {
 
   renderBody(t) {
     const { buildState, language, preview } = this.props;
-    const stage = buildState.stage;
-    const data = buildState.data;
+    const { stage, data } = buildState.stage;
     const message = t(`buildOiceState.${buildState.message}`);
     switch (stage) {
       case FAILED:
@@ -169,7 +168,7 @@ export default class RunOiceModal extends React.Component {
 
   render() {
     const { t, buildState, preview } = this.props;
-    const stage = buildState.stage;
+    const { stage } = buildState;
 
     const playOiceButton = (
       <RaisedButton

@@ -44,18 +44,22 @@ export default class Checkbox extends React.Component {
   }
 
   render() {
-    const { value, isChecked, checkBoxUUID, label } = this.state;
+    const {
+      value, isChecked, checkBoxUUID, label,
+    } = this.state;
     return (
       <div className="check-box" id={this.props.id}>
         <div key={checkBoxUUID} >
-          <input
-            checked={isChecked}
-            id={`check-box-${checkBoxUUID}-${value}`}
-            type="checkbox"
-            value={value}
-            onChange={() => this.handleChange()}
-          />
-          <label htmlFor={`check-box-${checkBoxUUID}-${value}`}>{label}</label>
+          <label htmlFor={`check-box-${checkBoxUUID}-${value}`}>
+            <input
+              checked={isChecked}
+              id={`check-box-${checkBoxUUID}-${value}`}
+              type="checkbox"
+              value={value}
+              onChange={() => this.handleChange()}
+            />
+            {label}
+          </label>
         </div>
       </div>
     );

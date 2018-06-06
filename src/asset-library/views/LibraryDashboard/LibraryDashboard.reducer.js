@@ -8,15 +8,9 @@ import {
   PURCHASED_LIBRARY_TYPES,
 } from 'asset-library/constants';
 
-import {
-  actions as PurchasedDashboardActions,
-} from 'asset-library/views/PurchasedLibraryDashboard';
-import {
-  actions as LibraryModalActions,
-} from 'asset-library/views/CreateLibraryModal';
-import {
-  actions as LibraryDetailsActions,
-} from 'asset-library/views/LibraryDetails';
+import { actions as PurchasedDashboardActions } from 'asset-library/views/PurchasedLibraryDashboard';
+import { actions as LibraryModalActions } from 'asset-library/views/CreateLibraryModal';
+import { actions as LibraryDetailsActions } from 'asset-library/views/LibraryDetails';
 import * as Actions from './LibraryDashboard.actions.js';
 
 

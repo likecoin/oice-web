@@ -126,12 +126,12 @@ export default class NavBar extends React.Component {
     const label = title || t(`menu.${id}`);
     const path = (
       appModule === 'edit' ?
-      navItem.path.replace('/edit', '') :
-      navItem.path
+        navItem.path.replace('/edit', '') :
+        navItem.path
     );
 
     let active = this.context.module === id;
-    if (!active && id === 'about' && /\/about$/.test(location.pathname)) {
+    if (!active && id === 'about' && /\/about$/.test(window.location.pathname)) {
       active = true;
     }
     const className = classNames('nav-link', id, { active });
@@ -182,7 +182,9 @@ export default class NavBar extends React.Component {
   );
 
   renderRightItems(user) {
-    const { children, rightChildren, iconMenu, t } = this.props;
+    const {
+      children, rightChildren, iconMenu, t,
+    } = this.props;
     return (
       <div className="nav-bar-right-items">
         {!children && user.isLoggedIn &&
@@ -242,9 +244,10 @@ export default class NavBar extends React.Component {
   }
 
   render() {
-    const { fixed, fluid, id } = this.props;
+    const {
+      fixed, fluid, id, user,
+    } = this.props;
 
-    const user = this.props.user;
     const className = classNames(
       'nav-bar',
       this.props.className,

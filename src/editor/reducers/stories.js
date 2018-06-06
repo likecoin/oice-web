@@ -4,9 +4,7 @@ import update from 'immutability-helper';
 import _pull from 'lodash/pull';
 import _union from 'lodash/union';
 
-import {
-  FETCH_CHARACTER,
-} from 'editor/constants/actionTypes';
+import { FETCH_CHARACTER } from 'editor/constants/actionTypes';
 
 import { actions as StorySettingModalActions } from 'editor/components/EditorPanel/StorySettingModal';
 

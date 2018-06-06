@@ -61,12 +61,12 @@ export default class Pagination extends React.Component {
       }
     }
     return (
-      pages.map(pageNum => {
+      pages.map((pageNum) => {
         const className = (pageNum === currentPage) ? 'active' : null;
         return (
           <span
-            {...{ className }}
             key={`page-${pageNum}`}
+            {...{ className }}
             onClick={() => this.handleOnPageChange(pageNum)}
           >
             {pageNum}
@@ -77,7 +77,9 @@ export default class Pagination extends React.Component {
   }
 
   render() {
-    const { t, currentPage, totalPage, id } = this.props;
+    const {
+      t, currentPage, totalPage, id,
+    } = this.props;
     const className = classNames('pagination', this.props.className);
     return (
       <div {...{ id, className }}>

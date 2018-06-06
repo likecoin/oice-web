@@ -12,7 +12,9 @@ import { VOLUMES } from '../InteractiveTutorial/constants';
 const handleTutorialClick = () => window.open('https://intercom.help/oice');
 
 const EditorMenu = (props) => {
-  const { t, tutorialState, userRole, onRequestOpenTutorial } = props;
+  const {
+    t, tutorialState, userRole, onRequestOpenTutorial,
+  } = props;
 
   const handleOpenTutorialRequest = (volume, index) => {
     if (onRequestOpenTutorial) {

@@ -21,9 +21,9 @@ export const fetchStoreLibraries = (offset, limit) => (dispatch) => {
   dispatch(fetchStoreLibrariesBegin());
   APIHandler(dispatch,
     StoreAPI.fetchLibraries({ offset, limit })
-    .then((response) => {
-      dispatch(fetchStoreLibrariesEnd(response));
-    })
+      .then((response) => {
+        dispatch(fetchStoreLibrariesEnd(response));
+      })
   );
 };
 
@@ -37,12 +37,12 @@ export const fetchStoreLibrariesByCollection = payload => (dispatch) => {
   dispatch(fetchStoreLibrariesByCollectionBegin());
   APIHandler(dispatch,
     StoreAPI.fetchLibraries(payload)
-    .then((response) => {
-      if (response.libraries && response.libraries.length === 0) {
-        // redirect to featured if no libraries is in the list
-        dispatch(replace('/store/collection/featured'));
-      }
-      dispatch(fetchStoreLibrariesByCollectionEnd(response));
-    })
+      .then((response) => {
+        if (response.libraries && response.libraries.length === 0) {
+          // redirect to featured if no libraries is in the list
+          dispatch(replace('/store/collection/featured'));
+        }
+        dispatch(fetchStoreLibrariesByCollectionEnd(response));
+      })
   );
 };

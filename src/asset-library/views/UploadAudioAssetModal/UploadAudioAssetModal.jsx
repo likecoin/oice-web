@@ -159,7 +159,9 @@ export default class UploadAudioAssetModal extends React.Component {
 
   renderAudioFilesList(audioFiles = []) {
     // TODO: refactor this render to another component
-    const { t, uploading, uploadProgress, uploadStatus } = this.props;
+    const {
+      t, uploading, uploadProgress, uploadStatus,
+    } = this.props;
     return audioFiles.map((audio, index) => {
       const progress = uploadProgress[index];
       const fileSize = audio.file.size;
@@ -225,7 +227,9 @@ export default class UploadAudioAssetModal extends React.Component {
   }
 
   render() {
-    const { t, open, type, uploading, error, uploadStatus } = this.props;
+    const {
+      t, open, type, uploading, error, uploadStatus,
+    } = this.props;
     const { serializedAudioFiles } = this.state;
 
     const valid = (
@@ -236,8 +240,7 @@ export default class UploadAudioAssetModal extends React.Component {
         meta.users &&
         (meta.users.length > 0 || meta.creditsUrl.length > 0) &&
         !isFileSizeExceedLimit(file.size)
-      )
-    );
+      ));
 
     const hasTranscodeError = uploadStatus.some(status => !!status.error);
     const footerProps = {

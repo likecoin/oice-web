@@ -24,9 +24,7 @@ import { UserLoggedIn } from 'asset-library/utils/auth';
 import { USER_ROLE_NORMAL } from 'common/constants/userRoles';
 import { isNormalUser } from 'common/utils/user';
 
-import {
-  setLibraryDetailsLibrary as openLibrary,
-} from '../LibraryDetails/LibraryDetails.common.actions';
+import { setLibraryDetailsLibrary as openLibrary } from '../LibraryDetails/LibraryDetails.common.actions';
 
 import './MyLibraryDashboard.style.scss';
 
@@ -56,6 +54,7 @@ export default class MyLibraryDashboard extends React.Component {
     onClickAddLibraryButton: PropTypes.func.isRequired,
     children: PropTypes.node,
     user: PropTypes.object,
+    openLibrary: PropTypes.func,
   }
 
   constructor(props) {
@@ -154,11 +153,12 @@ export default class MyLibraryDashboard extends React.Component {
             <div className="loading">
               <Progress.LoadingIndicator />
             </div>
-          ) : (<div className="content">
-            <ul className="library-section-list">
-              {MY_LIBRARY_TYPES.map(this.renderSection)}
-            </ul>
-          </div>
+          ) : (
+            <div className="content">
+              <ul className="library-section-list">
+                {MY_LIBRARY_TYPES.map(this.renderSection)}
+              </ul>
+            </div>
           )}
         </div>
         {this.props.children}

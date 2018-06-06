@@ -4,10 +4,10 @@ import { translate } from 'react-i18next';
 
 import classNames from 'classnames';
 import _keyBy from 'lodash/keyBy';
-import flow from "lodash/fp/flow";
-import groupBy from "lodash/fp/groupBy";
-import orderBy from "lodash/fp/orderBy";
-import sortBy from "lodash/fp/sortBy";
+import flow from 'lodash/fp/flow';
+import groupBy from 'lodash/fp/groupBy';
+import orderBy from 'lodash/fp/orderBy';
+import sortBy from 'lodash/fp/sortBy';
 
 import * as MacroAction from 'editor/actions/macro';
 import Macro from './Macro';

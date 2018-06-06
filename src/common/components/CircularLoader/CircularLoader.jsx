@@ -9,7 +9,9 @@ import './CircularLoader.styles.scss';
 
 
 const CircularLoader = (props) => {
-  const { id, color, size, loading } = props;
+  const {
+    id, color, size, loading,
+  } = props;
   const style = {
     width: size,
     height: size,

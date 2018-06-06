@@ -23,33 +23,33 @@ export default class GenericAttributesPanelForm extends React.Component {
     if (attributesDefList && attributesDefList instanceof Array) {
       const lastIndex = attributesDefList.length - 1;
       if (block.macroName === 'label') {
-        const attributesDefForLabel = _keyBy(attributesDefList, (attributeDef) => (
+        const attributesDefForLabel = _keyBy(attributesDefList, attributeDef => (
           attributeDef.name
         ));
         const nameAttributeDef = attributesDefForLabel.name;
         const captionAttributeDef = attributesDefForLabel.caption;
         attributeRows.push(
           <AttributeRow
+            key={0}
             attributeDef={nameAttributeDef}
             block={block}
-            key={0}
           />
         );
         attributeRows.push(<hr key={`${0}-hr`} />);
         attributeRows.push(
           <AttributeRow
+            key={1}
             attributeDef={captionAttributeDef}
             block={block}
-            key={1}
           />
         );
       } else {
         attributesDefList.forEach((attributeDef, index) => {
           attributeRows.push(
             <AttributeRow
+              key={index}
               attributeDef={attributeDef}
               block={block}
-              key={index}
             />
           );
           if (lastIndex !== index) attributeRows.push(<hr key={`${index}-hr`} />);

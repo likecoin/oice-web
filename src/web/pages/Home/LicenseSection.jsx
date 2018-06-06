@@ -46,10 +46,10 @@ export default class LicenseSection extends React.Component {
 
   async _fetchContent() {
     const content = await firebase.database()
-                                  .ref('license-section')
-                                  .once('value')
-                                  .then(snapshot => snapshot.val())
-                                  .catch(() => null);
+      .ref('license-section')
+      .once('value')
+      .then(snapshot => snapshot.val())
+      .catch(() => null);
     if (content) this.setState(content);
   }
 
@@ -59,7 +59,7 @@ export default class LicenseSection extends React.Component {
     const className = classNames('author', Object.values(position));
 
     const { angle } = this.state;
-    const radian = (isNaN(angle) ? 20 : parseInt(angle, 10)) * (Math.PI / 180);
+    const radian = (Number.isNaN(angle) ? 20 : parseInt(angle, 10)) * (Math.PI / 180);
     const sinAngle = Math.sin(radian);
     const cosAngle = Math.cos(radian);
 

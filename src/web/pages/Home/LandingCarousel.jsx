@@ -84,7 +84,9 @@ Slide.getStyle = {
 
 
 const SlideWrapper = animated((props) => {
-  const { libraries, transitionStyles, position, top } = props;
+  const {
+    libraries, transitionStyles, position, top,
+  } = props;
 
   // Determine slide left or right
   const xMultiplier = (position === 'left' ? -1 : 1);
@@ -199,7 +201,9 @@ Credits.getStyle = {
 
 
 const CreditsWrapper = animated((props) => {
-  const { authors, libraries, transitionStyles, position } = props;
+  const {
+    authors, libraries, transitionStyles, position,
+  } = props;
 
   return (
     <div className={classNames('library-carousel_credits-wrapper', position)}>
@@ -288,9 +292,9 @@ export default class LandingCarousel extends React.Component {
     }
     */
     const content = await firebase.database()
-                                  .ref('library-carousel')
-                                  .once('value')
-                                  .then(snapshot => snapshot.val());
+      .ref('library-carousel')
+      .once('value')
+      .then(snapshot => snapshot.val());
 
     this.setState({ content }, () => {
       this._timer = setInterval(this._nextSlide, LandingCarousel.interval);

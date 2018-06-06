@@ -192,8 +192,6 @@ export default class FeaturedStories extends React.Component {
     });
   }
 
-  deferredHandleRestAnimation = _debounce(this.handleRestAnimation, 500);
-
   handleOiceAction = ({ data }) => {
     if (typeof data !== 'string') return;
     try {
@@ -227,6 +225,8 @@ export default class FeaturedStories extends React.Component {
   }
 
   _deferredHandleStorySliderTrackResize = _debounce(this._handleStorySliderTrackResize, 500);
+
+  _deferredHandleRestAnimation = _debounce(this.handleRestAnimation, 500);
 
   selectStorySlide = (index) => {
     this.clearShowOicePlayerTimer();
@@ -376,7 +376,7 @@ export default class FeaturedStories extends React.Component {
         key={story.key}
         defaultStyle={defaultStyle}
         style={style}
-        onRest={this.deferredHandleRestAnimation}
+        onRest={this._deferredHandleRestAnimation}
       >
         {interpolatedStyle => (
           <li
@@ -520,6 +520,7 @@ export default class FeaturedStories extends React.Component {
           src={`https://cloud.oice.com/view/${story.oice.uuid}?lang=${story.oice.language}`}
           scrolling="no"
           seamless="seamless"
+          title="story.oice.uuid"
         />
         <Motion style={{ opacity: spring(isCallForActionShowed ? 1 : 0) }}>
           {style => isCallForActionShowed && (

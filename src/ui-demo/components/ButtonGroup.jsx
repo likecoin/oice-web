@@ -81,9 +81,11 @@ export default class ButtonGroupDemo extends React.Component {
           <br />
           complex example
         </div>
-        <pre><code>
-          {codeSnippet}
-        </code></pre>
+        <pre>
+          <code>
+            {codeSnippet}
+          </code>
+        </pre>
       </div>
     );
   }

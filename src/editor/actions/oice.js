@@ -53,7 +53,7 @@ export const fetchOices = (storyId, language) => (dispatch) => {
 export const fetchedSelectedOice = createAction(FETCH_SELECTED_OICE);
 export const fetchSelectedOice = (oiceId, language) => dispatch => APIHandler(dispatch,
   OiceAPI.fetchOice(oiceId, language)
-  .then(oice => dispatch(fetchedSelectedOice(oice)))
+    .then(oice => dispatch(fetchedSelectedOice(oice)))
 );
 
 
@@ -80,33 +80,32 @@ export const runOice = (storyId, oiceId, savingBlocks, isPreview, jobId) => (dis
   const validateAndBuildOice = () => {
     dispatchState(LOADING, 'validating');
     OiceAPI.validateOice(storyId, oiceId)
-    .then((oiceErrors) => {
-      if (oiceErrors.length === 0) {
-        dispatchState(LOADING, 'building');
-        OiceAPI.buildOice(storyId, oiceId, isPreview)
-        .then((response) => {
-          const view_url = response.url;
-          const message = response.message;
-          const code = response.code;
+      .then((oiceErrors) => {
+        if (oiceErrors.length === 0) {
+          dispatchState(LOADING, 'building');
+          OiceAPI.buildOice(storyId, oiceId, isPreview)
+            .then((response) => {
+              const view_url = response.url;
+              const { message, code } = response;
 
-          buildSocket.on('finished', (res) => {
-            dispatchState(SUCCESS, 'buildSuccess', view_url);
-          });
-          buildSocket.on('failed', (res) => {
-            dispatchState(FAILED, 'buildFailedUnkownError');
-          });
-          buildSocket.emit('set_id', oiceId);
-        })
-        .catch((error) => {
-          dispatchState(FAILED, 'buildFailedUnkownError');
-        });
-      } else {
-        dispatchState(FAILED_ERRORS, 'buildFailed', oiceErrors[0].erroredBlocks);
-      }
-    })
-    .catch((error) => {
-      dispatchState(FAILED, 'validateFailed');
-    });
+              buildSocket.on('finished', (res) => {
+                dispatchState(SUCCESS, 'buildSuccess', view_url);
+              });
+              buildSocket.on('failed', (res) => {
+                dispatchState(FAILED, 'buildFailedUnkownError');
+              });
+              buildSocket.emit('set_id', oiceId);
+            })
+            .catch((error) => {
+              dispatchState(FAILED, 'buildFailedUnkownError');
+            });
+        } else {
+          dispatchState(FAILED_ERRORS, 'buildFailed', oiceErrors[0].erroredBlocks);
+        }
+      })
+      .catch((error) => {
+        dispatchState(FAILED, 'validateFailed');
+      });
   };
 
   if (savingBlocks.length > 0) {
@@ -114,13 +113,13 @@ export const runOice = (storyId, oiceId, savingBlocks, isPreview, jobId) => (dis
     dispatch(removeFromSavingBlockQueue(savingBlockIds));
     const language = getState().blocks.selectedLanguage;
     BlockAPI.updateBlocks(savingBlocks, language)
-    .then((blocks) => {
-      validateAndBuildOice();
-    })
-    .catch((error) => {
-      dispatchState(FAILED, 'saveFailed');
-      dispatch(addToSavingBlockQueue(savingBlockIds));
-    });
+      .then((blocks) => {
+        validateAndBuildOice();
+      })
+      .catch((error) => {
+        dispatchState(FAILED, 'saveFailed');
+        dispatch(addToSavingBlockQueue(savingBlockIds));
+      });
   } else {
     validateAndBuildOice();
   }
@@ -135,26 +134,26 @@ export const exportOice = (storyId, oiceId, savingBlocks, jobId) => (dispatch, g
   const validateOice = () => {
     dispatchState(LOADING, 'validating');
     OiceAPI.validateOice(storyId, oiceId)
-    .then((oiceErrors) => {
-      if (oiceErrors.length === 0) {
-        dispatchState(VALIDATE_SUCCESS, 'exporting');
-        OiceAPI.exportOice(storyId, oiceId)
-        .then((exportId) => {
-          exportSocket.on('finished', (exportJob) => {
-            dispatchState(SUCCESS, 'exportSuccess', exportJob.id);
-          });
-          exportSocket.emit('set_id', exportId);
-        })
-        .catch((error) => {
-          dispatchState(FAILED, 'exportFailed');
-        });
-      } else {
-        dispatchState(FAILED_ERRORS, 'validateSuccessWithError', oiceErrors[0].erroredBlocks);
-      }
-    })
-    .catch((error) => {
-      dispatchState(FAILED, 'validateFailed');
-    });
+      .then((oiceErrors) => {
+        if (oiceErrors.length === 0) {
+          dispatchState(VALIDATE_SUCCESS, 'exporting');
+          OiceAPI.exportOice(storyId, oiceId)
+            .then((exportId) => {
+              exportSocket.on('finished', (exportJob) => {
+                dispatchState(SUCCESS, 'exportSuccess', exportJob.id);
+              });
+              exportSocket.emit('set_id', exportId);
+            })
+            .catch((error) => {
+              dispatchState(FAILED, 'exportFailed');
+            });
+        } else {
+          dispatchState(FAILED_ERRORS, 'validateSuccessWithError', oiceErrors[0].erroredBlocks);
+        }
+      })
+      .catch((error) => {
+        dispatchState(FAILED, 'validateFailed');
+      });
   };
 
   if (savingBlocks.length > 0) {
@@ -162,13 +161,13 @@ export const exportOice = (storyId, oiceId, savingBlocks, jobId) => (dispatch, g
     dispatch(removeFromSavingBlockQueue(savingBlockIds));
     const language = getState().blocks.selectedLanguage;
     BlockAPI.updateBlocks(savingBlocks, language)
-    .then((blocks) => {
-      validateOice();
-    })
-    .catch((error) => {
-      dispatchState(FAILED, 'saveFailed');
-      dispatch(addToSavingBlockQueue(savingBlocks));
-    });
+      .then((blocks) => {
+        validateOice();
+      })
+      .catch((error) => {
+        dispatchState(FAILED, 'saveFailed');
+        dispatch(addToSavingBlockQueue(savingBlocks));
+      });
   } else {
     validateOice();
   }

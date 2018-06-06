@@ -60,7 +60,7 @@ export default class OiceCheckout extends React.Component {
         currency="USD"
       >
         <OutlineButton
-          color={'blue'}
+          color="blue"
           label={this.props.buttonLabel}
         />
       </StripeCheckout>

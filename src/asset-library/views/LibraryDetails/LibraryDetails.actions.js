@@ -163,21 +163,21 @@ export const addAsset = (meta, file, assetType) => (dispatch) => {
     default: break;
   }
   APIHandler(dispatch,
-   AssetAPI.addAsset(meta, file, assetType)
-   .then(({ asset }) => {
-     const { libraryId } = asset;
-     dispatch(updateLibraryAssetCount({
-       assetCount: 1,
-       libraryId,
-     }));
-     dispatch(fetchLibraryAssetsByType(libraryId, assetType)).then((type) => {
-       switch (assetType) {
-         case ASSET_TYPE.BACKGROUND: dispatch(BackgroundModalActions.didAdd()); break;
-         case ASSET_TYPE.ITEM: dispatch(ItemModalActions.didAdd()); break;
-         default: break;
-       }
-     });
-   })
+    AssetAPI.addAsset(meta, file, assetType)
+      .then(({ asset }) => {
+        const { libraryId } = asset;
+        dispatch(updateLibraryAssetCount({
+          assetCount: 1,
+          libraryId,
+        }));
+        dispatch(fetchLibraryAssetsByType(libraryId, assetType)).then((type) => {
+          switch (assetType) {
+            case ASSET_TYPE.BACKGROUND: dispatch(BackgroundModalActions.didAdd()); break;
+            case ASSET_TYPE.ITEM: dispatch(ItemModalActions.didAdd()); break;
+            default: break;
+          }
+        });
+      })
   );
 };
 
@@ -332,26 +332,26 @@ export const updateAsset = (meta, file, type) => async (dispatch) => {
 
 export const deleteAsset = ({ id, type, libraryId }) => (dispatch) => {
   APIHandler(dispatch, AssetAPI.deleteAsset(id)
-  .then(() => {
-    dispatch(updateLibraryAssetCount({
-      assetCount: -1,
-      libraryId,
+    .then(() => {
+      dispatch(updateLibraryAssetCount({
+        assetCount: -1,
+        libraryId,
+      }));
+      switch (type) {
+        case ASSET_TYPE.BACKGROUND:
+          dispatch(BackgroundModalActions.didDelete(id));
+          break;
+        case ASSET_TYPE.ITEM:
+          dispatch(ItemModalActions.didDelete(id));
+          break;
+        case ASSET_TYPE.MUSIC:
+          dispatch(EditAudioAssetModalActions.didDeleteBGM(id));
+          break;
+        case ASSET_TYPE.SOUND:
+          dispatch(EditAudioAssetModalActions.didDeleteSE(id));
+          break;
+        default:
+          throw new Error('Invalid asset type');
+      }
     }));
-    switch (type) {
-      case ASSET_TYPE.BACKGROUND:
-        dispatch(BackgroundModalActions.didDelete(id));
-        break;
-      case ASSET_TYPE.ITEM:
-        dispatch(ItemModalActions.didDelete(id));
-        break;
-      case ASSET_TYPE.MUSIC:
-        dispatch(EditAudioAssetModalActions.didDeleteBGM(id));
-        break;
-      case ASSET_TYPE.SOUND:
-        dispatch(EditAudioAssetModalActions.didDeleteSE(id));
-        break;
-      default:
-        throw new Error('Invalid asset type');
-    }
-  }));
 };

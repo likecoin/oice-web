@@ -31,24 +31,22 @@ import { LIBRARY_TYPE } from 'asset-library/constants';
 import AssetGridList from 'asset-library/views/AssetGridList';
 import LoginModal from 'asset-library/views/LoginModal';
 import BackgroundModal, { actions as BackgroundModalActions }
-from 'asset-library/views/BackgroundModal';
+  from 'asset-library/views/BackgroundModal';
 import CharacterModal, { actions as CharacterModalActions }
-from 'asset-library/views/CharacterModal';
+  from 'asset-library/views/CharacterModal';
 import ItemModal, { actions as ItemModalActions }
-from 'asset-library/views/ItemModal';
+  from 'asset-library/views/ItemModal';
 import UploadAudioAssetModal, { actions as UploadAudioAssetModalActions }
-from 'asset-library/views/UploadAudioAssetModal';
+  from 'asset-library/views/UploadAudioAssetModal';
 import EditAudioAssetModal, { actions as EditAudioAssetModalActions }
-from 'asset-library/views/EditAudioAssetModal';
+  from 'asset-library/views/EditAudioAssetModal';
 import CreateLibraryModal, { actions as CreateLibraryModalActions }
-from '../CreateLibraryModal';
+  from '../CreateLibraryModal';
 
 import LibraryInfo from './LibraryInfo';
 
 import * as Actions from './LibraryDetails.actions';
-import {
-  actions as PurchasedLibraryActions,
-} from 'asset-library/views/PurchasedLibraryDashboard';
+import { actions as PurchasedLibraryActions } from 'asset-library/views/PurchasedLibraryDashboard';
 
 import { USER_ROLE_NORMAL, USER_ROLE_ADMIN } from 'common/constants/userRoles';
 import { isNormalUser } from 'common/utils/user';
@@ -158,7 +156,9 @@ export default class LibraryDetails extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { loaded, params, library, user } = nextProps;
+    const {
+      loaded, params, library, user,
+    } = nextProps;
     const { libraryId } = params;
 
     // Fetch library details when change library
@@ -310,12 +310,12 @@ export default class LibraryDetails extends React.Component {
     if (toggled) {
       dispatch(
         PurchasedLibraryActions
-        .addSelectedLibraryToUser(toggledLibraryId)
+          .addSelectedLibraryToUser(toggledLibraryId)
       );
     } else {
       dispatch(
         PurchasedLibraryActions
-        .removeSelectedLibraryFromUser(toggledLibraryId)
+          .removeSelectedLibraryFromUser(toggledLibraryId)
       );
     }
   }

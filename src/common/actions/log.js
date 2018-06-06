@@ -38,7 +38,7 @@ export const logReadOice = oiceUuid => async (dispatch) => {
 };
 
 export const logOiceWebAcquisition = (payload = {}) => async (dispatch) => {
-  const referrer = document.referrer;
+  const { referrer } = document;
   const name = referrer.includes(window.location.hostname) ? 'logOiceWebBehaviour' : 'logOiceWebAcquisition';
   await APIHandler(dispatch, LogAPI.log({
     name,

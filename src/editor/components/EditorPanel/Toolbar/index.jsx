@@ -6,7 +6,6 @@ import { translate } from 'react-i18next';
 import ButtonGroup from 'ui-elements/ButtonGroup';
 import FlatButton from 'ui-elements/FlatButton';
 import NavBar from 'ui-elements/NavBar';
-import RadioButton from 'ui-elements/RadioButton';
 import RaisedButton from 'ui-elements/RaisedButton';
 
 import AssetIcon from 'common/icons/asset';

@@ -40,12 +40,14 @@ export default class CharacterModalHeader extends React.Component {
   }
 
   render() {
-    const { characterId, editing, limitedMode, loading, t } = this.props;
+    const {
+      characterId, editing, limitedMode, loading, t,
+    } = this.props;
 
     let modalHeader = (
       limitedMode ?
-      t('characterModal.title.view') :
-      t(`characterModal.title.${editing ? 'edit' : 'add'}`)
+        t('characterModal.title.view') :
+        t(`characterModal.title.${editing ? 'edit' : 'add'}`)
     );
     if (editing) modalHeader = `${modalHeader} (${characterId})`;
 

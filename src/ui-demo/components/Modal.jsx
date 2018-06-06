@@ -21,10 +21,10 @@ export default class ModalDemo extends React.Component {
 
   componentDidMount() {
     request
-    .get('https://baconipsum.com/api/?type=all-meat&paras=30&format=text')
-    .then(({ text }) => {
-      this.setState({ text });
-    });
+      .get('https://baconipsum.com/api/?type=all-meat&paras=30&format=text')
+      .then(({ text }) => {
+        this.setState({ text });
+      });
   }
 
   handleOnClose = () => {

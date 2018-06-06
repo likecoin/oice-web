@@ -37,14 +37,14 @@ export const fetchBlocks = (oiceId, language) => (dispatch, getState) => {
   dispatch(fetchBlocksBegin());
   APIHandler(dispatch,
     BlockAPI.fetchBlocks(oiceId, language)
-    .then((blockList) => {
-      dispatch(fetchBlocksEnd({ blockList, language }));
-      const oldSelectedBlock = getState().blocks.selectedBlock;
-      if (oldSelectedBlock) {
-        const selectedBlock = blockList.find(block => block.id === oldSelectedBlock.id);
-        dispatch(onSelectedBlock({ block: selectedBlock }));
-      }
-    })
+      .then((blockList) => {
+        dispatch(fetchBlocksEnd({ blockList, language }));
+        const oldSelectedBlock = getState().blocks.selectedBlock;
+        if (oldSelectedBlock) {
+          const selectedBlock = blockList.find(block => block.id === oldSelectedBlock.id);
+          dispatch(onSelectedBlock({ block: selectedBlock }));
+        }
+      })
   );
 };
 
@@ -52,11 +52,11 @@ export const moveBlock = (blockId, parentId) => (dispatch, getState) => {
   dispatch(addToSavingBlockQueue(blockId));
   APIHandler(dispatch,
     BlockAPI.moveBlock(blockId, parentId)
-    .then((block) => {
-      dispatch(removeFromSavingBlockQueue(block.id));
-      updateOiceLastEditTime(getState());
-      dispatch(InteractiveTutorial.Action.achieve(['5a02137']));
-    })
+      .then((block) => {
+        dispatch(removeFromSavingBlockQueue(block.id));
+        updateOiceLastEditTime(getState());
+        dispatch(InteractiveTutorial.Action.achieve(['5a02137']));
+      })
   );
 };
 
@@ -95,16 +95,16 @@ export const addBlock = (
 
 export const duplicateBlock = (oiceId, serializedBlock) => dispatch => APIHandler(dispatch,
   BlockAPI.addBlock(oiceId, serializedBlock, false)
-  .then((block) => {
-    dispatch(addBlockDnD({ block }));
+    .then((block) => {
+      dispatch(addBlockDnD({ block }));
 
-    IntercomUtils.event('add_block', {
-      oice_id: block.oiceId,
-      macro_id: block.macroId,
-      macro_name: block.macroName,
-      method: 'duplicate',
-    });
-  })
+      IntercomUtils.event('add_block', {
+        oice_id: block.oiceId,
+        macro_id: block.macroId,
+        macro_name: block.macroName,
+        method: 'duplicate',
+      });
+    })
 );
 
 export const updateBlockView = block => (dispatch) => {
@@ -125,7 +125,7 @@ export const saveBlocks = (blocksToBeSavedArray, idsToBeSavedArray) => (dispatch
 
 export const updateBlock = (blockId, attributes) => dispatch => APIHandler(dispatch,
   BlockAPI.updateBlock(blockId, attributes)
-  .then(block => dispatch(removeFromSavingBlockQueue(block.id)))
+    .then(block => dispatch(removeFromSavingBlockQueue(block.id)))
 );
 
 export const deleteBlock = blockId => (dispatch, getState) => {
@@ -133,13 +133,13 @@ export const deleteBlock = blockId => (dispatch, getState) => {
   dispatch(addToSavingBlockQueue(blockId));
   APIHandler(dispatch,
     BlockAPI.deleteBlock(blockId)
-    .then((message) => {
-      dispatch(deletedBlock(blockId));
-      dispatch(removeFromSavingBlockQueue(blockId));
+      .then((message) => {
+        dispatch(deletedBlock(blockId));
+        dispatch(removeFromSavingBlockQueue(blockId));
 
-      updateOiceLastEditTime(getState());
+        updateOiceLastEditTime(getState());
 
-      IntercomUtils.event('delete_block');
-    })
+        IntercomUtils.event('delete_block');
+      })
   );
 };

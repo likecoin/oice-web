@@ -34,7 +34,6 @@ export default class Modal extends React.Component {
   }
 
   static defaultProps = {
-    open: false,
     width: 568,
   }
 

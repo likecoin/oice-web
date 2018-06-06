@@ -5,7 +5,9 @@ import './styles.scss';
 
 
 function ErrorAttributeList(props) {
-  const { blockId, blockIndex, macroName, errors, t } = props;
+  const {
+    blockId, blockIndex, macroName, errors, t,
+  } = props;
   return (
     <ul className="error-attribute-list">
       {errors.map(({ attributeName, code, value }) => (
@@ -69,7 +71,6 @@ const OiceErrorList = (props) => {
           <li
             key={id}
             className="error-block-item"
-            role="button"
             onClick={focusBlock}
           >
             <h1 role="presentation">

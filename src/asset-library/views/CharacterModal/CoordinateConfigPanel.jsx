@@ -64,7 +64,9 @@ export default class CoordinateConfigPanel extends React.Component {
   }
 
   renderCoordinateInputs() {
-    const { character, defaultConfig, selectedPosition, t } = this.props;
+    const {
+      character, defaultConfig, selectedPosition, t,
+    } = this.props;
     const { config } = character;
 
     return (
@@ -79,7 +81,7 @@ export default class CoordinateConfigPanel extends React.Component {
             selected: (selectedPosition === position),
           });
           return (
-            <div className={className} key={position}>
+            <div key={position} className={className}>
               <div className="character-modal-panel-config-coordinate-title">
                 {t(`characterModal.label.coordinate.${position}`)}
               </div>

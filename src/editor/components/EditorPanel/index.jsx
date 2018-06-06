@@ -17,14 +17,10 @@ import * as CharacterAction from 'editor/actions/character';
 import * as OiceAction from 'editor/actions/oice';
 import * as StoryAction from 'editor/actions/story';
 
-import {
-  updateUserTutorialState,
-} from 'editor/components/InteractiveTutorial/actions';
+import { updateUserTutorialState } from 'editor/components/InteractiveTutorial/actions';
 
 import USER_ROLE from 'common/constants/userRoles';
-import {
-  LOADING,
-} from 'editor/constants/stageType';
+import { LOADING } from 'editor/constants/stageType';
 import {
   TAB_LIST_ITEM,
   TAB_LIST,
@@ -117,7 +113,7 @@ export default class EditorPanel extends React.Component {
 
   getSelectedStory = (id = null) => {
     const storyId = id || this.getStoryId();
-    const storiesList = this.props.storiesList;
+    const { storiesList } = this.props;
     // default get from the storiesList, if localized will store in selectedStory
     return this.props.selectedStory || storiesList.find(story => story.id === storyId);
   }

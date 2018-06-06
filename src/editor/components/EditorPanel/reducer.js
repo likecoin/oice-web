@@ -11,13 +11,9 @@ import RunOiceModal from './RunOiceModal';
 import StoryPicker from './StoryPicker';
 import { reducer as StorySettingModalReducer } from './StorySettingModal';
 
-import {
-  updateRunOiceState,
-} from './actions';
+import { updateRunOiceState } from './actions';
 
-import {
-  LOADING,
-} from 'editor/constants/stageType';
+import { LOADING } from 'editor/constants/stageType';
 
 
 const initialState = {

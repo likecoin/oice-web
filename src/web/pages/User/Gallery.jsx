@@ -73,7 +73,7 @@ export default class Gallery extends React.Component {
       if (onSelectAddItem && i === 0) {
         itemChildren.push(
           <GalleryItem.Add
-            key={'-1-1'}
+            key="-1-1"
             newItemTitleString={newItemTitleString}
             style={itemStyle}
             onClick={onSelectAddItem}

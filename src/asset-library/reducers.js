@@ -1,8 +1,6 @@
 export { default as user } from 'common/reducers/user';
 export { default as alertDialog } from 'ui-elements/AlertDialog/redux';
-export {
-  default as interactiveTutorial,
-} from 'editor/components/InteractiveTutorial/reducer';
+export { default as interactiveTutorial } from 'editor/components/InteractiveTutorial/reducer';
 
 export { reducer as AssetLibraryTabBar } from './views/AssetLibraryTabBar';
 export { reducer as LibraryDashboard } from './views/LibraryDashboard';

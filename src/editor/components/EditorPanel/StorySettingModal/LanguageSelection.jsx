@@ -27,7 +27,9 @@ class LanguageSelection extends React.Component {
   }
 
   render() {
-    const { onClick, onDelete, label, selected } = this.props;
+    const {
+      onClick, onDelete, label, selected,
+    } = this.props;
     const className = classNames('language-selection', {
       selected,
     });

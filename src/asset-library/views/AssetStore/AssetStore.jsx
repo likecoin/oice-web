@@ -94,7 +94,9 @@ export default class AssetStore extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { params, featuredLibraryList, isAuthenticated, uiLanguage } = nextProps;
+    const {
+      params, featuredLibraryList, isAuthenticated, uiLanguage,
+    } = nextProps;
 
     if (!this.props.isAuthenticated && isAuthenticated) {
       this.fetchFeaturedLibraryList();
@@ -216,7 +218,9 @@ export default class AssetStore extends React.Component {
   }
 
   render() {
-    const { t, children, loggedIn, loading, pageNumber, totalPages } = this.props;
+    const {
+      t, children, loggedIn, loading, pageNumber, totalPages,
+    } = this.props;
 
     if (this.props.isFirstEnter && children) {
       const injectedChildren = React.Children.map(children, child =>

@@ -5,13 +5,11 @@ export default class RadioButton extends React.Component {
   static defaultProps = {
     values: [],
     selectedIndex: 0,
-    radioName: null,
   }
 
   static propTypes = {
     groupName: PropTypes.string,
     onChange: PropTypes.func,
-    radioName: PropTypes.string,
     selectedIndex: PropTypes.number,
     values: PropTypes.array,
   }
@@ -30,7 +28,7 @@ export default class RadioButton extends React.Component {
     });
   }
 
-  getSelectedValueFromProps(props) {
+  getSelectedValueFromProps = (props) => {
     const { values, selectedIndex } = props;
     const isInvalidValue = selectedIndex > values.length - 1 || selectedIndex < 0;
     return isInvalidValue ? values[0] : values[selectedIndex];
@@ -46,7 +44,7 @@ export default class RadioButton extends React.Component {
     return (
       <div className="radio-button-group">
         {values.map((value, index) => (
-          <div key={index} >
+          <div key={index}>
             <input
               id={`radio-input-${index}`}
               name={groupName}
@@ -55,7 +53,7 @@ export default class RadioButton extends React.Component {
               onChange={() => this.handleChange(index, value)}
               value={value}
             />
-            <label htmlFor={`radio-input-${index}`}>{value}</label>
+            <label htmlFor={`radio-input-${index}`}>{value}</label> {/* eslint-disable-line */}
           </div>
         ))}
       </div>

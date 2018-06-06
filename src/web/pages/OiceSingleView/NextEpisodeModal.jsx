@@ -69,7 +69,9 @@ export default class NextEpisodeModal extends React.Component {
   handleCTA = () => branch.deepviewCta();
 
   render() {
-    const { t, isEndedPlaying, oice, open, onToggle } = this.props;
+    const {
+      t, isEndedPlaying, oice, open, onToggle,
+    } = this.props;
     const { modalWidth } = this.state;
     if (!oice) return null;
 

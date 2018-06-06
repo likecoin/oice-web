@@ -21,9 +21,7 @@ import i18next, {
   isStoryLanguageSupported,
 } from 'common/utils/i18n';
 
-import LANGUAGE_LIST, {
-  SUPPORTED_STORY_LANGUAGES,
-} from 'common/constants/i18n';
+import LANGUAGE_LIST, { SUPPORTED_STORY_LANGUAGES } from 'common/constants/i18n';
 import USER_ROLE from 'common/constants/userRoles';
 import { LIBRARY_ACTION } from 'asset-library/constants';
 
@@ -132,7 +130,7 @@ export default class AccountSettingTab extends React.Component {
     } else if (isBacker && !isCancelled && !isTrial) {
       actionButton = (
         <OutlineButton
-          color={'blue'}
+          color="blue"
           label={t('accountSetting.button.cancelSubscription')}
           onClick={this.handleRequestCancelSubscription}
         />
@@ -183,9 +181,11 @@ export default class AccountSettingTab extends React.Component {
     const uiLanguage = mapUILanguageCode(this.state.uiLanguage);
 
     const isSupportedStoryLanguage = isStoryLanguageSupported(language);
-    const supportedStoryLanguages = isSupportedStoryLanguage ? (
-      SUPPORTED_STORY_LANGUAGES)
-    : [...SUPPORTED_STORY_LANGUAGES, 'others'];
+    const supportedStoryLanguages = (
+      isSupportedStoryLanguage ?
+        SUPPORTED_STORY_LANGUAGES :
+        [...SUPPORTED_STORY_LANGUAGES, 'others']
+    );
 
     return (
       <ProfilePanel

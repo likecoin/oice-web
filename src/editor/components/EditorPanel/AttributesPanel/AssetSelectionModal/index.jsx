@@ -108,7 +108,7 @@ export default class AssetSelectionModal extends React.Component {
           item => item.libraryId === selectedLibrary.id
         );
       }
-      this.setState({ filteredAssets: filteredAssets || [...assets] });
+      this.setState({ filteredAssets: filteredAssets || [...assets] }); // eslint-disable-line
     }
   }
 

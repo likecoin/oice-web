@@ -45,7 +45,7 @@ export function getDeepLinkObject({ channel, oice, data = {} }) {
   );
   const $og_description = storyDescription || ogDescription || description || i18n.t('site:description');
   const $og_title = `${storyName}: ${name}`;
-  const language = oice.language;
+  const { language } = oice;
   const desktopUrl = getDesktopURL(uuid, language);
 
   return ({

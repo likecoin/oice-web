@@ -17,7 +17,7 @@ export default class SearchBar extends React.Component {
   }
 
   onChange = (e) => {
-    const value = e.target.value;
+    const { value } = e.target;
     console.log('search-bar value:', value);
     this.setState({ value });
   }

@@ -13,8 +13,8 @@ import { closeAudioSelectionModal } from 'editor/actions/modal';
   libraries: (
     // prevent library is selected but neither purchased nor owned by user
     store.audioSelectModal.assetLibraryIds
-    .filter(id => !!store.libraries.dict[id])
-    .map(id => store.libraries.dict[id])
+      .filter(id => !!store.libraries.dict[id])
+      .map(id => store.libraries.dict[id])
   ),
 }))
 export default class AudioSelectionModal extends React.Component {
@@ -31,7 +31,6 @@ export default class AudioSelectionModal extends React.Component {
   }
 
   static defaultProps = {
-    open: false,
     width: 590,
   }
 

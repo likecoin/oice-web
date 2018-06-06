@@ -58,7 +58,9 @@ export default class Tabs extends React.Component {
   }
 
   render() {
-    const { id, children, onClick, rightBarItem } = this.props;
+    const {
+      id, children, onClick, rightBarItem,
+    } = this.props;
     const { selectedIndex } = this.state;
 
     const tabBarItems = [];
@@ -68,7 +70,6 @@ export default class Tabs extends React.Component {
       if (!React.isValidElement(child)) return;
       if (child.type.displayName === 'Tab') {
         tabBarItems.push(this.createTabBarItem(child, index));
-        return;
       }
     });
 

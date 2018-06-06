@@ -9,8 +9,10 @@ export default class ExpansionPanelGroup extends React.Component {
   }
 
   static propTypes = {
-    value: PropTypes.number,
+    children: PropTypes.node,
     combined: PropTypes.bool,
+    value: PropTypes.number,
+    onChange: PropTypes.func,
   }
 
   constructor(props) {

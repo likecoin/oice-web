@@ -39,7 +39,9 @@ AssetGridItemAddButton.propTypes = {
 };
 
 function AssetGridItem(props) {
-  const { asset, readonly, type, onClick } = props;
+  const {
+    asset, readonly, type, onClick,
+  } = props;
 
   const isAudioAsset = (
     type === ASSET_TYPES.MUSIC ||
@@ -81,7 +83,7 @@ function AssetGridItem(props) {
       ) : (
         <div onClick={handleClick}>
           <LazyLoad
-            height={'100%'}
+            height="100%"
             offset={0}
             throttle={250}
             once

@@ -59,7 +59,7 @@ export default handleActions({
     const copyIdsArray = [...state.idsArray];
     const copyBlocksDict = { ...state.blocksDict };
     copyBlocksDict[newBlock.id] = newBlock;
-    const parentId = newBlock.parentId; // 0
+    const { parentId } = newBlock; // 0
     if (parentId === 0) {
       copyIdsArray.splice(0, 0, newBlock.id);
     } else {
@@ -90,7 +90,7 @@ export default handleActions({
   [Actions.addToSavingBlockQueue]: (state, { payload }) => {
     const payloadType = typeof payload;
     // how to copy a set
-    const toBeSavedIds = state.toBeSavedIds;
+    const { toBeSavedIds } = state;
     if (payloadType === 'number') {
       // id
       toBeSavedIds.add(payload);
@@ -108,7 +108,7 @@ export default handleActions({
   },
   [Actions.removeFromSavingBlockQueue]: (state, { payload }) => {
     const payloadType = typeof payload;
-    const toBeSavedIds = state.toBeSavedIds;
+    const { toBeSavedIds } = state;
     if (payloadType === 'number') {
       // id
       toBeSavedIds.delete(payload);

@@ -8,8 +8,7 @@ const initialState = {
 export default handleActions({
   FETCHED_MACRO_ATTR_DEFINITIONS: (state, { payload }) => {
     const copyAttrDefObj = { ...state.attrDefObj };
-    const macroId = payload.macroId;
-    const attrDefList = payload.attrDefList;
+    const { macroId, attrDefList } = payload;
     copyAttrDefObj[macroId] = attrDefList;
     return ({
       ...state,

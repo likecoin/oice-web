@@ -36,7 +36,7 @@ const NUM_SE_BUFFERS = 3;
 
 const getIntegerFromString = (string, max, min = 0) => {
   const parsedValue = parseInt(string, 10);
-  if (isNaN(parsedValue)) return min;
+  if (Number.isNaN(parsedValue)) return min;
 
   if (max && parsedValue > max) return max;
   if (parsedValue < min) return min;
@@ -53,7 +53,6 @@ export default class AttributeRow extends React.Component {
 
   static defaultProps = {
     fullWidth: true,
-    half: false,
   }
 
   static propTypes = {
@@ -146,7 +145,7 @@ export default class AttributeRow extends React.Component {
       <SliderBar
         fullWidth={fullWidth}
         initialVal={(valueInt || valueInt === 0) ? valueInt : 0}
-        max={isNaN(max) ? 10000 : max}
+        max={Number.isNaN(max) ? 10000 : max}
         onChange={this.handleUpdateAttribute}
       />
     );
@@ -253,12 +252,12 @@ export default class AttributeRow extends React.Component {
               isChecked={attributeValue}
               label={attributeLabel}
               value={attributeLabel}
-              onChange={(value) => this.handleUpdateAttribute(value, assetType)}
+              onChange={value => this.handleUpdateAttribute(value, assetType)}
             />
           );
         case 'color':
           return (
-            <ColorPicker color={attributeValue || '#4a4a4a'} onChange={(value) => this.handleUpdateAttribute(value, assetType)} />
+            <ColorPicker color={attributeValue || '#4a4a4a'} onChange={value => this.handleUpdateAttribute(value, assetType)} />
           );
         case 'composedAnswer':
           return (

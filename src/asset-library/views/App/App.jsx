@@ -21,7 +21,7 @@ import {
   getAuthItem,
   getLocalUserItem,
   redirectToLoginPage,
- } from 'common/utils/auth';
+} from 'common/utils/auth';
 
 import './App.style.scss';
 

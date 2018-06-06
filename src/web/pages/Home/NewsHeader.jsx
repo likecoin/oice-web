@@ -15,7 +15,7 @@ import './NewsHeader.styles.scss';
 function NewsMessage({ avatar, text, style }) {
   return (
     <li className="message" style={style}>
-      <img src={avatar} />
+      <img alt="avatar" src={avatar} />
       <span>{text}</span>
     </li>
   );
@@ -83,8 +83,18 @@ class NewsConversation extends React.Component {
 
     return (
       <TransitionMotion
-        willEnter={() => ({ x: -50, y: 200, scale: 0.5, opacity: 0 })}
-        willLeave={() => ({ x: 0, y: spring(-200), scale: 1, opacity: 1 })}
+        willEnter={() => ({
+          x: -50,
+          y: 200,
+          scale: 0.5,
+          opacity: 0,
+        })}
+        willLeave={() => ({
+          x: 0,
+          y: spring(-200),
+          scale: 1,
+          opacity: 1,
+        })}
         styles={styles}
       >
         {interpolatedStyles =>
@@ -92,7 +102,7 @@ class NewsConversation extends React.Component {
             {interpolatedStyles.map(({ key, data, style }) => {
               const { user, text } = data.message;
 
-              const avatar = users[user].avatar;
+              const { avatar } = users[user];
 
               const messageStyle = {
                 transform: (
@@ -164,9 +174,9 @@ export default class NewsHeader extends React.Component {
     }
     */
     const content = await firebase.database()
-                                  .ref('news-header')
-                                  .once('value')
-                                  .then(snapshot => snapshot.val());
+      .ref('news-header')
+      .once('value')
+      .then(snapshot => snapshot.val());
 
     this.setState(content);
   }

@@ -64,7 +64,7 @@ function LandingSection(props) {
 LandingSection.propTypes = {
   t: PropTypes.func.isRequired,
   onClickRegisterReader: PropTypes.func,
-  onClickScrollIndicator: PropTypes.func,
+  // onClickScrollIndicator: PropTypes.func,
 };
 
 export default translate('LandingSection')(LandingSection);

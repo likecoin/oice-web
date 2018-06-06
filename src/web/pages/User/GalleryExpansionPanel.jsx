@@ -14,7 +14,8 @@ function getStateFromProps(nextProps, prevProps = {}) {
   return {
     children: (
       prevProps.expanded && !nextProps.expanded ?
-      prevProps.children : nextProps.children
+        prevProps.children :
+        nextProps.children
     ),
   };
 }
@@ -43,7 +44,7 @@ export default class GalleryExpansionPanel extends React.Component {
   handleExpansionAnimationRest = () => {
     if (this.props.expanded) {
       if (this.component) {
-       // FIXME: Awkward animation
+        // FIXME: Awkward animation
         scrollIntoView(this.component, {
           time: 200,
           align: {
@@ -76,8 +77,8 @@ export default class GalleryExpansionPanel extends React.Component {
       >
         {style => (
           <div
-            className={className}
             ref={ref => this.component = ref}
+            className={className}
             style={style}
           >
             <div className="gallery-expansion-panel-content-wrapper">

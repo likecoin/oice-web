@@ -147,7 +147,7 @@ export default class LanguageSettingTab extends React.Component {
         )}
         {unsupportedLanguages.length > 1 && (
           <Dropdown
-            selectedIndexes={[0]}    // always show "addLanguage" label
+            selectedIndexes={[0]} // always show "addLanguage" label
             values={unsupportedLanguages.map(language => ({ text: t(language) }))}
             fullWidth
             onChange={indexes => this.handleAddLanguage(unsupportedLanguages[indexes[0]])}
@@ -183,7 +183,9 @@ export default class LanguageSettingTab extends React.Component {
   }
 
   render() {
-    const { t, content, newLanguages, loading } = this.props;
+    const {
+      t, content, newLanguages, loading,
+    } = this.props;
 
     const supportedLanguages = [...this.props.supportedLanguages, ...newLanguages];
 

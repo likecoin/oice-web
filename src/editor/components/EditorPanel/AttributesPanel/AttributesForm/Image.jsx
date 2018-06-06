@@ -115,8 +115,8 @@ export default class ImageForm extends React.Component {
 
     const title = (
       block.macroName === 'item' ?
-      t('itemImageSelectionModal.title') :
-      t('backgroundImageSelectionModal.title')
+        t('itemImageSelectionModal.title') :
+        t('backgroundImageSelectionModal.title')
     );
 
     dispatch(AssetSelectionModal.Actions.open({
@@ -197,7 +197,9 @@ export default class ImageForm extends React.Component {
       }
     }
 
-    const { mopacity, mcolor, convert, grayscale } = block.attributes;
+    const {
+      mopacity, mcolor, convert, grayscale,
+    } = block.attributes;
 
     const maskOpacity = this.state.opacity || parseInt(_get(mopacity, 'value', 0), 10);
     const maskImageStyle = {

@@ -59,7 +59,7 @@ export default class UIDemo extends React.Component {
         <section>
           <div>
             <h3>ToggleButton</h3>
-            <ToggleButton leftLabel={'隱藏'} rightLabel={'顯示'} />
+            <ToggleButton leftLabel="隱藏" rightLabel="顯示" />
           </div>
 
         </section>
@@ -75,7 +75,7 @@ export default class UIDemo extends React.Component {
         <section>
           <h2>Link Tooltip</h2>
           <LinkTooltip
-            link={'https://oice.com/story/33866cabf01c437a92178f4d1970c88d'}
+            link="https://oice.com/story/33866cabf01c437a92178f4d1970c88d"
           />
         </section>
         <section>
@@ -113,9 +113,9 @@ export default class UIDemo extends React.Component {
           </div>
           <div>
             <h3>SliderBar</h3>
-            <SliderBar header={'淡入淡出時間(秒)'} initialVal={50} max={100} min={0} />
+            <SliderBar header="淡入淡出時間(秒)" initialVal={50} max={100} min={0} />
             default width
-            <SliderBar header={'很長的淡入淡出時間(秒)'} initialVal={500} min={0} fullWidth />
+            <SliderBar header="很長的淡入淡出時間(秒)" initialVal={500} min={0} fullWidth />
             100% width
           </div>
           <DropdownDemo />
@@ -147,7 +147,11 @@ export default class UIDemo extends React.Component {
           </div>
           <div>
             <h3>ColorPicker</h3>
-            <ColorPicker color={{ r: 0, g: 174, b: 34, a: 1 }} />
+            <ColorPicker
+              color={{
+                r: 0, g: 174, b: 34, a: 1,
+              }}
+            />
           </div>
           <div>
             <h3>CharacterPreview</h3>

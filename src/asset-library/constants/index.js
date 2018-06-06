@@ -72,5 +72,5 @@ export const STORE_LIBRARY_LIST = [
 
 export const MAX_AUDIO_FILE_SIZE = {
   BYTE: 30000000,
-  MB: 30,   // Mb
+  MB: 30, // Mb
 };

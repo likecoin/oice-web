@@ -86,7 +86,6 @@ export default class EditAudioAssetModal extends React.Component {
   }
 
   static defaultProps = {
-    open: false,
     readonly: true,
   }
 
@@ -186,7 +185,9 @@ export default class EditAudioAssetModal extends React.Component {
   }
 
   render() {
-    const { open, readonly, t, type, uploading, error } = this.props;
+    const {
+      open, readonly, t, type, uploading, error,
+    } = this.props;
     const { asset, file, src } = this.state;
 
     const deleteButton = (

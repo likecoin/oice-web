@@ -1,25 +1,34 @@
 .check-box {
   > div {
-    margin-top: 20px;
     display: flex;
     align-items: center;
 
-    > input[type='checkbox'] {
-      -webkit-appearance:none;
+    margin-top: 20px;
+
+    input[type='checkbox'] {
+      flex-shrink: 0;
+
       width: 14px;
     	height: 14px;
-    	border-radius: 2px;
-    	background: $pure-white;
+      margin-right: 8px;
+
     	border: $border-style1;
-      outline:none;
-      flex-shrink: 0;
+    	border-radius: 2px;
+      outline: none;
+    	background: $pure-white;
+
+      -webkit-appearance: none;
+
+      transition: all .2s ease-in-out;
 
       &:checked {
         background: {
-          image: url('/img/checked-mark.png');
-          color: $dark-green1;
-          repeat: no-repeat;
           position: center;
+
+          color: $dark-green1;
+
+          image: url('/img/checked-mark.png');
+          repeat: no-repeat;
           origin: content-box;
           size: 10px 10px;
         }
@@ -31,9 +40,13 @@
     }
 
     > label {
-      font-size: 14px;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+
 	    color: $dark-gray3;
-      margin-left: 8px;
+
+      font-size: 14px;
     }
   }
 

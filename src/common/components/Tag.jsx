@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import CloseIcon from 'common/icons/close';
 
-export default class RadioButton extends React.Component {
+export default class Tag extends React.Component {
   static defaultProps = {
     canDelete: false,
     icon: '',
