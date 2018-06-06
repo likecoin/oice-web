@@ -1,6 +1,15 @@
 import { handleActions } from 'redux-actions';
 import update from 'immutability-helper';
 
+import { setDefaultConfigForCharacterFg } from 'editor/utils/app';
+
+import {
+  COORDINATE_LIST,
+  COORDINATE,
+  POSITIONS_LIST,
+  POSITIONS,
+} from 'editor/constants/character';
+
 import {
   addedCharacter,
   addFGImages,
@@ -19,16 +28,6 @@ import {
   updateSelectedFgIndex,
   updateSelectedPosition,
 } from './actions';
-
-import { setDefaultConfigForCharacterFg } from 'editor/utils/app';
-
-import {
-  COORDINATE_LIST,
-  COORDINATE,
-  POSITIONS_LIST,
-  POSITIONS,
-} from 'editor/constants/character';
-
 
 // Utils
 
@@ -70,7 +69,7 @@ export default handleActions({
     // Convertion for update asset
     const fgImages = (!editing ?
       [...initialState.fgImages] :
-      asset.fgimages.map((fgImage) => ({
+      asset.fgimages.map(fgImage => ({
         meta: fgImage,
         src: fgImage.url,
         file: undefined,
@@ -94,28 +93,28 @@ export default handleActions({
       loading: initialState.loading,
     };
   },
-  [closeCharacterModal]: (state) => ({
+  [closeCharacterModal]: state => ({
     ...state,
     open: false,
   }),
-  [toggleExpansionCharacterModal]: (state) => update(state, {
-    expanded: { $apply: (expanded) => !expanded },
+  [toggleExpansionCharacterModal]: state => update(state, {
+    expanded: { $apply: expanded => !expanded },
   }),
-  [postCharacterBegin]: (state) => ({
+  [postCharacterBegin]: state => ({
     ...state,
     loading: true,
   }),
-  [addedCharacter]: (state) => ({
+  [addedCharacter]: state => ({
     ...state,
     open: false,
     loading: false,
   }),
-  [updatedCharacter]: (state) => ({
+  [updatedCharacter]: state => ({
     ...state,
     open: false,
     loading: false,
   }),
-  [deletedCharacter]: (state) => ({
+  [deletedCharacter]: state => ({
     ...state,
     open: false,
     loading: false,
@@ -132,7 +131,7 @@ export default handleActions({
     const config = { ...state.character.config };
     Object.keys(payload).forEach((key) => {
       const value = payload[key];
-      if (isNaN(value)) {
+      if (Number.isNaN(value)) {
         delete config[key];
       } else {
         config[key] = value;

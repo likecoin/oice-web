@@ -28,7 +28,7 @@ export default handleActions({
     open: payload.open,
     item: payload.open ? payload.asset : null,
   }),
-  [addItemBegin]: (state) => ({
+  [addItemBegin]: state => ({
     ...state,
     loading: true,
   }),
@@ -47,7 +47,7 @@ export default handleActions({
     item: payload,
     loading: false,
   }),
-  [deleteItemBegin]: (state) => ({
+  [deleteItemBegin]: state => ({
     ...state,
     loading: true,
   }),

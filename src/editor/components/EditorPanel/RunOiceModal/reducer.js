@@ -14,7 +14,7 @@ export default handleActions({
     open: true,
     preview: payload.preview,
   }),
-  [Action.close]: (state) => ({
+  [Action.close]: state => ({
     ...state,
     open: false,
   }),
