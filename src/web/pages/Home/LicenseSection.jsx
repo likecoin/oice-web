@@ -1,11 +1,10 @@
-/* global firebase: true */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { translate } from 'react-i18next';
 
 import classNames from 'classnames';
 
+import firebase from 'common/utils/firebase';
 import { SparkScroll } from 'common/utils/sparkScroll';
 
 import Caption from './Caption';
