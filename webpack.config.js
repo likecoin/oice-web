@@ -66,11 +66,18 @@ module.exports = {
   entry: editorEntry,
   output: {
     filename: '[name].js',
+    chunkFilename: '[name].js',
     path: BUILD_DIR,
     publicPath: `/${BUILD_DIR_NAME}/`,
   },
+  performance: {
+    maxEntrypointSize: 1000000,
+    maxAssetSize: 300000,
+    hints: DEBUG ? false : 'warning'
+  },
   stats: { children: false },
   module: {
+    noParse: /es6-promise\.js$/, // Avoid webpack shimming process
     rules: [
       {
         test: /\.jsx?$/,
@@ -138,11 +145,24 @@ module.exports = {
       },
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'common',
+      name: 'vendor',
       minChunks(module, count) {
         return (
-          count >= 3 &&
-          // Do not externalize if the request is a CSS file
+          count > 1 &&
+          /node_modules/.test(module.context) &&
+          // Do not externalize if the request is a CSS file which can potentially emit CSS assets!
+          !/\.(css|less|scss|sass|styl|stylus)$/.test(module.request)
+        )
+      }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'common',
+      chunks: Object.keys(editorEntry),
+      minChunks(module, count) {
+        // A module is extracted into the vendor chunk when...
+        return (
+          count > 2 &&
+          // Do not externalize if the request is a CSS file which can potentially emit CSS assets!
           !/\.(css|less|scss|sass|styl|stylus)$/.test(module.request)
         )
       }
@@ -170,7 +190,9 @@ module.exports = {
       parallel: true,
       compress: {
         drop_console: true,
+        warnings: false,
       },
     }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
   ]),
 };

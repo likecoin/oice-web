@@ -96,6 +96,7 @@ export default class IndexHTML extends React.Component {
           <script dangerouslySetInnerHTML={{ __html: 'try{Typekit.load({ async: true });}catch(e){}' }} />
           {!IS_DEV_MODE && <script dangerouslySetInnerHTML={{ __html: `Raven.config('${SENTRY_DSN}').install()` }} />}
           <link rel="preload" href={`/build/manifest.js?v=${VERSION}`} as="script" />
+          <link rel="preload" href={`/build/vendor.js?v=${VERSION}`} as="script" />
           <link rel="preload" href={`/build/common.js?v=${VERSION}`} as="script" />
           <link rel="prefetch" href={`/build/web.js?v=${VERSION}`} />
           <link rel="prefetch" href={`/build/editor.js?v=${VERSION}`} />
@@ -114,6 +115,10 @@ export default class IndexHTML extends React.Component {
           <div id="app">{children}</div>
           <script
             src={`/build/manifest.js?v=${VERSION}`}
+            type="application/javascript"
+          />
+          <script
+            src={`/build/vendor.js?v=${VERSION}`}
             type="application/javascript"
           />
           <script

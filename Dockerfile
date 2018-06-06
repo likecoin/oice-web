@@ -13,5 +13,5 @@ ARG SRV_ENV=localhost
 ENV SRV_ENV ${SRV_ENV}
 ARG NODE_ENV=localhost
 ENV NODE_ENV ${NODE_ENV}
-RUN npm run build
+RUN npm run build:slient
 CMD npm run server
