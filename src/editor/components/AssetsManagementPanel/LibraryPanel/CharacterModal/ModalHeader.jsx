@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import classNames from 'classnames';
-import _values from 'lodash/values';
 
 import Modal from 'ui-elements/Modal';
 import RaisedButton from 'ui-elements/RaisedButton';
