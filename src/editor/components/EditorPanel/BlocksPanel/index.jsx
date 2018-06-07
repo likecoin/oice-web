@@ -12,7 +12,6 @@ import CellMeasurer, { CellMeasurerCache } from 'react-virtualized/dist/commonjs
 import List from 'react-virtualized/dist/commonjs/List';
 import 'react-virtualized/styles.css';
 
-import _findIndex from 'lodash/findIndex';
 import _get from 'lodash/get';
 
 import * as BlockAction from 'editor/actions/block';
