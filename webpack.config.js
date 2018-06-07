@@ -65,7 +65,7 @@ module.exports = {
   performance: {
     maxEntrypointSize: 1000000,
     maxAssetSize: 300000,
-    hints: DEBUG ? false : 'warning'
+    hints: DEBUG ? false : 'warning',
   },
   stats: { children: false },
   module: {
@@ -87,7 +87,14 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|jpeg|gif|woff|woff2)$/,
-        loader: 'file-loader?name=[hash].[ext]',
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name]-[hash].[ext]',
+            },
+          },
+        ],
       },
       {
         test: /\.md$/,
@@ -100,7 +107,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        enforce: "pre",
+        enforce: 'pre',
         loader: 'eslint-loader',
       },
     ] : []),
@@ -144,8 +151,8 @@ module.exports = {
           /node_modules/.test(module.context) &&
           // Do not externalize if the request is a CSS file which can potentially emit CSS assets!
           !/\.(css|less|scss|sass|styl|stylus)$/.test(module.request)
-        )
-      }
+        );
+      },
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'common',
@@ -156,8 +163,8 @@ module.exports = {
           count > 2 &&
           // Do not externalize if the request is a CSS file which can potentially emit CSS assets!
           !/\.(css|less|scss|sass|styl|stylus)$/.test(module.request)
-        )
-      }
+        );
+      },
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'manifest',
