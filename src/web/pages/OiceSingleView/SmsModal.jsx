@@ -204,7 +204,7 @@ export default class SmsModal extends React.Component {
     } = this.props;
     const { phoneNumber, selectedCountryCodeIndex } = this.state;
     const className = classNames('send-sms', { sentSMS });
-    const selectedIndexes = Number.isNaN(selectedCountryCodeIndex) ? [] : [selectedCountryCodeIndex];
+    const selectedIndexes = Number.isNaN(Number(selectedCountryCodeIndex)) ? [] : [selectedCountryCodeIndex];
     const dropdownValues = countries.map(country => ({
       text: t('countries.nameWithCountryCode', { ...country }),
       icon: null,

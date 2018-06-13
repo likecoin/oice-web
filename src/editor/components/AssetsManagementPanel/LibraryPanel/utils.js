@@ -10,7 +10,7 @@ import {
 const getArrayIndexById = (array, id) => array.findIndex(a => a.id === id);
 
 export const getUpdatedAssetsList = (list = [], value) => {
-  const isDelete = !Number.isNaN(value);
+  const isDelete = !Number.isNaN(Number(value));
   const index = getArrayIndexById(list, isDelete ? value : value.id);
   if (index === -1) return list;
 
