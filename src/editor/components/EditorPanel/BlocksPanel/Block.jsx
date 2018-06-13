@@ -38,9 +38,8 @@ const blockSource = {
   },
   endDrag(props, monitor, component) {
     props.onDragging(false);
-    // call didMoveBlock when moved; done checking in index file
-    const hoverIndex = props.index;
-    props.didMoveBlock(hoverIndex);
+    const dragBlockId = props.dragItemType.id;
+    props.didMoveBlock(dragBlockId);
   },
 };
 
