@@ -316,11 +316,11 @@ export default class Block extends React.Component {
       selected: isSelected,
     });
 
-    // change blocks oreder case
+    // change blocks order case
     if (movingBlockId === block.id) {
       return connectDropTarget(
         <div>
-          <DummyBlock style={style} hover />
+          <DummyBlock style={{ ...style, position: 'relative' }} hover />
         </div>
       );
     }
