@@ -328,6 +328,7 @@ export default class BlocksPanel extends React.Component {
   }
 
   resizeBlockList = () => {
+    this._cache.clearAll();
     if (this.blockList) {
       this.blockList.recomputeRowHeights();
     }
