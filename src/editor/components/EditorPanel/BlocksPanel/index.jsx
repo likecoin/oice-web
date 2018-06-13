@@ -169,20 +169,16 @@ export default class BlocksPanel extends React.Component {
     }, this.resizeBlockList);
   }
 
-  handleBlockDidMove = (hoverIndex) => {
-    // here hover index === dragIndex, cause set it equal when after a move action in Block.hover function
+  handleBlockDidMove = (dragBlockId) => {
     const { blockIdsArray, blocksDict } = this.state;
-    const dragBlockId = blockIdsArray[hoverIndex];
+    const hoverIndex = blockIdsArray.findIndex(id => id === dragBlockId);
     const blockIdsArrayStore = this.props.blockIdsArray;
     const prevIndex = blockIdsArrayStore.findIndex(blockId => blockId === dragBlockId);
     if (prevIndex === hoverIndex) return;
+
     this.props.dispatch(BlockAction.updateBlocksFromView(blockIdsArray)); // update store here
 
-    let parentId = 0;
-    const parentBlockId = blockIdsArray[hoverIndex - 1];
-    if (parentBlockId) {
-      parentId = parentBlockId;
-    }
+    const parentId = blockIdsArray[hoverIndex - 1] || 0;
     this.props.dispatch(BlockAction.moveBlock(dragBlockId, parentId));
     this.setState({ movingBlockId: null }, this.handleBlockListUpdate);
   }
