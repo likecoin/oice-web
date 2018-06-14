@@ -2,7 +2,6 @@ const webpack = require('webpack'); // for plugin use
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 
 const SRV_ENV = process.env.SRV_ENV;
 const PORT = process.env.PORT || 3000;
@@ -75,15 +74,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: [
-          'react-hot-loader',
-          {
-            loader: 'babel-loader',
-            options: {
-              plugins: ['lodash'],
-            },
-          },
-        ],
+        use: ['react-hot-loader', 'babel-loader'],
       },
       {
         test: /\.s?css$/,
@@ -137,16 +128,9 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin({ filename: '[name].css' }),
-    new LodashModuleReplacementPlugin({
-      shorthands: true,
-      collections: true,
-      paths: true,
-      guards: true,
-    }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.DefinePlugin({
       'process.env': {
-        BABEL_ENV: JSON.stringify(NODE_ENV),
         SRV_ENV: JSON.stringify(SRV_ENV),
         NODE_ENV: JSON.stringify(NODE_ENV),
         IS_CLIENT: JSON.stringify(true),
