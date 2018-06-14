@@ -63,6 +63,17 @@ export default class IndexHTML extends React.Component {
           <meta content="oice" name="apple-mobile-web-app-title" />
 
           <title>{meta.title}</title>
+          <link rel="preload" href={`/build/manifest.js?v=${VERSION}`} as="script" />
+          <link rel="preload" href={`/build/vendor.js?v=${VERSION}`} as="script" />
+          <link rel="preload" href={`/build/common.js?v=${VERSION}`} as="script" />
+          <link rel="preload" href={`/build/${module}.css?v=${VERSION}`} as="style" />
+          {modules.map(m => (
+            <link
+              key={m}
+              rel={module === m ? 'preload' : 'prefetch'}
+              href={`/build/${m}.js?v=${VERSION}`}
+            />
+          ))}
 
           {!DEBUG &&
             <link
@@ -94,16 +105,6 @@ export default class IndexHTML extends React.Component {
           <script src="https://use.typekit.net/lds7dmt.js" />
           <script dangerouslySetInnerHTML={{ __html: 'try{Typekit.load({ async: true });}catch(e){}' }} />
           {!IS_DEV_MODE && <script dangerouslySetInnerHTML={{ __html: `Raven.config('${SENTRY_DSN}').install()` }} />}
-          <link rel="preload" href={`/build/manifest.js?v=${VERSION}`} as="script" />
-          <link rel="preload" href={`/build/vendor.js?v=${VERSION}`} as="script" />
-          <link rel="preload" href={`/build/common.js?v=${VERSION}`} as="script" />
-          {modules.map(m => (
-            <link
-              key={m}
-              rel={module === m ? 'preload' : 'prefetch'}
-              href={`/build/${m}.js?v=${VERSION}`}
-            />
-          ))}
         </head>
         <body>
           <noscript>
