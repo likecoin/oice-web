@@ -36,7 +36,7 @@ const NUM_SE_BUFFERS = 3;
 
 const getIntegerFromString = (string, max, min = 0) => {
   const parsedValue = parseInt(string, 10);
-  if (Number.isNaN(parsedValue)) return min;
+  if (Number.isNaN(Number(parsedValue))) return min;
 
   if (max && parsedValue > max) return max;
   if (parsedValue < min) return min;
@@ -145,7 +145,7 @@ export default class AttributeRow extends React.Component {
       <SliderBar
         fullWidth={fullWidth}
         initialVal={(valueInt || valueInt === 0) ? valueInt : 0}
-        max={Number.isNaN(max) ? 10000 : max}
+        max={Number.isNaN(Number(max)) ? 10000 : max}
         onChange={this.handleUpdateAttribute}
       />
     );

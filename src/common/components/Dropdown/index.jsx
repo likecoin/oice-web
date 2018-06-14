@@ -187,7 +187,7 @@ export default class Dropdown extends React.Component {
 
   isFull = () => {
     const { limit } = this.props;
-    return !Number.isNaN(limit) && this.state.selectedIndexes.length >= limit;
+    return !Number.isNaN(Number(limit)) && this.state.selectedIndexes.length >= limit;
   }
 
   positionFixedDropdownMenu() {

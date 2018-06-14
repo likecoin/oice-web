@@ -111,7 +111,7 @@ function LibraryInfo(props) {
   const isToggled = (
     togglingLibraryId === library.id ? !library.isSelected : library.isSelected
   );
-  const toggleButtonDisabled = !Number.isNaN(togglingLibraryId);
+  const toggleButtonDisabled = !Number.isNaN(Number(togglingLibraryId));
   const toggleButtonClassName = classNames({
     disabled: toggleButtonDisabled,
   });
