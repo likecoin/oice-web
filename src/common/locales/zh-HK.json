@@ -343,7 +343,8 @@
         "switchToMainNet": "切換至 Mainnet 正式網絡",
         "unlockMetaMask": "登入 MetaMask",
         "signMetaMask": "在 MetaMask 按 Sign",
-        "connectWithLikeCoin": "正在登入 LikeCoin"
+        "connectWithLikeCoin": "正在登入 LikeCoin",
+        "enterLikeCoinId": "請輸入你的 LikeCoin ID"
       },
       "label": {
         "desktopChromeRequired": "需要使用支援以太坊加密貨幣錢包 MetaMask 的瀏覽器。\n請使用電腦版 Chrome 瀏覽器並安裝 MetaMask 插件",
@@ -1131,7 +1132,8 @@
     "ERR_LIKECOIN_CONNECT_INVALID_ADDRESS": "此錢包地址尚未申請LikeCoin ID",
     "ERR_LIKECOIN_CONNECT_MISSING_PARAMS": "LikeCoin ID綁定發生錯誤",
     "ERR_LIKECOIN_CONNECT_DUPLICATED": "此LikeCoin ID已被綁定",
-    "ERR_LIKECOIN_CONNECT_ALREADY": "不能綁定到另一個LikeCoin ID"
+    "ERR_LIKECOIN_CONNECT_ALREADY": "不能綁定到另一個LikeCoin ID",
+    "ERR_LIKECOIN_CONNECT_ID_WALLET_MISMATCH": "正在使用的錢包地址與輸入的 LikeCoin ID 不符"
   },
   "general": {
     "save": "儲存",

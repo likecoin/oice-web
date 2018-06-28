@@ -52,7 +52,7 @@ function getLikeCoinRegistrationURL() {
     registeredLikeCoinId: likecoinId,
   };
 })
-@translate('Profile')
+@translate(['general', 'Profile'])
 export default class LikeCoinIntegrationPanel extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -104,9 +104,9 @@ export default class LikeCoinIntegrationPanel extends React.Component {
     this.props.dispatch(push(window.location.pathname + pushURL.search));
   }
 
-  _handleLikeCoinConnect = ({ address, signature }) => {
+  _handleLikeCoinConnect = ({ address, likeCoinId }) => {
     this._clearURLSearchParams();
-    this.props.dispatch(Actions.connectLikeCoin({ address, signature }));
+    this.props.dispatch(Actions.connectLikeCoin({ address, likeCoinId }));
   }
 
   _handleLikeCoinCloseConnection = () => {
@@ -180,6 +180,8 @@ export default class LikeCoinIntegrationPanel extends React.Component {
 
   render() {
     const { t, likeCoinId, userId } = this.props;
+
+    console.log(this._handleLikeCoinConnect);
 
     return (
       <ProfilePanel
