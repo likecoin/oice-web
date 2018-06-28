@@ -1,16 +1,16 @@
+import * as ASSET_TYPE from 'common/constants/assetTypes';
+import { getLocalUserItem } from 'common/utils/auth';
+import USER_ROLE from 'common/constants/userRoles';
+
 import {
   fetchTypedAssetsByLibraryId,
   fetchCharactersByLibraryId,
 } from './actions';
 
-import * as ASSET_TYPE from 'common/constants/assetTypes';
-import { getLocalUserItem } from 'common/utils/auth';
-import USER_ROLE from 'common/constants/userRoles';
-
-const getArrayIndexById = (array, id) => array.findIndex((a) => a.id === id);
+const getArrayIndexById = (array, id) => array.findIndex(a => a.id === id);
 
 export const getUpdatedAssetsList = (list = [], value) => {
-  const isDelete = !isNaN(value);
+  const isDelete = !Number.isNaN(Number(value));
   const index = getArrayIndexById(list, isDelete ? value : value.id);
   if (index === -1) return list;
 
@@ -23,7 +23,7 @@ export const getUpdatedAssetsList = (list = [], value) => {
   return newList;
 };
 
-export const isCharacterType = (type) => (type === ASSET_TYPE.CHARACTER);
+export const isCharacterType = type => (type === ASSET_TYPE.CHARACTER);
 
 export const fetchAssetsIfNeeded = (props) => {
   const {
@@ -63,4 +63,4 @@ export const ownEditPermission = (library) => {
   return false;
 };
 
-export const getFilename = (name) => name.split('.')[0];
+export const getFilename = name => name.split('.')[0];

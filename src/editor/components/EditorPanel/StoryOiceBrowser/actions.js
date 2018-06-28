@@ -17,10 +17,10 @@ const fetchOices = (selectedStoryId, onRequestAddOice) => (dispatch) => {
   dispatch(beginFetchOices());
   APIHandler(dispatch,
     OiceAPI.fetchOices(selectedStoryId)
-    .then((oices) => {
-      dispatch(fetchedOices(oices));
-      if (onRequestAddOice && oices.length === 0) onRequestAddOice();
-    })
+      .then((oices) => {
+        dispatch(fetchedOices(oices));
+        if (onRequestAddOice && oices.length === 0) onRequestAddOice();
+      })
   );
 };
 
@@ -30,10 +30,10 @@ const addOice = (newOiceName, storyId) => (dispatch) => {
   dispatch(beginAddOice());
   APIHandler(dispatch,
     OiceAPI.addOice(newOiceName, storyId)
-    .then((oice) => {
-      dispatch(addedOice(oice));
-      dispatch(StoryAction.fetchStoryLanguages(oice.storyId));
-    })
+      .then((oice) => {
+        dispatch(addedOice(oice));
+        dispatch(StoryAction.fetchStoryLanguages(oice.storyId));
+      })
   );
 };
 

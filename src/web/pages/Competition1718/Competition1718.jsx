@@ -1,5 +1,3 @@
-/* global firebase: true */
-
 import React from 'react';
 import {
   Element,
@@ -12,6 +10,7 @@ import _times from 'lodash/times';
 import _get from 'lodash/get';
 import classNames from 'classnames';
 
+import firebase from 'common/utils/firebase';
 import i18n from 'common/utils/i18n';
 
 import Avatar from 'ui-elements/Avatar';

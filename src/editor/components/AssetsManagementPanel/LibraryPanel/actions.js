@@ -1,10 +1,4 @@
-import {
-  createAction,
-} from 'redux-actions';
-
-import {
-  startSoundUpload,
-} from './UploadAudioAssetModal/actions';
+import { createAction } from 'redux-actions';
 
 import { push } from 'react-router-redux';
 import * as LibraryAPI from 'common/api/library';
@@ -16,18 +10,21 @@ import * as ASSET_TYPE from 'common/constants/assetTypes';
 import { APIHandler } from 'common/utils/api';
 import * as IntercomUtils from 'common/utils/intercom';
 
+import { startSoundUpload } from './UploadAudioAssetModal/actions';
+
 
 export const fetchedSelectedLibraryById = createAction('FETCH_SELECTED_LIBRARY');
-export const fetchSelectedLibraryById = (libraryId) => (dispatch) => {
+export const fetchSelectedLibraryById = libraryId => (dispatch) => {
   APIHandler(dispatch, LibraryAPI.fetchLibrary(libraryId)
-  .then(library => {
-    dispatch(fetchedSelectedLibraryById(library));
-  }));
+    .then((library) => {
+      dispatch(fetchedSelectedLibraryById(library));
+    })
+  );
 };
 
 
 export const selectedLibrary = createAction('SELECT_LIBRARY');
-export const selectLibrary = (library) => (dispatch) => {
+export const selectLibrary = library => (dispatch) => {
   dispatch(push(`/library/${library.id}`));
   dispatch(selectedLibrary(library));
 };
@@ -47,33 +44,35 @@ export const fetchTypedAssetsByLibraryId = (libraryId, assetType) => (dispatch) 
     default: break;
   }
   APIHandler(dispatch, AssetAPI.fetchTypedAssetsListByLibrary(libraryId, assetType)
-  .then(assets => {
-    switch (assetType) {
-      case ASSET_TYPE.BACKGROUND:
-        dispatch(fetchedBackgroundsByLibraryId(assets));
-        break;
-      case ASSET_TYPE.ITEM:
-        dispatch(fetchItemsByLibraryEnd(assets));
-        break;
-      case ASSET_TYPE.MUSIC:
-        dispatch(fetchedMusicsByLibraryId(assets));
-        break;
-      case ASSET_TYPE.SOUND:
-        dispatch(fetchedSoundsByLibraryId(assets));
-        break;
-      default:
-        break;
-    }
-  }));
+    .then((assets) => {
+      switch (assetType) {
+        case ASSET_TYPE.BACKGROUND:
+          dispatch(fetchedBackgroundsByLibraryId(assets));
+          break;
+        case ASSET_TYPE.ITEM:
+          dispatch(fetchItemsByLibraryEnd(assets));
+          break;
+        case ASSET_TYPE.MUSIC:
+          dispatch(fetchedMusicsByLibraryId(assets));
+          break;
+        case ASSET_TYPE.SOUND:
+          dispatch(fetchedSoundsByLibraryId(assets));
+          break;
+        default:
+          break;
+      }
+    })
+  );
 };
 
 
 export const fetchedCharactersByLibraryId = createAction('FETCH_LIBRARY_CHARACTERS');
-export const fetchCharactersByLibraryId = (libraryId) => (dispatch) => {
+export const fetchCharactersByLibraryId = libraryId => (dispatch) => {
   APIHandler(dispatch, CharacterAPI.fetchByLibrary(libraryId)
-  .then(library => {
-    dispatch(fetchedCharactersByLibraryId(library));
-  }));
+    .then((library) => {
+      dispatch(fetchedCharactersByLibraryId(library));
+    })
+  );
 };
 
 export const addBackgroundBegin = createAction('ADD_BACKGROUND_BEGIN');
@@ -88,17 +87,17 @@ export const addAsset = (meta, file, assetType) => (dispatch) => {
   }
   APIHandler(dispatch,
     AssetAPI.addAsset(meta, file, assetType)
-    .then(({ asset }) => {
-      switch (assetType) {
-        case ASSET_TYPE.BACKGROUND: dispatch(addedBackground(asset)); break;
-        case ASSET_TYPE.ITEM: dispatch(addItemEnd(asset)); break;
-        default: break;
-      }
+      .then(({ asset }) => {
+        switch (assetType) {
+          case ASSET_TYPE.BACKGROUND: dispatch(addedBackground(asset)); break;
+          case ASSET_TYPE.ITEM: dispatch(addItemEnd(asset)); break;
+          default: break;
+        }
 
-      IntercomUtils.event('add_asset', {
-        type: assetType,
-      });
-    })
+        IntercomUtils.event('add_asset', {
+          type: assetType,
+        });
+      })
   );
 };
 
@@ -120,26 +119,26 @@ export const addAssets = (assets, assetType, progressHandler) => (dispatch) => {
     ])
   );
   Promise.all(requests)
-  .then((results) => {
-    const newAssets = [];
-    results.forEach((newAsset) => {
-      if (newAsset) newAssets.push(newAsset);
-    });
-    switch (assetType) {
-      case ASSET_TYPE.MUSIC:
-        dispatch(addedBGMs(newAssets));
-        break;
-      case ASSET_TYPE.SOUND:
-        dispatch(addedSEs(newAssets));
-        break;
-      default:
-        break;
-    }
+    .then((results) => {
+      const newAssets = [];
+      results.forEach((newAsset) => {
+        if (newAsset) newAssets.push(newAsset);
+      });
+      switch (assetType) {
+        case ASSET_TYPE.MUSIC:
+          dispatch(addedBGMs(newAssets));
+          break;
+        case ASSET_TYPE.SOUND:
+          dispatch(addedSEs(newAssets));
+          break;
+        default:
+          break;
+      }
 
-    IntercomUtils.event('add_asset', {
-      type: assetType,
+      IntercomUtils.event('add_asset', {
+        type: assetType,
+      });
     });
-  });
 };
 
 
@@ -151,28 +150,29 @@ export const updatedSE = createAction('UPDATE_SE');
 export const updateAsset = (meta, file) => (dispatch) => {
   dispatch(startUpdateAsset());
   APIHandler(dispatch, AssetAPI.updateAsset(meta, file)
-  .then(asset => {
-    switch (asset.types[0].name) {
-      case ASSET_TYPE.BACKGROUND:
-        dispatch(updatedBackground(asset));
-        break;
-      case ASSET_TYPE.ITEM:
-        dispatch(updatedItem(asset));
-        break;
-      case ASSET_TYPE.MUSIC:
-        dispatch(updatedBGM(asset));
-        break;
-      case ASSET_TYPE.SOUND:
-        dispatch(updatedSE(asset));
-        break;
-      default:
-        throw new Error('Invalid asset type');
-    }
+    .then((asset) => {
+      switch (asset.types[0].name) {
+        case ASSET_TYPE.BACKGROUND:
+          dispatch(updatedBackground(asset));
+          break;
+        case ASSET_TYPE.ITEM:
+          dispatch(updatedItem(asset));
+          break;
+        case ASSET_TYPE.MUSIC:
+          dispatch(updatedBGM(asset));
+          break;
+        case ASSET_TYPE.SOUND:
+          dispatch(updatedSE(asset));
+          break;
+        default:
+          throw new Error('Invalid asset type');
+      }
 
-    IntercomUtils.event('update_asset', {
-      type: asset.types[0].name,
-    });
-  }));
+      IntercomUtils.event('update_asset', {
+        type: asset.types[0].name,
+      });
+    })
+  );
 };
 
 
@@ -183,26 +183,27 @@ export const deletedBGM = createAction('DELETE_BGM');
 export const deletedSE = createAction('DELETE_SE');
 export const deleteAsset = ({ id, type }) => (dispatch) => {
   APIHandler(dispatch, AssetAPI.deleteAsset(id)
-  .then(() => {
-    switch (type) {
-      case ASSET_TYPE.BACKGROUND:
-        dispatch(deletedBackground(id));
-        break;
-      case ASSET_TYPE.ITEM:
-        dispatch(deleteItemEnd(id));
-        break;
-      case ASSET_TYPE.MUSIC:
-        dispatch(deletedBGM(id));
-        break;
-      case ASSET_TYPE.SOUND:
-        dispatch(deletedSE(id));
-        break;
-      default:
-        throw new Error('Invalid asset type');
-    }
+    .then(() => {
+      switch (type) {
+        case ASSET_TYPE.BACKGROUND:
+          dispatch(deletedBackground(id));
+          break;
+        case ASSET_TYPE.ITEM:
+          dispatch(deleteItemEnd(id));
+          break;
+        case ASSET_TYPE.MUSIC:
+          dispatch(deletedBGM(id));
+          break;
+        case ASSET_TYPE.SOUND:
+          dispatch(deletedSE(id));
+          break;
+        default:
+          throw new Error('Invalid asset type');
+      }
 
-    IntercomUtils.event('delete_asset', {
-      type,
-    });
-  }));
+      IntercomUtils.event('delete_asset', {
+        type,
+      });
+    })
+  );
 };

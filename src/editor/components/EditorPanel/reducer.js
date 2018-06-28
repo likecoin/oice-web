@@ -2,6 +2,8 @@ import { combineReducers } from 'redux';
 import { handleActions } from 'redux-actions';
 import update from 'immutability-helper';
 
+import { LOADING } from 'editor/constants/stageType';
+
 import AttributesPanelReducer from './AttributesPanel/reducer';
 import Dashboard from '../Dashboard';
 import ExportOiceModal from './ExportOiceModal';
@@ -12,8 +14,6 @@ import StoryPicker from './StoryPicker';
 import { reducer as StorySettingModalReducer } from './StorySettingModal';
 
 import { updateRunOiceState } from './actions';
-
-import { LOADING } from 'editor/constants/stageType';
 
 
 const initialState = {

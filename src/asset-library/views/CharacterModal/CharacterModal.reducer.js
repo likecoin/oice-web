@@ -115,7 +115,7 @@ export default handleActions({
     const config = { ...state.character.config };
     Object.keys(payload).forEach((key) => {
       const value = payload[key];
-      if (Number.isNaN(value)) {
+      if (Number.isNaN(Number(value))) {
         delete config[key];
       } else {
         config[key] = value;

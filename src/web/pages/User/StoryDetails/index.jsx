@@ -63,7 +63,7 @@ export default class StoryDetails extends React.Component {
     const galleryWrapper = document.querySelector('#user-profile-info');
     if (galleryWrapper) {
       const galleryWidth = parseInt(galleryWrapper.style.maxWidth, 10);
-      if (!Number.isNaN(galleryWidth)) return galleryWidth - STORY_DETAIL_MARGIN;
+      if (!Number.isNaN(Number(galleryWidth))) return galleryWidth - STORY_DETAIL_MARGIN;
     }
     return 0;
   }

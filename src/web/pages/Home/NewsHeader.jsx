@@ -1,5 +1,3 @@
-/* global firebase: true */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { spring, TransitionMotion } from 'react-motion';
@@ -7,6 +5,7 @@ import { spring, TransitionMotion } from 'react-motion';
 import _find from 'lodash/find';
 import classNames from 'classnames';
 
+import firebase from 'common/utils/firebase';
 import { getLocalizedValue } from 'common/utils/i18n';
 
 import './NewsHeader.styles.scss';

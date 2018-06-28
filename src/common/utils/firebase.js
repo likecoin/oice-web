@@ -1,3 +1,11 @@
+import firebase from '@firebase/app';
+
+// Load individual services into the firebase namespace.
+import '@firebase/auth';
+import '@firebase/database';
+
+import { IS_DEV_MODE } from 'common/constants';
+
 import {
   FIREBASE_API_KEY,
   FIREBASE_AUTH_DOMAIN,
@@ -7,7 +15,6 @@ import {
   FIREBASE_SENDER_ID,
 } from '../constants/key';
 
-/* global firebase: true */
 
 export function init() {
   const config = {
@@ -18,5 +25,9 @@ export function init() {
     storageBucket: FIREBASE_STORAGE_BUCKET,
     messagingSenderId: FIREBASE_SENDER_ID,
   };
-  if (window.firebase) firebase.initializeApp(config);
+  if (!IS_DEV_MODE) {
+    firebase.initializeApp(config);
+  }
 }
+
+export default firebase;

@@ -1,5 +1,3 @@
-/* global firebase: true */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -9,6 +7,7 @@ import LoadingScreen from 'ui-elements/LoadingScreen';
 
 import { IS_DEV_MODE } from 'common/constants';
 import { redirectPathname } from 'common/utils/auth';
+import firebase from 'common/utils/firebase';
 
 import * as UserAction from 'common/actions/user';
 

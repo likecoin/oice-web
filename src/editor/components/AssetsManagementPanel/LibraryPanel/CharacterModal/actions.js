@@ -36,45 +36,48 @@ export const postCharacter = (aCharacter, fgImages, deletedFGImageIds) => (dispa
   dispatch(postCharacterBegin());
   const adding = !aCharacter.id;
   const request = (adding) ?
-  CharacterAPI.addCharacter(aCharacter) :
-  CharacterAPI.updateCharacter(aCharacter);
+    CharacterAPI.addCharacter(aCharacter) :
+    CharacterAPI.updateCharacter(aCharacter);
 
   APIHandler(dispatch, request
-  .then(({ id, libraryId }) => {
-    const requests = [];
+    .then(({ id, libraryId }) => {
+      const requests = [];
 
-    fgImages.forEach(({ meta, file, sync }) => {
-      // if (sync) return;
-      const asset = update(meta, {
-        characterId: { $set: id },
-        libraryId: { $set: parseInt(libraryId, 10) },
+      fgImages.forEach(({ meta, file, sync }) => {
+        // if (sync) return;
+        const asset = update(meta, {
+          characterId: { $set: id },
+          libraryId: { $set: parseInt(libraryId, 10) },
+        });
+
+        if (asset.id === undefined) {
+          requests.push(AssetAPI.addAsset(asset, file, FGIMAGE));
+        } else {
+          requests.push(AssetAPI.updateAsset(asset, file));
+        }
       });
 
-      if (asset.id === undefined) {
-        requests.push(AssetAPI.addAsset(asset, file, FGIMAGE));
-      } else {
-        requests.push(AssetAPI.updateAsset(asset, file));
-      }
-    });
+      deletedFGImageIds.forEach((assetId) => {
+        requests.push(AssetAPI.deleteAsset(assetId));
+      });
 
-    deletedFGImageIds.forEach((assetId) => {
-      requests.push(AssetAPI.deleteAsset(assetId));
-    });
-
-    return Promise.all(requests)
-    .then(() => CharacterAPI.getCharacter(id)
-    .then((character) =>
-      dispatch(
-        adding ? addedCharacter(character) : updatedCharacter(character)
-      )
-    ));
-  }));
+      return Promise.all(requests)
+        .then(() => CharacterAPI.getCharacter(id)
+          .then(character =>
+            dispatch(adding ?
+              addedCharacter(character) :
+              updatedCharacter(character)
+            )
+          ));
+    })
+  );
 };
 
-export const deleteCharacter = (characterId) => (dispatch) => {
+export const deleteCharacter = characterId => (dispatch) => {
   dispatch(postCharacterBegin());
   APIHandler(dispatch, CharacterAPI.deleteCharacter(characterId)
-  .then(() => {
-    dispatch(deletedCharacter(characterId));
-  }));
+    .then(() => {
+      dispatch(deletedCharacter(characterId));
+    })
+  );
 };

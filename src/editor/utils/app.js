@@ -27,37 +27,39 @@ export const setDefaultConfigForCharacterFg = (character) => {
     yr,
   } = character.config;
 
-  if (Number.isNaN(xl)) {
+  if (Number.isNaN(Number(xl))) {
     if (width < SCREEN_WIDTH) {
       xl = Math.round(((SCREEN_WIDTH / 2) - width) / 2);
     } else {
       xl = 0;
     }
   }
-  if (Number.isNaN(xr)) xr = SCREEN_WIDTH - xl - width;
-  if (Number.isNaN(xm)) xm = Math.round((SCREEN_WIDTH - width) / 2);
+  if (Number.isNaN(Number(xr))) xr = SCREEN_WIDTH - xl - width;
+  if (Number.isNaN(Number(xm))) xm = Math.round((SCREEN_WIDTH - width) / 2);
 
-  if (Number.isNaN(yl)) {
+  if (Number.isNaN(Number(yl))) {
     if (height < SCREEN_HEIGHT) {
       yl = SCREEN_HEIGHT - height;
     } else {
       yl = 0;
     }
   }
-  if (Number.isNaN(yr)) yr = yl;
-  if (Number.isNaN(ym)) ym = yl;
+  if (Number.isNaN(Number(yr))) yr = yl;
+  if (Number.isNaN(Number(ym))) ym = yl;
 
-  // if (Number.isNaN(xDl)) xDl = xl - XOFFSET;
-  // if (Number.isNaN(xDm)) xDm = xm;
-  // if (Number.isNaN(xDr)) xDr = xr - XOFFSET;
+  // if (Number.isNaN(Number(xDl))) xDl = xl - XOFFSET;
+  // if (Number.isNaN(Number(xDm))) xDm = xm;
+  // if (Number.isNaN(Number(xDr))) xDr = xr - XOFFSET;
 
-  // if (Number.isNaN(yDl)) yDl = yl + XOFFSET;
-  // if (Number.isNaN(yDm)) yDm = ym + YOFFSET;
-  // if (Number.isNaN(yDr)) yDr = yr + YOFFSET;
+  // if (Number.isNaN(Number(yDl))) yDl = yl + XOFFSET;
+  // if (Number.isNaN(Number(yDm))) yDm = ym + YOFFSET;
+  // if (Number.isNaN(Number(yDr))) yDr = yr + YOFFSET;
 
   const config = {
     xl, xm, xr, yl, ym, yr,
   };
+
+  console.log('Helo', config);
 
   return config;
 };

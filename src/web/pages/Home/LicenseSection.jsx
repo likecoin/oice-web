@@ -1,11 +1,10 @@
-/* global firebase: true */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { translate } from 'react-i18next';
 
 import classNames from 'classnames';
 
+import firebase from 'common/utils/firebase';
 import { SparkScroll } from 'common/utils/sparkScroll';
 
 import Caption from './Caption';
@@ -59,7 +58,7 @@ export default class LicenseSection extends React.Component {
     const className = classNames('author', Object.values(position));
 
     const { angle } = this.state;
-    const radian = (Number.isNaN(angle) ? 20 : parseInt(angle, 10)) * (Math.PI / 180);
+    const radian = (Number.isNaN(Number(angle)) ? 20 : parseInt(angle, 10)) * (Math.PI / 180);
     const sinAngle = Math.sin(radian);
     const cosAngle = Math.cos(radian);
 

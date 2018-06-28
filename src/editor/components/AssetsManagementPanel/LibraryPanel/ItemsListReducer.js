@@ -9,9 +9,7 @@ import Redux, {
   deselectLibrary,
 } from './actions';
 
-import {
-  getUpdatedAssetsList,
-} from './utils';
+import { getUpdatedAssetsList } from './utils';
 
 // Reducers
 const initialState = {
@@ -21,7 +19,7 @@ const initialState = {
 };
 
 export default handleActions({
-  [fetchItemsByLibraryBegin]: (state) => ({
+  [fetchItemsByLibraryBegin]: state => ({
     ...state,
     loading: false,
   }),

@@ -1,5 +1,3 @@
-/* global firebase: true */
-
 import { createAction } from 'redux-actions';
 
 import moment from 'moment';
@@ -7,6 +5,7 @@ import moment from 'moment';
 import * as UserAPI from 'common/api/user';
 import { backToWeb } from 'common/utils';
 import { APIHandler } from 'common/utils/api';
+import firebase from 'common/utils/firebase';
 import {
   clearLocalItems,
   getAuthItem,

@@ -19,15 +19,15 @@ const DEBUG = process.env.NODE_ENV !== 'production';
 
 
 export default class IndexHTML extends React.Component {
-  static defaultProps = {
-    meta: {},
-    module: 'web',
-  }
-
   static propTypes = {
     children: PropTypes.node,
     meta: PropTypes.object,
     module: PropTypes.string,
+  }
+
+  static defaultProps = {
+    meta: {},
+    module: 'web',
   }
 
   render() {
@@ -36,6 +36,8 @@ export default class IndexHTML extends React.Component {
       module,
       meta,
     } = this.props;
+
+    const modules = ['web', 'editor', 'asset-library'];
 
     return (
       <html lang={meta.ogLocale}>
@@ -80,9 +82,6 @@ export default class IndexHTML extends React.Component {
 
           <style dangerouslySetInnerHTML={{ __html: '.async-hide { opacity: 0 !important}' }} />
           <script src="https://cdn.ravenjs.com/3.24.2/raven.min.js" crossorigin="anonymous" />
-          {!IS_DEV_MODE &&
-            <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js" />
-          }
           <script src={`/static/vendor/ga.js?v=${VERSION}`} />
           <script src="https://www.google-analytics.com/analytics.js" async />
           <script src={`/static/vendor/autotrack.js?v=${VERSION}`} async />
@@ -98,9 +97,13 @@ export default class IndexHTML extends React.Component {
           <link rel="preload" href={`/build/manifest.js?v=${VERSION}`} as="script" />
           <link rel="preload" href={`/build/vendor.js?v=${VERSION}`} as="script" />
           <link rel="preload" href={`/build/common.js?v=${VERSION}`} as="script" />
-          <link rel="prefetch" href={`/build/web.js?v=${VERSION}`} />
-          <link rel="prefetch" href={`/build/editor.js?v=${VERSION}`} />
-          <link rel="prefetch" href={`/build/asset-library.js?v=${VERSION}`} />
+          {modules.map(m => (
+            <link
+              key={m}
+              rel={module === m ? 'preload' : 'prefetch'}
+              href={`/build/${m}.js?v=${VERSION}`}
+            />
+          ))}
         </head>
         <body>
           <noscript>
