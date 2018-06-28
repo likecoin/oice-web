@@ -4,8 +4,10 @@ import Modal from 'boron/DropModal';
 
 import classNames from 'classnames';
 
+import OutlineButton from 'ui-elements/OutlineButton';
 import Progress from 'ui-elements/Progress';
 import RaisedButton from 'ui-elements/RaisedButton';
+import TextField from 'ui-elements/TextField';
 
 import LikeCoinManager from 'common/utils/LikeCoin';
 
@@ -82,14 +84,14 @@ LikeCoinModal.defaultProps = {
 export default class LikeCoinLoginModal extends React.Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
-    signParams: PropTypes.object,
     onConnect: PropTypes.func,
     onClose: PropTypes.func,
   }
 
   state = {
     error: undefined,
-    isSigning: false,
+    isConnected: false,
+    likeCoinId: '',
   }
 
   componentWillUnmount() {
@@ -99,14 +101,14 @@ export default class LikeCoinLoginModal extends React.Component {
   show = () => {
     this.setState({
       error: undefined,
-      isSigning: false,
+      isConnected: false,
     });
 
     if (this._modal) this._modal.show();
 
     LikeCoinManager.init({
-      isTestNet: SRV_ENV !== 'production',
-      onConnect: this._handleLikeCoinManagerConnect,
+      isTestNet: null,
+      onConnect: this._handleLikeCoinManagerWalletConnect,
       onError: this._handleLikeCoinManagerError,
     });
   }
@@ -135,21 +137,30 @@ export default class LikeCoinLoginModal extends React.Component {
     this.setState({ error });
   }
 
-  _handleLikeCoinManagerConnect = async () => {
-    const { signParams, onConnect } = this.props;
-
+  _handleLikeCoinManagerWalletConnect = () => {
     this.setState({
       error: undefined,
-      isSigning: true,
+      isConnected: true,
     });
+  }
 
+  _handleOnConfirmConnect = () => {
     LikeCoinManager.removeAllListeners();
     const address = LikeCoinManager.getWalletAddress();
-    const signature = await LikeCoinManager.signObject({ ...signParams, address });
+    const { likeCoinId } = this.state;
+    const { onConnect } = this.props;
 
-    if (signature) {
-      if (onConnect) onConnect({ address, signature });
-      this.setState({ isSigning: false });
+    if (address && likeCoinId) {
+      if (onConnect) {
+        onConnect({
+          address,
+          likeCoinId: likeCoinId.trim(),
+        });
+      }
+      this.setState({
+        isConnected: false,
+        likeCoinId: '',
+      });
     } else {
       this.hide();
     }
@@ -159,9 +170,12 @@ export default class LikeCoinLoginModal extends React.Component {
     const {
       props: {
         t,
+        onConnect,
       },
       state: {
-        isSigning,
+        error,
+        isConnected,
+        likeCoinId,
       },
     } = this;
 
@@ -181,17 +195,28 @@ export default class LikeCoinLoginModal extends React.Component {
       );
     }
 
-    if (isSigning) {
+    if (isConnected) {
       return (
         <LikeCoinModal
-          type="metamask"
-          title={t('LikeCoinLoginModal.title.signMetaMask')}
-          content={t('LikeCoinLoginModal.label.signMetaMask')}
-        />
+          type="default"
+          title={t('LikeCoinLoginModal.title.enterLikeCoinId')}
+          buttons={[
+            <OutlineButton
+              color="green"
+              label={t('confirm')}
+              onClick={this._handleOnConfirmConnect}
+            />,
+          ]}
+        >
+          <TextField
+            value={likeCoinId}
+            fullWidth
+            onChange={value => this.setState({ likeCoinId: value })}
+          />
+        </LikeCoinModal>
       );
     }
 
-    const { error } = this.state;
     if (error) {
       switch (error.message) {
         case 'ERR_WEB3_NOT_AVAILABLE':
@@ -212,26 +237,6 @@ export default class LikeCoinLoginModal extends React.Component {
                   onClick={() => window.location.reload()}
                 />,
               ]}
-            />
-          );
-
-        case 'ERR_NETWORK_NOT_IN_RINKEBY':
-          return (
-            <LikeCoinModal
-              type="metamask"
-              title={t('LikeCoinLoginModal.title.switchToRinkeby')}
-              content={t('LikeCoinLoginModal.label.switchToRinkeby')}
-              image="/static/img/likecoin/metamask_rinkeby-net.png"
-            />
-          );
-
-        case 'ERR_NETWORK_NOT_IN_MAIN':
-          return (
-            <LikeCoinModal
-              type="metamask"
-              title={t('LikeCoinLoginModal.title.switchToMainNet')}
-              content={t('LikeCoinLoginModal.label.switchToMainNet')}
-              image="/static/img/likecoin/metamask_main-net.png"
             />
           );
 
@@ -261,7 +266,7 @@ export default class LikeCoinLoginModal extends React.Component {
       <Modal
         ref={(ref) => { this._modal = ref; }}
         className="likecoin-login-modal"
-        closeOnClick={!!this.state.error || this.state.isSigning}
+        closeOnClick={!!this.state.error || this.state.isConnected}
         modalStyle={{ borderRadius: 6, maxWidth: '100%', width: 360 }}
         onHide={this._onHide}
       >
