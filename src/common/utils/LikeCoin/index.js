@@ -71,7 +71,7 @@ class LikeCoinManager {
 
         const currentNetwork = await this.web3.eth.net.getNetworkType();
         const targetNetwork = (this.isTestNet ? 'rinkeby' : 'main');
-        if (currentNetwork === targetNetwork) {
+        if (this.isTestNet === null || currentNetwork === targetNetwork) {
           this.start();
           this.isMetaMask = true;
         } else if (this.isTestNet) {

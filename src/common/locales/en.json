@@ -343,7 +343,8 @@
         "switchToMainNet": "Switch to Main network",
         "unlockMetaMask": "Unlock Metamask.",
         "signMetaMask": "Sign on MetaMask",
-        "connectWithLikeCoin": "Logging in to LikeCoin"
+        "connectWithLikeCoin": "Logging in to LikeCoin",
+        "enterLikeCoinId": "Please Enter Your LikeCoin ID"
       },
       "label": {
         "desktopChromeRequired": "Please switch to desktop Chrome then install MetaMask plugin.",
@@ -1131,7 +1132,8 @@
     "ERR_LIKECOIN_CONNECT_INVALID_ADDRESS": "This wallet address is not register with LikeCoin ID",
     "ERR_LIKECOIN_CONNECT_MISSING_PARAMS": "LikeCoin binding is failed",
     "ERR_LIKECOIN_CONNECT_DUPLICATED": "This LikeCoin ID is already bound by other account",
-    "ERR_LIKECOIN_CONNECT_ALREADY": "You cannot bind different LikeCoin ID"
+    "ERR_LIKECOIN_CONNECT_ALREADY": "You cannot bind different LikeCoin ID",
+    "ERR_LIKECOIN_CONNECT_ID_WALLET_MISMATCH": "The wallet address and the LikeCoin ID provided do not match."
   },
   "general": {
     "save": "Save",

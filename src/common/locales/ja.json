@@ -343,7 +343,8 @@
         "switchToMainNet": "Mainネットワークに切り替えです",
         "unlockMetaMask": "MetaMaskに署名です",
         "signMetaMask": "[Sign] ボタンを押します",
-        "connectWithLikeCoin": "LikeCoinと接続中"
+        "connectWithLikeCoin": "LikeCoinと接続中",
+        "enterLikeCoinId": "請輸入你的 LikeCoin ID"
       },
       "label": {
         "desktopChromeRequired": "Chromeブラウザで開くてださい。",
@@ -1131,7 +1132,8 @@
     "ERR_LIKECOIN_CONNECT_INVALID_ADDRESS": "このウォレットのアドレスはLikeCoin IDにまだ適用されていません",
     "ERR_LIKECOIN_CONNECT_MISSING_PARAMS": "LikeCoin IDバインドでエラーが発生しました",
     "ERR_LIKECOIN_CONNECT_DUPLICATED": "このLikeCoin IDは既にバインドされています",
-    "ERR_LIKECOIN_CONNECT_ALREADY": "他のLikeCoin IDにバインドできません"
+    "ERR_LIKECOIN_CONNECT_ALREADY": "他のLikeCoin IDにバインドできません",
+    "ERR_LIKECOIN_CONNECT_ID_WALLET_MISMATCH": "The wallet address and the LikeCoin ID provided do not match."
   },
   "general": {
     "save": "保存",

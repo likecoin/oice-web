@@ -20,7 +20,7 @@ const footerLeftItems = [
   },
   {
     key: 'help',
-    link: 'https://intercom.help/oice',
+    link: 'https://help.like.co',
   },
 ];
 
