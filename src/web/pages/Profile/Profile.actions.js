@@ -205,6 +205,8 @@ export const connectLikeCoin = ({
       'ERR_LIKECOIN_CONNECT_MISSING_PARAMS',
       'ERR_LIKECOIN_CONNECT_DUPLICATED',
       'ERR_LIKECOIN_CONNECT_ALREADY',
+      'ERR_LIKECOIN_CONNECT_ID_WALLET_MISMATCH',
+      'ERR_LIKECOIN_CONNECT_USER_ID_DUPLICATED',
     ],
   );
   dispatch(connectLikeCoinEnd({ user }));

@@ -1133,7 +1133,8 @@
     "ERR_LIKECOIN_CONNECT_MISSING_PARAMS": "LikeCoin binding is failed",
     "ERR_LIKECOIN_CONNECT_DUPLICATED": "This LikeCoin ID is already bound by other account",
     "ERR_LIKECOIN_CONNECT_ALREADY": "You cannot bind different LikeCoin ID",
-    "ERR_LIKECOIN_CONNECT_ID_WALLET_MISMATCH": "The wallet address and the LikeCoin ID provided do not match."
+    "ERR_LIKECOIN_CONNECT_ID_WALLET_MISMATCH": "The wallet address and the LikeCoin ID provided do not match.",
+    "ERR_LIKECOIN_CONNECT_USER_ID_DUPLICATED": "This LikeCoin ID has already be taken by other user."
   },
   "general": {
     "save": "Save",
