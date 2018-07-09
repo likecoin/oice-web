@@ -41,15 +41,16 @@ import UploadAudioAssetModal, { actions as UploadAudioAssetModalActions }
 import EditAudioAssetModal, { actions as EditAudioAssetModalActions }
   from 'asset-library/views/EditAudioAssetModal';
 import CreateLibraryModal, { actions as CreateLibraryModalActions }
-  from '../CreateLibraryModal';
-
-import LibraryInfo from './LibraryInfo';
-
-import * as Actions from './LibraryDetails.actions';
+  from 'asset-library/views/CreateLibraryModal';
 import { actions as PurchasedLibraryActions } from 'asset-library/views/PurchasedLibraryDashboard';
 
 import { USER_ROLE_NORMAL, USER_ROLE_ADMIN } from 'common/constants/userRoles';
 import { isNormalUser } from 'common/utils/user';
+
+import LibraryInfo from './LibraryInfo';
+
+import * as Actions from './LibraryDetails.actions';
+
 
 import './LibraryDetails.style.scss';
 

@@ -21,7 +21,8 @@
       "featured": "Featured",
       "free": "Free",
       "all": "All",
-      "latest": "Latest"
+      "latest": "Latest",
+      "paid": "Paid"
     }
   },
   "AudioList": {
