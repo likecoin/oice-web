@@ -18,7 +18,6 @@ import AlertDialog from 'ui-elements/AlertDialog';
 import Dropdown from 'ui-elements/Dropdown';
 import FlatButton from 'ui-elements/FlatButton';
 import Form from 'ui-elements/Form';
-import GreyButton from 'ui-elements/GreyButton';
 import ImageUpload from 'ui-elements/ImageUpload';
 import Modal from 'ui-elements/ModalTwo';
 import OutlineButton from 'ui-elements/OutlineButton';
@@ -352,7 +351,7 @@ export default class CreateLibraryModal extends React.Component {
     const libraryToggled = (
       (typeof library.isLaunched !== 'undefined') ?
         library.isLaunched :
-        library.launchedAt !== null
+        library.isPublic
     );
     return (
       <div className="create-library-modal-form">
