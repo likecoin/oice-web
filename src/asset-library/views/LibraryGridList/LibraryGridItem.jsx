@@ -47,10 +47,15 @@ export default class LibraryGridItem extends React.Component {
 
   getLibraryStatusString(libraryStatus) {
     const { t, library, type } = this.props;
-    const { price, launchedAt, isPurchased } = library;
+    const {
+      price,
+      isPurchased,
+      isPublic,
+    } = library;
+
     let str = '';
     if (type === STORE_TYPE.MYLIBRARIES) {
-      if (price > 0 && launchedAt) {
+      if (price > 0 && isPublic) {
         str = t('label.price', { price: price.toFixed(2) });
       } else {
         str = t(`label.${libraryStatus}`);
@@ -113,10 +118,10 @@ export default class LibraryGridItem extends React.Component {
     const { library } = this.props;
     return (
       <div>
-        {libraryStatus === 'pendingForSale' && library.launchedAt &&
+        {libraryStatus === 'pendingForSale' && library.isPublic &&
           <div className="for-sale sale">$</div>
         }
-        {libraryStatus === 'pendingForSale' && !library.launchedAt &&
+        {libraryStatus === 'pendingForSale' && !library.isPublic &&
           <div className="for-sale edit"><EditIcon /></div>
         }
       </div>
