@@ -43,7 +43,6 @@ import * as LogActions from 'common/actions/log';
 
 import AppIcon from './AppIcon';
 import DeepView from './DeepView';
-import NextEpisodeModal from './NextEpisodeModal';
 import SmsModal from './SmsModal';
 import UpNext from './UpNext';
 
@@ -553,14 +552,6 @@ export default class OiceSingleView extends React.Component {
             isPreview={isPreview}
             oice={oice}
             open={isCallToActionModalOpen}
-            onToggle={this.handleToggleCallToActionModal}
-          />
-        }
-        {oice && isMobile &&
-          <NextEpisodeModal
-            oice={oice}
-            open={isCallToActionModalOpen}
-            isEndedPlaying={isEndedPlaying}
             onToggle={this.handleToggleCallToActionModal}
           />
         }
