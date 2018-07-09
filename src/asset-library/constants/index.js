@@ -62,12 +62,14 @@ export const STORE_LIBRARY_LIST_TYPE = {
   FEATURED: 'featured',
   LATEST: 'latest',
   FREE: 'free',
+  PAID: 'paid',
   ALL: 'all',
 };
 
 export const STORE_LIBRARY_LIST = [
   STORE_LIBRARY_LIST_TYPE.LATEST,
   STORE_LIBRARY_LIST_TYPE.FREE,
+  STORE_LIBRARY_LIST_TYPE.PAID,
 ];
 
 export const MAX_AUDIO_FILE_SIZE = {
