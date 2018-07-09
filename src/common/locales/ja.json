@@ -1774,7 +1774,8 @@
       "getApp": "物語を読む",
       "downloadForBetterExperience": "oiceアプリをダウンロード",
       "noStoryDescription": "あらすじなし",
-      "upNext": "Next Episode"
+      "upNext": "Next Episode",
+      "selectEpisode": "Choose an Episode"
     },
     "credit": {
       "director": "ディレクター",

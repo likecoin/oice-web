@@ -1774,7 +1774,8 @@
       "getApp": "Read on mobile",
       "downloadForBetterExperience": "Download oice App",
       "noStoryDescription": "No story description",
-      "upNext": "Next Episode"
+      "upNext": "Next Episode",
+      "selectEpisode": "Choose an Episode"
     },
     "credit": {
       "director": "Director",

@@ -15,6 +15,7 @@ import QRCode from 'qrcode.react';
 import AlertDialog from 'ui-elements/AlertDialog';
 import Avatar from 'ui-elements/Avatar';
 import Container from 'ui-elements/Container';
+import Dropdown from 'ui-elements/Dropdown';
 import ExpansionPanel from 'ui-elements/ExpansionPanel';
 import LoadingScreen from 'ui-elements/LoadingScreen';
 import OutlineButton from 'ui-elements/OutlineButton';
@@ -75,6 +76,7 @@ export default class OiceSingleView extends React.Component {
     credits: PropTypes.object,
     oice: PropTypes.object,
     params: PropTypes.object,
+    relatedOices: PropTypes.array,
   }
 
   static contextTypes = {
@@ -229,6 +231,11 @@ export default class OiceSingleView extends React.Component {
     this.handlePlayOice(oiceUuid);
   }
 
+  handleSelectEpisode = (index) => {
+    const { relatedOices } = this.props;
+    this.handlePlayOice(relatedOices[index].uuid);
+  }
+
   postOiceAction = (action) => {
     // Validation
     if (!(
@@ -379,7 +386,12 @@ export default class OiceSingleView extends React.Component {
   }
 
   renderOiceSingleView() {
-    const { t, oice, credits } = this.props;
+    const {
+      t,
+      oice,
+      credits,
+      relatedOices,
+    } = this.props;
     const {
       isEndedPlaying,
       isPreview,
@@ -436,6 +448,13 @@ export default class OiceSingleView extends React.Component {
     const nextOiceChapter = nextOice ? t('label.episode', {
       episode: nextOice.order + 1,
     }) : '';
+
+    const episodeValues = relatedOices.map(o => ({
+      icon: null,
+      text: `${t('label.episode', {
+        episode: o.order + 1,
+      })} - ${o.name}`,
+    }));
 
     return (
       <Container
@@ -516,6 +535,16 @@ export default class OiceSingleView extends React.Component {
                 </div>
               )}
             </div>
+            {!isPreview && <hr />}
+            {!isPreview &&
+              <Dropdown
+                placeholder={t('label.selectEpisode')}
+                values={episodeValues}
+                selectedIndexes={[]}
+                fullWidth
+                onChange={this.handleSelectEpisode}
+              />
+            }
           </div>
         </div>
         {oice && !isMobile &&
