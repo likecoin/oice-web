@@ -1773,7 +1773,8 @@
       "episode": "Episode #{{episode}}",
       "getApp": "Read on mobile",
       "downloadForBetterExperience": "Download oice App",
-      "noStoryDescription": "No story description"
+      "noStoryDescription": "No story description",
+      "upNext": "Next Episode"
     },
     "credit": {
       "director": "Director",

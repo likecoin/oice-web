@@ -22,9 +22,10 @@ $arrow-icon-size: 14px;
 
       > * {
         margin: 0;
-        border-radius: 0;
-        border-left: none;
+
         border-right: none;
+        border-left: none;
+        border-radius: 0;
 
         &:not(:first-child) {
           border-top: none;
@@ -35,41 +36,76 @@ $arrow-icon-size: 14px;
 }
 
 .oice-single-view > .container {
-  margin: $min-padding 0;
-  padding: 0 $min-padding;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 
+  margin: $min-padding 0;
+  padding: 0 $min-padding;
+
   .oice-player-wrapper {
     .oice-player {
-      border: none;
       overflow: hidden;
+
       width: inherit;
       height: inherit;
+
+      border: none;
     }
   }
 }
 
+.oice-upnext {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+
+  .oice-upnext-info {
+    position: relative;
+
+    text-align: center;
+
+    color: $pure-white;
+  }
+
+  .oice-upnext-autoplay-button {
+    display: inline-block;
+
+    margin-top: padding(3/2);
+  }
+}
+
 .oice-single-view-sidebar {
-  min-width: 300px;
-  width: 300px;
-  padding-left: $min-padding;
   box-sizing: content-box;
+  width: 300px;
+  min-width: 300px;
+  padding-left: $min-padding;
 
   hr {
-    border-top: $border-style1;
     margin: 0 #{-$details-margin};
+
+    border-top: $border-style1;
   }
 
   .oice-details {
-    background-color: $pure-white;
-    border-radius: 4px;
-    border: $border-style1;
-    margin-bottom: $details-margin;
-    overflow: hidden;
-    padding: padding(2/3) $details-margin;
     position: relative;
+
+    overflow: hidden;
+
+    margin-bottom: $details-margin;
+    padding: padding(2/3) $details-margin;
+
+    border: $border-style1;
+    border-radius: 4px;
+    background-color: $pure-white;
 
     &.extended {
       margin-bottom: 80px !important;
@@ -86,10 +122,12 @@ $arrow-icon-size: 14px;
         word-break: break-all;
       }
       .oice-chapter {
+        word-break: break-all;
+
+        color: $dark-gray2;
+
         font-size: 12px;
         font-weight: 500;
-        color: $dark-gray2;
-        word-break: break-all;
       }
       .oice-title {
         font-size: 18px;
@@ -99,13 +137,16 @@ $arrow-icon-size: 14px;
     }
 
     .oice-description {
-      font-size: 14px;
-      color: $dark-gray2;
       padding-bottom: $details-margin;
+
+      color: $dark-gray2;
+
+      font-size: 14px;
     }
 
     .credit-users {
       position: relative;
+
       overflow: hidden;
 
       &.mini.short {
@@ -127,6 +168,7 @@ $arrow-icon-size: 14px;
 
         h2 {
           margin: 10px 0 5px 0;
+
           font-size: 14px;
           font-weight: 400;
         }

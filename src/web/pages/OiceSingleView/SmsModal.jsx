@@ -20,12 +20,12 @@ import BackIcon from 'common/icons/arrow/thin-left-arrow';
 
 import { BRANCH_URL } from 'common/constants/branch';
 import { PLAY_STORE_URL } from 'common/constants';
+import * as LogActions from 'common/actions/log';
 
 import DownloadAppBadges from 'web/components/DownloadAppBadges';
 import AppIcon from './AppIcon';
 
 import * as Actions from './OiceSingleView.actions';
-import * as LogActions from 'common/actions/log';
 import * as OiceSingleViewUtils from './utils';
 
 import './SmsModal.style.scss';
@@ -53,7 +53,6 @@ export default class SmsModal extends React.Component {
 
     // Props
     oice: PropTypes.object.isRequired,
-    showCloseButton: PropTypes.bool,
     isEndedPlaying: PropTypes.bool,
     isPreview: PropTypes.bool,
     open: PropTypes.bool,
@@ -61,7 +60,6 @@ export default class SmsModal extends React.Component {
   }
 
   static defaultProps = {
-    showCloseButton: true,
     isEndedPlaying: false,
     isPreview: false,
     onToggle: undefined,
@@ -283,7 +281,7 @@ export default class SmsModal extends React.Component {
 
   render() {
     const {
-      t, isEndedPlaying, showCloseButton, open, onToggle,
+      t, isEndedPlaying, open, onToggle,
     } = this.props;
     const { isShowSMS } = this.state;
     const backButton = (
@@ -297,9 +295,9 @@ export default class SmsModal extends React.Component {
         id="sms-modal"
         open={open}
         width={592}
-        onClickOutside={showCloseButton ? onToggle : null}
+        onClickOutside={onToggle}
       >
-        <Modal.Header onClickCloseButton={showCloseButton ? onToggle : null}>
+        <Modal.Header onClickCloseButton={onToggle}>
           {isEndedPlaying ? t('label.downloadToContinue') : t('label.downloadForBetterExperience') }
         </Modal.Header>
         <Modal.Body padding={false}>
