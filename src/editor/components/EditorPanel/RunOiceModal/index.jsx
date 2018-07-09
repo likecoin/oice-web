@@ -7,18 +7,16 @@ import _get from 'lodash/get';
 
 import Modal from 'ui-elements/Modal';
 import RaisedButton from 'ui-elements/RaisedButton';
-import Checkbox from 'ui-elements/Checkbox';
 import Progress from 'ui-elements/Progress';
 
 import * as OiceAction from 'editor/actions/oice';
-import OiceErrorList from '../OiceErrorList';
-
 import {
   LOADING,
   FAILED,
   SUCCESS,
   FAILED_ERRORS,
 } from 'editor/constants/stageType';
+import OiceErrorList from '../OiceErrorList';
 
 import './styles.scss';
 
@@ -115,7 +113,7 @@ export default class RunOiceModal extends React.Component {
 
   renderBody(t) {
     const { buildState, language, preview } = this.props;
-    const { stage, data } = buildState.stage;
+    const { stage, data } = buildState;
     const message = t(`buildOiceState.${buildState.message}`);
     switch (stage) {
       case FAILED:
