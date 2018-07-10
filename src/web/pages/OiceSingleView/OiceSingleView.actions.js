@@ -15,12 +15,19 @@ export const fetchOiceCredits = id => (dispatch) => {
     .then(credits => dispatch(fetchedOiceCredits(credits)));
 };
 
+export const fetchedRelatedOices = createAction('RELATED_OICES_FETCHED');
+export const fetchRelatedOices = oiceId => (dispatch) => {
+  OiceAPI.fetchRelatedOices(oiceId)
+    .then(oices => dispatch(fetchedRelatedOices(oices)));
+};
+
 export const fetchedOiceInfo = createAction('OICE_INFO_FETCHED');
 export const fetchOiceInfo = (oiceUuid, language) => (dispatch) => {
   APIHandler(dispatch, OiceAPI.fetchOiceOgByUUID(oiceUuid, language)
     .then((oice) => {
       dispatch(fetchedOiceInfo(oice));
       dispatch(fetchOiceCredits(oice.id));
+      dispatch(fetchRelatedOices(oice.id));
     }));
 };
 

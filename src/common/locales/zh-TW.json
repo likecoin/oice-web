@@ -1773,7 +1773,9 @@
       "episode": "第{{episode}}回",
       "getApp": "免費下載oice，輕鬆看故事",
       "downloadForBetterExperience": "下載 oice app，隨時閱讀",
-      "noStoryDescription": "無故事簡介"
+      "noStoryDescription": "無故事簡介",
+      "upNext": "即將播放",
+      "selectEpisode": "請選擇章回"
     },
     "credit": {
       "director": "導演",

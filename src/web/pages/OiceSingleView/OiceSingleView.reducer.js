@@ -13,6 +13,7 @@ const initialState = {
     sentSMS: false,
     userCountryCode: undefined,
   },
+  relatedOices: [],
 };
 
 export default handleActions({
@@ -51,5 +52,8 @@ export default handleActions({
     sms: {
       userCountryCode: { $set: payload },
     },
+  }),
+  [Actions.fetchedRelatedOices]: (state, { payload }) => update(state, {
+    relatedOices: { $set: payload },
   }),
 }, initialState);

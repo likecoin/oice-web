@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { findDOMNode } from 'react-dom';
 import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
-import { Motion, spring } from 'react-motion';
+import { push } from 'react-router-redux';
 
 import classNames from 'classnames';
 import _get from 'lodash/get';
@@ -15,6 +15,7 @@ import QRCode from 'qrcode.react';
 import AlertDialog from 'ui-elements/AlertDialog';
 import Avatar from 'ui-elements/Avatar';
 import Container from 'ui-elements/Container';
+import Dropdown from 'ui-elements/Dropdown';
 import ExpansionPanel from 'ui-elements/ExpansionPanel';
 import LoadingScreen from 'ui-elements/LoadingScreen';
 import OutlineButton from 'ui-elements/OutlineButton';
@@ -38,14 +39,14 @@ import {
   convertDataURLtoFile,
   isMobileAgent,
 } from 'common/utils';
+import * as LogActions from 'common/actions/log';
 
 import AppIcon from './AppIcon';
 import DeepView from './DeepView';
-import NextEpisodeModal from './NextEpisodeModal';
 import SmsModal from './SmsModal';
+import UpNext from './UpNext';
 
 import * as Actions from './OiceSingleView.actions';
-import * as LogActions from 'common/actions/log';
 
 import * as OiceSingleViewUtils from './utils';
 
@@ -74,6 +75,7 @@ export default class OiceSingleView extends React.Component {
     credits: PropTypes.object,
     oice: PropTypes.object,
     params: PropTypes.object,
+    relatedOices: PropTypes.array,
   }
 
   static contextTypes = {
@@ -95,7 +97,7 @@ export default class OiceSingleView extends React.Component {
       language: _get(this.props, 'location.query.lang'),
       isMobileSize: false,
       oicePlayerSize: 0,
-      callToActionModalOpen: false,
+      isCallToActionModalOpen: false,
     };
   }
 
@@ -158,7 +160,6 @@ export default class OiceSingleView extends React.Component {
       this.props.dispatch(LogActions.logReadOice(this.props.oice.uuid));
       this.setState({
         isEndedPlaying: true,
-        callToActionModalOpen: true,
       });
     }
   }
@@ -191,14 +192,14 @@ export default class OiceSingleView extends React.Component {
   }
 
   handleToggleCallToActionModal = () => {
-    const callToActionModalOpen = !this.state.callToActionModalOpen;
-    if (!callToActionModalOpen) {
+    const isCallToActionModalOpen = !this.state.isCallToActionModalOpen;
+    if (!isCallToActionModalOpen) {
       const { dispatch, oice } = this.props;
       dispatch(LogActions.logClickWeb('downloadOiceApp', {
         oiceUuid: oice.uuid,
       }));
     }
-    this.setState({ callToActionModalOpen });
+    this.setState({ isCallToActionModalOpen });
   }
 
   handleCTA = () => {
@@ -215,6 +216,23 @@ export default class OiceSingleView extends React.Component {
 
   handleScreenCaptureButtonClick = () => {
     this.postOiceAction({ type: 'oice.screenCapture' });
+  }
+
+  handlePlayOice(oiceUuid) {
+    this.props.dispatch(push(`/story/${oiceUuid}`));
+  }
+
+  handlePlayNextRequest(oiceUuid) {
+    this.setState({
+      isCallToActionModalOpen: false,
+      isEndedPlaying: false,
+    });
+    this.handlePlayOice(oiceUuid);
+  }
+
+  handleSelectEpisode = (index) => {
+    const { relatedOices } = this.props;
+    this.handlePlayOice(relatedOices[index].uuid);
   }
 
   postOiceAction = (action) => {
@@ -367,14 +385,19 @@ export default class OiceSingleView extends React.Component {
   }
 
   renderOiceSingleView() {
-    const { t, oice, credits } = this.props;
+    const {
+      t,
+      oice,
+      credits,
+      relatedOices,
+    } = this.props;
     const {
       isEndedPlaying,
       isPreview,
       marginLeft,
       isMobileSize,
       oicePlayerSize,
-      callToActionModalOpen,
+      isCallToActionModalOpen,
     } = this.state;
 
     const style = {
@@ -420,6 +443,18 @@ export default class OiceSingleView extends React.Component {
       sticky: isMobile,
     });
 
+    const nextOice = oice.nextEpisode;
+    const nextOiceChapter = nextOice ? t('label.episode', {
+      episode: nextOice.order + 1,
+    }) : '';
+
+    const episodeValues = relatedOices.map(o => ({
+      icon: null,
+      text: `${t('label.episode', {
+        episode: o.order + 1,
+      })} - ${o.name}`,
+    }));
+
     return (
       <Container
         ref={ref => this.container = ref}
@@ -434,6 +469,16 @@ export default class OiceSingleView extends React.Component {
             src={this.getOiceViewUrl(isPreview, oice)}
             title={oice.uuid}
           />
+          {nextOice && isEndedPlaying &&
+            <UpNext
+              labelSize={oicePlayerSize / 30}
+              subtitle={`${oice.storyName} ${nextOiceChapter}`}
+              subtitleSize={oicePlayerSize / 25}
+              title={nextOice.name}
+              titleSize={oicePlayerSize / 20}
+              onClick={() => this.handlePlayNextRequest(nextOice.uuid)}
+            />
+          }
         </div>
         <div
           ref={ref => this.sidebar = ref}
@@ -489,6 +534,16 @@ export default class OiceSingleView extends React.Component {
                 </div>
               )}
             </div>
+            {!isPreview && <hr />}
+            {!isPreview &&
+              <Dropdown
+                placeholder={t('label.selectEpisode')}
+                values={episodeValues}
+                selectedIndexes={[]}
+                fullWidth
+                onChange={this.handleSelectEpisode}
+              />
+            }
           </div>
         </div>
         {oice && !isMobile &&
@@ -496,16 +551,7 @@ export default class OiceSingleView extends React.Component {
             isEndedPlaying={isEndedPlaying}
             isPreview={isPreview}
             oice={oice}
-            open={callToActionModalOpen}
-            showCloseButton={!isEndedPlaying}
-            onToggle={this.handleToggleCallToActionModal}
-          />
-        }
-        {oice && isMobile &&
-          <NextEpisodeModal
-            oice={oice}
-            open={callToActionModalOpen}
-            isEndedPlaying={isEndedPlaying}
+            open={isCallToActionModalOpen}
             onToggle={this.handleToggleCallToActionModal}
           />
         }

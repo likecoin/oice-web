@@ -1773,7 +1773,9 @@
       "episode": "エピソード {{episode}}",
       "getApp": "物語を読む",
       "downloadForBetterExperience": "oiceアプリをダウンロード",
-      "noStoryDescription": "あらすじなし"
+      "noStoryDescription": "あらすじなし",
+      "upNext": "Next Episode",
+      "selectEpisode": "Choose an Episode"
     },
     "credit": {
       "director": "ディレクター",
