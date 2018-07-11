@@ -43,6 +43,7 @@ import * as LogActions from 'common/actions/log';
 
 import AppIcon from './AppIcon';
 import DeepView from './DeepView';
+import PlayButton from './PlayButton';
 import SmsModal from './SmsModal';
 import UpNext from './UpNext';
 
@@ -62,6 +63,16 @@ export const CREDITS_KEY = [
 ];
 
 const isMobile = isMobileAgent();
+
+function createDumbAudioElement() {
+  const sound = document.createElement('audio');
+  sound.id = 'audio-player';
+  sound.controls = 'controls';
+  sound.src = '/static/audio/silence.mp3';
+  sound.type = 'audio/mpeg';
+  sound.style.display = 'none';
+  document.getElementById('app').appendChild(sound);
+}
 
 @translate(['oiceSingleView'])
 @connect(store => ({
@@ -98,6 +109,7 @@ export default class OiceSingleView extends React.Component {
       isMobileSize: false,
       oicePlayerSize: 0,
       isCallToActionModalOpen: false,
+      isAutoplayable: false,
     };
   }
 
@@ -109,12 +121,17 @@ export default class OiceSingleView extends React.Component {
     const oiceUuid = this.props.params.uuid;
     this.loadOice(oiceUuid);
     this.props.dispatch(LogActions.logOiceWebAcquisition({ oiceUuid }));
+
+    // create dummy audio element for testing autoplay behaviour
+    createDumbAudioElement();
+    this.handleAutoPlayCheck();
   }
 
   componentWillReceiveProps(nextProps) {
     const { oice, t } = this.props;
     if (this.props.params.uuid !== nextProps.params.uuid) {
       this.loadOice(nextProps.params.uuid);
+      this.handleAutoPlayCheck();
     }
     if (oice) {
       const title = getHTMLTitle(t, oice.name);
@@ -189,6 +206,27 @@ export default class OiceSingleView extends React.Component {
       default:
         break;
     }
+  }
+
+  handleAutoPlayCheck() {
+    const sound = document.getElementById('audio-player');
+    if (!sound) return;
+
+    const playPromise = sound.play();
+
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        sound.pause();
+        this.setState({ isAutoplayable: true });
+      }).catch((error) => {
+        // fail to play
+        this.setState({ isAutoplayable: false });
+      });
+    }
+  }
+
+  handlePlayOiceButtonClick = () => {
+    this.setState({ isAutoplayable: true });
   }
 
   handleToggleCallToActionModal = () => {
@@ -392,6 +430,7 @@ export default class OiceSingleView extends React.Component {
       relatedOices,
     } = this.props;
     const {
+      isAutoplayable,
       isEndedPlaying,
       isPreview,
       marginLeft,
@@ -455,6 +494,29 @@ export default class OiceSingleView extends React.Component {
       })} - ${o.name}`,
     }));
 
+    // no scrolling for responsive behavior in iOS
+    const iframeHTML = {
+      __html: `
+        <iframe
+          allow="autoplay"
+          class="oice-player"
+          scrolling="no"
+          src="${this.getOiceViewUrl(isPreview, oice)}"
+          title="${oice.uuid}"
+        />
+      `,
+    };
+
+    const iframe = <div className="iframe-wrapper" dangerouslySetInnerHTML={iframeHTML} />;
+    const oiceInfoProps = {
+      labelSize: oicePlayerSize / 30,
+      subtitle: `${oice.storyName} ${nextOiceChapter}`,
+      subtitleSize: oicePlayerSize / 25,
+      title: nextOice.name,
+      titleSize: oicePlayerSize / 20,
+      t,
+    };
+
     return (
       <Container
         ref={ref => this.container = ref}
@@ -462,20 +524,16 @@ export default class OiceSingleView extends React.Component {
         fluid
       >
         <div className="oice-player-wrapper" style={{ ...style.oicePlayerWrapper }}>
-          <iframe
-            ref={ref => this.iframe = ref}
-            className="oice-player"
-            scrolling="no" // For responsive behavior in iOS
-            src={this.getOiceViewUrl(isPreview, oice)}
-            title={oice.uuid}
-          />
+          {isAutoplayable ?
+            iframe :
+            <PlayButton
+              {...oiceInfoProps}
+              onClick={this.handlePlayOiceButtonClick}
+            />
+          }
           {nextOice && isEndedPlaying &&
             <UpNext
-              labelSize={oicePlayerSize / 30}
-              subtitle={`${oice.storyName} ${nextOiceChapter}`}
-              subtitleSize={oicePlayerSize / 25}
-              title={nextOice.name}
-              titleSize={oicePlayerSize / 20}
+              {...oiceInfoProps}
               onClick={() => this.handlePlayNextRequest(nextOice.uuid)}
             />
           }

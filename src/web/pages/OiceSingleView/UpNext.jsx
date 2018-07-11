@@ -66,7 +66,7 @@ export default class UpNext extends React.Component {
       titleSize,
     } = this.props;
     return (
-      <div className="oice-upnext">
+      <div className="oice-player-overlay">
         <div className="oice-upnext-info">
           <div
             className="oice-upnext-label"
