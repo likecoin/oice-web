@@ -78,6 +78,12 @@ function removeDumbAudioElement() {
   if (sound) sound.remove();
 }
 
+function getOiceImage(oice) {
+  return oice ?
+    oice.ogImage.button || oice.image.button || `${window.location.origin}/static/img/oice-default-cover.jpg` :
+    '';
+}
+
 @translate(['oiceSingleView'])
 @connect(store => ({
   ...store.oiceSingleView,
@@ -142,7 +148,7 @@ export default class OiceSingleView extends React.Component {
       handleOgMetaChanges(title,
         oice.description || t('site:description'),
         oice.url,
-        oice.ogImage.button || oice.image.button || `${window.location.origin}/static/img/oice-default-cover.jpg`,
+        getOiceImage(oice),
       );
     }
   }
@@ -532,6 +538,7 @@ export default class OiceSingleView extends React.Component {
           {isMediaAutoplayable === false &&
             <PlayButton
               {...oiceInfoProps}
+              image={getOiceImage(oice)}
               subtitle={`${oice.storyName} ${oiceChapter}`}
               title={oice.name}
               onClick={this.handlePlayOiceButtonClick}

@@ -91,7 +91,20 @@ $arrow-icon-size: 14px;
 }
 
 .oice-play-button {
-  background-color: $pure-black;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &:before {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    content: '';
+
+    background-color: rgba(0, 0, 0, 0.7);
+  }
 
   svg {
     transform-origin: center top;

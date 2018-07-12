@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function PlayButton({
+  image,
   labelSize,
   subtitle,
   subtitleSize,
@@ -11,7 +12,10 @@ export default function PlayButton({
   onClick,
 }) {
   return (
-    <div className="oice-player-overlay oice-play-button">
+    <div
+      className="oice-player-overlay oice-play-button"
+      style={{ backgroundImage: `url('${image}')` }}
+    >
       <div className="oice-upnext-info">
         <div
           className="oice-upnext-label"
@@ -51,6 +55,7 @@ export default function PlayButton({
 }
 
 PlayButton.propTypes = {
+  image: PropTypes.string.isRequired,
   labelSize: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
   subtitle: PropTypes.string.isRequired,
