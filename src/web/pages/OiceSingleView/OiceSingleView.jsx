@@ -499,6 +499,7 @@ export default class OiceSingleView extends React.Component {
         episode: o.order + 1,
       })} - ${o.name}`,
     }));
+    const hasOtherEpisodes = episodeValues.length > 0;
 
     // no scrolling for responsive behavior in iOS
     const iframeHTML = {
@@ -537,7 +538,7 @@ export default class OiceSingleView extends React.Component {
             />
           }
           {isMediaAutoplayable && iframe}
-          {nextOice && isEndedPlaying &&
+          {hasOtherEpisodes && isEndedPlaying &&
             <UpNext
               {...oiceInfoProps}
               subtitle={`${oice.storyName} ${nextOiceChapter}`}
@@ -600,8 +601,8 @@ export default class OiceSingleView extends React.Component {
                 </div>
               )}
             </div>
-            {!isPreview && <hr />}
-            {!isPreview &&
+            {!isPreview && hasOtherEpisodes && <hr />}
+            {!isPreview && hasOtherEpisodes &&
               <Dropdown
                 placeholder={t('label.selectEpisode')}
                 values={episodeValues}
