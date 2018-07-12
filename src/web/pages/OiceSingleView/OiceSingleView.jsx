@@ -67,8 +67,7 @@ const isMobile = isMobileAgent();
 function createDumbAudioElement() {
   const sound = document.createElement('audio');
   sound.id = 'audio-player';
-  sound.controls = 'controls';
-  sound.src = '/static/audio/silence.mp3';
+  sound.src = 'data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU2LjM2LjEwMAAAAAAAAAAAAAAA//OEAAAAAAAAAAAAAAAAAAAAAAAASW5mbwAAAA8AAAAEAAABIADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV6urq6urq6urq6urq6urq6urq6urq6urq6v////////////////////////////////8AAAAATGF2YzU2LjQxAAAAAAAAAAAAAAAAJAAAAAAAAAAAASDs90hvAAAAAAAAAAAAAAAAAAAA//MUZAAAAAGkAAAAAAAAA0gAAAAATEFN//MUZAMAAAGkAAAAAAAAA0gAAAAARTMu//MUZAYAAAGkAAAAAAAAA0gAAAAAOTku//MUZAkAAAGkAAAAAAAAA0gAAAAANVVV';
   sound.type = 'audio/mpeg';
   sound.style.display = 'none';
   document.getElementById('app').appendChild(sound);
@@ -109,7 +108,7 @@ export default class OiceSingleView extends React.Component {
       isMobileSize: false,
       oicePlayerSize: 0,
       isCallToActionModalOpen: false,
-      isAutoplayable: false,
+      isMediaAutoplayable: undefined,
     };
   }
 
@@ -217,16 +216,16 @@ export default class OiceSingleView extends React.Component {
     if (playPromise !== undefined) {
       playPromise.then(() => {
         sound.pause();
-        this.setState({ isAutoplayable: true });
+        this.setState({ isMediaAutoplayable: true });
       }).catch((error) => {
         // fail to play
-        this.setState({ isAutoplayable: false });
+        this.setState({ isMediaAutoplayable: false });
       });
     }
   }
 
   handlePlayOiceButtonClick = () => {
-    this.setState({ isAutoplayable: true });
+    this.setState({ isMediaAutoplayable: true });
   }
 
   handleToggleCallToActionModal = () => {
@@ -271,6 +270,10 @@ export default class OiceSingleView extends React.Component {
   handleSelectEpisode = (index) => {
     const { relatedOices } = this.props;
     this.handlePlayOice(relatedOices[index].uuid);
+
+    if (this.state.isEndedPlaying) {
+      this.setState({ isEndedPlaying: false });
+    }
   }
 
   postOiceAction = (action) => {
@@ -430,13 +433,13 @@ export default class OiceSingleView extends React.Component {
       relatedOices,
     } = this.props;
     const {
-      isAutoplayable,
       isEndedPlaying,
       isPreview,
       marginLeft,
       isMobileSize,
       oicePlayerSize,
       isCallToActionModalOpen,
+      isMediaAutoplayable,
     } = this.state;
 
     const style = {
@@ -510,9 +513,7 @@ export default class OiceSingleView extends React.Component {
     const iframe = <div className="iframe-wrapper" dangerouslySetInnerHTML={iframeHTML} />;
     const oiceInfoProps = {
       labelSize: oicePlayerSize / 30,
-      subtitle: `${oice.storyName} ${nextOiceChapter}`,
       subtitleSize: oicePlayerSize / 25,
-      title: nextOice.name,
       titleSize: oicePlayerSize / 20,
       t,
     };
@@ -524,16 +525,20 @@ export default class OiceSingleView extends React.Component {
         fluid
       >
         <div className="oice-player-wrapper" style={{ ...style.oicePlayerWrapper }}>
-          {isAutoplayable ?
-            iframe :
+          {isMediaAutoplayable === false &&
             <PlayButton
               {...oiceInfoProps}
+              subtitle={`${oice.storyName} ${oiceChapter}`}
+              title={oice.name}
               onClick={this.handlePlayOiceButtonClick}
             />
           }
+          {isMediaAutoplayable && iframe}
           {nextOice && isEndedPlaying &&
             <UpNext
               {...oiceInfoProps}
+              subtitle={`${oice.storyName} ${nextOiceChapter}`}
+              title={nextOice.name}
               onClick={() => this.handlePlayNextRequest(nextOice.uuid)}
             />
           }
