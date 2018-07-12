@@ -43,6 +43,7 @@ import * as LogActions from 'common/actions/log';
 
 import AppIcon from './AppIcon';
 import DeepView from './DeepView';
+import PlayButton from './PlayButton';
 import SmsModal from './SmsModal';
 import UpNext from './UpNext';
 
@@ -62,6 +63,26 @@ export const CREDITS_KEY = [
 ];
 
 const isMobile = isMobileAgent();
+
+function createDumbAudioElement() {
+  const sound = document.createElement('audio');
+  sound.id = 'audio-player';
+  sound.src = 'data:audio/mp3;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU2LjM2LjEwMAAAAAAAAAAAAAAA//OEAAAAAAAAAAAAAAAAAAAAAAAASW5mbwAAAA8AAAAEAAABIADAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV6urq6urq6urq6urq6urq6urq6urq6urq6v////////////////////////////////8AAAAATGF2YzU2LjQxAAAAAAAAAAAAAAAAJAAAAAAAAAAAASDs90hvAAAAAAAAAAAAAAAAAAAA//MUZAAAAAGkAAAAAAAAA0gAAAAATEFN//MUZAMAAAGkAAAAAAAAA0gAAAAARTMu//MUZAYAAAGkAAAAAAAAA0gAAAAAOTku//MUZAkAAAGkAAAAAAAAA0gAAAAANVVV';
+  sound.type = 'audio/mpeg';
+  sound.style.display = 'none';
+  document.getElementById('app').appendChild(sound);
+}
+
+function removeDumbAudioElement() {
+  const sound = document.getElementById('audio-player');
+  if (sound) sound.remove();
+}
+
+function getOiceImage(oice) {
+  return oice ?
+    oice.ogImage.button || oice.image.button || `${window.location.origin}/static/img/oice-default-cover.jpg` :
+    '';
+}
 
 @translate(['oiceSingleView'])
 @connect(store => ({
@@ -98,6 +119,7 @@ export default class OiceSingleView extends React.Component {
       isMobileSize: false,
       oicePlayerSize: 0,
       isCallToActionModalOpen: false,
+      isMediaAutoplayable: undefined,
     };
   }
 
@@ -109,6 +131,10 @@ export default class OiceSingleView extends React.Component {
     const oiceUuid = this.props.params.uuid;
     this.loadOice(oiceUuid);
     this.props.dispatch(LogActions.logOiceWebAcquisition({ oiceUuid }));
+
+    // create dummy audio element for testing autoplay behaviour
+    createDumbAudioElement();
+    this.handleAutoPlayCheck();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -122,7 +148,7 @@ export default class OiceSingleView extends React.Component {
       handleOgMetaChanges(title,
         oice.description || t('site:description'),
         oice.url,
-        oice.ogImage.button || oice.image.button || `${window.location.origin}/static/img/oice-default-cover.jpg`,
+        getOiceImage(oice),
       );
     }
   }
@@ -191,6 +217,26 @@ export default class OiceSingleView extends React.Component {
     }
   }
 
+  async handleAutoPlayCheck() {
+    const sound = document.getElementById('audio-player');
+    if (!sound) return;
+
+    const playPromise = sound.play();
+    const isMediaAutoplayable = await playPromise
+      .then(() => {
+        sound.pause();
+        return true;
+      })
+      .catch(error => false);
+    this.setState({ isMediaAutoplayable });
+
+    removeDumbAudioElement();
+  }
+
+  handlePlayOiceButtonClick = () => {
+    this.setState({ isMediaAutoplayable: true });
+  }
+
   handleToggleCallToActionModal = () => {
     const isCallToActionModalOpen = !this.state.isCallToActionModalOpen;
     if (!isCallToActionModalOpen) {
@@ -233,6 +279,10 @@ export default class OiceSingleView extends React.Component {
   handleSelectEpisode = (index) => {
     const { relatedOices } = this.props;
     this.handlePlayOice(relatedOices[index].uuid);
+
+    if (this.state.isEndedPlaying) {
+      this.setState({ isEndedPlaying: false });
+    }
   }
 
   postOiceAction = (action) => {
@@ -398,6 +448,7 @@ export default class OiceSingleView extends React.Component {
       isMobileSize,
       oicePlayerSize,
       isCallToActionModalOpen,
+      isMediaAutoplayable,
     } = this.state;
 
     const style = {
@@ -454,6 +505,28 @@ export default class OiceSingleView extends React.Component {
         episode: o.order + 1,
       })} - ${o.name}`,
     }));
+    const hasOtherEpisodes = episodeValues.length > 0;
+
+    // no scrolling for responsive behavior in iOS
+    const iframeHTML = {
+      __html: `
+        <iframe
+          allow="autoplay"
+          class="oice-player"
+          scrolling="no"
+          src="${this.getOiceViewUrl(isPreview, oice)}"
+          title="${oice.uuid}"
+        />
+      `,
+    };
+
+    const iframe = <div className="iframe-wrapper" dangerouslySetInnerHTML={iframeHTML} />;
+    const oiceInfoProps = {
+      labelSize: oicePlayerSize / 30,
+      subtitleSize: oicePlayerSize / 25,
+      titleSize: oicePlayerSize / 20,
+      t,
+    };
 
     return (
       <Container
@@ -462,20 +535,21 @@ export default class OiceSingleView extends React.Component {
         fluid
       >
         <div className="oice-player-wrapper" style={{ ...style.oicePlayerWrapper }}>
-          <iframe
-            ref={ref => this.iframe = ref}
-            className="oice-player"
-            scrolling="no" // For responsive behavior in iOS
-            src={this.getOiceViewUrl(isPreview, oice)}
-            title={oice.uuid}
-          />
-          {nextOice && isEndedPlaying &&
+          {isMediaAutoplayable === false &&
+            <PlayButton
+              {...oiceInfoProps}
+              image={getOiceImage(oice)}
+              subtitle={`${oice.storyName} ${oiceChapter}`}
+              title={oice.name}
+              onClick={this.handlePlayOiceButtonClick}
+            />
+          }
+          {isMediaAutoplayable && iframe}
+          {hasOtherEpisodes && isEndedPlaying &&
             <UpNext
-              labelSize={oicePlayerSize / 30}
+              {...oiceInfoProps}
               subtitle={`${oice.storyName} ${nextOiceChapter}`}
-              subtitleSize={oicePlayerSize / 25}
               title={nextOice.name}
-              titleSize={oicePlayerSize / 20}
               onClick={() => this.handlePlayNextRequest(nextOice.uuid)}
             />
           }
@@ -534,8 +608,8 @@ export default class OiceSingleView extends React.Component {
                 </div>
               )}
             </div>
-            {!isPreview && <hr />}
-            {!isPreview &&
+            {!isPreview && hasOtherEpisodes && <hr />}
+            {!isPreview && hasOtherEpisodes &&
               <Dropdown
                 placeholder={t('label.selectEpisode')}
                 values={episodeValues}
