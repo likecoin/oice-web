@@ -94,6 +94,13 @@ $arrow-icon-size: 14px;
   background-color: $pure-black;
 
   svg {
+    transform-origin: center top;
+    animation-name: play-button-shake;
+    animation-duration: 1s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+
     border: 4px solid white;
     border-radius: 50%;
 
@@ -111,13 +118,6 @@ $arrow-icon-size: 14px;
         transform: rotateZ(-12deg);
       }
     }
-
-    transform-origin: center top;
-    animation-name: play-button-shake;
-    animation-duration: 1s;
-    animation-timing-function: ease-in;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
   }
 }
 
@@ -221,6 +221,7 @@ $arrow-icon-size: 14px;
       &.sticky {
         .cta-banner {
           position: fixed;
+          z-index: 1;
 
           height: 80px;
           padding: 6px 16px 26px;

@@ -73,6 +73,11 @@ function createDumbAudioElement() {
   document.getElementById('app').appendChild(sound);
 }
 
+function removeDumbAudioElement() {
+  const sound = document.getElementById('audio-player');
+  if (sound) sound.remove();
+}
+
 @translate(['oiceSingleView'])
 @connect(store => ({
   ...store.oiceSingleView,
@@ -130,7 +135,6 @@ export default class OiceSingleView extends React.Component {
     const { oice, t } = this.props;
     if (this.props.params.uuid !== nextProps.params.uuid) {
       this.loadOice(nextProps.params.uuid);
-      this.handleAutoPlayCheck();
     }
     if (oice) {
       const title = getHTMLTitle(t, oice.name);
@@ -207,21 +211,20 @@ export default class OiceSingleView extends React.Component {
     }
   }
 
-  handleAutoPlayCheck() {
+  async handleAutoPlayCheck() {
     const sound = document.getElementById('audio-player');
     if (!sound) return;
 
     const playPromise = sound.play();
-
-    if (playPromise !== undefined) {
-      playPromise.then(() => {
+    const isMediaAutoplayable = await playPromise
+      .then(() => {
         sound.pause();
-        this.setState({ isMediaAutoplayable: true });
-      }).catch((error) => {
-        // fail to play
-        this.setState({ isMediaAutoplayable: false });
-      });
-    }
+        return true;
+      })
+      .catch(error => false);
+    this.setState({ isMediaAutoplayable });
+
+    removeDumbAudioElement();
   }
 
   handlePlayOiceButtonClick = () => {
