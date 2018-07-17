@@ -14,11 +14,16 @@ import { STORE_TYPE } from 'asset-library/constants';
 
 import { getThumbnail } from 'common/utils';
 
-const colors = {
-  public: '#1b941a',
-  private: '#fc404d',
-  pendingForSale: '#1082e2',
-};
+const discountPriceLabel = (originalPrice, newPrice) => (
+  <div>
+    <span className="original-price">
+      {originalPrice}
+    </span>
+    <span class="new-price">
+      {newPrice}
+    </span>
+  </div>
+);
 
 @translate(['LibraryDashboard', 'MyLibraryDashboard', 'AssetStore'])
 export default class LibraryGridItem extends React.Component {
@@ -48,24 +53,32 @@ export default class LibraryGridItem extends React.Component {
   getLibraryStatusString(libraryStatus) {
     const { t, library, type } = this.props;
     const {
+      discountPrice,
       price,
       isPurchased,
       isPublic,
+      settlementCurrency,
     } = library;
+
+    if (discountPrice && !isPurchased) {
+      return discountPriceLabel(
+        t(`label.price-${settlementCurrency}`, { price }),
+        t(`label.price-${settlementCurrency}`, { price: discountPrice })
+      );
+    }
 
     let str = '';
     if (type === STORE_TYPE.MYLIBRARIES) {
       if (price > 0 && isPublic) {
-        str = t('label.price', { price: price.toFixed(2) });
+        str = t(`label.price-${settlementCurrency}`, { price });
       } else {
         str = t(`label.${libraryStatus}`);
       }
-    }
-    if (type === STORE_TYPE.ASSETSTORE) {
+    } else if (type === STORE_TYPE.ASSETSTORE) {
       if (isPurchased) {
         str = t('label.purchased');
       } else if (price > 0) {
-        str = t('label.price', { price: price.toFixed(2) });
+        str = t(`label.price-${settlementCurrency}`, { price });
       } else {
         str = t('label.free');
       }
@@ -87,13 +100,10 @@ export default class LibraryGridItem extends React.Component {
   }
 
   renderLibraryPriceInfo(libraryStatus) {
-    const { type, library } = this.props;
-    let color = colors[libraryStatus];
-    if (type === STORE_TYPE.ASSETSTORE && library.isPurchased) {
-      color = null;
-    }
+    const { library } = this.props;
+
     return (
-      <p style={{ color }}>
+      <p className="library-grid-item__status">
         {this.getLibraryStatusString(libraryStatus)}
       </p>
     );
@@ -115,16 +125,11 @@ export default class LibraryGridItem extends React.Component {
   }
 
   renderMyLibraryStatusFlag(libraryStatus) {
-    const { library } = this.props;
+    if (libraryStatus !== 'paid') return null;
     return (
-      <div>
-        {libraryStatus === 'pendingForSale' && library.isPublic &&
-          <div className="for-sale sale">$</div>
-        }
-        {libraryStatus === 'pendingForSale' && !library.isPublic &&
-          <div className="for-sale edit"><EditIcon /></div>
-        }
-      </div>
+      this.props.library.isPublic ?
+        <div className="for-sale sale">$</div> :
+        <div className="for-sale edit"><EditIcon /></div>
     );
   }
 
@@ -150,13 +155,15 @@ export default class LibraryGridItem extends React.Component {
     );
 
     let libraryStatus = '';
-    const { price } = library;
-    if (price === 0) {
+    const { settlementCurrency, price } = library;
+    if (type === STORE_TYPE.ASSETSTORE && library.isPurchased) {
+      libraryStatus = 'purchased';
+    } else if (price === 0) {
       libraryStatus = 'public';
     } else if (price === -1) {
       libraryStatus = 'private';
     } else if (price > 0) {
-      libraryStatus = 'pendingForSale';
+      libraryStatus = 'paid';
     }
 
     const unselected = type === STORE_TYPE.PURCHASEDLIBRARIES && !library.isSelected;
@@ -166,10 +173,14 @@ export default class LibraryGridItem extends React.Component {
       },
     };
     const disabled = togglingLibraryId === library.id;
-    const className = classNames('library-grid-item', {
-      disabled,
-      unselected,
-    });
+    const className = classNames(
+      'library-grid-item',
+      libraryStatus === 'purchased' ? libraryStatus : settlementCurrency || libraryStatus,
+      {
+        disabled,
+        unselected,
+      }
+    );
     return (
       <li {... { className }} onClick={this.handleClick}>
         <div>
@@ -180,11 +191,19 @@ export default class LibraryGridItem extends React.Component {
         </div>
         <h3>{library.name}</h3>
         <p>{t('label.numberOfAssets', { count: library.assetCount })}</p>
-        {type !== STORE_TYPE.PURCHASEDLIBRARIES && this.renderLibraryPriceInfo(libraryStatus)}
-        {type !== STORE_TYPE.MYLIBRARIES && this.renderLibraryTopLabel(type)}
-        {type === STORE_TYPE.MYLIBRARIES && this.renderMyLibraryStatusFlag(libraryStatus)}
-        {type === STORE_TYPE.PURCHASEDLIBRARIES && this.renderPurchasedLibraryToggle()}
-        {/* owned */}
+
+        {type !== STORE_TYPE.PURCHASEDLIBRARIES &&
+          this.renderLibraryPriceInfo(libraryStatus)
+        }
+        {type !== STORE_TYPE.MYLIBRARIES &&
+          this.renderLibraryTopLabel(type)
+        }
+        {type === STORE_TYPE.MYLIBRARIES &&
+          this.renderMyLibraryStatusFlag(libraryStatus)
+        }
+        {type === STORE_TYPE.PURCHASEDLIBRARIES &&
+          this.renderPurchasedLibraryToggle()
+        }
       </li>
     );
   }

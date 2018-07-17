@@ -213,22 +213,22 @@
   .library-column-action {
     position: relative;
 
+    flex-shrink: 0;
+
     width: 248px;
     padding: 0 padding(1);
 
     border-left: $light-grey-3 1px solid;
 
-    flex-shrink: 0;
-
     .library-action {
+      position: relative;
+
       display: flex;
+      align-items: center;
 
       height: 100%;
-      max-height: 216px;
       padding-right: padding(1);
       padding-left: inherit;
-
-      align-items: center;
 
       h2 {
         position: absolute;
@@ -254,9 +254,32 @@
       left: 0;
 
       display: flex;
-
-      justify-content: center;
       align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .outline-button {
+    font-weight: bold;
+  }
+
+  .original-price {
+    position: absolute;
+    left: 0;
+
+    margin-top: padding(-3/2);
+
+    text-align: center;
+    text-decoration: line-through;
+
+    font-weight: normal;
+
+    &.fiat {
+      color: $oice-blue;
+    }
+
+    &.likecoin {
+      color: $like-green;
     }
   }
 }

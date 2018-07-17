@@ -84,9 +84,13 @@ function LibraryInfo(props) {
       buttonProps.color = 'green';
       buttonProps.label = t('free');
       break;
-    case 'paid':
+    case 'fiat':
       buttonProps.color = 'blue';
-      buttonProps.label = `US$ ${library.price}`;
+      buttonProps.label = `US$ ${library.discountPrice || library.price}`;
+      break;
+    case 'likecoin':
+      buttonProps.color = 'gradient-likecoin';
+      buttonProps.label = `LIKE ${library.discountPrice || library.price}`;
       break;
     case 'purchased':
       buttonProps.label = t('purchased');
@@ -130,6 +134,14 @@ function LibraryInfo(props) {
 
   function handleReceiveStripeToken(token) {
     props.onPurchase(library, token);
+  }
+
+  function renderOriginalPrice() {
+    return (
+      <div className={classNames('original-price', library.settlementCurrency)}>
+        {`${library.settlementCurrency === 'fiat' ? 'US$' : 'LIKE'} ${library.price}`}
+      </div>
+    );
   }
 
   function renderPurchaseButton() {
@@ -196,7 +208,10 @@ function LibraryInfo(props) {
           </div>
         ) : (
           <div className="library-action">
-            {mode === 'paid' && user && !user.hasPaymentInfo ? (
+            {mode !== 'purchased' && !!library.discountPrice && (
+              renderOriginalPrice()
+            )}
+            {mode === 'fiat' && user && !user.hasPaymentInfo ? (
               renderPurchaseButton()
             ) : (
               <OutlineButton

@@ -67,7 +67,7 @@ function getStateFromProps(props) {
     } else if (library.price === 0) {
       state.mode = 'free';
     } else if (library.price > 0) {
-      state.mode = 'paid';
+      state.mode = library.settlementCurrency;
     }
   }
 

@@ -188,7 +188,7 @@ export default class LikeCoinIntegrationPanel extends React.Component {
         customHeaderRightComponent={(
           <a
             className="more-info-link light-grey"
-            href="https://likecoin.store"
+            href={LIKECOIN_URL}
             target="_blank"
             rel="noopener noreferrer"
           >

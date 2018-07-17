@@ -17,7 +17,7 @@ function OutlineButton(props) {
     {
       disabled,
       fluid,
-    }
+    },
   );
 
   return (

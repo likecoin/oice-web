@@ -1,5 +1,7 @@
 @import "../../styles/variables";
 
+$button-border-radius: padding(3/4);
+
 @mixin outline-button-style($color) {
   color: $color !important;
   border-color: $color !important;
@@ -23,7 +25,7 @@
 
   border-width: 1px;
   border-style: solid;
-  border-radius: padding(3/2) / 2;
+  border-radius: $button-border-radius;
 
   font-weight: 500;
 
@@ -53,6 +55,45 @@
     @include outline-button-style($dark-grey-1);
   }
 
+  &.gradient-likecoin {
+    color: $like-green !important;
+    border: none;
+    background-image: linear-gradient(237deg, #d2f0f0, #f0e6b4);
+
+    &:before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+
+      margin: 3px;
+
+      content: " ";
+      transition: opacity .1s ease-in;
+
+      border-radius: $button-border-radius;
+      background-color: $pure-white;
+    }
+
+    span {
+      position: relative;
+
+      transition: color, text-shadow .1s ease-in;
+    }
+
+    &:hover {
+      &:before {
+        opacity: 0;
+      }
+
+      span {
+        color: $pure-white;
+        text-shadow: 0px 0px 4px $like-green;
+      }
+    }
+  }
+
   &.disabled {
     opacity: 1 !important;
 
@@ -67,11 +108,10 @@
 
   div.icon {
     display: flex;
-
-    height: 100%;
-
     align-items: center;
     justify-content: center;
+
+    height: 100%;
     > svg {
       width: padding(5/6);
       height: padding(5/6);
