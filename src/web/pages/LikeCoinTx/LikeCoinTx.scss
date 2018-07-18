@@ -1,0 +1,98 @@
+@import "../../styles/variables";
+
+.likecoin-tx {
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    min-height: calc(100vh - 40px) !important;
+
+    background-color: $pure-white;
+  }
+
+  &__result {
+    width: 560px;
+    padding: padding() padding(5/3) padding(4/3);
+
+    background-color: $light-grey-1;
+
+    @media screen and (max-width: $screen-phone) {
+      width: 100%;
+      padding: 0 padding() padding();
+    }
+
+    h1 {
+      color: $oice-green;
+
+      font-size: 46px;
+      font-weight: 300;
+    }
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  &__processing {
+    display: flex;
+    flex-direction: row;
+
+    padding: padding() 0;
+
+    h2 {
+      margin-right: padding(1/4);
+
+      color: #d9b503;
+
+      font-weight: 300;
+
+      &.error {
+        width: 100%;
+
+        word-wrap: break-word;
+
+        color: $oice-red;
+      }
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: row;
+
+    padding-top: padding(1/3);
+
+    img {
+      width: 144px;
+      height: 144px;
+
+      border-radius: 8px;
+    }
+
+    h2 {
+      display: flex;
+      align-items: center;
+
+      padding-left: padding();
+
+      color: $oice-red;
+
+      font-size: 20px;
+      font-weight: normal;
+    }
+  }
+
+  &__back-button {
+    display: inline-block;
+
+    width: 256px;
+    margin: padding();
+
+    text-decoration: none;
+
+    .outline-button {
+      max-width: 256px;
+    }
+  }
+}

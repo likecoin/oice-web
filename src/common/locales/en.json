@@ -208,7 +208,8 @@
     },
     "label": {
       "numberOfAssets": "Includes {{count}} assets",
-      "price": "US$ {{price}}"
+      "price-fiat": "US$ {{price}}",
+      "price-likecoin": "LIKE {{price}}"
     }
   },
   "LibraryDetails": {
@@ -220,7 +221,8 @@
       "ownedLibraryWarning": "You created this library, you already own it!",
       "purchaseLibraryName": "Purchase \"{{name}}\" Library",
       "purchasingLibrary": "Purchase Library",
-      "confirmToPurchaseLibrary": "Are you sure to use {{currency}} ${{price}} to purchase library \"{{name}}\"?"
+      "confirmToPurchaseLibrary": "Are you sure to use {{currency}} ${{price}} to purchase library \"{{name}}\"?",
+      "connectWithLikeCoin": "Please connect your account with LikeCoin ID"
     },
     "placeholder": {
       "empty": "No assets of this type"
@@ -246,7 +248,7 @@
       "public": "$t(library:public)",
       "private": "$t(library:private)",
       "forSale": "$t(library:forSale)",
-      "pendingForSale": "$t(library:pendingForSale)"
+      "paid": "$t(library:pendingForSale)"
     },
     "button": {
       "createLibrary": "Create New Library"
@@ -1135,7 +1137,17 @@
     "ERR_LIKECOIN_CONNECT_DUPLICATED": "This LikeCoin ID is already bound by other account",
     "ERR_LIKECOIN_CONNECT_ALREADY": "You cannot bind different LikeCoin ID",
     "ERR_LIKECOIN_CONNECT_ID_WALLET_MISMATCH": "The wallet address and the LikeCoin ID provided do not match.",
-    "ERR_LIKECOIN_CONNECT_USER_ID_DUPLICATED": "This LikeCoin ID has already be taken by other user."
+    "ERR_LIKECOIN_CONNECT_USER_ID_DUPLICATED": "This LikeCoin ID has already be taken by other user.",
+    "ERR_LIKECOIN_TX_PRODUCT_STATUS_FAILED": "Please contact customer service to proceed to buy the product.",
+    "ERR_LIKECOIN_TX_PRODUCT_PURCHASED": "You have already purchased this library.",
+    "ERR_LIKECOIN_ID_NOT_LINKED": "$t(LibraryDetails:label:connectWithLikeCoin)",
+    "ERR_LIKECOIN_TX_HASH_NOT_EXIST": "ERR_LIKECOIN_TX_HASH_NOT_EXIST",
+    "ERR_LIKECOIN_TX_VALIDATE_TX_HASH_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_TX_HASH_NOT_MATCH",
+    "ERR_LIKECOIN_TX_VALIDATE_FROM_ADDRESS_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_FROM_ADDRESS_NOT_MATCH",
+    "ERR_LIKECOIN_TX_VALIDATE_TO_ADDRESS_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_TO_ADDRESS_NOT_MATCH",
+    "ERR_LIKECOIN_TX_VALIDATE_AMOUNT_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_AMOUNT_NOT_MATCH",
+    "ERR_LIKECOIN_TX_VALIDATE_REWARD_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_REWARD_NOT_MATCH",
+    "ERR_LIKECOIN_TX_VALIDATE_EXISTED": "交易已完成"
   },
   "general": {
     "save": "Save",
@@ -2064,6 +2076,16 @@
     },
     "button": {
       "watchInApp": "Read it by oice app"
+    }
+  },
+  "LikeCoinTx": {
+    "label": {
+      "purchasedLibrary": "Successful Transaction",
+      "processing": "Your transaction is being processed",
+      "contactCS": "Please contact our customer service for assistance."
+    },
+    "button": {
+      "backLibrary": "Back to Asset Store"
     }
   }
 }

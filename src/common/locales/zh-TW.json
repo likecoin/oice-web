@@ -208,7 +208,8 @@
     },
     "label": {
       "numberOfAssets": "{{count}}個素材",
-      "price": "US$ {{price}}"
+      "price-fiat": "US$ {{price}}",
+      "price-likecoin": "LIKE {{price}}"
     }
   },
   "LibraryDetails": {
@@ -220,7 +221,8 @@
       "ownedLibraryWarning": "這是你所創建的素材庫，你已自動擁有這個素材庫。",
       "purchaseLibraryName": "購買「{{name}}」素材庫",
       "purchasingLibrary": "購買素材庫",
-      "confirmToPurchaseLibrary": "確定支付{{currency}} ${{price}}購買「{{name}}」素材庫？"
+      "confirmToPurchaseLibrary": "確定支付{{currency}} ${{price}}購買「{{name}}」素材庫？",
+      "connectWithLikeCoin": "請先連結 LikeCoin ID"
     },
     "placeholder": {
       "empty": "沒有這分類的素材"
@@ -246,7 +248,7 @@
       "public": "$t(library:public)",
       "private": "$t(library:private)",
       "forSale": "$t(library:forSale)",
-      "pendingForSale": "$t(library:pendingForSale)"
+      "paid": "$t(library:pendingForSale)"
     },
     "button": {
       "createLibrary": "創建素材庫"
@@ -1135,7 +1137,17 @@
     "ERR_LIKECOIN_CONNECT_DUPLICATED": "此LikeCoin ID已被綁定",
     "ERR_LIKECOIN_CONNECT_ALREADY": "不能綁定到另一個LikeCoin ID",
     "ERR_LIKECOIN_CONNECT_ID_WALLET_MISMATCH": "正在使用的錢包地址與輸入的 LikeCoin ID 不符",
-    "ERR_LIKECOIN_CONNECT_USER_ID_DUPLICATED": "此 LikeCoin ID 已被其他用戶用作用戶名稱"
+    "ERR_LIKECOIN_CONNECT_USER_ID_DUPLICATED": "此 LikeCoin ID 已被其他用戶用作用戶名稱",
+    "ERR_LIKECOIN_TX_PRODUCT_STATUS_FAILED": "交易失敗，請聯絡客服以重新購買素材庫",
+    "ERR_LIKECOIN_TX_PRODUCT_PURCHASED": "你已曾購買此素材庫，如無法使用請聯絡客服",
+    "ERR_LIKECOIN_ID_NOT_LINKED": "$t(LibraryDetails:label:connectWithLikeCoin)",
+    "ERR_LIKECOIN_TX_HASH_NOT_EXIST": "ERR_LIKECOIN_TX_HASH_NOT_EXIST",
+    "ERR_LIKECOIN_TX_VALIDATE_TX_HASH_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_TX_HASH_NOT_MATCH",
+    "ERR_LIKECOIN_TX_VALIDATE_FROM_ADDRESS_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_FROM_ADDRESS_NOT_MATCH",
+    "ERR_LIKECOIN_TX_VALIDATE_TO_ADDRESS_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_TO_ADDRESS_NOT_MATCH",
+    "ERR_LIKECOIN_TX_VALIDATE_AMOUNT_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_AMOUNT_NOT_MATCH",
+    "ERR_LIKECOIN_TX_VALIDATE_REWARD_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_REWARD_NOT_MATCH",
+    "ERR_LIKECOIN_TX_VALIDATE_EXISTED": "交易已完成"
   },
   "general": {
     "save": "儲存",
@@ -2064,6 +2076,16 @@
     },
     "button": {
       "watchInApp": "用 oice app 繼續觀看"
+    }
+  },
+  "LikeCoinTx": {
+    "label": {
+      "purchasedLibrary": "已成功購買素材庫",
+      "processing": "正在處理您的交易",
+      "contactCS": "請聯絡客服處理"
+    },
+    "button": {
+      "backLibrary": "返回素材庫"
     }
   }
 }

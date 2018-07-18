@@ -38,7 +38,7 @@ function OutlineButton(props) {
 
 OutlineButton.propTypes = {
   className: PropTypes.string,
-  color: PropTypes.oneOf(['red', 'green', 'blue', 'light-grey']),
+  color: PropTypes.oneOf(['red', 'green', 'blue', 'light-grey', 'gradient-likecoin']),
   disabled: PropTypes.bool,
   fluid: PropTypes.bool,
   icon: PropTypes.element,
