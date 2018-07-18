@@ -9,9 +9,13 @@ import * as AssetAPI from 'common/api/asset';
 import * as CharacterAPI from 'common/api/character';
 import * as LibraryAPI from 'common/api/library';
 import * as StoreAPI from 'common/api/store';
+import * as LikeCoinAPI from 'common/api/likecoin';
 import { APIHandler } from 'common/utils/api';
 
-import { DOMAIN_URL } from 'common/constants';
+import {
+  DOMAIN_URL,
+  LIKECOIN_URL,
+} from 'common/constants';
 import * as ASSET_TYPE from 'common/constants/assetTypes';
 import { LIBRARY_TYPE } from 'asset-library/constants';
 
@@ -127,6 +131,48 @@ export const purchaseLibrary = (id, token) => (dispatch, getState) => {
     null,
     ['ERR_LIBRARY_PURCHASE_FAILURE'],
   );
+};
+
+export const purchaseLikeCoinLibrary = library => async (dispatch) => {
+  const {
+    id: productId,
+    discountPrice,
+    price,
+    name,
+    description,
+    cover,
+  } = library;
+  const amount = discountPrice || price;
+
+  dispatch(purchaseLibraryBegin());
+  const tx = await APIHandler(
+    dispatch,
+    LikeCoinAPI.postLikeCoinTx({
+      type: 'library',
+      tx: {
+        amount,
+        productId,
+      },
+    }),
+    () => {
+      dispatch(purchaseLibraryEnd());
+    },
+    [
+      'ERR_LIKECOIN_ID_NOT_LINKED',
+      'ERR_LIKECOIN_TX_PRODUCT_STATUS_FAILED',
+      'ERR_LIKECOIN_TX_PRODUCT_PURCHASED',
+    ],
+  );
+  if (tx.id) {
+    const redirect = encodeURIComponent(`${DOMAIN_URL}/likecoin/tx?id=${tx.id}`);
+    const payload = encodeURIComponent(JSON.stringify({ txId: tx.id }));
+    window.location.href = `${LIKECOIN_URL}/pay/oiceltd/${amount}?` +
+                            `name=${encodeURIComponent(name)}&` +
+                            `description=${encodeURIComponent(description)}&` +
+                            `image=${encodeURIComponent(cover)}&` +
+                            `redirect=${redirect}&` +
+                            `payload=${payload}`;
+  }
 };
 
 
