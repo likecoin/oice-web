@@ -333,14 +333,7 @@ export default class LibraryDetails extends React.Component {
     const { t, dispatch, user } = this.props;
     if (user) {
       if (library.settlementCurrency === 'likecoin') {
-        if (user.likeCoinId) {
-          dispatch(Actions.purchaseLikeCoinLibrary(library));
-        } else {
-          dispatch(AlertDialog.toggle({
-            body: <a href="/profile">{t('label.connectWithLikeCoin')}</a>,
-            type: 'alert',
-          }));
-        }
+        dispatch(Actions.purchaseLikeCoinLibrary(library));
       } else if (user.hasPaymentInfo) {
         // Confirm user for the purchase
         dispatch(AlertDialog.toggle({
