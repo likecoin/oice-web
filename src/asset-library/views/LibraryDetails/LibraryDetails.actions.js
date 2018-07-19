@@ -164,14 +164,17 @@ export const purchaseLikeCoinLibrary = library => async (dispatch) => {
     ],
   );
   if (tx.id) {
-    const redirect = encodeURIComponent(`${DOMAIN_URL}/likecoin/tx?id=${tx.id}`);
-    const payload = encodeURIComponent(JSON.stringify({ txId: tx.id }));
-    window.location.href = `${LIKECOIN_URL}/pay/oiceltd/${amount}?` +
-                            `name=${encodeURIComponent(name)}&` +
-                            `description=${encodeURIComponent(description)}&` +
-                            `image=${encodeURIComponent(cover)}&` +
-                            `redirect=${redirect}&` +
-                            `payload=${payload}`;
+    const params = {
+      name,
+      description,
+      image: cover,
+      redirect: `${DOMAIN_URL}/likecoin/tx?id=${tx.id}`,
+      payload: JSON.stringify({ txId: tx.id }),
+    };
+    const queryParams = Object.keys(params)
+      .map(key => `${key}=${encodeURIComponent(params[key])}`)
+      .join('&');
+    window.location.href = `${LIKECOIN_URL}/pay/oiceltd/${amount}?${queryParams}`;
   }
 };
 
