@@ -158,7 +158,6 @@ export const purchaseLikeCoinLibrary = library => async (dispatch) => {
       dispatch(purchaseLibraryEnd());
     },
     [
-      'ERR_LIKECOIN_ID_NOT_LINKED',
       'ERR_LIKECOIN_TX_PRODUCT_STATUS_FAILED',
       'ERR_LIKECOIN_TX_PRODUCT_PURCHASED',
     ],
@@ -168,7 +167,7 @@ export const purchaseLikeCoinLibrary = library => async (dispatch) => {
       name,
       description,
       image: cover,
-      redirect: `${DOMAIN_URL}/likecoin/tx?id=${tx.id}`,
+      redirect: `${DOMAIN_URL}/likecoin/tx/${tx.id}`,
       payload: JSON.stringify({ txId: tx.id }),
     };
     const queryParams = Object.keys(params)

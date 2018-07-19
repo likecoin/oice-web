@@ -221,8 +221,7 @@
       "ownedLibraryWarning": "這是你所創建的素材庫，你已自動擁有這個素材庫。",
       "purchaseLibraryName": "購買「{{name}}」素材庫",
       "purchasingLibrary": "購買素材庫",
-      "confirmToPurchaseLibrary": "確定支付{{currency}} ${{price}}購買「{{name}}」素材庫？",
-      "connectWithLikeCoin": "請先連結 LikeCoin ID"
+      "confirmToPurchaseLibrary": "確定支付{{currency}} ${{price}}購買「{{name}}」素材庫？"
     },
     "placeholder": {
       "empty": "沒有這分類的素材"
@@ -1140,14 +1139,12 @@
     "ERR_LIKECOIN_CONNECT_USER_ID_DUPLICATED": "此 LikeCoin ID 已被其他用戶用作用戶名稱",
     "ERR_LIKECOIN_TX_PRODUCT_STATUS_FAILED": "交易失敗，請聯絡客服以重新購買素材庫",
     "ERR_LIKECOIN_TX_PRODUCT_PURCHASED": "你已曾購買此素材庫，如無法使用請聯絡客服",
-    "ERR_LIKECOIN_ID_NOT_LINKED": "$t(LibraryDetails:label:connectWithLikeCoin)",
     "ERR_LIKECOIN_TX_HASH_NOT_EXIST": "ERR_LIKECOIN_TX_HASH_NOT_EXIST",
     "ERR_LIKECOIN_TX_VALIDATE_TX_HASH_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_TX_HASH_NOT_MATCH",
     "ERR_LIKECOIN_TX_VALIDATE_FROM_ADDRESS_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_FROM_ADDRESS_NOT_MATCH",
     "ERR_LIKECOIN_TX_VALIDATE_TO_ADDRESS_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_TO_ADDRESS_NOT_MATCH",
     "ERR_LIKECOIN_TX_VALIDATE_AMOUNT_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_AMOUNT_NOT_MATCH",
-    "ERR_LIKECOIN_TX_VALIDATE_REWARD_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_REWARD_NOT_MATCH",
-    "ERR_LIKECOIN_TX_VALIDATE_EXISTED": "交易已完成"
+    "ERR_LIKECOIN_TX_VALIDATE_REWARD_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_REWARD_NOT_MATCH"
   },
   "general": {
     "save": "儲存",

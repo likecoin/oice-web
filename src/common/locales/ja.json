@@ -221,8 +221,7 @@
       "ownedLibraryWarning": "これはあなたの素材コレクションであるため、すでに所有しています",
       "purchaseLibraryName": "素材コレクション「{{name}}」を購入します",
       "purchasingLibrary": "素材コレクションを購入します",
-      "confirmToPurchaseLibrary": "{{currency}}　${{price}}で素材コレクション「{{name}}」を購入しますか？",
-      "connectWithLikeCoin": "Please connect your account with LikeCoin ID"
+      "confirmToPurchaseLibrary": "{{currency}}　${{price}}で素材コレクション「{{name}}」を購入しますか？"
     },
     "placeholder": {
       "empty": "この分類の素材はありません"
@@ -1140,14 +1139,12 @@
     "ERR_LIKECOIN_CONNECT_USER_ID_DUPLICATED": "This LikeCoin ID has already be taken by other user.",
     "ERR_LIKECOIN_TX_PRODUCT_STATUS_FAILED": "Please contact customer service to proceed to buy the product.",
     "ERR_LIKECOIN_TX_PRODUCT_PURCHASED": "You have already purchased this library.",
-    "ERR_LIKECOIN_ID_NOT_LINKED": "$t(LibraryDetails:label:connectWithLikeCoin)",
     "ERR_LIKECOIN_TX_HASH_NOT_EXIST": "ERR_LIKECOIN_TX_HASH_NOT_EXIST",
     "ERR_LIKECOIN_TX_VALIDATE_TX_HASH_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_TX_HASH_NOT_MATCH",
     "ERR_LIKECOIN_TX_VALIDATE_FROM_ADDRESS_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_FROM_ADDRESS_NOT_MATCH",
     "ERR_LIKECOIN_TX_VALIDATE_TO_ADDRESS_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_TO_ADDRESS_NOT_MATCH",
     "ERR_LIKECOIN_TX_VALIDATE_AMOUNT_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_AMOUNT_NOT_MATCH",
-    "ERR_LIKECOIN_TX_VALIDATE_REWARD_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_REWARD_NOT_MATCH",
-    "ERR_LIKECOIN_TX_VALIDATE_EXISTED": "交易已完成"
+    "ERR_LIKECOIN_TX_VALIDATE_REWARD_NOT_MATCH": "ERR_LIKECOIN_TX_VALIDATE_REWARD_NOT_MATCH"
   },
   "general": {
     "save": "保存",
