@@ -12,9 +12,10 @@ const { URL } = require('url');
 
 const DEBUG = process.env.NODE_ENV !== 'production';
 
-router.get('/oembed', cors(), async (req, res, next) => {
+router.use(cors());
+router.get('/', async (req, res, next) => {
   try {
-    const { url } = req.query;
+    const { url, maxwidth, maxheight } = req.query;
     if (!url) {
       throw new ValidationError('No url query in oEmbed request');
     }
@@ -33,13 +34,20 @@ router.get('/oembed', cors(), async (req, res, next) => {
     }
 
     const DEFAULT_MAX_SIZE = 600;
-    const maxWidth = Number.parseInt(req.query.maxwidth, 10) || DEFAULT_MAX_SIZE;
-    const maxHeight = Number.parseInt(req.query.maxheight, 10) || DEFAULT_MAX_SIZE;
+    const maxWidth = Number.parseInt(maxwidth, 10) || DEFAULT_MAX_SIZE;
+    const maxHeight = Number.parseInt(maxheight, 10) || DEFAULT_MAX_SIZE;
     const thumbnailLength = Math.min(300, maxWidth, maxHeight);
 
-    const oice = await OiceAPI.fetchOiceOgByUUID(oiceUuid).catch((err) => {
+    let oice;
+    try {
+      oice = await OiceAPI.fetchOiceOgByUUID(oiceUuid);
+    } catch (err) {
+      console.error(err);
+    }
+    if (!oice) {
       res.sendStatus(404);
-    });
+      return;
+    }
 
     const searchParams = new URL(url).search;
     const iframeSrc = `${OICE_VIEW_URL_BASE}/view/${oiceUuid}${searchParams}`;
@@ -76,5 +84,16 @@ router.get('/oembed', cors(), async (req, res, next) => {
     next(err);
   }
 });
+
+
+function errorHandler(err, req, res, next) {
+  const msg = (err.response && err.response.data) || err.message || err;
+  if (err.name === 'ValidationError') {
+    return res.status(400).send(msg);
+  }
+
+  return res.sendStatus(500);
+}
+router.use(errorHandler);
 
 export default router;

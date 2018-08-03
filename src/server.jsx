@@ -76,7 +76,7 @@ server.disable('x-powered-by');
 server.use(cookieParser());
 server.use(i18nMiddleware.handle(i18n));
 server.use(express.static(DIST_PATH));
-server.use('/', oembed);
+server.use('/oembed', oembed);
 
 server.get('/healthz', (req, res) => {
   res.sendStatus(200);
