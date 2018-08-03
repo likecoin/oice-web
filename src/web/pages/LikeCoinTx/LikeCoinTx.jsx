@@ -1,5 +1,3 @@
-/* global branch: true */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { translate } from 'react-i18next';
@@ -16,8 +14,9 @@ import './LikeCoinTx.scss';
 
 function validateTx(props) {
   const {
-    dispatch, user, location, params,
+    dispatch, user, location, params, isValidating, product, error,
   } = props;
+  if (isValidating || product || error) return;
 
   if (!user.isLoggingIn) {
     const { txhash } = location.query;
@@ -44,6 +43,7 @@ export default class LikeCoinTx extends React.Component {
     t: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
     error: PropTypes.string,
+    isValidating: PropTypes.bool,
     product: PropTypes.object,
   }
 

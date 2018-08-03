@@ -3,9 +3,11 @@ import { createAction } from 'redux-actions';
 import * as LikeCoinTx from 'common/api/likecoin';
 import { APIHandler } from 'common/utils/api';
 
+export const validateLikeCoinTxBegin = createAction('LIKECOIN_TX_VALIDATE_BEGIN');
 export const validateLikeCoinFailed = createAction('LIKECOIN_TX_VALIDATE_FAILED');
 export const validatedLikeCoinTx = createAction('LIKECOIN_TX_VALIDATED');
 export const validateLikeCoinTx = id => (dispatch) => {
+  dispatch(validateLikeCoinTxBegin());
   APIHandler(dispatch,
     LikeCoinTx.validateLikeCoinTx(id)
       .then(product => dispatch(validatedLikeCoinTx(product))),
