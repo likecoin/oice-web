@@ -20,6 +20,7 @@ import * as UserAPI from './common/api/user';
 
 import IndexHTML from './IndexHTML';
 
+import oembed from './server/oembed';
 
 const PORT = process.env.SRV_PORT || 3000;
 const DEBUG = process.env.NODE_ENV !== 'production';
@@ -75,6 +76,7 @@ server.disable('x-powered-by');
 server.use(cookieParser());
 server.use(i18nMiddleware.handle(i18n));
 server.use(express.static(DIST_PATH));
+server.use('/oembed', oembed);
 
 server.get('/healthz', (req, res) => {
   res.sendStatus(200);

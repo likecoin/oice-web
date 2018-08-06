@@ -44,3 +44,6 @@ export const LIKECOIN_URL_PROD = '';
 
 export const GOOGLE_PLAY_LINK = '';
 export const APP_STORE_LINK = '';
+
+export const OICE_VIEW_URL_BASE_TEST = '';
+export const OICE_VIEW_URL_BASE_PROD = '';

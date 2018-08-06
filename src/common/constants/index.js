@@ -15,6 +15,8 @@ import {
   INTERCOM_APP_ID_TEST,
   LIKECOIN_URL_TEST,
   LIKECOIN_URL_PROD,
+  OICE_VIEW_URL_BASE_TEST,
+  OICE_VIEW_URL_BASE_PROD,
 } from './key';
 
 import packageJSON from '../../../package.json';
@@ -62,3 +64,5 @@ export const INTERCOM_APP_ID = SRV_ENV === 'production' ? INTERCOM_APP_ID_PROD :
 export const LIKECOIN_URL = SRV_ENV === 'production' ? LIKECOIN_URL_PROD : LIKECOIN_URL_TEST;
 
 export const PLAY_STORE_URL = `https://play.google.com/store/apps/details?id=${ANDROID_APP.PACKAGE}`;
+
+export const OICE_VIEW_URL_BASE = SRV_ENV === 'production' ? OICE_VIEW_URL_BASE_PROD : OICE_VIEW_URL_BASE_TEST;
