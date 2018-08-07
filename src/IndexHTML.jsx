@@ -20,6 +20,7 @@ const DEBUG = process.env.NODE_ENV !== 'production';
 
 export default class IndexHTML extends React.Component {
   static propTypes = {
+    className: PropTypes.string,
     children: PropTypes.node,
     meta: PropTypes.object,
     module: PropTypes.string,
@@ -32,6 +33,7 @@ export default class IndexHTML extends React.Component {
 
   render() {
     const {
+      className,
       children,
       module,
       meta,
@@ -116,7 +118,9 @@ export default class IndexHTML extends React.Component {
               width="0"
             />
           </noscript>
-          <div id="app">{children}</div>
+          <div id="app" className={className}>
+            {children}
+          </div>
           <script
             src={`/build/manifest.js?v=${VERSION}`}
             type="application/javascript"
