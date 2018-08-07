@@ -50,8 +50,8 @@ router.get('/', async (req, res, next) => {
     }
 
     const searchParams = new URL(url).search;
-    const iframeSrc = `${OICE_VIEW_URL_BASE}/view/${oiceUuid}${searchParams}`;
     const baseURL = `${DEBUG ? 'http' : 'https'}://${req.get('host')}`;
+    const iframeSrc = `${baseURL}/embed/oice/${oiceUuid}${searchParams}`;
     const oEmbedResponse = {
       type: 'rich',
       version: '1.0',
