@@ -3,6 +3,7 @@ import { Route } from 'react-router';
 import Redirect from 'react-router/lib/Redirect';
 
 import App from 'web/App';
+import Embed from 'web/pages/Embed';
 import Login from 'web/pages/Login';
 import Home from 'web/pages/Home';
 import OiceSingleView from 'web/pages/OiceSingleView';
@@ -24,6 +25,10 @@ const goToEdit = () => {
 const routes = (
   <Route>
     <Route component={Login} path="/login" />
+    <Route
+      components={Embed}
+      path="embed/oice/:uuid"
+    />
     <Route component={App} path="/">
       <Route
         components={{ children: Home, Footer }}

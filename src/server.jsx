@@ -174,6 +174,7 @@ server.get('*', (req, res) => {
         console.log('meta %o', meta);
 
         const htmlProps = {
+          className: props.className,
           meta,
           module: props.module,
         };
@@ -256,6 +257,8 @@ server.get('*', (req, res) => {
           title: '第一屆「我自由我導」視覺小說創作比賽－參賽作品',
           locale: 'zh-HK',
         };
+      } else if (isPathStartWith('embed')) {
+        props.className = 'embed';
       }
 
       res.status(200).send(renderHTML(props));
