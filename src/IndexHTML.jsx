@@ -72,6 +72,7 @@ export default class IndexHTML extends React.Component {
               key={m}
               rel={module === m ? 'preload' : 'prefetch'}
               href={`/build/${m}.js?v=${VERSION}`}
+              as="script"
             />
           ))}
 
