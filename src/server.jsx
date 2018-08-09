@@ -66,7 +66,10 @@ if (DEBUG) {
 }
 
 server.use((req, res, next) => {
-  res.setHeader('X-Frame-Options', 'DENY');
+  const isEmbed = /^\/embed\/oice\/[0-9a-f]{32}/.test(req.url);
+  if (!isEmbed) {
+    res.setHeader('X-Frame-Options', 'DENY');
+  }
   res.setHeader('X-XSS-Protection', '1; mode=block');
   res.setHeader('X-Content-Type-Options', 'nosniff');
   next();
