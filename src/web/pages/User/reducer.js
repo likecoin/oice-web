@@ -32,6 +32,7 @@ export default handleActions({
     loaded: true,
     loading: false,
   }),
+  [Actions.fetchOicesFromStoryBegin]: state => update(state, { oices: { $set: [] } }),
   [Actions.fetchOicesFromStoryEnd]: (state, { payload }) => ({
     ...state,
     oices: payload,

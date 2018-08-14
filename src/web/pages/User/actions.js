@@ -25,8 +25,10 @@ export const fetchUserProfile = userId => (dispatch) => {
   );
 };
 
+export const fetchOicesFromStoryBegin = createAction('FETCH_OICES_FROM_STORY_BEGIN');
 export const fetchOicesFromStoryEnd = createAction('FETCH_OICES_FROM_STORY_END');
 export const fetchOicesFromStory = (userId, storyId) => (dispatch) => {
+  dispatch(fetchOicesFromStoryBegin());
   APIHandler(dispatch,
     fetchOicesFromUserStory(userId, storyId)
       .then(oices => dispatch(fetchOicesFromStoryEnd(oices)))

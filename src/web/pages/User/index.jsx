@@ -24,8 +24,8 @@ import {
 } from 'web/pages/Profile/Profile.constants';
 import { LIKECOIN_URL } from 'common/constants';
 
+import StoryDetails from 'editor/components/Dashboard/StoryDetails';
 import Gallery from './Gallery';
-import StoryDetails from './StoryDetails';
 
 import * as Actions from './actions';
 
@@ -265,6 +265,14 @@ export default class UserPage extends React.Component {
     this.setState({ selectedTabBarIndex: index });
   }
 
+  handleSelect = (type, item) => {
+    const { dispatch, user } = this.props;
+    if (type === 'story') {
+      dispatch(Actions.fetchOicesFromStory(user.id, item.id));
+    }
+    this.setState({ selectedItem: item });
+  }
+
   handleSelectionCheck = (type, item) => {
     const selectedItemId = _get(this, 'state.selectedItem.id');
     switch (type) {
@@ -451,10 +459,9 @@ export default class UserPage extends React.Component {
       // { text: t('tabBar.credits') },
     ];
 
-    const gallaryProps = {
+    const galleryProps = {
       columns,
       columnWidth,
-      getLink: this.getLink,
       onSelectionCheck: this.handleSelectionCheck,
     };
 
@@ -469,6 +476,24 @@ export default class UserPage extends React.Component {
       });
     }
 
+    const storyExpandedChild = (
+      <StoryDetails
+        isDashboard={false}
+        oices={oices}
+        story={selectedItem}
+        onRequestClose={this.handleStoryDetailsCloseRequest}
+      />
+    );
+
+    // XXX hardcoded height
+    let galleryExpansionPanelHeight = 400;
+    if (oices.length > 0) {
+      const height = 48 + (40 * (oices.length + 2));
+      if (height > galleryExpansionPanelHeight) {
+        galleryExpansionPanelHeight = height;
+      }
+    }
+
     return (
       <TabBar
         ref={ref => this.tabBar = ref}
@@ -480,15 +505,19 @@ export default class UserPage extends React.Component {
       >
         {this.renderProfileTab()}
         <Gallery
-          {...gallaryProps}
+          {...galleryProps}
           emptyChild={getTabPlaceholder('Story')}
+          expandedChild={storyExpandedChild}
+          galleryExpansionPanelHeight={galleryExpansionPanelHeight}
           items={stories}
           type="story"
+          onSelect={this.handleSelect}
         />
         <Gallery
-          {...gallaryProps}
+          {...galleryProps}
           emptyChild={getTabPlaceholder('Library')}
           items={libraries}
+          getLink={this.getLink}
           type="library"
         />
         {/* <Gallery
