@@ -1,6 +1,8 @@
 # oice Front End (Website + Editor)
 
-![oice](https://oice.lakoo.com/static/img/oice-logo-color-106x40.svg)
+[![CircleCI](https://circleci.com/gh/likecoin/oice-web.svg?style=svg)](https://circleci.com/gh/likecoin/oice-web)
+
+[![oice](https://oice.com/static/img/oice-default-cover.jpg)](https://oice.com)
 
 ## Installation
 
