@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import { push } from 'react-router-redux';
+import classNames from 'classnames';
 
 import _get from 'lodash/get';
 import _isEmpty from 'lodash/isEmpty';
@@ -371,9 +372,6 @@ export default class UserPage extends React.Component {
         }, {
           label: t('label.stats.assets'),
           count: stats.assets,
-        }, {
-          label: t('label.stats.credits'),
-          count: stats.credits,
         }].map(({ label, count }, index) => (
           <div key={index} className="user-stats-item">
             <span>{label}</span>
@@ -386,17 +384,21 @@ export default class UserPage extends React.Component {
 
   renderProfile() {
     return (
-      <div
-        ref={ref => this.profileInfo = ref}
-        className="panel"
-        id="user-profile-info"
-      >
-        {this.renderAvatar(142)}
-        <div className="user-details">
-          {this.renderDescription()}
-          {this.renderExternalLinks()}
+      <div>
+        <div
+          ref={ref => this.profileInfo = ref}
+          className="panel"
+          id="user-profile-info"
+        >
+          {this.renderAvatar(142)}
+          <div className="user-details">
+            {this.renderDescription()}
+            {this.renderExternalLinks()}
+          </div>
+          {this.renderStats()}
+
         </div>
-        {this.renderStats()}
+        {this.renderLikeWidget('hidden-md-and-down')}
       </div>
     );
   }
@@ -446,7 +448,7 @@ export default class UserPage extends React.Component {
       { text: t('tabBar.user') },
       { text: t('tabBar.stories') },
       { text: t('tabBar.libraries') },
-      { text: t('tabBar.credits') },
+      // { text: t('tabBar.credits') },
     ];
 
     const gallaryProps = {
@@ -489,13 +491,30 @@ export default class UserPage extends React.Component {
           items={libraries}
           type="library"
         />
-        <Gallery
-          {...gallaryProps}
+        {/* <Gallery
+          {...galleryProps}
           emptyChild={getTabPlaceholder('Credits')}
           items={credits}
           type="story"
-        />
+        /> */}
       </TabBar>
+    );
+  }
+
+  renderLikeWidget(className) {
+    const { user } = this.props;
+    if (!user || !user.likeCoinId) return null;
+
+    const iframeClassName = classNames('user-page__like-widget', className);
+    return (
+      <iframe
+        allowTransparency
+        className={iframeClassName}
+        frameBorder="0"
+        scrolling="no"
+        src={`${LIKECOIN_URL}/in/embed/${user.likeCoinId}/?referrer=${window.location.href}`}
+        title="like-widget"
+      />
     );
   }
 
@@ -509,6 +528,9 @@ export default class UserPage extends React.Component {
           {this.renderMobileHeader()}
           {this.renderProfile()}
           {this.renderPortfolio()}
+          <div className="user-page__like-widget-wrapper hidden-md-and-up">
+            {this.renderLikeWidget()}
+          </div>
         </div>
       </Container>
     );
