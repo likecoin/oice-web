@@ -9,13 +9,10 @@ import { push } from 'react-router-redux';
 
 import classNames from 'classnames';
 import _get from 'lodash/get';
-import queryString from 'query-string';
 
-import QRCode from 'qrcode.react';
 import AlertDialog from 'ui-elements/AlertDialog';
 import Avatar from 'ui-elements/Avatar';
 import Container from 'ui-elements/Container';
-import Dropdown from 'ui-elements/Dropdown';
 import ExpansionPanel from 'ui-elements/ExpansionPanel';
 import LoadingScreen from 'ui-elements/LoadingScreen';
 import OutlineButton from 'ui-elements/OutlineButton';
@@ -26,6 +23,7 @@ import CameraIcon from 'common/icons/photo-camera';
 import {
   API_URL,
   SRV_ENV,
+  LIKECOIN_BUTTON_URL,
 } from 'common/constants';
 import {
   BRANCH_KEY,
@@ -43,6 +41,7 @@ import * as LogActions from 'common/actions/log';
 
 import AppIcon from './AppIcon';
 import DeepView from './DeepView';
+import EpisodePicker from './EpisodePicker';
 import PlayButton from './PlayButton';
 import SmsModal from './SmsModal';
 import UpNext from './UpNext';
@@ -54,7 +53,6 @@ import * as OiceSingleViewUtils from './utils';
 import './OiceSingleView.style.scss';
 
 export const CREDITS_KEY = [
-  'director',
   'fgimage',
   'bgimage',
   'image',
@@ -376,11 +374,11 @@ export default class OiceSingleView extends React.Component {
         ref={ref => this.miniCredits = ref}
         className="credit-users mini"
       >
-        {users.map((user, index) => (
+        {users.map(user => (
           <Avatar
             key={user.id}
             label={user.displayName}
-            size={index === 0 ? 60 : 28}
+            size={40}
             src={getThumbnail(user.avatar, 200)}
             mini
           />
@@ -434,6 +432,24 @@ export default class OiceSingleView extends React.Component {
     );
   }
 
+  renderDirectorSection = (oice) => {
+    const { t } = this.props;
+    return (
+      <div className="oice-single-view__director">
+        <Avatar
+          label={oice.author.displayName}
+          size={64}
+          src={getThumbnail(oice.author.avatar, 200)}
+          mini
+        />
+        <div>
+          <p>{t('credit.director')}</p>
+          <p>{oice.author.displayName}</p>
+        </div>
+      </div>
+    );
+  }
+
   renderOiceSingleView() {
     const {
       t,
@@ -468,30 +484,12 @@ export default class OiceSingleView extends React.Component {
       mobile: isMobileSize,
     });
 
+    const likeButtonClassName = classNames('oice-single-view__like-button', {
+      sticky: isMobileSize,
+    });
+
     const oiceChapter = t('label.episode', {
       episode: oice.order + 1,
-    });
-
-    const deepLinkOiceUuid = isEndedPlaying ? oice.nextEpisode.uuid : oice.uuid;
-    const query = queryString.stringify({
-      // data for branch or webhook
-      $desktop_url: OiceSingleViewUtils.getDesktopURL(deepLinkOiceUuid, oice.language),
-      '~channel': 'qrcodeWeb',
-      referrer2: document.referrer,
-
-      // data related to oice
-      uuid: deepLinkOiceUuid,
-      language: oice.language,
-      isPreview,
-    });
-    const deepLink = `${BRANCH_URL}?${query}`;
-
-    const oiceDetailsClass = classNames('oice-details', {
-      extended: isMobile,
-    });
-
-    const getAppClass = classNames('get-app', {
-      sticky: isMobile,
     });
 
     const nextOice = oice.nextEpisode;
@@ -501,9 +499,7 @@ export default class OiceSingleView extends React.Component {
 
     const episodeValues = relatedOices.map(o => ({
       icon: null,
-      text: `${t('label.episode', {
-        episode: o.order + 1,
-      })} - ${o.name}`,
+      text: `${o.episode}: ${o.name}`,
     }));
     const hasOtherEpisodes = episodeValues.length > 0;
 
@@ -528,12 +524,17 @@ export default class OiceSingleView extends React.Component {
       t,
     };
 
+    const authorLikeCoinId = _get(oice, 'author.likeCoinId');
+
     return (
       <Container
         ref={ref => this.container = ref}
         className={containerClassName}
         fluid
       >
+        <div className="hidden-sm-and-up">
+          {this.renderDirectorSection(oice)}
+        </div>
         <div className="oice-player-wrapper" style={{ ...style.oicePlayerWrapper }}>
           {isMediaAutoplayable === false &&
             <PlayButton
@@ -559,23 +560,17 @@ export default class OiceSingleView extends React.Component {
           className="oice-single-view-sidebar"
           style={{ ...style.sidebar }}
         >
-          <div className={oiceDetailsClass}>
-            <div className="oice-header">
-              <div className="oice-chapter">
-                {`${oice.storyName} ${oiceChapter}`}
-              </div>
-              <div className="oice-title">
-                {oice.name}
-              </div>
+          <div className="oice-single-view-sidebar__details">
+            <div className="hidden-sm-and-down">
+              {this.renderDirectorSection(oice)}
             </div>
-            {oice.description && (
-              <div className="oice-description">
-                {oice.description}
-              </div>
-            )}
-            <hr />
-            {isPreview && this.renderPreviewPanel()}
-            {isPreview && <hr />}
+            {!isPreview &&
+              <EpisodePicker
+                episodes={episodeValues}
+                selectedEpisode={oice}
+                onSelect={this.handleSelectEpisode}
+              />
+            }
             {credits &&
               <ExpansionPanel
                 arrowPosition="top"
@@ -591,34 +586,33 @@ export default class OiceSingleView extends React.Component {
                 </ExpansionPanel.Content>
               </ExpansionPanel>
             }
-            {credits && !isPreview && !isMobile && <hr />}
-            <div className={getAppClass}>
-              <div className="cta-banner">
-                <AppIcon />
-                <OutlineButton
-                  color="blue"
-                  label={t('label.downloadForBetterExperience')}
-                  onClick={this.handleCTA}
+            {credits && !isPreview && <hr />}
+            <div className="get-app">
+              <AppIcon size={48} />
+              <OutlineButton
+                color="light-grey"
+                label={t('label.downloadForBetterExperience')}
+                onClick={this.handleCTA}
+              />
+            </div>
+          </div>
+
+          {authorLikeCoinId && (
+            <div className="oice-single-view__like-button-wrapper">
+              <div className={likeButtonClassName}>
+                <iframe
+                  allowTransparency
+                  frameBorder="0"
+                  scrolling="no"
+                  src={`${LIKECOIN_BUTTON_URL}/in/embed/${authorLikeCoinId}/mini?referrer=${window.location.href}`}
+                  title="like-button"
                 />
               </div>
-              {!isMobileSize && <hr />}
-              {!isMobileSize && (
-                <div className="qr-code">
-                  <QRCode value={deepLink} />
-                </div>
-              )}
+              <div className="hidden-sm-and-down">
+                {t('label.pressLike')}
+              </div>
             </div>
-            {!isPreview && hasOtherEpisodes && <hr />}
-            {!isPreview && hasOtherEpisodes &&
-              <Dropdown
-                placeholder={t('label.selectEpisode')}
-                values={episodeValues}
-                selectedIndexes={[]}
-                fullWidth
-                onChange={this.handleSelectEpisode}
-              />
-            }
-          </div>
+          )}
         </div>
         {oice && !isMobile &&
           <SmsModal

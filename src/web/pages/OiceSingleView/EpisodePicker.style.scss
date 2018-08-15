@@ -1,0 +1,92 @@
+@import "../../styles/variables";
+
+$story-cover-size: 72px;
+
+.episode-picker {
+  padding: 0 !important;
+
+  color: $dark-grey-1;
+  border: $border-style4;
+  border-radius: 4px;
+  background-color: $pure-white;
+
+  p {
+    margin: 0;
+
+    font-size: 14px;
+  }
+
+  hr {
+    margin: 0;
+  }
+
+  &__current-episode-wrapper {
+    display: flex;
+
+    padding: 12px;
+
+    img {
+      flex-shrink: 0;
+
+      width: $story-cover-size;
+      height: $story-cover-size;
+
+      border: $border-style4;
+
+      object-fit: cover;
+    }
+  }
+
+  &__title-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-left: 12px;
+
+    font-size: 14px;
+  }
+
+  &__story-title {
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  &__oice-title {
+    margin-top: 4px;
+
+    color: $oice-blue;
+
+    font-weight: 400;
+  }
+
+  &__select-episode-wrapper {
+    display: flex;
+    align-items: center;
+
+    padding: 8px 12px;
+
+    font-size: 12px;
+
+    > span {
+      flex-shrink: 0;
+
+      width: 66px;
+    }
+
+    .dropdown {
+      overflow-x: hidden;
+
+      width: 100%;
+      margin-left: 16px;
+
+      color: $dark-grey-2;
+
+      font-size: 12px;
+
+      .dropdown-button {
+        padding-right: 20px;
+      }
+    }
+  }
+}

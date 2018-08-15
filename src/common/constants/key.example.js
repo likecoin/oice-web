@@ -42,6 +42,9 @@ export const FIREBASE_SENDER_ID = '';
 export const LIKECOIN_URL_TEST = '';
 export const LIKECOIN_URL_PROD = '';
 
+export const LIKECOIN_BUTTON_URL_TEST = '';
+export const LIKECOIN_BUTTON_URL_PROD = '';
+
 export const GOOGLE_PLAY_LINK = '';
 export const APP_STORE_LINK = '';
 

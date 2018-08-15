@@ -1786,7 +1786,8 @@
       "noStoryDescription": "無故事簡介",
       "play": "播放",
       "upNext": "即將播放",
-      "selectEpisode": "請選擇章回"
+      "selectEpisode": "選擇章回：",
+      "pressLike": "簡單免費點讚，協助作者擭得 LikeCoin"
     },
     "credit": {
       "director": "導演",

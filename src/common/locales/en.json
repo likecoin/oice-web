@@ -1786,7 +1786,8 @@
       "noStoryDescription": "No story description",
       "play": "Play",
       "upNext": "Next Episode",
-      "selectEpisode": "Choose an Episode"
+      "selectEpisode": "Choose Episode: ",
+      "pressLike": "Press Like to give your support, and director will receive LikeCoin"
     },
     "credit": {
       "director": "Director",
