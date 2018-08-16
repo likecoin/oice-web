@@ -15,6 +15,7 @@ const initialState = {
   oices: [],
   links: [],
   user: undefined,
+  likeCoinUsdPrice: 0,
 };
 
 export default handleActions({
@@ -46,4 +47,7 @@ export default handleActions({
       links: { $set: payload.links },
     })
   ),
+  [Actions.fetchLikeCoinUsdPriceEnd]: (state, { payload }) => update(state, {
+    likeCoinUsdPrice: { $set: payload },
+  }),
 }, initialState);

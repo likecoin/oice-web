@@ -32,6 +32,8 @@ import * as Actions from './actions';
 import './styles.scss';
 
 
+const DEFAULT_LIKECOIN_USD_REWARD = 0.25;
+
 function getScreenWidth() {
   return window.innerWidth;
 }
@@ -70,6 +72,7 @@ export default class UserPage extends React.Component {
     t: PropTypes.func.isRequired,
     credits: PropTypes.array,
     libraries: PropTypes.array,
+    likeCoinUsdPrice: PropTypes.number,
     links: PropTypes.array,
     loaded: PropTypes.bool,
     loading: PropTypes.bool,
@@ -360,12 +363,18 @@ export default class UserPage extends React.Component {
   );
 
   renderExternalLinks() {
-    const { t, links, user } = this.props;
+    const {
+      t, likeCoinUsdPrice, links, user,
+    } = this.props;
     const likeCoinId = _get(user, 'likeCoinId');
+    const likeCoinAmount = likeCoinUsdPrice
+      ? (DEFAULT_LIKECOIN_USD_REWARD / likeCoinUsdPrice).toFixed(2)
+      : 8;
+
     return (
       <div id="user-external-links">
         {!!likeCoinId && this.renderExternalLinkItem({
-          link: `${LIKECOIN_URL}/${likeCoinId}`,
+          link: `${LIKECOIN_URL}/${likeCoinId}/${likeCoinAmount}`,
           typeAlias: LINK_ALIAS.LIKECOIN,
           label: t('label.supportByLikeCoin'),
         })}
