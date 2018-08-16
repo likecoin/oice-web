@@ -268,9 +268,13 @@ export default class UserPage extends React.Component {
   handleSelect = (type, item) => {
     const { dispatch, user } = this.props;
     if (type === 'story') {
-      dispatch(Actions.fetchOicesFromStory(user.id, item.id));
+      if (_get(this.state, 'selectedItem.id') === item.id) {
+        this.setState({ selectedItem: null });
+      } else {
+        dispatch(Actions.fetchOicesFromStory(user.id, item.id));
+        this.setState({ selectedItem: item });
+      }
     }
-    this.setState({ selectedItem: item });
   }
 
   handleSelectionCheck = (type, item) => {
@@ -486,9 +490,9 @@ export default class UserPage extends React.Component {
     );
 
     // XXX hardcoded height
-    let galleryExpansionPanelHeight = 400;
+    let galleryExpansionPanelHeight = 300;
     if (oices.length > 0) {
-      const height = 48 + (40 * (oices.length + 2));
+      const height = 50 + (40 * (oices.length + 2));
       if (height > galleryExpansionPanelHeight) {
         galleryExpansionPanelHeight = height;
       }
@@ -557,7 +561,7 @@ export default class UserPage extends React.Component {
           {this.renderMobileHeader()}
           {this.renderProfile()}
           {this.renderPortfolio()}
-          <div className="user-page__like-widget-wrapper hidden-md-and-up">
+          <div className="user-page__like-widget-wrapper hidden-md-and-up hidden-sm-and-down">
             {this.renderLikeWidget()}
           </div>
         </div>

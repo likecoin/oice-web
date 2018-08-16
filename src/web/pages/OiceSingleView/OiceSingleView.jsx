@@ -82,6 +82,12 @@ function getOiceImage(oice) {
     '';
 }
 
+function getAvatarLink({ id, username, likeCoinId }) {
+  return (username || likeCoinId)
+    ? `/@${username || likeCoinId}`
+    : `/user/${id}`;
+}
+
 @translate(['oiceSingleView'])
 @connect(store => ({
   ...store.oiceSingleView,
@@ -374,7 +380,7 @@ export default class OiceSingleView extends React.Component {
         ref={ref => this.miniCredits = ref}
         className="credit-users mini"
       >
-        {users.map(user => (
+        {users.slice(1).map(user => (
           <Avatar
             key={user.id}
             label={user.displayName}
@@ -404,9 +410,9 @@ export default class OiceSingleView extends React.Component {
                   <Avatar
                     key={user.id}
                     label={user.displayName}
+                    link={getAvatarLink(user)}
                     size={28}
                     src={getThumbnail(user.avatar, 200)}
-                    onClick={() => window.location.href = `/user/${user.id}`}
                   />
                 )}
               </div>
@@ -434,18 +440,20 @@ export default class OiceSingleView extends React.Component {
 
   renderDirectorSection = (oice) => {
     const { t } = this.props;
+    const authorPageLink = getAvatarLink(oice.author);
     return (
       <div className="oice-single-view__director">
         <Avatar
           label={oice.author.displayName}
+          link={authorPageLink}
           size={64}
           src={getThumbnail(oice.author.avatar, 200)}
           mini
         />
-        <div>
+        <a href={authorPageLink}>
           <p>{t('credit.director')}</p>
           <p>{oice.author.displayName}</p>
-        </div>
+        </a>
       </div>
     );
   }

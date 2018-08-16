@@ -20,6 +20,8 @@ export default class EpisodePicker extends React.Component {
       episodes, onSelect, selectedEpisode, t,
     } = this.props;
 
+    const storyCover = selectedEpisode.storyCover || `${window.location.origin}/static/img/oice-default-cover2.jpg`;
+
     return (
       <div className="episode-picker">
         <div className="episode-picker__current-episode-wrapper">

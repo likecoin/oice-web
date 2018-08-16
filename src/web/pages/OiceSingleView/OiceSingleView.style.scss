@@ -282,6 +282,10 @@ $likecoin-button-mobile-height: 72px;
         font-size: 14px;
       }
     }
+
+    a {
+      text-decoration: none;
+    }
   }
 
   &__like-button {
@@ -304,16 +308,15 @@ $likecoin-button-mobile-height: 72px;
     }
 
     iframe {
+      height: 186px;
+
       @media (min-width: $screen-tablet + 1px) {
         width: 152%;
-        height: 92px;
 
-        transform: translateX(-8px);
+        transform: translateX(-40px) translateY(24px);
       }
       @media (max-width: $screen-tablet) {
-        height: 72px;
-
-        transform: scale(1.1) translateX(8px);
+        transform: scale(1.1) translateX(-26px) translateY(-56px)
       }
     }
   }
