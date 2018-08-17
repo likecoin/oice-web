@@ -594,7 +594,7 @@ export default class OiceSingleView extends React.Component {
                 </ExpansionPanel.Content>
               </ExpansionPanel>
             }
-            {credits && !isPreview && <hr />}
+            {credits && <hr />}
             <div className="get-app">
               <AppIcon size={48} />
               <OutlineButton
@@ -605,7 +605,7 @@ export default class OiceSingleView extends React.Component {
             </div>
           </div>
 
-          {authorLikeCoinId && (
+          {authorLikeCoinId && !isPreview && (
             <div className="oice-single-view__like-button-wrapper">
               <div className={likeButtonClassName}>
                 <iframe
