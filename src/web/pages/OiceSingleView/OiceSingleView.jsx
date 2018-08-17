@@ -599,6 +599,8 @@ export default class OiceSingleView extends React.Component {
               </ExpansionPanel>
             }
             {credits && <hr />}
+            {isPreview && this.renderPreviewPanel()}
+            {isPreview && <hr />}
             <div className="get-app">
               <AppIcon size={48} />
               <OutlineButton
