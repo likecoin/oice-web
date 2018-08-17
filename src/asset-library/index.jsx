@@ -15,12 +15,12 @@ import { applyMiddleware, createStore, combineReducers } from 'redux';
 import { Provider as ReduxProvider } from 'react-redux';
 import { routerReducer, routerMiddleware, syncHistoryWithStore } from 'react-router-redux';
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 // Middlewares
 import promiseMiddleware from 'redux-promise';
 import thunkMiddleware from 'redux-thunk';
 import * as reducers from './reducers';
-
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import routes from './routes';
 

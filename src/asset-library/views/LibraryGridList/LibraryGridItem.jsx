@@ -19,7 +19,7 @@ const discountPriceLabel = (originalPrice, newPrice) => (
     <span className="original-price">
       {originalPrice}
     </span>
-    <span class="new-price">
+    <span>
       {newPrice}
     </span>
   </div>
@@ -119,9 +119,9 @@ export default class LibraryGridItem extends React.Component {
     } else if (library.isNew) {
       string = '• new';
     }
-    return (
-      <div className="library-label">{string}</div>
-    );
+    return string ?
+      <div className="library-label">{string}</div> :
+      null;
   }
 
   renderMyLibraryStatusFlag(libraryStatus) {

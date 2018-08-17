@@ -60,6 +60,8 @@ $user-profile-border-style: solid 1px $light-gray3;
 }
 
 #user-stats {
+  flex: 1;
+
   min-width: 24%;
 
   .user-stats-item {
@@ -90,6 +92,10 @@ $user-profile-border-style: solid 1px $light-gray3;
 
   @media screen and (max-width: $screen-phone) {
     background-color: $pure-white;
+  }
+
+  @media screen and (max-width: $screen-tablet) {
+    padding-bottom: 120px;
   }
 
   .container {
@@ -261,6 +267,7 @@ $user-profile-border-style: solid 1px $light-gray3;
   position: relative;
 
   display: inline-block;
+
   width: 100%;
 
   @media screen and (min-width: $screen-phone + 1px) {
@@ -277,6 +284,10 @@ $user-profile-border-style: solid 1px $light-gray3;
     .tabbar-item {
       min-width: 25%;
     }
+  }
+
+  .user-portfolio-gallery-item {
+    margin: 0;
   }
 }
 
@@ -356,7 +367,6 @@ $user-profile-border-style: solid 1px $light-gray3;
 
 .user-portfolio-gallery-item-wrapper {
   width: 100%;
-
   margin: 0 padding(1/12);
 
   > a {
@@ -476,5 +486,23 @@ $user-profile-border-style: solid 1px $light-gray3;
     bottom: -24px;
 
     border-bottom-width: 16px;
+  }
+}
+
+.user-page {
+  &__like-widget-wrapper {
+    width: 100%;
+
+    text-align: center;
+  }
+
+  &__like-widget {
+    width: calc(100% - 16px);
+    margin-top: 24px;
+
+    .hidden-md-and-up & {
+      max-width: 500px;
+      height: 158px;
+    }
   }
 }
