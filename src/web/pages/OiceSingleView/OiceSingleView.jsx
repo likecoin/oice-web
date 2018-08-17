@@ -509,7 +509,11 @@ export default class OiceSingleView extends React.Component {
       icon: null,
       text: `${o.episode}: ${o.name}`,
     }));
-    const hasOtherEpisodes = episodeValues.length > 0;
+
+    const shouldShowUpNext = (
+      relatedOices.length > 1
+      && relatedOices[relatedOices.length - 1] !== oice.id
+    );
 
     // no scrolling for responsive behavior in iOS
     const iframeHTML = {
@@ -554,7 +558,7 @@ export default class OiceSingleView extends React.Component {
             />
           }
           {isMediaAutoplayable && iframe}
-          {hasOtherEpisodes && isEndedPlaying &&
+          {shouldShowUpNext && isEndedPlaying &&
             <UpNext
               {...oiceInfoProps}
               subtitle={`${oice.storyName} ${nextOiceChapter}`}
