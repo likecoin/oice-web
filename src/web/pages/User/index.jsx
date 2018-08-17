@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import { push } from 'react-router-redux';
+import classNames from 'classnames';
 
 import _get from 'lodash/get';
 import _isEmpty from 'lodash/isEmpty';
@@ -23,13 +24,15 @@ import {
 } from 'web/pages/Profile/Profile.constants';
 import { LIKECOIN_URL } from 'common/constants';
 
+import StoryDetails from 'editor/components/Dashboard/StoryDetails';
 import Gallery from './Gallery';
-import StoryDetails from './StoryDetails';
 
 import * as Actions from './actions';
 
 import './styles.scss';
 
+
+const DEFAULT_LIKECOIN_USD_REWARD = 0.25;
 
 function getScreenWidth() {
   return window.innerWidth;
@@ -69,6 +72,7 @@ export default class UserPage extends React.Component {
     t: PropTypes.func.isRequired,
     credits: PropTypes.array,
     libraries: PropTypes.array,
+    likeCoinUsdPrice: PropTypes.number,
     links: PropTypes.array,
     loaded: PropTypes.bool,
     loading: PropTypes.bool,
@@ -264,6 +268,18 @@ export default class UserPage extends React.Component {
     this.setState({ selectedTabBarIndex: index });
   }
 
+  handleSelect = (type, item) => {
+    const { dispatch, user } = this.props;
+    if (type === 'story') {
+      if (_get(this.state, 'selectedItem.id') === item.id) {
+        this.setState({ selectedItem: null });
+      } else {
+        dispatch(Actions.fetchOicesFromStory(user.id, item.id));
+        this.setState({ selectedItem: item });
+      }
+    }
+  }
+
   handleSelectionCheck = (type, item) => {
     const selectedItemId = _get(this, 'state.selectedItem.id');
     switch (type) {
@@ -347,12 +363,18 @@ export default class UserPage extends React.Component {
   );
 
   renderExternalLinks() {
-    const { t, links, user } = this.props;
+    const {
+      t, likeCoinUsdPrice, links, user,
+    } = this.props;
     const likeCoinId = _get(user, 'likeCoinId');
+    const likeCoinAmount = likeCoinUsdPrice
+      ? (DEFAULT_LIKECOIN_USD_REWARD / likeCoinUsdPrice).toFixed(2)
+      : 8;
+
     return (
       <div id="user-external-links">
         {!!likeCoinId && this.renderExternalLinkItem({
-          link: `${LIKECOIN_URL}/${likeCoinId}`,
+          link: `${LIKECOIN_URL}/${likeCoinId}/${likeCoinAmount}`,
           typeAlias: LINK_ALIAS.LIKECOIN,
           label: t('label.supportByLikeCoin'),
         })}
@@ -371,9 +393,6 @@ export default class UserPage extends React.Component {
         }, {
           label: t('label.stats.assets'),
           count: stats.assets,
-        }, {
-          label: t('label.stats.credits'),
-          count: stats.credits,
         }].map(({ label, count }, index) => (
           <div key={index} className="user-stats-item">
             <span>{label}</span>
@@ -386,17 +405,21 @@ export default class UserPage extends React.Component {
 
   renderProfile() {
     return (
-      <div
-        ref={ref => this.profileInfo = ref}
-        className="panel"
-        id="user-profile-info"
-      >
-        {this.renderAvatar(142)}
-        <div className="user-details">
-          {this.renderDescription()}
-          {this.renderExternalLinks()}
+      <div>
+        <div
+          ref={ref => this.profileInfo = ref}
+          className="panel"
+          id="user-profile-info"
+        >
+          {this.renderAvatar(142)}
+          <div className="user-details">
+            {this.renderDescription()}
+            {this.renderExternalLinks()}
+          </div>
+          {this.renderStats()}
+
         </div>
-        {this.renderStats()}
+        {this.renderLikeWidget('hidden-md-and-down')}
       </div>
     );
   }
@@ -446,13 +469,12 @@ export default class UserPage extends React.Component {
       { text: t('tabBar.user') },
       { text: t('tabBar.stories') },
       { text: t('tabBar.libraries') },
-      { text: t('tabBar.credits') },
+      // { text: t('tabBar.credits') },
     ];
 
-    const gallaryProps = {
+    const galleryProps = {
       columns,
       columnWidth,
-      getLink: this.getLink,
       onSelectionCheck: this.handleSelectionCheck,
     };
 
@@ -467,6 +489,24 @@ export default class UserPage extends React.Component {
       });
     }
 
+    const storyExpandedChild = (
+      <StoryDetails
+        isDashboard={false}
+        oices={oices}
+        story={selectedItem}
+        onRequestClose={this.handleStoryDetailsCloseRequest}
+      />
+    );
+
+    // XXX hardcoded height
+    let galleryExpansionPanelHeight = 300;
+    if (oices.length > 0) {
+      const height = 50 + (40 * (oices.length + 2));
+      if (height > galleryExpansionPanelHeight) {
+        galleryExpansionPanelHeight = height;
+      }
+    }
+
     return (
       <TabBar
         ref={ref => this.tabBar = ref}
@@ -478,24 +518,45 @@ export default class UserPage extends React.Component {
       >
         {this.renderProfileTab()}
         <Gallery
-          {...gallaryProps}
+          {...galleryProps}
           emptyChild={getTabPlaceholder('Story')}
+          expandedChild={storyExpandedChild}
+          galleryExpansionPanelHeight={galleryExpansionPanelHeight}
           items={stories}
           type="story"
+          onSelect={this.handleSelect}
         />
         <Gallery
-          {...gallaryProps}
+          {...galleryProps}
           emptyChild={getTabPlaceholder('Library')}
           items={libraries}
+          getLink={this.getLink}
           type="library"
         />
-        <Gallery
-          {...gallaryProps}
+        {/* <Gallery
+          {...galleryProps}
           emptyChild={getTabPlaceholder('Credits')}
           items={credits}
           type="story"
-        />
+        /> */}
       </TabBar>
+    );
+  }
+
+  renderLikeWidget(className) {
+    const { user } = this.props;
+    if (!user || !user.likeCoinId) return null;
+
+    const iframeClassName = classNames('user-page__like-widget', className);
+    return (
+      <iframe
+        allowTransparency
+        className={iframeClassName}
+        frameBorder="0"
+        scrolling="no"
+        src={`${LIKECOIN_URL}/in/embed/${user.likeCoinId}/?referrer=${window.location.href}`}
+        title="like-widget"
+      />
     );
   }
 
@@ -509,6 +570,9 @@ export default class UserPage extends React.Component {
           {this.renderMobileHeader()}
           {this.renderProfile()}
           {this.renderPortfolio()}
+          <div className="user-page__like-widget-wrapper hidden-md-and-up hidden-sm-and-down">
+            {this.renderLikeWidget()}
+          </div>
         </div>
       </Container>
     );

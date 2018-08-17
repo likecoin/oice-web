@@ -1,0 +1,26 @@
+$hidden-min-width-map: (
+  xs-and-up: $screen-phone + 1px,
+  sm-and-up: $screen-tablet + 1px,
+  md-and-up: $screen-desktop + 1px,
+);
+
+$hidden-max-width-map: (
+  xs-and-down: $screen-phone,
+  sm-and-down: $screen-tablet,
+  md-and-down: $screen-desktop,
+);
+
+@each $key, $size in $hidden-min-width-map {
+  .hidden-#{$key} {
+    @media (min-width: $size) {
+      display: none;
+    }
+  }
+}
+@each $key, $size in $hidden-max-width-map {
+  .hidden-#{$key} {
+    @media (max-width: $size) {
+      display: none;
+    }
+  }
+}

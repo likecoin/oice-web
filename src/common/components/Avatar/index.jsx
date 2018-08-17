@@ -11,6 +11,7 @@ import './styles.scss';
 const Avatar = (props) => {
   const {
     label,
+    link,
     mini,
     overlay,
     size,
@@ -31,8 +32,15 @@ const Avatar = (props) => {
     clickable: !!onClick,
   });
 
+  const Wrapper = link ? 'a' : 'div';
+
   return (
-    <div className={className} id={props.id} onClick={onClick}>
+    <Wrapper
+      className={className}
+      href={link}
+      id={props.id}
+      onClick={onClick}
+    >
       {src ? (
         <img
           alt={label}
@@ -62,7 +70,7 @@ const Avatar = (props) => {
           <SettingIcon />
         </div>
       }
-    </div>
+    </Wrapper>
   );
 };
 
@@ -70,6 +78,7 @@ Avatar.propTypes = {
   className: PropTypes.string,
   id: PropTypes.string,
   label: PropTypes.string,
+  link: PropTypes.string,
   mini: PropTypes.bool,
   overlay: PropTypes.bool,
   size: PropTypes.number,
@@ -80,6 +89,7 @@ Avatar.propTypes = {
 
 Avatar.defaultProps = {
   label: '',
+  link: '',
   mini: false,
   overlay: false,
   size: 36,

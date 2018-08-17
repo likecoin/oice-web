@@ -17,6 +17,8 @@ import {
   LIKECOIN_URL_PROD,
   OICE_VIEW_URL_BASE_TEST,
   OICE_VIEW_URL_BASE_PROD,
+  LIKECOIN_BUTTON_URL_TEST,
+  LIKECOIN_BUTTON_URL_PROD,
 } from './key';
 
 import packageJSON from '../../../package.json';
@@ -62,6 +64,8 @@ export const IS_DEV_MODE = !FIREBASE_API_KEY;
 export const INTERCOM_APP_ID = SRV_ENV === 'production' ? INTERCOM_APP_ID_PROD : INTERCOM_APP_ID_TEST;
 
 export const LIKECOIN_URL = SRV_ENV === 'production' ? LIKECOIN_URL_PROD : LIKECOIN_URL_TEST;
+
+export const LIKECOIN_BUTTON_URL = SRV_ENV === 'production' ? LIKECOIN_BUTTON_URL_PROD : LIKECOIN_BUTTON_URL_TEST;
 
 export const PLAY_STORE_URL = `https://play.google.com/store/apps/details?id=${ANDROID_APP.PACKAGE}`;
 

@@ -21,13 +21,18 @@ export const fetchRelatedOices = oiceId => (dispatch) => {
     .then(oices => dispatch(fetchedRelatedOices(oices)));
 };
 
+export const fetchOiceFromStory = (userId, storyId) => (dispatch) => {
+  OiceAPI.fetchOicesFromUserStory(userId, storyId)
+    .then(oices => dispatch(fetchedRelatedOices(oices)));
+};
+
 export const fetchedOiceInfo = createAction('OICE_INFO_FETCHED');
 export const fetchOiceInfo = (oiceUuid, language) => (dispatch) => {
   APIHandler(dispatch, OiceAPI.fetchOiceOgByUUID(oiceUuid, language)
     .then((oice) => {
       dispatch(fetchedOiceInfo(oice));
       dispatch(fetchOiceCredits(oice.id));
-      dispatch(fetchRelatedOices(oice.id));
+      dispatch(fetchOiceFromStory(oice.author.id, oice.storyId));
     }));
 };
 
