@@ -88,20 +88,17 @@ server.get('/healthz', (req, res) => {
 server.get('*', (req, res) => {
   const reqURL = req.url;
   const baseURL = `${DEBUG ? 'http' : 'https'}://${req.get('host')}`;
-  console.log(reqURL);
   match({ routes, location: reqURL }, async (error, redirectLocation, renderProps) => {
     if (error) {
+      console.error('500: ', error);
       res.status(500).send(error.message);
     } else if (!renderProps) {
-      console.log('404: ', redirectLocation);
       res.status(404).send('Not Found');
     } else if (redirectLocation) {
-      console.log('redirectLocation: ', redirectLocation);
       res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     } else {
       const { pathname } = renderProps.location;
       const fullURL = `${baseURL}${pathname}`;
-      console.log('Received request: ', fullURL);
 
       const defaultOg = {
         url: fullURL,
@@ -173,8 +170,6 @@ server.get('*', (req, res) => {
           title,
           viewport,
         };
-
-        console.log('meta %o', meta);
 
         const htmlProps = {
           className: props.className,
