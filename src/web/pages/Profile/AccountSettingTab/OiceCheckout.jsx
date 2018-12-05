@@ -56,7 +56,7 @@ export default class OiceCheckout extends React.Component {
         name={this.props.name || t('label.upgrade')}
         description={this.props.description || ''}
         allowRememberMe={false}
-        amount={999} // XXX: Hardcode 999 => 9.99
+        amount={500} // XXX: Hardcode 500 => 5.00
         currency="USD"
       >
         <OutlineButton
