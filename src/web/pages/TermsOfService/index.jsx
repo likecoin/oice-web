@@ -7,6 +7,7 @@ import { setInnerHTML } from 'common/utils';
 
 // XXX: Not ready for localization
 import content from './content/zh-HK.md';
+import privacy from './content/privacy/en.md';
 
 import './style.scss';
 
@@ -20,9 +21,15 @@ export default class TermsOfService extends React.Component {
   render() {
     const { t } = this.props;
     return (
-      <Container id="terms-of-service">
-        <h1>{t('title')}</h1>
-        <article {...setInnerHTML(content)} />
+      <Container>
+        <section id="terms-of-service">
+          <h1>{t('title')}</h1>
+          <article {...setInnerHTML(content)} />
+        </section>
+        <section id="privacy-policy">
+          <h1>{t('privacy')}</h1>
+          <article {...setInnerHTML(privacy)} />
+        </section>
       </Container>
     );
   }

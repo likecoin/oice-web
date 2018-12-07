@@ -659,7 +659,8 @@
     }
   },
   "TermsOfService": {
-    "title": "Terms of Service"
+    "title": "Terms of Service",
+    "privacy": "Privacy Policy"
   },
   "TestFlightInvitation": {
     "title": "Become a Tester of oice App for iOS",
