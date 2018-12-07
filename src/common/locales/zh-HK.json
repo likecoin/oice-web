@@ -659,7 +659,8 @@
     }
   },
   "TermsOfService": {
-    "title": "授權聲明"
+    "title": "授權聲明",
+    "privacy": "私隱政策"
   },
   "TestFlightInvitation": {
     "title": "登記成為iOS測試版用戶",
