@@ -105,14 +105,18 @@ You acknowledge that we may rely upon such information and that you are responsi
 10.2 If you feel that your complaint has not been adequately resolved, you have the right to contact your local data protection supervisory authority, which for in Hong Kong, is the Privacy Commissioner for Personal Data.
 
 11. Security
+
 11.1 We protect your personal information by using reputable third party data storage service provider such as Google Cloud Platform and Amazon Web Services with proper data security technology enforced. We take reasonable measures to help protecting information about you from unlawful destruction or loss, alteration, theft, misuse and unauthorized access or disclosure.
 
 12. Changes to this Privacy Policy
+
 12.1 The Policy will be reviewed from time to time to take account of changes to our operations or practices and, further, to make sure it remains appropriate to any changes in law, technology and the business environment. Any personal information held will be governed by our most current Policy.
 
 13. Links
+
 13.1 The Service may include links to other websites on the internet. We are not responsible for the content of these sites or for any other privacy practices on these internet sites. Before providing your personal information via any other website, we advise you to examine the terms and conditions of using that website and its privacy policy. Our terms of use and our privacy policy apply only to information collected by us in accordance with this Policy.
 
 14. How to contact us
+
 14.1 To find out more about how your Personal Information will be used, please contact us by email at team@oice.com.
 
