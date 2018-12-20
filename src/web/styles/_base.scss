@@ -16,14 +16,18 @@ body {
 }
 
 #web {
-  padding-bottom: $footer-height;
+  display: flex;
+  flex-direction: column;
+
+  .footer {
+    position: relative;
+  }
 
   > *:not(.nav-bar):not(.footer) {
-    min-height: calc(100% - #{$footer-height});
+    flex-grow: 1;
     padding-top: $nav-bar-height;
 
     @media screen and (max-width: $screen-tablet) {
-      min-height: calc(100% - #{$footer-height * 3});
       padding-top: $nav-bar-mobile-height;
     }
   }
