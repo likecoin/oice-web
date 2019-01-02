@@ -18,7 +18,6 @@ export function update(options) {
 export function updateWithUser(user) {
   if (!user) return;
   update({
-    user_id: user.id,
     email: user.email,
     user_hash: user.intercomUserHash,
     name: user.displayName,
