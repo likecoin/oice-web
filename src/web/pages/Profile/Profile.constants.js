@@ -1,16 +1,19 @@
 export const PROFILE_ACTION = {
   MEMBERSHIP: 'membership',
   BECOME_BACKER: 'become-backer',
+  SUBSCRIBE: 'subscribe',
   PERSONAL_INFORMATION: 'personal-info',
 };
 
 export const TAB_BAR_ITEM = {
   PERSONAL_INFORMATION: 'personalInformation',
+  MEMBERSHIP: 'membership',
   ACCOUNT_SETTING: 'accountSetting',
 };
 
 export const TAB_BAR_ITEMS = [
   TAB_BAR_ITEM.PERSONAL_INFORMATION,
+  TAB_BAR_ITEM.MEMBERSHIP,
   TAB_BAR_ITEM.ACCOUNT_SETTING,
 ];
 

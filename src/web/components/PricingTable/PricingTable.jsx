@@ -6,14 +6,9 @@ import { connect } from 'react-redux';
 import classNames from 'classnames';
 
 import OutlineButton from 'common/components/OutlineButton';
-
-import './PricingTable.styles.scss';
-
-import { showPaymentInProfile } from 'common/utils/auth';
 import { isNormalUser } from 'common/utils/user';
 
-import USER_ROLE from 'common/constants/userRoles';
-import { PROFILE_ACTION } from 'web/pages/Profile/Profile.constants';
+import './PricingTable.styles.scss';
 
 
 const FEATURE_LIST = [
@@ -82,13 +77,15 @@ function PriceCard(props) {
         )}
       </ul>
       <footer>
-        <OutlineButton
-          label={props.actionButtonText}
-          color={props.type === 'backer' ? 'blue' : null}
-          width={200}
-          disabled={props.isActionButtonDisabled}
-          onClick={props.onClickActionButton}
-        />
+        {props.actionButton ||
+          <OutlineButton
+            label={props.actionButtonText}
+            color={props.type === 'backer' ? 'blue' : null}
+            width={200}
+            disabled={props.isActionButtonDisabled}
+            onClick={props.onClickActionButton}
+          />
+        }
       </footer>
     </div>
   );
@@ -102,6 +99,7 @@ PriceCard.propTypes = {
   subtitle: PropTypes.string,
   isActionButtonDisabled: PropTypes.bool,
   actionButtonText: PropTypes.string,
+  actionButton: PropTypes.node,
   onClickActionButton: PropTypes.func,
 };
 
@@ -113,15 +111,11 @@ export default class PricingTable extends React.Component {
   static propTypes = {
     t: PropTypes.func.isRequired,
     membership: PropTypes.string,
-  }
 
-  _handleClickRegistrationButton = () => {
-    window.location.pathname = '/edit';
-  }
+    oiceBackerButton: PropTypes.node,
 
-  _handleClickBecomeOiceBackerButton = () => {
-    showPaymentInProfile.set();
-    window.location.href = `/profile?action=${PROFILE_ACTION.BECOME_BACKER}`;
+    onClickRegistrationButton: PropTypes.func,
+    onClickBecomeOiceBackerButton: PropTypes.func,
   }
 
   render() {
@@ -139,7 +133,7 @@ export default class PricingTable extends React.Component {
             subtitle={t('label.free.subtitle')}
             actionButtonText={t(`button.free.${membership ? 'already' : 'action'}`)}
             isActionButtonDisabled={!!membership}
-            onClickActionButton={this._handleClickRegistrationButton}
+            onClickActionButton={this.props.onClickRegistrationButton}
           />
           <PriceCard
             t={t}
@@ -148,7 +142,8 @@ export default class PricingTable extends React.Component {
             subtitle={t('label.backer.subtitle')}
             actionButtonText={t(`button.backer.${isOiceBacker ? 'already' : 'action'}`)}
             isActionButtonDisabled={isOiceBacker}
-            onClickActionButton={this._handleClickBecomeOiceBackerButton}
+            actionButton={this.props.oiceBackerButton}
+            onClickActionButton={this.props.onClickBecomeOiceBackerButton}
           />
         </div>
       </div>

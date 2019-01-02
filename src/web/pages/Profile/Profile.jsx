@@ -17,6 +17,7 @@ import {
 } from 'common/utils/auth';
 
 import PersonalInformationTab from './PersonalInformationTab';
+import MembershipTab from './MembershipTab';
 import AccountSettingTab from './AccountSettingTab';
 
 import * as Actions from './Profile.actions';
@@ -47,14 +48,17 @@ export default class Profile extends React.Component {
   constructor(props) {
     super(props);
 
-    let tabBarIndex = 1;
+    let tabBarIndex = 2;
     switch (_get(props.location, 'query.action')) {
       case PROFILE_ACTION.PERSONAL_INFORMATION:
         tabBarIndex = 0;
         break;
+      case PROFILE_ACTION.SUBSCRIBE:
       case PROFILE_ACTION.MEMBERSHIP:
-      case PROFILE_ACTION.BECOME_BACKER:
         tabBarIndex = 1;
+        break;
+      case PROFILE_ACTION.BECOME_BACKER:
+        tabBarIndex = 2;
         break;
       default:
         break;
@@ -100,15 +104,16 @@ export default class Profile extends React.Component {
   renderTabChild() {
     const { tabBarIndex } = this.state;
     const settingType = TAB_BAR_ITEMS[tabBarIndex];
+    const { action, referrer } = _get(this.props, 'location.query', {});
 
     switch (settingType) {
       case TAB_BAR_ITEM.PERSONAL_INFORMATION:
         return <PersonalInformationTab />;
+      case TAB_BAR_ITEM.MEMBERSHIP:
+        return <MembershipTab action={action} referrer={referrer} />;
       case TAB_BAR_ITEM.ACCOUNT_SETTING:
         return (
-          <AccountSettingTab
-            action={_get(this.props, 'location.query.action')}
-          />
+          <AccountSettingTab action={action} />
         );
       default:
         return null;

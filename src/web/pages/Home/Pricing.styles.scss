@@ -20,5 +20,22 @@
   .pricing-table {
     display: flex;
     justify-content: center;
+
+    .price-card.backer {
+      @media screen and (min-width: 480px) {
+        &::before {
+          content: " ";
+          position: absolute;
+          z-index: 2;
+          background-image: url('/static/img/pricing-idol.png');
+          background-repeat: no-repeat;
+          background-size: contain;
+          width: 339px;
+          height: 638px;
+          bottom: -80px;
+          left: calc(100% - 50px);
+        }
+      }
+    }
   }
 }

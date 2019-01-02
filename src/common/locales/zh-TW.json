@@ -297,6 +297,9 @@
         "enterDisplayName": "請輸入"
       }
     },
+    "membership": {
+      "title": "oice 會員"
+    },
     "accountSetting": {
       "title": "帳號設定",
       "header": {

@@ -273,7 +273,7 @@
   "Profile": {
     "title": "Account Settings",
     "personalInformation": {
-      "title": "Personal Information",
+      "title": "Profile",
       "header": {
         "basicInformation": "Basic Information",
         "externalLinks": "External Links"
@@ -297,8 +297,11 @@
         "enterDisplayName": "Please enter"
       }
     },
+    "membership": {
+      "title": "oice Backer"
+    },
     "accountSetting": {
-      "title": "Account Setting",
+      "title": "General",
       "header": {
         "accountInformation": "Account Information",
         "languageSetting": "Language Setting",

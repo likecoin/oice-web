@@ -12,7 +12,6 @@ import _get from 'lodash/get';
 import CircularLoader from 'ui-elements/CircularLoader';
 import Dropdown from 'ui-elements/Dropdown';
 import OutlineButton from 'ui-elements/OutlineButton';
-import SubNavBar from 'ui-elements/SubNavBar';
 
 import I18nIcon from 'common/icons/i18n';
 
@@ -22,7 +21,6 @@ import i18next, {
 } from 'common/utils/i18n';
 
 import LANGUAGE_LIST, { SUPPORTED_STORY_LANGUAGES } from 'common/constants/i18n';
-import USER_ROLE from 'common/constants/userRoles';
 import { LIBRARY_ACTION } from 'asset-library/constants';
 
 import { showPaymentInProfile } from 'common/utils/auth';
@@ -83,7 +81,7 @@ export default class AccountSettingTab extends React.Component {
     }
 
     const previousRole = _get(this.props, 'user.role');
-    if (action === PROFILE_ACTION.MEMBERSHIP && previousRole && previousRole !== user.role) {
+    if (action === PROFILE_ACTION.BECOME_BACKER && previousRole && previousRole !== user.role) {
       window.location.href = `/asset?action=${LIBRARY_ACTION.ADD_PRIVATE_LIBRARY}`;
     }
   }
@@ -112,7 +110,7 @@ export default class AccountSettingTab extends React.Component {
 
   renderAccountInfoPanel(user) {
     const { t, loading } = this.props;
-    const { expireDate, isCancelled, isTrial } = user;
+    const { isCancelled, isTrial } = user;
     const isBacker = !isNormalUser(user.role);
     const memberStatus = t(`accountSetting.label.${
       isBacker ? 'backer' : 'member'
