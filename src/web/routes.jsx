@@ -14,6 +14,7 @@ import Footer from 'common/components/Footer';
 import Stripe from 'web/pages/Stripe';
 import Competition1718 from 'web/pages/Competition1718';
 import LikeCoinTx from 'web/pages/LikeCoinTx';
+import BackerPage from 'web/pages/Backer';
 
 import { APP_STORE_LINK } from 'common/constants/key';
 
@@ -44,6 +45,10 @@ const routes = (
       <Route
         components={{ children: Profile, Footer }}
         path="profile"
+      />
+      <Route
+        components={{ children: BackerPage, Footer }}
+        path="backer"
       />
       <Route
         components={{ children: TermsOfService, Footer }}

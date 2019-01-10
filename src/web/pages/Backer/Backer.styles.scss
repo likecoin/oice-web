@@ -1,0 +1,67 @@
+#backer-page {
+  #sub-navbar {
+    margin-top: 0;
+  }
+
+  .backer-page-content {
+    display: flex;
+    justify-content: center;
+  
+    padding: 0 16px 40px;
+  }
+
+  h1 {
+    text-align: left;
+    background-color: #5cb7e8;
+    background-image: linear-gradient(to right,#37bbff, #09304f);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-size: 42px;
+    font-weight: 200;
+
+    @media screen and (max-width: 800px) {
+      font-size: 36px;
+      text-align: center;
+    }
+  }
+
+  .pricing-table {
+    padding: 0;
+  }
+
+  .price-card {
+    box-shadow: none;
+
+    &.backer {
+      &::before {
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        content: '';
+
+        margin: -4px;
+        border-radius: 12px;
+
+        background-image: linear-gradient(to bottom, #0097e8, #83fc9a);
+      }
+
+      .outline-button {
+        min-width: 256px !important;
+  
+        border-radius: 100px;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+        background-image: linear-gradient(to right, #0097e8, #83fc9a);
+  
+        border: none;
+        color: white !important;
+      }
+    }
+  }
+}

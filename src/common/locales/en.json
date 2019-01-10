@@ -2089,5 +2089,8 @@
     "button": {
       "backLibrary": "Back to Asset Store"
     }
+  },
+  "BackerPage": {
+    "title": "oice backer"
   }
 }
