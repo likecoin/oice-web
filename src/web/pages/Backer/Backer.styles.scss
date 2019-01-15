@@ -35,6 +35,12 @@
   .price-card {
     box-shadow: none;
 
+    &.free {
+      @media screen and (max-width: 600px) {
+        display: none;
+      }
+    }
+
     &.backer {
       &::before {
         z-index: -1;
