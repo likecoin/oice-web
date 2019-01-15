@@ -58,7 +58,7 @@
         background-image: linear-gradient(to bottom, #0097e8, #83fc9a);
       }
 
-      .outline-button {
+      .outline-button:not(.disabled) {
         min-width: 256px !important;
   
         border-radius: 100px;

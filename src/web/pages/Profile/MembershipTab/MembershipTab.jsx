@@ -51,10 +51,10 @@ export default class MembershipTab extends React.Component {
   renderCheckOutButton() {
     const { t, user } = this.props;
     const isBacker = !isNormalUser(user.role);
-    return (
+    return !isBacker && (
       <OiceCheckout
-        ref={ref => this.paymentButton = (!isBacker ? ref : null)}
-        buttonLabel={isBacker ? t('accountSetting.button.continueSubscription') : t('accountSetting.button.upgrade')}
+        ref={(ref) => { this.paymentButton = ref; }}
+        buttonLabel={t('accountSetting.button.upgrade')}
         email={user.email}
       />
     );
