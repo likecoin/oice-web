@@ -56,6 +56,12 @@ $outline-button-height: padding(4/3);
     }
 
     .profile-panels {
+      max-width: 768px;
+
+      @media screen and (min-width: 768px + 1px) {
+        flex-grow: 1;
+      }
+
       .left-column {
         width: 100%;
         max-width: 308px;
@@ -309,7 +315,7 @@ $outline-button-height: padding(4/3);
 
 .profile-panel {
   width: 100%;
-  max-width: padding(29);
+  max-width: 768px;
   margin-top: padding(1/3);
   padding: 0 padding() padding(2/3) padding(2/3);
 
