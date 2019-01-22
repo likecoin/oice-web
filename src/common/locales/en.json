@@ -66,7 +66,7 @@
       "stripeAccountIsRequired": "Please set up a Stripe account to recieve payment",
       "3070Share": "The payment processing company and store will take 30% of proceeds, uploaders will recieve the other 70%",
       "othersCannotAccess": "This material will only be accessible to you and not accessible by other users",
-      "oiceProUserOnly": "Only oice backer can use this",
+      "oiceProUserOnly": "Only backer can use this",
       "price": "Price",
       "onStore": "Listed on the store",
       "notOnStore": "Not listed on the store",
@@ -144,7 +144,7 @@
         "subtitle": "Free"
       },
       "backer": {
-        "title": "oice <span class='bold'>backer</span>",
+        "title": "<span class='bold'>backer</span>",
         "subtitle": "Only <span style='font-size: 28px'>USD5.0</span>"
       },
       "features": {
@@ -217,7 +217,7 @@
       "description": "Description",
       "assetCount": "Includes {{count}} assets",
       "setting": "Library Settings",
-      "usedByOiceProOnly": "oice backer only",
+      "usedByOiceProOnly": "backer only",
       "ownedLibraryWarning": "You created this library, you already own it!",
       "purchaseLibraryName": "Purchase \"{{name}}\" Library",
       "purchasingLibrary": "Purchase Library",
@@ -298,7 +298,7 @@
       }
     },
     "membership": {
-      "title": "oice Backer"
+      "title": "Backer"
     },
     "accountSetting": {
       "title": "General",
@@ -921,7 +921,7 @@
   },
   "checkout": {
     "label": {
-      "upgrade": "Upgrade $t(membership:paid)"
+      "upgrade": "Become a Backer"
     },
     "button": {
       "pay": "Pay Now"
@@ -2091,6 +2091,6 @@
     }
   },
   "BackerPage": {
-    "title": "oice backer"
+    "title": "backer"
   }
 }

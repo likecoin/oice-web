@@ -66,7 +66,7 @@
       "stripeAccountIsRequired": "需先創建 Stripe 帳號作收款之用",
       "3070Share": "支付和商店平台成本30%，上載者可得售價70%",
       "othersCannotAccess": "素材只供上載者創作故事，不會於素材市場出現",
-      "oiceProUserOnly": "僅限 oice 會員",
+      "oiceProUserOnly": "僅限贊助會員",
       "price": "價錢",
       "onStore": "上架",
       "notOnStore": "下架",
@@ -140,11 +140,11 @@
   "PricingTable": {
     "label": {
       "free": {
-        "title": "oice會員",
+        "title": "贊助會員",
         "subtitle": "免費"
       },
       "backer": {
-        "title": "oice <span class='bold'>backer</span>",
+        "title": "<span class='bold'>贊助會員</span>",
         "subtitle": "每月只需 <span style='font-size: 28px'>USD$5.0</span>"
       },
       "features": {
@@ -163,8 +163,8 @@
         "already": "已成為會員"
       },
       "backer": {
-        "action": "升級成為backer",
-        "already": "已成為backer"
+        "action": "升級成為贊助會員",
+        "already": "已成為贊助會員"
       }
     }
   },
@@ -217,7 +217,7 @@
       "description": "簡介",
       "assetCount": "包含{{count}}個素材",
       "setting": "素材庫設定",
-      "usedByOiceProOnly": "只限oice會員",
+      "usedByOiceProOnly": "只限贊助會員",
       "ownedLibraryWarning": "這是你所創建的素材庫，你已自動擁有這個素材庫。",
       "purchaseLibraryName": "購買「{{name}}」素材庫",
       "purchasingLibrary": "購買素材庫",
@@ -298,7 +298,7 @@
       }
     },
     "membership": {
-      "title": "oice 會員"
+      "title": "贊助會員"
     },
     "accountSetting": {
       "title": "帳號設定",
@@ -310,7 +310,7 @@
       "label": {
         "account": "帳號: ",
         "member": "會員",
-        "backer": "backer",
+        "backer": "贊助會員",
         "expireOn": "{{date}} 到期",
         "upgradeToSupport": "升級為贊助會員每月只需 USD$5.0",
         "UILanguage": "介面語言",
@@ -1778,8 +1778,8 @@
     }
   },
   "membership": {
-    "user": "oice Free",
-    "paid": "oice 會員",
+    "user": "免費會員",
+    "paid": "贊助會員",
     "admin": "管理員"
   },
   "oiceSingleView": {
