@@ -32,6 +32,7 @@ export default class MembershipTab extends React.Component {
     user: PropTypes.object.isRequired,
     action: PropTypes.string,
     referrer: PropTypes.string,
+    loading: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -49,13 +50,14 @@ export default class MembershipTab extends React.Component {
   }
 
   renderCheckOutButton() {
-    const { t, user } = this.props;
+    const { t, user, loading } = this.props;
     const isBacker = !isNormalUser(user.role);
     return !isBacker && (
       <OiceCheckout
         ref={(ref) => { this.paymentButton = ref; }}
-        buttonLabel={t('accountSetting.button.upgrade')}
+        buttonLabel={t(loading ? 'loadingScreen:label.loading' : 'accountSetting.button.upgrade')}
         email={user.email}
+        disabled={loading}
       />
     );
   }

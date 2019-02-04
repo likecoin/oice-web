@@ -20,6 +20,7 @@ export default class OiceCheckout extends React.Component {
     name: PropTypes.string,
     payLabel: PropTypes.string,
     description: PropTypes.string,
+    disabled: PropTypes.bool,
     dispatch: PropTypes.func.isRequired,
     t: PropTypes.func.isRequired,
   }
@@ -62,6 +63,7 @@ export default class OiceCheckout extends React.Component {
         <OutlineButton
           color="blue"
           label={this.props.buttonLabel}
+          disabled={this.props.disabled}
         />
       </StripeCheckout>
     );

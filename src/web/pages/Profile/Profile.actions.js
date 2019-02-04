@@ -8,11 +8,12 @@ import AlertDialog from 'ui-elements/AlertDialog';
 import * as UserAPI from 'common/api/user';
 import * as UserLinkAPI from 'common/api/userLink';
 
-import { updateUserMeta } from 'common/actions/user';
+import { updateUserMeta, updateUser as updateUserAction } from 'common/actions/user';
 
 import { backToWeb } from 'common/utils';
 import { APIHandler } from 'common/utils/api';
 
+import i18n from 'common/utils/i18n';
 
 // Actions
 export const updateUserProfileBegin = createAction('USER_PROFILE_UPDATE_BEGIN');
@@ -58,7 +59,13 @@ export const updateMembership = token => (dispatch) => {
     .then((response) => {
       const userInfo = response.user;
       dispatch(updatedUserProfile(userInfo));
+      dispatch(updateUserAction(userInfo));
       dispatch(startLoading(false));
+      dispatch(AlertDialog.toggle({
+        title: i18n.t('alertDialog:upgradedBacker.title'),
+        body: i18n.t('alertDialog:upgradedBacker.body'),
+        type: 'alert',
+      }));
       // localStorage.setItem('currentUser', JSON.stringify(userInfo));
     }));
 };

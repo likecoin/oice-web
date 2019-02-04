@@ -732,6 +732,10 @@
       "button": {
         "confirm": "I understand"
       }
+    },
+    "upgradedBacker": {
+      "title": "Backer Application Successful",
+      "body": "Thank you for your support. We have received your payment, and you will get the confirmation email within one business day. For further inquiry, please contact us."
     }
   },
   "asset": {
