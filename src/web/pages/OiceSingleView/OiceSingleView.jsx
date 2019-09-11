@@ -344,9 +344,11 @@ export default class OiceSingleView extends React.Component {
     if (this.miniCredits && this.miniCredits.classList) {
       this.miniCredits.classList.remove('short');
       const lastAvatarEl = this.miniCredits.lastChild;
-      const margin = lastAvatarEl.offsetTop % lastAvatarEl.clientHeight;
-      if (lastAvatarEl.offsetTop <= margin) {
-        this.miniCredits.classList.add('short');
+      if (lastAvatarEl) {
+        const margin = lastAvatarEl.offsetTop % lastAvatarEl.clientHeight;
+        if (lastAvatarEl.offsetTop <= margin) {
+          this.miniCredits.classList.add('short');
+        }
       }
     }
   }
