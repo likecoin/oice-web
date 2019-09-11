@@ -120,7 +120,9 @@ export default class Home extends React.Component {
   }
 
   _handleScroll = (event) => {
-    const { clientHeight, offsetTop } = document.getElementById('landing-section');
+    const landingEl = document.getElementById('landing-section');
+    if (!landingEl) return;
+    const { clientHeight, offsetTop } = landingEl;
     const scrollY = (
       window.scrollY ||
       window.pageYOffset ||
