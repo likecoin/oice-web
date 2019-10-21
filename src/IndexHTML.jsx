@@ -40,6 +40,20 @@ export default class IndexHTML extends React.Component {
     } = this.props;
 
     const modules = ['web', 'editor', 'asset-library'];
+    const jsonLdObject = {
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Oice',
+      url: 'https://oice.com',
+      logo: 'https://oice.com/static/img/app-icon.png',
+      sameAs: [
+        'https://v.oice.com',
+        'https://twitter.com/oice_app',
+        'https://www.facebook.com/oiceapp',
+        'https://www.facebook.com/groups/oiceapp',
+        'https://embed.ly/provider/oice',
+      ],
+    };
 
     return (
       <html lang={meta.ogLocale}>
@@ -108,6 +122,10 @@ export default class IndexHTML extends React.Component {
           <script src="https://use.typekit.net/lds7dmt.js" />
           <script dangerouslySetInnerHTML={{ __html: 'try{Typekit.load({ async: true });}catch(e){}' }} />
           {!IS_DEV_MODE && <script dangerouslySetInnerHTML={{ __html: `Raven.config('${SENTRY_DSN}').install()` }} />}
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdObject) }}
+          />
         </head>
         <body>
           <noscript>
