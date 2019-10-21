@@ -43,7 +43,7 @@ export default class IndexHTML extends React.Component {
     const jsonLdObject = {
       '@context': 'https://schema.org',
       '@type': 'Organization',
-      name: 'Oice',
+      name: 'oice',
       url: 'https://oice.com',
       logo: 'https://oice.com/static/img/app-icon.png',
       sameAs: [
