@@ -69,7 +69,7 @@ export const authenticate = () => (dispatch, getState) => {
       displayName: 'oice-dev',
       photoURL: '',
       providerId: 'oice-dev',
-    }] }, 'dev'));
+    }], email: 'oice-dev' }, 'dev'));
   }
 };
 
