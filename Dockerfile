@@ -1,7 +1,7 @@
 FROM node:6-alpine
 RUN mkdir /app
 WORKDIR /app
-ADD package.json /app/package.json
+ADD package.json yarn.lock /app/
 RUN cd /app && apk add --no-cache --virtual .build-deps \
     make \
     gcc \
