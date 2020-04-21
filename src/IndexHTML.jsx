@@ -40,7 +40,7 @@ export default class IndexHTML extends React.Component {
     } = this.props;
 
     const modules = ['web', 'editor', 'asset-library'];
-    const jsonLdObject = {
+    const jsonLdObject = [{
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: 'oice',
@@ -53,7 +53,19 @@ export default class IndexHTML extends React.Component {
         'https://www.facebook.com/groups/oiceapp',
         'https://embed.ly/provider/oice',
       ],
-    };
+    }, {
+      '@context': 'http://www.schema.org',
+      '@type': 'WebApplication',
+      name: 'oice',
+      applicationCategory: 'DesignApplication',
+      operatingSystem: 'All',
+      url: 'https://oice.com',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+    }];
 
     return (
       <html lang={meta.ogLocale}>
@@ -122,10 +134,6 @@ export default class IndexHTML extends React.Component {
           <script src="https://use.typekit.net/lds7dmt.js" />
           <script dangerouslySetInnerHTML={{ __html: 'try{Typekit.load({ async: true });}catch(e){}' }} />
           {!IS_DEV_MODE && <script dangerouslySetInnerHTML={{ __html: `Raven.config('${SENTRY_DSN}').install()` }} />}
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdObject) }}
-          />
         </head>
         <body>
           <noscript>
@@ -157,6 +165,10 @@ export default class IndexHTML extends React.Component {
             type="application/javascript"
           />
           <script src={`/static/vendor/fb.js?v=${VERSION}`} />
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdObject) }}
+          />
         </body>
       </html>
     );
