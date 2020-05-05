@@ -10,7 +10,7 @@ import AlertDialog from 'ui-elements/AlertDialog';
 import NavBar from 'ui-elements/NavBar';
 
 import * as UserAction from 'common/actions/user';
-import * as IntercomUtils from 'common/utils/intercom';
+import * as CrispUtils from 'common/utils/crisp';
 import {
   getAuthItem,
   getLocalUserItem,
@@ -38,7 +38,7 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(UserAction.authenticate());
-    if (!isSingleView()) IntercomUtils.boot();
+    if (!isSingleView()) CrispUtils.boot();
   }
 
   componentWillReceiveProps(nextProps) {

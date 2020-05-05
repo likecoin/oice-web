@@ -14,7 +14,7 @@ import {
 } from 'common/utils/auth';
 import { clearLastEditingOice } from 'common/utils/editor';
 import i18next, { mapLanguageCode } from 'common/utils/i18n';
-import * as IntercomUtils from 'common/utils/intercom';
+import * as CrispUtils from 'common/utils/crisp';
 import { IS_DEV_MODE } from 'common/constants';
 
 
@@ -39,7 +39,7 @@ export const loginWithGoogle = (firebaseUser, googleToken) => async (dispatch, g
       i18next.changeLanguage(user.uiLanguage);
     }
 
-    IntercomUtils.updateWithUser(user);
+    CrispUtils.updateWithUser(user);
 
     dispatch(updateUser(user));
     return user;
@@ -80,7 +80,7 @@ export const signOut = () => dispatch => APIHandler(dispatch,
     .then((message) => {
       if (firebase.auth().currentUser || getAuthItem()) {
         firebase.auth().signOut().then(() => {
-          IntercomUtils.shutdown();
+          CrispUtils.shutdown();
           clearLocalItems();
           clearLastEditingOice();
           backToWeb();
