@@ -7,6 +7,7 @@ import {
   IOS_APP,
   FACEBOOK_APP_ID,
   IS_DEV_MODE,
+  CRISP_WEBSITE_ID,
 } from './common/constants';
 
 import {
@@ -129,7 +130,8 @@ export default class IndexHTML extends React.Component {
           <script>riveted.init();</script>
           <script src={`/static/vendor/gtm.js?v=${VERSION}`} />
           <script src={`/static/vendor/branch-deepview.js?v=${VERSION}`} />
-          <script src={`/static/vendor/intercom.js?v=${VERSION}`} />
+          <script dangerouslySetInnerHTML={{ __html: `window.CRISP_WEBSITE_ID="${CRISP_WEBSITE_ID}";` }} />
+          <script src={`/static/vendor/crisp.js?v=${VERSION}`} />
           {/* Typekit */}
           <script src="https://use.typekit.net/lds7dmt.js" />
           <script dangerouslySetInnerHTML={{ __html: 'try{Typekit.load({ async: true });}catch(e){}' }} />

@@ -7,7 +7,7 @@ import { push, replace } from 'react-router-redux';
 import { DOMAIN_URL } from 'common/constants';
 import * as OiceAPI from 'common/api/oice';
 import * as BlockAPI from 'common/api/block';
-import * as IntercomUtils from 'common/utils/intercom';
+import * as CrispUtils from 'common/utils/crisp';
 
 
 import {
@@ -69,7 +69,7 @@ const dispatchJobState = (dispatch, id, stage, message = '', data = null) => {
 const buildSocket = socketio(`${DOMAIN_URL}/build`);
 
 export const runOice = (storyId, oiceId, savingBlocks, isPreview, jobId) => (dispatch, getState) => {
-  IntercomUtils.event(isPreview ? 'preview_oice' : 'build_oice', {
+  CrispUtils.event(isPreview ? 'preview_oice' : 'build_oice', {
     story_id: storyId,
     oice_id: oiceId,
   });

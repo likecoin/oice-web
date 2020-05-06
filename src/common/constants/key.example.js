@@ -10,8 +10,8 @@ export const ANDROID_NAME_TEST = '';
 export const IOS_STORE_ID = '';
 export const IOS_NAME = '';
 
-export const INTERCOM_APP_ID_PROD = '';
-export const INTERCOM_APP_ID_TEST = '';
+export const CRISP_WEBSITE_ID_PROD = '';
+export const CRISP_WEBSITE_ID_TEST = '';
 
 export const LOG_KEY = '';
 

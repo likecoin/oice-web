@@ -8,7 +8,7 @@ import InteractiveTutorial from 'editor/components/InteractiveTutorial';
 import * as BlockAPI from 'common/api/block';
 import { APIHandler } from 'common/utils/api';
 import { setOiceLastEditTime } from 'common/utils/editor';
-import * as IntercomUtils from 'common/utils/intercom';
+import * as CrispUtils from 'common/utils/crisp';
 
 
 function updateOiceLastEditTime(state) {
@@ -83,7 +83,7 @@ export const addBlock = (
       }
       dispatch(addBlockDnD({ block }));
 
-      IntercomUtils.event('add_block', {
+      CrispUtils.event('add_block', {
         oice_id: block.oiceId,
         macro_id: block.macroId,
         macro_name: block.macroName,
@@ -98,7 +98,7 @@ export const duplicateBlock = (oiceId, serializedBlock) => dispatch => APIHandle
     .then((block) => {
       dispatch(addBlockDnD({ block }));
 
-      IntercomUtils.event('add_block', {
+      CrispUtils.event('add_block', {
         oice_id: block.oiceId,
         macro_id: block.macroId,
         macro_name: block.macroName,
@@ -139,7 +139,7 @@ export const deleteBlock = blockId => (dispatch, getState) => {
 
         updateOiceLastEditTime(getState());
 
-        IntercomUtils.event('delete_block');
+        CrispUtils.event('delete_block');
       })
   );
 };

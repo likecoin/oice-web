@@ -8,7 +8,7 @@ import * as AssetAPI from 'common/api/asset';
 import * as ASSET_TYPE from 'common/constants/assetTypes';
 
 import { APIHandler } from 'common/utils/api';
-import * as IntercomUtils from 'common/utils/intercom';
+import * as CrispUtils from 'common/utils/crisp';
 
 import { startSoundUpload } from './UploadAudioAssetModal/actions';
 
@@ -94,7 +94,7 @@ export const addAsset = (meta, file, assetType) => (dispatch) => {
           default: break;
         }
 
-        IntercomUtils.event('add_asset', {
+        CrispUtils.event('add_asset', {
           type: assetType,
         });
       })
@@ -135,7 +135,7 @@ export const addAssets = (assets, assetType, progressHandler) => (dispatch) => {
           break;
       }
 
-      IntercomUtils.event('add_asset', {
+      CrispUtils.event('add_asset', {
         type: assetType,
       });
     });
@@ -168,7 +168,7 @@ export const updateAsset = (meta, file) => (dispatch) => {
           throw new Error('Invalid asset type');
       }
 
-      IntercomUtils.event('update_asset', {
+      CrispUtils.event('update_asset', {
         type: asset.types[0].name,
       });
     })
@@ -201,7 +201,7 @@ export const deleteAsset = ({ id, type }) => (dispatch) => {
           throw new Error('Invalid asset type');
       }
 
-      IntercomUtils.event('delete_asset', {
+      CrispUtils.event('delete_asset', {
         type,
       });
     })

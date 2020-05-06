@@ -1,5 +1,4 @@
 import { handleActions } from 'redux-actions';
-import * as IntercomUtils from 'common/utils/intercom';
 
 import { actions as ProfileActions } from 'web/pages/Profile';
 import * as Actions from '../actions/user';
@@ -31,10 +30,7 @@ export default handleActions({
     ...state,
     isLoggingIn: true,
   }),
-  '@@router/LOCATION_CHANGE': (state) => {
-    IntercomUtils.update();
-    return state;
-  },
+  '@@router/LOCATION_CHANGE': state => state,
   [ProfileActions.updatedUserAvatar]: (state, { payload }) => ({
     ...state,
     avatar: payload,

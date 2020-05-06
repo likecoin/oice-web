@@ -12,7 +12,7 @@ import Footer from 'ui-elements/Footer';
 import InteractiveTutorial from 'editor/components/InteractiveTutorial';
 import NavBar from 'ui-elements/NavBar';
 
-import * as IntercomUtils from 'common/utils/intercom';
+import * as CrispUtils from 'common/utils/crisp';
 import * as UserAction from 'common/actions/user';
 
 import {
@@ -43,7 +43,7 @@ export default class AssetLibraryApp extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(UserAction.authenticate());
-    IntercomUtils.boot();
+    CrispUtils.boot();
   }
 
   componentWillReceiveProps(nextProps) {

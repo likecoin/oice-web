@@ -10,7 +10,7 @@ import _get from 'lodash/get';
 import PricingTable from 'web/components/PricingTable';
 
 import { isNormalUser } from 'common/utils/user';
-import * as IntercomUtils from 'common/utils/intercom';
+import * as CrispUtils from 'common/utils/crisp';
 
 import OiceCheckout from '../AccountSettingTab/OiceCheckout';
 
@@ -44,7 +44,7 @@ export default class MembershipTab extends React.Component {
 
     if (!isBacker && this.props.action === PROFILE_ACTION.SUBSCRIBE && this.paymentButton) {
       findDOMNode(this.paymentButton).click();
-      IntercomUtils.update({ oice_subscriptionReferrerID: this.props.referrer });
+      CrispUtils.update('oice_subscriptionReferrerID', this.props.referrer);
       this.props.dispatch(replace('/profile'));
     }
   }

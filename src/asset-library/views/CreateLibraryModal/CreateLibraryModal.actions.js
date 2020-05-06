@@ -5,7 +5,7 @@ import * as LibraryAPI from 'common/api/library';
 import * as StoreAPI from 'common/api/store';
 
 import { APIHandler } from 'common/utils/api';
-import * as IntercomUtils from 'common/utils/intercom';
+import * as CrispUtils from 'common/utils/crisp';
 
 import { LIBRARY_TYPES } from 'asset-library/constants';
 
@@ -21,7 +21,7 @@ export const addLibrary = library => (dispatch) => {
       .then((newLibrary) => {
         dispatch(addedLibrary(newLibrary));
 
-        IntercomUtils.event('add_library', {
+        CrispUtils.event('add_library', {
           id: newLibrary.id,
           name: newLibrary.name,
           description: newLibrary.description,
