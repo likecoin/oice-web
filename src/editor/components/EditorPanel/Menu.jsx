@@ -9,7 +9,7 @@ import MoreIcon from 'common/icons/more';
 
 import { VOLUMES } from '../InteractiveTutorial/constants';
 
-const handleTutorialClick = () => window.open('https://intercom.help/oice');
+const handleTutorialClick = () => window.open('https://v.oice.com/oice-beginner1-ce481e4d32a');
 
 const EditorMenu = (props) => {
   const {

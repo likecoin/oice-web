@@ -41,7 +41,7 @@ const routes = (
       >
         <Route path="preview" />
       </Route>
-      <Route path="tutorial" onEnter={() => window.location.href = 'https://intercom.help/oice'} />
+      <Route path="tutorial" onEnter={() => window.location.href = 'https://v.oice.com/oice-beginner1-ce481e4d32a'} />
       <Route
         components={{ children: Profile, Footer }}
         path="profile"
