@@ -11,7 +11,9 @@
     "forever": "NODE_ENV=production forever start ./index.js",
     "stop": "forever stop ./index.js",
     "deploy": "npm run build && npm run server",
-    "lint": "eslint src index.js src/server.jsx src/IndexHTML.jsx"
+    "lint": "eslint src index.js src/server.jsx src/IndexHTML.jsx",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "authors": [
     "Andrew Chung",
@@ -78,7 +80,8 @@
     "superagent-jsonp": "^0.1.1",
     "uuid": "^2.0.3",
     "web3": "^1.0.0-beta.34",
-    "xml": "^1.0.1"
+    "xml": "^1.0.1",
+    "snyk": "^1.317.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.0.1",
@@ -113,5 +116,6 @@
     "webpack": "^3.12.0",
     "webpack-dev-middleware": "^2.0.6",
     "webpack-hot-middleware": "^2.18.0"
-  }
+  },
+  "snyk": true
 }
