@@ -24,7 +24,7 @@
   "dependencies": {
     "@firebase/app": "^0.3.3",
     "@firebase/auth": "^0.5.3",
-    "@firebase/database": "^0.3.3",
+    "@firebase/database": "^0.7.1",
     "boron": "^0.2.3",
     "classnames": "^2.2.5",
     "cookie-parser": "^1.4.3",
@@ -77,7 +77,7 @@
     "superagent": "^3.8.3",
     "superagent-jsonp": "^0.1.1",
     "uuid": "^2.0.3",
-    "web3": "^1.0.0-beta.34",
+    "web3": "^1.2.0",
     "xml": "^1.0.1"
   },
   "devDependencies": {
