@@ -72,7 +72,7 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
     "scroll-into-view": "^1.7.5",
-    "socket.io-client": "^2.0.1",
+    "socket.io-client": "^2.4.0",
     "sprintf-js": "^1.0.3",
     "superagent": "^3.8.3",
     "superagent-jsonp": "^0.1.1",
