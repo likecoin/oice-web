@@ -90,7 +90,8 @@ server.get('*', (req, res) => {
   const baseURL = `${DEBUG ? 'http' : 'https'}://${req.get('host')}`;
   match({ routes, location: reqURL }, async (error, redirectLocation, renderProps) => {
     if (error) {
-      console.error('500: ', error);
+      console.error('500:');
+      console.error(error);
       res.status(500).send(error.message);
     } else if (!renderProps) {
       res.status(404).send('Not Found');
@@ -204,7 +205,12 @@ server.get('*', (req, res) => {
         const regexUUID = /[0-9a-f]{32}/;
         const foundUUID = pathname.match(regexUUID);
         const uuid = foundUUID[0];
-        props.oice = await OiceAPI.fetchOiceOgByUUID(uuid).catch();
+        try {
+          props.oice = await OiceAPI.fetchOiceOgByUUID(uuid);
+        } catch (err) {
+          console.error('Error in fetchOiceOgByUUID()');
+          console.error(err);
+        }
       } else if (isPathStartWith('edit')) {
         props.module = 'editor';
       } else if (isPathStartWith('asset') || isPathStartWith('store')) {
@@ -214,9 +220,14 @@ server.get('*', (req, res) => {
         const matchResults = pathname.match(/^\/(asset|store)\/library\/(\d+).*/i);
         if (matchResults) {
           const libraryId = matchResults[2];
-          props.library = await LibraryAPI.fetchLibraryOG(libraryId).catch((response) => {
-            res.status(500).send(`Error occurs when fetching library information ${response}`);
-          });
+          try {
+            props.library = await LibraryAPI.fetchLibraryOG(libraryId);
+          } catch (err) {
+            console.error('Error in fetchLibraryOG()');
+            console.error(err);
+            res.status(500).send(`Error occurs when fetching library information ${err}`);
+            return;
+          }
         }
       } else if (isPathStartWith('ui-demo')) {
         props.module = 'ui-demo';
@@ -226,26 +237,37 @@ server.get('*', (req, res) => {
         const matchResults = isPathStartWith('user') ? pathname.match(/^\/user\/(\d+).*/i) : pathname.match(/\/@([a-zA-Z0-9.\-_]+).*/);
         const userKey = matchResults ? matchResults[1] : null;
         if (matchResults) {
-          props.user = await UserAPI.fetchUserProfile(userKey).catch((response) => {
+          try {
+            props.user = await UserAPI.fetchUserProfile(userKey);
+          } catch (err) {
+            console.error('Error in fetchUserProfile()');
+            console.error(err);
             res.redirect('/about');
-          });
+            return;
+          }
         } else {
           const { cookies } = req;
           const cookieKeys = Object.keys(cookies);
           const cookieString = cookieKeys.reduce((acc, key) => (
             `${acc}${key}=${cookies[key]};`
           ), '');
-          props.user = await UserAPI.getUserProfile({ cookie: cookieString }).catch((response) => {
+          try {
+            props.user = await UserAPI.getUserProfile({ cookie: cookieString });
+          } catch (err) {
+            console.error('Error in fetchUserProfile()');
+            console.error(err);
             res.redirect('/about');
-          });
+          }
         }
 
         if (props.user) {
           const { likeCoinId, id } = props.user;
           if (likeCoinId && userKey !== likeCoinId) {
             res.redirect(`/@${likeCoinId}`);
+            return;
           } else if (!matchResults) {
             res.redirect(`/user/${id}`);
+            return;
           }
         }
       } else if (isPathStartWith('competition1718')) {
