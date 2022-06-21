@@ -28,6 +28,7 @@
     "boron": "^0.2.3",
     "classnames": "^2.2.5",
     "cookie-parser": "^1.4.3",
+    "cors": "^2.8.5",
     "express": "^4.16.3",
     "google-libphonenumber": "^2.0.18",
     "history": "^2.x",
