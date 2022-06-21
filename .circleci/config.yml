@@ -3,13 +3,12 @@ jobs:
   build:
     working_directory: ~/oice-web
     docker:
-      - image: node:8
+      - image: node:10
     environment:
       TERM: dumb
     steps:
       - checkout
       - run: git submodule sync && git submodule update --init;
-      - run: npm uninstall npm -g && yarn global add npm@6.0.1
       - restore_cache:
           key: oice-web-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
       - run:
