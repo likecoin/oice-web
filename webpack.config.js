@@ -1,6 +1,7 @@
 const webpack = require('webpack'); // for plugin use
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
 const SRV_ENV = process.env.SRV_ENV;
@@ -184,12 +185,14 @@ module.exports = {
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.HashedModuleIdsPlugin(),
     new webpack.DefinePlugin({ 'global.GENTLY': false }),
-    new webpack.optimize.UglifyJsPlugin({
+    new UglifyJsPlugin({
       sourceMap: false,
       parallel: true,
-      compress: {
-        drop_console: true,
-        warnings: false,
+      uglifyOptions: {
+        compress: {
+          drop_console: true,
+          warnings: false,
+        },
       },
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
