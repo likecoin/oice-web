@@ -28,9 +28,9 @@ export const BRANCH_URL_PROD = '';
 export const BRANCH_URL_TEST = '';
 
 export const FACEBOOK_APP_ID = '';
-export const SENTRY_DSN = '';
+export const SENTRY_CLIENT_ID = '';
 
-export const GTM_CONTAINER_ID = '';
+export const GA_TRACKING_ID = '';
 
 export const FIREBASE_API_KEY = '';
 export const FIREBASE_AUTH_DOMAIN = '';

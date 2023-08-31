@@ -11,8 +11,8 @@ import {
 } from './common/constants';
 
 import {
-  GTM_CONTAINER_ID,
-  SENTRY_DSN,
+  GA_TRACKING_ID,
+  SENTRY_CLIENT_ID,
 } from './common/constants/key';
 
 
@@ -119,34 +119,26 @@ export default class IndexHTML extends React.Component {
           />
           <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
           <link href="/img/apple-touch-icon.png" rel="apple-touch-icon" />
+          {!IS_DEV_MODE && <script src={`https://js.sentry-cdn.com/${SENTRY_CLIENT_ID}.min.js`} crossorigin="anonymous" />}
           <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-
           <style dangerouslySetInnerHTML={{ __html: '.async-hide { opacity: 0 !important}' }} />
-          <script src="https://cdn.ravenjs.com/3.24.2/raven.min.js" crossorigin="anonymous" />
-          <script src={`/static/vendor/ga.js?v=${VERSION}`} />
-          <script src="https://www.google-analytics.com/analytics.js" async />
-          <script src={`/static/vendor/autotrack.js?v=${VERSION}`} async />
-          <script src="/static/vendor/riveted-0.6.1.min.js" />
-          <script>riveted.init();</script>
-          <script src={`/static/vendor/gtm.js?v=${VERSION}`} />
+          <script src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} async />
+          <script dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_TRACKING_ID}');`
+            }}
+          />
           <script src={`/static/vendor/branch-deepview.js?v=${VERSION}`} />
           <script dangerouslySetInnerHTML={{ __html: `window.CRISP_WEBSITE_ID="${CRISP_WEBSITE_ID}";` }} />
           <script src={`/static/vendor/crisp.js?v=${VERSION}`} />
           {/* Typekit */}
           <script src="https://use.typekit.net/lds7dmt.js" />
           <script dangerouslySetInnerHTML={{ __html: 'try{Typekit.load({ async: true });}catch(e){}' }} />
-          {!IS_DEV_MODE && <script dangerouslySetInnerHTML={{ __html: `Raven.config('${SENTRY_DSN}').install()` }} />}
         </head>
         <body>
-          <noscript>
-            <iframe
-              title="google tag manager"
-              height="0"
-              src={`https://www.googletagmanager.com/ns.html?id=${GTM_CONTAINER_ID}`}
-              style={{ display: 'none', visibility: 'hidden' }}
-              width="0"
-            />
-          </noscript>
           <div id="app" className={className}>
             {children}
           </div>
@@ -166,7 +158,6 @@ export default class IndexHTML extends React.Component {
             src={`/build/${module}.js?v=${VERSION}`}
             type="application/javascript"
           />
-          <script src={`/static/vendor/fb.js?v=${VERSION}`} />
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdObject) }}
