@@ -137,6 +137,7 @@ export default class IndexHTML extends React.Component {
           {/* Typekit */}
           <script src="https://use.typekit.net/lds7dmt.js" />
           <script dangerouslySetInnerHTML={{ __html: 'try{Typekit.load({ async: true });}catch(e){}' }} />
+          <script src="https://js.stripe.com/v3/" async />
         </head>
         <body>
           <div id="app" className={className}>
