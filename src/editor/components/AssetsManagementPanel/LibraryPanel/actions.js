@@ -8,7 +8,7 @@ import * as AssetAPI from 'common/api/asset';
 import * as ASSET_TYPE from 'common/constants/assetTypes';
 
 import { APIHandler } from 'common/utils/api';
-import * as CrispUtils from 'common/utils/crisp';
+import { logEvent } from 'common/utils/logger';
 
 import { startSoundUpload } from './UploadAudioAssetModal/actions';
 
@@ -94,7 +94,7 @@ export const addAsset = (meta, file, assetType) => (dispatch) => {
           default: break;
         }
 
-        CrispUtils.event('add_asset', {
+        logEvent('add_asset', {
           type: assetType,
         });
       })
@@ -135,7 +135,7 @@ export const addAssets = (assets, assetType, progressHandler) => (dispatch) => {
           break;
       }
 
-      CrispUtils.event('add_asset', {
+      logEvent('add_asset', {
         type: assetType,
       });
     });
@@ -168,7 +168,7 @@ export const updateAsset = (meta, file) => (dispatch) => {
           throw new Error('Invalid asset type');
       }
 
-      CrispUtils.event('update_asset', {
+      logEvent('update_asset', {
         type: asset.types[0].name,
       });
     })
@@ -201,7 +201,7 @@ export const deleteAsset = ({ id, type }) => (dispatch) => {
           throw new Error('Invalid asset type');
       }
 
-      CrispUtils.event('delete_asset', {
+      logEvent('delete_asset', {
         type,
       });
     })
