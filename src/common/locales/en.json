@@ -325,46 +325,6 @@
         "disconnectStripe": "Unlink Account"
       }
     },
-    "LikeCoinIntegrationPanel": {
-      "title": "Profit",
-      "label": {
-        "content": "<a class=\"blue\" href=\"{{link}}\">Register LikeCoin ID</a> now (LikeCoin ID serves an oice ID)",
-        "footnote": "After registration, you will earn LikeCoin by creating oice and uploading asset.\n(Chrome with MetaMask installed is needed when register LikeCoin ID)",
-        "id": "oice and LikeCoin ID: ",
-        "soonStart": "LikeCoin is coming soon.",
-        "yourLikeCoinWillBeDisplayedHere": "LikeCoin profit will be displayed here"
-      },
-      "button": {
-        "whatIsLikeCoin": "What is LikeCoin?",
-        "register": "Register LikeCoin ID",
-        "login": "I already have LikeCoin ID"
-      }
-    },
-    "LikeCoinLoginModal": {
-      "title": {
-        "desktopChromeRequired": "Desktop Chrome Required",
-        "metaMaskRequired": "MetaMask Required",
-        "switchToRinkeby": "Switch to Rinkeby network",
-        "switchToMainNet": "Switch to Main network",
-        "unlockMetaMask": "Unlock Metamask.",
-        "signMetaMask": "Sign on MetaMask",
-        "connectWithLikeCoin": "Logging in to LikeCoin",
-        "enterLikeCoinId": "Please Enter Your LikeCoin ID"
-      },
-      "label": {
-        "desktopChromeRequired": "Please switch to desktop Chrome then install MetaMask plugin.",
-        "metaMaskRequired": "Please install Metamask extension.",
-        "switchToRinkeby": "Please switch to the correct network.",
-        "switchToMainNet": "Please switch to the correct network.",
-        "signMetaMask": "Please click [Sign] on Metamask to continue.",
-        "unlockMetaMask": "Please unlock your Metamask."
-      },
-      "button": {
-        "installChrome": "Install Chrome",
-        "installMetaMask": "Install MetaMask",
-        "installedMetaMask": "Done! Installed"
-      }
-    },
     "seekingSubscriptionMessage": {
       "_title": "Subscription Message",
       "buttonName": "Edit"
