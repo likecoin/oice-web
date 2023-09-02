@@ -27,7 +27,6 @@ import Progress from 'ui-elements/Progress';
 import {
   getThumbnail,
   getOiceCdnUrlFromUuid,
-  isMobileAgent,
 } from 'common/utils';
 
 import {
@@ -154,11 +153,6 @@ export default class FeaturedStories extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const stories = getExtendedStoryList(nextProps.stories);
-
-    // Redirect to single view if viewing device is mobile
-    if (stories.length > 0 && isMobileAgent()) {
-      window.location.href = stories[0].oice.shareUrl;
-    }
 
     // Shift the index of first story to active story index by inserting stories before it
     stories.unshift(...stories.splice(-ACTIVE_STORY_INDEX));
