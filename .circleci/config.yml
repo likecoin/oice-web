@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/oice-web
     docker:
-      - image: node:10
+      - image: node:14
     environment:
       TERM: dumb
     steps:
