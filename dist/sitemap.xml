@@ -4,78 +4,253 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
-<url>
-  <loc>https://oice.com/</loc>
-  <changefreq>hourly</changefreq>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>https://oice.com/story</loc>
-  <changefreq>hourly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://oice.com/tutorial</loc>
-  <changefreq>hourly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://oice.com/edit</loc>
-  <lastmod>2016-11-15T04:36:57+00:00</lastmod>
-  <changefreq>hourly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://oice.com/view/7a75a9295f8c4cafbc0a06a253678cc2/</loc>
-  <lastmod>2016-10-27T03:46:50+00:00</lastmod>
-  <changefreq>hourly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://oice.com/story/33866cabf01c437a92178f4d1970c88d</loc>
-  <changefreq>hourly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://oice.com/story/088a8918500f4dcf9d4954fba153e454</loc>
-  <changefreq>hourly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://oice.com/story/e09da1db2de84eb29b31fa5026b4d054</loc>
-  <changefreq>hourly</changefreq>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://oice.com/view/33866cabf01c437a92178f4d1970c88d/</loc>
-  <lastmod>2016-11-23T08:46:02+00:00</lastmod>
-  <changefreq>hourly</changefreq>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://oice.com/view/088a8918500f4dcf9d4954fba153e454/</loc>
-  <lastmod>2016-11-23T22:55:29+00:00</lastmod>
-  <changefreq>hourly</changefreq>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://oice.com/view/e09da1db2de84eb29b31fa5026b4d054/</loc>
-  <lastmod>2016-11-23T22:55:39+00:00</lastmod>
-  <changefreq>hourly</changefreq>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://oice.com/story/7bcc511ee3a64bcc9b61a65d350c4f6b</loc>
-  <lastmod>2016-11-23T22:55:39+00:00</lastmod>
-  <changefreq>hourly</changefreq>
-  <priority>0.51</priority>
-</url>
-<url>
-  <loc>https://oice.com/view/7bcc511ee3a64bcc9b61a65d350c4f6b</loc>
-  <lastmod>2016-11-23T22:55:39+00:00</lastmod>
-  <changefreq>hourly</changefreq>
-  <priority>0.51</priority>
-</url>
+  <url>
+    <loc>https://oice.com/</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/tutorial</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/edit</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/competition1718</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/f8cb51ec904f452da549707ebc107b0d</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/a8d0a64c721d47f88a8cff708a5b910a</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/37cd2ae7b36f454186f79c5914703149</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/c77bc610e58a46faa084b47f774f0ca5</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/d35a982822484ff9b9cbbaaf7dddeeea</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/7c956da16c844c078968ae800f33717f</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/7a623f02c8bf48b69928af70a1b1901b</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/5e1e71252d9d43bc966ff369f4de9b63</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/09aa77cd21de44da967994e84eb2b2bd</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/4d3c896f9f4c465f8478e037317f370d</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/8237eaf90ee94ba68e113aa2449a4704</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/19cae67c6a8d46e3bd0351f157c70a38</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/6dab96fda7534e3fb99e8c537b7b2128</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/bbfe82e853ae4f37a99259f8dea6126e</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/c41daa3014b0423da9780e1578c80345</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/bc701f3f528940b7b54fb202d2f92d5e</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/2f50ae418daa40569dee21adca5c0e0d</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/e85bec48c56448e496cf2c37346290a0</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/b9bde02358774cf89f82b5b11ab3f867</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/8a0c62938dbf434c8fe0a8a0ed49650d</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/e09da1db2de84eb29b31fa5026b4d054</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/33866cabf01c437a92178f4d1970c88d/</loc>
+    <lastmod>2016-11-23T08:46:02+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://oice.com/story/088a8918500f4dcf9d4954fba153e454/</loc>
+    <lastmod>2016-11-23T22:55:29+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://oice.com/story/7bcc511ee3a64bcc9b61a65d350c4f6b</loc>
+    <lastmod>2016-11-23T22:55:39+00:00</lastmod>
+  </url>
+  <url>
+    <loc>https://oice.com/story/e09da1db2de84eb29b31fa5026b4d054</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/19b2ae27ec984add8ef88b12a45082f5</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/bd22723885f649f092da133ac78280a9</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/9cae20a2509b460fa60b3702f4780fca</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/3aa90d95cdfa4d01a0675a4508f312d7</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/ab250267072e473daa38034be3cadd92</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/c7d14a41e2ac4c18a4ea83b294e863d9</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/9222ccced1924d55a29ee765d9648ca6</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/7a623f02c8bf48b69928af70a1b1901b</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/616e851b83724475b8556423795099ff</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/bbfe82e853ae4f37a99259f8dea6126e</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/fb423ff80ad44a4fa54c9bad61cc3837</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/ab9bd57b16b6412ca471a711d9b38a24</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/439a7123bd2f47e4a001c839929869a4</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/a4140b81f790429d83b0d541d37d916d</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/7ccfe6bc218246318740b67ce98ae723</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/6dab96fda7534e3fb99e8c537b7b2128</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/a98eb1f55a1d430985798c958f24451d</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/d91abc26abd84ef8ab723acdcb462ae7</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/5e1e71252d9d43bc966ff369f4de9b63</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/a9d53f437cf44ddfbf2a8a1da23b4105</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/09aa77cd21de44da967994e84eb2b2bd</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/3cceb8f1905d48b6b6653911710a8e48</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/fde3f3c0509f492b963094bb5acafe41</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/8a0c62938dbf434c8fe0a8a0ed49650d</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/d35a982822484ff9b9cbbaaf7dddeeea</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/c77bc610e58a46faa084b47f774f0ca5</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/223313f2a31940bbbd421a8ac8aa5d9e</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/834d9b471707425aaec0a8db5d1a8e4c</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/bc701f3f528940b7b54fb202d2f92d5e</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/86390ec3d8ef4d10a9a5340f99016691</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/c41daa3014b0423da9780e1578c80345</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/aaee058f751f482b836cf095922f7c4d</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/311130c5ded248eebce643c42af05444</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/b9bde02358774cf89f82b5b11ab3f867</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/19cae67c6a8d46e3bd0351f157c70a38</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/2b3e530c5c934914a208a59422f236d1</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/b1927a5040c742b6bf52695e7f571cf3</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/8237eaf90ee94ba68e113aa2449a4704</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/4d3c896f9f4c465f8478e037317f370d</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/97bfb1dc07a14046a2742c9c4c4c1f05</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/cd2cde57f44246fc8c113acef8d075c5</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/e85bec48c56448e496cf2c37346290a0</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/070bad1af42c46b4a9993fe830a63217</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/92bdc609d3b14dc5b8ab00c3934beb1f</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/8eb53d821e424d33a329ca1e75208a61</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/d6e42d78defb4cda89fe6b885c9dc95d</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/b0c12b1d488f4805b91cdf72b9d26294</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/c9fa990cd205486e95f775e73e4e6d5e</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/03abbe44413c42a499017e071d909cdf</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/a3e26e5146fa4691a176020efd763e25</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/a8d0a64c721d47f88a8cff708a5b910a</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/6ccf4b55d74647afbd78483d23ae08a5</loc>
+  </url>
 </urlset>
