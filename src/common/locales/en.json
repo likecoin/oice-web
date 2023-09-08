@@ -176,6 +176,7 @@
     "button": {
       "termsOfService": "Terms of Service",
       "blog": "Blog",
+      "github": "Github",
       "help": "Help"
     }
   },

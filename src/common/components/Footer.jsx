@@ -19,6 +19,10 @@ const footerLeftItems = [
     link: 'https://v.oice.com',
   },
   {
+    key: 'github',
+    link: 'https://www.github.com/likecoin/oice',
+  },
+  {
     key: 'help',
     link: 'https://help.like.co',
   },
