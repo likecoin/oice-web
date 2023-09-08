@@ -550,6 +550,7 @@ export default class UserPage extends React.Component {
     const iframeClassName = classNames('user-page__like-widget', className);
     return (
       <iframe
+        loading="lazy"
         allowTransparency
         className={iframeClassName}
         frameBorder="0"

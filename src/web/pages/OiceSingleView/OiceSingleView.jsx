@@ -617,6 +617,7 @@ export default class OiceSingleView extends React.Component {
             <div className="oice-single-view__like-button-wrapper">
               <div className={likeButtonClassName}>
                 <iframe
+                  loading="lazy"
                   allowTransparency
                   frameBorder="0"
                   scrolling="no"
