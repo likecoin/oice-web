@@ -488,7 +488,11 @@ export default class FeaturedStories extends React.Component {
       <div key={key} style={parsedStyle}>
         <div>
           {!story.titleLogo ? (
-            <h1>{story.name}</h1>
+            <h1>
+              <Link style={{ color: 'inherit' }} to={`/story/${story.oice.uuid}?lang=${story.oice.language}`}>
+                {story.name}
+              </Link>
+            </h1>
           ) : (
             <img src={story.titleLogo} alt={story.name} role="presentation" />
           )}
