@@ -170,7 +170,7 @@
   },
   "Footer": {
     "label": {
-      "copyright": "© 2017 oice ltd. All rights reserved.",
+      "copyright": "© 2023 oice. All rights reserved.",
       "version": "oice v{{version}}"
     },
     "button": {
