@@ -22,15 +22,13 @@ export default class Login extends React.Component {
       firebase.auth().onIdTokenChanged((firebaseCurrentUser) => {
         if (!firebaseCurrentUser) {
           const provider = new firebase.auth.GoogleAuthProvider();
-          // https://developers.google.com/identity/protocols/googlescopes
-          provider.addScope('https://www.googleapis.com/auth/userinfo.profile');
+          provider.addScope('profile');
           provider.addScope('email');
           provider.setCustomParameters({
             prompt: 'select_account',
           });
           firebase.auth().signInWithRedirect(provider);
         } else {
-          console.log('here');
           firebase.auth().getRedirectResult().then((result) => {
             if (result.credential) {
               const firebaseUser = firebase.auth().currentUser;
@@ -41,12 +39,16 @@ export default class Login extends React.Component {
                   if (oiceUser) {
                     const redirectPath = redirectPathname.get() || '/';
                     window.location.href = redirectPath;
+                  } else {
+                    console.error('oice user not found');
                   }
                 });
             } else {
+              console.error('credential not found');
               window.location.href = redirectPathname.get() || '/';
             }
           }).catch((error) => {
+            console.error(error);
             this.props.dispatch(AlertDialog.toggle({ open: true, body: error.message }));
           });
         }

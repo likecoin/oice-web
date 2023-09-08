@@ -1,8 +1,8 @@
-import firebase from '@firebase/app';
+import firebase from 'firebase/app';
 
 // Load individual services into the firebase namespace.
-import '@firebase/auth';
-import '@firebase/database';
+import 'firebase/auth';
+import 'firebase/database';
 
 import { IS_DEV_MODE } from 'common/constants';
 

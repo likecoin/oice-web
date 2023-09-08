@@ -50,18 +50,22 @@ export default class BackerPage extends React.Component {
 
   async login() {
     const provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('https://www.googleapis.com/auth/userinfo.profile');
+    provider.addScope('profile');
     provider.addScope('email');
     provider.setCustomParameters({ prompt: 'select_account' });
 
     try {
       const result = await firebase.auth().signInWithPopup(provider);
-      if (!result.credential) return;
+      if (!result.credential) {
+        console.error('credential not found');
+        return;
+      }
       const firebaseUser = firebase.auth().currentUser;
       const googleToken = result.credential.accessToken;
       await this.props.dispatch(UserAction.loginWithGoogle(firebaseUser, googleToken));
       this.subscribe();
     } catch (error) {
+      console.error(error);
       this.props.dispatch(AlertDialog.toggle({ open: true, body: error.message }));
     }
   }
