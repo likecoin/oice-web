@@ -88,10 +88,6 @@ function LibraryInfo(props) {
       buttonProps.color = 'blue';
       buttonProps.label = `US$ ${library.discountPrice || library.price}`;
       break;
-    case 'likecoin':
-      buttonProps.color = 'gradient-likecoin';
-      buttonProps.label = `LIKE ${library.discountPrice || library.price}`;
-      break;
     case 'purchased':
       buttonProps.label = t('purchased');
       buttonProps.disabled = true;

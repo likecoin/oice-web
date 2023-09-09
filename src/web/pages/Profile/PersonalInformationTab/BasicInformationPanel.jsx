@@ -80,21 +80,6 @@ export default class Profile extends React.Component {
       }
     }
 
-    if (item === BASIC_INFORMATION.LIKE_COIN_ID && newValue) {
-      newValue = newValue.trim();
-      if (/[^a-zA-Z0-9]/.test(newValue)) {
-        if (!this.state.likeCoinIdError) {
-          this.setState({
-            likeCoinIdError: 'ERR_LIKE_COIN_ID_CONTAINS_INVALID_CHARACTER',
-          });
-        }
-      } else if (this.state.likeCoinIdError) {
-        this.setState({
-          likeCoinIdError: null,
-        });
-      }
-    }
-
     this.setState({ [item]: newValue });
   }
 
@@ -113,10 +98,9 @@ export default class Profile extends React.Component {
   isBasicInformationInputValid() {
     const { user, usernameStatus } = this.props;
 
-    // check if display name and likecoin id is valid
+    // check if display name is valid
     if (
-      !_get(this.state, BASIC_INFORMATION.DISPLAY_NAME) ||
-      this.state.likeCoinIdError
+      !_get(this.state, BASIC_INFORMATION.DISPLAY_NAME)
     ) {
       return false;
     }
@@ -140,7 +124,6 @@ export default class Profile extends React.Component {
   renderBasicInformationRow = (item) => {
     const { t, usernameStatus } = this.props;
     const { isValidating, error } = usernameStatus;
-    const { likeCoinIdError } = this.state;
 
     const isMultiLine = item === BASIC_INFORMATION.DESCRIPTION;
     const value = this.state[item];
@@ -185,9 +168,6 @@ export default class Profile extends React.Component {
         )}
         {item === BASIC_INFORMATION.USERNAME && error && (
           <span className="error">{t(error)}</span>
-        )}
-        {item === BASIC_INFORMATION.LIKE_COIN_ID && likeCoinIdError && (
-          <span className="error">{t(likeCoinIdError)}</span>
         )}
       </div>
     );

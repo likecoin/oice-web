@@ -332,9 +332,7 @@ export default class LibraryDetails extends React.Component {
   handlePurchaseLibrary = (library, token) => {
     const { t, dispatch, user } = this.props;
     if (user) {
-      if (library.settlementCurrency === 'likecoin') {
-        dispatch(Actions.purchaseLikeCoinLibrary(library));
-      } else if (user.hasPaymentInfo) {
+      if (user.hasPaymentInfo) {
         // Confirm user for the purchase
         dispatch(AlertDialog.toggle({
           type: 'confirm',
