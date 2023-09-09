@@ -13,7 +13,6 @@ import UserPage from 'web/pages/User';
 import Footer from 'common/components/Footer';
 import Stripe from 'web/pages/Stripe';
 import Competition1718 from 'web/pages/Competition1718';
-import LikeCoinTx from 'web/pages/LikeCoinTx';
 import BackerPage from 'web/pages/Backer';
 
 import { APP_STORE_LINK } from 'common/constants/key';
@@ -68,10 +67,6 @@ const routes = (
       <Route
         components={{ children: Competition1718, Footer }}
         path="competition1718"
-      />
-      <Route
-        components={{ children: LikeCoinTx, Footer }}
-        path="likecoin/tx/:id"
       />
       <Redirect from="*" to="about" />
     </Route>

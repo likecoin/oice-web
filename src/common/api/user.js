@@ -1,7 +1,7 @@
 import request from 'superagent';
 
 import i18next, { mapLanguageCode } from '../utils/i18n';
-import { API_URL, API_HEADER, LIKECOIN_API_URL } from '../constants';
+import { API_URL, API_HEADER } from '../constants';
 
 
 export const loginWithGoogle = (firebaseUser, firebaseToken, googleToken) => {
@@ -131,10 +131,3 @@ export const disconnectStripe = code =>
     .then(response => (
       response.ok ? response.body.message : null
     ));
-
-export const connectLikeCoin = payload =>
-  request
-    .post(`${API_URL}likecoin/connect`)
-    .withCredentials()
-    .send(payload)
-    .then(response => response.body.user);

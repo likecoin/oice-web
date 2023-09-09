@@ -5,4 +5,3 @@ export { default as alertDialog } from 'ui-elements/AlertDialog/redux';
 export { default as UserPage } from './pages/User/reducer';
 export { reducer as oiceSingleView } from './pages/OiceSingleView';
 export { reducer as Profile } from './pages/Profile';
-export { reducer as LikeCoinTx } from './pages/LikeCoinTx';
