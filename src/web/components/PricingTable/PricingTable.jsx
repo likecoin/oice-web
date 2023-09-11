@@ -29,6 +29,10 @@ const FEATURE_LIST = [
     isFree: false,
   },
   {
+    key: 'exportOice',
+    isFree: false,
+  },
+  {
     key: 'noLimitation',
     isFree: false,
   },

@@ -14,6 +14,7 @@ import PublishIcon from 'common/icons/publish';
 import SettingIcon from 'common/icons/setting';
 
 import { getLocalUserItem } from 'common/utils/auth';
+import { isNormalUser } from 'common/utils/user';
 
 import USER_ROLE from 'common/constants/userRoles';
 
@@ -133,7 +134,7 @@ export default class EditorToolbar extends React.Component {
             primary
             onClick={this.handlePublishOiceButtonClick}
           />
-          {user.role === USER_ROLE.ADMIN &&
+          {!isNormalUser(user) &&
             <RaisedButton
               className="oice-export-button toolbar-button"
               disabled={!oiceName}

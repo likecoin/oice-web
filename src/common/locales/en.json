@@ -152,6 +152,7 @@
         "uploadPublicAssets": "use and upload shared assets",
         "uploadPrivateAssets": "upload private assets",
         "readAllOice": "read premium stories",
+        "exportOice": "export created stories for offline use",
         "noLimitation": "read any time without cooldown",
         "noAds": "ad free",
         "memberExclusiveEvent": "backers only activities"
