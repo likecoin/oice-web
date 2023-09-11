@@ -128,7 +128,7 @@ export default class IndexHTML extends React.Component {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', '${GA_TRACKING_ID}');`
+              gtag('config', '${GA_TRACKING_ID}');`,
             }}
           />
           <script src={`/static/vendor/branch-deepview.js?v=${VERSION}`} />

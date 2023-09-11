@@ -16,14 +16,6 @@ import TextField from 'ui-elements/TextField';
 
 import InteractiveTutorial from 'editor/components/InteractiveTutorial';
 
-const defaultLibraryState = {
-  name: '',
-  description: '',
-  license: 0,
-  coverStorage: '',
-  isPublic: false,
-};
-
 import {
   addLibrary,
   deleteLibrary,
@@ -31,11 +23,17 @@ import {
   toggleLibraryModal,
 } from './redux';
 
-import {
-  updateUserTutorialState,
-} from 'editor/components/InteractiveTutorial/actions';
+import { updateUserTutorialState } from 'editor/components/InteractiveTutorial/actions';
 
 import './styles.scss';
+
+const defaultLibraryState = {
+  name: '',
+  description: '',
+  license: 0,
+  coverStorage: '',
+  isPublic: false,
+};
 
 @translate(['assetsManagement', 'general'])
 @connect((store) => {
@@ -48,17 +46,12 @@ import './styles.scss';
   };
 })
 export default class LibraryModal extends React.Component {
-
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
     t: PropTypes.func.isRequired,
     library: PropTypes.object,
     tutorialState: PropTypes.array,
-  }
-
-  static defaultProps = {
-    open: false,
   }
 
   constructor(props) {
@@ -146,7 +139,7 @@ export default class LibraryModal extends React.Component {
 
     const fileReader = new FileReader();
     fileReader.readAsDataURL(coverImage);
-    fileReader.onload = event => {
+    fileReader.onload = (event) => {
       const imageFileSrc = event.target.result;
       // for call api
       library.coverImage = coverImage;

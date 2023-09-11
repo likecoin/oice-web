@@ -36,7 +36,6 @@ export default class OiceListTab extends React.Component {
       oices: props.oices,
       isAdding: false,
       isRequestAddOice: false,
-      shouldAutoSelect: false,
     };
   }
 
@@ -152,8 +151,8 @@ export default class OiceListTab extends React.Component {
           }
           {oices.map((oice, index) => (
             <OiceBlock
-              index={index}
               key={oice.id}
+              index={index}
               oice={oice}
               t={t}
               onDrag={this.handleOiceMove}

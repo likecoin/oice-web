@@ -96,7 +96,7 @@ export default class LibraryCard extends React.Component {
         {onSelect &&
           <TriangleLabel
             icon={<CheckCircleIcon />}
-            reference={(ref) => this.selectLabel = ref}
+            reference={ref => this.selectLabel = ref}
             selected={this.state.selected}
             onClick={this.handleSelect}
           />

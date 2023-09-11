@@ -102,9 +102,9 @@ export default class ImportScriptModal extends React.Component {
     const uploadButton = (
       <RaisedButton
         label={t('button.uploadScript')}
-        onClick={this.handleClickUploadButton}
         disabled={loading || file === null}
         primary
+        onClick={this.handleClickUploadButton}
       />
     );
 
@@ -123,9 +123,9 @@ export default class ImportScriptModal extends React.Component {
               <TextField value={file && file.name} fluid readonly />
               <RaisedButton
                 label={t('button.chooseFile')}
-                onClick={this.handleClickChooseFileButton}
                 disabled={loading}
                 mini
+                onClick={this.handleClickChooseFileButton}
               />
             </div>
           }

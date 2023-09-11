@@ -20,18 +20,14 @@ import {
   removeLibraryFromStory,
 } from 'editor/actions/library';
 
-import {
-  toggleLibraryModal,
-} from '../LibraryModal/redux.js';
+import { toggleLibraryModal } from '../LibraryModal/redux.js';
 
-import {
-  selectLibrary,
-} from '../LibraryPanel/actions.js';
+import { selectLibrary } from '../LibraryPanel/actions.js';
 
 import './styles.scss';
 
 @translate('library')
-@connect((store) => ({
+@connect(store => ({
   ...store.librariesCollection,
   userId: store.user.id,
 }))
@@ -54,14 +50,14 @@ export default class LibrariesCollection extends React.Component {
   }
 
   componentDidMount() {
-    const storyId = this.props.params.storyId;
+    const { storyId } = this.props.params;
     console.log('componentDidMount %s', storyId);
     this.props.dispatch(
       storyId ? fetchLibrariesByStory(storyId) : fetchLibraries()
     );
   }
 
-  onClickUseAsset = obj => {
+  onClickUseAsset = (obj) => {
     const { selectedAssets } = this.state;
     if (!selectedAssets.contains(obj)) {
       selectedAssets.push(obj);
@@ -86,8 +82,8 @@ export default class LibrariesCollection extends React.Component {
     if (storyId) {
       this.props.dispatch(
         !selected ?
-        addLibraryToStory(storyId, libraryId) :
-        removeLibraryFromStory(storyId, libraryId)
+          addLibraryToStory(storyId, libraryId) :
+          removeLibraryFromStory(storyId, libraryId)
       );
     }
   }

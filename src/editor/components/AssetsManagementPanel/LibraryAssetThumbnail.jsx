@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import AddIcon from 'common/icons/add';
 
 export default class LibraryAssetThumbnail extends React.Component {
-
   // constructor(props) {
   //   super(props);
   //   this.state = {

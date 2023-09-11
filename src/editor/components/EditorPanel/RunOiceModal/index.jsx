@@ -89,7 +89,8 @@ export default class RunOiceModal extends React.Component {
         <li key={index} className="error-attribute-item">
           <div><span >{t('oiceError.attributeName')}</span> {key}</div>
           <div><span>{t('oiceError.messageLabel')}</span> {errorMessage}</div>
-        </li>);
+        </li>
+      );
     });
     return render;
   }
@@ -171,9 +172,9 @@ export default class RunOiceModal extends React.Component {
     const playOiceButton = (
       <RaisedButton
         label={t('runOice.playButton')}
-        onClick={this.handleOnClickPlayButton}
-        primary
         disabled={stage !== SUCCESS}
+        primary
+        onClick={this.handleOnClickPlayButton}
       />
     );
 

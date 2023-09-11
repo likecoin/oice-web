@@ -82,8 +82,8 @@ export default class FGImageRow extends React.Component {
 
     return (
       <div
-        className={className}
         ref={e => this.row = e}
+        className={className}
         onClick={this.handleOnSelect}
       >
         <ImageUpload
@@ -126,8 +126,8 @@ export default class FGImageRow extends React.Component {
           !limitedMode &&
             <div className="fg-row-cross-button">
               <FlatButton
-                icon={<CloseIcon />}
                 ref={e => this.closeButton = e}
+                icon={<CloseIcon />}
                 onClick={this.handleDeleteButtonClick}
               />
             </div>

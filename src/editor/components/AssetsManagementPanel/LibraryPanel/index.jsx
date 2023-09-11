@@ -35,15 +35,13 @@ import {
   fetchSelectedLibraryById,
   deselectLibrary,
 } from './actions.js';
-import {
-  ownEditPermission,
-} from './utils';
+import { ownEditPermission } from './utils';
 
 import './styles.scss';
 
 @DragDropContext(HTML5Backend)
 @translate(['assetsManagement', 'assets'])
-@connect(store => {
+@connect((store) => {
   const library = store.libraryPanel.selectedLibrary;
   const haveEditPermission = ownEditPermission(library);
   return {
@@ -77,7 +75,7 @@ export default class LibraryPanel extends React.Component {
     this.props.dispatch(deselectLibrary());
   }
 
-  handleTabOnChange = index => {
+  handleTabOnChange = (index) => {
     this.goToAssetType(ASSET_TYPE.LIST[index]);
   }
 
@@ -114,7 +112,7 @@ export default class LibraryPanel extends React.Component {
           break;
       }
       return (
-        <Tab index={index} key={index} title={t(`category.${type}`)}>
+        <Tab key={index} index={index} title={t(`category.${type}`)}>
           {tabContent}
         </Tab>
       );

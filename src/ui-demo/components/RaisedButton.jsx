@@ -15,51 +15,51 @@ export default class RaisedButtonDemo extends React.Component {
           label only
         </span>
         <span>
-          <RaisedButton primary label="運行oice" />
+          <RaisedButton label="運行oice" primary />
           <br />
           primary with label only
         </span>
         <span>
-          <RaisedButton primary icon={<PlayIcon />} />
+          <RaisedButton icon={<PlayIcon />} primary />
           <br />
           primary with icon only
         </span>
         <span>
           <RaisedButton
-            primary
             label="運行oice"
             icon={<PlayIcon />}
+            primary
           />
           <br />
           primary with label and icon
         </span>
         <span>
           <RaisedButton
-            reverse
             label={
               <span className="font-color1">
                 公園 <span className="font-color3">（黑貓故事）</span>
               </span>
             }
             icon={<PlayIcon />}
+            reverse
           />
           <br />
           label and icon select button
         </span>
         <span>
           <RaisedButton
-            destructive
             label="運行oice"
             icon={<PlayIcon />}
+            destructive
           />
           <br />
           destructive with label and icon
         </span>
         <span>
           <RaisedButton
-            disabled
             label="運行oice"
             icon={<PlayIcon />}
+            disabled
           />
           <br />
           disabled with label and icon

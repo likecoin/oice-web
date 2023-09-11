@@ -618,11 +618,11 @@ export default class OiceSingleView extends React.Component {
               <div className={likeButtonClassName}>
                 <iframe
                   loading="lazy"
-                  allowTransparency
                   frameBorder="0"
                   scrolling="no"
                   src={`${LIKECOIN_BUTTON_URL}/in/embed/${authorLikeCoinId}/mini?referrer=${window.location.href}`}
                   title="like-button"
+                  allowTransparency
                 />
               </div>
               <div className="hidden-sm-and-down">

@@ -189,8 +189,8 @@ export default class FGImagesList extends React.Component {
 
         <div className="character-modal-add-image-selection">
           <input
+            ref={(e) => { this.imageUpload = e; }}
             accept="image/png"
-            ref={e => { this.imageUpload = e; }}
             style={{ display: 'none' }}
             type="file"
             multiple
@@ -205,7 +205,7 @@ export default class FGImagesList extends React.Component {
             />
           }
         </div>
-        <div className="character-modal-add-row" ref={(e) => { this.imageSelectionRows = e; }}>
+        <div ref={(e) => { this.imageSelectionRows = e; }} className="character-modal-add-row">
           {this.renderFgImageRows()}
         </div>
       </div>

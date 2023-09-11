@@ -307,21 +307,21 @@ export default class BlocksPanel extends React.Component {
           ref={ref => this[`blockComponent_${block.id}`] = ref}
           index={index}
           block={block}
-          onDragging={this.handleOnDragging}
           moveBlock={this.handleBlockMove}
           didMoveBlock={this.handleBlockDidMove}
-          onDropBlock={this.handleBlockDrop}
-          onDropMacro={this.handleMacroDrop}
-          onDuplicate={this.handleBlockDuplicate}
-          onOverBlock={this.handleOverBlock}
           toBeAddBlock={this.toBeAddBlock}
-          onClick={() => this.handleBlockClick(block.id, macroId)}
           isSelected={this.state.onSelectedBlockId === block.id}
           macroColor={macro.groupColor}
           macroIcon={macro.icon}
           style={style}
           blockList={this.getRefList}
           movingBlockId={this.state.movingBlockId}
+          onDragging={this.handleOnDragging}
+          onDropBlock={this.handleBlockDrop}
+          onDropMacro={this.handleMacroDrop}
+          onDuplicate={this.handleBlockDuplicate}
+          onOverBlock={this.handleOverBlock}
+          onClick={() => this.handleBlockClick(block.id, macroId)}
         />
       </CellMeasurer>
     );
@@ -397,14 +397,14 @@ export default class BlocksPanel extends React.Component {
         <div className="editor-status-bar">
           {this.renderLastSaveTime()}
           <div className="block-language-switcher">
-            {<Switcher
+            <Switcher
               actionTitle={t('blocksList.statusRow.otherLanguage')}
               label={t('blocksList.statusRow.editing')}
               selectedIndex={languageIndex}
               values={supportedLanguages.map(t)}
               onClickAction={this.handleOpenStorySettingModalLanguageTab}
               onChange={this.handleLanguageSwitcherChange}
-            />}
+            />
           </div>
         </div>
         <div className="block-list">

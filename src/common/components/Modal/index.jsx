@@ -107,8 +107,8 @@ export default class Modal extends React.Component {
           onClick={this.handleClose}
         />
         <div
-          className="modal-container"
           ref={ref => this.modalContainer = ref}
+          className="modal-container"
           style={{ width }}
         >
           {this.props.children}

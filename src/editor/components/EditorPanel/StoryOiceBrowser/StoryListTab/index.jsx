@@ -99,8 +99,8 @@ export default class StoryListTab extends React.Component {
           }
           {stories.map((story, index) => (
             <StoryListRow
-              index={index}
               key={story.id}
+              index={index}
               story={story}
               onClick={this.handleStoryClick}
             />

@@ -50,8 +50,8 @@ export default class RadioButton extends React.Component {
               name={groupName}
               type="radio"
               checked={this.state.selectedValue === value}
-              onChange={() => this.handleChange(index, value)}
               value={value}
+              onChange={() => this.handleChange(index, value)}
             />
             <label htmlFor={`radio-input-${index}`}>{value}</label> {/* eslint-disable-line */}
           </div>

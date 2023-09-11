@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import './styles.scss';
 
-const OiceThumbnail = (props) => (
+const OiceThumbnail = props => (
   <div
     className="oice-thumbnail"
     style={{ backgroundSize: `${props.size}px` }}

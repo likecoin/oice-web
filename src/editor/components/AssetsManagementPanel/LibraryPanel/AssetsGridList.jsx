@@ -39,16 +39,13 @@ const getAssetThumbnailURL = (asset, type) => {
   let sync = true;
   switch (ownProps.type) {
     case ASSET_TYPE.CHARACTER:
-      assets = libraryPanel.charactersList.characters;
-      sync = libraryPanel.charactersList.sync;
+      ({ characters: assets, sync } = libraryPanel.charactersList);
       break;
     case ASSET_TYPE.ITEM:
-      assets = libraryPanel.itemsList.items;
-      sync = libraryPanel.itemsList.sync;
+      ({ items: assets, sync } = libraryPanel.itemsList);
       break;
     case ASSET_TYPE.BACKGROUND:
-      assets = libraryPanel.backgroundsList.backgrounds;
-      sync = libraryPanel.backgroundsList.sync;
+      ({ backgrounds: assets, sync } = libraryPanel.backgroundsList);
       break;
     default:
       break;
@@ -61,7 +58,6 @@ const getAssetThumbnailURL = (asset, type) => {
   };
 })
 export default class AssetsGridList extends React.Component {
-
   static propTypes = {
     assets: PropTypes.array.isRequired,
     dispatch: PropTypes.func.isRequired,

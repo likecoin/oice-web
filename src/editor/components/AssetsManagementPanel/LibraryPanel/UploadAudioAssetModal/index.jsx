@@ -25,9 +25,7 @@ import {
   removeAudioFile,
 } from './actions';
 
-import {
-  addAssets,
-} from '../actions';
+import { addAssets } from '../actions';
 
 import { getFilename } from '../utils';
 
@@ -57,10 +55,6 @@ export default class UploadAudioAssetModal extends React.Component {
     libraryId: PropTypes.number,
     type: PropTypes.string,
     user: PropTypes.object,
-  }
-
-  static defaultProps = {
-    open: false,
   }
 
   constructor(props) {
@@ -169,7 +163,7 @@ export default class UploadAudioAssetModal extends React.Component {
     return audioFiles.map((sound, index) => {
       const progress = uploadProgress[index];
       return (
-        <div className="upload-audio-item" key={index} >
+        <div key={index} className="upload-audio-item" >
           <div className="audio-item-header">
             <p>{`${index + 1}. ${sound.file.name}`}</p>
             {!uploading &&
@@ -186,12 +180,12 @@ export default class UploadAudioAssetModal extends React.Component {
             placeholder={t('uploadMusicModal.placeholder.name')}
             value={sound.meta.nameEn}
             fullWidth
-            onChange={(value) => this.handleNameChange(value, index)}
+            onChange={value => this.handleNameChange(value, index)}
           />
           <UsersDropdown
             users={sound.meta.users}
             fullWidth
-            onChange={(users) => this.handleCreditsChange(users, index)}
+            onChange={users => this.handleCreditsChange(users, index)}
           />
           {uploading &&
             <div className="upload-progress">
@@ -222,7 +216,7 @@ export default class UploadAudioAssetModal extends React.Component {
         meta.users &&
         meta.users.length > 0
       )
-    );
+      );
 
     const confirmButton = (
       <RaisedButton

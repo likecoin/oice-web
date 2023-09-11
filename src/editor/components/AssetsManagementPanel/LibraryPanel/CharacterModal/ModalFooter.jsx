@@ -29,7 +29,7 @@ import AlertDialog from 'ui-elements/AlertDialog';
 import './styles.scss';
 
 
-const isInteger = (value) => Number.isInteger(value) || value === '';
+const isInteger = value => Number.isInteger(value) || value === '';
 
 @translate(['assetsManagement', 'editor'])
 @connect((store) => {
@@ -148,7 +148,7 @@ export default class CharacterModal extends React.Component {
         onClick={this.handleDeleteButtonClick}
       />
     );
-    const isSomeFgImageHasNoCredit = fgImages.some((fgImage) => (!fgImage.meta.users || fgImage.meta.users.length === 0));
+    const isSomeFgImageHasNoCredit = fgImages.some(fgImage => (!fgImage.meta.users || fgImage.meta.users.length === 0));
     const confirmButton = (!limitedMode &&
       <RaisedButton
         disabled={loading || isSomeFgImageHasNoCredit}

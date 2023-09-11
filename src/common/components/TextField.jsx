@@ -115,11 +115,12 @@ export default class TextField extends React.Component {
     if (multiLine) {
       return (
         <textarea
-          cols="50"
           ref={ref => this.input = ref}
+          cols="50"
           rows="4"
           {...props}
-        />);
+        />
+      );
     }
     return (
       <input

@@ -66,8 +66,8 @@ export default class ModalDemo extends React.Component {
           </Modal.Body>
           <Modal.Footer
             leftButtonTitle="Left Button Title"
-            onClickLeftButton={this.handleClose}
             rightButtonTitle="Right Button Title"
+            onClickLeftButton={this.handleClose}
             onClickRightButton={this.handleOnClose}
           />
         </Modal>
@@ -76,9 +76,9 @@ export default class ModalDemo extends React.Component {
   }
 
   renderAdvancedModal() {
-    const button1 = <RaisedButton destructive label="Reset" onClick={this.handleOnClick3} />;
+    const button1 = <RaisedButton label="Reset" destructive onClick={this.handleOnClick3} />;
     const button2 = <RaisedButton label="Cancel" onClick={this.handleOnClick3} />;
-    const button3 = <RaisedButton primary label="Confrim" onClick={this.handleOnClick3} />;
+    const button3 = <RaisedButton label="Confrim" primary onClick={this.handleOnClick3} />;
 
     return (
       <span>

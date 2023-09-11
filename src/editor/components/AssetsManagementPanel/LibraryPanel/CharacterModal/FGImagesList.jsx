@@ -34,7 +34,8 @@ const getFgimageObjectWithURL = url => ({
 
 @translate(['assetsManagement', 'editor'])
 @connect((store) => {
-  const { fgimages,
+  const {
+    fgimages,
     character,
     fgImages,
     selectedFgIndex,
@@ -88,35 +89,35 @@ export default class FGImagesList extends React.Component {
     } = character;
 
     const promises = [...target.files]
-    .map((file, index) => new Promise((resolve) => {
-      const fileReader = new FileReader();
-      fileReader.onload = (event) => {
-        const src = event.target.result;
-        const image = new Image();
-        image.src = src;
-        image.onload = () => {
-          if (index === 0 && fgImages.length === 0) {
+      .map((file, index) => new Promise((resolve) => {
+        const fileReader = new FileReader();
+        fileReader.onload = (event) => {
+          const src = event.target.result;
+          const image = new Image();
+          image.src = src;
+          image.onload = () => {
+            if (index === 0 && fgImages.length === 0) {
             // Use the first FG image size as character size
-            dispatch(updateCharacterSize({
-              width: image.width,
-              height: image.height,
-            }));
-          }
-          resolve({
-            meta: {
-              name: getFilename(file.name),
-              users: [user],
-            },
-            src: image.src,
-            file,
-            sync: false,
-          });
+              dispatch(updateCharacterSize({
+                width: image.width,
+                height: image.height,
+              }));
+            }
+            resolve({
+              meta: {
+                name: getFilename(file.name),
+                users: [user],
+              },
+              src: image.src,
+              file,
+              sync: false,
+            });
+          };
         };
-      };
-      fileReader.readAsDataURL(file);
-    }));
+        fileReader.readAsDataURL(file);
+      }));
 
-    Promise.all(promises).then((results) => dispatch(addFGImages(results)));
+    Promise.all(promises).then(results => dispatch(addFGImages(results)));
     // if (image.width !== width || image.height !== height) {
     //   dispatch(toggleAlertDialog({
     //     open: true,
@@ -179,9 +180,9 @@ export default class FGImagesList extends React.Component {
     } = this.props;
     return fgImages.map((fgImage, index) => (
       <FGImageRow
+        key={index}
         fgImage={fgImage}
         index={index}
-        key={index}
         limitedMode={limitedMode}
         selected={selectedFgIndex === index}
         onCreditsChange={this.handleCreditsChange}
@@ -200,8 +201,8 @@ export default class FGImagesList extends React.Component {
 
         <div className="character-modal-add-image-selection">
           <input
+            ref={(e) => { this.imageUpload = e; }}
             accept="image/png"
-            ref={e => { this.imageUpload = e; }}
             style={{ display: 'none' }}
             type="file"
             multiple
@@ -216,7 +217,7 @@ export default class FGImagesList extends React.Component {
             />
           }
         </div>
-        <div className="character-modal-add-row" ref={(e) => { this.imageSelectionRows = e; }}>
+        <div ref={(e) => { this.imageSelectionRows = e; }} className="character-modal-add-row">
           {this.renderFgImageRows()}
         </div>
       </div>

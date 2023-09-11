@@ -53,7 +53,7 @@ const blockTarget = {
     }
     // Dragging upwards
     if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-      return;
+      // no op
     }
   },
 };

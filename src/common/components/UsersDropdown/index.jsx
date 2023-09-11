@@ -78,7 +78,7 @@ export default class UsersDropdown extends React.Component {
   handleChange = (selectedIndexes) => {
     const selectedUsers = [];
     const users = this.getUsers();
-    selectedIndexes.forEach(index => {
+    selectedIndexes.forEach((index) => {
       selectedUsers.push(users[index]);
     });
     this.setState({
@@ -109,7 +109,7 @@ export default class UsersDropdown extends React.Component {
       selectedUsers,
     } = this.state;
 
-    const values = this.getUsers().map((user) => ({
+    const values = this.getUsers().map(user => ({
       icon: user.avatar,
       text: user.displayName,
     }));

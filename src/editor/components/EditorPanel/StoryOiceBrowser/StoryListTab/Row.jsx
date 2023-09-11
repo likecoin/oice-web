@@ -18,9 +18,9 @@ export default class StoryListRow extends React.Component {
     const { story, index } = this.props;
     return (
       <div
+        key={story.id}
         className="list-row clickable"
         id={`story-${story.id}`}
-        key={story.id}
         onClick={() => this.handleClick(index)}
       >
         <div className="story-name">

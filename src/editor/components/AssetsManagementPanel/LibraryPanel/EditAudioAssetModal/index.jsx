@@ -20,9 +20,7 @@ import CloseIcon from 'common/icons/close';
 
 import * as ASSET_TYPE from 'common/constants/assetTypes';
 
-import {
-  toggleEditAudioAssetModal,
-} from './redux';
+import { toggleEditAudioAssetModal } from './redux';
 
 import { getAudioMp4Url } from 'editor/utils/app';
 
@@ -44,7 +42,7 @@ const getStateFromProps = ({ asset }) => {
 
 
 @translate(['assetsManagement', 'general', 'EditAudioAssetModal'])
-@connect((store) => ({ ...store.libraryPanel.editAudioAssetModal }))
+@connect(store => ({ ...store.libraryPanel.editAudioAssetModal }))
 export default class EditAudioAssetModal extends React.Component {
   static propTypes = {
     dispatch: PropTypes.func.isRequired,
@@ -57,7 +55,6 @@ export default class EditAudioAssetModal extends React.Component {
   }
 
   static defaultProps = {
-    open: false,
     readonly: true,
   }
 
@@ -232,8 +229,8 @@ export default class EditAudioAssetModal extends React.Component {
             <Form.Section>
               <Form.Section.Main>
                 <input
+                  ref={ref => this.audioUpload = ref}
                   accept="audio/x-wav"
-                  ref={(ref) => this.audioUpload = ref}
                   style={{ display: 'none' }}
                   type="file"
                   onChange={this.handleAudioUploadChange}

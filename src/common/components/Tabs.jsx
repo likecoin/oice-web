@@ -31,7 +31,7 @@ export default class Tabs extends React.Component {
     if (value) this.setState({ selectedIndex: value });
   }
 
-  handleOnTabItemClick = selectedIndex => {
+  handleOnTabItemClick = (selectedIndex) => {
     this.setState({ selectedIndex });
     if (this.props.onChange) this.props.onChange(selectedIndex);
   }

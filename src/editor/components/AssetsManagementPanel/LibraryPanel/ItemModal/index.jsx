@@ -20,9 +20,7 @@ import UploadIcon from 'common/icons/upload';
 import AddIcon from 'common/icons/add';
 import AlertDialog from 'ui-elements/AlertDialog';
 
-import {
-  toggleItemModal,
-} from './redux';
+import { toggleItemModal } from './redux';
 
 import {
   addAsset,
@@ -40,7 +38,7 @@ const defaultBackgroundState = {
   users: [],
 };
 
-const getStateFromProps = (props) => ({
+const getStateFromProps = props => ({
   imgRatio: {
     x: 1,
     y: 1,
@@ -53,7 +51,7 @@ const getStateFromProps = (props) => ({
 });
 
 @translate(['assetsManagement', 'assets'])
-@connect(store => {
+@connect((store) => {
   const { open, item } = store.libraryPanel.itemModal;
   const { selectedLibrary } = store.libraryPanel;
   const { user } = store;
@@ -147,8 +145,8 @@ export default class ItemModal extends React.Component {
     console.log('handleConfirmButtonClick', isAdding);
     this.props.dispatch(
       isAdding ?
-      addAsset(asset, imageFile, ASSET_TYPE.ITEM) :
-      updateAsset(asset, imageFile, ASSET_TYPE.ITEM)
+        addAsset(asset, imageFile, ASSET_TYPE.ITEM) :
+        updateAsset(asset, imageFile, ASSET_TYPE.ITEM)
     );
   }
 
@@ -304,7 +302,7 @@ export default class ItemModal extends React.Component {
                   readonly={limitedMode}
                   value={asset.nameEn}
                   fullWidth
-                  onChange={(e) => this.handleNameChange(e, 'nameEn')}
+                  onChange={e => this.handleNameChange(e, 'nameEn')}
                 />
                 {/* <TextField
                   placeholder={t('itemModal.placeholder.name.tw')}

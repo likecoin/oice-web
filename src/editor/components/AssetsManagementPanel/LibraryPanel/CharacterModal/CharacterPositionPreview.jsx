@@ -13,7 +13,7 @@ import {
   POSITIONS,
   POSITIONS_LIST,
   COORDINATE_LIST,
- } from 'editor/constants/character';
+} from 'editor/constants/character';
 
 import {
   updateSelectedPosition,

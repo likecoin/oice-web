@@ -6,9 +6,7 @@ import { translate } from 'react-i18next';
 import TextField from 'ui-elements/TextField';
 import CheckBox from 'ui-elements/Checkbox';
 
-import {
-  updateCharacterKeyValue,
-} from './actions';
+import { updateCharacterKeyValue } from './actions';
 
 const languageCodes = [
   'En',
@@ -16,10 +14,10 @@ const languageCodes = [
   'Jp',
 ];
 
-const getLanguageKey = (code) => `name${code}`;
+const getLanguageKey = code => `name${code}`;
 
 @translate(['assetsManagement', 'editor'])
-@connect((store) => ({
+@connect(store => ({
   character: store.libraryPanel.characterModal.character,
 }))
 export default class EditCharacterNamesPanel extends React.Component {
@@ -33,7 +31,7 @@ export default class EditCharacterNamesPanel extends React.Component {
     this.props.dispatch(updateCharacterKeyValue({ key, value }));
   }
 
-  handleChangeGenericValue = (value) => this.handleChange('isGeneric', value)
+  handleChangeGenericValue = value => this.handleChange('isGeneric', value)
 
   render() {
     const { character, t } = this.props;
@@ -46,8 +44,8 @@ export default class EditCharacterNamesPanel extends React.Component {
           const key = getLanguageKey(code);
           return (
             <div
-              className="character-modal-panel-name-language"
               key={key}
+              className="character-modal-panel-name-language"
             >
               {/* <div className="character-modal-panel-language-title">
                 {t(`characterModal.label.${key}`)}
@@ -58,7 +56,7 @@ export default class EditCharacterNamesPanel extends React.Component {
                   value={character[key]}
                   border
                   fullWidth
-                  onChange={(value) => this.handleChange(key, value)}
+                  onChange={value => this.handleChange(key, value)}
                 />
               </div>
             </div>

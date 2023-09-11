@@ -57,7 +57,7 @@ export default class GridList extends React.Component {
       key: index,
       index,
       style,
-      ref: e => { this.elements.push(e); },
+      ref: (e) => { this.elements.push(e); },
     });
   }
 
@@ -76,13 +76,13 @@ export default class GridList extends React.Component {
 
     return (
       <div
+        ref={(e) => { this.component = e; }}
         className="grid-list"
-        ref={e => { this.component = e; }}
         {... { id }}
       >
         <div
-          className="grid-cells-container"
           ref={ref => this.gridCellsContainer = ref}
+          className="grid-cells-container"
           style={{
             margin: `-${interSpace / 2}px`,
             marginLeft: containerMargin,

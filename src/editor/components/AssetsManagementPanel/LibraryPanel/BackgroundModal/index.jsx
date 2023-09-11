@@ -16,9 +16,7 @@ import RaisedButton from 'ui-elements/RaisedButton';
 import TextField from 'ui-elements/TextField';
 import UsersDropdown from 'ui-elements/UsersDropdown';
 
-import {
-  toggleBackgroundModal,
-} from './redux';
+import { toggleBackgroundModal } from './redux';
 
 import {
   addAsset,
@@ -36,7 +34,7 @@ const defaultBackgroundState = {
   users: [],
 };
 
-const getStateFromProps = (props) => ({
+const getStateFromProps = props => ({
   imgRatio: {
     x: 1,
     y: 1,
@@ -49,7 +47,7 @@ const getStateFromProps = (props) => ({
 });
 
 @translate(['assetsManagement', 'assets'])
-@connect(store => {
+@connect((store) => {
   const { open, background } = store.libraryPanel.backgroundModal;
   const { selectedLibrary } = store.libraryPanel;
   const { user } = store;
@@ -107,8 +105,8 @@ export default class BackgroundModal extends React.Component {
     const imageFile = this.imageCropper.getImageFile();
     this.props.dispatch(
       isAdding ?
-      addAsset(background, imageFile, ASSET_TYPE.BACKGROUND) :
-      updateAsset(background, imageFile, ASSET_TYPE.BACKGROUND)
+        addAsset(background, imageFile, ASSET_TYPE.BACKGROUND) :
+        updateAsset(background, imageFile, ASSET_TYPE.BACKGROUND)
     );
   }
 
@@ -155,8 +153,8 @@ export default class BackgroundModal extends React.Component {
     const { background, hasUploadedImage } = this.state;
     return (
       <ImageCropper
-        readonly={readonly}
         ref={ref => this.imageCropper = ref}
+        readonly={readonly}
         src={background.url}
         onReady={this.handleReady}
       />
@@ -221,7 +219,7 @@ export default class BackgroundModal extends React.Component {
                   readonly={limitedMode}
                   value={background.nameEn}
                   fullWidth
-                  onChange={(e) => this.handleNameChange(e, 'nameEn')}
+                  onChange={e => this.handleNameChange(e, 'nameEn')}
                 />
                 {/* <TextField
                   placeholder={t('bgModal.placeholder.name.tw')}

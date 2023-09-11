@@ -283,14 +283,14 @@ export default class AttributeRow extends React.Component {
           }
           return (
             <TextField
+              ref={ref => this.textField = ref}
               fullWidth={fullWidth}
               maxLength={300}
               placeholder={paragraphAttributePlaceHolder}
-              ref={ref => this.textField = ref}
               value={attributeValue}
               multiLine
               showCharactersCount
-              onChange={(value) => this.handleUpdateAttribute(value, assetType)}
+              onChange={value => this.handleUpdateAttribute(value, assetType)}
             />
           );
         }
@@ -322,11 +322,11 @@ export default class AttributeRow extends React.Component {
             default:
               return (
                 <TextField
+                  ref={ref => this.textField = ref}
                   fullWidth={fullWidth}
                   placeholder={t('stringTypeAttributePlaceholder')}
-                  ref={ref => this.textField = ref}
                   value={attributeValue}
-                  onChange={(value) => this.handleUpdateAttribute(value, assetType)}
+                  onChange={value => this.handleUpdateAttribute(value, assetType)}
                 />
               );
           }

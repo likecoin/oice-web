@@ -12,12 +12,8 @@ import AddIcon from 'common/icons/add';
 import UploadAudioAssetModal from './UploadAudioAssetModal';
 import EditAudioAssetModal from './EditAudioAssetModal';
 
-import {
-  toggleUploadAudioAssetModal,
-} from './UploadAudioAssetModal/actions';
-import {
-  toggleEditAudioAssetModal,
-} from './EditAudioAssetModal/redux';
+import { toggleUploadAudioAssetModal } from './UploadAudioAssetModal/actions';
+import { toggleEditAudioAssetModal } from './EditAudioAssetModal/redux';
 
 import * as ASSET_TYPE from 'common/constants/assetTypes';
 import { getAudioMp4Url } from 'editor/utils/app';
@@ -35,14 +31,14 @@ import {
   let sync = true;
   switch (ownProps.type) {
     case ASSET_TYPE.MUSIC:
-      loading = libraryPanel.BGMsList.loading;
-      sounds = libraryPanel.BGMsList.BGMs;
-      sync = libraryPanel.BGMsList.sync;
+      ({ loading, sync, BGMs: sounds } = libraryPanel.BGMsList);
       break;
     case ASSET_TYPE.SOUND:
-      loading = libraryPanel.SEsList.loading;
-      sounds = libraryPanel.SEsList.SEs;
-      sync = libraryPanel.SEsList.sync;
+      ({
+        loading,
+        SEs: sounds,
+        sync,
+      } = libraryPanel.SEsList);
       break;
     default:
       break;

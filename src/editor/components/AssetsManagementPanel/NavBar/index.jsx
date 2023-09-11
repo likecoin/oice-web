@@ -12,7 +12,7 @@ import './styles.scss';
 
 
 @translate()
-@connect((store) => ({
+@connect(store => ({
   library: store.libraryPanel.selectedLibrary,
   oice: store.oices.selected,
   story: store.stories.selected,
@@ -29,7 +29,9 @@ export default class AssetNavBar extends React.Component {
   };
 
   render() {
-    const { library, oice, story, t, user } = this.props;
+    const {
+      library, oice, story, t, user,
+    } = this.props;
 
     return (
       <NavBar id="assets-management-nav-bar" showLogo={false} user={user}>

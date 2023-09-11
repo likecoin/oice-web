@@ -27,7 +27,7 @@ import './styles.scss';
 
 
 @translate(['editor'])
-@connect(store => {
+@connect((store) => {
   const {
     storyOiceBrowser,
   } = store.editorPanel;
@@ -234,10 +234,10 @@ export default class StoryOiceBrowser extends React.Component {
               onSelect={this.handleStorySelect}
             />
             <OiceListTab
+              ref={ref => this.oiceListTab = ref}
               focused={open && tabSelectedIndex === 1 && isTransitionEnd}
               isAdding={isAddingOice}
               oices={oices}
-              ref={ref => this.oiceListTab = ref}
               onAdd={this.handleOiceAddRequest}
               onReorder={this.handleOiceReorder}
               onRequestCopy={this.handleCopyOiceRequest}

@@ -29,7 +29,7 @@ import AlertDialog from 'ui-elements/AlertDialog';
 import './styles.scss';
 
 
-const isInteger = (value) => Number.isInteger(value) || value === '';
+const isInteger = value => Number.isInteger(value) || value === '';
 
 @translate(['assetsManagement', 'editor'])
 @connect((store) => {
@@ -72,8 +72,8 @@ export default class CharacterModal extends React.Component {
 
     return (
       <Modal.Header
-        onClickCloseButton={this.handleCloseButtonClick}
         loading={loading}
+        onClickCloseButton={this.handleCloseButtonClick}
       >
         {limitedMode ? t('characterModal.title.view') : t(`characterModal.title.${editing ? 'edit' : 'add'}`)}
       </Modal.Header>

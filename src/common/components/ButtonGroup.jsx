@@ -64,8 +64,6 @@ export default class ButtonGroup extends React.Component {
       const { displayName } = child.type;
       if (displayName === 'RaisedButton' || displayName === 'FlatButton') {
         buttons.push(this.createButton(child, index));
-      } else {
-        return;
       }
     });
 

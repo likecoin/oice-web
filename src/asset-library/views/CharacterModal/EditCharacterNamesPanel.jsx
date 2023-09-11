@@ -55,11 +55,11 @@ export default class EditCharacterNamesPanel extends React.Component {
             {t('characterModal.label.descriptionTitle')}
           </div>
           <TextField
-            fullWidth
-            multiLine
             maxLength={1024}
             placeholder={t('characterModal.label.pleaseEnterCharacterDescription')}
             value={character.description}
+            fullWidth
+            multiLine
             onChange={value => this.handleChange('description', value)}
           />
         </div>

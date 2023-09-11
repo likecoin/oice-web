@@ -102,9 +102,9 @@ export default class ExportOiceModal extends React.Component {
     const downloadOiceButton = (
       <RaisedButton
         label={t('exportOice.downloadButton')}
-        onClick={this.handleOnClickDownloadButton}
-        primary
         disabled={stage !== SUCCESS}
+        primary
+        onClick={this.handleOnClickDownloadButton}
       />
     );
 

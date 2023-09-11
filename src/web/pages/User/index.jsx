@@ -551,12 +551,12 @@ export default class UserPage extends React.Component {
     return (
       <iframe
         loading="lazy"
-        allowTransparency
         className={iframeClassName}
         frameBorder="0"
         scrolling="no"
         src={`${LIKECOIN_URL}/in/embed/${user.likeCoinId}/?referrer=${window.location.href}`}
         title="like-widget"
+        allowTransparency
       />
     );
   }

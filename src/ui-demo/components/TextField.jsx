@@ -19,9 +19,9 @@ export default class TextFieldDemo extends React.Component {
         <div>
           <TextField
             placeholder="請輸入"
+            maxLength={120}
             multiLine
             showCharactersCount
-            maxLength={120}
           />
           <br />
           multi-line with characters count display

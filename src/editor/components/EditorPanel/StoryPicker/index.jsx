@@ -105,7 +105,7 @@ export default class StoryPicker extends React.Component {
                   <Dropdown
                     placeholder={t('storyPicker.placeholder')}
                     selectedIndexes={[selectedIndex]}
-                    values={storyNames.map((item) => (
+                    values={storyNames.map(item => (
                       { icon: null, text: item }
                     ))}
                     fullWidth

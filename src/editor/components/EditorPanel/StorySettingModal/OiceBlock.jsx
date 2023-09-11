@@ -288,8 +288,8 @@ export default class OiceBlock extends React.Component {
           <ToggleButton
             leftLabel={t('label.notPublic')}
             rightLabel={t('label.public')}
-            narrow
             toggled={oice.sharingOption === 0}
+            narrow
             onToggle={this.handleToggleOiceSharingOption}
           />
           <FlatButton

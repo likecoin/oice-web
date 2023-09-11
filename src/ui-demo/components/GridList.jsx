@@ -41,7 +41,7 @@ const pepeData = [{
 
 export default class GridListDemo extends React.Component {
   render() {
-    const triangleLabel = (selected) => (
+    const triangleLabel = selected => (
       <TriangleLabel
         icon={<CheckCircleIcon />}
         selected={selected}

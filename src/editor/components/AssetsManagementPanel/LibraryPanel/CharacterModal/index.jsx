@@ -30,7 +30,7 @@ import AlertDialog from 'ui-elements/AlertDialog';
 import './styles.scss';
 
 
-const isInteger = (value) => Number.isInteger(value) || value === '';
+const isInteger = value => Number.isInteger(value) || value === '';
 
 @translate(['assetsManagement', 'editor'])
 @connect((store) => {
@@ -68,10 +68,6 @@ export default class CharacterModal extends React.Component {
     limitedMode: PropTypes.bool,
   }
 
-  static defaultProps = {
-    loading: false,
-  }
-
   shouldComponentUpdate(nextProps) {
     if (
       (nextProps.open === this.props.open) &&
@@ -87,7 +83,9 @@ export default class CharacterModal extends React.Component {
   }
 
   renderExpansionPanel() {
-    const { character, expanded, limitedMode, t } = this.props;
+    const {
+      character, expanded, limitedMode, t,
+    } = this.props;
     return (
       !limitedMode &&
       <ExpansionPanel
@@ -106,7 +104,9 @@ export default class CharacterModal extends React.Component {
   }
 
   render() {
-    const { character, limitedMode, open, t } = this.props;
+    const {
+      character, limitedMode, open, t,
+    } = this.props;
     return (
       <Modal
         id="character-modal"

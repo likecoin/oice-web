@@ -38,7 +38,7 @@ export default class DropdownDemo extends React.Component {
         <div>
           <Dropdown
             placeholder="請選擇"
-            values={['繁體中文', '简体中文', 'English', '日本語', '언문'].map((item) => (
+            values={['繁體中文', '简体中文', 'English', '日本語', '언문'].map(item => (
               { icon: null, text: item }
             ))}
             fullWidth
@@ -64,7 +64,7 @@ export default class DropdownDemo extends React.Component {
             searchNotFoundText="找不到語言"
             searchPlaceholder="語言"
             selectedIndexes={[0, 3]}
-            values={['繁體中文', '简体中文', 'English', '日本語', '언문'].map((item) => (
+            values={['繁體中文', '简体中文', 'English', '日本語', '언문'].map(item => (
               { icon: null, text: item }
             ))}
             multiple
