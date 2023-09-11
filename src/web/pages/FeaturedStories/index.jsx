@@ -552,14 +552,14 @@ export default class FeaturedStories extends React.Component {
           <img src="/static/img/app-icon.png" role="presentation" alt="oice app icon" />
           <span>{t('label.appName')}</span>
         </div>
-        <div className="download-app-pitch">
+        {/* <div className="download-app-pitch">
           <span>{t('label.becomeAReader')}</span>
           <DownloadAppBadges
             logOnClickGooglePlayIcon={this.handleLogOnClickGooglePlayIcon}
             logOnClickAppStoreIcon={this.handleLogOnClickAppStoreIcon}
             isDarkBackground
           />
-        </div>
+        </div> */}
       </div>
     );
   }

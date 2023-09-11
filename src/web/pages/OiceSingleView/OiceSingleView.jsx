@@ -603,14 +603,14 @@ export default class OiceSingleView extends React.Component {
             {credits && <hr />}
             {isPreview && this.renderPreviewPanel()}
             {isPreview && <hr />}
-            <div className="get-app">
+            {/* <div className="get-app">
               <AppIcon size={48} />
               <OutlineButton
                 color="light-grey"
                 label={t('label.downloadForBetterExperience')}
                 onClick={this.handleCTA}
               />
-            </div>
+            </div> */}
           </div>
 
           {authorLikeCoinId && !isPreview && (
