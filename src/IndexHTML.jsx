@@ -93,10 +93,11 @@ export default class IndexHTML extends React.Component {
           <meta content="oice" name="apple-mobile-web-app-title" />
 
           <title>{meta.title}</title>
-          <link rel="preload" href={`/build/manifest.js?v=${VERSION}`} as="script" />
+          <link rel="preload" href={`/build/vendor.css?v=${VERSION}`} as="style" />
+          <link rel="preload" href={`/build/common.css?v=${VERSION}`} as="style" />
+          <link rel="preload" href={`/build/${module}.css?v=${VERSION}`} as="style" />
           <link rel="preload" href={`/build/vendor.js?v=${VERSION}`} as="script" />
           <link rel="preload" href={`/build/common.js?v=${VERSION}`} as="script" />
-          <link rel="preload" href={`/build/${module}.css?v=${VERSION}`} as="style" />
           {modules.map(m => (
             <link
               key={m}
@@ -106,13 +107,13 @@ export default class IndexHTML extends React.Component {
             />
           ))}
 
-          {!DEBUG &&
+          {!DEBUG && ['vendor', 'common', module].map(m => (
             <link
-              href={`/build/${module}.css?v=${VERSION}`}
+              href={`/build/${m}.css?v=${VERSION}`}
               rel="stylesheet"
               type="text/css"
             />
-          }
+          ))}
           <link
             href="/img/favicon.ico"
             rel="shortcut icon"
@@ -144,10 +145,6 @@ export default class IndexHTML extends React.Component {
           <div id="app" className={className}>
             {children}
           </div>
-          <script
-            src={`/build/manifest.js?v=${VERSION}`}
-            type="application/javascript"
-          />
           <script
             src={`/build/vendor.js?v=${VERSION}`}
             type="application/javascript"

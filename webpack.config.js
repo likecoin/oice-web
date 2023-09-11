@@ -64,6 +64,24 @@ module.exports = {
     path: BUILD_DIR,
     publicPath: `/${BUILD_DIR_NAME}/`,
   },
+  optimization: {
+    minimize: !DEBUG,
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all',
+        },
+        common: {
+          chunks: 'all',
+          name: 'common',
+          minChunks: 2,
+        },
+      },
+    },
+    runtimeChunk: false,
+  },
   performance: {
     maxEntrypointSize: 1000000,
     maxAssetSize: 300000,
@@ -157,8 +175,6 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
   ] : [
     // Production
-    new webpack.HashedModuleIdsPlugin(),
     new webpack.DefinePlugin({ 'global.GENTLY': false }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
   ]),
 };
