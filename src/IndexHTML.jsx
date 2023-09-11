@@ -80,6 +80,7 @@ export default class IndexHTML extends React.Component {
           <meta property="al:android:url" content={meta.ogUrl} />
           <meta property="al:android:package" content={ANDROID_APP.PACKAGE} />
           <meta property="al:android:app_name" content={ANDROID_APP.NAME} />
+          <link rel="canonical" href={meta.ogUrl} />
           <meta content={meta.title} property="og:title" />
           <meta content={meta.ogUrl} property="og:url" />
           <meta content={meta.ogImage} property="og:image" />
