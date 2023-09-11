@@ -489,7 +489,10 @@ export default class FeaturedStories extends React.Component {
         <div>
           {!story.titleLogo ? (
             <h1>
-              <Link style={{ color: 'inherit' }} to={`/story/${story.oice.uuid}?lang=${story.oice.language}`}>
+              <Link
+                style={{ color: 'inherit', textDecoration: 'inherit' }}
+                to={`/story/${story.oice.uuid}?lang=${story.oice.language}`}
+              >
                 {story.name}
               </Link>
             </h1>
