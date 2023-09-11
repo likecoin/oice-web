@@ -1,8 +1,8 @@
 const webpack = require('webpack'); // for plugin use
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const autoprefixer = require('autoprefixer');
+const RemarkHTML = require('remark-html');
 
 const SRV_ENV = process.env.SRV_ENV;
 const PORT = process.env.PORT || 3000;
@@ -55,6 +55,7 @@ const stylesLoaders = [
 
 module.exports = {
   devtool: DEBUG ? 'eval' : false,
+  mode: DEBUG ? 'development' : 'production',
   context: SRC_DIR,
   entry: editorEntry,
   output: {
@@ -80,7 +81,7 @@ module.exports = {
       {
         test: /\.s?css$/,
         use: DEBUG ? ['style-loader'].concat(stylesLoaders)
-          : ExtractTextPlugin.extract({ fallback: 'style-loader', use: stylesLoaders }),
+          : [MiniCssExtractPlugin.loader].concat(stylesLoaders),
       },
       {
         test: /\.svg$/,
@@ -100,8 +101,17 @@ module.exports = {
       {
         test: /\.md$/,
         use: [
-          'html-loader',
-          'remarkable-loader',
+          {
+            loader: 'html-loader',
+          },
+          {
+            loader: 'remark-loader',
+            options: {
+              remarkOptions: {
+                plugins: [RemarkHTML],
+              },
+            },
+          },
         ],
       },
     ].concat(DEBUG ? [
@@ -128,7 +138,7 @@ module.exports = {
     },
   },
   plugins: [
-    new ExtractTextPlugin({ filename: '[name].css' }),
+    new MiniCssExtractPlugin({ filename: '[name].css' }),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     new webpack.DefinePlugin({
       'process.env': {
@@ -137,43 +147,8 @@ module.exports = {
         IS_CLIENT: JSON.stringify(true),
       },
     }),
-    new webpack.LoaderOptionsPlugin({
-      remarkable: {
-        preset: 'full',
-        linkify: true,
-        typographer: true,
-      },
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks(module, count) {
-        return (
-          count > 1 &&
-          /node_modules/.test(module.context) &&
-          // Do not externalize if the request is a CSS file which can potentially emit CSS assets!
-          !/\.(css|less|scss|sass|styl|stylus)$/.test(module.request)
-        );
-      },
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'common',
-      chunks: Object.keys(editorEntry),
-      minChunks(module, count) {
-        // A module is extracted into the vendor chunk when...
-        return (
-          count > 2 &&
-          // Do not externalize if the request is a CSS file which can potentially emit CSS assets!
-          !/\.(css|less|scss|sass|styl|stylus)$/.test(module.request)
-        );
-      },
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      minChunks: Infinity,
-    }),
   ].concat(DEBUG ? [
     // Development
-    new webpack.NamedModulesPlugin(),
     new webpack.ProgressPlugin((percentage, msg) => {
       process.stdout.clearLine(1);
       process.stdout.write(`${msg} [${(percentage * 100).toFixed(1)}%]`);
@@ -182,19 +157,8 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
   ] : [
     // Production
-    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.HashedModuleIdsPlugin(),
     new webpack.DefinePlugin({ 'global.GENTLY': false }),
-    new UglifyJsPlugin({
-      sourceMap: false,
-      parallel: true,
-      uglifyOptions: {
-        compress: {
-          drop_console: true,
-          warnings: false,
-        },
-      },
-    }),
     new webpack.optimize.ModuleConcatenationPlugin(),
   ]),
 };
