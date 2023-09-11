@@ -153,6 +153,7 @@ module.exports = {
       'ui-demo': UI_DEMO_SRC_DIR,
       'ui-elements': path.join(COMMON_DIR, 'components'),
       'react/lib/ReactMount': 'react-dom/lib/ReactMount',
+      'bn.js': path.join(__dirname, './node_modules/bn.js'),
     },
   },
   plugins: [
