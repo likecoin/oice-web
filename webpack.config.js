@@ -94,7 +94,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: ['react-hot-loader', 'babel-loader'],
+        use: ['react-hot-loader/webpack', 'babel-loader'],
       },
       {
         test: /\.s?css$/,
@@ -103,7 +103,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        use: ['babel-loader?presets[]=es2015,presets[]=react', 'svg-react-loader'],
+        use: ['@svgr/webpack'],
       },
       {
         test: /\.(png|jpg|jpeg|gif|woff|woff2)$/,

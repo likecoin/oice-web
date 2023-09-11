@@ -71,7 +71,7 @@ export default class IndexHTML extends React.Component {
     return (
       <html lang={meta.ogLocale}>
         <head>
-          <meta charset="UTF-8" />
+          <meta charSet="UTF-8" />
           <meta content={meta.viewport} name="viewport" />
           <meta content={FACEBOOK_APP_ID} property="fb:app_id" />
           <meta property="al:ios:url" content={meta.ogUrl} />
@@ -121,7 +121,7 @@ export default class IndexHTML extends React.Component {
           />
           <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
           <link href="/img/apple-touch-icon.png" rel="apple-touch-icon" />
-          {!IS_DEV_MODE && <script src={`https://js.sentry-cdn.com/${SENTRY_CLIENT_ID}.min.js`} crossorigin="anonymous" />}
+          {!IS_DEV_MODE && <script src={`https://js.sentry-cdn.com/${SENTRY_CLIENT_ID}.min.js`} crossOrigin="anonymous" />}
           <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
           <style dangerouslySetInnerHTML={{ __html: '.async-hide { opacity: 0 !important}' }} />
           <script src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} async />
