@@ -29,7 +29,6 @@
     "cors": "^2.8.5",
     "express": "^4.16.3",
     "firebase": "^8.10.1",
-    "google-libphonenumber": "^2.0.18",
     "history": "^2.x",
     "i18next": "^8.4.3",
     "i18next-browser-languagedetector": "^2.0.0",

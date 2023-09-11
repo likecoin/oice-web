@@ -43,7 +43,6 @@ import AppIcon from './AppIcon';
 import DeepView from './DeepView';
 import EpisodePicker from './EpisodePicker';
 import PlayButton from './PlayButton';
-import SmsModal from './SmsModal';
 import UpNext from './UpNext';
 
 import * as Actions from './OiceSingleView.actions';
@@ -631,15 +630,6 @@ export default class OiceSingleView extends React.Component {
             </div>
           )}
         </div>
-        {oice && !isMobile &&
-          <SmsModal
-            isEndedPlaying={isEndedPlaying}
-            isPreview={isPreview}
-            oice={oice}
-            open={isCallToActionModalOpen}
-            onToggle={this.handleToggleCallToActionModal}
-          />
-        }
       </Container>
     );
   }

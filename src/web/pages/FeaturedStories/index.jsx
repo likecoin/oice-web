@@ -41,7 +41,6 @@ import i18n from 'common/utils/i18n';
 
 import TestFlightInvitation from '../TestFlightInvitation';
 import Header from '../Home/Header';
-import SmsModal from '../OiceSingleView/SmsModal';
 import * as OiceSingleViewUtils from '../OiceSingleView/utils';
 
 import { fetchFeaturedStories } from './redux';
@@ -574,14 +573,7 @@ export default class FeaturedStories extends React.Component {
       return null;
     }
 
-    return (
-      <SmsModal
-        open={this.state.isSmsModalOpened}
-        oice={stories[ACTIVE_STORY_INDEX].oice}
-        isEndedPlaying={this.state.isCallForActionShowed}
-        onToggle={this.toggleSmsModal}
-      />
-    );
+    return null;
   }
 
   render() {
