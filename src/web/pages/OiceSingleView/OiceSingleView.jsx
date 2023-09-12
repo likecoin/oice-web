@@ -251,7 +251,7 @@ export default class OiceSingleView extends React.Component {
     this.setState({ isCallToActionModalOpen });
   }
 
-  handleCTA = () => {
+  handleAppCTA = () => {
     const { oice } = this.props;
     if (isMobile) {
       OiceSingleViewUtils.initializeDeepView({
@@ -261,6 +261,10 @@ export default class OiceSingleView extends React.Component {
     } else {
       this.handleToggleCallToActionModal();
     }
+  }
+
+  handleCreatorCTA = () => {
+    window.location.pathname = '/about';
   }
 
   handleScreenCaptureButtonClick = () => {
@@ -607,9 +611,17 @@ export default class OiceSingleView extends React.Component {
               <OutlineButton
                 color="light-grey"
                 label={t('label.downloadForBetterExperience')}
-                onClick={this.handleCTA}
+                onClick={this.handleAppCTA}
               />
             </div> */}
+            <div className="be-creator">
+              <AppIcon size={48} />
+              <OutlineButton
+                color="light-grey"
+                label={t('label.createYourOwnStory')}
+                onClick={this.handleCreatorCTA}
+              />
+            </div>
           </div>
 
           {authorLikeCoinId && !isPreview && (

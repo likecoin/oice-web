@@ -1470,6 +1470,7 @@
     "label": {
       "episode": "Episode #{{episode}}",
       "getApp": "Read on mobile",
+      "createYourOwnStory": "Create your own story",
       "downloadForBetterExperience": "Download oice App",
       "noStoryDescription": "No story description",
       "play": "Play",

@@ -1462,6 +1462,7 @@
     "label": {
       "episode": "エピソード {{episode}}",
       "getApp": "物語を読む",
+      "createYourOwnStory": "あなただけの物語を作り出す",
       "downloadForBetterExperience": "oiceアプリをダウンロード",
       "noStoryDescription": "あらすじなし",
       "play": "Play",
