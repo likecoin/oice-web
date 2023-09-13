@@ -70,7 +70,7 @@ export const purchaseLibrary = (libraryId, token) =>
     .set(API_HEADER)
     .then((response) => {
       if (response.ok) {
-        return response.body.library;
+        return response.body;
       }
       return [];
     });

@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import StripeCheckout from 'react-stripe-checkout';
-
 import Avatar from 'ui-elements/Avatar';
 import OutlineButton from 'ui-elements/OutlineButton';
 import Progress from 'ui-elements/Progress';
@@ -128,8 +126,8 @@ function LibraryInfo(props) {
     }
   }
 
-  function handleReceiveStripeToken(token) {
-    props.onPurchase(library, token);
+  function onPurchase() {
+    props.onPurchase(library);
   }
 
   function renderOriginalPrice() {
@@ -142,21 +140,11 @@ function LibraryInfo(props) {
 
   function renderPurchaseButton() {
     return (
-      <StripeCheckout
-        ComponentClass="div"
-        allowRememberMe={false}
-        amount={library ? library.price * 100 : 0}
-        className="fluid"
-        currency="USD"
-        email={user.email}
-        image={libraryThumbnail}
-        name={t('label.purchaseLibraryName', { name: library.name })}
-        panelLabel={t('button.payForPrice', { currency: 'US' })}
-        stripeKey={STRIPE_KEY}
-        token={handleReceiveStripeToken}
-      >
-        <OutlineButton {...buttonProps} fluid />
-      </StripeCheckout>
+      <OutlineButton
+        {...buttonProps}
+        fluid
+        onClick={onPurchase}
+      />
     );
   }
 
@@ -207,7 +195,7 @@ function LibraryInfo(props) {
             {mode !== 'purchased' && !!library.discountPrice && (
               renderOriginalPrice()
             )}
-            {mode === 'fiat' && user && !user.hasPaymentInfo ? (
+            {mode === 'fiat' && user ? (
               renderPurchaseButton()
             ) : (
               <OutlineButton

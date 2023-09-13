@@ -59,7 +59,6 @@
     "react-scroll": "1.5.4",
     "react-spark-scroll-rekapi": "^4.0.0",
     "react-stickynode": "^1.4.0",
-    "react-stripe-checkout": "^2.2.5",
     "react-tap-event-plugin": "^2.0.1",
     "react-tooltip": "^3.3.0",
     "react-virtualized": "^9.19.1",

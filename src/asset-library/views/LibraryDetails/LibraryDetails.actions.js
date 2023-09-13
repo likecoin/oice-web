@@ -106,21 +106,21 @@ export const fetchStoreLibraryAssetsByType = (id, type) => (dispatch) => {
 
 export const purchaseLibraryBegin = createAction('PURCHASE_LIBRARY_BEGIN');
 export const purchaseLibraryEnd = createAction('PURCHASE_LIBRARY_END');
-export const purchaseLibrary = (id, token) => (dispatch, getState) => {
+export const purchaseLibrary = id => (dispatch) => {
   dispatch(purchaseLibraryBegin());
-  APIHandler(
+  return APIHandler(
     dispatch,
-    StoreAPI.purchaseLibrary(id, token).then((library) => {
-      dispatch(purchaseLibraryEnd(library));
-      if (token) {
-        const { user } = getState();
-        if (!user.hasPaymentInfo) {
-          dispatch(UserAction.updateUser({ ...user, hasPaymentInfo: true }));
-        }
+    StoreAPI.purchaseLibrary(id).then(({ library, url }) => {
+      if (url) {
+        dispatch(purchaseLibraryEnd());
+        return { url };
+      } else if (library) {
+        dispatch(purchaseLibraryEnd(library));
+        dispatch(LibraryDashboardActions.fetchLibraries([LIBRARY_TYPE.SELECTED, LIBRARY_TYPE.UNSELECTED]));
+        return { library };
       }
-      dispatch(LibraryDashboardActions.fetchLibraries([LIBRARY_TYPE.SELECTED, LIBRARY_TYPE.UNSELECTED]));
+      return {};
     }).catch((error) => {
-      dispatch(UserAction.updateUser({ hasPaymentInfo: false }));
       dispatch(purchaseLibraryEnd());
       throw error;
     }),

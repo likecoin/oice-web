@@ -329,28 +329,11 @@ export default class LibraryDetails extends React.Component {
     this.props.dispatch(push(this.props.route.isStore ? '/store' : '/asset'));
   }
 
-  handlePurchaseLibrary = (library, token) => {
-    const { t, dispatch, user } = this.props;
+  handlePurchaseLibrary = async (library) => {
+    const { dispatch, user } = this.props;
     if (user) {
-      if (user.hasPaymentInfo) {
-        // Confirm user for the purchase
-        dispatch(AlertDialog.toggle({
-          type: 'confirm',
-          title: t('label.purchasingLibrary'),
-          body: _unescape(t('label.confirmToPurchaseLibrary', {
-            name: library.name,
-            price: library.price,
-            currency: 'US',
-          })),
-          confirmButtonTitle: t('button.purchase'),
-          confirmCallback: () => {
-            dispatch(Actions.purchaseLibrary(library.id));
-          },
-        }));
-      } else {
-        // First time purchase
-        dispatch(Actions.purchaseLibrary(library.id, token));
-      }
+      const { url } = await dispatch(Actions.purchaseLibrary(library.id));
+      if (url) window.location.href = url;
     } else {
       this.setState({ loginModalOpen: true });
     }
