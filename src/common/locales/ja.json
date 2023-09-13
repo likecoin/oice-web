@@ -320,8 +320,8 @@
       "button": {
         "upgrade": "アップグレード",
         "continueSubscription": "サブスクリプションの継続",
-        "goToSubscriptionPortal": "料金ポータルに移動",
-        "goToDashboard": "アカウントダッシュボードに移動"
+        "goToSubscriptionPortal": "料金設定",
+        "goToDashboard": "ダッシュボード"
       }
     },
     "seekingSubscriptionMessage": {
