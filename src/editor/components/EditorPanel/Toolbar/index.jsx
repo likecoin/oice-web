@@ -134,7 +134,7 @@ export default class EditorToolbar extends React.Component {
             primary
             onClick={this.handlePublishOiceButtonClick}
           />
-          {!isNormalUser(user) &&
+          {!isNormalUser(user.role) &&
             <RaisedButton
               className="oice-export-button toolbar-button"
               disabled={!oiceName}
