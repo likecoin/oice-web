@@ -86,9 +86,14 @@ export default class AccountSettingTab extends React.Component {
     }
   }
 
-  handleRequestCancelSubscription = () => {
-    this.props.dispatch(Actions.cancelSubscription());
+  handleGoToSubscriptionPortal = async () => {
     this.props.dispatch(Actions.startLoading(true));
+    const { url } = await this.props.dispatch(Actions.goToSubscriptionPortal());
+    if (url) {
+      window.location.href = url;
+    } else {
+      this.props.dispatch(Actions.startLoading(false));
+    }
   }
 
   handleUpdateUser = (payload) => {
@@ -128,8 +133,8 @@ export default class AccountSettingTab extends React.Component {
       actionButton = (
         <OutlineButton
           color="blue"
-          label={t('accountSetting.button.cancelSubscription')}
-          onClick={this.handleRequestCancelSubscription}
+          label={t('accountSetting.button.goToSubscriptionPortal')}
+          onClick={this.handleGoToSubscriptionPortal}
         />
       );
     } else {
@@ -137,7 +142,6 @@ export default class AccountSettingTab extends React.Component {
         <OiceCheckout
           ref={ref => this.paymentButton = (!isBacker ? ref : null)}
           buttonLabel={isBacker ? t('accountSetting.button.continueSubscription') : t('accountSetting.button.upgrade')}
-          email={user.email}
         />
       );
     }
@@ -229,9 +233,9 @@ export default class AccountSettingTab extends React.Component {
     const actionLink = (
       <a
         className="stripe-connect light-blue"
-        href={`/stripe?action=${user.isStripeConnected ? 'disconnect' : 'connect'}&redirect=profile`}
+        href={`/stripe?action=${user.isStripeConnected ? 'dashboard' : 'connect'}&redirect=profile`}
       >
-        <span>{user.isStripeConnected ? t('accountSetting.button.disconnectStripe') : 'Connect with Stripe'}</span>
+        <span>{user.isStripeConnected ? t('accountSetting.button.goToDashboard') : 'Connect with Stripe'}</span>
       </a>
     );
 

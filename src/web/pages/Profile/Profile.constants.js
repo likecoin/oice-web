@@ -3,6 +3,8 @@ export const PROFILE_ACTION = {
   BECOME_BACKER: 'become-backer',
   SUBSCRIBE: 'subscribe',
   PERSONAL_INFORMATION: 'personal-info',
+  BACKER_SUCCESS: 'backer_success',
+  BACKER_CANCEL: 'backer_cancel',
 };
 
 export const TAB_BAR_ITEM = {

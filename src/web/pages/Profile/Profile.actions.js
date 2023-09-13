@@ -54,21 +54,20 @@ export const getUserProfile = () => (dispatch) => {
     }));
 };
 
-export const updateMembership = token => (dispatch) => {
-  APIHandler(dispatch, UserAPI.postMembership(token)
+export const purchaseMembership = () => dispatch =>
+  APIHandler(dispatch, UserAPI.postMembership()
     .then((response) => {
-      const userInfo = response.user;
-      dispatch(updatedUserProfile(userInfo));
-      dispatch(updateUserAction(userInfo));
-      dispatch(startLoading(false));
-      dispatch(AlertDialog.toggle({
-        title: i18n.t('alertDialog:upgradedBacker.title'),
-        body: i18n.t('alertDialog:upgradedBacker.body'),
-        type: 'alert',
-      }));
-      // localStorage.setItem('currentUser', JSON.stringify(userInfo));
+      const { url } = response;
+      return { url };
     }));
-};
+
+
+export const goToSubscriptionPortal = () => dispatch =>
+  APIHandler(dispatch, UserAPI.fetchMembershipPortal()
+    .then((response) => {
+      const { url } = response;
+      return { url };
+    }));
 
 export const cancelSubscription = () => (dispatch) => {
   APIHandler(dispatch, UserAPI.cancelSubscription()

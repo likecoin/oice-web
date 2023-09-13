@@ -7,6 +7,7 @@ import { findDOMNode } from 'react-dom';
 
 import _get from 'lodash/get';
 
+import AlertDialog from 'ui-elements/AlertDialog';
 import PricingTable from 'web/components/PricingTable';
 
 import { isNormalUser } from 'common/utils/user';
@@ -40,6 +41,14 @@ export default class MembershipTab extends React.Component {
   }
 
   componentDidMount() {
+    if (this.props.action === PROFILE_ACTION.BACKER_SUCCESS) {
+      const { t, dispatch } = this.props;
+      dispatch(AlertDialog.toggle({
+        title: t('alertDialog:upgradedBacker.title'),
+        body: t('alertDialog:upgradedBacker.body'),
+        type: 'alert',
+      }));
+    }
     const isBacker = !isNormalUser(this.props.user.role);
 
     if (!isBacker && this.props.action === PROFILE_ACTION.SUBSCRIBE && this.paymentButton) {

@@ -323,8 +323,8 @@
       "button": {
         "upgrade": "Upgrade Account",
         "continueSubscription": "Resume Subscription",
-        "cancelSubscription": "Cancel Subscription",
-        "disconnectStripe": "Unlink Account"
+        "goToSubscriptionPortal": "Go to billing portal",
+        "goToDashboard": "Go to account dashboard"
       }
     },
     "seekingSubscriptionMessage": {

@@ -58,6 +58,8 @@ export default class Profile extends React.Component {
         tabBarIndex = 1;
         break;
       case PROFILE_ACTION.BECOME_BACKER:
+      case PROFILE_ACTION.BACKER_SUCCESS:
+      case PROFILE_ACTION.BACKER_CANCEL:
         tabBarIndex = 2;
         break;
       default:

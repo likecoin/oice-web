@@ -323,8 +323,8 @@
       "button": {
         "upgrade": "升級為贊助會員",
         "continueSubscription": "繼續續費",
-        "cancelSubscription": "取消續費",
-        "disconnectStripe": "解除連接"
+        "goToSubscriptionPortal": "收費設定及記錄",
+        "goToDashboard": "帳號概覽"
       }
     },
     "seekingSubscriptionMessage": {

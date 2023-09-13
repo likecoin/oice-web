@@ -32,17 +32,25 @@ export const signOut = () =>
     .set(API_HEADER)
     .then(response => null);
 
-export const postMembership = token =>
+export const postMembership = () =>
   request
-    .post(`${API_URL}membership`)
+    .post(`${API_URL}membership/checkout`)
     .withCredentials()
     .set(API_HEADER)
-    .send(JSON.stringify(token))
     .then(response => (
       response.ok ? response.body : null
     ));
 
-export const cancelSubscription = token =>
+export const fetchMembershipPortal = () =>
+  request
+    .post(`${API_URL}membership/portal`)
+    .withCredentials()
+    .set(API_HEADER)
+    .then(response => (
+      response.ok ? response.body : null
+    ));
+
+export const cancelSubscription = () =>
   request
     .del(`${API_URL}membership`)
     .withCredentials()
@@ -113,21 +121,20 @@ export const fetchUserProfileDetails = id =>
     .set(API_HEADER)
     .then(response => response.body.profile);
 
-export const connectStripe = code =>
+export const connectStripeConnect = () =>
   request
     .post(`${API_URL}membership/connect`)
     .withCredentials()
     .set(API_HEADER)
-    .send(JSON.stringify(code))
     .then(response => (
-      response.ok ? response.body.message : null
+      response.ok ? response.body.url : null
     ));
 
-export const disconnectStripe = code =>
+export const fetchStripeConnectDashboard = () =>
   request
-    .del(`${API_URL}membership/connect`)
+    .get(`${API_URL}membership/connect`)
     .withCredentials()
     .set(API_HEADER)
     .then(response => (
-      response.ok ? response.body.message : null
+      response.ok ? response.body.url : null
     ));
