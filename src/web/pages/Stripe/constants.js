@@ -1,4 +1,4 @@
 export const STRIPE_ACTION = {
   CONNECT: 'connect',
-  DISCONNECT: 'disconnect',
+  DASHBOARD: 'dashboard',
 };

@@ -1,9 +1,6 @@
 import { SRV_ENV } from '../constants';
 import { USER_ROLE_PRO, USER_ROLE_ADMIN } from '../constants/userRoles';
 
-import StripeUtils from './stripeUtils';
-
-
 export function isMobileAgent() {
   let check = false;
   /* eslint-disable */
@@ -184,7 +181,3 @@ export function getWindowHeight() {
     document.body.clientHeight
   );
 }
-
-export default {
-  Stripe: StripeUtils,
-};

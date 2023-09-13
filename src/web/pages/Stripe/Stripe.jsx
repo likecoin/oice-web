@@ -20,12 +20,6 @@ import { DOMAIN_URL } from 'common/constants';
 import * as Actions from './Stripe.actions';
 import { STRIPE_ACTION } from './constants';
 
-
-function getAbsolutePathWithActionAndRedirectUrl(action, redirectURL) {
-  const url = `${DOMAIN_URL}/stripe?action=${action}__${redirectURL}`;
-  return Utils.Stripe.getAuthorizeURL(url);
-}
-
 @connect(store => ({ ...store.user }))
 export default class Stripe extends React.Component {
   static propTypes = {
@@ -48,8 +42,8 @@ export default class Stripe extends React.Component {
         case STRIPE_ACTION.CONNECT:
           this.handleRequestConnectStripe(queryParams);
           break;
-        case STRIPE_ACTION.DISCONNECT:
-          this.handleRequestDisconnectStripe(queryParams);
+        case STRIPE_ACTION.DASHBOARD:
+          this.handleGoToStripeConnectDashboard(queryParams);
           break;
         default:
           break;
@@ -57,20 +51,12 @@ export default class Stripe extends React.Component {
     }
   }
 
-  handleRequestConnectStripe = ({
-    action, code, error, error_description, redirect,
-  }) => {
-    if (code && redirect) {
-      this.props.dispatch(Actions.connectStripe(code, redirect));
-    } else if (error) {
-      console.error('connect membership error %o, description %o', error, error_description);
-    } else {
-      window.location.href = getAbsolutePathWithActionAndRedirectUrl(action, redirect);
-    }
+  handleRequestConnectStripe = () => {
+    this.props.dispatch(Actions.connectStripeConnect());
   }
 
-  handleRequestDisconnectStripe = ({ redirect }) => {
-    this.props.dispatch(Actions.disconnectStripe(redirect));
+  handleGoToStripeConnectDashboard = () => {
+    this.props.dispatch(Actions.goToStripeConnectDashboard());
   }
 
   render() {

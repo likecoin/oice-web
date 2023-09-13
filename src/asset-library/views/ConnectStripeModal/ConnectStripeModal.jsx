@@ -30,13 +30,6 @@ function ConnectStripeModal(props) {
               <span>Connect with Stripe</span>
             </a>
           </div>
-          <a
-            href="https://oice.typeform.com/to/pWXswc"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            {t('label.taiwaneseClickHere')}
-          </a>
         </Modal.Body>
       </Modal>
     </div>

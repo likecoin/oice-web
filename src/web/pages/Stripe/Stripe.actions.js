@@ -1,31 +1,27 @@
-import { createAction } from 'redux-actions';
-import { replace } from 'react-router-redux';
 import { APIHandler } from 'common/utils/api';
 
 import * as UserAPI from 'common/api/user';
-import { DOMAIN_URL } from 'common/constants';
 
 
 function goToUrl(url) {
   window.location.href = url ? `/${url}` : '/';
 }
 
-export const connectStripe = (code, redirectUrl) => (dispatch) => {
+export const connectStripeConnect = () => dispatch =>
   APIHandler(
     dispatch,
-    UserAPI.connectStripe({ code })
-      .then((response) => {
-        goToUrl(redirectUrl);
+    UserAPI.connectStripeConnect()
+      .then((url) => {
+        if (url) window.location.href = url;
       })
   );
-};
 
-export const disconnectStripe = redirectUrl => (dispatch) => {
+export const goToStripeConnectDashboard = () => dispatch =>
   APIHandler(
     dispatch,
-    UserAPI.disconnectStripe()
-      .then((response) => {
-        goToUrl(redirectUrl);
+    UserAPI.fetchStripeConnectDashboard()
+      .then((url) => {
+        if (url) window.location.href = url;
       })
   );
-};
+
