@@ -24,11 +24,13 @@ export default class IndexHTML extends React.Component {
     className: PropTypes.string,
     children: PropTypes.node,
     meta: PropTypes.object,
+    jsonLds: PropTypes.array,
     module: PropTypes.string,
   }
 
   static defaultProps = {
     meta: {},
+    jsonLds: [],
     module: 'web',
   }
 
@@ -66,7 +68,7 @@ export default class IndexHTML extends React.Component {
         price: '0',
         priceCurrency: 'USD',
       },
-    }];
+    }].concat(this.props.jsonLds);
 
     return (
       <html lang={meta.ogLocale}>

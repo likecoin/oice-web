@@ -105,27 +105,11 @@ server.get('*', (req, res) => {
         url: fullURL,
         image: 'https://oice.com/static/img/banner.jpg',
       };
+      const { t } = req;
 
       const renderHTML = (props) => {
-        const { t } = req;
-
-        const oice = { ...props.oice };
-        const story = { ...props.story };
-        const library = { ...props.library };
-        const user = { ...props.user };
-        const competition1718 = { ...props.competition1718 };
-
         const isEditor = props.module === 'editor';
         const isAssetLibrary = props.module === 'asset-library';
-
-        const title = getHTMLTitle(t,
-          oice.ogTitle ||
-          oice.name ||
-          story.name ||
-          library.name ||
-          user.displayName ||
-          competition1718.title,
-          props.module);
 
         const viewport = classNames(
           `width=${isAssetLibrary || isEditor ? '1024' : 'device-width'},`,
@@ -136,45 +120,19 @@ server.get('*', (req, res) => {
           'user-scalable=no'
         );
 
-        let ogImage = defaultOg.image;
-        if (story.ogImage) {
-          ({ ogImage } = story);
-        } else if (library.cover) {
-          ogImage = library.cover;
-        } else if (oice.storyCover) {
-          ogImage = oice.storyCover;
-        } else if (oice.id) {
-          ogImage = `${baseURL}/static/img/oice-default-cover.jpg`;
-        } else if (user.avatar) {
-          ogImage = user.avatar;
-        } else if (competition1718.ogImage) {
-          ({ ogImage } = competition1718);
-        }
-
-        const ogDescription = (
-          oice.ogDescription ||
-          oice.description ||
-          story.description ||
-          library.description ||
-          user.description ||
-          competition1718.description ||
-          t('site:description')
-        );
-        const ogLocale = (oice.locale || competition1718.locale || req.i18n.language).replace('-', '_'); // Facebook requires underscore
-        const ogUrl = defaultOg.url;
-
         const meta = {
-          ogDescription,
-          ogImage,
-          ogLocale,
-          ogUrl,
-          title,
+          ogDescription: props.meta.ogDescription || t('site:description'),
+          ogImage: props.meta.ogImage || defaultOg.image,
+          ogLocale: (props.meta.ogLocale || req.i18n.language).replace('-', '_'),
+          ogUrl: props.meta.ogUrl || defaultOg.url,
+          title: props.meta.title || getHTMLTitle(t, '', props.module),
           viewport,
         };
 
         const htmlProps = {
           className: props.className,
           meta,
+          jsonLds: props.jsonLds || [],
           module: props.module,
         };
 
@@ -193,20 +151,28 @@ server.get('*', (req, res) => {
 
       const props = {
         module: 'web',
+        meta: {},
       };
 
       if (isPathStartWith('$') || isPathStartWith('about')) {
+        props.module = 'web';
         // TODO: Fetch story from featured stories API
-        props.story = {
-          name: null, // do not append story name at the moment
-        };
       } else if (isPathStartWith('story/[0-9a-f]{32}/?$')) {
         // Oice single view
         const regexUUID = /[0-9a-f]{32}/;
         const foundUUID = pathname.match(regexUUID);
         const uuid = foundUUID[0];
+        props.module = 'web';
         try {
-          props.oice = await OiceAPI.fetchOiceOgByUUID(uuid);
+          const oice = await OiceAPI.fetchOiceOgByUUID(uuid);
+          props.oice = oice;
+          props.meta = {
+            ogDescription: oice.ogDescription || oice.description,
+            ogImage: oice.storyCover || `${baseURL}/static/img/oice-default-cover.jpg`,
+            ogLocale: (oice.locale), // Facebook requires underscore,
+            ogUrl: defaultOg.url,
+            title: getHTMLTitle(t, oice.ogTitle || oice.name, props.module),
+          };
         } catch (err) {
           console.error('Error in fetchOiceOgByUUID()');
           console.error(err);
@@ -222,6 +188,12 @@ server.get('*', (req, res) => {
           const libraryId = matchResults[2];
           try {
             props.library = await LibraryAPI.fetchLibraryOG(libraryId);
+            const { library } = props;
+            props.meta = {
+              ogDescription: library.description,
+              ogImage: library.image,
+              title: getHTMLTitle(t, library.name, props.module),
+            };
           } catch (err) {
             console.error('Error in fetchLibraryOG()');
             console.error(err);
@@ -269,11 +241,17 @@ server.get('*', (req, res) => {
             res.redirect(`/user/${id}`);
             return;
           }
+          const { user } = props;
+          props.meta = {
+            ogDescription: user.displayName,
+            ogImage: user.avatar,
+            title: getHTMLTitle(t, user.displayName, props.module),
+          };
         }
       } else if (isPathStartWith('competition1718')) {
-        props.competition1718 = {
+        props.meta = {
           ogImage: 'https://firebasestorage.googleapis.com/v0/b/api-project-82698378.appspot.com/o/competition1718%2Fbanner.jpg?alt=media&token=ec08ab47-3dac-44b5-a50a-cb3b420bf9b2',
-          description: '第一屆「我自由我導」視覺小說創作比賽共有五十一份參賽作品，全部都列出在比賽專頁上了。快來欣賞這些作品的精彩內容吧，免費的喔！',
+          ogDescription: '第一屆「我自由我導」視覺小說創作比賽共有五十一份參賽作品，全部都列出在比賽專頁上了。快來欣賞這些作品的精彩內容吧，免費的喔！',
           title: '第一屆「我自由我導」視覺小說創作比賽－參賽作品',
           locale: 'zh-HK',
         };
