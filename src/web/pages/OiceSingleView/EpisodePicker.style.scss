@@ -89,4 +89,14 @@ $story-cover-size: 72px;
       }
     }
   }
+
+  &__story-description-wrapper {
+    padding: 8px 12px;
+  }
+
+  &__story-description {
+    font-size: 12px;
+    font-weight: 300;
+  }
+
 }

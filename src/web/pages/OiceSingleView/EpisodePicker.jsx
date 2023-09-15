@@ -35,9 +35,13 @@ export default class EpisodePicker extends React.Component {
             </p>
           </div>
         </div>
-
         <hr />
-
+        <div className="episode-picker__story-description-wrapper">
+          <p className="episode-picker__story-description">
+            {selectedEpisode.storyDescription}
+          </p>
+        </div>
+        <hr />
         <div className="episode-picker__select-episode-wrapper">
           <span>{t('label.selectEpisode')}</span>
           <Dropdown
