@@ -24,7 +24,7 @@ const footerLeftItems = [
   },
   {
     key: 'help',
-    link: 'https://v.oice.com/oice-beginner1-ce481e4d32a',
+    link: 'https://v.oice.com/tutorial-en/',
   },
 ];
 
