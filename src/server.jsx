@@ -103,7 +103,7 @@ server.get('*', (req, res) => {
 
       const defaultOg = {
         url: fullURL,
-        image: 'https://oice.com/static/img/banner.jpg',
+        image: `${baseURL}/static/img/banner.jpg`,
       };
       const { t } = req;
 
@@ -169,10 +169,33 @@ server.get('*', (req, res) => {
           props.meta = {
             ogDescription: oice.ogDescription || oice.description,
             ogImage: oice.storyCover || `${baseURL}/static/img/oice-default-cover.jpg`,
-            ogLocale: (oice.locale), // Facebook requires underscore,
+            ogLocale: oice.locale, // Facebook requires underscore,
             ogUrl: defaultOg.url,
             title: getHTMLTitle(t, oice.ogTitle || oice.name, props.module),
           };
+          props.jsonLds = [{
+            '@context': 'https://schema.org',
+            '@type': 'Episode',
+            name: oice.name,
+            description: oice.description,
+            image: [oice.storyCover || `${baseURL}/static/img/oice-default-cover.jpg`],
+            url: oice.shareUrl,
+            dateModified: oice.updatedAt,
+            author: {
+              '@type': 'Person',
+              name: oice.author.displayName,
+              image: oice.author.avatar,
+              description: oice.author.description,
+              url: `${baseURL}/user/${oice.author.id}`,
+            },
+            partOfSeries: {
+              '@context': 'https://schema.org',
+              '@type': 'CreativeWorkSeries',
+              name: oice.storyName,
+              image: oice.storyCover,
+              description: oice.storyDescription,
+            },
+          }];
         } catch (err) {
           console.error('Error in fetchOiceOgByUUID()');
           console.error(err);
@@ -187,15 +210,28 @@ server.get('*', (req, res) => {
         if (matchResults) {
           const libraryId = matchResults[2];
           try {
-            props.library = await LibraryAPI.fetchLibraryOG(libraryId);
+            props.library = await LibraryAPI.fetchLibrary(libraryId);
             const { library } = props;
             props.meta = {
               ogDescription: library.description,
               ogImage: library.image,
               title: getHTMLTitle(t, library.name, props.module),
             };
+            props.jsonLds = [{
+              '@context': 'https://schema.org',
+              '@type': 'MediaGallery',
+              image: [library.cover],
+              datePublished: library.launchedAt,
+              dateModified: library.updatedAt,
+              author: [{
+                '@type': 'Person',
+                name: library.author.displayName,
+                image: library.author.avatar,
+                url: `${baseURL}/user/${library.author.id}`,
+              }],
+            }];
           } catch (err) {
-            console.error('Error in fetchLibraryOG()');
+            console.error('Error in fetchLibrary()');
             console.error(err);
             res.status(500).send(`Error occurs when fetching library information ${err}`);
             return;
@@ -247,6 +283,18 @@ server.get('*', (req, res) => {
             ogImage: user.avatar,
             title: getHTMLTitle(t, user.displayName, props.module),
           };
+          props.jsonLds = [{
+            '@context': 'https://schema.org',
+            '@type': 'ProfilePage',
+            image: [user.avatar],
+            author: {
+              '@type': 'Person',
+              name: user.displayName,
+              image: user.avatar,
+              description: user.description,
+              url: `${baseURL}/user/${user.id}`,
+            },
+          }];
         }
       } else if (isPathStartWith('competition1718')) {
         props.meta = {
