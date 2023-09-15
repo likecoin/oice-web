@@ -18,6 +18,7 @@ import Throttle from 'ui-elements/Throttle';
 import AddIcon from 'common/icons/add';
 import CloseIcon from 'common/icons/close-bold';
 import PlayIcon from 'common/icons/play';
+import CopyIcon from 'common/icons/duplicate';
 import SettingIcon from 'common/icons/setting';
 
 import { DOMAIN_URL } from 'common/constants';
@@ -34,6 +35,7 @@ export default class StoryDetails extends React.Component {
     oices: PropTypes.array,
     story: PropTypes.object,
     onAddOice: PropTypes.func,
+    onCopyOice: PropTypes.func,
     onOpenStorySettingModal: PropTypes.func,
     onRequestClose: PropTypes.func,
   }
@@ -79,6 +81,11 @@ export default class StoryDetails extends React.Component {
     this.props.dispatch(push(`story/${storyId}/oice/${id}`));
   }
 
+  handleClickCopyOiceButton = (oice) => {
+    const { onCopyOice } = this.props;
+    if (onCopyOice) onCopyOice(oice);
+  }
+
   handleClickPlayPublishOiceButton = (url) => {
     window.open(url, '_blank');
   }
@@ -120,6 +127,12 @@ export default class StoryDetails extends React.Component {
                       width={88}
                     />
                   </div>
+                )}
+                {isDashboard && (
+                  <FlatButton
+                    icon={<CopyIcon />}
+                    onClick={() => this.handleClickCopyOiceButton(oice)}
+                  />
                 )}
                 <div
                   className={classNames('play-oice-button', {

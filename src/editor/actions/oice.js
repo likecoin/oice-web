@@ -56,6 +56,9 @@ export const fetchSelectedOice = (oiceId, language) => dispatch => APIHandler(di
     .then(oice => dispatch(fetchedSelectedOice(oice)))
 );
 
+export const forkOice = oiceId => dispatch => APIHandler(dispatch, OiceAPI.fork(oiceId));
+
+export const copyOice = oiceId => dispatch => APIHandler(dispatch, OiceAPI.copy(oiceId));
 
 const dispatchJobState = (dispatch, id, stage, message = '', data = null) => {
   dispatch(EditorPanelAction.updateRunOiceState({

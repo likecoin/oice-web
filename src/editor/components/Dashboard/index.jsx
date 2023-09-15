@@ -19,6 +19,8 @@ import SubNavBar from 'ui-elements/SubNavBar';
 import Gallery from 'web/pages/User/Gallery';
 import InteractiveTutorial from 'editor/components/InteractiveTutorial';
 import StorySettingModal, { actions as StorySettingModalActions } from 'editor/components/EditorPanel/StorySettingModal';
+import * as StoryAction from 'editor/actions/story';
+import * as OiceAction from 'editor/actions/oice';
 
 import * as SubNavBarConstants from 'ui-elements/SubNavBar/constants';
 import Throttle from 'ui-elements/Throttle';
@@ -221,6 +223,13 @@ export default class Dashboard extends React.Component {
     dispatch(Actions.addOice(this.state.selectedItem.id));
   }
 
+  handleOnCopyOiceRequest = async ({ storyId, id }) => {
+    const story = this.state.selectedItem;
+    const { dispatch } = this.props;
+    await dispatch(OiceAction.copyOice(id));
+    dispatch(Actions.fetchOices(story.id, story.language));
+  }
+
   handleStoryDetailsCloseRequest = () => {
     this.setState({ selectedItem: undefined });
   }
@@ -252,6 +261,7 @@ export default class Dashboard extends React.Component {
           oices={oices}
           story={selectedItem}
           onAddOice={this.handleOnAddOiceRequest}
+          onCopyOice={this.handleOnCopyOiceRequest}
           onOpenStorySettingModal={this.handleOnOpenStorySettingModal}
           onRequestClose={this.handleStoryDetailsCloseRequest}
         />

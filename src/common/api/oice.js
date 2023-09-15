@@ -87,6 +87,12 @@ export const fork = oiceId =>
     .set(API_HEADER)
     .then(response => response.body.oice);
 
+export const copy = oiceId =>
+  request.post(`${API_URL}oice/${oiceId}/copy`)
+    .withCredentials()
+    .set(API_HEADER)
+    .then(response => response.body.oice);
+
 export const deleteOice = oiceId =>
   request.del(`${API_URL}oice/id/${oiceId}`)
     .withCredentials()
