@@ -146,11 +146,11 @@ export default class OiceSingleView extends React.Component {
       this.loadOice(nextProps.params.uuid);
     }
     if (oice) {
-      const title = getHTMLTitle(t, oice.name);
+      const title = getHTMLTitle(t, oice.ogTitle || `${oice.storyName} - ${oice.name}`);
       document.title = title;
       handleOgMetaChanges(title,
-        oice.description || t('site:description'),
-        oice.url,
+        oice.ogDescription || oice.description || t('site:description'),
+        oice.shareUrl,
         getOiceImage(oice),
       );
     }
