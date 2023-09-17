@@ -171,13 +171,13 @@ server.get('*', (req, res) => {
             ogImage: oice.storyCover || `${baseURL}/static/img/oice-default-cover.jpg`,
             ogLocale: oice.locale, // Facebook requires underscore,
             ogUrl: defaultOg.url,
-            title: getHTMLTitle(t, oice.ogTitle || oice.name, props.module),
+            title: getHTMLTitle(t, oice.ogTitle || `${oice.storyName} - ${oice.name}`, props.module),
           };
           props.jsonLds = [{
             '@context': 'https://schema.org',
             '@type': 'Episode',
-            name: oice.name,
-            description: oice.description,
+            name: oice.ogTitle || oice.name,
+            description: oice.ogDescription || oice.description,
             image: [oice.storyCover || `${baseURL}/static/img/oice-default-cover.jpg`],
             url: oice.shareUrl,
             dateModified: oice.updatedAt,
