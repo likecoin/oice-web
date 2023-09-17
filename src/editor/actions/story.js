@@ -39,6 +39,13 @@ export const addStory = newStoryName => dispatch => APIHandler(dispatch,
     })
 );
 
+export const forkStory = storyId => dispatch => APIHandler(dispatch,
+  StoryAPI.forkStory(storyId)
+    .then((story) => {
+      dispatch(addedStory(story));
+    })
+);
+
 export const fetchStoryLanguages = storyId => async (dispatch) => {
   const languages = await APIHandler(dispatch, StoryAPI.fetchLanguage(storyId));
   dispatch(fetchStoryLanguagesEnd({ languages }));

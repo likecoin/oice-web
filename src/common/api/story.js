@@ -119,6 +119,17 @@ export const removeLibraryFromStory = (storyId, libraryId) =>
       return null;
     });
 
+export const forkStory = storyId =>
+  request.post(`${API_URL}story/${storyId}/fork`)
+    .withCredentials()
+    .set(API_HEADER)
+    .then((response) => {
+      if (response.ok) {
+        return response.body.story;
+      }
+      return null;
+    });
+
 export const build = storyId =>
   request.get(`${API_URL}story/${storyId}/build`)
     .withCredentials()

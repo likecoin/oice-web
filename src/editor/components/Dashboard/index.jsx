@@ -230,6 +230,13 @@ export default class Dashboard extends React.Component {
     dispatch(Actions.fetchOices(story.id, story.language));
   }
 
+  handleOnCopyStoryRequest = async () => {
+    const story = this.state.selectedItem;
+    const { dispatch } = this.props;
+    await dispatch(StoryAction.forkStory(story.id));
+    await dispatch(StoryAction.fetchStories());
+  }
+
   handleStoryDetailsCloseRequest = () => {
     this.setState({ selectedItem: undefined });
   }
@@ -262,6 +269,7 @@ export default class Dashboard extends React.Component {
           story={selectedItem}
           onAddOice={this.handleOnAddOiceRequest}
           onCopyOice={this.handleOnCopyOiceRequest}
+          onCopyStory={this.handleOnCopyStoryRequest}
           onOpenStorySettingModal={this.handleOnOpenStorySettingModal}
           onRequestClose={this.handleStoryDetailsCloseRequest}
         />

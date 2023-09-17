@@ -36,6 +36,7 @@ export default class StoryDetails extends React.Component {
     story: PropTypes.object,
     onAddOice: PropTypes.func,
     onCopyOice: PropTypes.func,
+    onCopyStory: PropTypes.func,
     onOpenStorySettingModal: PropTypes.func,
     onRequestClose: PropTypes.func,
   }
@@ -66,6 +67,11 @@ export default class StoryDetails extends React.Component {
   handleOnClickStorySettingButton = () => {
     const { onOpenStorySettingModal } = this.props;
     if (onOpenStorySettingModal) onOpenStorySettingModal();
+  }
+
+  handleClickCopyStoryButton = () => {
+    const { onCopyStory } = this.props;
+    if (onCopyStory) onCopyStory();
   }
 
   handleOnClickOiceRow = ({ target }, index) => {
@@ -194,6 +200,12 @@ export default class StoryDetails extends React.Component {
                 onClick={this.handleOnClickStorySettingButton}
               />
             }
+            {isDashboard && (
+              <FlatButton
+                icon={<CopyIcon />}
+                onClick={this.handleClickCopyStoryButton}
+              />
+            )}
           </div>
           {isDashboard &&
             <div className="story-language">
