@@ -13,6 +13,7 @@ const initialState = {
     sentSMS: false,
     userCountryCode: undefined,
   },
+  plaintext: '',
   relatedOices: [],
 };
 
@@ -27,6 +28,10 @@ export default handleActions({
   }),
   [Actions.incrementedOiceViewCount]: (state, { payload }) => ({
     ...state,
+  }),
+  [Actions.fetchedOicePlaintext]: (state, { payload }) => ({
+    ...state,
+    plaintext: payload,
   }),
   [Actions.fetchedCountriesJson]: (state, { payload }) => (
     update(state, {

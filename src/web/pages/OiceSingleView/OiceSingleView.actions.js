@@ -26,6 +26,13 @@ export const fetchOiceFromStory = (userId, storyId) => (dispatch) => {
     .then(oices => dispatch(fetchedRelatedOices(oices)));
 };
 
+export const fetchedOicePlaintext = createAction('OICE_PLAINTEXT_FETCHED');
+export const fetchOicePlaintext = (oiceId, language) => (dispatch) => {
+  APIHandler(dispatch, OiceAPI.fetchOicePlaintext(oiceId, language)
+    .then((text) => {
+      dispatch(fetchedOicePlaintext(text));
+    }));
+};
 export const fetchedOiceInfo = createAction('OICE_INFO_FETCHED');
 export const fetchOiceInfo = (oiceUuid, language) => (dispatch) => {
   APIHandler(dispatch, OiceAPI.fetchOiceOgByUUID(oiceUuid, language)
@@ -33,6 +40,7 @@ export const fetchOiceInfo = (oiceUuid, language) => (dispatch) => {
       dispatch(fetchedOiceInfo(oice));
       dispatch(fetchOiceCredits(oice.id));
       dispatch(fetchOiceFromStory(oice.author.id, oice.storyId));
+      dispatch(fetchOicePlaintext(oice.id, language));
     }));
 };
 

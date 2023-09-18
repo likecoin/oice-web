@@ -230,6 +230,18 @@ export const incrementOiceViewCount = oiceId =>
     .set(API_HEADER)
     .then(response => response.ok);
 
+export const fetchOicePlaintext = (oiceId, language) =>
+  request.get(`${API_URL}oice/${oiceId}/plaintext`)
+    .withCredentials()
+    .query({ language })
+    .set(API_HEADER)
+    .then((response) => {
+      if (response.ok) {
+        return response.body.text;
+      }
+      return '';
+    });
+
 export const countOiceWord = (oiceId, language) =>
   request.get(`${API_URL}oice/${oiceId}/wordcount`)
     .withCredentials()

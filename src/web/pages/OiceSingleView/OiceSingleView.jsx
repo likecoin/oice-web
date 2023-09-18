@@ -97,6 +97,7 @@ export default class OiceSingleView extends React.Component {
     location: PropTypes.object.isRequired,
     t: PropTypes.func.isRequired,
     credits: PropTypes.object,
+    plaintext: PropTypes.string,
     oice: PropTypes.object,
     params: PropTypes.object,
     relatedOices: PropTypes.array,
@@ -469,6 +470,7 @@ export default class OiceSingleView extends React.Component {
       oice,
       credits,
       relatedOices,
+      plaintext,
     } = this.props;
     const {
       isEndedPlaying,
@@ -520,20 +522,17 @@ export default class OiceSingleView extends React.Component {
       && relatedOices[relatedOices.length - 1] !== oice.id
     );
 
-    // no scrolling for responsive behavior in iOS
-    const iframeHTML = {
-      __html: `
+    const iframe = (
+      <div className="iframe-wrapper">
         <iframe
           allow="autoplay"
-          class="oice-player"
+          className="oice-player"
           scrolling="no"
-          src="${this.getOiceViewUrl(isPreview, oice)}"
-          title="${oice.uuid}"
+          src={this.getOiceViewUrl(isPreview, oice)}
+          title={oice.ogTitle}
         />
-      `,
-    };
-
-    const iframe = <div className="iframe-wrapper" dangerouslySetInnerHTML={iframeHTML} />;
+      </div>
+    );
     const oiceInfoProps = {
       labelSize: oicePlayerSize / 30,
       subtitleSize: oicePlayerSize / 25,
@@ -560,9 +559,9 @@ export default class OiceSingleView extends React.Component {
               subtitle={`${oice.storyName} ${oiceChapter}`}
               title={oice.name}
               onClick={this.handlePlayOiceButtonClick}
-            />
-          }
+            />}
           {isMediaAutoplayable && iframe}
+          {plaintext && <noscript>{ plaintext }</noscript>}
           {shouldShowUpNext && isEndedPlaying &&
             <UpNext
               {...oiceInfoProps}
