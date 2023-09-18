@@ -55,7 +55,7 @@ router.get('/', async (req, res, next) => {
     const oEmbedResponse = {
       type: 'rich',
       version: '1.0',
-      title: oice.ogTitle || oice.name,
+      title: oice.ogTitle || `${oice.storyName} - ${oice.name}`,
       url,
       thumbnail_url: oice.storyCover || `${baseURL}/static/img/oice-default-cover.jpg`,
       thumbnail_width: thumbnailLength,

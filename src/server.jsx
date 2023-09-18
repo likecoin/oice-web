@@ -134,6 +134,7 @@ server.get('*', (req, res) => {
           meta,
           jsonLds: props.jsonLds || [],
           module: props.module,
+          oice: props.oice,
         };
 
         const htmlString = renderToStaticMarkup(

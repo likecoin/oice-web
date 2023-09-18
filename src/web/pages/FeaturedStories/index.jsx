@@ -521,7 +521,7 @@ export default class FeaturedStories extends React.Component {
           src={`https://cloud.oice.com/view/${story.oice.uuid}?lang=${story.oice.language}`}
           scrolling="no"
           seamless="seamless"
-          title="story.oice.uuid"
+          title={story.oice.ogTitle}
         />
         <Motion style={{ opacity: spring(isCallForActionShowed ? 1 : 0) }}>
           {style => isCallForActionShowed && (

@@ -26,6 +26,7 @@ export default class IndexHTML extends React.Component {
     meta: PropTypes.object,
     jsonLds: PropTypes.array,
     module: PropTypes.string,
+    oice: PropTypes.object,
   }
 
   static defaultProps = {
@@ -40,6 +41,7 @@ export default class IndexHTML extends React.Component {
       children,
       module,
       meta,
+      oice,
     } = this.props;
 
     const modules = ['web', 'editor', 'asset-library'];
@@ -83,6 +85,18 @@ export default class IndexHTML extends React.Component {
           <meta property="al:android:package" content={ANDROID_APP.PACKAGE} />
           <meta property="al:android:app_name" content={ANDROID_APP.NAME} />
           <link rel="canonical" href={meta.ogUrl} />
+          {oice && <link
+            rel="alternate"
+            type="application/json+oembed"
+            href={`https://oice.com/oembed?url=${encodeURIComponent(meta.ogUrl)}&format=json`}
+            title={meta.title}
+          />}
+          {oice && <link
+            rel="alternate"
+            type="text/xml+oembed"
+            href={`https://oice.com/oembed?url=${encodeURIComponent(meta.ogUrl)}&format=xml`}
+            title={meta.title}
+          />}
           <meta content={meta.title} property="og:title" />
           <meta content={meta.ogUrl} property="og:url" />
           <meta content={meta.ogImage} property="og:image" />
