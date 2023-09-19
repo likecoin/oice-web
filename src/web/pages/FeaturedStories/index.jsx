@@ -353,10 +353,10 @@ export default class FeaturedStories extends React.Component {
       - SLIDE_WIDTH_WITH_MARGIN / 2
     );
 
-    const defaultStyle = { width, opacity: 0, left };
+    const defaultStyle = { width, opacity: isActive ? 1 : 0, left };
     const style = {
       width: spring(width, SPRING_SETTING_1),
-      opacity: isMarginal ? 0 : 1,
+      opacity: defaultStyle.opacity || (isMarginal ? 0 : 1),
       left: isMarginal ? left : spring(left, SPRING_SETTING_1),
     };
 
@@ -487,21 +487,21 @@ export default class FeaturedStories extends React.Component {
     return (
       <div key={key} style={parsedStyle}>
         <div>
-          {!story.titleLogo ? (
-            <h1>
-              <Link
-                style={{ color: 'inherit', textDecoration: 'inherit' }}
-                to={`/story/${story.oice.uuid}?lang=${story.oice.language}`}
-              >
+          <Link
+            style={{ color: 'inherit', textDecoration: 'inherit' }}
+            to={`/story/${story.oice.uuid}?lang=${story.oice.language}`}
+          >
+            {!story.titleLogo ? (
+              <h1>
                 {story.name}
-              </Link>
-            </h1>
-          ) : (
-            <img src={story.titleLogo} alt={story.name} role="presentation" />
-          )}
-          {!!story.description &&
-            <p className="story-description">{story.description}</p>
-          }
+              </h1>
+            ) : (
+              <img src={story.titleLogo} alt={story.name} role="presentation" />
+            )}
+            {!!story.description &&
+              <p className="story-description">{story.description}</p>
+            }
+          </Link>
         </div>
       </div>
     );

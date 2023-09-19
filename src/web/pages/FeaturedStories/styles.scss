@@ -333,10 +333,6 @@
           transform: translateY(1px);
         }
       }
-
-      @media screen and (max-width: $screen-tablet - 1px) {
-        display: none;
-      }
     }
 
     .prev-button {
