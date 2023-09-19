@@ -515,6 +515,7 @@ export default class OiceSingleView extends React.Component {
     const episodeValues = relatedOices.map(o => ({
       icon: null,
       text: `${o.episode}: ${o.name}`,
+      href: `/story/${o.uuid}?lang=${o.language}`,
     }));
 
     const shouldShowUpNext = (
