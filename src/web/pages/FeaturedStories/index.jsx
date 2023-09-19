@@ -379,7 +379,11 @@ export default class FeaturedStories extends React.Component {
             style={interpolatedStyle}
           >
             <div style={{ backgroundImage: `url(${coverURL})` }}>
-              <a href={`/story/${story.oice.uuid}?lang=${story.oice.language}`} onClick={(e) => { e.preventDefault(); return !isActive && this.selectStorySlide(index); }}>
+              <a
+                href={`/story/${story.oice.uuid}?lang=${story.oice.language}`}
+                alt={story.name}
+                onClick={(e) => { e.preventDefault(); return !isActive && this.selectStorySlide(index); }}
+              >
                 {isActive && this.renderOicePlayer(story)}
               </a>
             </div>

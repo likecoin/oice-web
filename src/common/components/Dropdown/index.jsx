@@ -371,14 +371,23 @@ export default class Dropdown extends React.Component {
               className="dropdown-menu-row-item"
             >
               {value.icon && <div className="dropdown-icon-image" style={{ backgroundImage: `url('${value.icon}')` }} />}
+              {value.href &&
+              <a
+                className="dropdown-menu-item"
+                alt={value.text}
+                onClick={(e) => { e.preventDefault(); this.onSelectMenuItem(index); }}
+              >
+                {value.text}
+              </a>}
+              {!value.href &&
               <div
                 className="dropdown-menu-item"
                 onClick={() => this.onSelectMenuItem(index)}
               >
                 {value.text}
-              </div>
+              </div>}
             </div>
-          ))
+            ))
         )}
         {searchValue.length > 0 &&
           filteredUnselectedIndexedValues.length === 0 &&
