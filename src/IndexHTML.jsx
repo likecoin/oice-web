@@ -97,6 +97,11 @@ export default class IndexHTML extends React.Component {
             href={`https://oice.com/oembed?url=${encodeURIComponent(meta.ogUrl)}&format=xml`}
             title={meta.title}
           />}
+          {oice && oice.supportedLanguages && oice.supportedLanguages.map(l => (<link
+            rel="alternate"
+            hreflang={l}
+            href={`${meta.ogUrl.split('?')[0]}?lang=${l}`}
+          />))}
           <meta content={meta.title} property="og:title" />
           <meta content={meta.ogUrl} property="og:url" />
           <meta content={meta.ogImage} property="og:image" />
