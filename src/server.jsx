@@ -98,8 +98,9 @@ server.get('*', (req, res) => {
     } else if (redirectLocation) {
       res.redirect(302, redirectLocation.pathname + redirectLocation.search);
     } else {
-      const { pathname } = renderProps.location;
-      const fullURL = `${baseURL}${pathname}`;
+      const { pathname, query } = renderProps.location;
+      const { lang } = query;
+      const fullURL = `${baseURL}${pathname}${lang ? `?lang=${lang}` : ''}`;
 
       const defaultOg = {
         url: fullURL,

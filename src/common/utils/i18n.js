@@ -33,11 +33,12 @@ const options = {
   },
   detection: {
     // order and from where user language should be detected
-    order: ['cookie', 'localStorage', 'navigator', 'header', 'htmlTag'],
+    order: ['querystring', 'cookie', 'localStorage', 'navigator', 'header', 'htmlTag'],
 
     // keys or params to lookup language from
     lookupCookie: 'i18n-oice',
     lookupLocalStorage: 'i18n-oice',
+    lookupQuerystring: 'lang',
 
     // cache user language on
     caches: ['cookie', 'localStorage'],
