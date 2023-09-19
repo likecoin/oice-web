@@ -136,6 +136,7 @@ server.get('*', (req, res) => {
           jsonLds: props.jsonLds || [],
           module: props.module,
           oice: props.oice,
+          languages: props.languages,
         };
 
         const htmlString = renderToStaticMarkup(
@@ -158,6 +159,7 @@ server.get('*', (req, res) => {
 
       if (isPathStartWith('$') || isPathStartWith('about')) {
         props.module = 'web';
+        props.languages = ['zh-HK', 'zh-TW', 'en', 'ja'];
         // TODO: Fetch story from featured stories API
       } else if (isPathStartWith('story/[0-9a-f]{32}/?$')) {
         // Oice single view
@@ -168,6 +170,7 @@ server.get('*', (req, res) => {
         try {
           const oice = await OiceAPI.fetchOiceOgByUUID(uuid);
           props.oice = oice;
+          props.languages = oice.supportedLanguages;
           props.meta = {
             ogDescription: oice.ogDescription || oice.description,
             ogImage: oice.storyCover || `${baseURL}/static/img/oice-default-cover.jpg`,

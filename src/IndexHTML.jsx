@@ -27,11 +27,13 @@ export default class IndexHTML extends React.Component {
     jsonLds: PropTypes.array,
     module: PropTypes.string,
     oice: PropTypes.object,
+    languages: PropTypes.array,
   }
 
   static defaultProps = {
     meta: {},
     jsonLds: [],
+    languages: [],
     module: 'web',
   }
 
@@ -42,6 +44,7 @@ export default class IndexHTML extends React.Component {
       module,
       meta,
       oice,
+      languages,
     } = this.props;
 
     const modules = ['web', 'editor', 'asset-library'];
@@ -97,7 +100,7 @@ export default class IndexHTML extends React.Component {
             href={`https://oice.com/oembed?url=${encodeURIComponent(meta.ogUrl)}&format=xml`}
             title={meta.title}
           />}
-          {oice && oice.supportedLanguages && oice.supportedLanguages.map(l => (<link
+          {languages.map(l => (<link
             rel="alternate"
             hreflang={l}
             href={`${meta.ogUrl.split('?')[0]}?lang=${l}`}
