@@ -5,7 +5,7 @@
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://oice.com/</loc>
+    <loc>https://oice.com</loc>
   </url>
   <url>
     <loc>https://oice.com/story</loc>
@@ -80,15 +80,34 @@
   <url>
     <loc>https://oice.com/story/8a0c62938dbf434c8fe0a8a0ed49650d</loc>
   </url>
+  <!-- 1988 -->
+  <url>
+    <loc>https://oice.com/story/33866cabf01c437a92178f4d1970c88d</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/2dd07486efad43b78e94eb0799db845f</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/5e616ee40491401f85d3baa27987d51b</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/b459ff4f2b9346a6ab2ac180870c4632</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/f664f9646ed548b4b9d9f63256893f8b</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/2af8682e2c27491ca58b4f802d7c7208</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/story/4179583173c545dc94f1f2ae8ea8cddf</loc>
+  </url>
   <!-- default -->
   <url>
     <loc>https://oice.com/story/e09da1db2de84eb29b31fa5026b4d054</loc>
   </url>
   <url>
-    <loc>https://oice.com/story/33866cabf01c437a92178f4d1970c88d/</loc>
-  </url>
-  <url>
-    <loc>https://oice.com/story/088a8918500f4dcf9d4954fba153e454/</loc>
+    <loc>https://oice.com/story/088a8918500f4dcf9d4954fba153e454</loc>
   </url>
   <url>
     <loc>https://oice.com/story/7bcc511ee3a64bcc9b61a65d350c4f6b</loc>
