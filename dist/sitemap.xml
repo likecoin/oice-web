@@ -2,10 +2,13 @@
 <urlset
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+      xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://oice.com</loc>
+    <xhtml:link rel="alternate" hreflang="zh-HK" href="https://oice.com?lang=zh-HK" />
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://oice.com?lang=zh-TW" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://oice.com?lang=en" />
+    <xhtml:link rel="alternate" hreflang="ja" href="https://oice.com?lang=ja" />
   </url>
   <url>
     <loc>https://oice.com/story</loc>
