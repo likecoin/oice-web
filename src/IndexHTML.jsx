@@ -76,7 +76,7 @@ export default class IndexHTML extends React.Component {
     }].concat(this.props.jsonLds);
 
     return (
-      <html lang={meta.ogLocale}>
+      <html lang={meta.locale}>
         <head>
           <meta charSet="UTF-8" />
           <meta content={meta.viewport} name="viewport" />

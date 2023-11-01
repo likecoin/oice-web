@@ -124,7 +124,8 @@ server.get('*', (req, res) => {
         const meta = {
           ogDescription: props.meta.ogDescription || t('site:description'),
           ogImage: props.meta.ogImage || defaultOg.image,
-          ogLocale: (props.meta.ogLocale || req.i18n.language).replace('-', '_'),
+          locale: props.meta.locale || req.i18n.language,
+          ogLocale: (props.meta.locale || req.i18n.language).replace('-', '_'),
           ogUrl: props.meta.ogUrl || defaultOg.url,
           title: props.meta.title || getHTMLTitle(t, '', props.module),
           viewport,
@@ -174,7 +175,7 @@ server.get('*', (req, res) => {
           props.meta = {
             ogDescription: oice.ogDescription || oice.description,
             ogImage: oice.storyCover || `${baseURL}/static/img/oice-default-cover.jpg`,
-            ogLocale: oice.locale, // Facebook requires underscore,
+            locale: oice.locale,
             ogUrl: defaultOg.url,
             title: getHTMLTitle(t, oice.ogTitle || `${oice.storyName} - ${oice.name}`, props.module),
           };
