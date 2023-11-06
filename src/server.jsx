@@ -236,6 +236,21 @@ server.get('*', (req, res) => {
                 url: `${baseURL}/user/${library.author.id}`,
               }],
             }];
+            if (library.price) {
+              props.jsonLds.push({
+                '@context': 'http://www.schema.org',
+                '@type': 'Product',
+                name: library.name,
+                image: [library.image],
+                description: library.description,
+                url: `${baseURL}/store/library/${libraryId}`,
+                offers: {
+                  '@type': 'Offer',
+                  price: library.price,
+                  priceCurrency: 'USD',
+                },
+              });
+            }
           } catch (err) {
             console.error('Error in fetchLibrary()');
             console.error(err);
