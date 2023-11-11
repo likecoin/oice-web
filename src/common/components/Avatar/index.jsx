@@ -44,6 +44,7 @@ const Avatar = (props) => {
       {src ? (
         <img
           alt={label}
+          title={label}
           className="avatar-image"
           src={src}
           style={style}
