@@ -7,7 +7,7 @@ import OutlineButton from 'ui-elements/OutlineButton';
 import Progress from 'ui-elements/Progress';
 import ToggleButton from 'ui-elements/ToggleButton';
 
-import { getThumbnail } from 'common/utils';
+import { getThumbnail, getOiceImage } from 'common/utils';
 
 import { STRIPE_KEY } from 'common/constants/stripe';
 
@@ -44,6 +44,40 @@ CreditSection.propTypes = {
 CreditSection.defaultProps = {
   title: '',
   users: [],
+};
+
+function OiceSection(props) {
+  const { title, oices } = props;
+  return (
+    <div className="credit-section">
+      <h3>{title}</h3>
+      {oices &&
+        <div className="credit-users">
+          {oices.map(oice =>
+            oice && (
+              <Avatar
+                key={oice.id}
+                label={`${oice.name} - ${oice.story.name}`}
+                size={32}
+                src={getOiceImage(oice)}
+                link={oice.shareUrl}
+              />
+            )
+          )}
+        </div>
+      }
+    </div>
+  );
+}
+
+OiceSection.propTypes = {
+  title: PropTypes.string,
+  oices: PropTypes.array,
+};
+
+OiceSection.defaultProps = {
+  title: '',
+  oices: [],
 };
 
 
@@ -171,6 +205,12 @@ function LibraryInfo(props) {
             <CreditSection
               title={t('credits')}
               users={library.credits}
+            />
+          }
+          {library.oices && library.oices.length > 0 &&
+            <OiceSection
+              title={t('oices')}
+              oices={library.oices}
             />
           }
         </div>

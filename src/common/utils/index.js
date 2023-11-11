@@ -181,3 +181,9 @@ export function getWindowHeight() {
     document.body.clientHeight
   );
 }
+
+export function getOiceImage(oice) {
+  return oice ?
+    oice.ogImage.button || oice.image.button || `${window.location.origin}/static/img/oice-default-cover.jpg` :
+    '';
+}
