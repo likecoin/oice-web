@@ -26,7 +26,7 @@ function CreditSection(props) {
                 label={user.displayName}
                 size={32}
                 src={getThumbnail(user.avatar, 200)}
-                onClick={() => window.location.href = `/user/${user.id}`}
+                link={`/user/${user.id}`}
               />
             )
           )}

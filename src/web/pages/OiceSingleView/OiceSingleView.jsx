@@ -390,6 +390,7 @@ export default class OiceSingleView extends React.Component {
           <Avatar
             key={user.id}
             label={user.displayName}
+            link={getAvatarLink(user)}
             size={40}
             src={getThumbnail(user.avatar, 200)}
             mini
