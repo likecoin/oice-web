@@ -858,6 +858,7 @@
     "author": "Creator",
     "authorWithName": "$t(author) {{author}}",
     "credits": "Credits",
+    "oices": "Used by",
     "public": "Public",
     "private": "Private",
     "forSale": "For Sale",

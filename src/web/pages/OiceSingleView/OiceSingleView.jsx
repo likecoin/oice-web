@@ -36,6 +36,7 @@ import {
   handleOgMetaChanges,
   convertDataURLtoFile,
   isMobileAgent,
+  getOiceImage,
 } from 'common/utils';
 import * as LogActions from 'common/actions/log';
 
@@ -73,12 +74,6 @@ function createDumbAudioElement() {
 function removeDumbAudioElement() {
   const sound = document.getElementById('audio-player');
   if (sound) sound.remove();
-}
-
-function getOiceImage(oice) {
-  return oice ?
-    oice.ogImage.button || oice.image.button || `${window.location.origin}/static/img/oice-default-cover.jpg` :
-    '';
 }
 
 function getAvatarLink({ id, username, likeCoinId }) {

@@ -850,6 +850,7 @@
     "author": "著者",
     "authorWithName": "$t(author) {{author}}",
     "credits": "参加者",
+    "oices": "作品",
     "public": "共有",
     "private": "プライベート",
     "forSale": "販売",
