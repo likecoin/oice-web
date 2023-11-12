@@ -183,27 +183,29 @@ export default class LibraryGridItem extends React.Component {
     );
     return (
       <li {... { className }} onClick={this.handleClick}>
-        <div>
-          <div className="library-cover" style={styles.cover} />
-          {disabled &&
-            <div className="loading"><Progress.LoadingIndicator /></div>
-          }
-        </div>
-        <h3>{library.name}</h3>
-        <p>{t('label.numberOfAssets', { count: library.assetCount })}</p>
+        <a href={`/store/library/${library.id}`} onClick={e => e.preventDefault()}>
+          <div>
+            <div className="library-cover" style={styles.cover} />
+            {disabled &&
+              <div className="loading"><Progress.LoadingIndicator /></div>
+            }
+          </div>
+          <h3>{library.name}</h3>
+          <p>{t('label.numberOfAssets', { count: library.assetCount })}</p>
 
-        {type !== STORE_TYPE.PURCHASEDLIBRARIES &&
-          this.renderLibraryPriceInfo(libraryStatus)
-        }
-        {type !== STORE_TYPE.MYLIBRARIES &&
-          this.renderLibraryTopLabel(type)
-        }
-        {type === STORE_TYPE.MYLIBRARIES &&
-          this.renderMyLibraryStatusFlag(libraryStatus)
-        }
-        {type === STORE_TYPE.PURCHASEDLIBRARIES &&
-          this.renderPurchasedLibraryToggle()
-        }
+          {type !== STORE_TYPE.PURCHASEDLIBRARIES &&
+            this.renderLibraryPriceInfo(libraryStatus)
+          }
+          {type !== STORE_TYPE.MYLIBRARIES &&
+            this.renderLibraryTopLabel(type)
+          }
+          {type === STORE_TYPE.MYLIBRARIES &&
+            this.renderMyLibraryStatusFlag(libraryStatus)
+          }
+          {type === STORE_TYPE.PURCHASEDLIBRARIES &&
+            this.renderPurchasedLibraryToggle()
+          }
+        </a>
       </li>
     );
   }
