@@ -161,7 +161,7 @@ export default class AssetSection extends React.Component {
 
           <div className="section-body">
             <aside>
-              <h2>{t('label.assetStore')}</h2>
+              <h2><a href="/store">{t('label.assetStore')}</a></h2>
               <p>{t('label.assetStoreDescription')}</p>
             </aside>
 
