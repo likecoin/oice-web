@@ -184,10 +184,12 @@ export default class LibraryGridItem extends React.Component {
     return (
       <li {... { className }} onClick={this.handleClick}>
         <div>
-          <div className="library-cover" style={styles.cover} />
-          {disabled &&
-            <div className="loading"><Progress.LoadingIndicator /></div>
-          }
+          <a href={`/store/library/${library.id}`} style={{ textDecoration: 'inherit' }}onClick={e => e.preventDefault()}>
+            <div className="library-cover" style={styles.cover} />
+            {disabled &&
+              <div className="loading"><Progress.LoadingIndicator /></div>
+            }
+          </a>
         </div>
         <h3>{library.name}</h3>
         <p>{t('label.numberOfAssets', { count: library.assetCount })}</p>
