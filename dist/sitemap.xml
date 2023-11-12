@@ -11,13 +11,43 @@
     <xhtml:link rel="alternate" hreflang="ja" href="https://oice.com?lang=ja" />
   </url>
   <url>
-    <loc>https://oice.com/story</loc>
-  </url>
-  <url>
     <loc>https://oice.com/tutorial</loc>
   </url>
   <url>
     <loc>https://oice.com/edit</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/store</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/store/collection/featured/features</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/store/collection/featured/cc</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/store/collection/featured/characters</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/store/collection/featured/bg</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/store/collection/featured/sfx</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/store/collection/featured/competition</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/store/collection/featured/likecoin</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/store/collection/latest</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/store/collection/free</loc>
+  </url>
+  <url>
+    <loc>https://oice.com/store/collection/paid</loc>
   </url>
   <url>
     <loc>https://oice.com/competition1718</loc>
