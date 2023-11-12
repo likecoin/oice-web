@@ -442,8 +442,8 @@ export default class OiceSingleView extends React.Component {
 
   renderDirectorSection = (oice) => {
     const { t } = this.props;
-    const authorPageLink = getAvatarLink(oice.author);
-    return (
+    const authorPageLink = oice.author ? getAvatarLink(oice.author) : '';
+    return (oice.author &&
       <div className="oice-single-view__director">
         <Avatar
           label={oice.author.displayName}

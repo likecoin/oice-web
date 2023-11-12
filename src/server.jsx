@@ -187,13 +187,13 @@ server.get('*', (req, res) => {
             image: [oice.storyCover || `${baseURL}/static/img/oice-default-cover.jpg`],
             url: oice.shareUrl,
             dateModified: oice.updatedAt,
-            author: {
+            author: oice.author ? {
               '@type': 'Person',
               name: oice.author.displayName,
               image: oice.author.avatar,
               description: oice.author.description,
               url: `${baseURL}/user/${oice.author.id}`,
-            },
+            } : undefined,
             partOfSeries: {
               '@context': 'https://schema.org',
               '@type': 'CreativeWorkSeries',
@@ -229,12 +229,12 @@ server.get('*', (req, res) => {
               image: [library.cover],
               datePublished: library.launchedAt,
               dateModified: library.updatedAt,
-              author: [{
+              author: library.author ? [{
                 '@type': 'Person',
                 name: library.author.displayName,
                 image: library.author.avatar,
                 url: `${baseURL}/user/${library.author.id}`,
-              }],
+              }] : undefined,
             }];
             if (library.price) {
               props.jsonLds.push({
