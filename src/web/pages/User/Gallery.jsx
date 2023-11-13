@@ -20,6 +20,7 @@ export default class Gallery extends React.Component {
     items: PropTypes.array,
     newItemTitleString: PropTypes.string,
     getLink: PropTypes.func,
+    disableLink: PropTypes.bool,
     onSelect: PropTypes.func,
     onSelectAddItem: PropTypes.func,
     onSelectionCheck: PropTypes.func,
@@ -45,6 +46,7 @@ export default class Gallery extends React.Component {
       expandedChild,
       galleryExpansionPanelHeight,
       getLink,
+      disableLink,
       items,
       newItemTitleString,
       onSelectAddItem,
@@ -93,6 +95,7 @@ export default class Gallery extends React.Component {
               key={item.id}
               item={item}
               getLink={getLink && this.getLink}
+              disableLink={disableLink}
               selected={selected}
               style={itemStyle}
               onClick={this.handleItemClick}

@@ -524,6 +524,8 @@ export default class UserPage extends React.Component {
           galleryExpansionPanelHeight={galleryExpansionPanelHeight}
           items={stories}
           type="story"
+          getLink={this.getLink}
+          disableLink
           onSelect={this.handleSelect}
         />
         <Gallery

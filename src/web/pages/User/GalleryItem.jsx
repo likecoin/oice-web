@@ -13,6 +13,7 @@ const GalleryItem = (props) => {
   const {
     item,
     getLink,
+    disableLink,
     selected,
     style,
     onClick,
@@ -41,6 +42,7 @@ const GalleryItem = (props) => {
     Wrapper = 'a';
     wrapperProps.href = getLink(item);
     wrapperProps.target = '_blank';
+    if (disableLink) wrapperProps.onClick = e => e.preventDefault();
   }
 
   return (
