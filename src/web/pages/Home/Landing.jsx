@@ -31,7 +31,12 @@ function LandingSection(props) {
 
             {/* Slogan */}
             <div className="slogan">
-              <div dangerouslySetInnerHTML={{ __html: t('label.slogan') }} />
+              <div>
+                <h1
+                  dangerouslySetInnerHTML={{ __html: t('label.slogan') }}
+                  style={{ fontSize: 'inherit', fontWeight: 'inherit', margin: 'inherit' }}
+                />
+              </div>
             </div>
 
             {/* Login buttons */}
