@@ -102,7 +102,7 @@ export default class IndexHTML extends React.Component {
           />}
           {languages.map(l => (<link
             rel="alternate"
-            hreflang={l}
+            hrefLang={l}
             href={`${meta.ogUrl.split('?')[0]}?lang=${l}`}
           />))}
           <meta content={meta.title} property="og:title" />
