@@ -161,6 +161,9 @@ server.get('*', (req, res) => {
       if (isPathStartWith('$') || isPathStartWith('about')) {
         props.module = 'web';
         props.languages = ['zh-HK', 'zh-TW', 'en', 'ja'];
+        props.meta = {
+          title: getHTMLTitle(t, t('LandingSection:title'), props.module),
+        };
         // TODO: Fetch story from featured stories API
       } else if (isPathStartWith('story/[0-9a-f]{32}/?$')) {
         // Oice single view
