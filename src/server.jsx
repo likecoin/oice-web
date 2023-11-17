@@ -300,7 +300,7 @@ server.get('*', (req, res) => {
           }
           const { user } = props;
           props.meta = {
-            ogDescription: user.displayName,
+            ogDescription: `${user.displayName} - ${user.description || 'oice user profile'}`,
             ogImage: user.avatar,
             title: getHTMLTitle(t, user.displayName, props.module),
           };
