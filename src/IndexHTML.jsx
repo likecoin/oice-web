@@ -105,6 +105,11 @@ export default class IndexHTML extends React.Component {
             hrefLang={l}
             href={`${meta.ogUrl.split('?')[0]}?lang=${l}`}
           />))}
+          <link
+            rel="alternate"
+            hrefLang="x-default"
+            href={`${meta.ogUrl.split('?')[0]}`}
+          />
           <meta content={meta.title} property="og:title" />
           <meta content={meta.ogUrl} property="og:url" />
           <meta content={meta.ogImage} property="og:image" />
