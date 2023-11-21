@@ -114,6 +114,7 @@ export default class OiceSingleView extends React.Component {
       isStartedPlaying: false,
       isEndedPlaying: false,
       isPreview: /preview\/?$/.test(window.location.pathname),
+      canShare: !!navigator.share,
       language: _get(this.props, 'location.query.lang'),
       isMobileSize: false,
       oicePlayerSize: 0,
@@ -261,6 +262,17 @@ export default class OiceSingleView extends React.Component {
 
   handleCreatorCTA = () => {
     window.location.pathname = '/about';
+  }
+
+  handleShare = () => {
+    const { oice } = this.props;
+    if (navigator.share) {
+      navigator.share({
+        url: oice.shareUrl,
+        title: oice.ogTitle || `${oice.storyName} - ${oice.name}`,
+        text: oice.ogDescription || oice.description || '',
+      });
+    }
   }
 
   handleScreenCaptureButtonClick = () => {
@@ -471,6 +483,7 @@ export default class OiceSingleView extends React.Component {
     const {
       isEndedPlaying,
       isPreview,
+      canShare,
       marginLeft,
       isMobileSize,
       oicePlayerSize,
@@ -526,7 +539,7 @@ export default class OiceSingleView extends React.Component {
           className="oice-player"
           scrolling="no"
           src={this.getOiceViewUrl(isPreview, oice)}
-          title={oice.ogTitle}
+          title={oice.ogTitle || `${oice.storyName} - ${oice.name}`}
         />
       </div>
     );
@@ -610,6 +623,16 @@ export default class OiceSingleView extends React.Component {
                 onClick={this.handleAppCTA}
               />
             </div> */}
+            {canShare &&
+              <div className="share">
+                <OutlineButton
+                  color="light-grey"
+                  label={t('label.shareThisStory')}
+                  onClick={this.handleShare}
+                />
+              </div>
+            }
+            {canShare && <hr />}
             <div className="be-creator">
               <AppIcon size={48} />
               <OutlineButton
