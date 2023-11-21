@@ -81,6 +81,7 @@ export default class IndexHTML extends React.Component {
           <meta charSet="UTF-8" />
           <meta content={meta.viewport} name="viewport" />
           <meta content={FACEBOOK_APP_ID} property="fb:app_id" />
+          <meta name="theme-color" content="#0097e8" />
           <meta property="al:ios:url" content={meta.ogUrl} />
           <meta property="al:ios:app_store_id" content={IOS_APP.STORE_ID} />
           <meta property="al:ios:app_name" content={IOS_APP.NAME} />
