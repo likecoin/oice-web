@@ -196,6 +196,7 @@ server.get('*', (req, res) => {
               image: oice.author.avatar,
               description: oice.author.description,
               url: `${baseURL}/user/${oice.author.id}`,
+              identifier: oice.author.id,
             } : undefined,
             partOfSeries: {
               '@context': 'https://schema.org',
@@ -237,6 +238,7 @@ server.get('*', (req, res) => {
                 name: library.author.displayName,
                 image: library.author.avatar,
                 url: `${baseURL}/user/${library.author.id}`,
+                identifier: library.author.id,
               }] : undefined,
             }];
             if (library.price) {
@@ -310,13 +312,13 @@ server.get('*', (req, res) => {
           props.jsonLds = [{
             '@context': 'https://schema.org',
             '@type': 'ProfilePage',
-            image: [user.avatar],
-            author: {
+            mainEntity: {
               '@type': 'Person',
               name: user.displayName,
               image: user.avatar,
               description: user.description,
               url: `${baseURL}/user/${user.id}`,
+              identifier: user.id,
             },
           }];
         }
