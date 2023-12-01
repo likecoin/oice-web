@@ -15,12 +15,14 @@ $sub-navbar-narrow-height: 32px;
   border-bottom: 1px solid $light-grey-3;
   background-color: $pure-white;
 
-  span {
+  a, span {
     transition: font-size 0.15s ease-in-out;
 
     font-size: 32px;
     font-weight: 200;
     line-height: 50px;
+
+    text-decoration: inherit;
 
     &.secondaryText {
       padding: 0 padding(1/3);
@@ -39,9 +41,10 @@ $sub-navbar-narrow-height: 32px;
     height: $sub-navbar-narrow-height;
     padding-top: #{$nav-bar-height + $sub-navbar-narrow-height};
 
-    span {
+    a, span {
       font-size: 16px;
       line-height: $sub-navbar-narrow-height;
+      text-decoration: inherit;
     }
   }
 

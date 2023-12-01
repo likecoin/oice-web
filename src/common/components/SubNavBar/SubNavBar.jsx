@@ -10,7 +10,7 @@ import './SubNavBar.style.scss';
 
 function SubNavBar(props) {
   const {
-    fluid, icon, narrow, secondaryText, text,
+    fluid, icon, narrow, secondaryText, text, textHref,
   } = props;
   const className = classNames(props.className, { narrow });
   const titleClassName = classNames('title', {
@@ -19,7 +19,13 @@ function SubNavBar(props) {
   const id = 'sub-navbar';
   return (
     <Container {...{ id, className, fluid }}>
-      <span className={titleClassName} onClick={props.onClickText}>{text}</span>
+      <a
+        href={textHref}
+        className={titleClassName}
+        onClick={(e) => { e.preventDefault(); if (props.onClickText) props.onClickText(e); }}
+      >
+        {text}
+      </a>
       {secondaryText && <span className="secondaryText">{`> ${secondaryText}`}</span>}
       {icon && <FlatButton icon={icon} onClick={props.onClickIconButton} />}
     </Container>
@@ -33,6 +39,7 @@ SubNavBar.propTypes = {
   narrow: PropTypes.bool,
   secondaryText: PropTypes.string,
   text: PropTypes.string,
+  textHref: PropTypes.string,
   onClickIconButton: PropTypes.func,
   onClickText: PropTypes.func,
 };
@@ -43,6 +50,7 @@ SubNavBar.defaultProps = {
   icon: undefined,
   narrow: false,
   text: '',
+  textHref: '#',
 };
 
 export default SubNavBar;

@@ -414,6 +414,7 @@ export default class LibraryDetails extends React.Component {
                   t('MyLibraryDashboard:title') :
                   t('AssetStore:title')
                 }
+                textHref={this.props.route.isStore ? '/store' : '/asset'}
                 fluid
                 onClickIconButton={this.handleToggleCreateLibraryModal}
                 onClickText={this.handleClickSubNavBarText}
