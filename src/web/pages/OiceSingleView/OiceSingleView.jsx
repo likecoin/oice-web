@@ -635,11 +635,13 @@ export default class OiceSingleView extends React.Component {
             {canShare && <hr />}
             <div className="be-creator">
               <AppIcon size={48} />
-              <OutlineButton
-                color="light-grey"
-                label={t('label.createYourOwnStory')}
-                onClick={this.handleCreatorCTA}
-              />
+              <a href="/about" style={{ textDecoration: 'inherit' }} onClick={e => e.preventDefault()}>
+                <OutlineButton
+                  color="light-grey"
+                  label={t('label.createYourOwnStory')}
+                  onClick={this.handleCreatorCTA}
+                />
+              </a>
             </div>
           </div>
 
