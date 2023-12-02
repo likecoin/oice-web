@@ -48,32 +48,39 @@ export default class IndexHTML extends React.Component {
     } = this.props;
 
     const modules = ['web', 'editor', 'asset-library'];
-    const jsonLdObject = [{
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      name: 'oice',
-      url: 'https://oice.com',
-      logo: 'https://oice.com/static/img/app-icon.png',
-      sameAs: [
-        'https://v.oice.com',
-        'https://twitter.com/oice_app',
-        'https://www.facebook.com/oiceapp',
-        'https://www.facebook.com/groups/oiceapp',
-        'https://embed.ly/provider/oice',
-      ],
-    }, {
-      '@context': 'http://www.schema.org',
-      '@type': 'WebApplication',
-      name: 'oice',
-      applicationCategory: 'DesignApplication',
-      operatingSystem: 'All',
-      url: 'https://oice.com',
-      offers: {
-        '@type': 'Offer',
-        price: '0',
-        priceCurrency: 'USD',
-      },
-    }].concat(this.props.jsonLds);
+    const jsonLdObject = [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        name: 'oice visual novels',
+        alternateName: ['oice', 'oice.com', 'oice 視覺小説'],
+        url: 'https://oice.com/',
+      }, {
+        '@context': 'https://schema.org',
+        '@type': 'OnlineBusiness',
+        name: 'oice',
+        url: 'https://oice.com',
+        logo: 'https://oice.com/static/img/app-icon.png',
+        sameAs: [
+          'https://v.oice.com',
+          'https://twitter.com/oice_app',
+          'https://www.facebook.com/oiceapp',
+          'https://www.facebook.com/groups/oiceapp',
+          'https://embed.ly/provider/oice',
+        ],
+      }, {
+        '@context': 'http://www.schema.org',
+        '@type': 'WebApplication',
+        name: 'oice visual novels',
+        applicationCategory: 'DesignApplication',
+        operatingSystem: 'All',
+        url: 'https://oice.com',
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'USD',
+        },
+      }].concat(this.props.jsonLds);
 
     return (
       <html lang={meta.locale}>
