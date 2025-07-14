@@ -14,7 +14,6 @@ import * as StoryAction from 'editor/actions/story';
 import * as LibraryAction from 'editor/actions/library';
 import * as MacroAction from 'editor/actions/macro';
 import * as UserAction from 'common/actions/user';
-import * as CrispUtils from 'common/utils/crisp';
 
 import { isMobileAgent } from 'common/utils';
 import { redirectToLoginPage } from 'common/utils/auth';
@@ -57,7 +56,6 @@ export default class App extends React.Component {
 
   componentDidMount() {
     this.props.dispatch(UserAction.authenticate());
-    CrispUtils.boot();
   }
 
   componentWillReceiveProps(nextProps) {

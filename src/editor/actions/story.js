@@ -1,7 +1,6 @@
 import { createAction } from 'redux-actions';
 import * as StoryAPI from 'common/api/story';
 import { APIHandler } from 'common/utils/api';
-import * as CrispUtils from 'common/utils/crisp';
 
 import * as CharacterAction from './character';
 import * as AssetAction from './asset';
@@ -11,7 +10,6 @@ export const fetchedStories = createAction('FETCHED_STORIES');
 export const fetchStories = () => dispatch => APIHandler(dispatch,
   StoryAPI.fetchStories()
     .then((stories) => {
-      CrispUtils.update('_story_count', stories.length);
       dispatch(fetchedStories({ list: stories }));
     })
 );

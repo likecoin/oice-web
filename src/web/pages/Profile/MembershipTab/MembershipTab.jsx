@@ -11,7 +11,6 @@ import AlertDialog from 'ui-elements/AlertDialog';
 import PricingTable from 'web/components/PricingTable';
 
 import { isNormalUser } from 'common/utils/user';
-import * as CrispUtils from 'common/utils/crisp';
 
 import OiceCheckout from '../AccountSettingTab/OiceCheckout';
 
@@ -53,7 +52,6 @@ export default class MembershipTab extends React.Component {
 
     if (!isBacker && this.props.action === PROFILE_ACTION.SUBSCRIBE && this.paymentButton) {
       findDOMNode(this.paymentButton).click();
-      CrispUtils.update('oice_subscriptionReferrerID', this.props.referrer);
       this.props.dispatch(replace('/profile'));
     }
   }

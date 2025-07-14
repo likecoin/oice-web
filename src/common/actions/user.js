@@ -14,7 +14,6 @@ import {
 } from 'common/utils/auth';
 import { clearLastEditingOice } from 'common/utils/editor';
 import i18next, { mapLanguageCode } from 'common/utils/i18n';
-import * as CrispUtils from 'common/utils/crisp';
 import { IS_DEV_MODE } from 'common/constants';
 
 
@@ -38,8 +37,6 @@ export const loginWithGoogle = (firebaseUser, googleToken) => async (dispatch, g
     if (mapLanguageCode(i18next.language) !== user.uiLanguage) {
       i18next.changeLanguage(user.uiLanguage);
     }
-
-    CrispUtils.updateWithUser(user);
 
     dispatch(updateUser(user));
     return user;
@@ -80,7 +77,6 @@ export const signOut = () => dispatch => APIHandler(dispatch,
     .then((message) => {
       if (firebase.auth().currentUser || getAuthItem()) {
         firebase.auth().signOut().then(() => {
-          CrispUtils.shutdown();
           clearLocalItems();
           clearLastEditingOice();
           backToWeb();

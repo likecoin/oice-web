@@ -5,5 +5,4 @@ src/admin
 dist/static/vendor/fb.js
 dist/static/vendor/ga.js
 dist/static/vendor/gtm.js
-dist/static/vendor/crisp.js
 src/common/constants/key.js
